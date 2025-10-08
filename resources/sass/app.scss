@@ -1,0 +1,21 @@
+// Import variables first
+@import "variables";
+
+// Global styles
+body {
+  font-family: "Poppins", sans-serif;
+  background: $light-bg;
+  margin: 0;
+  color: $dark-text;
+}
+
+// Import all other page styles
+@import "variables";
+@import "AdminDashboard";
+@import "Header";
+@import "Navbar";
+@import "Sidebar";
+@import "Login";
+@import "Register";
+
+// (add more as you create new .scss files)

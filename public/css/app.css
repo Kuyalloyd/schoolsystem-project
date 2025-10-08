@@ -1,0 +1,380 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  color: #212529;
+}
+
+.admin-dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f6fa;
+}
+.admin-dashboard-layout .sidebar {
+  width: 250px;
+  background: #222;
+  color: #fff;
+  padding-top: 20px;
+  position: fixed;
+  height: 100vh;
+}
+.admin-dashboard-layout .admin-main {
+  flex: 1;
+  margin-left: 250px;
+  padding: 30px;
+  overflow-y: auto;
+}
+.admin-dashboard-layout .admin-main .adm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.admin-dashboard-layout .admin-main .adm-header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.admin-dashboard-layout .admin-main .stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.admin-dashboard-layout .admin-main .stats .stat {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.admin-dashboard-layout .admin-main .stats .stat strong {
+  display: block;
+  font-size: 1.5rem;
+  color: #007bff;
+}
+.admin-dashboard-layout .admin-main .user-table {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.admin-dashboard-layout .admin-main .user-table .adm-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.admin-dashboard-layout .admin-main .user-table .adm-controls input {
+  width: 60%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.admin-dashboard-layout .admin-main .user-table .adm-controls .btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.admin-dashboard-layout .admin-main .user-table .adm-controls .btn.primary {
+  background: #007bff;
+  color: white;
+}
+.admin-dashboard-layout .admin-main .user-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-dashboard-layout .admin-main .user-table table th, .admin-dashboard-layout .admin-main .user-table table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.admin-dashboard-layout .admin-main .user-table table th {
+  background: #fafafa;
+  font-weight: bold;
+  text-align: left;
+}
+.admin-dashboard-layout .admin-main .user-table table .badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+.admin-dashboard-layout .admin-main .user-table table .badge.active {
+  background: #c8f7c5;
+  color: #1a7f37;
+}
+.admin-dashboard-layout .admin-main .user-table table .badge.locked {
+  background: #fcd5ce;
+  color: #c0392b;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.navbar h1 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-right button {
+  background: #e63946;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.navbar-right button:hover {
+  background: #d62839;
+}
+
+/* === SIDEBAR DESIGN === */
+.sidebar {
+  width: 230px;
+  background: #1e293b;
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.sidebar-header h1 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar-menu li {
+  padding: 10px 15px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.sidebar-menu li:hover {
+  background: #334155;
+}
+
+.sidebar-menu li.active {
+  background: #3b82f6;
+  color: white;
+  font-weight: 600;
+}
+
+/* === LOGOUT BUTTON === */
+.logout-btn {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* === FOOTER === */
+.sidebar-footer {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4e73df, #1cc88a);
+  font-family: "Poppins", sans-serif;
+}
+.login-page.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.login-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-card h2 {
+  color: #2e2e2e;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease;
+}
+input:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 5px rgba(78, 115, 223, 0.4);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #4e73df;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+button:hover {
+  background: #375ac0;
+}
+button:disabled {
+  background: #a3b6f7;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74a3b;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.create-account {
+  margin-top: 25px;
+  font-size: 14px;
+}
+.create-account .link {
+  color: #1cc88a;
+  text-decoration: none;
+  font-weight: 600;
+}
+.create-account .link:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.register-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.register-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+}
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.register-container form input,
+.register-container form select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+.register-container form input:focus,
+.register-container form select:focus {
+  border-color: #007bff;
+}
+.register-container form label {
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #555;
+}
+.register-container form .student-fields,
+.register-container form .faculty-fields {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.register-container form .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.register-container form .button-group button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.register-container form .button-group button:first-child {
+  background: #007bff;
+  color: white;
+}
+.register-container form .button-group button:first-child:hover {
+  background: #0056b3;
+}
+.register-container form .button-group button:last-child {
+  background: #f1f1f1;
+  color: #333;
+}
+.register-container form .button-group button:last-child:hover {
+  background: #ddd;
+}
