@@ -433,6 +433,58 @@ body {
   border-collapse: collapse;
 }
 
+/* Students table presentation improvements for readability */
+.students-list-modern tbody tr td {
+  vertical-align: middle;
+}
+
+.students-list-modern td {
+  padding: 12px 14px;
+}
+
+.students-list-modern td .avatar-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  font-size: 14px;
+}
+
+.students-list-modern td div[style] > div {
+  color: #0b1220; /* ensure primary text is darker */
+}
+
+.students-list-modern td div[style] > div:first-child {
+  font-weight: 800;
+  color: #0b1220;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 380px;
+}
+
+.students-list-modern .small-muted {
+  color: #475569;
+  font-size: 12px;
+}
+
+.students-list-modern .grade-chip {
+  background: #f8fafc;
+  color: #0b1220;
+}
+
+.students-list-modern .progress-bar .progress-fill {
+  background: #16a34a;
+}
+
+.students-list-modern .progress-bar.performance .progress-fill {
+  background: #0ea5e9;
+}
+
+.students-list-modern .status-pill {
+  background: #f1f5f9;
+  color: #0b1220;
+}
+
 .hero-banner {
   border-radius: 12px;
   padding: 28px 24px;
