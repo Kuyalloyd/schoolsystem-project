@@ -21,8 +21,12 @@ export default function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* ✅ Admin Dashboard route */}
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+    {/* ✅ Admin Dashboard route - keep a single dashboard shell for all admin pages */}
+    <Route path="/admin/dashboard" element={<AdminDashboard />} />
+  {/* Render the dashboard shell but open specific panels when visiting role-specific routes */}
+  <Route path="/admin/users" element={<AdminDashboard initialPage="users" />} />
+  <Route path="/admin/students" element={<AdminDashboard initialPage="students" />} />
+  <Route path="/admin/teachers" element={<AdminDashboard initialPage="teachers" />} />
 
         {/* Fallback for any unknown routes */}
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />

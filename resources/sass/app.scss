@@ -1,5 +1,5 @@
 // Import variables first
-@import "variables";
+@import "_variables";
 
 // Global styles
 body {
@@ -9,11 +9,8 @@ body {
   color: $dark-text;
 }
 
-// Import all other page styles
-@import "variables";
+// Import all other page styles (only existing files)
 @import "AdminDashboard";
-@import "Header";
-@import "Navbar";
 @import "Sidebar";
 @import "Login";
 @import "Register";

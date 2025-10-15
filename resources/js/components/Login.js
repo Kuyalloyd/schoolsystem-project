@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../sass/Login.scss";
 
@@ -7,6 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  // No runtime background logic; CSS handles the page background for login.
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -14,63 +15,115 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // ✅ Send login request to backend (trim spaces)
-      const response = await axios.post("http://127.0.0.1:8000/api/login", {
+      // ✅ Send login request (use relative path so it uses the same origin as the browser)
+      const { data } = await axios.post("/api/login", {
         email: email.trim(),
         password: password.trim(),
       });
 
-      const user = response.data.user;
+      const user = data.user;
 
       // ✅ Save user info locally
       localStorage.setItem("user", JSON.stringify(user));
 
-      // ✅ Redirect instantly by role
-      if (user.role === "admin") {
-        window.location.href = "/admin/dashboard";
-      } else if (user.role === "teacher") {
-        window.location.href = "/teacher/dashboard";
-      } else if (user.role === "student") {
-        window.location.href = "/student/dashboard";
+      // Provide a lightweight token flag so ProtectedRoute and other
+      // components that check localStorage tokens won't immediately
+      // redirect the user back to /login. In this app we don't use
+      // a JWT here, so a simple presence flag is sufficient.
+      if (user.role === 'admin') {
+        localStorage.setItem('adminToken', '1');
+        // also set a generic token for APIs that check 'token'
+        localStorage.setItem('token', '1');
       } else {
-        setError("❌ Unknown user role. Please contact admin.");
+        localStorage.setItem('token', '1');
+        // normalize teacher role for areas that expect 'faculty'
+        if (user.role === 'teacher') {
+          // keep original role but also store a normalized role helper
+          localStorage.setItem('roleNormalized', 'faculty');
+        }
+      }
+
+      // ✅ Redirect instantly based on role
+      switch (user.role) {
+        case "admin":
+          window.location.href = "/admin/dashboard";
+          break;
+        case "teacher":
+          window.location.href = "/teacher/dashboard";
+          break;
+        case "student":
+          window.location.href = "/student/dashboard";
+          break;
+        default:
+          setError("❌ Unknown user role. Please contact the administrator.");
+          break;
       }
     } catch (err) {
       console.error("Login error:", err);
-      setError(err.response?.data?.message || "❌ Invalid credentials. Please try again.");
+      if (err.response && err.response.data) {
+        // Print structured server response for easier copy/paste from browser console
+        console.table(err.response.data);
+      }
+      // Gracefully handle all errors
+      const msg =
+        err.response?.data?.message ||
+        (err.code === "ERR_NETWORK"
+          ? "🚫 Cannot connect to server. Please start your Laravel backend."
+          : "❌ Invalid credentials. Please try again.");
+      setError(msg);
     } finally {
-      // ✅ Stop loading animation fast
       setLoading(false);
     }
   };
 
+  // Development helper: call window.debugLogin(email, password) from the browser console
+  // It will POST to /api/_debug-login and log the JSON response.
+  useEffect(() => {
+    window.debugLogin = async (e = "admin@urios.gmail.com", p = "admin123") => {
+      try {
+        const res = await axios.post('/api/_debug-login', { email: e, password: p });
+        // eslint-disable-next-line no-console
+        console.log('debugLogin:', res.data);
+        return res.data;
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error('debugLogin failed', err.response?.data || err.message);
+        throw err;
+      }
+    };
+  }, []);
+
   return (
     <div className="login-page fade-in">
       <div className="login-card">
-        <h2>Welcome Back 👋</h2>
+        <h2>Welcome Back</h2>
         <p className="subtitle">Sign in to access your account</p>
 
-        <form onSubmit={handleLogin} autoComplete="off">
-          <input
-            type="email"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            disabled={loading}
-          />
+        <form onSubmit={handleLogin} autoComplete="off" className="login-form">
+          <div className="input-group">
+            <input
+              type="email"
+                placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            disabled={loading}
-          />
+          <div className="input-group">
+            <input
+              type="password"
+                placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
 
-          <button type="submit" disabled={loading}>
-            {loading ? "🔒 Logging in..." : "Login"}
+          <button type="submit" disabled={loading} className="login-btn">
+            {loading ? "Logging in..." : "Login"}
           </button>
 
           {error && <p className="error-message">{error}</p>}

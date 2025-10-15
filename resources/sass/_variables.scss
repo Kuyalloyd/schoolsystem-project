@@ -1,5 +1,52 @@
-$primary-color: #007bff;
-$success-color: #28a745;
-$danger-color: #dc3545;
-$light-bg: #f4f6f9;
-$dark-text: #212529;
+$color-primary: #5b21b6;     // deep violet
+$color-secondary: #0b1020;   // near black blue
+$color-accent-green: #7c3aed; // purple-green mix used sparingly
+$color-accent-red: #ef44a3;   // magenta-ish accent
+$color-accent-yellow: #f59e0b;
+$color-surface: #0b1020;      // make panels darker for galaxy look
+$color-bg: linear-gradient(180deg,#05030a 0%, #081028 60%);
+$color-border: rgba(255,255,255,0.04);
+$color-text: #e6eef8;
+$color-muted: #9aa4c0;
+
+$font-family-base: 'Inter', 'Nunito', sans-serif;
+$radius-base: 12px;
+$shadow-card: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+
+$light-bg: #081028;
+$dark-bg: #030317;
+
+$dark-text: #e6eef8;
+$muted-text: #9aa4c0;
+
+$primary: #5b21b6;
+$secondary: #9aa4c0;
+$success: #34d399;
+$danger: #ff6b8a;
+
+// Dashboard palette (used by metric cards and accents)
+$accent-blue: #3b82f6; /* retain blue for charts */
+$accent-blue-50: rgba(59,130,246,0.08);
+$accent-green: #34d399;
+$accent-green-50: rgba(52,211,153,0.06);
+$accent-purple: #7c3aed;
+$accent-purple-50: rgba(124,58,237,0.06);
+$accent-cyan: #06b6d4;
+$accent-cyan-50: rgba(6,182,212,0.04);
+
+$panel-bg: linear-gradient(180deg,#071026 0%, #071433 100%);
+$card-radius: 12px;
+$shadow-light: 0 8px 24px rgba(11,18,40,0.6);
+
+$panel: $panel-bg;       
+$muted: $muted-text;    
+$radius: $card-radius;  
+$shadow: 0 12px 40px rgba(11,18,40,0.6);
+
+:root.adm-dark, .adm-dark {
+  --bg: #030317;
+  --panel: #071026;
+  --muted: #9aa4c0;
+  --text: #e6eef8;
+  --accent: #7c3aed;
+}

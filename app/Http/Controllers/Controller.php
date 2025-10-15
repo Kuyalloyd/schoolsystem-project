@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    /**
-     * ✅ Register a new user (Student, Teacher, or Admin)
-     */
     public function register(Request $request)
     {
         $request->validate([
@@ -82,9 +79,12 @@ class Controller extends BaseController
     /**
      * ✅ Logout user
      */
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
         return response()->json(['message' => '👋 Logged out successfully']);
     }
 }
+
+
+    

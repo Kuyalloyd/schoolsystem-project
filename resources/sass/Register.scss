@@ -1,50 +1,93 @@
+body.register-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f1f5f9, #e0e7ff);
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.3;
+  }
+
+  &::before {
+    width: 300px;
+    height: 300px;
+    top: -50px;
+    left: -60px;
+    background: #60a5fa;
+    animation: floatOrb 9s ease-in-out infinite alternate;
+  }
+
+  &::after {
+    width: 350px;
+    height: 350px;
+    bottom: -80px;
+    right: -70px;
+    background: #818cf8;
+    animation: floatOrb 11s ease-in-out infinite alternate-reverse;
+  }
+}
+
 .register-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 30px;
+  z-index: 1;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  max-width: 450px;
+  width: 100%;
+  animation: fadeInUp 0.6s ease-out;
   text-align: center;
 
   h2 {
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #1e3a8a;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
+    text-align: left;
+
+    label {
+      font-size: 0.95rem;
+      color: #475569;
+      font-weight: 500;
+    }
 
     input,
     select {
       padding: 12px;
-      border: 1px solid #ddd;
+      border: 1px solid #cbd5e1;
       border-radius: 8px;
-      font-size: 14px;
-      outline: none;
-      transition: border 0.2s;
+      font-size: 1rem;
+      background: #f9fafb;
+      transition: all 0.25s ease;
 
       &:focus {
-        border-color: #007bff;
+        border-color: #2563eb;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(37, 99, 235, 0.25);
       }
-    }
-
-    label {
-      font-size: 14px;
-      text-align: left;
-      margin-bottom: 5px;
-      color: #555;
     }
 
     .student-fields,
     .faculty-fields {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #e2e8f0;
+      animation: fadeInUp 0.5s ease-out;
     }
 
     .button-group {
@@ -57,28 +100,58 @@
         padding: 12px;
         border: none;
         border-radius: 8px;
-        font-size: 15px;
+        font-size: 1rem;
         cursor: pointer;
-        transition: background 0.2s;
+        transition: all 0.25s ease;
+        font-weight: 600;
 
         &:first-child {
-          background: #007bff;
-          color: white;
+          background: linear-gradient(90deg, #2563eb, #3b82f6);
+          color: #fff;
 
           &:hover {
-            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
           }
         }
 
         &:last-child {
-          background: #f1f1f1;
-          color: #333;
+          background: #f1f5f9;
+          color: #334155;
 
           &:hover {
-            background: #ddd;
+            background: #e2e8f0;
           }
         }
       }
     }
+
+    .field-error {
+      color: #dc2626;
+      font-size: 0.85rem;
+      margin-top: 4px;
+      text-align: left;
+    }
+  }
+}
+
+/* Reuse animations from Login */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatOrb {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(30px) scale(1.05);
   }
 }
