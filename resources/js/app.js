@@ -26,4 +26,47 @@ axios.interceptors.response.use(
 );
 
 // ✅ Mount the app
-ReactDOM.render(<Router />, document.getElementById("app"));
+// Install global error handlers so runtime exceptions are visible (helpful for debugging)
+window.__lastClientError = null;
+function showClientErrorOverlay(err) {
+  try {
+    window.__lastClientError = err;
+    console.error('Client error captured:', err);
+    let overlay = document.getElementById('__client_error_overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = '__client_error_overlay';
+      overlay.style.position = 'fixed';
+      overlay.style.left = '12px';
+      overlay.style.right = '12px';
+      overlay.style.bottom = '12px';
+      overlay.style.zIndex = 2147483647;
+      overlay.style.background = 'linear-gradient(90deg, rgba(255,85,85,0.95), rgba(255,140,140,0.95))';
+      overlay.style.color = '#fff';
+      overlay.style.padding = '12px 14px';
+      overlay.style.borderRadius = '8px';
+      overlay.style.boxShadow = '0 12px 40px rgba(0,0,0,0.4)';
+      overlay.style.fontFamily = 'Inter, system-ui, -apple-system, Roboto, Arial';
+      overlay.style.fontSize = '13px';
+      overlay.style.maxHeight = '40vh';
+      overlay.style.overflow = 'auto';
+      overlay.style.whiteSpace = 'pre-wrap';
+      overlay.style.lineHeight = '1.3';
+      document.body.appendChild(overlay);
+    }
+    overlay.textContent = typeof err === 'string' ? err : (err && err.stack) ? err.stack : JSON.stringify(err);
+  } catch (e) { console.error('Failed to render error overlay', e); }
+}
+
+window.addEventListener('error', (ev) => {
+  try { showClientErrorOverlay(ev.error || ev.message || 'Unknown error'); } catch(e){}
+});
+window.addEventListener('unhandledrejection', (ev) => {
+  try { showClientErrorOverlay(ev.reason || ev); } catch(e){}
+});
+
+try {
+  ReactDOM.render(<Router />, document.getElementById("app"));
+} catch (e) {
+  showClientErrorOverlay(e);
+}

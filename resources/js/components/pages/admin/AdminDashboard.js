@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import axios from 'axios';
 import Sidebar from "./Sidebar";
 import {
   FiUser,
@@ -18,9 +19,8 @@ import {
   FiLock,
   FiArchive,
 } from "react-icons/fi";
-import axios from "axios";
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
+import { Bar, Line } from 'react-chartjs-2';
+import { Chart as ChartJS, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler } from 'chart.js';
 import UserFormModal from "./UserFormModal";
 import CourseFormModal from "./CourseFormModal";
 import UserDetailModal from "./UserDetailModal";
@@ -30,38 +30,70 @@ import "../../../../sass/AdminDashboard.scss";
 
 const API = "/api/admin";
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler);
 
-// sample chart data for the performance graph
-const chartData = {
-  labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+
+// Enrollment area chart (left) sample data/options
+const enrollmentLabels = ['Jan','Feb','Mar','Apr','May','Jun'];
+// Plain data object (Chart component expects an object). Use a static
+// translucent background color instead of calculating a canvas gradient.
+const enrollmentData = {
+  labels: enrollmentLabels,
   datasets: [
     {
-      label: 'Requests',
-      data: [120,150,180,170,200,230,210],
-      backgroundColor: [
-        'rgba(37,99,235,0.9)', // Mon - blue
-        'rgba(59,130,246,0.85)', // Tue - lighter blue
-        'rgba(16,185,129,0.9)', // Wed - green
-        'rgba(236,72,153,0.9)', // Thu - pink
-        'rgba(249,115,22,0.9)', // Fri - orange
-        'rgba(124,58,237,0.9)', // Sat - purple
-        'rgba(16,185,129,0.7)'
-      ],
-      borderRadius: 6,
-      maxBarThickness: 32,
+      label: 'Students',
+      data: [1020, 1080, 1130, 1170, 1190, 1210],
+      fill: true,
+      // fallback gradient color as a static value
+      backgroundColor: 'rgba(59,130,246,0.12)',
+      tension: 0.3,
+      pointRadius: 0,
     },
-  ],
+    {
+      label: 'Teachers',
+      data: [45, 46, 47, 48, 48, 49],
+      fill: false,
+      tension: 0.3,
+      pointRadius: 0,
+    }
+  ]
 };
 
-const chartOptions = {
+const enrollmentOptions = {
   responsive: true,
   maintainAspectRatio: false,
-  plugins: { legend: { display: false } },
+  plugins: { legend: { display: true, position: 'bottom', labels: { usePointStyle: true } } },
   scales: {
-    x: { grid: { display: false } },
-    y: { grid: { color: 'rgba(255,255,255,0.04)' }, beginAtZero: true }
+    x: { grid: { display: false }, ticks: { color: '#6b7280' } },
+    y: { grid: { color: '#eef4fb' }, ticks: { color: '#6b7280' }, beginAtZero: true }
   }
+};
+
+// Attendance bar chart (right) sample data/options
+const attendanceLabels = ['Mon','Tue','Wed','Thu','Fri'];
+const attendanceData = {
+  labels: attendanceLabels,
+  datasets: [
+    {
+      label: 'present',
+      data: [1100, 1120, 1115, 1130, 1125],
+      borderRadius: 6,
+      barThickness: 36,
+    },
+    {
+      label: 'absent',
+      data: [40, 35, 38, 30, 45],
+      borderRadius: 6,
+      barThickness: 36,
+    }
+  ]
+};
+
+const attendanceOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { display: true, position: 'bottom' } },
+  scales: { x: { grid: { display: false }, ticks: { color: '#6b7280' } }, y: { grid: { color: '#eef4fb' }, ticks: { color: '#6b7280' }, beginAtZero: true } }
 };
 const MetricCard = ({ icon: Icon, title, value, color, onClick }) => (
   <div className={`metric-card ${color}`} onClick={onClick}>
@@ -129,17 +161,29 @@ export default function AdminDashboard({ initialPage = null }) {
   // Generic save handler for UserFormModal so AdminDashboard can create/update users
   const saveUserFromModal = async (payload, isEdit) => {
     try {
+      let res = null;
       if (isEdit && payload && payload.id) {
-        await axios.put(`/api/admin/users/${payload.id}`, payload);
+        res = await axios.put(`/api/admin/users/${payload.id}`, payload);
       } else {
         // ensure name and password exist for server validation
         if (!payload.name) payload.name = `${payload.first_name || ''} ${payload.last_name || ''}`.trim();
         if (!payload.password) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
-        await axios.post('/api/admin/users', payload);
+        res = await axios.post('/api/admin/users', payload);
       }
+
       await fetchAll();
       try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-      return Promise.resolve();
+      // Notify activities listeners so Recent Activities refreshes
+      try { window.dispatchEvent(new CustomEvent('admin:activities-changed')); } catch(e){}
+
+      // If a new user was created, emit an event with the new id so other components
+      // (e.g. AdminUsers) can highlight or navigate to it.
+      try {
+        if (res && res.data && res.data.user && res.data.user.id) {
+          try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: { id: res.data.user.id } })); } catch(e){}
+        }
+      } catch(e) { /* ignore */ }
+      return Promise.resolve(res && res.data ? res.data : {});
     } catch (e) {
       console.error('Save from modal failed', e);
       return Promise.reject(e);
@@ -193,72 +237,114 @@ export default function AdminDashboard({ initialPage = null }) {
         <p className="subtitle">Real-time overview of your school management system</p>
       </div>
 
-      {/* Metrics */}
-      <div className="metrics-grid">
-        <MetricCard icon={FiUser} title="Total Students" value={derivedTotalStudents} color="blue" onClick={() => setActivePage('users')} />
-        <MetricCard icon={FiUsers} title="Total Teachers" value={derivedTotalTeachers} color="green" onClick={() => setActivePage('teachers')} />
-        <MetricCard icon={FiBook} title="Active Courses" value={derivedActiveCourses} color="purple" onClick={() => setActivePage('courses')} />
-        <MetricCard icon={FiUsers} title="Active Users" value={derivedActiveUsers} color="cyan" />
-      </div>
+      {/* Top metrics removed per user request */}
 
-      {/* Middle: System Health + Requests Bar Chart */}
-      <div className="content-grid">
-        <div className="card system-health">
-          <h2>System Health</h2>
-          <div className="health-rows">
-            <div className="health-row" data-status="good">
-              <div className="health-label">Server Uptime</div>
-              <div className="health-bar-wrap"><div className="health-bar" style={{ width: '99%' }} aria-hidden></div></div>
-              <div className="health-value">99.9%</div>
-            </div>
-
-            <div className="health-row" data-status="good">
-              <div className="health-label">Database Performance</div>
-              <div className="health-bar-wrap"><div className="health-bar" style={{ width: '94%' }} aria-hidden></div></div>
-              <div className="health-value">94%</div>
-            </div>
-
-            <div className="health-row" data-status="good">
-              <div className="health-label">API Response Time</div>
-              <div className="health-bar-wrap"><div className="health-bar" style={{ width: '60%' }} aria-hidden></div></div>
-              <div className="health-value">156ms</div>
-            </div>
-
-            <div className="health-row" data-status="warn">
-              <div className="health-label">Storage Usage</div>
-              <div className="health-bar-wrap"><div className="health-bar" style={{ width: '68%' }} aria-hidden></div></div>
-              <div className="health-value">68%</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="card bar-chart">
-          <h2>Requests (week)</h2>
-          <div style={{ height: 180 }}>
-            <Bar data={chartData} options={chartOptions} />
-          </div>
-        </div>
-      </div>
+      {/* Middle section intentionally removed per user request */}
 
       {/* Performance summary cards (four metrics) */}
       <div className="performance-cards">
         <PerformanceCards />
       </div>
 
-      {/* Bottom section: Department Overview + Recent Activity + Calendar */}
-      <div className="bottom-grid">
-        <div className="department-overview card dept-align">
-          <h2>Department Overview</h2>
-          <p className="small-muted">Students by department</p>
-          <DepartmentOverview />
+      <div className="dashboard-summary">
+        <div className="top-metrics">
+          <div className="metric-card card metric-blue">
+            <div className="metric-left">
+              <div className="label">Total Students</div>
+              <div className="value">{Number(stats.total_students) || 0}</div>
+              <div className="meta small-muted">{stats.students_change_label || '+0% from last month'}</div>
+            </div>
+            <div className="metric-icon"><span className="icon-box color-blue">🎓</span></div>
+          </div>
+
+          <div className="metric-card card metric-purple">
+            <div className="metric-left">
+              <div className="label">Total Teachers</div>
+              <div className="value">{Number(stats.total_teachers) || 0}</div>
+              <div className="meta small-muted">{stats.teachers_change_label || '+0% from last month'}</div>
+            </div>
+            <div className="metric-icon"><span className="icon-box color-violet">👥</span></div>
+          </div>
+
+          <div className="metric-card card metric-cyan">
+            <div className="metric-left">
+              <div className="label">Active Courses</div>
+              <div className="value">{Number(stats.active_courses) || 0}</div>
+              <div className="meta small-muted">{stats.courses_change_label || '+0% from last month'}</div>
+            </div>
+            <div className="metric-icon"><span className="icon-box color-cyan">📚</span></div>
+          </div>
+
+          <div className="metric-card card metric-orange">
+            <div className="metric-left">
+              <div className="label">Enrollment Rate</div>
+              <div className="value">{(Number(stats.enrollment_rate) || 0) + '%'}</div>
+              <div className="meta small-muted">{stats.enrollment_change_label || '+0% from last month'}</div>
+            </div>
+            <div className="metric-icon"><span className="icon-box color-orange">📈</span></div>
+          </div>
         </div>
 
-        <div className="recent-activity card">
-          <h2>Recent Activity</h2>
-          <RecentActivity />
-          <div className="recent-calendar">
-            <h3 className="small-muted" style={{ marginTop: 12 }}>Calendar</h3>
-            <MiniCalendar />
+        <div className="summary-bottom">
+          <div className="recent-activities card">
+            <h3>Recent Activities</h3>
+            <div className="activity-list">
+              {(activities && activities.length ? activities : [
+                { title: 'New student enrolled', desc: 'Emma Wilson', time: '5 minutes ago' },
+                { title: 'Teacher account locked', desc: 'Dr. James Smith', time: '15 minutes ago' },
+                { title: 'Course updated', desc: 'Advanced Mathematics', time: '1 hour ago' },
+                { title: 'Student archived', desc: 'Michael Brown', time: '2 hours ago' },
+                { title: 'Teacher unlocked', desc: 'Sarah Johnson', time: '3 hours ago' },
+              ]).map((it, i) => (
+                <div key={i} className="activity-item">
+                  <div className="dot" />
+                  <div className="activity-body">
+                    <div className="activity-title">{it.title}</div>
+                    <div className="activity-desc small-muted">{it.desc}</div>
+                  </div>
+                  <div className="activity-time small-muted">{it.time}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="system-stats card">
+            <h3>System Statistics</h3>
+            <div className="stat-list">
+              <div className="stat-row"><div className="stat-label">Active Students</div><div className="stat-value">{Number(stats.total_students) || 0}</div></div>
+              <div className="stat-row"><div className="stat-label">Archived Students</div><div className="stat-value">{Number(stats.archived_students) || 0}</div></div>
+              <div className="stat-row"><div className="stat-label">Locked Accounts</div><div className="stat-value">{Number(stats.locked_accounts) || 0}</div></div>
+              <div className="stat-row"><div className="stat-label">Unlocked Accounts</div><div className="stat-value">{Number(stats.unlocked_accounts) || 0}</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Bottom charts row: Enrollment Growth + Weekly Attendance */}
+      <div className="charts-row">
+        <div className="chart-card enrollment-area card">
+          <div className="card-head">
+            <h4>Enrollment Growth</h4>
+            <div className="subtitle small-muted">Students vs Teachers over months</div>
+          </div>
+            <div className="enrollment-chart-wrap">
+            <Line data={enrollmentData} options={enrollmentOptions} />
+          </div>
+        </div>
+
+        <div className="chart-card attendance-compact card">
+          <div className="card-head">
+            <h4>Weekly Attendance</h4>
+          </div>
+            <div className="attendance-chart-wrap">
+            <Bar data={attendanceData} options={attendanceOptions} />
+          </div>
+          <div className="legend">
+            <div className="legend-item"><span className="legend-swatch absent" /> <span className="small-muted">absent</span></div>
+            <div className="legend-item"><span className="legend-swatch present" /> <span className="small-muted">present</span></div>
+          </div>
+          <div className="attendance-stats">
+            <div className="stat"><div className="small-muted">Average Present</div><div className="stat-val">1,127</div></div>
+            <div className="stat"><div className="small-muted">Average Absent</div><div className="stat-val">37</div></div>
           </div>
         </div>
       </div>
@@ -266,79 +352,9 @@ export default function AdminDashboard({ initialPage = null }) {
   );
 
   // Small helper components for the dashboard
-  const RecentActivity = () => {
-    // if server provides activities use them; otherwise show lightweight samples
-    const samples = [
-      { title: 'New student registration', desc: 'A new student joined the system', time: 'just now' },
-      { title: 'Course schedule updated', desc: 'A course schedule was updated', time: 'a few minutes ago' },
-      { title: 'Account security alert', desc: 'Multiple failed login attempts detected', time: 'an hour ago' },
-    ];
-    const items = (activities && activities.length) ? activities : samples;
+  // RecentActivity removed per user request
 
-    return (
-      <div className="activity-list">
-        {items.map((it, i) => (
-          <div key={i} className="activity-item">
-            <div className="activity-left" />
-            <div className="activity-body">
-              <div className="activity-title">{it.title}</div>
-              <div className="activity-desc">{it.details || it.desc || ''}</div>
-            </div>
-            <div className="activity-time">{it.time || it.created_at || ''}</div>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  
-
-  const MiniCalendar = () => {
-    const [now, setNow] = useState(() => new Date());
-    const isMorning = now.getHours() >= 6 && now.getHours() < 12; // 6:00 - 11:59
-
-    useEffect(() => {
-      // tick every 60s to detect morning boundary changes
-      const t = setInterval(() => setNow(new Date()), 60 * 1000);
-      return () => clearInterval(t);
-    }, []);
-
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const monthName = now.toLocaleString(undefined, { month: 'long' });
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    // build cells with leading blanks so the 1st falls under correct weekday
-    const cells = [];
-    for (let i = 0; i < firstDay; i++) cells.push(null);
-    for (let d = 1; d <= daysInMonth; d++) cells.push(d);
-
-    return (
-      <div className={`mini-cal compact ${isMorning ? 'morning' : 'regular'}`}>
-        <div className="cal-header" style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-          <div className="cal-title">
-            <strong>{monthName} {year}</strong>
-            <div className="cal-greeting">{isMorning ? 'Good morning' : (now.getHours() < 18 ? 'Hello' : 'Good evening')}</div>
-          </div>
-          <div className="cal-today">{now.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}</div>
-        </div>
-
-        <div className="cal-weekdays">{days.map(d => <div key={d} className="cal-day-name">{d}</div>)}</div>
-        <div className="cal-grid">{cells.map((c, idx) => {
-          const isToday = c === now.getDate();
-          return (
-            <div key={idx} className={`cal-cell ${c === null ? 'empty' : ''} ${isToday ? 'today' : ''}`}>{c || ''}</div>
-          );
-        })}</div>
-      </div>
-    );
-  };
-
-  
   const PerformanceCards = () => {
-    // derive values from stats; default to zeros so the dashboard shows 0 when no data exists
     const s = Number(stats.total_students) || 0;
     const prevS = Number(stats.prev_total_students) || 0;
     const studentChange = prevS ? `${(((s - prevS) / prevS) * 100).toFixed(1)}%` : '+0%';
@@ -355,12 +371,17 @@ export default function AdminDashboard({ initialPage = null }) {
     const prevGpa = Number(stats.prev_avg_gpa) || 0;
     const gpaChange = prevGpa ? `${(((gpa - prevGpa) / prevGpa) * 100).toFixed(1)}%` : '+0%';
 
+    // If all metrics are zero-ish, don't render the grid (keeps dashboard clean)
+    const anyNonZero = (s > 0) || (course > 0) || (ts > 0) || (gpa > 0);
+    if (!anyNonZero) return null;
+
     const cards = [
       { title: 'Student Growth', value: s, sub: `vs ${prevS}`, change: studentChange, color: 'blue' },
       { title: 'Course Completion', value: `${course}%`, sub: `vs ${prevCourse}%`, change: courseChange, color: 'green' },
       { title: 'Teacher Satisfaction', value: `${ts}/5`, sub: `vs ${prevTs}/5`, change: tsChange, color: 'purple' },
       { title: 'Average GPA', value: `${gpa}`, sub: `vs ${prevGpa}`, change: gpaChange, color: 'cyan' },
     ];
+
     return (
       <div className="perf-grid">
         {cards.map((c, i) => (
@@ -374,6 +395,11 @@ export default function AdminDashboard({ initialPage = null }) {
       </div>
     );
   };
+
+  // MiniCalendar removed per design request
+
+  
+  
 
   const TeachersPage = () => {
     const [searchT, setSearchT] = useState('');
@@ -414,6 +440,12 @@ export default function AdminDashboard({ initialPage = null }) {
       return true;
     });
 
+    // derived counts for the chips (mirrors students UI)
+    const totalTeachers = teachersAll.length;
+    const activeCountT = teachersAll.filter(t => !t.deleted_at && !t.is_locked).length;
+    const archivedCountT = teachersAll.filter(t => !!t.deleted_at).length;
+    const lockedCountT = teachersAll.filter(t => !!t.is_locked).length;
+
     const handleTeacherExport = () => {
       const rows = filtered.map(u => {
         const t = u.teacher || {};
@@ -447,9 +479,11 @@ export default function AdminDashboard({ initialPage = null }) {
         const lines = text.split(/\r?\n/).filter(Boolean);
         if (!lines.length) return alert('Empty file');
         const headers = lines[0].split(',').map(h => h.replace(/"/g,'').trim());
-        const data = lines.slice(1, 101).map(l => {
+        const data = lines.slice(1, 200).map(l => {
           const cols = l.split(',').map(c => c.replace(/^\s*"|"\s*$/g,'').trim());
-          const obj = {}; headers.forEach((h,i)=> obj[h]=cols[i]||''); return obj;
+          const obj = {};
+          headers.forEach((h, i) => { obj[h] = cols[i] || ''; });
+          return obj;
         });
         if (!confirm(`Import ${data.length} rows as teachers?`)) return;
         (async () => {
@@ -473,8 +507,8 @@ export default function AdminDashboard({ initialPage = null }) {
               };
               if (!payload.name) payload.name = `${payload.first_name || ''} ${payload.last_name || ''}`.trim();
               if (!payload.password) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
-              await axios.post('/api/admin/users', payload).catch(e=>{ console.warn('teacher import failed', e); return null; });
-              try { window.dispatchEvent(new CustomEvent('admin:activities-changed')); } catch(e){}
+              await axios.post('/api/admin/users', payload).catch(e => { console.warn('teacher import failed', e); return null; });
+              try { window.dispatchEvent(new CustomEvent('admin:activities-changed')); } catch (e) { }
             } catch (err) { console.error('Row import error', err); }
           }
           await fetchAll();
@@ -484,18 +518,59 @@ export default function AdminDashboard({ initialPage = null }) {
       reader.readAsText(file);
     };
 
-    const archiveTeacher = async (id) => { if (!confirm('Archive this faculty member?')) return; try { await axios.delete(`/api/admin/users/${id}`); await fetchAll(); alert('Archived'); } catch(e){ console.error(e); alert('Failed'); } };
-    const restoreTeacher = async (id) => { try { await axios.post(`/api/admin/users/${id}/restore`); await fetchAll(); alert('Restored'); } catch(e){ console.error(e); alert('Failed'); } };
-    const toggleLockTeacher = async (id, locked) => { try { await axios.post(`/api/admin/users/${id}/${locked ? 'unlock' : 'lock'}`); await fetchAll(); } catch(e){ console.error(e); alert('Failed'); } };
-    const deleteTeacher = async (id) => { if (!confirm('Permanently delete this faculty member?')) return; try { await axios.delete(`/api/admin/users/${id}?force=1`); await fetchAll(); alert('Deleted'); } catch(e){ console.error(e); alert('Failed'); } };
+    const archiveTeacher = async (id) => {
+      if (!confirm('Archive this faculty member?')) return;
+      try {
+        await axios.delete(`/api/admin/users/${id}`);
+        await fetchAll();
+        // notify other admin components and activities list
+        try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+        try { window.dispatchEvent(new CustomEvent('admin:activities-changed')); } catch(e){}
+        alert('Archived');
+      } catch(e){ console.error(e); alert('Failed'); }
+    };
+
+    const restoreTeacher = async (id) => {
+      try {
+        await axios.post(`/api/admin/users/${id}/restore`);
+        await fetchAll();
+        try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+        try { window.dispatchEvent(new CustomEvent('admin:activities-changed')); } catch(e){}
+        alert('Restored');
+      } catch(e){ console.error(e); alert('Failed'); }
+    };
+
+    const toggleLockTeacher = async (id, locked) => {
+      try {
+        await axios.post(`/api/admin/users/${id}/${locked ? 'unlock' : 'lock'}`);
+        await fetchAll();
+        try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+        try { window.dispatchEvent(new CustomEvent('admin:activities-changed')); } catch(e){}
+      } catch(e){ console.error(e); alert('Failed'); }
+    };
+
+    const deleteTeacher = async (id) => {
+      if (!confirm('Permanently delete this faculty member?')) return;
+      try {
+        await axios.delete(`/api/admin/users/${id}?force=1`);
+        await fetchAll();
+        try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+        try { window.dispatchEvent(new CustomEvent('admin:activities-changed')); } catch(e){}
+        alert('Deleted');
+      } catch(e){ console.error(e); alert('Failed'); }
+    };
+
+  // fire activity change events so Recent Activities updates
+  const _notifyActivities = () => { try { window.dispatchEvent(new CustomEvent('admin:activities-changed')); } catch(e){} };
+
 
     return (
       <div className="page teachers-page">
         <div className="hero-banner">
           <div className="hero-inner">
             <div className="hero-left">
-              <h1>Teachers</h1>
-              <p>Welcome back! Here's what's happening today.</p>
+              <h1>Teacher Management</h1>
+              <p>Manage faculty records and accounts</p>
               <div className="hero-cards">
                 <div className="hero-card">
                   <div className="card-title">Today</div>
@@ -504,140 +579,127 @@ export default function AdminDashboard({ initialPage = null }) {
               </div>
             </div>
             <div className="hero-right">
-              <div className="search-add">
-                <input className="student-search" placeholder="Search teachers..." value={searchT} onChange={(e)=>setSearchT(e.target.value)} />
-                <button className="primary" onClick={() => { setModalRole('teacher'); setShowModal(true); }}><FiPlus /> Add Teacher</button>
+              {/* header actions moved into the Teachers panel to avoid duplication */}
+            </div>
+          </div>
+        </div>
+
+        <div className="card students-panel" style={{ padding: 20, borderRadius: 12 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                <div style={{ width: 44, height: 44, borderRadius: 12, background: 'linear-gradient(90deg,#4f46e5,#06b6d4)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+                  <FiUsers />
+                </div>
+                <div>
+                  <div style={{ fontSize: 16, fontWeight: 700 }}>Teachers</div>
+                  <div className="small-muted">View and manage faculty information</div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: 8, marginTop: 14, alignItems: 'center' }}>
+                <button
+                  type="button"
+                  className={`chip ${(filterStatusT === 'all' && !showArchived) ? 'active' : ''}`}
+                  onClick={() => { setFilterStatusT('all'); setShowArchived(false); }}
+                  aria-pressed={(filterStatusT === 'all' && !showArchived)}
+                >
+                  All Teachers <span className="chip-count">{totalTeachers}</span>
+                </button>
+
+                <button
+                  type="button"
+                  className={`chip ${(filterStatusT === 'active' && !showArchived) ? 'active' : ''}`}
+                  onClick={() => { setFilterStatusT('active'); setShowArchived(false); }}
+                  aria-pressed={(filterStatusT === 'active' && !showArchived)}
+                >
+                  Active <span className="chip-count">{activeCountT}</span>
+                </button>
+
+                <button
+                  type="button"
+                  className={`chip ${(showArchived || filterStatusT === 'archived') ? 'active' : ''}`}
+                  onClick={() => { setFilterStatusT('archived'); setShowArchived(true); }}
+                  aria-pressed={(showArchived || filterStatusT === 'archived')}
+                >
+                  Archived <span className="chip-count">{archivedCountT}</span>
+                </button>
+
+                <button
+                  type="button"
+                  className={`chip ${(filterStatusT === 'locked' && !showArchived) ? 'active' : ''}`}
+                  onClick={() => { setFilterStatusT('locked'); setShowArchived(false); }}
+                  aria-pressed={(filterStatusT === 'locked' && !showArchived)}
+                >
+                  Locked <span className="chip-count">{lockedCountT}</span>
+                </button>
+              </div>
+
+              <div style={{ marginTop: 12 }}>
+                <input className="student-search" placeholder="Search teachers..." value={searchT} onChange={(e)=>setSearchT(e.target.value)} style={{ width: '100%', padding: '12px 14px', borderRadius: 8, background: '#f3f4f6', border: 'none' }} />
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="students-metrics metrics-grid">
-          <div className="metric card metric-blue"><div className="metric-icon color-blue"><FiUsers /></div><div className="label">Total Faculty</div><div className="value">{teachersAll.length}</div></div>
-          <div className="metric card metric-green"><div className="metric-icon color-green"><FiCheckCircle /></div><div className="label">Active</div><div className="value">{teachersAll.filter(t => (t.teacher?.status || t.status || '').toLowerCase() === 'active').length}</div></div>
-          <div className="metric card metric-purple"><div className="metric-icon color-purple"><FiAward /></div><div className="label">Sabbatical</div><div className="value">{teachersAll.filter(t => (t.teacher?.status || t.status || '').toLowerCase() === 'sabbatical').length}</div></div>
-          <div className="metric card metric-orange"><div className="metric-icon color-orange"><FiAward /></div><div className="label">Retired</div><div className="value">{teachersAll.filter(t => (t.teacher?.status || t.status || '').toLowerCase() === 'retired').length}</div></div>
-
-          <div className="metric card metric-red"><div className="metric-icon color-red"><FiLock /></div><div className="label">Locked</div><div className="value">{teachersAll.filter(t => t.is_locked).length}</div></div>
-          <div className="metric card metric-violet"><div className="metric-icon color-violet"><FiBook /></div><div className="label">Total Courses</div><div className="value">{coursesList.length}</div></div>
-          <div className="metric card metric-cyan"><div className="metric-icon color-cyan"><FiUsers /></div><div className="label">Students</div><div className="value">{derivedTotalStudents}</div></div>
-          <div className="metric card metric-gray"><div className="metric-icon color-gray"><FiArchive /></div><div className="label">Archived</div><div className="value">{archivedUsers.length || 0}</div></div>
-        </div>
-
-        <div className="controls-card card">
-      <div className="controls-left">
-        <div className="filters">
-              <label className="filter-item">Filters:</label>
-              <select value={filterStatusT} onChange={(e) => setFilterStatusT(e.target.value)}>
-                <option value="all">All Status</option>
-                <option value="active">Active</option>
-                <option value="sabbatical">Sabbatical</option>
-                <option value="retired">Retired</option>
-                <option value="locked">Locked</option>
-              </select>
-              <select value={filterDeptT} onChange={(e) => setFilterDeptT(e.target.value)}>
-                <option value="">All Departments</option>
-                {departmentsList.map(d => <option key={d} value={d}>{d}</option>)}
-              </select>
-              <select value={filterPosT} onChange={(e) => setFilterPosT(e.target.value)}>
-                <option value="">All Positions</option>
-                {positionsList.map(p => <option key={p} value={p}>{p}</option>)}
-              </select>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <button className="primary" onClick={() => { setModalRole('teacher'); setShowModal(true); }} style={{ padding: '10px 16px' }}>+ Add Teacher</button>
             </div>
           </div>
-          <div className="controls-right">
-            <button type="button" className={`archived-btn ${showArchived ? 'on' : ''}`} onClick={() => setShowArchived(s => !s)} title="Show Archived">Show Archived</button>
-            <div className="view-toggle" role="toolbar" aria-label="View mode">
-              <button title="List view" className={activePage === 'teachers' ? 'active' : ''}>☰</button>
-              <button title="Grid view">▦</button>
-            </div>
-          </div>
-        </div>
 
-        <div className="table-wrapper card landscape-table teachers-card">
-          <table className="teachers-table teachers-list-modern">
-            <thead>
-              <tr>
-                <th style={{ minWidth: 300 }}>Teacher</th>
-                <th>Subject</th>
-                <th>Contact</th>
-                <th>Experience</th>
-                <th>Classes</th>
-                <th>Students</th>
-                <th>Rating</th>
-                <th>Performance</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.length === 0 ? (
-                <tr><td colSpan={10}>No teachers found</td></tr>
-              ) : filtered.map((t) => {
-                const teacher = t.teacher || {};
-                const fullName = t.name || `${teacher.first_name || ''} ${teacher.last_name || ''}`.trim();
-                const empId = teacher.faculty_id || t.faculty_id || `EMP${String(t.id).padStart(6,'0')}`;
-                const subject = teacher.specialization || teacher.course || t.subject || '—';
-                const phone = teacher.phone_number || t.phone_number || '';
-                const experience = (teacher.experience_years || teacher.experience || '').toString() ? `${teacher.experience_years || teacher.experience} years` : '—';
-                const classesCount = Array.isArray(teacher.courses_handled) ? teacher.courses_handled.length : (teacher.courses_handled ? teacher.courses_handled.split(',').length : 0);
-                const studentsCount = teacher.students_count || teacher.student_count || t.students_count || stats.total_students || 0;
-                const rating = Number(teacher.rating || t.rating || 0);
-                const performancePct = Number(teacher.performance_pct || teacher.performance || Math.round((rating / 5) * 100));
+          <div style={{ overflowX: 'auto' }}>
+            <table className="students-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr>
+                  <th style={{ textAlign: 'left', padding: '12px 8px' }}>Name</th>
+                  <th style={{ textAlign: 'left', padding: '12px 8px' }}>Email</th>
+                  <th style={{ textAlign: 'left', padding: '12px 8px' }}>Subject</th>
+                  <th style={{ textAlign: 'left', padding: '12px 8px' }}>Department</th>
+                  <th style={{ textAlign: 'left', padding: '12px 8px' }}>Status</th>
+                  <th style={{ textAlign: 'right', padding: '12px 8px' }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.length === 0 ? (
+                  <tr><td colSpan={6} style={{ padding: 20 }}>No teachers found</td></tr>
+                ) : filtered.map((t) => {
+                  const teacher = t.teacher || {};
+                  const fullName = t.name || `${teacher.first_name || ''} ${teacher.last_name || ''}`.trim();
+                  const email = t.email || '';
+                  const subject = teacher.specialization || teacher.course || t.subject || '—';
+                  const department = teacher.department || teacher.department || '';
+                  const statusVal = (teacher.status || t.status || 'Active').toString();
 
-                return (
-                  <tr key={t.id} className={`${t.deleted_at ? 'archived-row' : ''}`}>
-                    <td>
-                      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                        <div className="avatar-circle">{(fullName || 'T').split(' ').map(n=>n[0]).slice(0,2).join('')}</div>
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                          <div style={{ fontWeight: 800 }}>{fullName}</div>
-                          <div className="small-muted">ID: {empId}</div>
+                  return (
+                    <tr key={t.id} className={`${t.deleted_at ? 'archived-row' : ''}`}>
+                      <td style={{ padding: '12px 8px' }}>{fullName}</td>
+                      <td style={{ padding: '12px 8px' }}>{email}</td>
+                      <td style={{ padding: '12px 8px' }}>{subject}</td>
+                      <td style={{ padding: '12px 8px' }}>{department}</td>
+                      <td style={{ padding: '12px 8px' }}><span className={`status-pill ${(statusVal||'').toLowerCase()}`}>{statusVal}</span></td>
+                      <td style={{ padding: '12px 8px', textAlign: 'right' }}>
+                        <div className="actions" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                        {!t.deleted_at ? (
+                          <>
+                            <button type="button" className="action-icon view-button" title="View" onClick={() => setSelectedUser(t)}>
+                              <FiEye />
+                            </button>
+                            <button type="button" className="action-icon" title="Edit" onClick={() => { setEditing(t); setModalRole('teacher'); setShowModal(true); }}><FiEdit2 /></button>
+                            <button type="button" className="action-icon" title={t.is_locked ? 'Unlock' : 'Lock'} onClick={() => toggleLockTeacher(t.id, t.is_locked)}><FiLock /></button>
+                            <button type="button" className="action-icon text-danger" title="Archive" onClick={() => archiveTeacher(t.id)}><FiArchive /></button>
+                          </>
+                        ) : (
+                          <>
+                            <button type="button" className="action-icon" title="Restore" onClick={() => restoreTeacher(t.id)}>♻️</button>
+                            <button type="button" className="action-icon text-danger" title="Delete Permanently" onClick={() => deleteTeacher(t.id)}><FiTrash2 /></button>
+                          </>
+                        )}
                         </div>
-                        {t.deleted_at && <div style={{ marginLeft: 8 }}><span className="archived-badge">Archived</span></div>}
-                      </div>
-                    </td>
-                    <td><span className="grade-chip">{subject}</span></td>
-                    <td>
-                      <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div>{t.email}</div>
-                        <div className="small-muted">{phone}</div>
-                      </div>
-                    </td>
-                    <td>{experience}</td>
-                    <td style={{ textAlign: 'center' }}>{classesCount}</td>
-                    <td style={{ textAlign: 'center' }}>{studentsCount}</td>
-                    <td style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <div style={{ color: '#f59e0b', fontWeight:700 }}>★</div>
-                      <div style={{ fontWeight:800 }}>{rating ? rating.toFixed(1) : '-'}</div>
-                    </td>
-                    <td style={{ minWidth: 180 }}>
-                      <div className="progress-wrap">
-                        <div className="progress-bar performance"><div className="progress-fill" style={{ width: `${performancePct}%` }} /></div>
-                      </div>
-                      <div className="small-muted">{performancePct}%</div>
-                    </td>
-                    <td><span className={`status-pill ${( (teacher.status || t.status || '').toString()||'').toLowerCase()}`}>{teacher.status || t.status || 'Active'}</span></td>
-                    <td>
-                      {!t.deleted_at ? (
-                        <>
-                          <button className="action-icon" title="View" onClick={() => setSelectedUser(t)}><FiEye /></button>
-                          <button className="action-icon" title="Edit" onClick={() => { setEditing(t); setModalRole('teacher'); setShowModal(true); }}><FiEdit2 /></button>
-                          <button className="action-icon" title={t.is_locked ? 'Unlock' : 'Lock'} onClick={() => toggleLockTeacher(t.id, t.is_locked)}><FiLock /></button>
-                          <button className="action-icon text-danger" title="Archive" onClick={() => archiveTeacher(t.id)}><FiTrash2 /></button>
-                        </>
-                      ) : (
-                        <>
-                          <button className="action-icon" title="Restore" onClick={() => restoreTeacher(t.id)}>♻️</button>
-                          <button className="action-icon text-danger" title="Delete Permanently" onClick={() => deleteTeacher(t.id)}>🗑️</button>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );
@@ -1232,10 +1294,8 @@ export default function AdminDashboard({ initialPage = null }) {
         return <TeachersPage />;
       case "courses":
         return <CoursesPage />;
-      case "reports":
-        return <ReportsPage />;
-        case "calendar":
-          return <CalendarPage />;
+    case "reports":
+      return <ReportsPage />;
       default:
         return <div>Under development</div>;
     }
@@ -1260,6 +1320,7 @@ export default function AdminDashboard({ initialPage = null }) {
       {selectedUser && (
         <UserDetailModal
           user={selectedUser}
+          type={(selectedUser && (selectedUser.role === 'teacher' || selectedUser.teacher)) ? 'teacher' : 'student'}
           onClose={() => setSelectedUser(null)}
         />
       )}
@@ -1316,92 +1377,4 @@ export default function AdminDashboard({ initialPage = null }) {
   );
 }
 
-// Interactive department overview component
-function DepartmentOverview() {
-  const key = 'admin:departments:v1';
-  const defaultDeps = [
-    ['ICJEEP', 'Institute of Criminal Justice Education Program'],
-    ['CSP', 'Computer Studies Program'],
-    ['ETP', 'Engineering & Technology Program'],
-    ['AP', 'Accountancy Program'],
-    ['NP', 'Nursing Program'],
-    ['BAP', 'Business Administration Program'],
-    ['ASP', 'Arts and Sciences Program'],
-    ['THMP', 'Tourism and Hospitality Management Program'],
-  ];
-
-  const [deps, setDeps] = useState(() => {
-    try {
-      const raw = localStorage.getItem(key);
-      if (raw) return JSON.parse(raw);
-    } catch (e) {
-      console.warn('invalid dept data', e);
-    }
-    return defaultDeps.map(([code, name]) => ({ code, name, students: 0, courses: 0, editing: false }));
-  });
-
-  useEffect(() => { localStorage.setItem(key, JSON.stringify(deps)); }, [deps]);
-
-  const originalsRef = useRef({});
-  const toggleEdit = (code) => setDeps((d) => d.map(x => {
-    if (x.code === code) {
-      if (!x.editing) originalsRef.current[code] = { students: x.students, courses: x.courses };
-      return { ...x, editing: !x.editing };
-    }
-    return x;
-  }));
-
-  const updateField = (code, field, value) => setDeps((d) => d.map(x => x.code === code ? ({ ...x, [field]: value }) : x));
-  const cancelEdit = (code) => {
-    const orig = originalsRef.current[code];
-    if (orig) {
-      setDeps((d) => d.map(x => x.code === code ? ({ ...x, students: orig.students, courses: orig.courses, editing: false }) : x));
-      originalsRef.current[code] = undefined;
-    } else {
-      setDeps((d) => d.map(x => x.code === code ? ({ ...x, editing: false }) : x));
-    }
-  };
-
-  // reset removed per design
-
-  const maxStudents = Math.max(1, ...deps.map(d => Number(d.students) || 0));
-
-  return (
-    <div className="department-list list">
-      {deps.map((d, idx) => (
-        <div className="department-row" key={d.code} data-code={d.code}>
-          <div className="row-left">
-            <span className="dot" aria-hidden style={{ background: ['#2563eb','#10b981','#7c3aed','#06b6d4'][idx % 4] }}></span>
-            <div className="dept-name">{d.name}</div>
-          </div>
-
-          <div className="row-center">
-            {!d.editing ? (
-              <div className="progress-wrap">
-                <div className="progress-bar">
-                  <div className="progress-fill" style={{ width: `${(Number(d.students) / maxStudents) * 100}%` }} />
-                </div>
-              </div>
-            ) : (
-              <div className="edit-inline">
-                <input type="number" min="0" value={d.students} onChange={(e) => updateField(d.code, 'students', Number(e.target.value) || 0)} />
-              </div>
-            )}
-          </div>
-
-          <div className="row-right">
-            {!d.editing ? (
-              <div className="counts-right">{d.students} students</div>
-            ) : (
-              <div className="edit-actions">
-                <button className="btn" onClick={() => toggleEdit(d.code)}>Save</button>
-                <button className="btn-link" onClick={() => cancelEdit(d.code)}>Cancel</button>
-              </div>
-            )}
-          </div>
-        </div>
-      ))}
-      {/* actions row removed per design */}
-    </div>
-  );
-}
+// Department overview removed per user request

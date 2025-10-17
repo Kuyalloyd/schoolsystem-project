@@ -175,11 +175,11 @@ export default function AdminUsers() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const openAdd = () => {
+  const openAdd = (roleParam = 'student') => {
     console.log('openAdd called');
     try { prevGlobalOverlaysRef.current = Array.from(document.querySelectorAll('.modal-overlay')); } catch(e) { prevGlobalOverlaysRef.current = []; }
     setModalInitial(null);
-    setModalRole('student');
+    setModalRole(roleParam || 'student');
     // open the modal form
     setShowInlineForm(false);
     setModalForm({ first_name: '', last_name: '', student_id: '', email: '', sex: '', date_of_birth: '', date_of_enrollment: '', phone_number: '', department: '', address: '', course: '', status: 'Active', year_level: '' });
@@ -269,14 +269,20 @@ export default function AdminUsers() {
   const saveFromUserForm = async (payload, isEdit) => {
     try {
       if (isEdit && payload && payload.id) {
-        await axios.put(`/api/admin/users/${payload.id}`, payload);
+        const res = await axios.put(`/api/admin/users/${payload.id}`, payload);
+        // refresh lists
+        await loadUsers(); await loadArchivedUsers();
+        try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+        return Promise.resolve(res && res.data ? res.data : {});
       } else {
-        await axios.post('/api/admin/users', payload);
+        const res = await axios.post('/api/admin/users', payload);
+        // refresh lists
+        await loadUsers(); await loadArchivedUsers();
+        try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+        // also dispatch a created event with id so other listeners can act
+        try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: (res && res.data && res.data.user) ? { id: res.data.user.id } : {} })); } catch(e){}
+        return Promise.resolve(res && res.data ? res.data : {});
       }
-      // refresh lists
-      await loadUsers(); await loadArchivedUsers();
-      try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-      return Promise.resolve();
     } catch (e) {
       console.error('Save from UserForm failed', e);
       // propagate validation errors to caller (UserFormModal)
@@ -295,6 +301,26 @@ export default function AdminUsers() {
       return Promise.reject(e);
     }
   };
+
+  // listen for created users (from other parts of the UI) so we can highlight new rows
+  useEffect(() => {
+    const onUserCreated = (ev) => {
+      try {
+        const id = ev && ev.detail && ev.detail.id;
+        if (id) {
+          setHighlightNewId(id);
+          // clear highlight after a few seconds
+          setTimeout(() => setHighlightNewId(null), 6000);
+          // refresh lists in case other page created it
+          loadUsers().catch(() => {});
+          loadArchivedUsers().catch(() => {});
+        }
+      } catch (e) { console.error('user-created handler failed', e); }
+    };
+    window.addEventListener('admin:user-created', onUserCreated);
+    return () => window.removeEventListener('admin:user-created', onUserCreated);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   
 
   // CSV export of current filtered list
@@ -490,8 +516,8 @@ export default function AdminUsers() {
       <div className="hero-banner">
         <div className="hero-inner">
           <div className="hero-left">
-            <h1>Students</h1>
-            <p>Welcome back! Here's what's happening today.</p>
+            <h1>Student Management</h1>
+            <p>Manage student records and accounts</p>
             <div className="hero-cards">
                 <div className="hero-card">
                   <div className="card-title">Today</div>
@@ -500,10 +526,7 @@ export default function AdminUsers() {
             </div>
           </div>
           <div className="hero-right">
-            <div className="search-add">
-              <input className="student-search" placeholder="Search students, teachers, classes..." value={search} onChange={(e)=>setSearch(e.target.value)} />
-              <button className="primary" onClick={() => openAdd('student')}><FiPlus /> Add Student</button>
-            </div>
+            {/* header actions moved into the Students panel to avoid duplication */}
           </div>
         </div>
       </div>
@@ -550,164 +573,124 @@ export default function AdminUsers() {
         </div>
       )}
 
-      <div className="students-metrics metrics-grid">
-        <div className="metric card metric-blue" onClick={() => { /* maybe navigate to details */ }}>
-          <div className="metric-icon color-blue"><FiUsers /></div>
-          <div className="label">Total Students</div>
-          <div className="value">{totalStudents}</div>
-        </div>
-        <div className="metric card metric-green">
-          <div className="metric-icon color-green"><FiCheckCircle /></div>
-          <div className="label">Active</div>
-          <div className="value">{activeCount}</div>
-        </div>
-        <div className="metric card metric-purple">
-          <div className="metric-icon color-purple"><FiAward /></div>
-          <div className="label">Graduated</div>
-          <div className="value">{graduatedCount}</div>
-        </div>
-        <div className="metric card metric-orange">
-          <div className="metric-icon color-orange"><FiAlertTriangle /></div>
-          <div className="label">Suspended</div>
-          <div className="value">{suspendedCount}</div>
-        </div>
-        <div className="metric card metric-red">
-          <div className="metric-icon color-red"><FiLock /></div>
-          <div className="label">Locked</div>
-          <div className="value">{lockedCount}</div>
-        </div>
-        <div className="metric card metric-violet">
-          <div className="metric-icon color-violet"><FiBook /></div>
-          <div className="label">Avg. GPA</div>
-          <div className="value">{avgGpa}</div>
-        </div>
-        <div className="metric card metric-gray">
-          <div className="metric-icon color-gray"><FiArchive /></div>
-          <div className="label">Archived</div>
-          <div className="value">{archivedUsers?.length || 0}</div>
-        </div>
-        {/* Add Student card removed — Add button is in header */}
-      </div>
+      {/* students metrics removed per design */}
 
-      <div className="controls-card card">
-        <div className="controls-left">
-          <input type="search" placeholder="Search by name, ID, email, or major..." className="global-search" value={search} onChange={(e) => setSearch(e.target.value)} />
-          <div style={{ marginLeft: 12, fontWeight: 800, color: '#475569' }}>Filters:</div>
-          <div className="filters">
-            <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
-              <option value="all">All Status</option>
-              <option value="active">Active</option>
-              <option value="locked">Locked</option>
-              <option value="archived">Archived</option>
-              <option value="suspended">Suspended</option>
-            </select>
-            <select value={filterMajor} onChange={(e) => setFilterMajor(e.target.value)}>
-              <option value="">All Majors</option>
-              {majors.map((m, i) => <option key={i} value={m}>{m}</option>)}
-            </select>
-            <select value={filterDepartment} onChange={(e) => setFilterDepartment(e.target.value)}>
-              <option value="">All Departments</option>
-              {departments.map((d, i) => <option key={i} value={d}>{d}</option>)}
-            </select>
-          </div>
-        </div>
-        <div className="controls-right">
-          <div className={`archived-toggle-card ${showArchived ? 'on' : ''}`} onClick={() => setShowArchived(s => !s)} role="button" title="Toggle Archived">
-            <div className="archived-inner">
-              <div className="archived-label">Archived</div>
-              <div className="archived-count">{archivedUsers?.length || 0}</div>
+      <div className="card students-panel" style={{ padding: 20, borderRadius: 12 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
+          <div style={{ flex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              <div style={{ width: 44, height: 44, borderRadius: 12, background: 'linear-gradient(90deg,#4f46e5,#06b6d4)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+                <FiUsers />
+              </div>
+              <div>
+                <div style={{ fontSize: 16, fontWeight: 700 }}>Students</div>
+                <div className="small-muted">View and manage student information</div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: 8, marginTop: 14, alignItems: 'center' }}>
+              <button
+                className={`chip ${(filterStatus === 'all' && !showArchived) ? 'active' : ''}`}
+                type="button"
+                onClick={() => { setFilterStatus('all'); setShowArchived(false); }}
+                aria-pressed={(filterStatus === 'all' && !showArchived)}
+              >
+                All Students <span className="chip-count">{totalStudents}</span>
+              </button>
+
+              <button
+                className={`chip ${(filterStatus === 'active' && !showArchived) ? 'active' : ''}`}
+                type="button"
+                onClick={() => { setFilterStatus('active'); setShowArchived(false); }}
+                aria-pressed={(filterStatus === 'active' && !showArchived)}
+              >
+                Active <span className="chip-count">{activeCount}</span>
+              </button>
+
+              <button
+                className={`chip ${(showArchived || filterStatus === 'archived') ? 'active' : ''}`}
+                type="button"
+                onClick={() => { setFilterStatus('archived'); setShowArchived(true); }}
+                aria-pressed={(showArchived || filterStatus === 'archived')}
+              >
+                Archived <span className="chip-count">{archivedUsers.length}</span>
+              </button>
+
+              <button
+                className={`chip ${(filterStatus === 'locked' && !showArchived) ? 'active' : ''}`}
+                type="button"
+                onClick={() => { setFilterStatus('locked'); setShowArchived(false); }}
+                aria-pressed={(filterStatus === 'locked' && !showArchived)}
+              >
+                Locked <span className="chip-count">{lockedCount}</span>
+              </button>
+            </div>
+
+            <div style={{ marginTop: 12 }}>
+              <input className="student-search" placeholder="Search students..." value={search} onChange={(e)=>setSearch(e.target.value)} style={{ width: '100%', padding: '12px 14px', borderRadius: 8, background: '#f3f4f6', border: 'none' }} />
             </div>
           </div>
+
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <button className="primary" onClick={() => openAdd('student')} style={{ padding: '10px 16px' }}>+ Add Student</button>
+          </div>
         </div>
-      </div>
 
-      <div className="table-wrapper card landscape-table students-card">
-        {/* Bulk actions removed: selection checkboxes are hidden */}
-
-        <table className="students-table students-list-modern">
-          <thead>
-            <tr>
-              <th style={{ minWidth: 300 }}>Student</th>
-              <th>Grade</th>
-              <th>Contact</th>
-              <th>GPA</th>
-              <th>Attendance</th>
-              <th>Performance</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredList.length === 0 ? (
-              <tr><td colSpan={8}>No students found</td></tr>
-            ) : filteredList.map((u) => {
-              const student = u.student || {};
-              const studentId = student.student_id || u.student_id || u.id || '';
-              const fullName = u.name || `${student.first_name || ''} ${student.last_name || ''}`.trim();
-              const grade = student.year_level || u.year_level || '—';
-              const email = u.email || '';
-              const phone = student.phone_number || u.phone_number || '';
-              const gpaVal = (typeof student.gpa === 'number' ? student.gpa : (typeof u.gpa === 'number' ? u.gpa : null));
-              const attendancePct = student.attendance_pct || 0; // expects number 0-100
-              const performancePct = student.performance_pct || Math.round((gpaVal || 0) / 4 * 100);
-              const statusVal = (student.status || u.status || 'Active').toString();
-
-              return (
-                <tr key={u.id} className={`${u.deleted_at ? 'archived-row' : ''} ${highlightNewId === u.id ? 'new-highlight' : ''}`}>
-                  <td>
-                    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                      <div className="avatar-circle">{(fullName || 'U').split(' ').map(n=>n[0]).slice(0,2).join('')}</div>
-                      <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ fontWeight: 800 }}>{fullName}</div>
-                        <div className="small-muted">ID: {studentId}</div>
+        <div style={{ overflowX: 'auto' }}>
+          <table className="students-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr>
+                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Name</th>
+                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Email</th>
+                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Grade</th>
+                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Enrollment Date</th>
+                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Status</th>
+                <th style={{ textAlign: 'right', padding: '12px 8px' }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredList.length === 0 ? (
+                <tr><td colSpan={6} style={{ padding: 20 }}>No students found</td></tr>
+              ) : filteredList.map((u) => {
+                const student = u.student || {};
+                const fullName = u.name || `${student.first_name || ''} ${student.last_name || ''}`.trim();
+                const email = u.email || '';
+                const grade = student.year_level || u.year_level || '—';
+                const enrollment = student.date_of_enrollment || student.enrollment_date || u.date_of_enrollment || u.enrollment_date || '';
+                const statusVal = (student.status || u.status || 'Active').toString();
+                const enrollmentText = enrollment ? (new Date(enrollment)).toLocaleDateString() : '—';
+                return (
+                  <tr key={u.id} className={`${u.deleted_at ? 'archived-row' : ''} ${highlightNewId === u.id ? 'new-highlight' : ''}`}>
+                    <td style={{ padding: '12px 8px' }}>{fullName}</td>
+                    <td style={{ padding: '12px 8px' }}>{email}</td>
+                    <td style={{ padding: '12px 8px' }}>{grade}</td>
+                    <td style={{ padding: '12px 8px' }}>{enrollmentText}</td>
+                    <td style={{ padding: '12px 8px' }}><span className={`status-pill ${(statusVal||'').toLowerCase()}`}>{statusVal}</span></td>
+                    <td style={{ padding: '12px 8px', textAlign: 'right' }}>
+                      <div className="actions" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                      {!u.deleted_at ? (
+                        <>
+                          <button type="button" className="action-icon view-button" title="View" onClick={() => { setDetailUser(u); setShowDetail(true); }}>
+                            <FiEye />
+                          </button>
+                          <button type="button" className="action-icon" title="Edit" onClick={() => openEdit(u)}><FiEdit2 /></button>
+                          <button type="button" className="action-icon" title={u.is_locked ? 'Unlock' : 'Lock'} onClick={() => toggleLock(u.id, u.is_locked)}><FiLock /></button>
+                          <button type="button" className="action-icon text-danger" title="Archive" onClick={() => archiveUser(u.id)}><FiArchive /></button>
+                        </>
+                      ) : (
+                        <>
+                          <button type="button" className="action-icon" title="Restore" onClick={() => restoreUser(u.id)}>♻️</button>
+                          <button type="button" className="action-icon text-danger" title="Delete Permanently" onClick={() => permanentDeleteUser(u.id)}><FiTrash2 /></button>
+                        </>
+                      )}
                       </div>
-                      {u.deleted_at && <div style={{ marginLeft: 8 }}><span className="archived-badge">Archived</span></div>}
-                    </div>
-                  </td>
-                  <td><span className="grade-chip">{grade}</span></td>
-                  <td>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <div>{email}</div>
-                      <div className="small-muted">{phone}</div>
-                    </div>
-                  </td>
-                  <td style={{ textAlign: 'center' }}>{gpaVal === null ? '-' : (<span style={{ fontWeight:800 }}>{(gpaVal).toFixed(1)} / 4.0</span>)}</td>
-                  <td style={{ minWidth: 160 }}>
-                    <div className="progress-wrap">
-                      <div className="progress-bar"><div className="progress-fill" style={{ width: `${attendancePct}%` }} /></div>
-                    </div>
-                    <div className="small-muted">{attendancePct}%</div>
-                  </td>
-                  <td style={{ minWidth: 180 }}>
-                    <div className="progress-wrap">
-                      <div className="progress-bar performance"><div className="progress-fill" style={{ width: `${performancePct}%` }} /></div>
-                    </div>
-                    <div className="small-muted">{performancePct}%</div>
-                  </td>
-                  <td><span className={`status-pill ${(statusVal||'').toLowerCase()}`}>{statusVal}</span></td>
-                  <td>
-                    {!u.deleted_at ? (
-                      <>
-                        <button className="action-icon view-button" title="View" onClick={() => { setDetailUser(u); setShowDetail(true); }}>
-                          <FiEye />
-                          <span className="action-label">See</span>
-                        </button>
-                        <button className="action-icon" title="Edit" onClick={() => openEdit(u)}><FiEdit2 /></button>
-                        <button className="action-icon" title={u.is_locked ? 'Unlock' : 'Lock'} onClick={() => toggleLock(u.id, u.is_locked)}><FiLock /></button>
-                        <button className="action-icon text-danger" title="Archive" onClick={() => archiveUser(u.id)}><FiTrash2 /></button>
-                      </>
-                    ) : (
-                      <>
-                        <button className="action-icon" title="Restore" onClick={() => restoreUser(u.id)}>♻️</button>
-                        <button className="action-icon text-danger" title="Delete Permanently" onClick={() => permanentDeleteUser(u.id)}>🗑️</button>
-                      </>
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
 
   {showModal && (modalRole === 'student' ? (

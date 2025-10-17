@@ -34,10 +34,10 @@ export default function UserDetailModal({ user, type = 'student', onClose, onSav
 
   return React.createElement(
     'div',
-    { className: 'modal-backdrop' },
+    { className: 'modal-backdrop modal-centered' },
     React.createElement(
       'div',
-      { className: 'modal modal-wide' },
+      { className: 'modal modal-wide modal-card with-shadow' },
       React.createElement(
         'header',
         { className: 'modal-header' },
@@ -104,8 +104,7 @@ export default function UserDetailModal({ user, type = 'student', onClose, onSav
       React.createElement(
         'footer',
         { className: 'modal-footer' },
-        React.createElement('button', { onClick: onClose, style: { marginRight: '8px' } }, 'Close'),
-        React.createElement('button', { onClick: save, disabled: saving }, saving ? 'Saving…' : 'Save Changes')
+        React.createElement('button', { type: 'button', onClick: onClose }, 'Close')
       )
     )
   );

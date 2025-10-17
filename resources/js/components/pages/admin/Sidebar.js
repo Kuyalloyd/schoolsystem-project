@@ -27,8 +27,7 @@ export default function Sidebar({ activePage, onNavigate }) {
     { id: "teachers", label: "Teachers", icon: React.createElement(FiUsers) },
     { id: "courses", label: "Course Management", icon: React.createElement(FiBookOpen) },
     { id: "reports", label: "Reports", icon: React.createElement(FiBarChart2) },
-  { id: "documents", label: "Documents", icon: React.createElement(FiFileText) },
-  { id: "calendar", label: "Calendar", icon: React.createElement(FiCalendar) },
+    { id: "documents", label: "Documents", icon: React.createElement(FiFileText) },
     { id: "settings", label: "Settings", icon: React.createElement(FiSettings) },
   ];
 
@@ -254,8 +253,7 @@ export default function Sidebar({ activePage, onNavigate }) {
               },
               React.createElement("span", { className: "icon" }, item.icon),
               !collapsed && React.createElement("span", { className: "label" }, item.label),
-              !collapsed && (item.id === "users" && stats.total_users ? React.createElement("span", { className: "badge" }, stats.total_users) : null),
-              !collapsed && (item.id === "teachers" && stats.total_teachers ? React.createElement("span", { className: "badge" }, stats.total_teachers) : null)
+              !collapsed && (item.id === "users" && stats.total_users ? React.createElement("span", { className: "badge" }, stats.total_users) : null)
             ),
             null
           );

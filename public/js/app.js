@@ -22379,7 +22379,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* retain blue for charts */\n:root.adm-dark, .adm-dark {\n  --bg: #030317;\n  --panel: #071026;\n  --muted: #9aa4c0;\n  --text: #e6eef8;\n  --accent: #7c3aed;\n}\n\n.admin-dashboard-layout {\n  display: flex;\n  min-height: 100vh;\n  background: #f8fafc;\n  color: #0f172a;\n  font-family: Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial;\n}\n.admin-dashboard-layout .sidebar {\n  width: 240px;\n  background: #0f172a;\n  color: #f8fafc;\n  padding: 20px;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n  box-shadow: 0 4px 20px rgba(2, 6, 23, 0.06);\n}\n.admin-dashboard-layout .sidebar .logo {\n  font-size: 1.15rem;\n  font-weight: 700;\n  text-align: center;\n}\n.admin-dashboard-layout .sidebar .nav {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.admin-dashboard-layout .sidebar .nav-item {\n  padding: 10px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  color: #dbeafe;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.admin-dashboard-layout .sidebar .nav-item.active {\n  background: rgba(255, 255, 255, 0.06);\n}\n.admin-dashboard-layout .sidebar + .admin-main,\n.admin-dashboard-layout .admin-main {\n  margin-left: 240px;\n  padding: 28px 32px;\n  flex: 1;\n  min-width: 0;\n  transition: margin-left 0.18s ease;\n}\n.admin-dashboard-layout .sidebar.collapsed + .admin-main {\n  margin-left: 72px;\n}\n\n/* Boxed controls for teachers - aligned, colored and compact */\n.teachers-page .controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 14px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, rgba(124, 58, 237, 0.04), rgba(6, 182, 212, 0.02));\n  border: 1px solid rgba(124, 58, 237, 0.06);\n  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.03);\n  margin-bottom: 12px;\n}\n\n.teachers-page .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n\n.teachers-page .controls-right {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n\n.teachers-page .teacher-search {\n  width: 480px;\n  max-width: 60%;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid rgba(37, 99, 235, 0.08);\n  background: linear-gradient(180deg, #fff, #fbfdff);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n\n.teachers-page select {\n  padding: 8px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  background: #fff;\n  min-width: 160px;\n}\n\n.teachers-page .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.teachers-page .filter-item {\n  color: #64748b;\n  font-weight: 700;\n}\n\n.teachers-page .archived-btn {\n  padding: 8px 12px;\n  border-radius: 10px;\n  border: 1px solid transparent;\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  color: #2563eb;\n  font-weight: 700;\n  cursor: pointer;\n}\n\n.teachers-page .archived-btn.on {\n  background: linear-gradient(90deg, #fdf2f8, #fff1f2);\n  color: #be185d;\n  border-color: rgba(190, 24, 93, 0.06);\n}\n\n.teachers-page .view-toggle button {\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  background: transparent;\n  cursor: pointer;\n  font-weight: 800;\n}\n\n.teachers-page .view-toggle button.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n}\n\n.teachers-page .view-toggle {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.teachers-page .header-actions .icon-box {\n  padding: 8px 12px;\n  border-radius: 10px;\n  color: #fff;\n}\n\n.teachers-page .header-actions .icon-box svg {\n  color: inherit;\n}\n\n/* Archived toggle card for students page */\n.archived-toggle-card {\n  cursor: pointer;\n  border-radius: 12px;\n  padding: 10px 12px;\n  display: flex;\n  align-items: center;\n  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.03);\n  background: linear-gradient(90deg, #fff, #fbfdff);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  transition: transform 0.15s ease, box-shadow 0.15s ease;\n}\n\n.archived-toggle-card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n\n.archived-toggle-card.on {\n  background: linear-gradient(90deg, #fff1f2, #fff6f8);\n  border-color: rgba(190, 24, 93, 0.06);\n}\n\n.archived-toggle-card .archived-inner {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n\n.archived-toggle-card .archived-label {\n  font-weight: 800;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.archived-toggle-card .archived-count {\n  font-weight: 900;\n  font-size: 18px;\n  color: #be185d;\n}\n\n/* ensure table area sits below boxed controls if present */\n.teachers-page .table-wrapper {\n  margin-top: 8px;\n}\n\n/* Dark mode overrides - toggled by adding `adm-dark` class to <html> (documentElement) */\n:root.adm-dark, .adm-dark {\n  --bg: #071029;\n  --panel: #0b1220;\n  --muted: #94a3b8;\n  --text: #e6eef8;\n  --accent: #60a5fa;\n}\n\n.adm-dark .admin-dashboard-layout {\n  background: var(--bg);\n  color: var(--text);\n}\n\n.adm-dark .sidebar {\n  background: #041424;\n  color: var(--text);\n}\n\n.adm-dark .admin-main {\n  background: transparent;\n}\n\n.adm-dark .card {\n  background: var(--panel);\n  color: var(--text);\n  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);\n}\n\n.adm-dark .metric .label {\n  color: var(--muted);\n}\n\n.adm-dark .metric .value {\n  color: var(--text);\n}\n\n.adm-dark .recent-list li, .adm-dark .health-list li {\n  border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n}\n\n.adm-dark .badge {\n  background: rgba(255, 255, 255, 0.03);\n  color: var(--text);\n}\n\n.adm-dark .metric .icon {\n  background: rgba(255, 255, 255, 0.02);\n}\n\n.dark-toggle {\n  background: transparent;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  padding: 6px 8px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n\n.adm-dark .dark-toggle {\n  border-color: rgba(255, 255, 255, 0.06);\n}\n\n/* Header / breadcrumb */\n.adm-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 18px;\n  /* subtle header accent */\n}\n.adm-header .title-area {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.adm-header h1 {\n  margin: 0;\n  font-size: 20px;\n}\n.adm-header .breadcrumb {\n  color: #64748b;\n  font-size: 0.95rem;\n}\n.adm-header .header-right {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.adm-header .title-area h1 {\n  color: #2563eb;\n  letter-spacing: -0.2px;\n}\n.adm-header .subtitle {\n  color: #64748b;\n  margin-top: 4px;\n}\n\n/* Header controls (small pills) */\n.adm-header .last-updated {\n  background: transparent;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  padding: 6px 10px;\n  border-radius: 8px;\n  color: #64748b;\n  font-size: 0.9rem;\n}\n\n.adm-header .view-analytics {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  padding: 6px 10px;\n  border-radius: 8px;\n  color: #2563eb;\n  font-weight: 700;\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n\n/* Boxed header small action styles (compact variants used in headers and cards) */\n.adm-header .header-action-box {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.adm-header .header-action-box .icon-box.small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  color: #0f172a;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.03);\n  cursor: pointer;\n  transition: transform 140ms ease, box-shadow 140ms ease;\n}\n\n.adm-header .header-action-box .icon-box.small:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);\n}\n\n.adm-header .header-action-box .icon-box.small.primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 8px 10px;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);\n}\n\n.adm-header .header-action-box .icon-box.small.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n}\n\n/* Compact archived toggle variant for denser card layouts */\n.archived-toggle-card.compact {\n  padding: 8px 10px;\n  border-radius: 10px;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n\n.archived-toggle-card.compact .archived-inner {\n  flex-direction: row;\n  align-items: center;\n  gap: 8px;\n}\n\n.archived-toggle-card.compact .archived-label {\n  font-weight: 800;\n  font-size: 12px;\n  color: #6b7280;\n}\n\n.archived-toggle-card.compact .archived-count {\n  font-weight: 900;\n  font-size: 16px;\n  color: #be185d;\n}\n\n/* Small action icons to match boxed look in tables and cards */\n.action-icon.small {\n  padding: 6px;\n  border-radius: 6px;\n  width: 36px;\n  height: 36px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.action-icon.small svg {\n  width: 16px;\n  height: 16px;\n}\n\n/* Table niceties for users/students */\n.students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\n/* Students table presentation improvements for readability */\n.students-list-modern tbody tr td {\n  vertical-align: middle;\n}\n\n.students-list-modern td {\n  padding: 12px 14px;\n}\n\n.students-list-modern td .avatar-circle {\n  width: 44px;\n  height: 44px;\n  border-radius: 22px;\n  font-size: 14px;\n}\n\n.students-list-modern td div[style] > div {\n  color: #0b1220; /* ensure primary text is darker */\n}\n\n.students-list-modern td div[style] > div:first-child {\n  font-weight: 800;\n  color: #0b1220;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 380px;\n}\n\n.students-list-modern .small-muted {\n  color: #475569;\n  font-size: 12px;\n}\n\n.students-list-modern .grade-chip {\n  background: #f8fafc;\n  color: #0b1220;\n}\n\n.students-list-modern .progress-bar .progress-fill {\n  background: #16a34a;\n}\n\n.students-list-modern .progress-bar.performance .progress-fill {\n  background: #0ea5e9;\n}\n\n.students-list-modern .status-pill {\n  background: #f1f5f9;\n  color: #0b1220;\n}\n\n.hero-banner {\n  border-radius: 12px;\n  padding: 28px 24px;\n  margin-bottom: 20px;\n  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #a21caf 100%);\n  color: white;\n}\n\n.hero-inner {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.hero-left h1 {\n  margin: 0;\n  font-size: 28px;\n  font-weight: 800;\n}\n\n.hero-left p {\n  margin: 6px 0 12px;\n  opacity: 0.95;\n}\n\n.hero-cards {\n  display: flex;\n  gap: 12px;\n}\n\n.hero-card {\n  background: rgba(255, 255, 255, 0.08);\n  padding: 10px 14px;\n  border-radius: 8px;\n}\n\n.hero-card .card-title {\n  font-size: 12px;\n  opacity: 0.9;\n}\n\n.hero-card .card-sub {\n  font-weight: 700;\n}\n\n.hero-right .search-add {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n\n.student-search {\n  padding: 10px 12px;\n  border-radius: 8px;\n  border: none;\n  min-width: 360px;\n}\n\n.students-metrics {\n  display: flex;\n  gap: 12px;\n  margin-bottom: 18px;\n}\n\n.metric.card {\n  padding: 12px 14px;\n  border-radius: 10px;\n}\n\n.metric {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 14px;\n  transition: transform 0.12s ease, box-shadow 0.12s ease;\n}\n\n.metric .metric-icon {\n  width: 44px;\n  height: 44px;\n  border-radius: 10px;\n  flex: 0 0 44px;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);\n}\n\n.metric .metric-icon svg {\n  width: 22px;\n  height: 22px;\n  display: block;\n  margin: auto;\n  color: #fff;\n}\n\n.metric .label {\n  font-size: 13px;\n  color: #475569;\n  font-weight: 700;\n}\n\n.metric .value {\n  font-weight: 900;\n  font-size: 20px;\n  color: #0f172a;\n}\n\n.metric:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);\n}\n\n.color-blue {\n  background: linear-gradient(135deg, #60a5fa, #3b82f6);\n}\n\n.color-green {\n  background: linear-gradient(135deg, #34d399, #10b981);\n}\n\n.color-purple {\n  background: linear-gradient(135deg, #a78bfa, #8b5cf6);\n}\n\n.color-orange {\n  background: linear-gradient(135deg, #fb923c, #f97316);\n}\n\n.color-red {\n  background: linear-gradient(135deg, #fda4af, #ef4444);\n}\n\n.color-violet {\n  background: linear-gradient(135deg, #c084fc, #7c3aed);\n}\n\n.color-gray {\n  background: linear-gradient(135deg, #e9eef8, #f1f5f9);\n}\n\n.color-cyan {\n  background: linear-gradient(135deg, #67e8f9, #06b6d4);\n}\n\n/* Full-card colored variants so the whole metric card is colorful */\n.metric.metric-blue {\n  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);\n  color: #fff;\n}\n\n.metric.metric-blue .label, .metric.metric-blue .value {\n  color: #fff;\n}\n\n.metric.metric-blue .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-green {\n  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);\n  color: #052e1f;\n}\n\n.metric.metric-green .label, .metric.metric-green .value {\n  color: #052e1f;\n}\n\n.metric.metric-green .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-purple {\n  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);\n  color: #fff;\n}\n\n.metric.metric-purple .label, .metric.metric-purple .value {\n  color: #fff;\n}\n\n.metric.metric-purple .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-orange {\n  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);\n  color: #fff;\n}\n\n.metric.metric-orange .label, .metric.metric-orange .value {\n  color: #fff;\n}\n\n.metric.metric-orange .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-red {\n  background: linear-gradient(135deg, #fda4af 0%, #ef4444 100%);\n  color: #fff;\n}\n\n.metric.metric-red .label, .metric.metric-red .value {\n  color: #fff;\n}\n\n.metric.metric-red .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-violet {\n  background: linear-gradient(135deg, #c084fc 0%, #7c3aed 100%);\n  color: #fff;\n}\n\n.metric.metric-violet .label, .metric.metric-violet .value {\n  color: #fff;\n}\n\n.metric.metric-violet .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-cyan {\n  background: linear-gradient(135deg, #67e8f9 0%, #06b6d4 100%);\n  color: #042022;\n}\n\n.metric.metric-cyan .label, .metric.metric-cyan .value {\n  color: #042022;\n}\n\n.metric.metric-cyan .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-gray {\n  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);\n  color: #0f172a;\n}\n\n.metric.metric-gray .label, .metric.metric-gray .value {\n  color: #0f172a;\n}\n\n.metric.metric-gray .metric-icon {\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);\n}\n\n/* ensure svg icons in gray card are dark for visibility */\n.metric.metric-gray .metric-icon svg {\n  color: #0f172a;\n}\n\n/* Students-specific visual emphasis: bold, uppercase labels and high-contrast values */\n.students-metrics .metric {\n  padding: 18px;\n  border-radius: 14px;\n}\n\n.students-metrics .metric .label {\n  font-weight: 800;\n  font-size: 13px;\n  text-transform: uppercase;\n  letter-spacing: 0.6px;\n  opacity: 0.95;\n}\n\n.students-metrics .metric .value {\n  font-weight: 900;\n  font-size: 22px;\n}\n\n.students-metrics .metric.metric-gray .label, .students-metrics .metric.metric-gray .value {\n  color: #0f172a;\n  text-transform: none;\n  letter-spacing: 0;\n}\n\n/* Ensure values are bright on colored backgrounds */\n.students-metrics .metric.metric-blue .label, .students-metrics .metric.metric-blue .value,\n.students-metrics .metric.metric-green .label, .students-metrics .metric.metric-green .value,\n.students-metrics .metric.metric-purple .label, .students-metrics .metric.metric-purple .value,\n.students-metrics .metric.metric-orange .label, .students-metrics .metric.metric-orange .value,\n.students-metrics .metric.metric-red .label, .students-metrics .metric.metric-red .value,\n.students-metrics .metric.metric-violet .label, .students-metrics .metric.metric-violet .value,\n.students-metrics .metric.metric-cyan .label, .students-metrics .metric.metric-cyan .value {\n  color: #fff;\n  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);\n}\n\n.controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  margin-bottom: 12px;\n}\n\n.controls-left .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.controls-right {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.archived-toggle-card {\n  cursor: pointer;\n  padding: 8px 12px;\n  border-radius: 10px;\n  background: #f3f4f6;\n}\n\n.archived-toggle-card.on {\n  background: #eef2ff;\n}\n\n.students-table th, .students-table td {\n  padding: 14px 12px;\n  border-bottom: 1px solid #eef2f6;\n  text-align: left;\n}\n\n.students-table thead th {\n  background: transparent;\n  color: #334155;\n  font-weight: 700;\n  font-size: 13px;\n}\n\n.avatar-circle {\n  width: 40px;\n  height: 40px;\n  border-radius: 20px;\n  background: linear-gradient(135deg, #a78bfa, #60a5fa);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  font-weight: 800;\n}\n\n.grade-chip {\n  background: #f1f5f9;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n.small-muted {\n  color: #94a3b8;\n  font-size: 12px;\n}\n\n.progress-wrap {\n  width: 100%;\n}\n\n.progress-bar {\n  height: 10px;\n  background: #eef2f6;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.progress-bar .progress-fill {\n  height: 100%;\n  background: #34d399;\n  width: 0;\n}\n\n.progress-bar.performance .progress-fill {\n  background: #60a5fa;\n}\n\n.status-pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n  display: inline-block;\n}\n\n.status-pill.active {\n  background: #dcfce7;\n  color: #166534;\n}\n\n.status-pill.locked {\n  background: #fee2e2;\n  color: #991b1b;\n}\n\n.action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  color: #475569;\n  margin-left: 6px;\n}\n\n.action-icon.text-danger {\n  color: #ef4444;\n}\n\n.archived-row {\n  opacity: 0.6;\n  background: #fff7ed;\n}\n\n.archived-badge {\n  background: #f3f4f6;\n  color: #334155;\n  padding: 6px 8px;\n  border-radius: 6px;\n  font-weight: 700;\n}\n\n.new-highlight {\n  animation: highlight 1.2s ease;\n}\n\n@keyframes highlight {\n  from {\n    background: #ecfeff;\n  }\n  to {\n    background: transparent;\n  }\n}\n.students-table tbody tr {\n  transition: background 120ms ease, transform 120ms ease;\n}\n\n.students-table tbody tr:hover {\n  background: rgba(37, 99, 235, 0.03);\n  transform: translateY(-2px);\n}\n\n.students-table td, .students-table th {\n  padding: 10px 12px;\n  vertical-align: middle;\n  border-bottom: 1px solid rgba(15, 23, 42, 0.04);\n}\n\n.students-table .action-icon {\n  margin-right: 6px;\n}\n\n.archived-row {\n  opacity: 0.86;\n  background: linear-gradient(90deg, rgba(245, 245, 245, 0.6), rgba(255, 250, 250, 0.6));\n}\n\n.archived-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 800;\n  font-size: 12px;\n  background: linear-gradient(90deg, #fff1f2, #fff6f8);\n  color: #be185d;\n  border: 1px solid rgba(190, 24, 93, 0.06);\n}\n\n.new-highlight {\n  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.08);\n  border-left: 4px solid rgba(124, 58, 237, 0.6);\n}\n\n/* Metrics grid */\n.metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 20px;\n}\n.metrics-grid .metric-card {\n  background: linear-gradient(180deg, #ffffff 0%, white 100%);\n  border-radius: 12px;\n  padding: 14px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 40px rgba(11, 18, 40, 0.6);\n  cursor: pointer;\n  transition: transform 0.15s ease, box-shadow 0.15s ease;\n}\n.metrics-grid .metric-card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n.metrics-grid .metric-card .icon-box {\n  width: 56px;\n  height: 56px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 22px;\n  color: #fff;\n}\n.metrics-grid .metric-card .metric-info h3 {\n  margin: 0;\n  font-size: 20px;\n  font-weight: 800;\n}\n.metrics-grid .metric-card .metric-info p {\n  margin: 0;\n  color: #64748b;\n  font-size: 13px;\n}\n.metrics-grid .metric-card.blue .icon-box {\n  background: #3b82f6;\n}\n.metrics-grid .metric-card.green .icon-box {\n  background: #34d399;\n}\n.metrics-grid .metric-card.purple .icon-box {\n  background: #7c3aed;\n}\n.metrics-grid .metric-card.cyan .icon-box {\n  background: #06b6d4;\n}\n.metrics-grid .metric-change {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 4px 8px;\n  border-radius: 999px;\n  font-size: 12px;\n  font-weight: 600;\n}\n.metrics-grid .metric-change.up {\n  background: rgba(34, 197, 94, 0.1);\n  color: #16a34a;\n}\n.metrics-grid .metric-change.down {\n  background: rgba(239, 68, 68, 0.08);\n  color: #dc2626;\n}\n.metrics-grid .left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.metrics-grid .icon {\n  width: 48px;\n  height: 48px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #eef2ff;\n}\n.metrics-grid .meta {\n  display: flex;\n  flex-direction: column;\n}\n.metrics-grid .meta .label {\n  color: #64748b;\n  font-size: 13px;\n}\n.metrics-grid .meta .value {\n  font-size: 26px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n/* Documents page styles */\n.documents-page {\n  /* Documents header button styles: boxed, colored CTAs */\n  /* document card action buttons */\n}\n.documents-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 16px;\n}\n.documents-page .page-header .header-actions .header-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  align-items: flex-end;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import,\n.documents-page .page-header .header-actions .header-buttons .primary {\n  min-width: 180px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.documents-page .documents-top {\n  margin-top: 12px;\n  margin-bottom: 18px;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.08);\n  border-radius: 10px;\n  padding: 8px 12px;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  border: none;\n}\n.documents-page .page-header .header-actions .header-buttons .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import:hover, .documents-page .page-header .header-actions .header-buttons .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.12);\n}\n.documents-page .page-header .header-actions .header-buttons .primary.pulse {\n  animation: softPulse 2000ms ease-in-out infinite;\n}\n.documents-page .docs-metrics {\n  display: flex;\n  gap: 14px;\n  flex-wrap: wrap;\n}\n.documents-page .doc-metric.card {\n  min-width: 160px;\n  padding: 12px 14px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 36px rgba(2, 6, 23, 0.06);\n  cursor: default;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  border: 1px solid rgba(255, 255, 255, 0.02);\n}\n.documents-page .doc-metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.1);\n}\n.documents-page .doc-metric-left {\n  width: 56px;\n  height: 56px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 22px;\n  color: #fff;\n  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n}\n.documents-page .doc-metric-right {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.documents-page .metric-icon {\n  font-size: 20px;\n}\n.documents-page .doc-metric .label {\n  color: #64748b;\n  font-weight: 800;\n  font-size: 13px;\n}\n.documents-page .doc-metric .value {\n  font-size: 20px;\n  font-weight: 900;\n}\n.documents-page .doc-metric.blue .doc-metric-left {\n  background: linear-gradient(135deg, #eef2ff, #bfdbfe);\n  color: #0b3b82;\n}\n.documents-page .doc-metric.green .doc-metric-left {\n  background: linear-gradient(135deg, #ecfdf5, #bbf7d0);\n  color: #065f46;\n}\n.documents-page .doc-metric.purple .doc-metric-left {\n  background: linear-gradient(135deg, #fbf0ff, #e9d5ff);\n  color: #6d028f;\n}\n.documents-page .doc-metric.orange .doc-metric-left {\n  background: linear-gradient(135deg, #fff7ed, #ffedd5);\n  color: #92400e;\n}\n.documents-page .doc-metric.cyan .doc-metric-left {\n  background: linear-gradient(135deg, #ecfeff, #cffafe);\n  color: #065f46;\n}\n.documents-page .doc-metric.yellow .doc-metric-left {\n  background: linear-gradient(135deg, #fff9db, #fff1a8);\n  color: #92400e;\n}\n.documents-page .doc-metric.teal .doc-metric-left {\n  background: linear-gradient(135deg, #ecfeff, #d1fae5);\n  color: #064e3b;\n}\n.documents-page .doc-metric .label {\n  color: #64748b;\n  font-weight: 700;\n}\n.documents-page .doc-metric .value {\n  font-size: 22px;\n  font-weight: 800;\n}\n.documents-page .doc-metric.blue {\n  background: linear-gradient(135deg, #eef2ff, #f0f9ff);\n}\n.documents-page .doc-metric.green {\n  background: linear-gradient(135deg, #ecfdf5, #f0fdf4);\n}\n.documents-page .doc-metric.purple {\n  background: linear-gradient(135deg, #fbf0ff, #fff8ff);\n}\n.documents-page .doc-metric.orange {\n  background: linear-gradient(135deg, #fff7ed, #fffbf0);\n}\n.documents-page .doc-metric.cyan {\n  background: linear-gradient(135deg, #f0f9ff, #f7feff);\n}\n.documents-page .doc-metric.yellow {\n  background: linear-gradient(135deg, #fffbeb, #fffdf8);\n}\n.documents-page .doc-metric.teal {\n  background: linear-gradient(135deg, #ecfeff, #f2fdfd);\n}\n.documents-page .documents-controls {\n  margin-top: 12px;\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.documents-page .doc-search {\n  flex: 1;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n}\n.documents-page .documents-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.documents-page .quick-chips {\n  display: flex;\n  gap: 8px;\n}\n.documents-page .chip {\n  padding: 8px 10px;\n  border-radius: 999px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  background: #fff;\n  cursor: pointer;\n  font-weight: 700;\n}\n.documents-page .chip.on {\n  background: linear-gradient(90deg, #fff7ed, #fff1f0);\n  border-color: rgba(249, 115, 22, 0.06);\n}\n.documents-page .docs-view .view-toggle {\n  display: flex;\n  gap: 6px;\n}\n.documents-page .documents-grid {\n  margin-top: 18px;\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 18px;\n}\n.documents-page .documents-list {\n  margin-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.documents-page .doc-actions {\n  display: flex;\n  gap: 8px;\n  padding: 10px 14px 14px;\n  border-top: 1px solid rgba(15, 23, 42, 0.03);\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);\n}\n.documents-page .doc-actions .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 8px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  transition: transform 120ms ease, background 120ms ease;\n}\n.documents-page .doc-actions .action-icon:hover {\n  transform: translateY(-4px);\n  background: rgba(255, 255, 255, 0.04);\n}\n.documents-page .doc-actions .action-icon svg {\n  width: 18px;\n  height: 18px;\n}\n.documents-page .placeholder-row {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 18px;\n  align-items: start;\n}\n.documents-page .placeholder-card {\n  border-radius: 12px;\n  padding: 18px 18px 22px;\n  color: #fff;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n  align-self: start;\n  min-height: 140px;\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n  cursor: pointer;\n  transition: transform 0.18s ease, box-shadow 0.18s ease;\n}\n.documents-page .placeholder-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.08);\n}\n.documents-page .placeholder-card:focus {\n  outline: 3px solid rgba(124, 58, 237, 0.12);\n}\n.documents-page .placeholder-card {\n  background-size: 200% 200%;\n  animation: gradientShift 6s ease infinite;\n}\n@keyframes gradientShift {\n  0% {\n    background-position: 0% 50%;\n  }\n  50% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n}\n.documents-page .placeholder-inner {\n  text-align: left;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\n.documents-page .placeholder-icon {\n  font-size: 36px;\n  line-height: 1;\n  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);\n}\n.documents-page .placeholder-title {\n  margin-top: 0;\n  font-weight: 800;\n  font-size: 16px;\n}\n.documents-page .doc-badges .badge.small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: rgba(255, 255, 255, 0.08);\n  font-weight: 700;\n}\n.documents-page .primary {\n  background: linear-gradient(90deg, #6d28d9, #7c3aed);\n  color: #fff;\n  border: none;\n  padding: 10px 14px;\n  border-radius: 10px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.documents-page .primary.pulse {\n  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.12);\n  animation: pulse 2.4s infinite;\n}\n@keyframes pulse {\n  0% {\n    transform: translateY(0);\n  }\n  50% {\n    transform: translateY(-3px);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n.documents-page .documents-grid {\n  margin-top: 18px;\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 18px;\n}\n.documents-page .doc-card {\n  border-radius: 12px;\n  overflow: hidden;\n  background: linear-gradient(180deg, #fff, #fbfdff);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.documents-page .doc-card .doc-top {\n  height: 72px;\n  background: linear-gradient(135deg, #ff7aa2, #ff5b8f);\n}\n.documents-page .doc-card .doc-body {\n  padding: 12px 14px;\n}\n.documents-page .doc-card h4 {\n  margin: 0 0 6px 0;\n}\n.documents-page .doc-card .small-muted {\n  color: #64748b;\n  font-size: 13px;\n}\n.documents-page .doc-card {\n  cursor: pointer;\n  transition: transform 0.18s ease, box-shadow 0.18s ease;\n}\n.documents-page .doc-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.08);\n}\n\n/* Lower content: Recent Activities and System Health */\n.content-grid {\n  display: grid;\n  grid-template-columns: 2fr 1fr;\n  gap: 18px;\n}\n.content-grid .card {\n  background: #ffffff;\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n.content-grid .recent .card-title {\n  font-weight: 700;\n  margin-bottom: 12px;\n}\n.content-grid .recent .recent-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.content-grid .recent .recent-item {\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #f3f6fb;\n  background: #fbfdff;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 8px;\n}\n.content-grid .recent .recent-item:hover {\n  background: #f1f8ff;\n  transform: translateY(-2px);\n  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.03);\n}\n.content-grid .recent .recent-item .info {\n  max-width: 78%;\n}\n.content-grid .recent .recent-item .time {\n  color: #94a3b8;\n  font-size: 12px;\n}\n.content-grid .recent .recent-item .icon {\n  width: 36px;\n  height: 36px;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #eef2ff;\n  color: #2563eb;\n  font-weight: 700;\n}\n.content-grid .recent .recent-item .act-sub {\n  color: #64748b;\n  font-size: 0.92rem;\n  margin-top: 6px;\n}\n.content-grid .health .card-title {\n  font-weight: 700;\n  margin-bottom: 12px;\n}\n.content-grid .health .health-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.content-grid .health .health-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 0;\n  border-bottom: 1px solid #f1f5f9;\n}\n.content-grid .health .status {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.content-grid .health .status.good {\n  background: #ecfdf5;\n  color: #059669;\n}\n.content-grid .health .status.warn {\n  background: #fff7ed;\n  color: #b45309;\n}\n.content-grid .health .status.bad {\n  background: #fee2e2;\n  color: #991b1b;\n}\n.content-grid .health .badge.small {\n  padding: 6px 10px;\n  border-radius: 8px;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n/* Bottom grid for overview, activity and right column */\n.bottom-grid {\n  display: grid;\n  grid-template-columns: 1fr 420px;\n  gap: 20px;\n  margin-top: 20px;\n}\n\n.bottom-grid .department-overview {\n  background: #ffffff;\n  padding: 18px;\n  border-radius: 12px;\n}\n\n.bottom-grid .recent-activity {\n  background: #ffffff;\n  padding: 18px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n}\n\n.bottom-grid .right-column {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.right-column .performance-trends {\n  background: #ffffff;\n  padding: 14px;\n  border-radius: 12px;\n}\n\n.activity-list {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.activity-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 10px;\n  border-radius: 10px;\n  background: rgba(255, 255, 255, 0.02);\n}\n\n.activity-left {\n  width: 44px;\n  height: 44px;\n  border-radius: 8px;\n  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), #3b82f6);\n}\n\n.activity-title {\n  font-weight: 700;\n}\n\n.activity-desc {\n  color: #64748b;\n  font-size: 13px;\n}\n\n.activity-time {\n  margin-left: auto;\n  color: #64748b;\n  font-size: 12px;\n}\n\n.trends-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.trend-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.trend-name {\n  width: 80px;\n  color: #64748b;\n}\n\n.trend-spark {\n  display: flex;\n  align-items: flex-end;\n  gap: 4px;\n  height: 36px;\n  flex: 1;\n}\n\n.spark-bar {\n  width: 8px;\n  background: linear-gradient(180deg, #34d399, #3b82f6);\n  border-radius: 4px;\n}\n\n.mini-cal {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.mini-cal.compact {\n  margin-top: 8px;\n}\n\n.mini-cal.compact .cal-weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 4px;\n  color: #64748b;\n  font-size: 12px;\n}\n\n.mini-cal.compact .cal-grid {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 6px;\n}\n\n.mini-cal.compact .cal-cell {\n  padding: 6px;\n  border-radius: 8px;\n  text-align: center;\n  background: rgba(255, 255, 255, 0.02);\n  font-size: 12px;\n}\n\n.mini-cal.compact .cal-cell.today {\n  background: linear-gradient(90deg, rgba(59, 130, 246, 0.08), #3b82f6);\n  color: #fff;\n}\n\n/* Morning vs regular calendar themes */\n.mini-cal.morning {\n  background: linear-gradient(90deg, #fff9f0, #fffefc);\n  padding: 10px;\n  border-radius: 10px;\n}\n\n.mini-cal.morning .cal-header .cal-greeting {\n  color: #b45309;\n  font-size: 12px;\n}\n\n.mini-cal.morning .cal-cell.today {\n  box-shadow: 0 6px 20px rgba(244, 114, 23, 0.12);\n}\n\n.mini-cal.regular {\n  background: linear-gradient(90deg, #f7fbff, #fbfdff);\n  padding: 10px;\n  border-radius: 10px;\n}\n\n.mini-cal.regular .cal-header .cal-greeting {\n  color: #2563eb;\n  font-size: 12px;\n}\n\n.mini-cal.regular .cal-cell.today {\n  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);\n}\n\n.cal-header {\n  margin-bottom: 8px;\n}\n\n.cal-title {\n  display: flex;\n  flex-direction: column;\n}\n\n.cal-title strong {\n  font-size: 14px;\n}\n\n.cal-today {\n  color: #64748b;\n  font-size: 12px;\n}\n\n.cal-weekdays .cal-day-name {\n  text-align: center;\n  font-weight: 700;\n  color: #64748b;\n}\n\n.cal-cell.empty {\n  background: transparent;\n}\n\n/* Students table boxed header */\n.students-card {\n  border-radius: 12px;\n  overflow: hidden;\n  box-shadow: 0 6px 30px rgba(4, 8, 23, 0.12);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n}\n\n.students-card-header {\n  padding: 12px 16px;\n  background: linear-gradient(90deg, #0f172a 0%, #081028 100%);\n  color: #e6f0ff;\n  border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n  display: flex;\n  align-items: center;\n}\n\n.students-card-header .header-title {\n  font-size: 14px;\n  color: #dbeafe;\n  margin-right: 12px;\n}\n\n.students-card-header .columns-line {\n  font-size: 13px;\n  color: #bcd6ff;\n  opacity: 0.95;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.students-card-header .header-actions-inline {\n  margin-left: auto;\n}\n\n.students-card .students-table thead th {\n  background: transparent;\n  color: #cfe6ff;\n  font-weight: 700;\n}\n\n.students-card .students-table tbody td {\n  color: #e9f2ff;\n}\n\n.students-card .students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\n.students-card .card {\n  background: transparent;\n}\n\n/* small responsive tweak */\n@media (max-width: 900px) {\n  .students-card-header .columns-line {\n    font-size: 12px;\n  }\n}\n/* header inline action boxes */\n.students-card-header .header-actions-inline {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-card-header .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 10px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));\n  border: 1px solid rgba(255, 255, 255, 0.03);\n  color: #dbeafe;\n  cursor: pointer;\n}\n\n.students-card-header .icon-box svg {\n  width: 16px;\n  height: 16px;\n}\n\n.students-card-header .icon-box.add {\n  background: linear-gradient(90deg, #06b6d4, #7c3aed);\n  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.12);\n}\n\n.students-card-header .icon-box.import {\n  background: linear-gradient(90deg, #10b981, #06b6d4);\n  box-shadow: 0 6px 18px rgba(6, 182, 212, 0.08);\n}\n\n.students-card-header .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.08);\n}\n\n/* highlight newly added/imported row */\n.students-table tbody tr.new-highlight {\n  animation: highlightFade 6s ease forwards;\n}\n\n@keyframes highlightFade {\n  0% {\n    background: linear-gradient(90deg, rgba(99, 102, 241, 0.18), rgba(59, 130, 246, 0.12));\n  }\n  60% {\n    background: rgba(255, 255, 255, 0.02);\n  }\n  100% {\n    background: transparent;\n  }\n}\n@media (max-width: 1000px) {\n  .bottom-grid {\n    grid-template-columns: 1fr;\n  }\n  .right-column {\n    flex-direction: row;\n  }\n}\n/* System health boxed panel styles */\n.system-health {\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #ffffff 0%, white 100%);\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n\n.system-health h2 {\n  margin: 0 0 12px 0;\n}\n\n.health-rows {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.health-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.health-label {\n  width: 36%;\n  color: #64748b;\n  font-weight: 600;\n}\n\n.health-bar-wrap {\n  flex: 1;\n  background: #f1f5f9;\n  height: 12px;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.health-bar {\n  height: 100%;\n  border-radius: 999px;\n  background: linear-gradient(90deg, #10b981, #60a5fa);\n  transition: width 300ms ease;\n}\n\n.health-row[data-status=warn] .health-bar {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n}\n\n.health-row[data-status=bad] .health-bar {\n  background: linear-gradient(90deg, #ef4444, #a11d1d);\n}\n\n.health-value {\n  width: 80px;\n  text-align: right;\n  font-weight: 700;\n}\n\n/* Bar graph card styles */\n.bar-graph {\n  padding: 16px;\n  border-radius: 12px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n\n.system-bargraph {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.system-bargraph .bar-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.bar-label {\n  width: 120px;\n  color: #64748b;\n  font-weight: 600;\n}\n\n.bar-wrap {\n  flex: 1;\n  background: #f1f5f9;\n  height: 12px;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.bar-fill {\n  height: 100%;\n  background: linear-gradient(90deg, #10b981, #60a5fa);\n  border-radius: 999px;\n  transition: width 300ms ease;\n}\n\n.bar-val {\n  width: 56px;\n  text-align: right;\n  font-weight: 700;\n}\n\n@media (max-width: 900px) {\n  .health-label {\n    width: 40%;\n  }\n  .health-value {\n    width: 70px;\n  }\n}\n/* Dashboard specific large metrics and quick actions */\n.dashboard-metrics {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 14px;\n  margin-bottom: 16px;\n  /* pastel variants for each metric to mimic screenshot */\n  /* small change badge */\n}\n.dashboard-metrics .large-metric.card {\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;\n  cursor: pointer;\n  min-height: 72px;\n}\n.dashboard-metrics .dashboard-metrics .large-metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);\n}\n.dashboard-metrics .dashboard-metrics .large-metric .metric-inner {\n  position: relative;\n}\n.dashboard-metrics .dashboard-metrics .large-metric .metric-change {\n  position: absolute;\n  right: 12px;\n  top: 12px;\n}\n.dashboard-metrics .large-metric.card:nth-child(1) {\n  background: linear-gradient(90deg, #f3f4ff 0%, #f8f7ff 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(2) {\n  background: linear-gradient(90deg, #e8fff3 0%, #f5fff8 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(3) {\n  background: linear-gradient(90deg, #f0fbff 0%, #f7fdff 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(4) {\n  background: linear-gradient(90deg, #eafff4 0%, #f6fff9 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(5) {\n  background: linear-gradient(90deg, #fff4f6 0%, #fff8f9 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(6) {\n  background: linear-gradient(90deg, #fff6f0 0%, #fff9f6 100%);\n}\n.dashboard-metrics .metric-change {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  background: rgba(0, 0, 0, 0.03);\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.dashboard-metrics .metric-change.up {\n  color: #10b981;\n  background: rgba(16, 185, 129, 0.08);\n}\n.dashboard-metrics .metric-change.down {\n  color: #ef4444;\n  background: rgba(239, 68, 68, 0.08);\n}\n.dashboard-metrics .large-metric .metric-inner {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.dashboard-metrics .large-metric .metric-title {\n  color: #64748b;\n  font-size: 13px;\n}\n.dashboard-metrics .large-metric .metric-number {\n  font-size: 26px;\n  font-weight: 800;\n}\n\n.quick-actions {\n  display: none;\n}\n\n@media (max-width: 1000px) {\n  .dashboard-metrics {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .quick-grid {\n    flex-direction: column;\n  }\n}\n/* Course Management specific styling (top metrics, search bar, filters, table) */\n.courses-page {\n  /* colorful variants for each metric card */\n}\n.courses-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 16px;\n  flex-wrap: wrap;\n  padding: 18px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, #ffffff, #f8fbff);\n  box-shadow: 0 18px 44px rgba(37, 99, 235, 0.04);\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n.courses-page .page-header .header-actions {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  color: #fff;\n}\n.courses-page .page-header .header-buttons .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.08);\n  color: #042022;\n}\n.courses-page .page-header .header-buttons .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 12px 30px rgba(249, 115, 22, 0.08);\n  color: #2b1600;\n}\n.courses-page .page-header .header-buttons .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons .icon-box:hover, .courses-page .page-header .header-buttons .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n.courses-page h1, .courses-page h2, .courses-page h3 {\n  margin: 0;\n}\n.courses-page .breadcrumb {\n  color: #64748b;\n  margin-bottom: 6px;\n}\n.courses-page .courses-top {\n  display: flex;\n  gap: 18px;\n  margin-bottom: 14px;\n  align-items: flex-start;\n}\n.courses-page .courses-top .courses-metrics {\n  flex: 1;\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n.courses-page .courses-top .metric.card {\n  flex: 1 1 160px;\n  padding: 14px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border: 1px solid rgba(37, 99, 235, 0.04);\n  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.03);\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.courses-page .courses-top .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 24px 60px rgba(37, 99, 235, 0.08);\n}\n.courses-page .courses-top .metric.card .label {\n  color: #64748b;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card .value {\n  font-size: 20px;\n  font-weight: 900;\n  color: #0f172a;\n}\n.courses-page .courses-top .metric.card.total {\n  border-left: 4px solid #2563eb;\n}\n.courses-page .courses-top .metric.card.active {\n  border-left: 4px solid #10b981;\n}\n.courses-page .courses-top .metric.card.inactive {\n  border-left: 4px solid #f59e0b;\n}\n.courses-page .courses-top .metric.card.students {\n  border-left: 4px solid #7c3aed;\n}\n.courses-page .courses-top .metric .icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px;\n}\n.courses-page .courses-top .metric .metric-title {\n  font-size: 13px;\n  color: #64748b;\n}\n.courses-page .courses-top .metric .metric-value {\n  font-size: 20px;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card.total {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-left: 4px solid #2563eb;\n}\n.courses-page .courses-top .metric.card.active {\n  background: linear-gradient(90deg, #ecfdf5, #f0fdf4);\n  border-left: 4px solid #10b981;\n}\n.courses-page .courses-top .metric.card.inactive {\n  background: linear-gradient(90deg, #fff7ed, #fffaf0);\n  border-left: 4px solid #f59e0b;\n}\n.courses-page .courses-top .metric.card.students {\n  background: linear-gradient(90deg, #f5f3ff, #eef2ff);\n  border-left: 4px solid #7c3aed;\n}\n.courses-page .courses-top .metric.card.enrollment {\n  background: linear-gradient(90deg, #ecfeff, #f7feff);\n  border-left: 4px solid #06b6d4;\n}\n.courses-page .courses-top .metric.card.capacity {\n  background: linear-gradient(90deg, #fff8ef, #fff4f1);\n  border-left: 4px solid #f97316;\n}\n.courses-page .courses-top .metric.card .label {\n  color: #64748b;\n  font-size: 13px;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card .value {\n  font-size: 20px;\n  font-weight: 900;\n  color: #0f172a;\n}\n.courses-page .courses-controls {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  padding: 12px 0;\n}\n.courses-page .course-search {\n  width: 100%;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n}\n.courses-page .courses-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .chip {\n  background: #f1f5f9;\n  border-radius: 999px;\n  padding: 8px 10px;\n  border: 1px solid #eef2f7;\n  cursor: pointer;\n}\n.courses-page .chip.active {\n  background: #eef2ff;\n  border-color: #dbeafe;\n}\n.courses-page .courses-table {\n  margin-top: 8px;\n  overflow: auto;\n}\n.courses-page .courses-table table {\n  width: 100%;\n  border-collapse: collapse;\n  background: transparent;\n}\n.courses-page .courses-table th, .courses-page .courses-table td {\n  padding: 14px 12px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.courses-page .courses-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.courses-page .students-count {\n  color: #475569;\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .status-active {\n  background: #ecfdf5;\n  color: #059669;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n.courses-page .status-inactive {\n  background: #fff7ed;\n  color: #b45309;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n.courses-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n}\n.courses-page .action-icon.text-danger {\n  color: #dc2626;\n}\n.courses-page .courses-pagination {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  padding: 12px 0;\n}\n@media (max-width: 900px) {\n  .courses-page .courses-top {\n    flex-direction: column;\n  }\n  .courses-page .courses-top .courses-metrics {\n    width: 100%;\n  }\n}\n\n/* Reports page styles */\n.reports-page {\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n\n.reports-header {\n  background: transparent;\n}\n\n.reports-header h2 {\n  margin: 0;\n  font-size: 20px;\n  color: #0f172a;\n}\n\n.reports-header .page-sub {\n  color: #64748b;\n  margin-top: 6px;\n}\n\n.reports-metrics {\n  display: flex;\n  gap: 16px;\n}\n\n.report-metric {\n  flex: 1;\n  padding: 18px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.04);\n}\n\n.report-metric.blue {\n  background: linear-gradient(90deg, #eef6ff, #f8fbff);\n}\n\n.report-metric.green {\n  background: linear-gradient(90deg, #ecfff5, #f7fffb);\n}\n\n.report-metric.purple {\n  background: linear-gradient(90deg, #fbf5ff, #fffaff);\n}\n\n.report-metric.orange {\n  background: linear-gradient(90deg, #fff8f2, #fffbf7);\n}\n\n.report-metric .metric-title {\n  color: #64748b;\n  font-weight: 700;\n}\n\n.report-metric .metric-value {\n  font-size: 28px;\n  font-weight: 900;\n  margin-top: 6px;\n}\n\n.report-metric .metric-sub {\n  margin-top: 8px;\n}\n\n.chart-card {\n  padding: 18px;\n  border-radius: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.04);\n}\n\n.reports-bottom {\n  display: flex;\n  gap: 12px;\n}\n\n.small-card {\n  flex: 1;\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, #f7fbff, #ffffff);\n  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);\n}\n\n.small-card .card-title {\n  font-weight: 800;\n  color: #64748b;\n}\n\n.small-card .card-value {\n  font-size: 20px;\n  font-weight: 900;\n  margin-top: 8px;\n}\n\n.small-card .progress {\n  height: 10px;\n  background: #eef2f7;\n  border-radius: 999px;\n  margin: 12px 0;\n  overflow: hidden;\n}\n\n.small-card .progress .fill {\n  height: 100%;\n  background: linear-gradient(90deg, #60a5fa, #0ea5e9);\n}\n\n.small-card .progress .fill.green {\n  background: linear-gradient(90deg, #4ade80, #10b981);\n}\n\n.small-card .progress .fill.purple {\n  background: linear-gradient(90deg, #c084fc, #8b5cf6);\n}\n\n@media (max-width: 900px) {\n  .reports-metrics {\n    flex-direction: column;\n  }\n  .reports-bottom {\n    flex-direction: column;\n  }\n}\n/* Teachers / Faculty page specific styling */\n.teachers-page {\n  /* optional pulse for the Add Faculty button */\n  /* small animation */\n}\n.teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 16px;\n  padding: 18px;\n  background: #ffffff;\n  border-radius: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  margin-bottom: 18px;\n  animation: fadeInUp 320ms ease both;\n}\n.teachers-page .page-header .breadcrumb {\n  color: #64748b;\n  font-size: 0.95rem;\n  margin-bottom: 6px;\n}\n.teachers-page .page-header h2 {\n  margin: 0;\n  font-size: 20px;\n}\n.teachers-page .page-sub {\n  margin: 6px 0 0;\n  color: #64748b;\n}\n.teachers-page .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n.teachers-page .header-actions .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .header-actions .icon-box {\n  padding: 8px 12px;\n  border-radius: 10px;\n  background: linear-gradient(90deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  cursor: pointer;\n  transition: transform 140ms ease, box-shadow 140ms ease;\n}\n.teachers-page .header-actions .icon-box:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);\n}\n.teachers-page .header-actions .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.08);\n}\n.teachers-page .header-actions .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  color: #2b1600;\n  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.08);\n}\n.teachers-page .header-actions .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .header-actions .icon-box:hover, .teachers-page .header-actions .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n.teachers-page .header-actions .primary.pulse {\n  animation: softPulse 2200ms ease-in-out infinite;\n}\n.teachers-page .metrics-row {\n  display: flex;\n  gap: 12px;\n  margin-top: 14px;\n  margin-bottom: 18px;\n  flex-wrap: wrap;\n}\n.teachers-page .metrics-row .metric.card {\n  flex: 0 0 160px;\n  padding: 12px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #ffffff 0%, white 100%);\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.teachers-page .metrics-row .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);\n}\n.teachers-page .metrics-row .metric .label {\n  color: #64748b;\n  font-size: 13px;\n}\n.teachers-page .metrics-row .metric .value {\n  font-weight: 800;\n  font-size: 20px;\n}\n.teachers-page .table-wrapper {\n  margin-top: 6px;\n}\n.teachers-page .teachers-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.teachers-page .teachers-table thead th {\n  text-align: left;\n  padding: 12px 14px;\n  border-bottom: 1px solid #eef2f6;\n  color: #64748b;\n  font-weight: 700;\n}\n.teachers-page .teachers-table tbody td {\n  padding: 12px 14px;\n  border-bottom: 1px solid #f3f6fb;\n}\n.teachers-page .teachers-table tbody tr:hover {\n  background: rgba(37, 99, 235, 0.02);\n  transform: translateY(-1px);\n}\n.teachers-page .status-pill {\n  display: inline-block;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.teachers-page .status-pill.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.teachers-page .status-pill.sabbatical {\n  background: #eff6ff;\n  color: #2563eb;\n}\n.teachers-page .status-pill.retired {\n  background: #fff1f2;\n  color: #be185d;\n}\n.teachers-page .status-pill.locked {\n  background: #fff7ed;\n  color: #b45309;\n}\n@keyframes fadeInUp {\n  from {\n    opacity: 0;\n    transform: translateY(6px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n/* Department overview interactive cards */\n.department-overview {\n  margin-top: 18px;\n}\n\n.department-list.grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 12px;\n  margin-top: 12px;\n}\n\n.department-card {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  border-radius: 10px;\n  background: #ffffff;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n  position: relative;\n  overflow: hidden;\n}\n\n.department-card::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  width: 6px;\n}\n\n.department-card .dept-head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.dept-name {\n  font-size: 14px;\n}\n\n.dept-body {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.counts-display {\n  font-weight: 700;\n  color: #0f172a;\n}\n\n.dept-controls {\n  display: flex;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n\n.dept-controls .small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: #f1f5f9;\n  border: 1px solid #eef2f7;\n  cursor: pointer;\n}\n\n.actions-card {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 8px;\n}\n\n.department-card input[type=number] {\n  width: 100%;\n  padding: 8px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n@media (max-width: 1000px) {\n  .department-list.grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n@media (max-width: 700px) {\n  .department-list.grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Students page extras */\n.students-page {\n  /* Ensure metric numbers are visible: use a solid gray color for better contrast */\n}\n.students-page .students-metrics .metric.card {\n  min-width: 120px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 14px;\n}\n.students-page .students-metrics.metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 12px;\n  margin-bottom: 14px;\n}\n.students-page .students-metrics .metric .icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 16px;\n  background: rgba(255, 255, 255, 0.06);\n}\n.students-page .metric-blue .icon {\n  background: linear-gradient(90deg, #e6f0ff, #dbeafe);\n}\n.students-page .metric-green .icon {\n  background: linear-gradient(90deg, #ecfdf5, #bbf7d0);\n}\n.students-page .metric-purple .icon {\n  background: linear-gradient(90deg, #eef2ff, #e9d5ff);\n}\n.students-page .metric-orange .icon {\n  background: linear-gradient(90deg, #fff7ed, #ffd8a8);\n}\n.students-page .metric-red .icon {\n  background: linear-gradient(90deg, #fff1f2, #fecaca);\n}\n.students-page .metric-violet .icon {\n  background: linear-gradient(90deg, #f5f3ff, #ede9fe);\n}\n.students-page .metric-gray .icon {\n  background: linear-gradient(90deg, #f3f4f6, #f8fafc);\n}\n.students-page .students-metrics .metric .label {\n  font-size: 13px;\n  color: #6b7280;\n}\n.students-page .students-metrics .metric .value {\n  font-size: 18px;\n  font-weight: 800;\n  color: #374151;\n}\n.students-page .students-metrics .metric.card {\n  background: #ffffff;\n  border-radius: 12px;\n  border: 1px solid #eef2f7;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  padding: 14px;\n  cursor: default;\n}\n.students-page .students-metrics .metric.card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.students-page .students-metrics .metric.card .icon {\n  margin-bottom: 6px;\n}\n.students-page .students-metrics .metric.metric-add {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  background: linear-gradient(90deg, #0ea5e9, #7c3aed);\n  color: #fff;\n  border: none;\n}\n.students-page .students-metrics .metric.metric-add .icon {\n  background: rgba(255, 255, 255, 0.12);\n  border-radius: 8px;\n  padding: 6px;\n}\n.students-page .students-table thead th {\n  background: transparent;\n  color: #0f172a;\n}\n.students-page .students-table tbody tr.selected-row {\n  background: linear-gradient(90deg, rgba(37, 99, 235, 0.04), rgba(96, 165, 250, 0.02));\n}\n.students-page .students-table tbody tr.archived-row {\n  opacity: 0.7;\n}\n.students-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n}\n.students-page .action-icon.text-danger {\n  color: #dc2626;\n}\n.students-page .badge {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.students-page .badge.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.students-page .badge.locked {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page .badge.archived {\n  background: #f3f4f6;\n  color: #374151;\n}\n.students-page .badge.graduated {\n  background: #eef2ff;\n  color: #2563eb;\n}\n.students-page .badge.suspended {\n  background: #fff7f0;\n  color: #c2410c;\n}\n.students-page .bulk-actions {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  padding: 10px 12px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, #fff, #fbfdff);\n  border: 1px solid #eef2f7;\n  margin-bottom: 12px;\n}\n.students-page .bulk-actions .btn {\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  cursor: pointer;\n}\n.students-page .bulk-actions .btn.warn {\n  background: #fff7ed;\n  color: #b45309;\n  border-color: #fef3c7;\n}\n.students-page .bulk-actions .btn.danger {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page select {\n  padding: 6px 8px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n  background: #fff;\n}\n\n/* Students header action buttons: import/export/add styles */\n.students-page .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.students-page .header-actions .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-page .header-actions .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  color: #fff;\n}\n\n.students-page .header-actions .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.12);\n  color: #042022;\n}\n\n.students-page .header-actions .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.12);\n  color: #2b1600;\n}\n\n.students-page .header-actions .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-page .header-actions .icon-box:hover, .students-page .header-actions .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n\n/* subtle pulse animation for Add button to draw attention */\n@keyframes softPulse {\n  0% {\n    transform: scale(1);\n    box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  }\n  50% {\n    transform: scale(1.02);\n    box-shadow: 0 26px 80px rgba(124, 58, 237, 0.16);\n  }\n  100% {\n    transform: scale(1);\n    box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  }\n}\n.students-page .header-actions .primary.pulse {\n  animation: softPulse 2200ms ease-in-out infinite;\n}\n\n.students-page .no-data {\n  text-align: center;\n  padding: 40px 20px;\n  color: #64748b;\n}\n\n.students-page .no-data h3 {\n  margin: 0;\n  font-size: 18px;\n}\n\n.students-page .no-data p {\n  margin: 8px 0 0;\n}\n\n/* Color accents for each department card */\n.department-list.grid .department-card:nth-child(1)::before {\n  background: #3b82f6;\n}\n\n.department-list.grid .department-card:nth-child(2)::before {\n  background: #34d399;\n}\n\n.department-list.grid .department-card:nth-child(3)::before {\n  background: #7c3aed;\n}\n\n.department-list.grid .department-card:nth-child(4)::before {\n  background: #06b6d4;\n}\n\n.department-list.grid .department-card:nth-child(5)::before {\n  background: #3b82f6;\n}\n\n.department-list.grid .department-card:nth-child(6)::before {\n  background: #34d399;\n}\n\n.department-list.grid .department-card:nth-child(7)::before {\n  background: #7c3aed;\n}\n\n.department-list.grid .department-card:nth-child(8)::before {\n  background: #06b6d4;\n}\n\n/* Performance cards (top of bottom area) */\n.performance-cards {\n  margin-top: 18px;\n}\n\n.perf-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 16px;\n  margin-bottom: 18px;\n}\n\n.perf-card {\n  background: #ffffff;\n  padding: 16px;\n  border-radius: 12px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.perf-card .perf-title {\n  color: #64748b;\n  font-size: 13px;\n}\n\n.perf-card .perf-value {\n  font-size: 22px;\n  font-weight: 800;\n}\n\n.perf-card .perf-sub {\n  color: #64748b;\n  font-size: 12px;\n}\n\n.perf-card .perf-change {\n  margin-left: auto;\n  color: #10b981;\n  font-weight: 700;\n}\n\n.perf-card.blue {\n  border-left: 4px solid #3b82f6;\n}\n\n.perf-card.green {\n  border-left: 4px solid #34d399;\n}\n\n.perf-card.purple {\n  border-left: 4px solid #7c3aed;\n}\n\n.perf-card.cyan {\n  border-left: 4px solid #06b6d4;\n}\n\n/* Department alignment */\n.dept-align {\n  align-self: start;\n}\n\n/* Compact calendar tweaks */\n.mini-cal.compact .cal-grid {\n  grid-template-columns: repeat(7, 1fr);\n  gap: 4px;\n}\n\n.mini-cal.compact .cal-cell {\n  padding: 6px;\n  font-size: 12px;\n}\n\n@media (max-width: 1000px) {\n  .perf-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n.department-card .dept-name {\n  display: block;\n}\n\n.department-card .muted {\n  color: #64748b;\n  font-size: 12px;\n}\n\n/* list-style department overview */\n.department-list.list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n/* Hero right Add button styling (Add Student / Add Teacher) */\n.hero-right .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n  cursor: pointer;\n  font-weight: 800;\n}\n\n.hero-right .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 72px rgba(124, 58, 237, 0.18);\n}\n\n@media (max-width: 900px) {\n  .hero-right .primary {\n    padding: 8px 10px;\n    font-size: 14px;\n  }\n  .hero-right .student-search {\n    min-width: 180px;\n  }\n}\n.department-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 10px;\n  background: #ffffff;\n  border-radius: 10px;\n  border: 1px solid rgba(255, 255, 255, 0.04);\n}\n\n.department-row .row-left {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 42%;\n}\n\n.department-row .dot {\n  width: 12px;\n  height: 12px;\n  border-radius: 999px;\n  display: inline-block;\n}\n\n.department-row .dept-name {\n  font-weight: 700;\n}\n\n.department-row .row-center {\n  width: 36%;\n}\n\n.progress-wrap {\n  width: 100%;\n}\n\n.progress-bar {\n  height: 10px;\n  background: #f1f5f9;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.progress-fill {\n  height: 100%;\n  background: linear-gradient(90deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.9));\n}\n\n.row-right {\n  width: 22%;\n  text-align: right;\n}\n\n.counts-right {\n  font-weight: 700;\n}\n\n.edit-inline input {\n  width: 48%;\n  padding: 6px 8px;\n  margin-right: 4px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n.edit-actions .btn {\n  background: #3b82f6;\n  color: #fff;\n  padding: 6px 10px;\n  border-radius: 8px;\n  border: none;\n  margin-right: 8px;\n}\n\n.edit-actions .btn-link {\n  background: transparent;\n  border: none;\n  color: #64748b;\n  cursor: pointer;\n}\n\n.actions-row {\n  background: transparent;\n  border: none;\n  box-shadow: none;\n}\n\n/* Teachers / Faculty specific styling to match the provided screenshot */\n.teachers-page {\n  /* Name column shows subtitle / role in muted text */\n  /* Actions styling - small icon buttons spaced evenly */\n  /* responsive tweaks */\n}\n.teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.teachers-page .breadcrumb {\n  color: #64748b;\n  margin-bottom: 6px;\n}\n.teachers-page .teachers-metrics {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-bottom: 16px;\n}\n.teachers-page .teachers-metrics .metric.card {\n  padding: 14px;\n  min-width: 120px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  align-items: flex-start;\n}\n.teachers-page .teachers-metrics .metric .metric-title {\n  color: #64748b;\n  font-size: 13px;\n}\n.teachers-page .teachers-metrics .metric .metric-value {\n  font-size: 20px;\n  font-weight: 800;\n}\n.teachers-page .teachers-controls {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.teachers-page .teachers-controls .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n.teachers-page .teacher-search {\n  width: 100%;\n  max-width: 760px;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n}\n.teachers-page .teachers-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .table-wrapper.card {\n  padding: 0;\n}\n.teachers-page .landscape-table {\n  overflow: auto;\n}\n.teachers-page .landscape-table table {\n  width: 100%;\n  min-width: 1200px;\n  border-collapse: collapse;\n}\n.teachers-page .landscape-table th, .teachers-page .landscape-table td {\n  padding: 14px 16px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.teachers-page .landscape-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.teachers-page .landscape-table tbody tr.archived-row {\n  opacity: 0.75;\n}\n.teachers-page .name-meta {\n  display: flex;\n  flex-direction: column;\n}\n.teachers-page .name-meta .subtitle {\n  color: #64748b;\n  font-size: 12px;\n  margin-top: 6px;\n}\n.teachers-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 8px;\n  margin-left: 6px;\n  color: #475569;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}\n.teachers-page .action-icon:hover {\n  background: #f1f5f9;\n}\n.teachers-page .action-icon.text-danger {\n  color: #dc2626;\n}\n@media (max-width: 900px) {\n  .teachers-page .teacher-search {\n    max-width: 100%;\n  }\n  .teachers-page .landscape-table table {\n    min-width: 900px;\n  }\n}\n\n/* Students page styles (matches screenshot layout) */\n.students-page {\n  /* boxed header */\n  /* landscape helper: allow a very wide table and horizontal scroll */\n}\n.students-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 12px;\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #ffffff 0%, white 100%);\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n}\n.students-page .page-title {\n  margin: 4px 0 2px;\n  font-size: 20px;\n  color: #0f172a;\n  font-weight: 800;\n}\n.students-page .page-sub {\n  margin: 2px 0 0;\n  color: #64748b;\n}\n.students-page .students-metrics {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-bottom: 16px;\n}\n.students-page .students-metrics .metric.card {\n  padding: 14px;\n  min-width: 140px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.students-page .students-metrics .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.08);\n}\n.students-page .students-metrics .metric .label {\n  color: #64748b;\n  font-size: 13px;\n}\n.students-page .students-metrics .metric .value {\n  font-size: 20px;\n  font-weight: 700;\n}\n.students-page .controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  gap: 12px;\n  margin-bottom: 12px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, rgba(7, 10, 34, 0.02), rgba(124, 58, 237, 0.02));\n  border: 1px solid rgba(124, 58, 237, 0.04);\n}\n.students-page .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n.students-page .controls-right {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.students-page .global-search {\n  width: 480px;\n  max-width: 60%;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n.students-page .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.students-page .filter-chips {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-left: 6px;\n}\n.students-page .chip {\n  padding: 8px 10px;\n  background: #f1f5f9;\n  border: 1px solid #eef2f7;\n  border-radius: 999px;\n  cursor: pointer;\n  font-weight: 700;\n  color: #475569;\n}\n.students-page .chip.active {\n  background: #eef2ff;\n  border-color: #dbeafe;\n  color: #2563eb;\n}\n.students-page .chip.clear {\n  background: transparent;\n  border: 1px dashed #e6eef8;\n  color: #64748b;\n}\n.students-page .view-toggle button {\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  background: transparent;\n  cursor: pointer;\n  transition: background 140ms ease, transform 120ms ease;\n}\n.students-page .view-toggle button:hover {\n  transform: translateY(-2px);\n}\n.students-page .view-toggle button.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);\n}\n.students-page .filter-item {\n  color: #64748b;\n  margin-right: 6px;\n}\n.students-page .show-archived {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.students-page .table-wrapper {\n  overflow: auto;\n}\n.students-page .students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.students-page .landscape-table {\n  overflow: auto;\n}\n.students-page .landscape-table .students-table {\n  min-width: 1400px;\n}\n.students-page .students-table th, .students-page .students-table td {\n  padding: 14px 12px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.students-page .students-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.students-page .students-table tbody tr.archived-row {\n  opacity: 0.75;\n}\n.students-page .badge {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.students-page .badge.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.students-page .badge.locked {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page .badge.archived {\n  background: #f3f4f6;\n  color: #374151;\n}\n.students-page .badge.graduated {\n  background: #eef2ff;\n  color: #2563eb;\n}\n.students-page .badge.suspended {\n  background: #fff1f0;\n  color: #c2410c;\n}\n.students-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n  transition: transform 120ms ease, background 120ms ease;\n}\n.students-page .action-icon:hover {\n  transform: translateY(-2px);\n  background: rgba(37, 99, 235, 0.02);\n}\n.students-page .action-icon.text-danger {\n  color: #dc2626;\n}\n\n/* Utility & responsive rules */\n@media (max-width: 1000px) {\n  .metrics-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 72px;\n  }\n  .admin-dashboard-layout .sidebar {\n    width: 72px;\n    padding: 14px;\n  }\n}\n@media (max-width: 720px) {\n  .metrics-grid {\n    grid-template-columns: 1fr;\n  }\n  .content-grid {\n    grid-template-columns: 1fr;\n  }\n  .admin-dashboard-layout .sidebar {\n    position: relative;\n    width: 100%;\n    height: auto;\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 0;\n    padding: 18px;\n  }\n}\n/* Small form elements and tables used across pages */\n.small-muted {\n  color: #64748b;\n  font-size: 13px;\n}\n\n.pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  background: #f1f5f9;\n}\n\n/* Layout fixes to prevent sidebar overlap and ensure modals/form inputs are visible */\n.admin-dashboard-layout .sidebar {\n  z-index: 20;\n}\n\n.admin-dashboard-layout .admin-main {\n  min-width: 0;\n}\n\n/* Modal/backdrop styling (modal overlays sidebar) */\n.modal-overlay {\n  position: fixed;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.35);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 99999; /* ensure it sits above everything including sidebar */\n}\n\n.modal {\n  background: #ffffff;\n  border-radius: 12px;\n  padding: 18px;\n  width: 680px;\n  max-width: calc(100% - 40px);\n  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.4);\n  z-index: 100000;\n}\n\n/* modal entrance animation */\n.modal.modal-wide {\n  transform: translateY(-6px);\n  opacity: 0;\n  animation: modalIn 220ms ease forwards;\n}\n\n@keyframes modalIn {\n  to {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n.modal .modal-body input, .modal .modal-body select {\n  background: #f3f4f6;\n  border: 1px solid #e6eef8;\n  padding: 10px 12px;\n  border-radius: 10px;\n}\n\n.modal .modal-body input:focus, .modal .modal-body select:focus {\n  outline: none;\n  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.08);\n  border-color: rgba(37, 99, 235, 0.15);\n}\n\n.modal .modal-footer .primary {\n  background: linear-gradient(90deg, #0f172a, #111827);\n  color: #fff;\n  padding: 10px 16px;\n  border-radius: 10px;\n  border: none;\n}\n\n.modal .modal-footer .primary:disabled {\n  opacity: 0.7;\n}\n\n.modal .modal-footer button {\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid #eef2f7;\n}\n\n.modal-wide {\n  width: 920px;\n  max-width: calc(100% - 32px);\n}\n\n.modal .modal-body input,\n.modal .modal-body select,\n.modal .modal-body textarea,\n.user-form input,\n.user-form select,\n.role-fields input,\n.role-fields select,\n.role-fields textarea {\n  width: 100%;\n  box-sizing: border-box;\n  padding: 10px 12px;\n  margin-bottom: 10px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n/* Course form modal styles */\n.course-modal {\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border-radius: 12px;\n  padding: 0;\n  overflow: hidden;\n}\n\n.course-modal .modal-header {\n  padding: 18px;\n  border-bottom: 1px solid rgba(37, 99, 235, 0.04);\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n}\n\n.course-modal .modal-header h3 {\n  margin: 0;\n  font-size: 18px;\n}\n\n.course-modal .modal-header .modal-sub {\n  color: #64748b;\n  font-size: 13px;\n  margin-top: 6px;\n}\n\n.course-modal .modal-body {\n  padding: 16px;\n}\n\n.course-modal .form-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}\n\n.course-modal .form-group {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.course-modal label {\n  font-weight: 700;\n  color: #334155;\n}\n\n.course-modal input, .course-modal select {\n  padding: 10px 12px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n  background: #fff;\n  transition: box-shadow 180ms ease, transform 120ms ease;\n}\n\n.course-modal input:focus, .course-modal select:focus {\n  outline: none;\n  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);\n  transform: translateY(-2px);\n}\n\n.course-modal .modal-footer {\n  padding: 12px 18px;\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n  border-top: 1px solid rgba(15, 23, 42, 0.02);\n  background: transparent;\n}\n\n.course-modal .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  cursor: pointer;\n}\n\n.course-modal .btn-ghost {\n  background: transparent;\n  border: 1px solid #eef2f7;\n  padding: 8px 12px;\n  border-radius: 8px;\n  cursor: pointer;\n}\n\n@media (max-width: 900px) {\n  .course-modal .form-grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Status select styling */\n.course-modal .status-box {\n  display: flex;\n  flex-direction: column;\n}\n\n.course-modal .status-select {\n  padding: 10px 12px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  background: #fff;\n  font-weight: 700;\n  min-width: 160px;\n  transition: box-shadow 160ms ease, transform 140ms ease;\n}\n\n.course-modal .status-select.is-active {\n  background: linear-gradient(90deg, #ecfdf5, #f0fff4);\n  border-color: rgba(16, 185, 129, 0.12);\n  color: #064e3b;\n}\n\n.course-modal .status-select.is-inactive {\n  background: linear-gradient(90deg, #fff7ed, #fffaf0);\n  border-color: rgba(245, 158, 11, 0.12);\n  color: #7c2d12;\n}\n\n.course-modal .status-select:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);\n}\n\n.course-modal .status-select:focus {\n  box-shadow: 0 12px 36px rgba(37, 99, 235, 0.08);\n}\n\n/* Modal form helpers */\n.input-error {\n  color: #dc2626;\n  font-size: 12px;\n  margin-top: 6px;\n}\n\n.modal .modal-body .col input {\n  width: 100%;\n  box-sizing: border-box;\n}\n\n.modal .modal-body .col .small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n  cursor: pointer;\n}\n\n/* modal grid stacks on small screens */\n@media (max-width: 720px) {\n  .modal {\n    width: 94%;\n    padding: 14px;\n  }\n  .modal .modal-body .modal-grid,\n  .modal .modal-body .modal-grid.full {\n    grid-template-columns: 1fr;\n    gap: 0.75rem;\n  }\n}\n/* Prevent fixed sidebar covering content on medium screens */\n@media (max-width: 900px) {\n  .admin-dashboard-layout .sidebar {\n    position: relative;\n    width: 100%;\n    height: auto;\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 0;\n  }\n}\n/* Visible 'See' label next to view icon for accessibility/clarity */\n.view-button {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: transparent;\n  border: none;\n  color: #475569;\n}\n\n.view-button .action-label {\n  color: #6b7280;\n  font-weight: 700;\n  font-size: 13px;\n  display: inline-block;\n  line-height: 1;\n  vertical-align: middle;\n}\n\n.view-button:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n/* retain blue for charts */\n:root.adm-dark, .adm-dark {\n  --bg: #030317;\n  --panel: #071026;\n  --muted: #9aa4c0;\n  --text: #e6eef8;\n  --accent: #7c3aed;\n}\n\n.admin-dashboard-layout {\n  display: flex;\n  min-height: 100vh;\n  background: linear-gradient(180deg, #f6fbff, #f0f7ff);\n  color: #0f172a;\n  font-family: Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial;\n}\n.admin-dashboard-layout .sidebar {\n  width: 240px;\n  background: #0b1220;\n  color: #0f172a;\n  padding: 20px;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n  box-shadow: 0 4px 20px rgba(2, 6, 23, 0.06);\n}\n.admin-dashboard-layout .sidebar .logo {\n  font-size: 1.15rem;\n  font-weight: 700;\n  text-align: center;\n}\n.admin-dashboard-layout .sidebar .nav {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.admin-dashboard-layout .sidebar .nav-item {\n  padding: 10px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  color: #dbeafe;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.admin-dashboard-layout .sidebar .nav-item.active {\n  background: rgba(255, 255, 255, 0.06);\n}\n.admin-dashboard-layout .sidebar + .admin-main,\n.admin-dashboard-layout .admin-main {\n  margin-left: 240px;\n  padding: 28px 32px;\n  flex: 1;\n  min-width: 0;\n  transition: margin-left 0.18s ease;\n}\n.admin-dashboard-layout .sidebar.collapsed + .admin-main {\n  margin-left: 72px;\n}\n\n/* Boxed controls for teachers - aligned, colored and compact */\n.teachers-page .controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 14px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, rgba(124, 58, 237, 0.04), rgba(6, 182, 212, 0.02));\n  border: 1px solid rgba(124, 58, 237, 0.06);\n  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.03);\n  margin-bottom: 12px;\n}\n\n.teachers-page .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n\n.teachers-page .controls-right {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n\n.teachers-page .teacher-search {\n  width: 480px;\n  max-width: 60%;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid rgba(37, 99, 235, 0.08);\n  background: linear-gradient(180deg, #fff, #fbfdff);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n\n.teachers-page select {\n  padding: 8px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  background: #fff;\n  min-width: 160px;\n}\n\n.teachers-page .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.teachers-page .filter-item {\n  color: #6b7280;\n  font-weight: 700;\n}\n\n.teachers-page .archived-btn {\n  padding: 8px 12px;\n  border-radius: 10px;\n  border: 1px solid transparent;\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  color: #2563eb;\n  font-weight: 700;\n  cursor: pointer;\n}\n\n.teachers-page .archived-btn.on {\n  background: linear-gradient(90deg, #fdf2f8, #fff1f2);\n  color: #be185d;\n  border-color: rgba(190, 24, 93, 0.06);\n}\n\n.teachers-page .view-toggle button {\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  background: transparent;\n  cursor: pointer;\n  font-weight: 800;\n}\n\n.teachers-page .view-toggle button.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n}\n\n.teachers-page .view-toggle {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.teachers-page .header-actions .icon-box {\n  padding: 8px 12px;\n  border-radius: 10px;\n  color: #fff;\n}\n\n.teachers-page .header-actions .icon-box svg {\n  color: inherit;\n}\n\n/* Archived toggle card for students page */\n.archived-toggle-card {\n  cursor: pointer;\n  border-radius: 12px;\n  padding: 10px 12px;\n  display: flex;\n  align-items: center;\n  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.03);\n  background: linear-gradient(90deg, #fff, #fbfdff);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  transition: transform 0.15s ease, box-shadow 0.15s ease;\n}\n\n.archived-toggle-card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n\n.archived-toggle-card.on {\n  background: linear-gradient(90deg, #fff1f2, #fff6f8);\n  border-color: rgba(190, 24, 93, 0.06);\n}\n\n.archived-toggle-card .archived-inner {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n\n.archived-toggle-card .archived-label {\n  font-weight: 800;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.archived-toggle-card .archived-count {\n  font-weight: 900;\n  font-size: 18px;\n  color: #be185d;\n}\n\n/* ensure table area sits below boxed controls if present */\n.teachers-page .table-wrapper {\n  margin-top: 8px;\n}\n\n/* Dark mode overrides - toggled by adding `adm-dark` class to <html> (documentElement) */\n:root.adm-dark, .adm-dark {\n  --bg: #071029;\n  --panel: #0b1220;\n  --muted: #94a3b8;\n  --text: #e6eef8;\n  --accent: #60a5fa;\n}\n\n.adm-dark .admin-dashboard-layout {\n  background: var(--bg);\n  color: var(--text);\n}\n\n.adm-dark .sidebar {\n  background: #041424;\n  color: var(--text);\n}\n\n.adm-dark .admin-main {\n  background: transparent;\n}\n\n.adm-dark .card {\n  background: var(--panel);\n  color: var(--text);\n  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);\n}\n\n.adm-dark .metric .label {\n  color: var(--muted);\n}\n\n.adm-dark .metric .value {\n  color: var(--text);\n}\n\n.adm-dark .recent-list li, .adm-dark .health-list li {\n  border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n}\n\n.adm-dark .badge {\n  background: rgba(255, 255, 255, 0.03);\n  color: var(--text);\n}\n\n.adm-dark .metric .icon {\n  background: rgba(255, 255, 255, 0.02);\n}\n\n.dark-toggle {\n  background: transparent;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  padding: 6px 8px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n\n.adm-dark .dark-toggle {\n  border-color: rgba(255, 255, 255, 0.06);\n}\n\n/* Header / breadcrumb */\n.adm-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 18px;\n  /* subtle header accent */\n}\n.adm-header .title-area {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.adm-header h1 {\n  margin: 0;\n  font-size: 20px;\n}\n.adm-header .breadcrumb {\n  color: #6b7280;\n  font-size: 0.95rem;\n}\n.adm-header .header-right {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.adm-header .title-area h1 {\n  color: #2563eb;\n  letter-spacing: -0.2px;\n}\n.adm-header .subtitle {\n  color: #6b7280;\n  margin-top: 4px;\n}\n\n/* Header controls (small pills) */\n.adm-header .last-updated {\n  background: transparent;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  padding: 6px 10px;\n  border-radius: 8px;\n  color: #6b7280;\n  font-size: 0.9rem;\n}\n\n.adm-header .view-analytics {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  padding: 6px 10px;\n  border-radius: 8px;\n  color: #2563eb;\n  font-weight: 700;\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n\n/* Boxed header small action styles (compact variants used in headers and cards) */\n.adm-header .header-action-box {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.adm-header .header-action-box .icon-box.small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  color: #0f172a;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.03);\n  cursor: pointer;\n  transition: transform 140ms ease, box-shadow 140ms ease;\n}\n\n.adm-header .header-action-box .icon-box.small:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);\n}\n\n.adm-header .header-action-box .icon-box.small.primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 8px 10px;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);\n}\n\n.adm-header .header-action-box .icon-box.small.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n}\n\n/* Compact archived toggle variant for denser card layouts */\n.archived-toggle-card.compact {\n  padding: 8px 10px;\n  border-radius: 10px;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n\n.archived-toggle-card.compact .archived-inner {\n  flex-direction: row;\n  align-items: center;\n  gap: 8px;\n}\n\n.archived-toggle-card.compact .archived-label {\n  font-weight: 800;\n  font-size: 12px;\n  color: #6b7280;\n}\n\n.archived-toggle-card.compact .archived-count {\n  font-weight: 900;\n  font-size: 16px;\n  color: #be185d;\n}\n\n/* Small action icons to match boxed look in tables and cards */\n.action-icon.small {\n  padding: 6px;\n  border-radius: 6px;\n  width: 36px;\n  height: 36px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.action-icon.small svg {\n  width: 16px;\n  height: 16px;\n}\n\n/* Table niceties for users/students */\n.students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\n/* Students table presentation improvements for readability */\n.students-list-modern tbody tr td {\n  vertical-align: middle;\n}\n\n.students-list-modern td {\n  padding: 12px 14px;\n}\n\n.students-list-modern td .avatar-circle {\n  width: 44px;\n  height: 44px;\n  border-radius: 22px;\n  font-size: 14px;\n}\n\n.students-list-modern td div[style] > div {\n  color: #0b1220; /* ensure primary text is darker */\n}\n\n.students-list-modern td div[style] > div:first-child {\n  font-weight: 800;\n  color: #0b1220;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 380px;\n}\n\n.students-list-modern .small-muted {\n  color: #475569;\n  font-size: 12px;\n}\n\n.students-list-modern .grade-chip {\n  background: #f8fafc;\n  color: #0b1220;\n}\n\n.students-list-modern .progress-bar .progress-fill {\n  background: #16a34a;\n}\n\n.students-list-modern .progress-bar.performance .progress-fill {\n  background: #0ea5e9;\n}\n\n.students-list-modern .status-pill {\n  background: #f1f5f9;\n  color: #0b1220;\n}\n\n.hero-banner {\n  border-radius: 12px;\n  padding: 28px 24px;\n  margin-bottom: 20px;\n  background: linear-gradient(90deg, #f8fbff 0%, #eef6ff 100%);\n  color: #0f172a;\n  border: 1px solid rgba(15, 23, 42, 0.03);\n}\n\n.hero-inner {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.hero-left h1 {\n  margin: 0;\n  font-size: 28px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n.hero-left p {\n  margin: 6px 0 12px;\n  opacity: 0.9;\n  color: #64748b;\n}\n\n.hero-cards {\n  display: flex;\n  gap: 12px;\n}\n\n.hero-card {\n  background: rgba(255, 255, 255, 0.08);\n  padding: 10px 14px;\n  border-radius: 8px;\n}\n\n.hero-card .card-title {\n  font-size: 12px;\n  opacity: 0.9;\n}\n\n.hero-card .card-sub {\n  font-weight: 700;\n}\n\n.hero-right .search-add {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n\n.hero-right .student-search {\n  padding: 10px 14px;\n  border-radius: 12px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  background: #fff;\n  min-width: 420px;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);\n}\n\n.student-search {\n  padding: 10px 12px;\n  border-radius: 8px;\n  border: none;\n  min-width: 360px;\n}\n\n.students-metrics {\n  display: flex;\n  gap: 12px;\n  margin-bottom: 18px;\n}\n\n.metric.card {\n  padding: 12px 14px;\n  border-radius: 10px;\n}\n\n.metric {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 14px;\n  transition: transform 0.12s ease, box-shadow 0.12s ease;\n}\n\n.metric .metric-icon {\n  width: 44px;\n  height: 44px;\n  border-radius: 10px;\n  flex: 0 0 44px;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);\n}\n\n.metric .metric-icon svg {\n  width: 22px;\n  height: 22px;\n  display: block;\n  margin: auto;\n  color: #fff;\n}\n\n.metric .label {\n  font-size: 13px;\n  color: #475569;\n  font-weight: 700;\n}\n\n.metric .value {\n  font-weight: 900;\n  font-size: 20px;\n  color: #0f172a;\n}\n\n.metric:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);\n}\n\n.color-blue {\n  background: linear-gradient(135deg, #60a5fa, #3b82f6);\n}\n\n.color-green {\n  background: linear-gradient(135deg, #34d399, #10b981);\n}\n\n.color-purple {\n  background: linear-gradient(135deg, #a78bfa, #8b5cf6);\n}\n\n.color-orange {\n  background: linear-gradient(135deg, #fb923c, #f97316);\n}\n\n.color-red {\n  background: linear-gradient(135deg, #fda4af, #ef4444);\n}\n\n.color-violet {\n  background: linear-gradient(135deg, #c084fc, #7c3aed);\n}\n\n.color-gray {\n  background: linear-gradient(135deg, #e9eef8, #f1f5f9);\n}\n\n.color-cyan {\n  background: linear-gradient(135deg, #67e8f9, #06b6d4);\n}\n\n/* Full-card colored variants so the whole metric card is colorful */\n.metric.metric-blue {\n  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);\n  color: #fff;\n}\n\n.metric.metric-blue .label, .metric.metric-blue .value {\n  color: #fff;\n}\n\n.metric.metric-blue .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-green {\n  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);\n  color: #052e1f;\n}\n\n.metric.metric-green .label, .metric.metric-green .value {\n  color: #052e1f;\n}\n\n.metric.metric-green .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-purple {\n  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);\n  color: #fff;\n}\n\n.metric.metric-purple .label, .metric.metric-purple .value {\n  color: #fff;\n}\n\n.metric.metric-purple .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-orange {\n  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);\n  color: #fff;\n}\n\n.metric.metric-orange .label, .metric.metric-orange .value {\n  color: #fff;\n}\n\n.metric.metric-orange .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-red {\n  background: linear-gradient(135deg, #fda4af 0%, #ef4444 100%);\n  color: #fff;\n}\n\n.metric.metric-red .label, .metric.metric-red .value {\n  color: #fff;\n}\n\n.metric.metric-red .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-violet {\n  background: linear-gradient(135deg, #c084fc 0%, #7c3aed 100%);\n  color: #fff;\n}\n\n.metric.metric-violet .label, .metric.metric-violet .value {\n  color: #fff;\n}\n\n.metric.metric-violet .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-cyan {\n  background: linear-gradient(135deg, #67e8f9 0%, #06b6d4 100%);\n  color: #042022;\n}\n\n.metric.metric-cyan .label, .metric.metric-cyan .value {\n  color: #042022;\n}\n\n.metric.metric-cyan .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-gray {\n  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);\n  color: #0f172a;\n}\n\n.metric.metric-gray .label, .metric.metric-gray .value {\n  color: #0f172a;\n}\n\n.metric.metric-gray .metric-icon {\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);\n}\n\n/* ensure svg icons in gray card are dark for visibility */\n.metric.metric-gray .metric-icon svg {\n  color: #0f172a;\n}\n\n/* Students-specific visual emphasis: bold, uppercase labels and high-contrast values */\n.students-metrics .metric {\n  padding: 18px;\n  border-radius: 14px;\n}\n\n.students-metrics .metric .label {\n  font-weight: 800;\n  font-size: 13px;\n  text-transform: uppercase;\n  letter-spacing: 0.6px;\n  opacity: 0.95;\n}\n\n.students-metrics .metric .value {\n  font-weight: 900;\n  font-size: 22px;\n}\n\n.students-metrics .metric.metric-gray .label, .students-metrics .metric.metric-gray .value {\n  color: #0f172a;\n  text-transform: none;\n  letter-spacing: 0;\n}\n\n/* Ensure values are bright on colored backgrounds */\n.students-metrics .metric.metric-blue .label, .students-metrics .metric.metric-blue .value,\n.students-metrics .metric.metric-green .label, .students-metrics .metric.metric-green .value,\n.students-metrics .metric.metric-purple .label, .students-metrics .metric.metric-purple .value,\n.students-metrics .metric.metric-orange .label, .students-metrics .metric.metric-orange .value,\n.students-metrics .metric.metric-red .label, .students-metrics .metric.metric-red .value,\n.students-metrics .metric.metric-violet .label, .students-metrics .metric.metric-violet .value,\n.students-metrics .metric.metric-cyan .label, .students-metrics .metric.metric-cyan .value {\n  color: #fff;\n  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);\n}\n\n.controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  margin-bottom: 12px;\n}\n\n.controls-left .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.controls-right {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.archived-toggle-card {\n  cursor: pointer;\n  padding: 8px 12px;\n  border-radius: 10px;\n  background: #f3f4f6;\n}\n\n.archived-toggle-card.on {\n  background: #eef2ff;\n}\n\n.students-table th, .students-table td {\n  padding: 14px 12px;\n  border-bottom: 1px solid #eef2f6;\n  text-align: left;\n}\n\n.students-table thead th {\n  background: transparent;\n  color: #334155;\n  font-weight: 700;\n  font-size: 13px;\n}\n\n.avatar-circle {\n  width: 40px;\n  height: 40px;\n  border-radius: 20px;\n  background: linear-gradient(135deg, #a78bfa, #60a5fa);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  font-weight: 800;\n}\n\n.grade-chip {\n  background: #f1f5f9;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n.small-muted {\n  color: #94a3b8;\n  font-size: 12px;\n}\n\n.progress-wrap {\n  width: 100%;\n}\n\n.progress-bar {\n  height: 10px;\n  background: #eef2f6;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.progress-bar .progress-fill {\n  height: 100%;\n  background: #34d399;\n  width: 0;\n}\n\n.progress-bar.performance .progress-fill {\n  background: #60a5fa;\n}\n\n.status-pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n  display: inline-block;\n}\n\n.status-pill.active {\n  background: #dcfce7;\n  color: #166534;\n}\n\n.status-pill.locked {\n  background: #fee2e2;\n  color: #991b1b;\n}\n\n.action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  color: #475569;\n  margin-left: 6px;\n}\n\n.action-icon.text-danger {\n  color: #ef4444;\n}\n\n.archived-row {\n  opacity: 0.6;\n  background: #fff7ed;\n}\n\n.archived-badge {\n  background: #f3f4f6;\n  color: #334155;\n  padding: 6px 8px;\n  border-radius: 6px;\n  font-weight: 700;\n}\n\n.new-highlight {\n  animation: highlight 1.2s ease;\n}\n\n@keyframes highlight {\n  from {\n    background: #ecfeff;\n  }\n  to {\n    background: transparent;\n  }\n}\n.students-table tbody tr {\n  transition: background 120ms ease, transform 120ms ease;\n}\n\n.students-table tbody tr:hover {\n  background: rgba(37, 99, 235, 0.03);\n  transform: translateY(-2px);\n}\n\n.students-table td, .students-table th {\n  padding: 10px 12px;\n  vertical-align: middle;\n  border-bottom: 1px solid rgba(15, 23, 42, 0.04);\n}\n\n.students-table .action-icon {\n  margin-right: 6px;\n}\n\n.archived-row {\n  opacity: 0.86;\n  background: linear-gradient(90deg, rgba(245, 245, 245, 0.6), rgba(255, 250, 250, 0.6));\n}\n\n.archived-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 800;\n  font-size: 12px;\n  background: linear-gradient(90deg, #fff1f2, #fff6f8);\n  color: #be185d;\n  border: 1px solid rgba(190, 24, 93, 0.06);\n}\n\n.new-highlight {\n  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.08);\n  border-left: 4px solid rgba(124, 58, 237, 0.6);\n}\n\n/* Metrics grid */\n.metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 20px;\n}\n.metrics-grid .metric-card {\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  border-radius: 12px;\n  padding: 14px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 40px rgba(11, 18, 40, 0.6);\n  cursor: pointer;\n  transition: transform 0.15s ease, box-shadow 0.15s ease;\n}\n.metrics-grid .metric-card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n.metrics-grid .metric-card .icon-box {\n  width: 56px;\n  height: 56px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 22px;\n  color: #fff;\n}\n.metrics-grid .metric-card .metric-info h3 {\n  margin: 0;\n  font-size: 20px;\n  font-weight: 800;\n}\n.metrics-grid .metric-card .metric-info p {\n  margin: 0;\n  color: #6b7280;\n  font-size: 13px;\n}\n.metrics-grid .metric-card.blue .icon-box {\n  background: #3b82f6;\n}\n.metrics-grid .metric-card.green .icon-box {\n  background: #34d399;\n}\n.metrics-grid .metric-card.purple .icon-box {\n  background: #7c3aed;\n}\n.metrics-grid .metric-card.cyan .icon-box {\n  background: #06b6d4;\n}\n.metrics-grid .metric-change {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 4px 8px;\n  border-radius: 999px;\n  font-size: 12px;\n  font-weight: 600;\n}\n.metrics-grid .metric-change.up {\n  background: rgba(34, 197, 94, 0.1);\n  color: #16a34a;\n}\n.metrics-grid .metric-change.down {\n  background: rgba(239, 68, 68, 0.08);\n  color: #dc2626;\n}\n.metrics-grid .left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.metrics-grid .icon {\n  width: 48px;\n  height: 48px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #eef2ff;\n}\n.metrics-grid .meta {\n  display: flex;\n  flex-direction: column;\n}\n.metrics-grid .meta .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.metrics-grid .meta .value {\n  font-size: 26px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n/* Documents page styles */\n.documents-page {\n  /* Documents header button styles: boxed, colored CTAs */\n  /* document card action buttons */\n}\n.documents-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 16px;\n}\n.documents-page .page-header .header-actions .header-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  align-items: flex-end;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import,\n.documents-page .page-header .header-actions .header-buttons .primary {\n  min-width: 180px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.documents-page .documents-top {\n  margin-top: 12px;\n  margin-bottom: 18px;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.08);\n  border-radius: 10px;\n  padding: 8px 12px;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  border: none;\n}\n.documents-page .page-header .header-actions .header-buttons .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import:hover, .documents-page .page-header .header-actions .header-buttons .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.12);\n}\n.documents-page .page-header .header-actions .header-buttons .primary.pulse {\n  animation: softPulse 2000ms ease-in-out infinite;\n}\n.documents-page .docs-metrics {\n  display: flex;\n  gap: 14px;\n  flex-wrap: wrap;\n}\n.documents-page .doc-metric.card {\n  min-width: 160px;\n  padding: 12px 14px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 36px rgba(2, 6, 23, 0.06);\n  cursor: default;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  border: 1px solid rgba(255, 255, 255, 0.02);\n}\n.documents-page .doc-metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.1);\n}\n.documents-page .doc-metric-left {\n  width: 56px;\n  height: 56px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 22px;\n  color: #fff;\n  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n}\n.documents-page .doc-metric-right {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.documents-page .metric-icon {\n  font-size: 20px;\n}\n.documents-page .doc-metric .label {\n  color: #6b7280;\n  font-weight: 800;\n  font-size: 13px;\n}\n.documents-page .doc-metric .value {\n  font-size: 20px;\n  font-weight: 900;\n}\n.documents-page .doc-metric.blue .doc-metric-left {\n  background: linear-gradient(135deg, #eef2ff, #bfdbfe);\n  color: #0b3b82;\n}\n.documents-page .doc-metric.green .doc-metric-left {\n  background: linear-gradient(135deg, #ecfdf5, #bbf7d0);\n  color: #065f46;\n}\n.documents-page .doc-metric.purple .doc-metric-left {\n  background: linear-gradient(135deg, #fbf0ff, #e9d5ff);\n  color: #6d028f;\n}\n.documents-page .doc-metric.orange .doc-metric-left {\n  background: linear-gradient(135deg, #fff7ed, #ffedd5);\n  color: #92400e;\n}\n.documents-page .doc-metric.cyan .doc-metric-left {\n  background: linear-gradient(135deg, #ecfeff, #cffafe);\n  color: #065f46;\n}\n.documents-page .doc-metric.yellow .doc-metric-left {\n  background: linear-gradient(135deg, #fff9db, #fff1a8);\n  color: #92400e;\n}\n.documents-page .doc-metric.teal .doc-metric-left {\n  background: linear-gradient(135deg, #ecfeff, #d1fae5);\n  color: #064e3b;\n}\n.documents-page .doc-metric .label {\n  color: #6b7280;\n  font-weight: 700;\n}\n.documents-page .doc-metric .value {\n  font-size: 22px;\n  font-weight: 800;\n}\n.documents-page .doc-metric.blue {\n  background: linear-gradient(135deg, #eef2ff, #f0f9ff);\n}\n.documents-page .doc-metric.green {\n  background: linear-gradient(135deg, #ecfdf5, #f0fdf4);\n}\n.documents-page .doc-metric.purple {\n  background: linear-gradient(135deg, #fbf0ff, #fff8ff);\n}\n.documents-page .doc-metric.orange {\n  background: linear-gradient(135deg, #fff7ed, #fffbf0);\n}\n.documents-page .doc-metric.cyan {\n  background: linear-gradient(135deg, #f0f9ff, #f7feff);\n}\n.documents-page .doc-metric.yellow {\n  background: linear-gradient(135deg, #fffbeb, #fffdf8);\n}\n.documents-page .doc-metric.teal {\n  background: linear-gradient(135deg, #ecfeff, #f2fdfd);\n}\n.documents-page .documents-controls {\n  margin-top: 12px;\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.documents-page .doc-search {\n  flex: 1;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n}\n.documents-page .documents-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.documents-page .quick-chips {\n  display: flex;\n  gap: 8px;\n}\n.documents-page .chip {\n  padding: 8px 10px;\n  border-radius: 999px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  background: #fff;\n  cursor: pointer;\n  font-weight: 700;\n}\n.documents-page .chip.on {\n  background: linear-gradient(90deg, #fff7ed, #fff1f0);\n  border-color: rgba(249, 115, 22, 0.06);\n}\n.documents-page .docs-view .view-toggle {\n  display: flex;\n  gap: 6px;\n}\n.documents-page .documents-grid {\n  margin-top: 18px;\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 18px;\n}\n.documents-page .documents-list {\n  margin-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.documents-page .doc-actions {\n  display: flex;\n  gap: 8px;\n  padding: 10px 14px 14px;\n  border-top: 1px solid rgba(15, 23, 42, 0.03);\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);\n}\n.documents-page .doc-actions .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 8px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  transition: transform 120ms ease, background 120ms ease;\n}\n.documents-page .doc-actions .action-icon:hover {\n  transform: translateY(-4px);\n  background: rgba(255, 255, 255, 0.04);\n}\n.documents-page .doc-actions .action-icon svg {\n  width: 18px;\n  height: 18px;\n}\n.documents-page .placeholder-row {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 18px;\n  align-items: start;\n}\n.documents-page .placeholder-card {\n  border-radius: 12px;\n  padding: 18px 18px 22px;\n  color: #fff;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n  align-self: start;\n  min-height: 140px;\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n  cursor: pointer;\n  transition: transform 0.18s ease, box-shadow 0.18s ease;\n}\n.documents-page .placeholder-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.08);\n}\n.documents-page .placeholder-card:focus {\n  outline: 3px solid rgba(124, 58, 237, 0.12);\n}\n.documents-page .placeholder-card {\n  background-size: 200% 200%;\n  animation: gradientShift 6s ease infinite;\n}\n@keyframes gradientShift {\n  0% {\n    background-position: 0% 50%;\n  }\n  50% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n}\n.documents-page .placeholder-inner {\n  text-align: left;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\n.documents-page .placeholder-icon {\n  font-size: 36px;\n  line-height: 1;\n  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);\n}\n.documents-page .placeholder-title {\n  margin-top: 0;\n  font-weight: 800;\n  font-size: 16px;\n}\n.documents-page .doc-badges .badge.small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: rgba(255, 255, 255, 0.08);\n  font-weight: 700;\n}\n.documents-page .primary {\n  background: linear-gradient(90deg, #6d28d9, #7c3aed);\n  color: #fff;\n  border: none;\n  padding: 10px 14px;\n  border-radius: 10px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.documents-page .hero-right .primary, .documents-page .students-panel .primary {\n  background: linear-gradient(90deg, #2563eb, #06b6d4);\n  box-shadow: 0 12px 36px rgba(37, 99, 235, 0.12);\n}\n.documents-page .primary.pulse {\n  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.12);\n  animation: pulse 2.4s infinite;\n}\n@keyframes pulse {\n  0% {\n    transform: translateY(0);\n  }\n  50% {\n    transform: translateY(-3px);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n.documents-page .documents-grid {\n  margin-top: 18px;\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 18px;\n}\n.documents-page .doc-card {\n  border-radius: 12px;\n  overflow: hidden;\n  background: linear-gradient(180deg, #fff, #fbfdff);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.documents-page .doc-card .doc-top {\n  height: 72px;\n  background: linear-gradient(135deg, #ff7aa2, #ff5b8f);\n}\n.documents-page .doc-card .doc-body {\n  padding: 12px 14px;\n}\n.documents-page .doc-card h4 {\n  margin: 0 0 6px 0;\n}\n.documents-page .doc-card .small-muted {\n  color: #6b7280;\n  font-size: 13px;\n}\n.documents-page .doc-card {\n  cursor: pointer;\n  transition: transform 0.18s ease, box-shadow 0.18s ease;\n}\n.documents-page .doc-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.08);\n}\n\n/* Lower content: Recent Activities and System Health */\n.content-grid {\n  display: grid;\n  grid-template-columns: 2fr 1fr;\n  gap: 18px;\n}\n.content-grid .card {\n  background: #0b1220;\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n.content-grid .recent .card-title {\n  font-weight: 700;\n  margin-bottom: 12px;\n}\n.content-grid .recent .recent-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.content-grid .recent .recent-item {\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #f3f6fb;\n  background: #fbfdff;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 8px;\n}\n.content-grid .recent .recent-item:hover {\n  background: #f1f8ff;\n  transform: translateY(-2px);\n  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.03);\n}\n.content-grid .recent .recent-item .info {\n  max-width: 78%;\n}\n.content-grid .recent .recent-item .time {\n  color: #94a3b8;\n  font-size: 12px;\n}\n.content-grid .recent .recent-item .icon {\n  width: 36px;\n  height: 36px;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #eef2ff;\n  color: #2563eb;\n  font-weight: 700;\n}\n.content-grid .recent .recent-item .act-sub {\n  color: #6b7280;\n  font-size: 0.92rem;\n  margin-top: 6px;\n}\n.content-grid .health .card-title {\n  font-weight: 700;\n  margin-bottom: 12px;\n}\n.content-grid .health .health-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.content-grid .health .health-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 0;\n  border-bottom: 1px solid #f1f5f9;\n}\n.content-grid .health .status {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.content-grid .health .status.good {\n  background: #ecfdf5;\n  color: #059669;\n}\n.content-grid .health .status.warn {\n  background: #fff7ed;\n  color: #b45309;\n}\n.content-grid .health .status.bad {\n  background: #fee2e2;\n  color: #991b1b;\n}\n.content-grid .health .badge.small {\n  padding: 6px 10px;\n  border-radius: 8px;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n/* Bottom charts row (Enrollment Growth & Weekly Attendance) */\n.charts-row {\n  display: grid;\n  grid-template-columns: 1fr 460px;\n  gap: 18px;\n  margin-top: 18px;\n  /* Enrollment area (left) — smooth gradient fill and soft axis/label colors */\n  /* Attendance bar (right) — compact legend + bar colors */\n  /* list-style summary under attendance chart */\n}\n@media (max-width: 1100px) {\n  .charts-row {\n    grid-template-columns: 1fr;\n  }\n}\n.charts-row .chart-card {\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  transition: transform 200ms ease, box-shadow 200ms ease;\n}\n.charts-row .chart-card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);\n}\n.charts-row .enrollment-area {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.charts-row .enrollment-area .card-head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.charts-row .enrollment-area .card-head h4 {\n  margin: 0;\n  font-weight: 800;\n  color: #0f172a;\n}\n.charts-row .enrollment-area .card-head .subtitle {\n  color: #6b7280;\n  font-size: 13px;\n}\n.charts-row .enrollment-chart-wrap {\n  height: 260px;\n  border-radius: 10px;\n  overflow: hidden;\n  background: linear-gradient(180deg, rgba(99, 102, 241, 0.04), rgba(37, 99, 235, 0.02));\n  padding: 8px;\n}\n.charts-row .attendance-compact {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.charts-row .attendance-compact .card-head {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 8px;\n}\n.charts-row .attendance-compact h4 {\n  margin: 0;\n  font-weight: 800;\n  color: #0f172a;\n}\n.charts-row .attendance-compact .legend {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  margin-top: 6px;\n}\n.charts-row .legend-item {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n  font-size: 13px;\n  color: #6b7280;\n}\n.charts-row .legend-swatch {\n  width: 12px;\n  height: 12px;\n  border-radius: 3px;\n  display: inline-block;\n}\n.charts-row .legend-swatch.present {\n  background: linear-gradient(90deg, #10b981, #06b6d4);\n}\n.charts-row .legend-swatch.absent {\n  background: linear-gradient(90deg, #ef4444, #fb7185);\n}\n.charts-row .attendance-chart-wrap {\n  height: 240px;\n  border-radius: 8px;\n  overflow: hidden;\n  padding: 8px;\n  background: linear-gradient(180deg, #fff, #fbfdff);\n}\n.charts-row .attendance-stats {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  margin-top: 8px;\n}\n.charts-row .attendance-stats .stat {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 8px 10px;\n  border-radius: 8px;\n  background: #fff;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.04);\n}\n\n/* Bottom grid for overview, activity and right column */\n.bottom-grid {\n  display: grid;\n  grid-template-columns: 1fr 420px;\n  gap: 20px;\n  margin-top: 20px;\n}\n\n.bottom-grid .department-overview {\n  background: #0b1220;\n  padding: 18px;\n  border-radius: 12px;\n}\n\n.bottom-grid .recent-activity {\n  background: #0b1220;\n  padding: 18px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n}\n\n.bottom-grid .right-column {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.right-column .performance-trends {\n  background: #0b1220;\n  padding: 14px;\n  border-radius: 12px;\n}\n\n.activity-list {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.activity-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 10px;\n  border-radius: 10px;\n  background: rgba(255, 255, 255, 0.02);\n}\n\n.activity-left {\n  width: 44px;\n  height: 44px;\n  border-radius: 8px;\n  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), #3b82f6);\n}\n\n.activity-title {\n  font-weight: 700;\n}\n\n.activity-desc {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.activity-time {\n  margin-left: auto;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.trends-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.trend-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.trend-name {\n  width: 80px;\n  color: #6b7280;\n}\n\n.trend-spark {\n  display: flex;\n  align-items: flex-end;\n  gap: 4px;\n  height: 36px;\n  flex: 1;\n}\n\n.spark-bar {\n  width: 8px;\n  background: linear-gradient(180deg, #34d399, #3b82f6);\n  border-radius: 4px;\n}\n\n.mini-cal {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.mini-cal.compact {\n  margin-top: 8px;\n}\n\n.mini-cal.compact .cal-weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 4px;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.mini-cal.compact .cal-grid {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 6px;\n}\n\n.mini-cal.compact .cal-cell {\n  padding: 6px;\n  border-radius: 8px;\n  text-align: center;\n  background: rgba(255, 255, 255, 0.02);\n  font-size: 12px;\n}\n\n.mini-cal.compact .cal-cell.today {\n  background: linear-gradient(90deg, rgba(59, 130, 246, 0.08), #3b82f6);\n  color: #fff;\n}\n\n/* Morning vs regular calendar themes */\n.mini-cal.morning {\n  background: linear-gradient(90deg, #fff9f0, #fffefc);\n  padding: 10px;\n  border-radius: 10px;\n}\n\n.mini-cal.morning .cal-header .cal-greeting {\n  color: #b45309;\n  font-size: 12px;\n}\n\n.mini-cal.morning .cal-cell.today {\n  box-shadow: 0 6px 20px rgba(244, 114, 23, 0.12);\n}\n\n.mini-cal.regular {\n  background: linear-gradient(90deg, #f7fbff, #fbfdff);\n  padding: 10px;\n  border-radius: 10px;\n}\n\n.mini-cal.regular .cal-header .cal-greeting {\n  color: #2563eb;\n  font-size: 12px;\n}\n\n.mini-cal.regular .cal-cell.today {\n  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);\n}\n\n.cal-header {\n  margin-bottom: 8px;\n}\n\n.cal-title {\n  display: flex;\n  flex-direction: column;\n}\n\n.cal-title strong {\n  font-size: 14px;\n}\n\n.cal-today {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.cal-weekdays .cal-day-name {\n  text-align: center;\n  font-weight: 700;\n  color: #6b7280;\n}\n\n.cal-cell.empty {\n  background: transparent;\n}\n\n/* Students table boxed header */\n.students-card {\n  border-radius: 12px;\n  overflow: hidden;\n  box-shadow: 0 6px 30px rgba(4, 8, 23, 0.12);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n}\n\n.students-card-header {\n  padding: 12px 16px;\n  background: linear-gradient(90deg, #0b1220 0%, #060911 100%);\n  color: #0f172a;\n  border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n  display: flex;\n  align-items: center;\n}\n\n.students-card-header .header-title {\n  font-size: 14px;\n  color: #dbeafe;\n  margin-right: 12px;\n}\n\n.students-card-header .columns-line {\n  font-size: 13px;\n  color: #bcd6ff;\n  opacity: 0.95;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.students-card-header .header-actions-inline {\n  margin-left: auto;\n}\n\n.students-card .students-table thead th {\n  background: transparent;\n  color: #cfe6ff;\n  font-weight: 700;\n}\n\n.students-card .students-table tbody td {\n  color: #e9f2ff;\n}\n\n.students-card .students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\n.students-card .card {\n  background: transparent;\n}\n\n/* small responsive tweak */\n@media (max-width: 900px) {\n  .students-card-header .columns-line {\n    font-size: 12px;\n  }\n}\n/* header inline action boxes */\n.students-card-header .header-actions-inline {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-card-header .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 10px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));\n  border: 1px solid rgba(255, 255, 255, 0.03);\n  color: #dbeafe;\n  cursor: pointer;\n}\n\n.students-card-header .icon-box svg {\n  width: 16px;\n  height: 16px;\n}\n\n.students-card-header .icon-box.add {\n  background: linear-gradient(90deg, #06b6d4, #7c3aed);\n  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.12);\n}\n\n.students-card-header .icon-box.import {\n  background: linear-gradient(90deg, #10b981, #06b6d4);\n  box-shadow: 0 6px 18px rgba(6, 182, 212, 0.08);\n}\n\n.students-card-header .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.08);\n}\n\n/* highlight newly added/imported row */\n.students-table tbody tr.new-highlight {\n  animation: highlightFade 6s ease forwards;\n}\n\n@keyframes highlightFade {\n  0% {\n    background: linear-gradient(90deg, rgba(99, 102, 241, 0.18), rgba(59, 130, 246, 0.12));\n  }\n  60% {\n    background: rgba(255, 255, 255, 0.02);\n  }\n  100% {\n    background: transparent;\n  }\n}\n@media (max-width: 1000px) {\n  .bottom-grid {\n    grid-template-columns: 1fr;\n  }\n  .right-column {\n    flex-direction: row;\n  }\n}\n/* System health boxed panel styles */\n.system-health {\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0c1424 100%);\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n\n.system-health h2 {\n  margin: 0 0 12px 0;\n}\n\n.health-rows {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.health-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.health-label {\n  width: 36%;\n  color: #6b7280;\n  font-weight: 600;\n}\n\n.health-bar-wrap {\n  flex: 1;\n  background: #f1f5f9;\n  height: 12px;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.health-bar {\n  height: 100%;\n  border-radius: 999px;\n  background: linear-gradient(90deg, #10b981, #60a5fa);\n  transition: width 300ms ease;\n}\n\n.health-row[data-status=warn] .health-bar {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n}\n\n.health-row[data-status=bad] .health-bar {\n  background: linear-gradient(90deg, #ef4444, #a11d1d);\n}\n\n.health-value {\n  width: 80px;\n  text-align: right;\n  font-weight: 700;\n}\n\n/* Bar graph card styles */\n.bar-graph {\n  padding: 16px;\n  border-radius: 12px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n\n.system-bargraph {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.system-bargraph .bar-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.bar-label {\n  width: 120px;\n  color: #6b7280;\n  font-weight: 600;\n}\n\n.bar-wrap {\n  flex: 1;\n  background: #f1f5f9;\n  height: 12px;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.bar-fill {\n  height: 100%;\n  background: linear-gradient(90deg, #10b981, #60a5fa);\n  border-radius: 999px;\n  transition: width 300ms ease;\n}\n\n.bar-val {\n  width: 56px;\n  text-align: right;\n  font-weight: 700;\n}\n\n@media (max-width: 900px) {\n  .health-label {\n    width: 40%;\n  }\n  .health-value {\n    width: 70px;\n  }\n}\n/* Dashboard specific large metrics and quick actions */\n.dashboard-metrics {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 14px;\n  margin-bottom: 16px;\n  /* pastel variants for each metric to mimic screenshot */\n  /* small change badge */\n}\n.dashboard-metrics .large-metric.card {\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;\n  cursor: pointer;\n  min-height: 72px;\n}\n.dashboard-metrics .dashboard-metrics .large-metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);\n}\n.dashboard-metrics .dashboard-metrics .large-metric .metric-inner {\n  position: relative;\n}\n.dashboard-metrics .dashboard-metrics .large-metric .metric-change {\n  position: absolute;\n  right: 12px;\n  top: 12px;\n}\n.dashboard-metrics .large-metric.card:nth-child(1) {\n  background: linear-gradient(90deg, #f3f4ff 0%, #f8f7ff 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(2) {\n  background: linear-gradient(90deg, #e8fff3 0%, #f5fff8 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(3) {\n  background: linear-gradient(90deg, #f0fbff 0%, #f7fdff 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(4) {\n  background: linear-gradient(90deg, #eafff4 0%, #f6fff9 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(5) {\n  background: linear-gradient(90deg, #fff4f6 0%, #fff8f9 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(6) {\n  background: linear-gradient(90deg, #fff6f0 0%, #fff9f6 100%);\n}\n.dashboard-metrics .metric-change {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  background: rgba(0, 0, 0, 0.03);\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.dashboard-metrics .metric-change.up {\n  color: #10b981;\n  background: rgba(16, 185, 129, 0.08);\n}\n.dashboard-metrics .metric-change.down {\n  color: #ef4444;\n  background: rgba(239, 68, 68, 0.08);\n}\n.dashboard-metrics .large-metric .metric-inner {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.dashboard-metrics .large-metric .metric-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n.dashboard-metrics .large-metric .metric-number {\n  font-size: 26px;\n  font-weight: 800;\n}\n\n/* New dashboard summary styles (screenshot-inspired) */\n.dashboard-summary {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n\n.dashboard-summary .top-metrics {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 20px;\n}\n\n.dashboard-summary .metric-card {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 18px 20px;\n  border-radius: 12px;\n  background: #ffffff;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  box-shadow: 0 8px 28px rgba(2, 6, 23, 0.06);\n}\n\n.dashboard-summary .metric-card .metric-left {\n  display: flex;\n  flex-direction: column;\n}\n\n.dashboard-summary .metric-card .label {\n  color: #6b7280;\n  font-size: 13px;\n  margin-bottom: 6px;\n}\n\n.dashboard-summary .metric-card .value {\n  font-size: 28px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n.dashboard-summary .metric-card .meta {\n  margin-top: 8px;\n  display: inline-block;\n  font-size: 12px;\n  padding: 6px 10px;\n  border-radius: 12px;\n  background: #eef2ff;\n  color: #2563eb;\n}\n\n.dashboard-summary .metric-card .metric-icon {\n  width: 48px;\n  height: 48px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #fff;\n  font-size: 18px;\n}\n\n.dashboard-summary .metric-card .metric-icon:empty {\n  background: linear-gradient(135deg, #60a5fa, #7c3aed);\n}\n\n.dashboard-summary .summary-bottom {\n  display: grid;\n  grid-template-columns: 1fr 340px;\n  gap: 20px;\n  align-items: start;\n}\n\n.recent-activities.card, .system-stats.card {\n  background: transparent;\n  border: none;\n  box-shadow: none;\n  padding: 0;\n}\n\n.recent-activities {\n  padding: 18px;\n  background: transparent;\n}\n\n.recent-activities h3 {\n  margin: 0 0 12px;\n  color: #7c3aed;\n}\n\n.recent-activities .activity-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.recent-activities .activity-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  background: #fff;\n  border-radius: 10px;\n  padding: 12px 16px;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.04);\n}\n\n.recent-activities .activity-item .dot {\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: #60a5fa;\n  flex: 0 0 10px;\n}\n\n.recent-activities .activity-body {\n  flex: 1;\n}\n\n.recent-activities .activity-title {\n  font-weight: 700;\n  color: #0f172a;\n}\n\n.recent-activities .activity-desc {\n  font-size: 13px;\n  color: #6b7280;\n}\n\n.recent-activities .activity-time {\n  font-size: 13px;\n  color: #9ca3af;\n  margin-left: 12px;\n}\n\n.system-stats {\n  padding: 18px;\n  background: transparent;\n}\n\n.system-stats h3 {\n  margin: 0 0 12px;\n  color: #fb923c;\n}\n\n.system-stats .stat-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.system-stats .stat-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background: #fff;\n  padding: 12px 14px;\n  border-radius: 10px;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.04);\n}\n\n.system-stats .stat-label {\n  color: #6b7280;\n}\n\n.system-stats .stat-value {\n  font-weight: 800;\n  color: #0f172a;\n}\n\n@media (max-width: 1100px) {\n  .dashboard-summary .top-metrics {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .dashboard-summary .summary-bottom {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 720px) {\n  .dashboard-summary .top-metrics {\n    grid-template-columns: 1fr;\n  }\n}\n/* Color variants & effects for metric cards */\n.metric-card.metric-blue {\n  background: linear-gradient(135deg, #eef6ff, #eef9ff);\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n\n.metric-card.metric-green {\n  background: linear-gradient(135deg, #ecfff6, #f0fffb);\n  border: 1px solid rgba(16, 185, 129, 0.06);\n}\n\n.metric-card.metric-purple {\n  background: linear-gradient(135deg, #f5f3ff, #f0eefb);\n  border: 1px solid rgba(124, 58, 237, 0.06);\n}\n\n.metric-card.metric-cyan {\n  background: linear-gradient(135deg, #ecfeff, #f0fdff);\n  border: 1px solid rgba(6, 182, 212, 0.06);\n}\n\n.metric-card.metric-orange {\n  background: linear-gradient(135deg, #fff7ed, #fff8f0);\n  border: 1px solid rgba(249, 115, 22, 0.06);\n}\n\n.metric-card {\n  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 180ms ease, border-color 180ms ease;\n}\n\n.metric-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);\n  border-color: rgba(15, 23, 42, 0.08);\n}\n\n.metric-card .icon-box {\n  width: 54px;\n  height: 54px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  color: #fff;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06);\n}\n\n.icon-box.color-blue {\n  background: linear-gradient(135deg, #60a5fa, #3b82f6);\n}\n\n.icon-box.color-green {\n  background: linear-gradient(135deg, #34d399, #10b981);\n}\n\n.icon-box.color-violet {\n  background: linear-gradient(135deg, #7c3aed, #a78bfa);\n}\n\n.icon-box.color-cyan {\n  background: linear-gradient(135deg, #06b6d4, #60f0ff);\n  color: #042022;\n}\n\n.icon-box.color-orange {\n  background: linear-gradient(135deg, #fb923c, #f97316);\n}\n\n/* subtle pulse for small meta badges when positive change */\n.metric-card .meta {\n  transition: transform 320ms ease, box-shadow 320ms ease;\n}\n\n.metric-card .meta.positive {\n  background: linear-gradient(90deg, #ecfeff, #eef6ff);\n  color: #065f46;\n  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.06);\n}\n\n.metric-card .meta.animated {\n  animation: popIn 420ms cubic-bezier(0.2, 0.9, 0.2, 1);\n}\n\n@keyframes popIn {\n  from {\n    transform: scale(0.88);\n    opacity: 0;\n  }\n  to {\n    transform: scale(1);\n    opacity: 1;\n  }\n}\n/* activity item hover glow */\n.recent-activities .activity-item {\n  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;\n}\n\n.recent-activities .activity-item:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);\n  background: linear-gradient(90deg, #fff, #fbfdff);\n}\n\n/* stat row accent on hover */\n.system-stats .stat-row {\n  transition: transform 180ms ease, box-shadow 180ms ease;\n}\n\n.system-stats .stat-row:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n\n.quick-actions {\n  display: none;\n}\n\n@media (max-width: 1000px) {\n  .dashboard-metrics {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .quick-grid {\n    flex-direction: column;\n  }\n}\n/* Course Management specific styling (top metrics, search bar, filters, table) */\n.courses-page {\n  /* colorful variants for each metric card */\n}\n.courses-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 16px;\n  flex-wrap: wrap;\n  padding: 18px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, #ffffff, #f8fbff);\n  box-shadow: 0 18px 44px rgba(37, 99, 235, 0.04);\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n.courses-page .page-header .header-actions {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  color: #fff;\n}\n.courses-page .page-header .header-buttons .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.08);\n  color: #042022;\n}\n.courses-page .page-header .header-buttons .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 12px 30px rgba(249, 115, 22, 0.08);\n  color: #2b1600;\n}\n.courses-page .page-header .header-buttons .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons .icon-box:hover, .courses-page .page-header .header-buttons .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n.courses-page h1, .courses-page h2, .courses-page h3 {\n  margin: 0;\n}\n.courses-page .breadcrumb {\n  color: #6b7280;\n  margin-bottom: 6px;\n}\n.courses-page .courses-top {\n  display: flex;\n  gap: 18px;\n  margin-bottom: 14px;\n  align-items: flex-start;\n}\n.courses-page .courses-top .courses-metrics {\n  flex: 1;\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n.courses-page .courses-top .metric.card {\n  flex: 1 1 160px;\n  padding: 14px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border: 1px solid rgba(37, 99, 235, 0.04);\n  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.03);\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.courses-page .courses-top .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 24px 60px rgba(37, 99, 235, 0.08);\n}\n.courses-page .courses-top .metric.card .label {\n  color: #64748b;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card .value {\n  font-size: 20px;\n  font-weight: 900;\n  color: #0f172a;\n}\n.courses-page .courses-top .metric.card.total {\n  border-left: 4px solid #2563eb;\n}\n.courses-page .courses-top .metric.card.active {\n  border-left: 4px solid #10b981;\n}\n.courses-page .courses-top .metric.card.inactive {\n  border-left: 4px solid #f59e0b;\n}\n.courses-page .courses-top .metric.card.students {\n  border-left: 4px solid #7c3aed;\n}\n.courses-page .courses-top .metric .icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px;\n}\n.courses-page .courses-top .metric .metric-title {\n  font-size: 13px;\n  color: #6b7280;\n}\n.courses-page .courses-top .metric .metric-value {\n  font-size: 20px;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card.total {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-left: 4px solid #2563eb;\n}\n.courses-page .courses-top .metric.card.active {\n  background: linear-gradient(90deg, #ecfdf5, #f0fdf4);\n  border-left: 4px solid #10b981;\n}\n.courses-page .courses-top .metric.card.inactive {\n  background: linear-gradient(90deg, #fff7ed, #fffaf0);\n  border-left: 4px solid #f59e0b;\n}\n.courses-page .courses-top .metric.card.students {\n  background: linear-gradient(90deg, #f5f3ff, #eef2ff);\n  border-left: 4px solid #7c3aed;\n}\n.courses-page .courses-top .metric.card.enrollment {\n  background: linear-gradient(90deg, #ecfeff, #f7feff);\n  border-left: 4px solid #06b6d4;\n}\n.courses-page .courses-top .metric.card.capacity {\n  background: linear-gradient(90deg, #fff8ef, #fff4f1);\n  border-left: 4px solid #f97316;\n}\n.courses-page .courses-top .metric.card .label {\n  color: #64748b;\n  font-size: 13px;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card .value {\n  font-size: 20px;\n  font-weight: 900;\n  color: #0f172a;\n}\n.courses-page .courses-controls {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  padding: 12px 0;\n}\n.courses-page .course-search {\n  width: 100%;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n}\n.courses-page .courses-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .chip {\n  background: #f1f5f9;\n  border-radius: 999px;\n  padding: 8px 10px;\n  border: 1px solid #eef2f7;\n  cursor: pointer;\n}\n.courses-page .chip.active {\n  background: #eef2ff;\n  border-color: #dbeafe;\n}\n.courses-page .courses-table {\n  margin-top: 8px;\n  overflow: auto;\n}\n.courses-page .courses-table table {\n  width: 100%;\n  border-collapse: collapse;\n  background: transparent;\n}\n.courses-page .courses-table th, .courses-page .courses-table td {\n  padding: 14px 12px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.courses-page .courses-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.courses-page .students-count {\n  color: #475569;\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .status-active {\n  background: #ecfdf5;\n  color: #059669;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n.courses-page .status-inactive {\n  background: #fff7ed;\n  color: #b45309;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n.courses-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n}\n.courses-page .action-icon.text-danger {\n  color: #dc2626;\n}\n.courses-page .courses-pagination {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  padding: 12px 0;\n}\n@media (max-width: 900px) {\n  .courses-page .courses-top {\n    flex-direction: column;\n  }\n  .courses-page .courses-top .courses-metrics {\n    width: 100%;\n  }\n}\n\n/* Reports page styles */\n.reports-page {\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n\n.reports-header {\n  background: transparent;\n}\n\n.reports-header h2 {\n  margin: 0;\n  font-size: 20px;\n  color: #0f172a;\n}\n\n.reports-header .page-sub {\n  color: #6b7280;\n  margin-top: 6px;\n}\n\n.reports-metrics {\n  display: flex;\n  gap: 16px;\n}\n\n.report-metric {\n  flex: 1;\n  padding: 18px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.04);\n}\n\n.report-metric.blue {\n  background: linear-gradient(90deg, #eef6ff, #f8fbff);\n}\n\n.report-metric.green {\n  background: linear-gradient(90deg, #ecfff5, #f7fffb);\n}\n\n.report-metric.purple {\n  background: linear-gradient(90deg, #fbf5ff, #fffaff);\n}\n\n.report-metric.orange {\n  background: linear-gradient(90deg, #fff8f2, #fffbf7);\n}\n\n.report-metric .metric-title {\n  color: #6b7280;\n  font-weight: 700;\n}\n\n.report-metric .metric-value {\n  font-size: 28px;\n  font-weight: 900;\n  margin-top: 6px;\n}\n\n.report-metric .metric-sub {\n  margin-top: 8px;\n}\n\n.chart-card {\n  padding: 18px;\n  border-radius: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.04);\n}\n\n.reports-bottom {\n  display: flex;\n  gap: 12px;\n}\n\n.small-card {\n  flex: 1;\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, #f7fbff, #ffffff);\n  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);\n}\n\n.small-card .card-title {\n  font-weight: 800;\n  color: #6b7280;\n}\n\n.small-card .card-value {\n  font-size: 20px;\n  font-weight: 900;\n  margin-top: 8px;\n}\n\n.small-card .progress {\n  height: 10px;\n  background: #eef2f7;\n  border-radius: 999px;\n  margin: 12px 0;\n  overflow: hidden;\n}\n\n.small-card .progress .fill {\n  height: 100%;\n  background: linear-gradient(90deg, #60a5fa, #0ea5e9);\n}\n\n.small-card .progress .fill.green {\n  background: linear-gradient(90deg, #4ade80, #10b981);\n}\n\n.small-card .progress .fill.purple {\n  background: linear-gradient(90deg, #c084fc, #8b5cf6);\n}\n\n@media (max-width: 900px) {\n  .reports-metrics {\n    flex-direction: column;\n  }\n  .reports-bottom {\n    flex-direction: column;\n  }\n}\n/* Teachers / Faculty page specific styling */\n.teachers-page {\n  /* optional pulse for the Add Faculty button */\n  /* small animation */\n}\n.teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 16px;\n  padding: 18px;\n  background: #0b1220;\n  border-radius: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  margin-bottom: 18px;\n  animation: fadeInUp 320ms ease both;\n}\n.teachers-page .page-header .breadcrumb {\n  color: #6b7280;\n  font-size: 0.95rem;\n  margin-bottom: 6px;\n}\n.teachers-page .page-header h2 {\n  margin: 0;\n  font-size: 20px;\n}\n.teachers-page .page-sub {\n  margin: 6px 0 0;\n  color: #6b7280;\n}\n.teachers-page .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n.teachers-page .header-actions .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .header-actions .icon-box {\n  padding: 8px 12px;\n  border-radius: 10px;\n  background: linear-gradient(90deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  cursor: pointer;\n  transition: transform 140ms ease, box-shadow 140ms ease;\n}\n.teachers-page .header-actions .icon-box:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);\n}\n.teachers-page .header-actions .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.08);\n}\n.teachers-page .header-actions .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  color: #2b1600;\n  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.08);\n}\n.teachers-page .header-actions .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .header-actions .icon-box:hover, .teachers-page .header-actions .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n.teachers-page .header-actions .primary.pulse {\n  animation: softPulse 2200ms ease-in-out infinite;\n}\n.teachers-page .metrics-row {\n  display: flex;\n  gap: 12px;\n  margin-top: 14px;\n  margin-bottom: 18px;\n  flex-wrap: wrap;\n}\n.teachers-page .metrics-row .metric.card {\n  flex: 0 0 160px;\n  padding: 12px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.teachers-page .metrics-row .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);\n}\n.teachers-page .metrics-row .metric .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.teachers-page .metrics-row .metric .value {\n  font-weight: 800;\n  font-size: 20px;\n}\n.teachers-page .table-wrapper {\n  margin-top: 6px;\n}\n.teachers-page .teachers-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.teachers-page .teachers-table thead th {\n  text-align: left;\n  padding: 12px 14px;\n  border-bottom: 1px solid #eef2f6;\n  color: #6b7280;\n  font-weight: 700;\n}\n.teachers-page .teachers-table tbody td {\n  padding: 12px 14px;\n  border-bottom: 1px solid #f3f6fb;\n}\n.teachers-page .teachers-table tbody tr:hover {\n  background: rgba(37, 99, 235, 0.02);\n  transform: translateY(-1px);\n}\n.teachers-page .status-pill {\n  display: inline-block;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.teachers-page .status-pill.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.teachers-page .status-pill.sabbatical {\n  background: #eff6ff;\n  color: #2563eb;\n}\n.teachers-page .status-pill.retired {\n  background: #fff1f2;\n  color: #be185d;\n}\n.teachers-page .status-pill.locked {\n  background: #fff7ed;\n  color: #b45309;\n}\n@keyframes fadeInUp {\n  from {\n    opacity: 0;\n    transform: translateY(6px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n/* Department overview interactive cards */\n.department-overview {\n  margin-top: 18px;\n}\n\n.department-list.grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 12px;\n  margin-top: 12px;\n}\n\n.department-card {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  border-radius: 10px;\n  background: #0b1220;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n  position: relative;\n  overflow: hidden;\n}\n\n.department-card::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  width: 6px;\n}\n\n.department-card .dept-head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.dept-name {\n  font-size: 14px;\n}\n\n.dept-body {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.counts-display {\n  font-weight: 700;\n  color: #0f172a;\n}\n\n.dept-controls {\n  display: flex;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n\n.dept-controls .small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: #f1f5f9;\n  border: 1px solid #eef2f7;\n  cursor: pointer;\n}\n\n.actions-card {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 8px;\n}\n\n.department-card input[type=number] {\n  width: 100%;\n  padding: 8px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n@media (max-width: 1000px) {\n  .department-list.grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n@media (max-width: 700px) {\n  .department-list.grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Students page extras */\n.students-page {\n  /* Ensure metric numbers are visible: use a solid gray color for better contrast */\n}\n.students-page .students-metrics .metric.card {\n  min-width: 120px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 14px;\n}\n.students-page .students-metrics.metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 12px;\n  margin-bottom: 14px;\n}\n.students-page .students-metrics .metric .icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 16px;\n  background: rgba(255, 255, 255, 0.06);\n}\n.students-page .metric-blue .icon {\n  background: linear-gradient(90deg, #e6f0ff, #dbeafe);\n}\n.students-page .metric-green .icon {\n  background: linear-gradient(90deg, #ecfdf5, #bbf7d0);\n}\n.students-page .metric-purple .icon {\n  background: linear-gradient(90deg, #eef2ff, #e9d5ff);\n}\n.students-page .metric-orange .icon {\n  background: linear-gradient(90deg, #fff7ed, #ffd8a8);\n}\n.students-page .metric-red .icon {\n  background: linear-gradient(90deg, #fff1f2, #fecaca);\n}\n.students-page .metric-violet .icon {\n  background: linear-gradient(90deg, #f5f3ff, #ede9fe);\n}\n.students-page .metric-gray .icon {\n  background: linear-gradient(90deg, #f3f4f6, #f8fafc);\n}\n.students-page .students-metrics .metric .label {\n  font-size: 13px;\n  color: #6b7280;\n}\n.students-page .students-metrics .metric .value {\n  font-size: 18px;\n  font-weight: 800;\n  color: #374151;\n}\n.students-page .students-metrics .metric.card {\n  background: #0b1220;\n  border-radius: 12px;\n  border: 1px solid #eef2f7;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  padding: 14px;\n  cursor: default;\n}\n.students-page .students-metrics .metric.card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.students-page .students-metrics .metric.card .icon {\n  margin-bottom: 6px;\n}\n.students-page .students-metrics .metric.metric-add {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  background: linear-gradient(90deg, #0ea5e9, #7c3aed);\n  color: #fff;\n  border: none;\n}\n.students-page .students-metrics .metric.metric-add .icon {\n  background: rgba(255, 255, 255, 0.12);\n  border-radius: 8px;\n  padding: 6px;\n}\n.students-page .students-table thead th {\n  background: transparent;\n  color: #0f172a;\n}\n.students-page .students-table tbody tr.selected-row {\n  background: linear-gradient(90deg, rgba(37, 99, 235, 0.04), rgba(96, 165, 250, 0.02));\n}\n.students-page .students-table tbody tr.archived-row {\n  opacity: 0.7;\n}\n.students-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n}\n.students-page .action-icon.text-danger {\n  color: #dc2626;\n}\n.students-page .badge {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.students-page .badge.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.students-page .badge.locked {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page .badge.archived {\n  background: #f3f4f6;\n  color: #374151;\n}\n.students-page .badge.graduated {\n  background: #eef2ff;\n  color: #2563eb;\n}\n.students-page .badge.suspended {\n  background: #fff7f0;\n  color: #c2410c;\n}\n.students-page .bulk-actions {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  padding: 10px 12px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, #fff, #fbfdff);\n  border: 1px solid #eef2f7;\n  margin-bottom: 12px;\n}\n.students-page .bulk-actions .btn {\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  cursor: pointer;\n}\n.students-page .bulk-actions .btn.warn {\n  background: #fff7ed;\n  color: #b45309;\n  border-color: #fef3c7;\n}\n.students-page .bulk-actions .btn.danger {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page select {\n  padding: 6px 8px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n  background: #fff;\n}\n\n/* Students header action buttons: import/export/add styles */\n.students-page .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.students-page .header-actions .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-page .header-actions .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  color: #fff;\n}\n\n.students-page .header-actions .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.12);\n  color: #042022;\n}\n\n.students-page .header-actions .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.12);\n  color: #2b1600;\n}\n\n.students-page .header-actions .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-page .header-actions .icon-box:hover, .students-page .header-actions .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n\n/* subtle pulse animation for Add button to draw attention */\n@keyframes softPulse {\n  0% {\n    transform: scale(1);\n    box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  }\n  50% {\n    transform: scale(1.02);\n    box-shadow: 0 26px 80px rgba(124, 58, 237, 0.16);\n  }\n  100% {\n    transform: scale(1);\n    box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  }\n}\n.students-page .header-actions .primary.pulse {\n  animation: softPulse 2200ms ease-in-out infinite;\n}\n\n.students-page .no-data {\n  text-align: center;\n  padding: 40px 20px;\n  color: #6b7280;\n}\n\n.students-page .no-data h3 {\n  margin: 0;\n  font-size: 18px;\n}\n\n.students-page .no-data p {\n  margin: 8px 0 0;\n}\n\n/* Color accents for each department card */\n.department-list.grid .department-card:nth-child(1)::before {\n  background: #3b82f6;\n}\n\n.department-list.grid .department-card:nth-child(2)::before {\n  background: #34d399;\n}\n\n.department-list.grid .department-card:nth-child(3)::before {\n  background: #7c3aed;\n}\n\n.department-list.grid .department-card:nth-child(4)::before {\n  background: #06b6d4;\n}\n\n.department-list.grid .department-card:nth-child(5)::before {\n  background: #3b82f6;\n}\n\n.department-list.grid .department-card:nth-child(6)::before {\n  background: #34d399;\n}\n\n.department-list.grid .department-card:nth-child(7)::before {\n  background: #7c3aed;\n}\n\n.department-list.grid .department-card:nth-child(8)::before {\n  background: #06b6d4;\n}\n\n/* Performance cards (top of bottom area) */\n.performance-cards {\n  margin-top: 18px;\n}\n\n.perf-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 16px;\n  margin-bottom: 18px;\n}\n\n.perf-card {\n  background: #0b1220;\n  padding: 16px;\n  border-radius: 12px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.perf-card .perf-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.perf-card .perf-value {\n  font-size: 22px;\n  font-weight: 800;\n}\n\n.perf-card .perf-sub {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.perf-card .perf-change {\n  margin-left: auto;\n  color: #10b981;\n  font-weight: 700;\n}\n\n.perf-card.blue {\n  border-left: 4px solid #3b82f6;\n}\n\n.perf-card.green {\n  border-left: 4px solid #34d399;\n}\n\n.perf-card.purple {\n  border-left: 4px solid #7c3aed;\n}\n\n.perf-card.cyan {\n  border-left: 4px solid #06b6d4;\n}\n\n/* Department alignment */\n.dept-align {\n  align-self: start;\n}\n\n/* Compact calendar tweaks */\n.mini-cal.compact .cal-grid {\n  grid-template-columns: repeat(7, 1fr);\n  gap: 4px;\n}\n\n.mini-cal.compact .cal-cell {\n  padding: 6px;\n  font-size: 12px;\n}\n\n@media (max-width: 1000px) {\n  .perf-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n.department-card .dept-name {\n  display: block;\n}\n\n.department-card .muted {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n/* list-style department overview */\n.department-list.list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n/* Hero right Add button styling (Add Student / Add Teacher) */\n.hero-right .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n  cursor: pointer;\n  font-weight: 800;\n}\n\n.hero-right .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 72px rgba(124, 58, 237, 0.18);\n}\n\n@media (max-width: 900px) {\n  .hero-right .primary {\n    padding: 8px 10px;\n    font-size: 14px;\n  }\n  .hero-right .student-search {\n    min-width: 180px;\n  }\n}\n.department-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 10px;\n  background: #0b1220;\n  border-radius: 10px;\n  border: 1px solid rgba(255, 255, 255, 0.04);\n}\n\n.department-row .row-left {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 42%;\n}\n\n.department-row .dot {\n  width: 12px;\n  height: 12px;\n  border-radius: 999px;\n  display: inline-block;\n}\n\n.department-row .dept-name {\n  font-weight: 700;\n}\n\n.department-row .row-center {\n  width: 36%;\n}\n\n.progress-wrap {\n  width: 100%;\n}\n\n.progress-bar {\n  height: 10px;\n  background: #f1f5f9;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.progress-fill {\n  height: 100%;\n  background: linear-gradient(90deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.9));\n}\n\n.row-right {\n  width: 22%;\n  text-align: right;\n}\n\n.counts-right {\n  font-weight: 700;\n}\n\n.edit-inline input {\n  width: 48%;\n  padding: 6px 8px;\n  margin-right: 4px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n.edit-actions .btn {\n  background: #3b82f6;\n  color: #fff;\n  padding: 6px 10px;\n  border-radius: 8px;\n  border: none;\n  margin-right: 8px;\n}\n\n.edit-actions .btn-link {\n  background: transparent;\n  border: none;\n  color: #6b7280;\n  cursor: pointer;\n}\n\n.actions-row {\n  background: transparent;\n  border: none;\n  box-shadow: none;\n}\n\n/* Teachers / Faculty specific styling to match the provided screenshot */\n.teachers-page {\n  /* Name column shows subtitle / role in muted text */\n  /* Actions styling - small icon buttons spaced evenly */\n  /* responsive tweaks */\n}\n.teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.teachers-page .breadcrumb {\n  color: #6b7280;\n  margin-bottom: 6px;\n}\n.teachers-page .teachers-metrics {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-bottom: 16px;\n}\n.teachers-page .teachers-metrics .metric.card {\n  padding: 14px;\n  min-width: 120px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  align-items: flex-start;\n}\n.teachers-page .teachers-metrics .metric .metric-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n.teachers-page .teachers-metrics .metric .metric-value {\n  font-size: 20px;\n  font-weight: 800;\n}\n.teachers-page .teachers-controls {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.teachers-page .teachers-controls .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n.teachers-page .teacher-search {\n  width: 100%;\n  max-width: 760px;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n}\n.teachers-page .teachers-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .table-wrapper.card {\n  padding: 0;\n}\n.teachers-page .landscape-table {\n  overflow: auto;\n}\n.teachers-page .landscape-table table {\n  width: 100%;\n  min-width: 1200px;\n  border-collapse: collapse;\n}\n.teachers-page .landscape-table th, .teachers-page .landscape-table td {\n  padding: 14px 16px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.teachers-page .landscape-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.teachers-page .landscape-table tbody tr.archived-row {\n  opacity: 0.75;\n}\n.teachers-page .name-meta {\n  display: flex;\n  flex-direction: column;\n}\n.teachers-page .name-meta .subtitle {\n  color: #6b7280;\n  font-size: 12px;\n  margin-top: 6px;\n}\n.teachers-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 8px;\n  margin-left: 6px;\n  color: #475569;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}\n.teachers-page .action-icon:hover {\n  background: #f1f5f9;\n}\n.teachers-page .action-icon.text-danger {\n  color: #dc2626;\n}\n@media (max-width: 900px) {\n  .teachers-page .teacher-search {\n    max-width: 100%;\n  }\n  .teachers-page .landscape-table table {\n    min-width: 900px;\n  }\n}\n\n/* Students page styles (matches screenshot layout) */\n.students-page {\n  /* boxed header */\n  /* landscape helper: allow a very wide table and horizontal scroll */\n}\n.students-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 12px;\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n}\n.students-page .page-title {\n  margin: 4px 0 2px;\n  font-size: 20px;\n  color: #0f172a;\n  font-weight: 800;\n}\n.students-page .page-sub {\n  margin: 2px 0 0;\n  color: #6b7280;\n}\n.students-page .students-metrics {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-bottom: 16px;\n}\n.students-page .students-metrics .metric.card {\n  padding: 14px;\n  min-width: 140px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.students-page .students-metrics .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.08);\n}\n.students-page .students-metrics .metric .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.students-page .students-metrics .metric .value {\n  font-size: 20px;\n  font-weight: 700;\n}\n.students-page .controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  gap: 12px;\n  margin-bottom: 12px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, rgba(7, 10, 34, 0.02), rgba(124, 58, 237, 0.02));\n  border: 1px solid rgba(124, 58, 237, 0.04);\n}\n.students-page .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n.students-page .controls-right {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.students-page .global-search {\n  width: 480px;\n  max-width: 60%;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n.students-page .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.students-page .filter-chips {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-left: 6px;\n}\n.students-page .chip {\n  padding: 8px 10px;\n  background: #f1f5f9;\n  border: 1px solid #eef2f7;\n  border-radius: 999px;\n  cursor: pointer;\n  font-weight: 700;\n  color: #475569;\n}\n.students-page .chip.active {\n  background: #eef2ff;\n  border-color: #dbeafe;\n  color: #2563eb;\n}\n.students-page .chip.clear {\n  background: transparent;\n  border: 1px dashed #e6eef8;\n  color: #64748b;\n}\n.students-page .view-toggle button {\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  background: transparent;\n  cursor: pointer;\n  transition: background 140ms ease, transform 120ms ease;\n}\n.students-page .view-toggle button:hover {\n  transform: translateY(-2px);\n}\n.students-page .view-toggle button.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);\n}\n.students-page .filter-item {\n  color: #6b7280;\n  margin-right: 6px;\n}\n.students-page .show-archived {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.students-page .table-wrapper {\n  overflow: auto;\n}\n.students-page .students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.students-page .landscape-table {\n  overflow: auto;\n}\n.students-page .landscape-table .students-table {\n  min-width: 1400px;\n}\n.students-page .students-table th, .students-page .students-table td {\n  padding: 14px 12px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.students-page .students-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.students-page .students-table tbody tr.archived-row {\n  opacity: 0.75;\n}\n.students-page .badge {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.students-page .badge.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.students-page .badge.locked {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page .badge.archived {\n  background: #f3f4f6;\n  color: #374151;\n}\n.students-page .badge.graduated {\n  background: #eef2ff;\n  color: #2563eb;\n}\n.students-page .badge.suspended {\n  background: #fff1f0;\n  color: #c2410c;\n}\n.students-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n  transition: transform 120ms ease, background 120ms ease;\n}\n.students-page .action-icon:hover {\n  transform: translateY(-2px);\n  background: rgba(37, 99, 235, 0.02);\n}\n.students-page .action-icon.text-danger {\n  color: #dc2626;\n}\n\n/* Students panel card (screenshot-inspired) */\n.students-panel {\n  background: #ffffff;\n  border-radius: 12px;\n  padding: 18px 20px;\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.03);\n  margin-bottom: 18px;\n  overflow: hidden;\n}\n\n.students-panel .small-muted {\n  color: #64748b;\n}\n\n.students-panel .student-search {\n  width: 100%;\n  max-width: 680px;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #f8fafc;\n}\n\n.students-panel table.students-table thead th {\n  color: #334155;\n  font-weight: 700;\n}\n\n.students-panel table.students-table tbody td {\n  color: #0f172a;\n}\n\n.students-panel table.students-table thead th {\n  border-bottom: 1px solid #eef2f7;\n}\n\n.students-panel tbody tr {\n  background: transparent;\n}\n\n.students-panel tbody tr:hover {\n  background: rgba(2, 6, 23, 0.02);\n  transform: none;\n}\n\n.students-panel .status-pill {\n  background: #ecfdf5;\n  color: #166534;\n  font-weight: 700;\n}\n\n.students-panel .status-pill.locked {\n  background: #fee2e2;\n  color: #991b1b;\n}\n\n.students-panel .action-icon {\n  width: 36px;\n  height: 36px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 8px;\n  background: transparent;\n  border: 1px solid transparent;\n  transition: background 120ms ease, transform 120ms ease;\n}\n\n.students-panel .action-icon:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n.students-panel .primary {\n  padding: 10px 14px;\n  border-radius: 10px;\n}\n\n.students-panel thead {\n  border-bottom: 1px solid #eef2f7;\n}\n\n.students-panel thead th {\n  padding: 14px 12px;\n}\n\n.students-panel tbody td {\n  padding: 14px 12px;\n}\n\n.students-panel .status-pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n\n.students-panel .actions {\n  display: flex;\n  gap: 8px;\n  justify-content: flex-end;\n}\n\n.students-panel .actions .action-icon {\n  padding: 8px;\n  border-radius: 8px;\n  background: transparent;\n}\n\n.students-panel .header-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n\n.students-panel .header-row .title {\n  font-weight: 800;\n  font-size: 16px;\n}\n\n.students-panel .header-row .subtitle {\n  color: #64748b;\n}\n\n/* Utility & responsive rules */\n@media (max-width: 1000px) {\n  .metrics-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 72px;\n  }\n  .admin-dashboard-layout .sidebar {\n    width: 72px;\n    padding: 14px;\n  }\n}\n@media (max-width: 720px) {\n  .metrics-grid {\n    grid-template-columns: 1fr;\n  }\n  .content-grid {\n    grid-template-columns: 1fr;\n  }\n  .admin-dashboard-layout .sidebar {\n    position: relative;\n    width: 100%;\n    height: auto;\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 0;\n    padding: 18px;\n  }\n}\n/* Small form elements and tables used across pages */\n.small-muted {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  background: #f1f5f9;\n}\n\n/* Layout fixes to prevent sidebar overlap and ensure modals/form inputs are visible */\n.admin-dashboard-layout .sidebar {\n  z-index: 20;\n}\n\n.admin-dashboard-layout .admin-main {\n  min-width: 0;\n}\n\n/* Modal/backdrop styling (modal overlays sidebar) */\n.modal-overlay {\n  position: fixed;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.35);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 99999; /* ensure it sits above everything including sidebar */\n}\n\n.modal {\n  position: relative;\n  background: #ffffff; /* make modal panel white */\n  color: #0f172a;\n  border-radius: 14px;\n  padding: 20px;\n  width: 680px;\n  max-width: calc(100% - 40px);\n  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.12);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  z-index: 100000;\n}\n\n/* Top accent bar for modal, adds color and modern feel */\n.modal::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  height: 6px;\n  border-top-left-radius: 14px;\n  border-top-right-radius: 14px;\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n}\n\n/* Modal header (title and close) */\n.modal .modal-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding-bottom: 12px;\n  margin-bottom: 8px;\n  border-bottom: 1px solid rgba(15, 23, 42, 0.03);\n}\n\n.modal .modal-header h3 {\n  margin: 0;\n  font-size: 18px;\n  color: #0f172a;\n}\n\n.modal .modal-close {\n  background: transparent;\n  border: none;\n  font-size: 18px;\n  cursor: pointer;\n  color: #475569;\n  padding: 6px;\n  border-radius: 8px;\n}\n\n.modal .modal-close:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n/* modal entrance animation */\n.modal.modal-wide {\n  transform: translateY(-6px);\n  opacity: 0;\n  animation: modalIn 220ms ease forwards;\n}\n\n@keyframes modalIn {\n  to {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n.modal .modal-body input, .modal .modal-body select {\n  background: #ffffff;\n  border: 1px solid #e6eef8;\n  padding: 12px 14px;\n  border-radius: 10px;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n\n.modal .modal-body input::-moz-placeholder, .modal .modal-body textarea::-moz-placeholder {\n  color: #94a3b8;\n}\n\n.modal .modal-body input::placeholder, .modal .modal-body textarea::placeholder {\n  color: #94a3b8;\n}\n\n.modal .modal-body input:focus, .modal .modal-body select:focus, .modal .modal-body textarea:focus {\n  outline: none;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);\n  border-color: rgba(124, 58, 237, 0.18);\n  transform: translateY(-2px);\n}\n\n.modal .modal-footer .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 16px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n}\n\n.modal .modal-footer .primary:disabled {\n  opacity: 0.7;\n}\n\n.modal .modal-footer button {\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid #eef2f7;\n}\n\n.modal-wide {\n  width: 920px;\n  max-width: calc(100% - 32px);\n}\n\n.modal .modal-body input,\n.modal .modal-body select,\n.modal .modal-body textarea,\n.user-form input,\n.user-form select,\n.role-fields input,\n.role-fields select,\n.role-fields textarea {\n  width: 100%;\n  box-sizing: border-box;\n  padding: 10px 12px;\n  margin-bottom: 10px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n/* Course form modal styles */\n.course-modal {\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border-radius: 12px;\n  padding: 0;\n  overflow: hidden;\n}\n\n.course-modal .modal-header {\n  padding: 18px;\n  border-bottom: 1px solid rgba(37, 99, 235, 0.04);\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n}\n\n.course-modal .modal-header h3 {\n  margin: 0;\n  font-size: 18px;\n}\n\n.course-modal .modal-header .modal-sub {\n  color: #64748b;\n  font-size: 13px;\n  margin-top: 6px;\n}\n\n.course-modal .modal-body {\n  padding: 16px;\n}\n\n.course-modal .form-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}\n\n.course-modal .form-group {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.course-modal label {\n  font-weight: 700;\n  color: #334155;\n}\n\n.course-modal input, .course-modal select {\n  padding: 10px 12px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n  background: #fff;\n  transition: box-shadow 180ms ease, transform 120ms ease;\n}\n\n.course-modal input:focus, .course-modal select:focus {\n  outline: none;\n  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);\n  transform: translateY(-2px);\n}\n\n.course-modal .modal-footer {\n  padding: 12px 18px;\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n  border-top: 1px solid rgba(15, 23, 42, 0.02);\n  background: transparent;\n}\n\n.course-modal .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  cursor: pointer;\n}\n\n.course-modal .btn-ghost {\n  background: transparent;\n  border: 1px solid #eef2f7;\n  padding: 8px 12px;\n  border-radius: 8px;\n  cursor: pointer;\n}\n\n@media (max-width: 900px) {\n  .course-modal .form-grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Status select styling */\n.course-modal .status-box {\n  display: flex;\n  flex-direction: column;\n}\n\n.course-modal .status-select {\n  padding: 10px 12px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  background: #fff;\n  font-weight: 700;\n  min-width: 160px;\n  transition: box-shadow 160ms ease, transform 140ms ease;\n}\n\n.course-modal .status-select.is-active {\n  background: linear-gradient(90deg, #ecfdf5, #f0fff4);\n  border-color: rgba(16, 185, 129, 0.12);\n  color: #064e3b;\n}\n\n.course-modal .status-select.is-inactive {\n  background: linear-gradient(90deg, #fff7ed, #fffaf0);\n  border-color: rgba(245, 158, 11, 0.12);\n  color: #7c2d12;\n}\n\n.course-modal .status-select:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);\n}\n\n.course-modal .status-select:focus {\n  box-shadow: 0 12px 36px rgba(37, 99, 235, 0.08);\n}\n\n/* Modal form helpers */\n.input-error {\n  color: #dc2626;\n  font-size: 12px;\n  margin-top: 6px;\n}\n\n.modal .modal-body .col input {\n  width: 100%;\n  box-sizing: border-box;\n}\n\n.modal .modal-body .col .small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n  cursor: pointer;\n}\n\n/* modal grid stacks on small screens */\n@media (max-width: 720px) {\n  .modal {\n    width: 94%;\n    padding: 14px;\n  }\n  .modal .modal-body .modal-grid,\n  .modal .modal-body .modal-grid.full {\n    grid-template-columns: 1fr;\n    gap: 0.75rem;\n  }\n}\n/* Prevent fixed sidebar covering content on medium screens */\n@media (max-width: 900px) {\n  .admin-dashboard-layout .sidebar {\n    position: relative;\n    width: 100%;\n    height: auto;\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 0;\n  }\n}\n/* Visible 'See' label next to view icon for accessibility/clarity */\n.view-button {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: transparent;\n  border: none;\n  color: #475569;\n}\n\n.view-button .action-label {\n  color: #6b7280;\n  font-weight: 700;\n  font-size: 13px;\n  display: inline-block;\n  line-height: 1;\n  vertical-align: middle;\n}\n\n.view-button:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n/* Centered modal variant used for detail views */\n.modal-backdrop, .modal-overlay {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.modal-centered .modal {\n  animation: modalScaleIn 220ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;\n  transform: scale(0.98);\n  opacity: 0;\n}\n\n@keyframes modalScaleIn {\n  to {\n    transform: scale(1);\n    opacity: 1;\n  }\n}\n.modal-card.with-shadow {\n  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.12);\n  border-radius: 12px;\n}\n\n.modal-card {\n  border-radius: 12px;\n  background: #fff;\n}\n\n.modal-backdrop {\n  position: fixed;\n  inset: 0;\n  background: rgba(10, 12, 20, 0.35);\n  z-index: 99999;\n}\n\n.modal-centered .modal {\n  max-width: 820px;\n  width: 92%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -58968,7 +58968,54 @@ axios__WEBPACK_IMPORTED_MODULE_3___default().interceptors.response.use(function 
 });
 
 // ✅ Mount the app
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Router__WEBPACK_IMPORTED_MODULE_2__["default"], {}), document.getElementById("app"));
+// Install global error handlers so runtime exceptions are visible (helpful for debugging)
+window.__lastClientError = null;
+function showClientErrorOverlay(err) {
+  try {
+    window.__lastClientError = err;
+    console.error('Client error captured:', err);
+    var overlay = document.getElementById('__client_error_overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = '__client_error_overlay';
+      overlay.style.position = 'fixed';
+      overlay.style.left = '12px';
+      overlay.style.right = '12px';
+      overlay.style.bottom = '12px';
+      overlay.style.zIndex = 2147483647;
+      overlay.style.background = 'linear-gradient(90deg, rgba(255,85,85,0.95), rgba(255,140,140,0.95))';
+      overlay.style.color = '#fff';
+      overlay.style.padding = '12px 14px';
+      overlay.style.borderRadius = '8px';
+      overlay.style.boxShadow = '0 12px 40px rgba(0,0,0,0.4)';
+      overlay.style.fontFamily = 'Inter, system-ui, -apple-system, Roboto, Arial';
+      overlay.style.fontSize = '13px';
+      overlay.style.maxHeight = '40vh';
+      overlay.style.overflow = 'auto';
+      overlay.style.whiteSpace = 'pre-wrap';
+      overlay.style.lineHeight = '1.3';
+      document.body.appendChild(overlay);
+    }
+    overlay.textContent = typeof err === 'string' ? err : err && err.stack ? err.stack : JSON.stringify(err);
+  } catch (e) {
+    console.error('Failed to render error overlay', e);
+  }
+}
+window.addEventListener('error', function (ev) {
+  try {
+    showClientErrorOverlay(ev.error || ev.message || 'Unknown error');
+  } catch (e) {}
+});
+window.addEventListener('unhandledrejection', function (ev) {
+  try {
+    showClientErrorOverlay(ev.reason || ev);
+  } catch (e) {}
+});
+try {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Router__WEBPACK_IMPORTED_MODULE_2__["default"], {}), document.getElementById("app"));
+} catch (e) {
+  showClientErrorOverlay(e);
+}
 
 /***/ }),
 
@@ -59628,10 +59675,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ AdminDashboard)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/pages/admin/Sidebar.js");
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/pages/admin/Sidebar.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
 /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
 /* harmony import */ var _UserFormModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./UserFormModal */ "./resources/js/components/pages/admin/UserFormModal.js");
@@ -59640,12 +59687,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AdminUsers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AdminUsers */ "./resources/js/components/pages/admin/AdminUsers.js");
 /* harmony import */ var _sass_AdminDashboard_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../sass/AdminDashboard.scss */ "./resources/sass/AdminDashboard.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
@@ -59674,48 +59715,103 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 var API = "/api/admin";
-chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_5__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.LinearScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_5__.Legend);
+chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_5__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.LinearScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_5__.Legend, chart_js__WEBPACK_IMPORTED_MODULE_5__.Filler);
 
-// sample chart data for the performance graph
-var chartData = {
-  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+// Enrollment area chart (left) sample data/options
+var enrollmentLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+// Plain data object (Chart component expects an object). Use a static
+// translucent background color instead of calculating a canvas gradient.
+var enrollmentData = {
+  labels: enrollmentLabels,
   datasets: [{
-    label: 'Requests',
-    data: [120, 150, 180, 170, 200, 230, 210],
-    backgroundColor: ['rgba(37,99,235,0.9)',
-    // Mon - blue
-    'rgba(59,130,246,0.85)',
-    // Tue - lighter blue
-    'rgba(16,185,129,0.9)',
-    // Wed - green
-    'rgba(236,72,153,0.9)',
-    // Thu - pink
-    'rgba(249,115,22,0.9)',
-    // Fri - orange
-    'rgba(124,58,237,0.9)',
-    // Sat - purple
-    'rgba(16,185,129,0.7)'],
-    borderRadius: 6,
-    maxBarThickness: 32
+    label: 'Students',
+    data: [1020, 1080, 1130, 1170, 1190, 1210],
+    fill: true,
+    // fallback gradient color as a static value
+    backgroundColor: 'rgba(59,130,246,0.12)',
+    tension: 0.3,
+    pointRadius: 0
+  }, {
+    label: 'Teachers',
+    data: [45, 46, 47, 48, 48, 49],
+    fill: false,
+    tension: 0.3,
+    pointRadius: 0
   }]
 };
-var chartOptions = {
+var enrollmentOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display: false
+      display: true,
+      position: 'bottom',
+      labels: {
+        usePointStyle: true
+      }
     }
   },
   scales: {
     x: {
       grid: {
         display: false
+      },
+      ticks: {
+        color: '#6b7280'
       }
     },
     y: {
       grid: {
-        color: 'rgba(255,255,255,0.04)'
+        color: '#eef4fb'
+      },
+      ticks: {
+        color: '#6b7280'
+      },
+      beginAtZero: true
+    }
+  }
+};
+
+// Attendance bar chart (right) sample data/options
+var attendanceLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+var attendanceData = {
+  labels: attendanceLabels,
+  datasets: [{
+    label: 'present',
+    data: [1100, 1120, 1115, 1130, 1125],
+    borderRadius: 6,
+    barThickness: 36
+  }, {
+    label: 'absent',
+    data: [40, 35, 38, 30, 45],
+    borderRadius: 6,
+    barThickness: 36
+  }]
+};
+var attendanceOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: true,
+      position: 'bottom'
+    }
+  },
+  scales: {
+    x: {
+      grid: {
+        display: false
+      },
+      ticks: {
+        color: '#6b7280'
+      }
+    },
+    y: {
+      grid: {
+        color: '#eef4fb'
+      },
+      ticks: {
+        color: '#6b7280'
       },
       beginAtZero: true
     }
@@ -59851,41 +59947,63 @@ function AdminDashboard(_ref2) {
   // Generic save handler for UserFormModal so AdminDashboard can create/update users
   var saveUserFromModal = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(payload, isEdit) {
-      var _t;
+      var res, _t;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.p = _context.n) {
           case 0:
             _context.p = 0;
+            res = null;
             if (!(isEdit && payload && payload.id)) {
               _context.n = 2;
               break;
             }
             _context.n = 1;
-            return axios__WEBPACK_IMPORTED_MODULE_3___default().put("/api/admin/users/".concat(payload.id), payload);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/admin/users/".concat(payload.id), payload);
           case 1:
-            _context.n = 3;
+            res = _context.v;
+            _context.n = 4;
             break;
           case 2:
             // ensure name and password exist for server validation
             if (!payload.name) payload.name = "".concat(payload.first_name || '', " ").concat(payload.last_name || '').trim();
             if (!payload.password) payload.password = Math.random().toString(36).slice(-8) + 'A1!';
             _context.n = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/admin/users', payload);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payload);
           case 3:
-            _context.n = 4;
-            return fetchAll();
+            res = _context.v;
           case 4:
+            _context.n = 5;
+            return fetchAll();
+          case 5:
             try {
               window.dispatchEvent(new CustomEvent('admin:users-changed'));
             } catch (e) {}
-            return _context.a(2, Promise.resolve());
-          case 5:
-            _context.p = 5;
+            // Notify activities listeners so Recent Activities refreshes
+            try {
+              window.dispatchEvent(new CustomEvent('admin:activities-changed'));
+            } catch (e) {}
+
+            // If a new user was created, emit an event with the new id so other components
+            // (e.g. AdminUsers) can highlight or navigate to it.
+            try {
+              if (res && res.data && res.data.user && res.data.user.id) {
+                try {
+                  window.dispatchEvent(new CustomEvent('admin:user-created', {
+                    detail: {
+                      id: res.data.user.id
+                    }
+                  }));
+                } catch (e) {}
+              }
+            } catch (e) {/* ignore */}
+            return _context.a(2, Promise.resolve(res && res.data ? res.data : {}));
+          case 6:
+            _context.p = 6;
             _t = _context.v;
             console.error('Save from modal failed', _t);
             return _context.a(2, Promise.reject(_t));
         }
-      }, _callee, null, [[0, 5]]);
+      }, _callee, null, [[0, 6]]);
     }));
     return function saveUserFromModal(_x, _x2) {
       return _ref3.apply(this, arguments);
@@ -59904,11 +60022,11 @@ function AdminDashboard(_ref2) {
             // include archived users when the admin toggles the archived view
             usersUrl = API + "/users" + (showArchived ? "?archived=1" : "");
             _context10.n = 1;
-            return Promise.all([axios__WEBPACK_IMPORTED_MODULE_3___default().get(usersUrl)["catch"](function () {
+            return Promise.all([axios__WEBPACK_IMPORTED_MODULE_1___default().get(usersUrl)["catch"](function () {
               return {
                 data: []
               };
-            }), axios__WEBPACK_IMPORTED_MODULE_3___default().get(API + "/dashboard")["catch"](function () {
+            }), axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + "/dashboard")["catch"](function () {
               return {
                 data: {}
               };
@@ -59951,7 +60069,7 @@ function AdminDashboard(_ref2) {
           case 0:
             _context11.p = 0;
             _context11.n = 1;
-            return axios__WEBPACK_IMPORTED_MODULE_3___default().get(API + '/activities')["catch"](function () {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + '/activities')["catch"](function () {
               return {
                 data: []
               };
@@ -59991,164 +60109,265 @@ function AdminDashboard(_ref2) {
           className: "subtitle",
           children: "Real-time overview of your school management system"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "metrics-grid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(MetricCard, {
-          icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUser,
-          title: "Total Students",
-          value: derivedTotalStudents,
-          color: "blue",
-          onClick: function onClick() {
-            return setActivePage('users');
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(MetricCard, {
-          icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers,
-          title: "Total Teachers",
-          value: derivedTotalTeachers,
-          color: "green",
-          onClick: function onClick() {
-            return setActivePage('teachers');
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(MetricCard, {
-          icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook,
-          title: "Active Courses",
-          value: derivedActiveCourses,
-          color: "purple",
-          onClick: function onClick() {
-            return setActivePage('courses');
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(MetricCard, {
-          icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers,
-          title: "Active Users",
-          value: derivedActiveUsers,
-          color: "cyan"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "content-grid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "card system-health",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
-            children: "System Health"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "health-rows",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "health-row",
-              "data-status": "good",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-label",
-                children: "Server Uptime"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-bar-wrap",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "health-bar",
-                  style: {
-                    width: '99%'
-                  },
-                  "aria-hidden": true
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-value",
-                children: "99.9%"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "health-row",
-              "data-status": "good",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-label",
-                children: "Database Performance"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-bar-wrap",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "health-bar",
-                  style: {
-                    width: '94%'
-                  },
-                  "aria-hidden": true
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-value",
-                children: "94%"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "health-row",
-              "data-status": "good",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-label",
-                children: "API Response Time"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-bar-wrap",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "health-bar",
-                  style: {
-                    width: '60%'
-                  },
-                  "aria-hidden": true
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-value",
-                children: "156ms"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "health-row",
-              "data-status": "warn",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-label",
-                children: "Storage Usage"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-bar-wrap",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "health-bar",
-                  style: {
-                    width: '68%'
-                  },
-                  "aria-hidden": true
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "health-value",
-                children: "68%"
-              })]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "card bar-chart",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
-            children: "Requests (week)"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            style: {
-              height: 180
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Bar, {
-              data: chartData,
-              options: chartOptions
-            })
-          })]
-        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
         className: "performance-cards",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(PerformanceCards, {})
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "bottom-grid",
+        className: "dashboard-summary",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "department-overview card dept-align",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
-            children: "Department Overview"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
-            className: "small-muted",
-            children: "Students by department"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(DepartmentOverview, {})]
+          className: "top-metrics",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "metric-card card metric-blue",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "metric-left",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "label",
+                children: "Total Students"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "value",
+                children: Number(stats.total_students) || 0
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "meta small-muted",
+                children: stats.students_change_label || '+0% from last month'
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              className: "metric-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                className: "icon-box color-blue",
+                children: "\uD83C\uDF93"
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "metric-card card metric-purple",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "metric-left",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "label",
+                children: "Total Teachers"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "value",
+                children: Number(stats.total_teachers) || 0
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "meta small-muted",
+                children: stats.teachers_change_label || '+0% from last month'
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              className: "metric-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                className: "icon-box color-violet",
+                children: "\uD83D\uDC65"
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "metric-card card metric-cyan",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "metric-left",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "label",
+                children: "Active Courses"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "value",
+                children: Number(stats.active_courses) || 0
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "meta small-muted",
+                children: stats.courses_change_label || '+0% from last month'
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              className: "metric-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                className: "icon-box color-cyan",
+                children: "\uD83D\uDCDA"
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "metric-card card metric-orange",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "metric-left",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "label",
+                children: "Enrollment Rate"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "value",
+                children: (Number(stats.enrollment_rate) || 0) + '%'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "meta small-muted",
+                children: stats.enrollment_change_label || '+0% from last month'
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              className: "metric-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                className: "icon-box color-orange",
+                children: "\uD83D\uDCC8"
+              })
+            })]
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "recent-activity card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
-            children: "Recent Activity"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(RecentActivity, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "recent-calendar",
+          className: "summary-bottom",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "recent-activities card",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
-              className: "small-muted",
-              style: {
-                marginTop: 12
-              },
-              children: "Calendar"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(MiniCalendar, {})]
+              children: "Recent Activities"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              className: "activity-list",
+              children: (activities && activities.length ? activities : [{
+                title: 'New student enrolled',
+                desc: 'Emma Wilson',
+                time: '5 minutes ago'
+              }, {
+                title: 'Teacher account locked',
+                desc: 'Dr. James Smith',
+                time: '15 minutes ago'
+              }, {
+                title: 'Course updated',
+                desc: 'Advanced Mathematics',
+                time: '1 hour ago'
+              }, {
+                title: 'Student archived',
+                desc: 'Michael Brown',
+                time: '2 hours ago'
+              }, {
+                title: 'Teacher unlocked',
+                desc: 'Sarah Johnson',
+                time: '3 hours ago'
+              }]).map(function (it, i) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                  className: "activity-item",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                    className: "dot"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                    className: "activity-body",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                      className: "activity-title",
+                      children: it.title
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                      className: "activity-desc small-muted",
+                      children: it.desc
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                    className: "activity-time small-muted",
+                    children: it.time
+                  })]
+                }, i);
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "system-stats card",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+              children: "System Statistics"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "stat-list",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                className: "stat-row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "stat-label",
+                  children: "Active Students"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "stat-value",
+                  children: Number(stats.total_students) || 0
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                className: "stat-row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "stat-label",
+                  children: "Archived Students"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "stat-value",
+                  children: Number(stats.archived_students) || 0
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                className: "stat-row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "stat-label",
+                  children: "Locked Accounts"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "stat-value",
+                  children: Number(stats.locked_accounts) || 0
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                className: "stat-row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "stat-label",
+                  children: "Unlocked Accounts"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "stat-value",
+                  children: Number(stats.unlocked_accounts) || 0
+                })]
+              })]
+            })]
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        className: "charts-row",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          className: "chart-card enrollment-area card",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "card-head",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h4", {
+              children: "Enrollment Growth"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              className: "subtitle small-muted",
+              children: "Students vs Teachers over months"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            className: "enrollment-chart-wrap",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Line, {
+              data: enrollmentData,
+              options: enrollmentOptions
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          className: "chart-card attendance-compact card",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            className: "card-head",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h4", {
+              children: "Weekly Attendance"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            className: "attendance-chart-wrap",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Bar, {
+              data: attendanceData,
+              options: attendanceOptions
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "legend",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "legend-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                className: "legend-swatch absent"
+              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                className: "small-muted",
+                children: "absent"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "legend-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                className: "legend-swatch present"
+              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                className: "small-muted",
+                children: "present"
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            className: "attendance-stats",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "stat",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "small-muted",
+                children: "Average Present"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "stat-val",
+                children: "1,127"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "stat",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "small-muted",
+                children: "Average Absent"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "stat-val",
+                children: "37"
+              })]
+            })]
           })]
         })]
       })]
@@ -60156,124 +60375,9 @@ function AdminDashboard(_ref2) {
   };
 
   // Small helper components for the dashboard
-  var RecentActivity = function RecentActivity() {
-    // if server provides activities use them; otherwise show lightweight samples
-    var samples = [{
-      title: 'New student registration',
-      desc: 'A new student joined the system',
-      time: 'just now'
-    }, {
-      title: 'Course schedule updated',
-      desc: 'A course schedule was updated',
-      time: 'a few minutes ago'
-    }, {
-      title: 'Account security alert',
-      desc: 'Multiple failed login attempts detected',
-      time: 'an hour ago'
-    }];
-    var items = activities && activities.length ? activities : samples;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-      className: "activity-list",
-      children: items.map(function (it, i) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "activity-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "activity-left"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "activity-body",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "activity-title",
-              children: it.title
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "activity-desc",
-              children: it.details || it.desc || ''
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "activity-time",
-            children: it.time || it.created_at || ''
-          })]
-        }, i);
-      })
-    });
-  };
-  var MiniCalendar = function MiniCalendar() {
-    var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-        return new Date();
-      }),
-      _useState24 = _slicedToArray(_useState23, 2),
-      now = _useState24[0],
-      setNow = _useState24[1];
-    var isMorning = now.getHours() >= 6 && now.getHours() < 12; // 6:00 - 11:59
+  // RecentActivity removed per user request
 
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-      // tick every 60s to detect morning boundary changes
-      var t = setInterval(function () {
-        return setNow(new Date());
-      }, 60 * 1000);
-      return function () {
-        return clearInterval(t);
-      };
-    }, []);
-    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    var year = now.getFullYear();
-    var month = now.getMonth();
-    var monthName = now.toLocaleString(undefined, {
-      month: 'long'
-    });
-    var firstDay = new Date(year, month, 1).getDay();
-    var daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    // build cells with leading blanks so the 1st falls under correct weekday
-    var cells = [];
-    for (var i = 0; i < firstDay; i++) cells.push(null);
-    for (var d = 1; d <= daysInMonth; d++) cells.push(d);
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-      className: "mini-cal compact ".concat(isMorning ? 'morning' : 'regular'),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "cal-header",
-        style: {
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "cal-title",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("strong", {
-            children: [monthName, " ", year]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "cal-greeting",
-            children: isMorning ? 'Good morning' : now.getHours() < 18 ? 'Hello' : 'Good evening'
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-          className: "cal-today",
-          children: now.toLocaleDateString(undefined, {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric'
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-        className: "cal-weekdays",
-        children: days.map(function (d) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "cal-day-name",
-            children: d
-          }, d);
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-        className: "cal-grid",
-        children: cells.map(function (c, idx) {
-          var isToday = c === now.getDate();
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "cal-cell ".concat(c === null ? 'empty' : '', " ").concat(isToday ? 'today' : ''),
-            children: c || ''
-          }, idx);
-        })
-      })]
-    });
-  };
   var PerformanceCards = function PerformanceCards() {
-    // derive values from stats; default to zeros so the dashboard shows 0 when no data exists
     var s = Number(stats.total_students) || 0;
     var prevS = Number(stats.prev_total_students) || 0;
     var studentChange = prevS ? "".concat(((s - prevS) / prevS * 100).toFixed(1), "%") : '+0%';
@@ -60286,6 +60390,10 @@ function AdminDashboard(_ref2) {
     var gpa = Number(stats.avg_gpa) || 0;
     var prevGpa = Number(stats.prev_avg_gpa) || 0;
     var gpaChange = prevGpa ? "".concat(((gpa - prevGpa) / prevGpa * 100).toFixed(1), "%") : '+0%';
+
+    // If all metrics are zero-ish, don't render the grid (keeps dashboard clean)
+    var anyNonZero = s > 0 || course > 0 || ts > 0 || gpa > 0;
+    if (!anyNonZero) return null;
     var cards = [{
       title: 'Student Growth',
       value: s,
@@ -60333,27 +60441,30 @@ function AdminDashboard(_ref2) {
       })
     });
   };
+
+  // MiniCalendar removed per design request
+
   var TeachersPage = function TeachersPage() {
-    var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState24 = _slicedToArray(_useState23, 2),
+      searchT = _useState24[0],
+      setSearchT = _useState24[1];
+    var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState26 = _slicedToArray(_useState25, 2),
-      searchT = _useState26[0],
-      setSearchT = _useState26[1];
-    var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
+      filterStatusT = _useState26[0],
+      setFilterStatusT = _useState26[1];
+    var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState28 = _slicedToArray(_useState27, 2),
-      filterStatusT = _useState28[0],
-      setFilterStatusT = _useState28[1];
+      filterDeptT = _useState28[0],
+      setFilterDeptT = _useState28[1];
     var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState30 = _slicedToArray(_useState29, 2),
-      filterDeptT = _useState30[0],
-      setFilterDeptT = _useState30[1];
-    var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      filterPosT = _useState30[0],
+      setFilterPosT = _useState30[1];
+    var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState32 = _slicedToArray(_useState31, 2),
-      filterPosT = _useState32[0],
-      setFilterPosT = _useState32[1];
-    var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState34 = _slicedToArray(_useState33, 2),
-      importPreviewT = _useState34[0],
-      setImportPreviewT = _useState34[1];
+      importPreviewT = _useState32[0],
+      setImportPreviewT = _useState32[1];
     var teachersAll = users.filter(function (u) {
       return u.role === 'teacher';
     });
@@ -60397,6 +60508,18 @@ function AdminDashboard(_ref2) {
       }
       return true;
     });
+
+    // derived counts for the chips (mirrors students UI)
+    var totalTeachers = teachersAll.length;
+    var activeCountT = teachersAll.filter(function (t) {
+      return !t.deleted_at && !t.is_locked;
+    }).length;
+    var archivedCountT = teachersAll.filter(function (t) {
+      return !!t.deleted_at;
+    }).length;
+    var lockedCountT = teachersAll.filter(function (t) {
+      return !!t.is_locked;
+    }).length;
     var handleTeacherExport = function handleTeacherExport() {
       var rows = filtered.map(function (u) {
         var t = u.teacher || {};
@@ -60441,13 +60564,13 @@ function AdminDashboard(_ref2) {
         var headers = lines[0].split(',').map(function (h) {
           return h.replace(/"/g, '').trim();
         });
-        var data = lines.slice(1, 101).map(function (l) {
+        var data = lines.slice(1, 200).map(function (l) {
           var cols = l.split(',').map(function (c) {
             return c.replace(/^\s*"|"\s*$/g, '').trim();
           });
           var obj = {};
           headers.forEach(function (h, i) {
-            return obj[h] = cols[i] || '';
+            obj[h] = cols[i] || '';
           });
           return obj;
         });
@@ -60486,7 +60609,7 @@ function AdminDashboard(_ref2) {
                 if (!payload.name) payload.name = "".concat(payload.first_name || '', " ").concat(payload.last_name || '').trim();
                 if (!payload.password) payload.password = Math.random().toString(36).slice(-8) + 'A1!';
                 _context2.n = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/admin/users', payload)["catch"](function (e) {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payload)["catch"](function (e) {
                   console.warn('teacher import failed', e);
                   return null;
                 });
@@ -60541,11 +60664,18 @@ function AdminDashboard(_ref2) {
             case 1:
               _context3.p = 1;
               _context3.n = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"]("/api/admin/users/".concat(id));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/api/admin/users/".concat(id));
             case 2:
               _context3.n = 3;
               return fetchAll();
             case 3:
+              // notify other admin components and activities list
+              try {
+                window.dispatchEvent(new CustomEvent('admin:users-changed'));
+              } catch (e) {}
+              try {
+                window.dispatchEvent(new CustomEvent('admin:activities-changed'));
+              } catch (e) {}
               alert('Archived');
               _context3.n = 5;
               break;
@@ -60571,11 +60701,17 @@ function AdminDashboard(_ref2) {
             case 0:
               _context4.p = 0;
               _context4.n = 1;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("/api/admin/users/".concat(id, "/restore"));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/admin/users/".concat(id, "/restore"));
             case 1:
               _context4.n = 2;
               return fetchAll();
             case 2:
+              try {
+                window.dispatchEvent(new CustomEvent('admin:users-changed'));
+              } catch (e) {}
+              try {
+                window.dispatchEvent(new CustomEvent('admin:activities-changed'));
+              } catch (e) {}
               alert('Restored');
               _context4.n = 4;
               break;
@@ -60601,11 +60737,17 @@ function AdminDashboard(_ref2) {
             case 0:
               _context5.p = 0;
               _context5.n = 1;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("/api/admin/users/".concat(id, "/").concat(locked ? 'unlock' : 'lock'));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/admin/users/".concat(id, "/").concat(locked ? 'unlock' : 'lock'));
             case 1:
               _context5.n = 2;
               return fetchAll();
             case 2:
+              try {
+                window.dispatchEvent(new CustomEvent('admin:users-changed'));
+              } catch (e) {}
+              try {
+                window.dispatchEvent(new CustomEvent('admin:activities-changed'));
+              } catch (e) {}
               _context5.n = 4;
               break;
             case 3:
@@ -60636,11 +60778,17 @@ function AdminDashboard(_ref2) {
             case 1:
               _context6.p = 1;
               _context6.n = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"]("/api/admin/users/".concat(id, "?force=1"));
+              return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/api/admin/users/".concat(id, "?force=1"));
             case 2:
               _context6.n = 3;
               return fetchAll();
             case 3:
+              try {
+                window.dispatchEvent(new CustomEvent('admin:users-changed'));
+              } catch (e) {}
+              try {
+                window.dispatchEvent(new CustomEvent('admin:activities-changed'));
+              } catch (e) {}
               alert('Deleted');
               _context6.n = 5;
               break;
@@ -60658,6 +60806,13 @@ function AdminDashboard(_ref2) {
         return _ref8.apply(this, arguments);
       };
     }();
+
+    // fire activity change events so Recent Activities updates
+    var _notifyActivities = function _notifyActivities() {
+      try {
+        window.dispatchEvent(new CustomEvent('admin:activities-changed'));
+      } catch (e) {}
+    };
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
       className: "page teachers-page",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
@@ -60667,9 +60822,9 @@ function AdminDashboard(_ref2) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
             className: "hero-left",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h1", {
-              children: "Teachers"
+              children: "Teacher Management"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
-              children: "Welcome back! Here's what's happening today."
+              children: "Manage faculty records and accounts"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
               className: "hero-cards",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
@@ -60689,456 +60844,339 @@ function AdminDashboard(_ref2) {
               })
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "hero-right",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "search-add",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+            className: "hero-right"
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        className: "card students-panel",
+        style: {
+          padding: 20,
+          borderRadius: 12
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          style: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: 12,
+            marginBottom: 12
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            style: {
+              flex: 1
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                gap: 16
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                style: {
+                  width: 44,
+                  height: 44,
+                  borderRadius: 12,
+                  background: 'linear-gradient(90deg,#4f46e5,#06b6d4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#fff'
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiUsers, {})
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  style: {
+                    fontSize: 16,
+                    fontWeight: 700
+                  },
+                  children: "Teachers"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "small-muted",
+                  children: "View and manage faculty information"
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              style: {
+                display: 'flex',
+                gap: 8,
+                marginTop: 14,
+                alignItems: 'center'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
+                type: "button",
+                className: "chip ".concat(filterStatusT === 'all' && !showArchived ? 'active' : ''),
+                onClick: function onClick() {
+                  setFilterStatusT('all');
+                  setShowArchived(false);
+                },
+                "aria-pressed": filterStatusT === 'all' && !showArchived,
+                children: ["All Teachers ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                  className: "chip-count",
+                  children: totalTeachers
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
+                type: "button",
+                className: "chip ".concat(filterStatusT === 'active' && !showArchived ? 'active' : ''),
+                onClick: function onClick() {
+                  setFilterStatusT('active');
+                  setShowArchived(false);
+                },
+                "aria-pressed": filterStatusT === 'active' && !showArchived,
+                children: ["Active ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                  className: "chip-count",
+                  children: activeCountT
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
+                type: "button",
+                className: "chip ".concat(showArchived || filterStatusT === 'archived' ? 'active' : ''),
+                onClick: function onClick() {
+                  setFilterStatusT('archived');
+                  setShowArchived(true);
+                },
+                "aria-pressed": showArchived || filterStatusT === 'archived',
+                children: ["Archived ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                  className: "chip-count",
+                  children: archivedCountT
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
+                type: "button",
+                className: "chip ".concat(filterStatusT === 'locked' && !showArchived ? 'active' : ''),
+                onClick: function onClick() {
+                  setFilterStatusT('locked');
+                  setShowArchived(false);
+                },
+                "aria-pressed": filterStatusT === 'locked' && !showArchived,
+                children: ["Locked ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                  className: "chip-count",
+                  children: lockedCountT
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              style: {
+                marginTop: 12
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
                 className: "student-search",
                 placeholder: "Search teachers...",
                 value: searchT,
                 onChange: function onChange(e) {
                   return setSearchT(e.target.value);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
-                className: "primary",
-                onClick: function onClick() {
-                  setModalRole('teacher');
-                  setShowModal(true);
                 },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {}), " Add Teacher"]
-              })]
-            })
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "students-metrics metrics-grid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "metric card metric-blue",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "metric-icon color-blue",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "label",
-            children: "Total Faculty"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "value",
-            children: teachersAll.length
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "metric card metric-green",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "metric-icon color-green",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiCheckCircle, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "label",
-            children: "Active"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "value",
-            children: teachersAll.filter(function (t) {
-              var _t$teacher9;
-              return (((_t$teacher9 = t.teacher) === null || _t$teacher9 === void 0 ? void 0 : _t$teacher9.status) || t.status || '').toLowerCase() === 'active';
-            }).length
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "metric card metric-purple",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "metric-icon color-purple",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiAward, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "label",
-            children: "Sabbatical"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "value",
-            children: teachersAll.filter(function (t) {
-              var _t$teacher0;
-              return (((_t$teacher0 = t.teacher) === null || _t$teacher0 === void 0 ? void 0 : _t$teacher0.status) || t.status || '').toLowerCase() === 'sabbatical';
-            }).length
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "metric card metric-orange",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "metric-icon color-orange",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiAward, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "label",
-            children: "Retired"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "value",
-            children: teachersAll.filter(function (t) {
-              var _t$teacher1;
-              return (((_t$teacher1 = t.teacher) === null || _t$teacher1 === void 0 ? void 0 : _t$teacher1.status) || t.status || '').toLowerCase() === 'retired';
-            }).length
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "metric card metric-red",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "metric-icon color-red",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiLock, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "label",
-            children: "Locked"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "value",
-            children: teachersAll.filter(function (t) {
-              return t.is_locked;
-            }).length
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "metric card metric-violet",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "metric-icon color-violet",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "label",
-            children: "Total Courses"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "value",
-            children: coursesList.length
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "metric card metric-cyan",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "metric-icon color-cyan",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "label",
-            children: "Students"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "value",
-            children: derivedTotalStudents
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "metric card metric-gray",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "metric-icon color-gray",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiArchive, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "label",
-            children: "Archived"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "value",
-            children: archivedUsers.length || 0
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "controls-card card",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-          className: "controls-left",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "filters",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("label", {
-              className: "filter-item",
-              children: "Filters:"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", {
-              value: filterStatusT,
-              onChange: function onChange(e) {
-                return setFilterStatusT(e.target.value);
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: "all",
-                children: "All Status"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: "active",
-                children: "Active"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: "sabbatical",
-                children: "Sabbatical"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: "retired",
-                children: "Retired"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: "locked",
-                children: "Locked"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", {
-              value: filterDeptT,
-              onChange: function onChange(e) {
-                return setFilterDeptT(e.target.value);
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: "",
-                children: "All Departments"
-              }), departmentsList.map(function (d) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                  value: d,
-                  children: d
-                }, d);
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", {
-              value: filterPosT,
-              onChange: function onChange(e) {
-                return setFilterPosT(e.target.value);
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: "",
-                children: "All Positions"
-              }), positionsList.map(function (p) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                  value: p,
-                  children: p
-                }, p);
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "controls-right",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-            type: "button",
-            className: "archived-btn ".concat(showArchived ? 'on' : ''),
-            onClick: function onClick() {
-              return setShowArchived(function (s) {
-                return !s;
-              });
-            },
-            title: "Show Archived",
-            children: "Show Archived"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "view-toggle",
-            role: "toolbar",
-            "aria-label": "View mode",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-              title: "List view",
-              className: activePage === 'teachers' ? 'active' : '',
-              children: "\u2630"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-              title: "Grid view",
-              children: "\u25A6"
-            })]
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-        className: "table-wrapper card landscape-table teachers-card",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("table", {
-          className: "teachers-table teachers-list-modern",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("thead", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
                 style: {
-                  minWidth: 300
-                },
-                children: "Teacher"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Subject"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Contact"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Experience"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Classes"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Students"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Rating"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Performance"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Status"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Actions"
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("tbody", {
-            children: filtered.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("tr", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                colSpan: 10,
-                children: "No teachers found"
+                  width: '100%',
+                  padding: '12px 14px',
+                  borderRadius: 8,
+                  background: '#f3f4f6',
+                  border: 'none'
+                }
               })
-            }) : filtered.map(function (t) {
-              var teacher = t.teacher || {};
-              var fullName = t.name || "".concat(teacher.first_name || '', " ").concat(teacher.last_name || '').trim();
-              var empId = teacher.faculty_id || t.faculty_id || "EMP".concat(String(t.id).padStart(6, '0'));
-              var subject = teacher.specialization || teacher.course || t.subject || '—';
-              var phone = teacher.phone_number || t.phone_number || '';
-              var experience = (teacher.experience_years || teacher.experience || '').toString() ? "".concat(teacher.experience_years || teacher.experience, " years") : '—';
-              var classesCount = Array.isArray(teacher.courses_handled) ? teacher.courses_handled.length : teacher.courses_handled ? teacher.courses_handled.split(',').length : 0;
-              var studentsCount = teacher.students_count || teacher.student_count || t.students_count || stats.total_students || 0;
-              var rating = Number(teacher.rating || t.rating || 0);
-              var performancePct = Number(teacher.performance_pct || teacher.performance || Math.round(rating / 5 * 100));
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
-                className: "".concat(t.deleted_at ? 'archived-row' : ''),
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            style: {
+              display: 'flex',
+              alignItems: 'center'
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              className: "primary",
+              onClick: function onClick() {
+                setModalRole('teacher');
+                setShowModal(true);
+              },
+              style: {
+                padding: '10px 16px'
+              },
+              children: "+ Add Teacher"
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          style: {
+            overflowX: 'auto'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("table", {
+            className: "students-table",
+            style: {
+              width: '100%',
+              borderCollapse: 'collapse'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("thead", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
+                  style: {
+                    textAlign: 'left',
+                    padding: '12px 8px'
+                  },
+                  children: "Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
+                  style: {
+                    textAlign: 'left',
+                    padding: '12px 8px'
+                  },
+                  children: "Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
+                  style: {
+                    textAlign: 'left',
+                    padding: '12px 8px'
+                  },
+                  children: "Subject"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
+                  style: {
+                    textAlign: 'left',
+                    padding: '12px 8px'
+                  },
+                  children: "Department"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
+                  style: {
+                    textAlign: 'left',
+                    padding: '12px 8px'
+                  },
+                  children: "Status"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
+                  style: {
+                    textAlign: 'right',
+                    padding: '12px 8px'
+                  },
+                  children: "Actions"
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("tbody", {
+              children: filtered.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("tr", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
+                  colSpan: 6,
+                  style: {
+                    padding: 20
+                  },
+                  children: "No teachers found"
+                })
+              }) : filtered.map(function (t) {
+                var teacher = t.teacher || {};
+                var fullName = t.name || "".concat(teacher.first_name || '', " ").concat(teacher.last_name || '').trim();
+                var email = t.email || '';
+                var subject = teacher.specialization || teacher.course || t.subject || '—';
+                var department = teacher.department || teacher.department || '';
+                var statusVal = (teacher.status || t.status || 'Active').toString();
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
+                  className: "".concat(t.deleted_at ? 'archived-row' : ''),
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
                     style: {
-                      display: 'flex',
-                      gap: 12,
-                      alignItems: 'center'
+                      padding: '12px 8px'
                     },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                      className: "avatar-circle",
-                      children: (fullName || 'T').split(' ').map(function (n) {
-                        return n[0];
-                      }).slice(0, 2).join('')
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                      style: {
-                        display: 'flex',
-                        flexDirection: 'column'
-                      },
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                        style: {
-                          fontWeight: 800
-                        },
-                        children: fullName
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                        className: "small-muted",
-                        children: ["ID: ", empId]
-                      })]
-                    }), t.deleted_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                      style: {
-                        marginLeft: 8
-                      },
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                        className: "archived-badge",
-                        children: "Archived"
-                      })
-                    })]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                    className: "grade-chip",
+                    children: fullName
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
+                    style: {
+                      padding: '12px 8px'
+                    },
+                    children: email
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
+                    style: {
+                      padding: '12px 8px'
+                    },
                     children: subject
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
                     style: {
-                      display: 'flex',
-                      flexDirection: 'column'
+                      padding: '12px 8px'
                     },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                      children: t.email
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                      className: "small-muted",
-                      children: phone
-                    })]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: experience
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  style: {
-                    textAlign: 'center'
-                  },
-                  children: classesCount
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  style: {
-                    textAlign: 'center'
-                  },
-                  children: studentsCount
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("td", {
-                  style: {
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                    children: department
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
                     style: {
-                      color: '#f59e0b',
-                      fontWeight: 700
+                      padding: '12px 8px'
                     },
-                    children: "\u2605"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                      className: "status-pill ".concat((statusVal || '').toLowerCase()),
+                      children: statusVal
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
                     style: {
-                      fontWeight: 800
+                      padding: '12px 8px',
+                      textAlign: 'right'
                     },
-                    children: rating ? rating.toFixed(1) : '-'
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("td", {
-                  style: {
-                    minWidth: 180
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                    className: "progress-wrap",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                      className: "progress-bar performance",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                        className: "progress-fill",
-                        style: {
-                          width: "".concat(performancePct, "%")
-                        }
+                      className: "actions",
+                      style: {
+                        display: 'inline-flex',
+                        alignItems: 'center'
+                      },
+                      children: !t.deleted_at ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                          type: "button",
+                          className: "action-icon view-button",
+                          title: "View",
+                          onClick: function onClick() {
+                            return setSelectedUser(t);
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiEye, {})
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                          type: "button",
+                          className: "action-icon",
+                          title: "Edit",
+                          onClick: function onClick() {
+                            setEditing(t);
+                            setModalRole('teacher');
+                            setShowModal(true);
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiEdit2, {})
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                          type: "button",
+                          className: "action-icon",
+                          title: t.is_locked ? 'Unlock' : 'Lock',
+                          onClick: function onClick() {
+                            return toggleLockTeacher(t.id, t.is_locked);
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiLock, {})
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                          type: "button",
+                          className: "action-icon text-danger",
+                          title: "Archive",
+                          onClick: function onClick() {
+                            return archiveTeacher(t.id);
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiArchive, {})
+                        })]
+                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                          type: "button",
+                          className: "action-icon",
+                          title: "Restore",
+                          onClick: function onClick() {
+                            return restoreTeacher(t.id);
+                          },
+                          children: "\u267B\uFE0F"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                          type: "button",
+                          className: "action-icon text-danger",
+                          title: "Delete Permanently",
+                          onClick: function onClick() {
+                            return deleteTeacher(t.id);
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiTrash2, {})
+                        })]
                       })
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                    className: "small-muted",
-                    children: [performancePct, "%"]
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                    className: "status-pill ".concat(((teacher.status || t.status || '').toString() || '').toLowerCase()),
-                    children: teacher.status || t.status || 'Active'
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: !t.deleted_at ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                      className: "action-icon",
-                      title: "View",
-                      onClick: function onClick() {
-                        return setSelectedUser(t);
-                      },
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEye, {})
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                      className: "action-icon",
-                      title: "Edit",
-                      onClick: function onClick() {
-                        setEditing(t);
-                        setModalRole('teacher');
-                        setShowModal(true);
-                      },
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEdit2, {})
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                      className: "action-icon",
-                      title: t.is_locked ? 'Unlock' : 'Lock',
-                      onClick: function onClick() {
-                        return toggleLockTeacher(t.id, t.is_locked);
-                      },
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiLock, {})
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                      className: "action-icon text-danger",
-                      title: "Archive",
-                      onClick: function onClick() {
-                        return archiveTeacher(t.id);
-                      },
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiTrash2, {})
-                    })]
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                      className: "action-icon",
-                      title: "Restore",
-                      onClick: function onClick() {
-                        return restoreTeacher(t.id);
-                      },
-                      children: "\u267B\uFE0F"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                      className: "action-icon text-danger",
-                      title: "Delete Permanently",
-                      onClick: function onClick() {
-                        return deleteTeacher(t.id);
-                      },
-                      children: "\uD83D\uDDD1\uFE0F"
-                    })]
-                  })
-                })]
-              }, t.id);
-            })
-          })]
-        })
+                }, t.id);
+              })
+            })]
+          })
+        })]
       })]
     });
   };
   var CoursesPage = function CoursesPage() {
-    var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState34 = _slicedToArray(_useState33, 2),
+      courseSearch = _useState34[0],
+      setCourseSearch = _useState34[1];
+    var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState36 = _slicedToArray(_useState35, 2),
-      courseSearch = _useState36[0],
-      setCourseSearch = _useState36[1];
+      filterStatusC = _useState36[0],
+      setFilterStatusC = _useState36[1];
     var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState38 = _slicedToArray(_useState37, 2),
-      filterStatusC = _useState38[0],
-      setFilterStatusC = _useState38[1];
+      filterSemesterC = _useState38[0],
+      setFilterSemesterC = _useState38[1];
     var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState40 = _slicedToArray(_useState39, 2),
-      filterSemesterC = _useState40[0],
-      setFilterSemesterC = _useState40[1];
-    var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
-      _useState42 = _slicedToArray(_useState41, 2),
-      filterCreditsC = _useState42[0],
-      setFilterCreditsC = _useState42[1];
+      filterCreditsC = _useState40[0],
+      setFilterCreditsC = _useState40[1];
 
     // programs (departments) provided by the user
     var programs = [{
@@ -61306,7 +61344,7 @@ function AdminDashboard(_ref2) {
                 var _document$getElementB;
                 return (_document$getElementB = document.getElementById('courses-import')) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.click();
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUpload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiUpload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
@@ -61315,7 +61353,7 @@ function AdminDashboard(_ref2) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
               className: "icon-box export",
               onClick: handleCourseExport,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiDownload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiDownload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
@@ -61326,7 +61364,7 @@ function AdminDashboard(_ref2) {
               onClick: function onClick() {
                 return setShowCourseModal(true);
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
@@ -61553,10 +61591,10 @@ function AdminDashboard(_ref2) {
     };
 
     // documents state (server-backed list)
-    var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-      _useState44 = _slicedToArray(_useState43, 2),
-      docsState = _useState44[0],
-      setDocsState = _useState44[1];
+    var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState42 = _slicedToArray(_useState41, 2),
+      docsState = _useState42[0],
+      setDocsState = _useState42[1];
 
     // load persisted documents from server on mount
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -61568,7 +61606,7 @@ function AdminDashboard(_ref2) {
             case 0:
               _context7.p = 0;
               _context7.n = 1;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().get(API + '/documents');
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + '/documents');
             case 1:
               res = _context7.v;
               if (mounted && Array.isArray(res.data)) {
@@ -61598,18 +61636,18 @@ function AdminDashboard(_ref2) {
         mounted = false;
       };
     }, []);
-    var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('grid'),
+    var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('grid'),
+      _useState44 = _slicedToArray(_useState43, 2),
+      docsView = _useState44[0],
+      setDocsView = _useState44[1];
+    var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState46 = _slicedToArray(_useState45, 2),
-      docsView = _useState46[0],
-      setDocsView = _useState46[1];
-    var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      filterFav = _useState46[0],
+      setFilterFav = _useState46[1];
+    var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState48 = _slicedToArray(_useState47, 2),
-      filterFav = _useState48[0],
-      setFilterFav = _useState48[1];
-    var _useState49 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
-      _useState50 = _slicedToArray(_useState49, 2),
-      filterVisibility = _useState50[0],
-      setFilterVisibility = _useState50[1];
+      filterVisibility = _useState48[0],
+      setFilterVisibility = _useState48[1];
 
     // file input ref handler
     var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
@@ -61635,7 +61673,7 @@ function AdminDashboard(_ref2) {
               });
               _context8.p = 2;
               _context8.n = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().post(API + '/documents', form, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post(API + '/documents', form, {
                 headers: {
                   'Content-Type': 'multipart/form-data'
                 }
@@ -61714,7 +61752,7 @@ function AdminDashboard(_ref2) {
               onClick: function onClick() {
                 return openUpload();
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUpload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiUpload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
@@ -61726,7 +61764,7 @@ function AdminDashboard(_ref2) {
               onClick: function onClick() {
                 return openUpload();
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
@@ -61991,7 +62029,7 @@ function AdminDashboard(_ref2) {
                       case 0:
                         _context9.p = 0;
                         _context9.n = 1;
-                        return axios__WEBPACK_IMPORTED_MODULE_3___default().get(API + '/documents/' + d.id);
+                        return axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + '/documents/' + d.id);
                       case 1:
                         res = _context9.v;
                         openDocModal(res.data);
@@ -62007,7 +62045,7 @@ function AdminDashboard(_ref2) {
                     }
                   }, _callee9, null, [[0, 2]]);
                 })),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEye, {})
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiEye, {})
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
                 className: "action-icon",
                 title: "Download",
@@ -62027,7 +62065,7 @@ function AdminDashboard(_ref2) {
                     alert('Download failed');
                   }
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiDownload, {})
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiDownload, {})
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
                 className: "action-icon",
                 title: "Copy link",
@@ -62053,7 +62091,7 @@ function AdminDashboard(_ref2) {
                     }
                   }, _callee0, null, [[0, 2]]);
                 })),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiCopy, {})
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiCopy, {})
               })]
             })]
           }, d.id);
@@ -62324,7 +62362,7 @@ function AdminDashboard(_ref2) {
               onClick: function onClick() {
                 return alert('Export not configured');
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiDownload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiDownload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
@@ -62335,7 +62373,7 @@ function AdminDashboard(_ref2) {
               onClick: function onClick() {
                 return alert('Add event (not implemented)');
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
@@ -62562,8 +62600,6 @@ function AdminDashboard(_ref2) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(CoursesPage, {});
       case "reports":
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(ReportsPage, {});
-      case "calendar":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(CalendarPage, {});
       default:
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
           children: "Under development"
@@ -62572,7 +62608,7 @@ function AdminDashboard(_ref2) {
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
     className: "admin-dashboard-layout",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
       activePage: activePage,
       onNavigate: setActivePage
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("main", {
@@ -62591,6 +62627,7 @@ function AdminDashboard(_ref2) {
       }
     }), selectedUser && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_UserDetailModal__WEBPACK_IMPORTED_MODULE_8__["default"], {
       user: selectedUser,
+      type: selectedUser && (selectedUser.role === 'teacher' || selectedUser.teacher) ? 'teacher' : 'student',
       onClose: function onClose() {
         return setSelectedUser(null);
       }
@@ -62782,157 +62819,7 @@ function AdminDashboard(_ref2) {
   });
 }
 
-// Interactive department overview component
-function DepartmentOverview() {
-  var key = 'admin:departments:v1';
-  var defaultDeps = [['ICJEEP', 'Institute of Criminal Justice Education Program'], ['CSP', 'Computer Studies Program'], ['ETP', 'Engineering & Technology Program'], ['AP', 'Accountancy Program'], ['NP', 'Nursing Program'], ['BAP', 'Business Administration Program'], ['ASP', 'Arts and Sciences Program'], ['THMP', 'Tourism and Hospitality Management Program']];
-  var _useState51 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-      try {
-        var raw = localStorage.getItem(key);
-        if (raw) return JSON.parse(raw);
-      } catch (e) {
-        console.warn('invalid dept data', e);
-      }
-      return defaultDeps.map(function (_ref12) {
-        var _ref13 = _slicedToArray(_ref12, 2),
-          code = _ref13[0],
-          name = _ref13[1];
-        return {
-          code: code,
-          name: name,
-          students: 0,
-          courses: 0,
-          editing: false
-        };
-      });
-    }),
-    _useState52 = _slicedToArray(_useState51, 2),
-    deps = _useState52[0],
-    setDeps = _useState52[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    localStorage.setItem(key, JSON.stringify(deps));
-  }, [deps]);
-  var originalsRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({});
-  var toggleEdit = function toggleEdit(code) {
-    return setDeps(function (d) {
-      return d.map(function (x) {
-        if (x.code === code) {
-          if (!x.editing) originalsRef.current[code] = {
-            students: x.students,
-            courses: x.courses
-          };
-          return _objectSpread(_objectSpread({}, x), {}, {
-            editing: !x.editing
-          });
-        }
-        return x;
-      });
-    });
-  };
-  var updateField = function updateField(code, field, value) {
-    return setDeps(function (d) {
-      return d.map(function (x) {
-        return x.code === code ? _objectSpread(_objectSpread({}, x), {}, _defineProperty({}, field, value)) : x;
-      });
-    });
-  };
-  var cancelEdit = function cancelEdit(code) {
-    var orig = originalsRef.current[code];
-    if (orig) {
-      setDeps(function (d) {
-        return d.map(function (x) {
-          return x.code === code ? _objectSpread(_objectSpread({}, x), {}, {
-            students: orig.students,
-            courses: orig.courses,
-            editing: false
-          }) : x;
-        });
-      });
-      originalsRef.current[code] = undefined;
-    } else {
-      setDeps(function (d) {
-        return d.map(function (x) {
-          return x.code === code ? _objectSpread(_objectSpread({}, x), {}, {
-            editing: false
-          }) : x;
-        });
-      });
-    }
-  };
-
-  // reset removed per design
-
-  var maxStudents = Math.max.apply(Math, [1].concat(_toConsumableArray(deps.map(function (d) {
-    return Number(d.students) || 0;
-  }))));
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-    className: "department-list list",
-    children: deps.map(function (d, idx) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "department-row",
-        "data-code": d.code,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "row-left",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-            className: "dot",
-            "aria-hidden": true,
-            style: {
-              background: ['#2563eb', '#10b981', '#7c3aed', '#06b6d4'][idx % 4]
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "dept-name",
-            children: d.name
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-          className: "row-center",
-          children: !d.editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "progress-wrap",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "progress-bar",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "progress-fill",
-                style: {
-                  width: "".concat(Number(d.students) / maxStudents * 100, "%")
-                }
-              })
-            })
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "edit-inline",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
-              type: "number",
-              min: "0",
-              value: d.students,
-              onChange: function onChange(e) {
-                return updateField(d.code, 'students', Number(e.target.value) || 0);
-              }
-            })
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-          className: "row-right",
-          children: !d.editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "counts-right",
-            children: [d.students, " students"]
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "edit-actions",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-              className: "btn",
-              onClick: function onClick() {
-                return toggleEdit(d.code);
-              },
-              children: "Save"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-              className: "btn-link",
-              onClick: function onClick() {
-                return cancelEdit(d.code);
-              },
-              children: "Cancel"
-            })]
-          })
-        })]
-      }, d.code);
-    })
-  });
-}
+// Department overview removed per user request
 
 /***/ }),
 
@@ -63481,6 +63368,7 @@ function AdminUsers() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   var openAdd = function openAdd() {
+    var roleParam = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'student';
     console.log('openAdd called');
     try {
       prevGlobalOverlaysRef.current = Array.from(document.querySelectorAll('.modal-overlay'));
@@ -63488,7 +63376,7 @@ function AdminUsers() {
       prevGlobalOverlaysRef.current = [];
     }
     setModalInitial(null);
-    setModalRole('student');
+    setModalRole(roleParam || 'student');
     // open the modal form
     setShowInlineForm(false);
     setModalForm({
@@ -63681,41 +63569,62 @@ function AdminUsers() {
   // onSave handler for UserFormModal (receives payload from modal)
   var saveFromUserForm = /*#__PURE__*/function () {
     var _ref10 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(payload, isEdit) {
-      var resp, errObj, err, _t9;
+      var res, _res, resp, errObj, err, _t9;
       return _regenerator().w(function (_context9) {
         while (1) switch (_context9.p = _context9.n) {
           case 0:
             _context9.p = 0;
             if (!(isEdit && payload && payload.id)) {
-              _context9.n = 2;
+              _context9.n = 4;
               break;
             }
             _context9.n = 1;
             return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/admin/users/".concat(payload.id), payload);
           case 1:
-            _context9.n = 3;
-            break;
+            res = _context9.v;
+            _context9.n = 2;
+            return loadUsers();
           case 2:
             _context9.n = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payload);
-          case 3:
-            _context9.n = 4;
-            return loadUsers();
-          case 4:
-            _context9.n = 5;
             return loadArchivedUsers();
-          case 5:
+          case 3:
             try {
               window.dispatchEvent(new CustomEvent('admin:users-changed'));
             } catch (e) {}
-            return _context9.a(2, Promise.resolve());
+            return _context9.a(2, Promise.resolve(res && res.data ? res.data : {}));
+          case 4:
+            _context9.n = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payload);
+          case 5:
+            _res = _context9.v;
+            _context9.n = 6;
+            return loadUsers();
           case 6:
-            _context9.p = 6;
+            _context9.n = 7;
+            return loadArchivedUsers();
+          case 7:
+            try {
+              window.dispatchEvent(new CustomEvent('admin:users-changed'));
+            } catch (e) {}
+            // also dispatch a created event with id so other listeners can act
+            try {
+              window.dispatchEvent(new CustomEvent('admin:user-created', {
+                detail: _res && _res.data && _res.data.user ? {
+                  id: _res.data.user.id
+                } : {}
+              }));
+            } catch (e) {}
+            return _context9.a(2, Promise.resolve(_res && _res.data ? _res.data : {}));
+          case 8:
+            _context9.n = 11;
+            break;
+          case 9:
+            _context9.p = 9;
             _t9 = _context9.v;
             console.error('Save from UserForm failed', _t9);
             // propagate validation errors to caller (UserFormModal)
             if (!(_t9 && _t9.response && _t9.response.status === 422 && _t9.response.data)) {
-              _context9.n = 7;
+              _context9.n = 10;
               break;
             }
             resp = _t9.response.data;
@@ -63729,16 +63638,44 @@ function AdminUsers() {
             err = new Error(resp.message || 'Validation failed');
             err.fields = errObj;
             return _context9.a(2, Promise.reject(err));
-          case 7:
+          case 10:
             alert(_t9 && _t9.message ? _t9.message : 'Failed to save user');
             return _context9.a(2, Promise.reject(_t9));
+          case 11:
+            return _context9.a(2);
         }
-      }, _callee9, null, [[0, 6]]);
+      }, _callee9, null, [[0, 9]]);
     }));
     return function saveFromUserForm(_x8, _x9) {
       return _ref10.apply(this, arguments);
     };
   }();
+
+  // listen for created users (from other parts of the UI) so we can highlight new rows
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var onUserCreated = function onUserCreated(ev) {
+      try {
+        var id = ev && ev.detail && ev.detail.id;
+        if (id) {
+          setHighlightNewId(id);
+          // clear highlight after a few seconds
+          setTimeout(function () {
+            return setHighlightNewId(null);
+          }, 6000);
+          // refresh lists in case other page created it
+          loadUsers()["catch"](function () {});
+          loadArchivedUsers()["catch"](function () {});
+        }
+      } catch (e) {
+        console.error('user-created handler failed', e);
+      }
+    };
+    window.addEventListener('admin:user-created', onUserCreated);
+    return function () {
+      return window.removeEventListener('admin:user-created', onUserCreated);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // CSV export of current filtered list
   var handleExport = function handleExport() {
@@ -64043,9 +63980,9 @@ function AdminUsers() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "hero-left",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-            children: "Students"
+            children: "Student Management"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-            children: "Welcome back! Here's what's happening today."
+            children: "Manage student records and accounts"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "hero-cards",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -64065,24 +64002,7 @@ function AdminUsers() {
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "hero-right",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "search-add",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-              className: "student-search",
-              placeholder: "Search students, teachers, classes...",
-              value: search,
-              onChange: function onChange(e) {
-                return setSearch(e.target.value);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-              className: "primary",
-              onClick: function onClick() {
-                return openAdd('student');
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {}), " Add Student"]
-            })]
-          })
+          className: "hero-right"
         })]
       })
     }), showInlineForm && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -64231,398 +64151,314 @@ function AdminUsers() {
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "students-metrics metrics-grid",
+      className: "card students-panel",
+      style: {
+        padding: 20,
+        borderRadius: 12
+      },
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "metric card metric-blue",
-        onClick: function onClick() {/* maybe navigate to details */},
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "metric-icon color-blue",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "label",
-          children: "Total Students"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "value",
-          children: totalStudents
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "metric card metric-green",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "metric-icon color-green",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiCheckCircle, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "label",
-          children: "Active"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "value",
-          children: activeCount
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "metric card metric-purple",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "metric-icon color-purple",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiAward, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "label",
-          children: "Graduated"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "value",
-          children: graduatedCount
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "metric card metric-orange",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "metric-icon color-orange",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiAlertTriangle, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "label",
-          children: "Suspended"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "value",
-          children: suspendedCount
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "metric card metric-red",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "metric-icon color-red",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiLock, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "label",
-          children: "Locked"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "value",
-          children: lockedCount
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "metric card metric-violet",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "metric-icon color-violet",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "label",
-          children: "Avg. GPA"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "value",
-          children: avgGpa
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "metric card metric-gray",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "metric-icon color-gray",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiArchive, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "label",
-          children: "Archived"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "value",
-          children: (archivedUsers === null || archivedUsers === void 0 ? void 0 : archivedUsers.length) || 0
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "controls-card card",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "controls-left",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-          type: "search",
-          placeholder: "Search by name, ID, email, or major...",
-          className: "global-search",
-          value: search,
-          onChange: function onChange(e) {
-            return setSearch(e.target.value);
-          }
+        style: {
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          gap: 12,
+          marginBottom: 12
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            flex: 1
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              alignItems: 'center',
+              gap: 16
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              style: {
+                width: 44,
+                height: 44,
+                borderRadius: 12,
+                background: 'linear-gradient(90deg,#4f46e5,#06b6d4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fff'
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {})
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                style: {
+                  fontSize: 16,
+                  fontWeight: 700
+                },
+                children: "Students"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "small-muted",
+                children: "View and manage student information"
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              gap: 8,
+              marginTop: 14,
+              alignItems: 'center'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              className: "chip ".concat(filterStatus === 'all' && !showArchived ? 'active' : ''),
+              type: "button",
+              onClick: function onClick() {
+                setFilterStatus('all');
+                setShowArchived(false);
+              },
+              "aria-pressed": filterStatus === 'all' && !showArchived,
+              children: ["All Students ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                className: "chip-count",
+                children: totalStudents
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              className: "chip ".concat(filterStatus === 'active' && !showArchived ? 'active' : ''),
+              type: "button",
+              onClick: function onClick() {
+                setFilterStatus('active');
+                setShowArchived(false);
+              },
+              "aria-pressed": filterStatus === 'active' && !showArchived,
+              children: ["Active ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                className: "chip-count",
+                children: activeCount
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              className: "chip ".concat(showArchived || filterStatus === 'archived' ? 'active' : ''),
+              type: "button",
+              onClick: function onClick() {
+                setFilterStatus('archived');
+                setShowArchived(true);
+              },
+              "aria-pressed": showArchived || filterStatus === 'archived',
+              children: ["Archived ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                className: "chip-count",
+                children: archivedUsers.length
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              className: "chip ".concat(filterStatus === 'locked' && !showArchived ? 'active' : ''),
+              type: "button",
+              onClick: function onClick() {
+                setFilterStatus('locked');
+                setShowArchived(false);
+              },
+              "aria-pressed": filterStatus === 'locked' && !showArchived,
+              children: ["Locked ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                className: "chip-count",
+                children: lockedCount
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            style: {
+              marginTop: 12
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+              className: "student-search",
+              placeholder: "Search students...",
+              value: search,
+              onChange: function onChange(e) {
+                return setSearch(e.target.value);
+              },
+              style: {
+                width: '100%',
+                padding: '12px 14px',
+                borderRadius: 8,
+                background: '#f3f4f6',
+                border: 'none'
+              }
+            })
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           style: {
-            marginLeft: 12,
-            fontWeight: 800,
-            color: '#475569'
+            display: 'flex',
+            alignItems: 'center'
           },
-          children: "Filters:"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "filters",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
-            value: filterStatus,
-            onChange: function onChange(e) {
-              return setFilterStatus(e.target.value);
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            className: "primary",
+            onClick: function onClick() {
+              return openAdd('student');
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-              value: "all",
-              children: "All Status"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-              value: "active",
-              children: "Active"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-              value: "locked",
-              children: "Locked"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-              value: "archived",
-              children: "Archived"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-              value: "suspended",
-              children: "Suspended"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
-            value: filterMajor,
-            onChange: function onChange(e) {
-              return setFilterMajor(e.target.value);
+            style: {
+              padding: '10px 16px'
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-              value: "",
-              children: "All Majors"
-            }), majors.map(function (m, i) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-                value: m,
-                children: m
-              }, i);
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
-            value: filterDepartment,
-            onChange: function onChange(e) {
-              return setFilterDepartment(e.target.value);
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-              value: "",
-              children: "All Departments"
-            }), departments.map(function (d, i) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-                value: d,
-                children: d
-              }, i);
-            })]
-          })]
+            children: "+ Add Student"
+          })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "controls-right",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "archived-toggle-card ".concat(showArchived ? 'on' : ''),
-          onClick: function onClick() {
-            return setShowArchived(function (s) {
-              return !s;
-            });
+        style: {
+          overflowX: 'auto'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
+          className: "students-table",
+          style: {
+            width: '100%',
+            borderCollapse: 'collapse'
           },
-          role: "button",
-          title: "Toggle Archived",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "archived-inner",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "archived-label",
-              children: "Archived"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "archived-count",
-              children: (archivedUsers === null || archivedUsers === void 0 ? void 0 : archivedUsers.length) || 0
-            })]
-          })
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                style: {
+                  textAlign: 'left',
+                  padding: '12px 8px'
+                },
+                children: "Name"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                style: {
+                  textAlign: 'left',
+                  padding: '12px 8px'
+                },
+                children: "Email"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                style: {
+                  textAlign: 'left',
+                  padding: '12px 8px'
+                },
+                children: "Grade"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                style: {
+                  textAlign: 'left',
+                  padding: '12px 8px'
+                },
+                children: "Enrollment Date"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                style: {
+                  textAlign: 'left',
+                  padding: '12px 8px'
+                },
+                children: "Status"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                style: {
+                  textAlign: 'right',
+                  padding: '12px 8px'
+                },
+                children: "Actions"
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
+            children: filteredList.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tr", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                colSpan: 6,
+                style: {
+                  padding: 20
+                },
+                children: "No students found"
+              })
+            }) : filteredList.map(function (u) {
+              var student = u.student || {};
+              var fullName = u.name || "".concat(student.first_name || '', " ").concat(student.last_name || '').trim();
+              var email = u.email || '';
+              var grade = student.year_level || u.year_level || '—';
+              var enrollment = student.date_of_enrollment || student.enrollment_date || u.date_of_enrollment || u.enrollment_date || '';
+              var statusVal = (student.status || u.status || 'Active').toString();
+              var enrollmentText = enrollment ? new Date(enrollment).toLocaleDateString() : '—';
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                className: "".concat(u.deleted_at ? 'archived-row' : '', " ").concat(highlightNewId === u.id ? 'new-highlight' : ''),
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '12px 8px'
+                  },
+                  children: fullName
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '12px 8px'
+                  },
+                  children: email
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '12px 8px'
+                  },
+                  children: grade
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '12px 8px'
+                  },
+                  children: enrollmentText
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '12px 8px'
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                    className: "status-pill ".concat((statusVal || '').toLowerCase()),
+                    children: statusVal
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '12px 8px',
+                    textAlign: 'right'
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "actions",
+                    style: {
+                      display: 'inline-flex',
+                      alignItems: 'center'
+                    },
+                    children: !u.deleted_at ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                        type: "button",
+                        className: "action-icon view-button",
+                        title: "View",
+                        onClick: function onClick() {
+                          setDetailUser(u);
+                          setShowDetail(true);
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEye, {})
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                        type: "button",
+                        className: "action-icon",
+                        title: "Edit",
+                        onClick: function onClick() {
+                          return openEdit(u);
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEdit2, {})
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                        type: "button",
+                        className: "action-icon",
+                        title: u.is_locked ? 'Unlock' : 'Lock',
+                        onClick: function onClick() {
+                          return toggleLock(u.id, u.is_locked);
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiLock, {})
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                        type: "button",
+                        className: "action-icon text-danger",
+                        title: "Archive",
+                        onClick: function onClick() {
+                          return archiveUser(u.id);
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiArchive, {})
+                      })]
+                    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                        type: "button",
+                        className: "action-icon",
+                        title: "Restore",
+                        onClick: function onClick() {
+                          return restoreUser(u.id);
+                        },
+                        children: "\u267B\uFE0F"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                        type: "button",
+                        className: "action-icon text-danger",
+                        title: "Delete Permanently",
+                        onClick: function onClick() {
+                          return permanentDeleteUser(u.id);
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiTrash2, {})
+                      })]
+                    })
+                  })
+                })]
+              }, u.id);
+            })
+          })]
         })
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "table-wrapper card landscape-table students-card",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
-        className: "students-table students-list-modern",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              style: {
-                minWidth: 300
-              },
-              children: "Student"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "Grade"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "Contact"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "GPA"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "Attendance"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "Performance"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "Status"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "Actions"
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-          children: filteredList.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tr", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              colSpan: 8,
-              children: "No students found"
-            })
-          }) : filteredList.map(function (u) {
-            var student = u.student || {};
-            var studentId = student.student_id || u.student_id || u.id || '';
-            var fullName = u.name || "".concat(student.first_name || '', " ").concat(student.last_name || '').trim();
-            var grade = student.year_level || u.year_level || '—';
-            var email = u.email || '';
-            var phone = student.phone_number || u.phone_number || '';
-            var gpaVal = typeof student.gpa === 'number' ? student.gpa : typeof u.gpa === 'number' ? u.gpa : null;
-            var attendancePct = student.attendance_pct || 0; // expects number 0-100
-            var performancePct = student.performance_pct || Math.round((gpaVal || 0) / 4 * 100);
-            var statusVal = (student.status || u.status || 'Active').toString();
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-              className: "".concat(u.deleted_at ? 'archived-row' : '', " ").concat(highlightNewId === u.id ? 'new-highlight' : ''),
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                  style: {
-                    display: 'flex',
-                    gap: 12,
-                    alignItems: 'center'
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                    className: "avatar-circle",
-                    children: (fullName || 'U').split(' ').map(function (n) {
-                      return n[0];
-                    }).slice(0, 2).join('')
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                    style: {
-                      display: 'flex',
-                      flexDirection: 'column'
-                    },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                      style: {
-                        fontWeight: 800
-                      },
-                      children: fullName
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                      className: "small-muted",
-                      children: ["ID: ", studentId]
-                    })]
-                  }), u.deleted_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                    style: {
-                      marginLeft: 8
-                    },
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                      className: "archived-badge",
-                      children: "Archived"
-                    })
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  className: "grade-chip",
-                  children: grade
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                  style: {
-                    display: 'flex',
-                    flexDirection: 'column'
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                    children: email
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                    className: "small-muted",
-                    children: phone
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                style: {
-                  textAlign: 'center'
-                },
-                children: gpaVal === null ? '-' : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
-                  style: {
-                    fontWeight: 800
-                  },
-                  children: [gpaVal.toFixed(1), " / 4.0"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
-                style: {
-                  minWidth: 160
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                  className: "progress-wrap",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                    className: "progress-bar",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                      className: "progress-fill",
-                      style: {
-                        width: "".concat(attendancePct, "%")
-                      }
-                    })
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                  className: "small-muted",
-                  children: [attendancePct, "%"]
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
-                style: {
-                  minWidth: 180
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                  className: "progress-wrap",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                    className: "progress-bar performance",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                      className: "progress-fill",
-                      style: {
-                        width: "".concat(performancePct, "%")
-                      }
-                    })
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                  className: "small-muted",
-                  children: [performancePct, "%"]
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  className: "status-pill ".concat((statusVal || '').toLowerCase()),
-                  children: statusVal
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                children: !u.deleted_at ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-                    className: "action-icon view-button",
-                    title: "View",
-                    onClick: function onClick() {
-                      setDetailUser(u);
-                      setShowDetail(true);
-                    },
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEye, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                      className: "action-label",
-                      children: "See"
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                    className: "action-icon",
-                    title: "Edit",
-                    onClick: function onClick() {
-                      return openEdit(u);
-                    },
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEdit2, {})
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                    className: "action-icon",
-                    title: u.is_locked ? 'Unlock' : 'Lock',
-                    onClick: function onClick() {
-                      return toggleLock(u.id, u.is_locked);
-                    },
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiLock, {})
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                    className: "action-icon text-danger",
-                    title: "Archive",
-                    onClick: function onClick() {
-                      return archiveUser(u.id);
-                    },
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiTrash2, {})
-                  })]
-                }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                    className: "action-icon",
-                    title: "Restore",
-                    onClick: function onClick() {
-                      return restoreUser(u.id);
-                    },
-                    children: "\u267B\uFE0F"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                    className: "action-icon text-danger",
-                    title: "Delete Permanently",
-                    onClick: function onClick() {
-                      return permanentDeleteUser(u.id);
-                    },
-                    children: "\uD83D\uDDD1\uFE0F"
-                  })]
-                })
-              })]
-            }, u.id);
-          })
-        })]
-      })
     }), showModal && (modalRole === 'student' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "modal-overlay",
       role: "dialog",
@@ -65152,10 +64988,6 @@ function Sidebar(_ref) {
     label: "Documents",
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiFileText)
   }, {
-    id: "calendar",
-    label: "Calendar",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiCalendar)
-  }, {
     id: "settings",
     label: "Settings",
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiSettings)
@@ -65484,9 +65316,7 @@ function Sidebar(_ref) {
       className: "label"
     }, item.label), !collapsed && (item.id === "users" && stats.total_users ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
       className: "badge"
-    }, stats.total_users) : null), !collapsed && (item.id === "teachers" && stats.total_teachers ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "badge"
-    }, stats.total_teachers) : null)), null);
+    }, stats.total_users) : null)), null);
   }))),
   /*#__PURE__*/
   // Footer (avatar + user)
@@ -65536,10 +65366,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -65555,70 +65381,28 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 function StudentDetailModal(_ref) {
   var user = _ref.user,
-    onClose = _ref.onClose,
-    onSaved = _ref.onSaved;
+    onClose = _ref.onClose;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
     setForm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    saving = _useState4[0],
-    setSaving = _useState4[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (user) setForm(_objectSpread({}, user));
   }, [user]);
   if (!user) return null;
-  var handleChange = function handleChange(e) {
-    var _e$target = e.target,
-      name = _e$target.name,
-      value = _e$target.value;
-    setForm(function (s) {
-      return _objectSpread(_objectSpread({}, s), {}, _defineProperty({}, name, value));
-    });
-  };
-  var save = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var payload, res, _t;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.p = _context.n) {
-          case 0:
-            setSaving(true);
-            _context.p = 1;
-            payload = {
-              status: form.status
-            }; // include other editable fields if needed
-            _context.n = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/admin/users/".concat(user.id), payload);
-          case 2:
-            res = _context.v;
-            if (typeof onSaved === 'function') onSaved(res.data || _objectSpread({}, form));
-            onClose();
-            alert('Student updated');
-            _context.n = 4;
-            break;
-          case 3:
-            _context.p = 3;
-            _t = _context.v;
-            console.error('Save student error', _t);
-            alert('Failed to save student');
-          case 4:
-            _context.p = 4;
-            setSaving(false);
-            return _context.f(4);
-          case 5:
-            return _context.a(2);
-        }
-      }, _callee, null, [[1, 3, 4, 5]]);
-    }));
-    return function save() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
+  var student = form.student || {};
+  var fullName = form.name || "".concat((student.first_name || '').trim(), " ").concat((student.last_name || '').trim()).trim() || '—';
+  var studentId = form.student_id || student.student_id || form.id || '—';
+  var email = form.email || student.email || '—';
+  var phone = form.phone || student.phone_number || student.phone || '—';
+  var major = form.major || student.major || student.course || '—';
+  var year = form.year || student.year_level || student.academic_year || '—';
+  var gpa = form.gpa || student.gpa ? String(form.gpa || student.gpa) : '—';
+  var enrolled = form.enrolled_count || student.enrolled_count || 0;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'modal-backdrop'
+    className: 'modal-backdrop modal-centered'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'modal'
+    className: 'modal modal-card with-shadow'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('header', {
     className: 'modal-header'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, 'Student Details'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
@@ -65632,33 +65416,12 @@ function StudentDetailModal(_ref) {
       gridTemplateColumns: '1fr 1fr',
       gap: '8px'
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Student ID'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, form.student_id || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Full Name'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, form.name || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Email'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, form.email || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Phone'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, form.phone || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Major'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, form.major || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Year'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, form.year || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'GPA'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, form.gpa || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Enrolled Courses'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, form.enrolled_count || 0))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    style: {
-      marginTop: '12px'
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Change Status'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
-    name: 'status',
-    value: form.status || 'Active',
-    onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
-    value: 'Active'
-  }, 'Active'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
-    value: 'Inactive'
-  }, 'Inactive'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
-    value: 'Graduated'
-  }, 'Graduated'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
-    value: 'Suspended'
-  }, 'Suspended')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('footer', {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Student ID'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, studentId)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Full Name'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, fullName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Email'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Phone'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Major'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, major)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Year'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, year)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'GPA'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, gpa)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Enrolled Courses'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, enrolled)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('footer', {
     className: 'modal-footer'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: onClose,
-    style: {
-      marginRight: '8px'
-    }
-  }, 'Close'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: save,
-    disabled: saving
-  }, saving ? 'Saving…' : 'Save Changes'))));
+    type: 'button',
+    onClick: onClose
+  }, 'Close'))));
 }
 
 /***/ }),
@@ -65759,9 +65522,9 @@ function UserDetailModal(_ref) {
     };
   }();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'modal-backdrop'
+    className: 'modal-backdrop modal-centered'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'modal modal-wide'
+    className: 'modal modal-wide modal-card with-shadow'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('header', {
     className: 'modal-header'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, type === 'teacher' ? 'Teacher Details' : 'Student Information'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
@@ -65807,14 +65570,9 @@ function UserDetailModal(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Phone Number'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, ((_form$student8 = form.student) === null || _form$student8 === void 0 ? void 0 : _form$student8.phone_number) || form.phone_number || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Year Level'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, ((_form$student9 = form.student) === null || _form$student9 === void 0 ? void 0 : _form$student9.year_level) || form.academic_year || '—')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('strong', null, 'Status'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, ((_form$student0 = form.student) === null || _form$student0 === void 0 ? void 0 : _form$student0.status) || form.status || '—')))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('footer', {
     className: 'modal-footer'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: onClose,
-    style: {
-      marginRight: '8px'
-    }
-  }, 'Close'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: save,
-    disabled: saving
-  }, saving ? 'Saving…' : 'Save Changes'))));
+    type: 'button',
+    onClick: onClose
+  }, 'Close'))));
 }
 
 /***/ }),
@@ -66009,9 +65767,26 @@ function UserFormModal(_ref) {
           v = _ref3[1];
         return v !== '' && v !== null && typeof v !== 'undefined';
       }));
-      Promise.resolve(onSave(_payloadFiltered, !!initial)).then(function () {
-        setSubmitting(false);
-        onClose();
+      Promise.resolve(onSave(_payloadFiltered, !!initial)).then(function (res) {
+        // on success show a short success indicator so user sees it's persisted
+        try {
+          setSubmitting(false);
+          setErrors({});
+        } catch (e) {}
+        try {
+          // optionally allow parent to pass back created user info; highlight handled elsewhere
+          // show a tiny success state then close
+          var t = setTimeout(function () {
+            clearTimeout(t);
+            try {
+              onClose();
+            } catch (e) {}
+          }, 900);
+        } catch (e) {
+          try {
+            onClose();
+          } catch (_) {}
+        }
       })["catch"](function (err) {
         setSubmitting(false);
         // if the caller attached field errors, surface them inline
@@ -66053,9 +65828,23 @@ function UserFormModal(_ref) {
         v = _ref5[1];
       return v !== '' && v !== null && typeof v !== 'undefined';
     }));
-    Promise.resolve(onSave(payloadFiltered, !!initial)).then(function () {
-      setSubmitting(false);
-      onClose();
+    Promise.resolve(onSave(payloadFiltered, !!initial)).then(function (res) {
+      try {
+        setSubmitting(false);
+        setErrors({});
+      } catch (e) {}
+      try {
+        var t = setTimeout(function () {
+          clearTimeout(t);
+          try {
+            onClose();
+          } catch (e) {}
+        }, 900);
+      } catch (e) {
+        try {
+          onClose();
+        } catch (_) {}
+      }
     })["catch"](function (err) {
       setSubmitting(false);
       if (err && err.fields && _typeof(err.fields) === 'object') {
@@ -66139,12 +65928,26 @@ function UserFormModal(_ref) {
     type: 'date',
     value: form.date_of_birth,
     onChange: handleChange
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Enrollment Date'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  }),
+  // show Sex for teachers, Enrollment Date for students
+  role === 'teacher' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Sex'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
+    name: 'sex',
+    value: form.sex,
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
+    value: ''
+  }, 'Prefer not to say'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
+    value: 'Male'
+  }, 'Male'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
+    value: 'Female'
+  }, 'Female'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
+    value: 'Other'
+  }, 'Other'))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Enrollment Date'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'enrollment_date',
     type: 'date',
     value: form.enrollment_date,
     onChange: handleChange
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Phone *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Phone *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'phone_number',
     value: form.phone_number,
     onChange: handleChange,

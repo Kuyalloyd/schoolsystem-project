@@ -126,7 +126,15 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
       if (!(initial && initial.id)) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
         // strip empty values so the server doesn't receive blank strings that overwrite required columns
         const payloadFiltered = Object.fromEntries(Object.entries(payload).filter(([k,v]) => v !== '' && v !== null && typeof v !== 'undefined'));
-        Promise.resolve(onSave(payloadFiltered, !!initial)).then(() => { setSubmitting(false); onClose(); }).catch((err) => {
+        Promise.resolve(onSave(payloadFiltered, !!initial)).then((res) => {
+        // on success show a short success indicator so user sees it's persisted
+        try { setSubmitting(false); setErrors({}); } catch(e){}
+        try {
+          // optionally allow parent to pass back created user info; highlight handled elsewhere
+          // show a tiny success state then close
+          const t = setTimeout(() => { clearTimeout(t); try { onClose(); } catch(e){} }, 900);
+        } catch(e) { try { onClose(); } catch(_){} }
+      }).catch((err) => {
         setSubmitting(false);
         // if the caller attached field errors, surface them inline
         if (err && err.fields && typeof err.fields === 'object') {
@@ -163,7 +171,12 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
   if (initial && initial.id) payload.id = initial.id;
   if (!(initial && initial.id)) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
   const payloadFiltered = Object.fromEntries(Object.entries(payload).filter(([k,v]) => v !== '' && v !== null && typeof v !== 'undefined'));
-  Promise.resolve(onSave(payloadFiltered, !!initial)).then(() => { setSubmitting(false); onClose(); }).catch((err) => {
+  Promise.resolve(onSave(payloadFiltered, !!initial)).then((res) => {
+    try { setSubmitting(false); setErrors({}); } catch(e){}
+    try {
+      const t = setTimeout(() => { clearTimeout(t); try { onClose(); } catch(e){} }, 900);
+    } catch(e) { try { onClose(); } catch(_){} }
+  }).catch((err) => {
     setSubmitting(false);
     if (err && err.fields && typeof err.fields === 'object') {
       setErrors(err.fields);
@@ -210,8 +223,19 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
   const topRight = React.createElement('div', { className: 'col' },
     React.createElement('label', null, 'Date of Birth *'),
     React.createElement('input', { name: 'date_of_birth', type: 'date', value: form.date_of_birth, onChange: handleChange }),
-    React.createElement('label', null, 'Enrollment Date'),
-    React.createElement('input', { name: 'enrollment_date', type: 'date', value: form.enrollment_date, onChange: handleChange }),
+    // show Sex for teachers, Enrollment Date for students
+    (role === 'teacher' ? React.createElement(React.Fragment, null,
+      React.createElement('label', null, 'Sex'),
+      React.createElement('select', { name: 'sex', value: form.sex, onChange: handleChange },
+        React.createElement('option', { value: '' }, 'Prefer not to say'),
+        React.createElement('option', { value: 'Male' }, 'Male'),
+        React.createElement('option', { value: 'Female' }, 'Female'),
+        React.createElement('option', { value: 'Other' }, 'Other')
+      )
+    ) : React.createElement(React.Fragment, null,
+      React.createElement('label', null, 'Enrollment Date'),
+      React.createElement('input', { name: 'enrollment_date', type: 'date', value: form.enrollment_date, onChange: handleChange })
+    )),
     React.createElement('label', null, 'Phone *'),
     React.createElement('input', { name: 'phone_number', value: form.phone_number, onChange: handleChange, placeholder: '(555) 123-4567' }),
   (form.role === 'student' ? React.createElement('label', null, 'Academic Year') : React.createElement('label', null, 'Department')),

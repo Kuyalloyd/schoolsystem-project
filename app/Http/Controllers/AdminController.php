@@ -64,6 +64,10 @@ class AdminController extends Controller
     // Add user
     public function store(Request $request)
     {
+        // Debug: log incoming payload to help diagnose why creations may not persist
+        try { Log::debug('AdminController::store payload', ['payload' => $request->all()]); } catch(
+            \Exception $e) { /* ignore logging failures */ }
+
         // Normalize name fields: if the frontend sent a combined `name` but omitted
         // `first_name` or `last_name`, derive and merge them into the request so
         // validation and DB writes always have non-null strings for required
