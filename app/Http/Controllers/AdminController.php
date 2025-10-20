@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\Models\SystemActivity;
 use App\Models\Document;
 use Illuminate\Support\Facades\Storage;
@@ -96,6 +97,17 @@ class AdminController extends Controller
             Log::warning('Admin store initial validation failed', ['errors' => $ve->errors(), 'payload' => $request->all()]);
             return response()->json(['message' => 'The given data was invalid.', 'errors' => $ve->errors()], 422);
         }
+        // Build a safe full name regardless of whether the client sent 'name' or split fields
+        $fullName = $request->input('name');
+        if (!$fullName || trim($fullName) === '') {
+            $fn = $request->input('first_name') ?: '';
+            $ln = $request->input('last_name') ?: '';
+            $fullName = trim($fn . ' ' . $ln);
+        }
+        if (!$fullName || trim($fullName) === '') {
+            // As a last resort, default based on role so user creation never fails due to empty name
+            $fullName = ($request->input('role') === 'teacher') ? 'Teacher Account' : 'Student Account';
+        }
         // extra uniqueness checks for student/teacher identifiers so we can
         // return friendly 422 field errors to the frontend before attempting
         // the DB insert (avoids a generic 500 or a transaction rollback log noise).
@@ -121,7 +133,7 @@ class AdminController extends Controller
         DB::beginTransaction();
         try {
             $user = User::create([
-                'name' => $validated['name'],
+                'name' => $fullName,
                 'email' => $validated['email'],
                 'password' => bcrypt($validated['password']),
                 'role' => $validated['role'],
@@ -129,8 +141,8 @@ class AdminController extends Controller
             ]);
 
             if ($validated['role'] === 'student') {
-                // derive first/last name from provided name when frontend omits them
-                $nameParts = preg_split('/\s+/', trim($validated['name']));
+                // derive first/last name from provided (or computed) name when frontend omits them
+                $nameParts = preg_split('/\s+/', trim($fullName));
                 $derivedFirst = $request->input('first_name') ?: ($nameParts[0] ?? '');
                 $derivedLast = $request->input('last_name') ?: (count($nameParts) > 1 ? implode(' ', array_slice($nameParts, 1)) : '');
 
@@ -217,8 +229,8 @@ class AdminController extends Controller
             }
 
             if ($validated['role'] === 'teacher') {
-                // derive first/last name from provided name when frontend omits them
-                $namePartsT = preg_split('/\s+/', trim($validated['name']));
+                // derive first/last name from provided (or computed) name when frontend omits them
+                $namePartsT = preg_split('/\s+/', trim($fullName));
                 $derivedFirstT = $request->input('first_name') ?: ($namePartsT[0] ?? '');
                 $derivedLastT = $request->input('last_name') ?: (count($namePartsT) > 1 ? implode(' ', array_slice($namePartsT, 1)) : '');
 
@@ -240,6 +252,13 @@ class AdminController extends Controller
                 ];
 
                 try {
+                    // ensure required name fields are not empty (DB may require non-null)
+                    if (empty(trim((string)($teacherData['first_name'] ?? '')))) {
+                        $teacherData['first_name'] = ($derivedFirstT ?: 'Teacher');
+                    }
+                    if (empty(trim((string)($teacherData['last_name'] ?? '')))) {
+                        $teacherData['last_name'] = ($derivedLastT ?: 'Account');
+                    }
                     $tid = $request->input('teacher_id') ?: $request->input('faculty_id');
                     if ($tid) {
                         $existingById = Teacher::where('teacher_id', $tid)->first();
@@ -312,48 +331,150 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
 
-        DB::beginTransaction();
+        // Normalize incoming name fields the same way as store(), to avoid
+        // attempting to write NULL into non-nullable profile columns.
+        if ($request->filled('name')) {
+            $nameParts = preg_split('/\\s+/', trim($request->input('name')));
+            if (!$request->filled('first_name')) {
+                $request->merge(['first_name' => $nameParts[0] ?? '']);
+            }
+            if (!$request->filled('last_name')) {
+                $request->merge(['last_name' => count($nameParts) > 1 ? implode(' ', array_slice($nameParts, 1)) : '']);
+            }
+        }
+
+        $targetRole = $request->input('role', $user->role);
+
         try {
-            // Normalize incoming name fields the same way as store(), to avoid
-            // attempting to write NULL into non-nullable profile columns.
-            if ($request->filled('name')) {
-                $nameParts = preg_split('/\\s+/', trim($request->input('name')));
-                if (!$request->filled('first_name')) {
-                    $request->merge(['first_name' => $nameParts[0] ?? '']);
-                }
-                if (!$request->filled('last_name')) {
-                    $request->merge(['last_name' => count($nameParts) > 1 ? implode(' ', array_slice($nameParts, 1)) : '']);
-                }
+            $emailRules = [Rule::unique('users', 'email')->ignore($user->id)];
+            if ($targetRole === 'student') {
+                $emailRules[] = Rule::unique('students', 'email')->ignore(optional($user->student)->id);
+            } elseif ($targetRole === 'teacher') {
+                $emailRules[] = Rule::unique('teachers', 'email')->ignore(optional($user->teacher)->id);
             }
 
-            $user->update($request->only(['name', 'email', 'role']));
+            $rules = [
+                'name' => ['required_without:first_name', 'string', 'max:255'],
+                'first_name' => ['required_without:name', 'string', 'max:255'],
+                'last_name' => ['required_without:name', 'string', 'max:255'],
+                'email' => array_merge(['required', 'email'], $emailRules),
+                'role' => ['sometimes', Rule::in(['student', 'teacher', 'admin'])],
+            ];
 
-            // ensure profile exists for role and update available fields
-            if ($user->role === 'student') {
-                if (!$user->student) {
-                    Student::create(['user_id' => $user->id, 'student_id' => $request->input('student_id') ?? 'STU-' . strtoupper(uniqid())]);
+            if ($targetRole === 'student') {
+                $rules['student_id'] = ['nullable', 'string', 'max:255', Rule::unique('students', 'student_id')->ignore(optional($user->student)->id)];
+            }
+
+            if ($targetRole === 'teacher') {
+                $rules['teacher_id'] = ['nullable', 'string', 'max:255', Rule::unique('teachers', 'teacher_id')->ignore(optional($user->teacher)->id)];
+                $rules['faculty_id'] = ['nullable', 'string', 'max:255', Rule::unique('teachers', 'teacher_id')->ignore(optional($user->teacher)->id)];
+            }
+
+            $validated = $request->validate($rules);
+        } catch (ValidationException $ve) {
+            Log::warning('Admin update validation failed', ['errors' => $ve->errors(), 'payload' => $request->all(), 'id' => $id]);
+            return response()->json(['message' => 'The given data was invalid.', 'errors' => $ve->errors()], 422);
+        }
+
+        DB::beginTransaction();
+        try {
+            $targetRole = $validated['role'] ?? $targetRole;
+
+            $firstName = $request->input('first_name');
+            $lastName = $request->input('last_name');
+            $sourceName = $request->filled('name') ? $request->input('name') : ($user->name ?? '');
+            $nameParts = $sourceName !== '' ? preg_split('/\s+/', trim((string) $sourceName)) : [];
+            if (!$firstName || !$lastName) {
+                if ($firstName === null && $user->student) {
+                    $firstName = $user->student->first_name;
                 }
-                // only update fields that are provided (and not null) to avoid wiping required columns
-                $studentUpdates = array_filter($request->only(['student_id','first_name','last_name','sex','date_of_birth','phone_number','address','course','department','status','year_level','date_of_enrollment']), function ($v) { return !is_null($v); });
-                if (!empty($studentUpdates)) $user->student->update($studentUpdates);
-            } elseif ($user->role === 'teacher') {
-                if (!$user->teacher) {
-                    Teacher::create(['user_id' => $user->id, 'teacher_id' => $request->input('teacher_id') ?? $request->input('faculty_id') ?? 'TEA-' . strtoupper(uniqid())]);
+                if ($lastName === null && $user->student) {
+                    $lastName = $user->student->last_name;
                 }
-                $teacherUpdates = array_filter($request->only(['teacher_id','first_name','last_name','sex','date_of_birth','phone_number','address','department','status','courses_handled','position','highest_degree','specialization']), function ($v) { return !is_null($v); });
-                if (!empty($teacherUpdates)) $user->teacher->update($teacherUpdates);
+                if ($firstName === null && $user->teacher) {
+                    $firstName = $user->teacher->first_name;
+                }
+                if ($lastName === null && $user->teacher) {
+                    $lastName = $user->teacher->last_name;
+                }
+            }
+            if ((!$firstName || !$lastName) && !empty($nameParts)) {
+                $firstName = $firstName ?: ($nameParts[0] ?? '');
+                $lastName = $lastName ?: (count($nameParts) > 1 ? implode(' ', array_slice((array) $nameParts, 1)) : '');
+            }
+
+            if ($request->has('name')) {
+                $user->name = $request->input('name');
+            } elseif ($firstName || $lastName) {
+                $user->name = trim($firstName . ' ' . $lastName) ?: $user->name;
+            }
+
+            if ($request->has('email')) {
+                $user->email = $request->input('email');
+            }
+
+            if ($request->has('role')) {
+                $user->role = $targetRole;
+            }
+
+            $user->save();
+
+            if ($targetRole === 'student') {
+                $student = $user->student ?: new Student();
+                if (!$student->exists) {
+                    $student->user_id = $user->id;
+                }
+                $student->student_id = $request->input('student_id') ?: ($student->student_id ?: 'STU-' . strtoupper(uniqid()));
+                $student->first_name = $firstName ?: ($student->first_name ?: '');
+                $student->last_name = $lastName ?: ($student->last_name ?: '');
+                if (trim($student->first_name) === '' && trim($student->last_name) === '') {
+                    $student->first_name = $nameParts[0] ?? 'Student';
+                    $student->last_name = (count($nameParts) > 1 ? implode(' ', array_slice((array) $nameParts, 1)) : '') ?: 'Account';
+                }
+                $student->email = $user->email;
+
+                foreach (['sex', 'date_of_birth', 'phone_number', 'address', 'course', 'department', 'status', 'date_of_enrollment', 'year_level'] as $field) {
+                    if ($request->has($field)) {
+                        $student->{$field} = $request->input($field);
+                    }
+                }
+
+                $student->save();
+            } elseif ($targetRole === 'teacher') {
+                $teacher = $user->teacher ?: new Teacher();
+                if (!$teacher->exists) {
+                    $teacher->user_id = $user->id;
+                }
+                $teacherId = $request->input('teacher_id') ?: $request->input('faculty_id');
+                $teacher->teacher_id = $teacherId ?: ($teacher->teacher_id ?: 'TEA-' . strtoupper(uniqid()));
+                $teacher->first_name = $firstName ?: ($teacher->first_name ?: '');
+                $teacher->last_name = $lastName ?: ($teacher->last_name ?: '');
+                if (trim($teacher->first_name) === '' && trim($teacher->last_name) === '') {
+                    $teacher->first_name = $nameParts[0] ?? 'Teacher';
+                    $teacher->last_name = (count($nameParts) > 1 ? implode(' ', array_slice((array) $nameParts, 1)) : '') ?: 'Account';
+                }
+                $teacher->email = $user->email;
+
+                foreach (['sex', 'date_of_birth', 'phone_number', 'address', 'department', 'status', 'courses_handled', 'position', 'course'] as $field) {
+                    if ($request->has($field)) {
+                        $teacher->{$field} = $request->input($field);
+                    }
+                }
+
+                $teacher->save();
             }
 
             DB::commit();
 
-            // Log activity
             try {
                 SystemActivity::create([
                     'action' => 'user_updated',
                     'performed_by' => auth()->id() ? (string)auth()->id() : 'system',
                     'details' => 'Updated user id=' . $id
                 ]);
-            } catch (\Exception $e) { Log::warning('Failed to record system activity', ['error' => $e->getMessage()]); }
+            } catch (\Exception $e) {
+                Log::warning('Failed to record system activity', ['error' => $e->getMessage()]);
+            }
 
             $stats = [
                 'total_students' => Student::count(),
@@ -367,6 +488,25 @@ class AdminController extends Controller
             DB::rollBack();
             Log::warning('Admin update validation failed', ['errors' => $ve->errors(), 'payload' => $request->all(), 'id' => $id]);
             return response()->json(['message' => 'The given data was invalid.', 'errors' => $ve->errors()], 422);
+        } catch (QueryException $qe) {
+            DB::rollBack();
+            $msg = $qe->getMessage();
+            Log::error('Admin update query failed', ['error' => $msg, 'payload' => $request->all(), 'id' => $id]);
+
+            if (stripos($msg, 'users_email_unique') !== false) {
+                return response()->json(['message' => 'The given data was invalid.', 'errors' => ['email' => ['The email has already been taken.']]], 422);
+            }
+            if (stripos($msg, 'students_student_id_unique') !== false || stripos($msg, 'student_id') !== false) {
+                return response()->json(['message' => 'The given data was invalid.', 'errors' => ['student_id' => ['The student id has already been taken.']]], 422);
+            }
+            if (stripos($msg, 'teachers_teacher_id_unique') !== false || stripos($msg, 'teacher_id') !== false) {
+                return response()->json(['message' => 'The given data was invalid.', 'errors' => ['teacher_id' => ['The teacher id has already been taken.']]], 422);
+            }
+            if (stripos($msg, 'students_email_unique') !== false || stripos($msg, 'teachers_email_unique') !== false) {
+                return response()->json(['message' => 'The given data was invalid.', 'errors' => ['email' => ['The email has already been linked to another profile.']]], 422);
+            }
+
+            return response()->json(['message' => 'Database error while updating user.'], 500);
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Admin update failed', ['error' => $e->getMessage(), 'payload' => $request->all(), 'id' => $id]);

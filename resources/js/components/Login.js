@@ -96,7 +96,8 @@ export default function Login() {
   return (
     <div className="login-page fade-in">
       <div className="login-card">
-        <h2>Welcome Back</h2>
+        <h2>Saint Joseph Institute of Technology
+        </h2>
         <p className="subtitle">Sign in to access your account</p>
 
         <form onSubmit={handleLogin} autoComplete="off" className="login-form">

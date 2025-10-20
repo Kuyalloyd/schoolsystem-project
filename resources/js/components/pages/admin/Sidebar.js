@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { roleLabels } from './labels';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -23,8 +24,8 @@ export default function Sidebar({ activePage, onNavigate }) {
 
   const items = [
     { id: "dashboard", label: "Dashboard", icon: React.createElement(FiHome) },
-    { id: "students", label: "Students", icon: React.createElement(FiUsers) },
-    { id: "teachers", label: "Teachers", icon: React.createElement(FiUsers) },
+  { id: "students", label: roleLabels.student.plural, icon: React.createElement(FiUsers) },
+  { id: "teachers", label: roleLabels.teacher.plural, icon: React.createElement(FiUsers) },
     { id: "courses", label: "Course Management", icon: React.createElement(FiBookOpen) },
     { id: "reports", label: "Reports", icon: React.createElement(FiBarChart2) },
     { id: "documents", label: "Documents", icon: React.createElement(FiFileText) },
@@ -122,7 +123,24 @@ export default function Sidebar({ activePage, onNavigate }) {
   }, []);
 
   const handleClick = (item) => {
-    // If caller provided an onNavigate callback (single-page), use it.
+    // Always use route navigation for standalone pages (courses, reports, documents, settings)
+    const standalonePages = ['courses', 'reports', 'documents', 'settings'];
+    if (standalonePages.includes(item.id)) {
+      switch (item.id) {
+        case 'courses':
+          return navigate('/admin/courses');
+        case 'reports':
+          return navigate('/admin/reports');
+        case 'documents':
+          return navigate('/admin/documents');
+        case 'settings':
+          return navigate('/admin/settings');
+        default:
+          return;
+      }
+    }
+
+    // If caller provided an onNavigate callback (single-page), use it for dashboard pages.
     if (typeof onNavigate === 'function') {
       onNavigate(item.id);
       return;
@@ -138,12 +156,6 @@ export default function Sidebar({ activePage, onNavigate }) {
       case 'teachers':
         // route Teachers to the admin dashboard view as requested
         return navigate('/admin/dashboard');
-      case 'courses':
-        return navigate('/admin/courses');
-      case 'reports':
-        return navigate('/admin/reports');
-      case 'settings':
-        return navigate('/admin/settings');
       default:
         return;
     }

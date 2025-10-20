@@ -20,12 +20,14 @@ function ModalErrorBoundary({ children }) {
   return React.createElement(C, null, children);
 }
 
-export default function AdminUsers() {
+export default function AdminUsers({ role = 'student' }) {
+  const mountedRef = useRef(true);
+  const highlightTimerRef = useRef(null);
   const [users, setUsers] = useState([]);
   const [archivedUsers, setArchivedUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalInitial, setModalInitial] = useState(null);
-  const [modalRole, setModalRole] = useState('student');
+  const [modalRole, setModalRole] = useState(role);
   const [search, setSearch] = useState('');
   const [showArchived, setShowArchived] = useState(false);
   const [filterStatus, setFilterStatus] = useState('all');
@@ -42,21 +44,27 @@ export default function AdminUsers() {
   const [importRows, setImportRows] = useState([]);
   const [highlightNewId, setHighlightNewId] = useState(null);
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'grid'
-  const [showInlineForm, setShowInlineForm] = useState(false);
 
-  // simple inline form state (fallback)
-  const [inlineForm, setInlineForm] = useState({ name: '', student_id: '', email: '' });
-  const [inlineErrors, setInlineErrors] = useState({});
+  // fallback inline form removed
+
+  // Page-level labels derived from the `role` prop so the same component can
+  // render Learners or Instructors pages without hard-coded strings.
+  const pageType = (role === 'teacher') ? 'Instructor' : 'Learner';
+  const pagePlural = pageType + 's';
+  const pageLower = pageType.toLowerCase();
 
   // load users (non-archived students)
   const loadUsers = async () => {
     try {
-      const res = await axios.get('/api/admin/users?role=student');
+      const res = await axios.get(`/api/admin/users?role=${role}`);
       const u = Array.isArray(res.data) ? res.data : [];
+      if (!mountedRef.current) return; 
       setUsers(u);
-      try { console.debug('loadUsers: fetched', u.length, 'students', u.map(x => ({ id: x.id, email: x.email, deleted_at: x.deleted_at || (x.student && x.student.deleted_at) || null }))); } catch(e){}
+  // debug logging removed to reduce console noise
+  try { /* console.debug('loadUsers fetched', u.length); */ } catch(e){}
       } catch (err) {
         console.error('Failed to load users', err);
+        if (!mountedRef.current) return;
         setUsers([]);
       }
 
@@ -65,24 +73,27 @@ export default function AdminUsers() {
   // load archived (trashed) users separately
   const loadArchivedUsers = async () => {
     try {
-      const res = await axios.get('/api/admin/users?role=student&archived=1');
+      const res = await axios.get(`/api/admin/users?role=${role}&archived=1`);
       const a = Array.isArray(res.data) ? res.data : [];
+      if (!mountedRef.current) return;
       setArchivedUsers(a);
-      try { console.debug('loadArchivedUsers: fetched', a.length, 'archived students', a.map(x => ({ id: x.id, email: x.email, deleted_at: x.deleted_at || (x.student && x.student.deleted_at) || null }))); } catch(e){}
+  // debug logging removed to reduce console noise
+  try { /* console.debug('loadArchivedUsers fetched', a.length); */ } catch(e){}
     } catch (err) {
       console.error('Failed to load archived users', err);
+      if (!mountedRef.current) return;
       setArchivedUsers([]);
     }
   };
 
   const archiveUser = async (id) => {
-    if (!confirm('Archive this student?')) return;
+    if (!confirm(`Archive this ${pageLower}?`)) return;
     try {
       await axios.delete(`/api/admin/users/${id}`);
       await loadUsers(); await loadArchivedUsers();
       try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-      alert('Student archived');
-    } catch (err) { console.error('Archive failed', err); alert('Failed to archive student'); }
+      alert(`${pageType} archived`);
+    } catch (err) { console.error('Archive failed', err); alert(`Failed to archive ${pageLower}`); }
   };
 
   // bulk actions removed (selection removed)
@@ -104,23 +115,23 @@ export default function AdminUsers() {
       await loadUsers();
       await loadArchivedUsers();
       try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-      alert('Student restored');
+      alert(`${pageType} restored`);
     } catch (err) {
       console.error('Restore failed', err);
-      alert('Failed to restore student');
+      alert(`Failed to restore ${pageLower}`);
     }
   };
 
   const permanentDeleteUser = async (id) => {
-    if (!confirm('Permanently delete this student? This cannot be undone.')) return;
+    if (!confirm(`Permanently delete this ${pageLower}? This cannot be undone.`)) return;
     try {
       await axios.delete(`/api/admin/users/${id}?force=1`);
       await loadArchivedUsers();
       try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-      alert('Student permanently deleted');
+      alert(`${pageType} permanently deleted`);
     } catch (err) {
       console.error('Permanent delete failed', err);
-      alert('Failed to permanently delete student');
+      alert(`Failed to permanently delete ${pageLower}`);
     }
   };
 
@@ -138,13 +149,14 @@ export default function AdminUsers() {
 
   // fetch users on mount and whenever archived toggle changes
   useEffect(() => {
+    mountedRef.current = true;
     loadUsers();
     loadArchivedUsers().catch(() => {});
 
     // listen for global events
     const onUsersChanged = () => { loadUsers().catch(()=>{}); loadArchivedUsers().catch(()=>{}); };
     window.addEventListener('admin:users-changed', onUsersChanged);
-    return () => { window.removeEventListener('admin:users-changed', onUsersChanged); };
+    return () => { mountedRef.current = false; window.removeEventListener('admin:users-changed', onUsersChanged); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showArchived]);
 
@@ -154,16 +166,15 @@ export default function AdminUsers() {
     const tick = () => {
       try {
         const n = new Date();
-        setNow(n);
+        if (mountedRef.current) setNow(n);
         // if date changed (midnight) -> refresh
         if (n.toDateString() !== lastHourRef.date) {
           lastHourRef.date = n.toDateString();
-          loadUsers().catch(() => {});
-          loadArchivedUsers().catch(() => {});
+          if (mountedRef.current) { loadUsers().catch(() => {}); loadArchivedUsers().catch(() => {}); }
         }
         // if we crossed into morning (before 6 -> >=6) trigger a refresh
         if (lastHourRef.hour < 6 && n.getHours() >= 6) {
-          try { loadUsers().catch(() => {}); loadArchivedUsers().catch(() => {}); } catch(e){}
+          try { if (mountedRef.current) { loadUsers().catch(() => {}); loadArchivedUsers().catch(() => {}); } } catch(e){}
         }
         lastHourRef.hour = n.getHours();
       } catch (e) { console.warn('time tick failed', e); }
@@ -175,14 +186,13 @@ export default function AdminUsers() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const openAdd = (roleParam = 'student') => {
-    console.log('openAdd called');
+  const openAdd = (roleParam = role) => {
     try { prevGlobalOverlaysRef.current = Array.from(document.querySelectorAll('.modal-overlay')); } catch(e) { prevGlobalOverlaysRef.current = []; }
     setModalInitial(null);
     setModalRole(roleParam || 'student');
     // open the modal form
-    setShowInlineForm(false);
-    setModalForm({ first_name: '', last_name: '', student_id: '', email: '', sex: '', date_of_birth: '', date_of_enrollment: '', phone_number: '', department: '', address: '', course: '', status: 'Active', year_level: '' });
+  setModalForm({ first_name: '', last_name: '', student_id: '', email: '', sex: '', date_of_birth: '', date_of_enrollment: '', phone_number: '', department: '', address: '', course: '', status: 'Active', year_level: '' });
+    modalOpenTimeRef.current = Date.now();
     setShowModal(true);
   };
 
@@ -190,9 +200,19 @@ export default function AdminUsers() {
   const [modalForm, setModalForm] = useState({ first_name: '', last_name: '', student_id: '', email: '', date_of_birth: '', date_of_enrollment: '', phone_number: '', department: '', address: '', course: '', status: 'Active', year_level: '', sex: '' });
   const [modalErrors, setModalErrors] = useState({});
   const [modalSubmitting, setModalSubmitting] = useState(false);
-  const [showFallbackModal, setShowFallbackModal] = useState(false);
-  const fallbackTimerRef = useRef(null);
+  const [modalServerMessage, setModalServerMessage] = useState('');
+  const firstErrorRef = useRef(null);
+  // fallback modal removed
   const prevGlobalOverlaysRef = useRef([]);
+  const modalOpenTimeRef = useRef(0);
+
+  const handleModalClose = (source = 'unknown') => {
+    try {
+      const elapsed = modalOpenTimeRef.current ? Date.now() - modalOpenTimeRef.current : null;
+      try { console.debug('[AdminUsers] handleModalClose', { source, elapsed }); } catch(e){}
+    } catch(e){}
+    setShowModal(false); setModalInitial(null);
+  };
 
   const handleModalChange = (k, v) => setModalForm(f => ({ ...f, [k]: v }));
 
@@ -200,13 +220,38 @@ export default function AdminUsers() {
   const errs = {};
   if (!modalForm.first_name) errs.first_name = 'First name is required';
   if (!modalForm.last_name) errs.last_name = 'Last name is required';
+  if (!modalForm.email) errs.email = 'Email is required';
   // student_id is optional; backend will generate if missing
   if (modalForm.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(modalForm.email)) errs.email = 'Valid email required';
     setModalErrors(errs); if (Object.keys(errs).length) return;
-    setModalSubmitting(true);
+    // client-side duplicate checks to avoid server 422 for common cases
+    try {
+      const emailLower = (modalForm.email || '').toString().toLowerCase().trim();
+      if (emailLower) {
+        const allUsers = (users || []).concat(archivedUsers || []);
+        const byEmail = allUsers.find(u => (u.email || '').toString().toLowerCase() === emailLower && !(modalInitial && modalInitial.id && String(u.id) === String(modalInitial.id)));
+        if (byEmail) {
+          setModalErrors({ email: 'This email is already used by another account' });
+          try { const el = document.querySelector('.modal-body [name="email"]'); if (el && typeof el.focus === 'function') el.focus(); } catch(e){}
+          return;
+        }
+      }
+      const sid = (modalForm.student_id || '').toString().trim();
+      if (sid) {
+        const allUsers = (users || []).concat(archivedUsers || []);
+        const bySid = allUsers.find(u => (u.student && u.student.student_id) === sid && !(modalInitial && modalInitial.id && String(u.id) === String(modalInitial.id)));
+        if (bySid) {
+          setModalErrors({ student_id: 'That Student ID is already linked to another account' });
+          try { const el = document.querySelector('.modal-body [name="student_id"]'); if (el && typeof el.focus === 'function') el.focus(); } catch(e){}
+          return;
+        }
+      }
+    } catch(e) { console.warn('Duplicate check failed', e); }
+  setModalServerMessage('');
+  setModalSubmitting(true);
     try {
       const payload = {
-        role: 'student',
+        role: modalRole || role,
         student_id: modalForm.student_id,
         first_name: modalForm.first_name,
         last_name: modalForm.last_name,
@@ -226,7 +271,7 @@ export default function AdminUsers() {
       // when creating, include a temporary password so backend validation succeeds
       if (!(modalInitial && modalInitial.id)) {
         const gen = () => (Math.random().toString(36).slice(-8) + 'A1!');
-        payload.password = gen();
+        payload.password = payload.password || gen();
       }
       // strip empty values so backend doesn't receive blank strings
       const payloadFiltered = Object.fromEntries(Object.entries(payload).filter(([k,v]) => v !== '' && v !== null && typeof v !== 'undefined'));
@@ -237,12 +282,13 @@ export default function AdminUsers() {
       } else {
         res = await axios.post('/api/admin/users', payloadFiltered);
       }
-      setShowModal(false); setModalInitial(null); setShowInlineForm(false); setShowFallbackModal(false);
+  setShowModal(false); setModalInitial(null);
       await loadUsers(); await loadArchivedUsers();
       try { window.dispatchEvent(new CustomEvent('admin:users-changed', { detail: (res && res.data && res.data.stats) ? res.data.stats : {} })); } catch(e){}
       try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: (res && res.data && res.data.stats) ? res.data.stats : {} })); } catch(e){}
     } catch (e) {
       console.error('Save failed', e);
+      try { if (e && e.response && e.response.status === 422) console.warn('422 response body:', e.response.data); } catch(_) {}
       // try to map server-side validation errors (Laravel 422) into modalErrors
       if (e && e.response && e.response.status === 422 && e.response.data && typeof e.response.data === 'object') {
         const data = e.response.data;
@@ -251,10 +297,23 @@ export default function AdminUsers() {
           const fieldErrs = {};
           Object.keys(data.errors).forEach(k => { fieldErrs[k] = data.errors[k].join(' '); });
           setModalErrors(fieldErrs);
+          // also show server message if present
+          if (data.message) setModalServerMessage(data.message);
+          try {
+            // focus first invalid field for faster correction
+            const order = ['first_name','last_name','email','student_id','date_of_birth','phone_number','course','department','status','date_of_enrollment','year_level','address'];
+            const firstKey = order.find(k => fieldErrs[k]);
+            if (firstKey) {
+              const el = document.querySelector(`.modal-body [name="${firstKey}"]`);
+              if (el && typeof el.focus === 'function') el.focus();
+            }
+          } catch(_e) {}
           setModalSubmitting(false);
           return;
         }
-        if (data.message) alert(data.message);
+        if (data.message) {
+          setModalServerMessage(data.message || 'Validation failed');
+        }
         setModalSubmitting(false);
         return;
       }
@@ -275,6 +334,8 @@ export default function AdminUsers() {
         try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
         return Promise.resolve(res && res.data ? res.data : {});
       } else {
+        // ensure required fields: backend requires password on create
+        if (!payload.password) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
         const res = await axios.post('/api/admin/users', payload);
         // refresh lists
         await loadUsers(); await loadArchivedUsers();
@@ -308,17 +369,18 @@ export default function AdminUsers() {
       try {
         const id = ev && ev.detail && ev.detail.id;
         if (id) {
+          if (!mountedRef.current) return;
           setHighlightNewId(id);
           // clear highlight after a few seconds
-          setTimeout(() => setHighlightNewId(null), 6000);
+          try { if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current); } catch(e){}
+          highlightTimerRef.current = setTimeout(() => { if (mountedRef.current) setHighlightNewId(null); }, 6000);
           // refresh lists in case other page created it
-          loadUsers().catch(() => {});
-          loadArchivedUsers().catch(() => {});
+          if (mountedRef.current) { loadUsers().catch(() => {}); loadArchivedUsers().catch(() => {}); }
         }
       } catch (e) { console.error('user-created handler failed', e); }
     };
     window.addEventListener('admin:user-created', onUserCreated);
-    return () => window.removeEventListener('admin:user-created', onUserCreated);
+    return () => { window.removeEventListener('admin:user-created', onUserCreated); try { if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current); } catch(e){} };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
@@ -345,7 +407,7 @@ export default function AdminUsers() {
     const csv = [Object.keys(rows[0] || {}).join(',')].concat(rows.map(r => Object.values(r).map(v => '"'+String(v || '').replace(/"/g,'""')+'"').join(','))).join('\n');
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href = url; a.download = 'students-export.csv'; a.click(); URL.revokeObjectURL(url);
+    const a = document.createElement('a'); a.href = url; a.download = `${pageLower}s-export.csv`; a.click(); URL.revokeObjectURL(url);
   };
 
   // CSV import: parse a CSV file (simple parser), show preview and allow import
@@ -372,7 +434,7 @@ export default function AdminUsers() {
           for (const r of data) {
             try {
               const payload = {
-                role: 'student',
+                role: pageLower,
                 student_id: r.student_id || r.id || '',
                 first_name: r.first_name || r.first || '',
                 last_name: r.last_name || r.surname || r.last || '',
@@ -408,63 +470,33 @@ export default function AdminUsers() {
     console.log('openEdit called for user', user && user.id);
     setModalInitial(user);
     setModalRole(user && ((user.role) ? user.role : 'student'));
+    // prefill modal form with existing values for a better edit experience
+    try {
+      const s = user && (user.student || {});
+      setModalForm({
+        first_name: (s.first_name || (user.name ? (user.name.split(' ')[0] || '') : '')),
+        last_name: (s.last_name || (user.name ? (user.name.split(' ').slice(1).join(' ') || '') : '')),
+        student_id: (s.student_id || ''),
+        email: (user.email || s.email || ''),
+        sex: (s.sex || ''),
+        date_of_birth: (s.date_of_birth || ''),
+        phone_number: (s.phone_number || ''),
+        address: (s.address || ''),
+        course: (s.course || ''),
+        department: (s.department || ''),
+        status: (s.status || 'Active'),
+        date_of_enrollment: (s.date_of_enrollment || ''),
+        year_level: (s.year_level || ''),
+      });
+    } catch(e) { /* ignore */ }
     setShowModal(true);
   };
 
-  useEffect(() => {
-    try { console.log('AdminUsers showModal changed', { showModal, modalInitial, modalRole }); } catch(e){}
-  }, [showModal, modalInitial, modalRole]);
+  // debug effect removed to reduce log spam on modal toggles
 
-  // If the standard modal fails to appear (overlay missing), show a safe fallback form
-  useEffect(() => {
-    // clear any previous timer
-    try { if (fallbackTimerRef.current) { clearTimeout(fallbackTimerRef.current); fallbackTimerRef.current = null; } } catch(e){}
-    if (!showModal) {
-      setShowFallbackModal(false);
-      setShowInlineForm(false);
-      return;
-    }
-    // wait briefly for any other modal to mount, then check DOM
-    fallbackTimerRef.current = setTimeout(() => {
-      try {
-        const hasVisibleModal = !!document.querySelector('.modal-overlay .modal, .modal.modal-wide');
-        if (!hasVisibleModal) {
-          console.warn('No modal detected — showing fallback form');
-          setShowFallbackModal(true);
-          setShowInlineForm(true);
-        } else {
-          setShowFallbackModal(false);
-          setShowInlineForm(false);
-        }
-      } catch (e) { console.warn('fallback detection failed', e); setShowFallbackModal(true); }
-    }, 300);
-    return () => { try { if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current); } catch(e){} };
-  }, [showModal]);
+  // Fallback detection removed entirely
 
-  // Workaround: hide only overlays that existed before opening our modal so we don't hide the modal we created.
-  useEffect(() => {
-    if (!showModal) return;
-    const els = prevGlobalOverlaysRef.current || [];
-    try {
-      els.forEach(el => {
-        if (!el) return;
-        el.__prevDisplay = el.style.display;
-        el.__prevBg = el.style.background;
-        el.style.display = 'none';
-      });
-      return () => {
-        try {
-          (els || []).forEach(el => {
-            if (!el) return;
-            el.style.display = el.__prevDisplay || '';
-            el.style.background = el.__prevBg || '';
-            delete el.__prevDisplay; delete el.__prevBg;
-          });
-        } catch (e) { console.warn('restore overlays failed', e); }
-      };
-    } catch (e) { console.warn('overlay hide failed', e); }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showModal]);
+  // All overlay/scroll effects disabled to prevent any interference with modal open/close
 
   
 
@@ -512,12 +544,12 @@ export default function AdminUsers() {
   
 
   return (
-    <div className="admin-users students-page">
+    <div className={`admin-users ${pageLower}-page`}>
       <div className="hero-banner">
         <div className="hero-inner">
           <div className="hero-left">
-            <h1>Student Management</h1>
-            <p>Manage student records and accounts</p>
+            <h1>{pageType} Management</h1>
+            <p>Manage {pageLower} records and accounts</p>
             <div className="hero-cards">
                 <div className="hero-card">
                   <div className="card-title">Today</div>
@@ -531,156 +563,183 @@ export default function AdminUsers() {
         </div>
       </div>
 
-      {showInlineForm && (
-        <div className="card" style={{ padding: 14, margin: '12px 0' }}>
-          <h3 style={{ marginTop: 0 }}>Add Student (fallback)</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
-            <input placeholder="Full name" value={inlineForm.name} onChange={e => setInlineForm(f => ({ ...f, name: e.target.value }))} />
-            <input placeholder="Student ID" value={inlineForm.student_id} onChange={e => setInlineForm(f => ({ ...f, student_id: e.target.value }))} />
-            <input placeholder="Email" value={inlineForm.email} onChange={e => setInlineForm(f => ({ ...f, email: e.target.value }))} />
-          </div>
-          <div style={{ marginTop: 10, display: 'flex', gap: 8 }}>
-            <button className="primary" onClick={async () => {
-              const errs = {};
-              if (!inlineForm.name) errs.name = 'Name required';
-              // student_id optional for import/fallback
-              if (!inlineForm.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inlineForm.email)) errs.email = 'Valid email required';
-              setInlineErrors(errs); if (Object.keys(errs).length) return;
-              try {
-                const payload = { role: 'student', name: inlineForm.name, student_id: inlineForm.student_id, email: inlineForm.email };
-                const res = await axios.post('/api/admin/users', payload);
-                if (res && res.data && res.data.id) {
-                  alert('Student added'); setShowInlineForm(false); setInlineForm({ name: '', student_id: '', email: '' }); await loadUsers();
-                  try { window.dispatchEvent(new CustomEvent('admin:users-changed', { detail: (res && res.data && res.data.stats) ? res.data.stats : {} })); } catch(e){}
-                  try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: (res && res.data && res.data.stats) ? res.data.stats : {} })); } catch(e){}
-                }
-              } catch (e) {
-                console.error('Inline add failed', e);
-                if (e && e.response && e.response.status === 422 && e.response.data) {
-                  const resp = e.response.data;
-                  if (resp.errors) {
-                    setInlineErrors(Object.keys(resp.errors).reduce((acc,k) => ({ ...acc, [k]: resp.errors[k].join(' ') }), {}));
-                    return;
-                  }
-                  if (resp.message) alert(resp.message);
-                  return;
-                }
-                alert((e && e.message) ? e.message : 'Failed to add student');
-              }
-            }}>Save</button>
-            <button onClick={() => setShowInlineForm(false)}>Cancel</button>
-          </div>
-        </div>
-      )}
+      {/* fallback inline form removed */}
 
       {/* students metrics removed per design */}
 
-      <div className="card students-panel" style={{ padding: 20, borderRadius: 12 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
-          <div style={{ flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 44, height: 44, borderRadius: 12, background: 'linear-gradient(90deg,#4f46e5,#06b6d4)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-                <FiUsers />
-              </div>
-              <div>
-                <div style={{ fontSize: 16, fontWeight: 700 }}>Students</div>
-                <div className="small-muted">View and manage student information</div>
-              </div>
+      <div className="modern-management-card" style={{ background: '#fff', borderRadius: 16, padding: 0, overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}>
+        {/* Header Section */}
+        <div style={{ padding: '24px 28px', borderBottom: '1px solid #f3f4f6' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <h2 style={{ margin: 0, fontSize: 24, fontWeight: 700, color: '#111827', display: 'flex', alignItems: 'center', gap: 8 }}>
+                {pagePlural}
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: role === 'teacher' ? '#ede9fe' : '#dbeafe', color: role === 'teacher' ? '#7c3aed' : '#6366f1', fontSize: 14, fontWeight: 600, padding: '4px 12px', borderRadius: 12 }}>
+                  {totalStudents} {totalStudents === 1 ? pageLower : pageLower + 's'}
+                </span>
+              </h2>
+              <p style={{ margin: '8px 0 0 0', fontSize: 14, color: '#6b7280' }}>Manage {pageLower} records and enrollment</p>
             </div>
-
-            <div style={{ display: 'flex', gap: 8, marginTop: 14, alignItems: 'center' }}>
-              <button
-                className={`chip ${(filterStatus === 'all' && !showArchived) ? 'active' : ''}`}
-                type="button"
-                onClick={() => { setFilterStatus('all'); setShowArchived(false); }}
-                aria-pressed={(filterStatus === 'all' && !showArchived)}
-              >
-                All Students <span className="chip-count">{totalStudents}</span>
-              </button>
-
-              <button
-                className={`chip ${(filterStatus === 'active' && !showArchived) ? 'active' : ''}`}
-                type="button"
-                onClick={() => { setFilterStatus('active'); setShowArchived(false); }}
-                aria-pressed={(filterStatus === 'active' && !showArchived)}
-              >
-                Active <span className="chip-count">{activeCount}</span>
-              </button>
-
-              <button
-                className={`chip ${(showArchived || filterStatus === 'archived') ? 'active' : ''}`}
-                type="button"
-                onClick={() => { setFilterStatus('archived'); setShowArchived(true); }}
-                aria-pressed={(showArchived || filterStatus === 'archived')}
-              >
-                Archived <span className="chip-count">{archivedUsers.length}</span>
-              </button>
-
-              <button
-                className={`chip ${(filterStatus === 'locked' && !showArchived) ? 'active' : ''}`}
-                type="button"
-                onClick={() => { setFilterStatus('locked'); setShowArchived(false); }}
-                aria-pressed={(filterStatus === 'locked' && !showArchived)}
-              >
-                Locked <span className="chip-count">{lockedCount}</span>
-              </button>
-            </div>
-
-            <div style={{ marginTop: 12 }}>
-              <input className="student-search" placeholder="Search students..." value={search} onChange={(e)=>setSearch(e.target.value)} style={{ width: '100%', padding: '12px 14px', borderRadius: 8, background: '#f3f4f6', border: 'none' }} />
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <button className="primary" onClick={() => openAdd('student')} style={{ padding: '10px 16px' }}>+ Add Student</button>
+            <select
+              value={filterYear}
+              onChange={(e) => setFilterYear(e.target.value)}
+              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#6b7280', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+            >
+              <option value="">2024-2025</option>
+              <option value="2023-2024">2023-2024</option>
+              <option value="2022-2023">2022-2023</option>
+            </select>
           </div>
         </div>
 
+        {/* Filters */}
+        <div style={{ padding: '20px 28px', borderBottom: '1px solid #f3f4f6', background: '#fafbfc' }}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#6b7280', fontSize: 14, fontWeight: 600 }}>
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
+              Filters:
+            </div>
+            <select
+              value={filterStatus}
+              onChange={(e) => { 
+                const val = e.target.value;
+                setFilterStatus(val);
+                setShowArchived(val === 'archived');
+              }}
+              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+            >
+              <option value="all">All Status</option>
+              <option value="active">Active</option>
+              <option value="locked">Locked</option>
+              <option value="archived">Archived</option>
+            </select>
+            <select
+              value={filterDepartment}
+              onChange={(e) => setFilterDepartment(e.target.value)}
+              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+            >
+              <option value="">All Departments</option>
+              {departments.map(d => <option key={d} value={d}>{d}</option>)}
+            </select>
+          </div>
+
+          <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ flex: 1, position: 'relative' }}>
+              <svg style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              <input 
+                type="text"
+                placeholder={`Search ${pageLower}s...`} 
+                value={search} 
+                onChange={(e)=>setSearch(e.target.value)} 
+                style={{ width: '100%', padding: '10px 16px 10px 40px', borderRadius: 8, background: '#fff', border: '1px solid #e5e7eb', fontSize: 14, outline: 'none', transition: 'border 0.2s' }} 
+                onFocus={(e) => e.target.style.borderColor = role === 'teacher' ? '#8b5cf6' : '#6366f1'}
+                onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+              />
+            </div>
+            <button 
+              onClick={() => exportToCSV()} 
+              style={{ padding: '10px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
+            >
+              <FiDownload size={16} /> Export
+            </button>
+            <button 
+              onClick={() => openAdd(pageLower)} 
+              style={{ padding: '10px 20px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', color: '#fff', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'transform 0.2s', boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)' }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <FiPlus size={18} /> Add {pageType}
+            </button>
+          </div>
+        </div>
+
+        {/* Table */}
         <div style={{ overflowX: 'auto' }}>
-          <table className="students-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table className="modern-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
-              <tr>
-                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Name</th>
-                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Email</th>
-                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Grade</th>
-                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Enrollment Date</th>
-                <th style={{ textAlign: 'left', padding: '12px 8px' }}>Status</th>
-                <th style={{ textAlign: 'right', padding: '12px 8px' }}>Actions</th>
+              <tr style={{ borderBottom: '2px solid #f3f4f6' }}>
+                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{role === 'teacher' ? 'Faculty ID' : 'Student ID'}</th>
+                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Name</th>
+                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email</th>
+                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{role === 'teacher' ? 'Department' : 'Course'}</th>
+                {role === 'teacher' && (
+                  <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Specialization</th>
+                )}
+                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Status</th>
+                <th style={{ textAlign: 'center', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredList.length === 0 ? (
-                <tr><td colSpan={6} style={{ padding: 20 }}>No students found</td></tr>
+                <tr><td colSpan={role === 'teacher' ? 7 : 6} style={{ padding: '40px 28px', textAlign: 'center', color: '#9ca3af', fontSize: 14 }}>No {pageLower}s found</td></tr>
               ) : filteredList.map((u) => {
                 const student = u.student || {};
-                const fullName = u.name || `${student.first_name || ''} ${student.last_name || ''}`.trim();
+                const teacher = u.teacher || {};
+                const profile = role === 'teacher' ? teacher : student;
+                const fullName = u.name || `${profile.first_name || ''} ${profile.last_name || ''}`.trim();
                 const email = u.email || '';
-                const grade = student.year_level || u.year_level || '—';
-                const enrollment = student.date_of_enrollment || student.enrollment_date || u.date_of_enrollment || u.enrollment_date || '';
-                const statusVal = (student.status || u.status || 'Active').toString();
-                const enrollmentText = enrollment ? (new Date(enrollment)).toLocaleDateString() : '—';
+                const studentId = profile.student_id || profile.faculty_id || u.student_id || '—';
+                const courseOrDept = (role === 'teacher' ? profile.department : profile.course) || u.course || profile.major || '—';
+                const specialization = profile.specialization || profile.position || profile.subject || '—';
+                const statusVal = (profile.status || u.status || 'active').toString().toLowerCase();
+                const enrollmentText = '';
                 return (
-                  <tr key={u.id} className={`${u.deleted_at ? 'archived-row' : ''} ${highlightNewId === u.id ? 'new-highlight' : ''}`}>
-                    <td style={{ padding: '12px 8px' }}>{fullName}</td>
-                    <td style={{ padding: '12px 8px' }}>{email}</td>
-                    <td style={{ padding: '12px 8px' }}>{grade}</td>
-                    <td style={{ padding: '12px 8px' }}>{enrollmentText}</td>
-                    <td style={{ padding: '12px 8px' }}><span className={`status-pill ${(statusVal||'').toLowerCase()}`}>{statusVal}</span></td>
-                    <td style={{ padding: '12px 8px', textAlign: 'right' }}>
-                      <div className="actions" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <tr key={u.id} className={`${u.deleted_at ? 'archived-row' : ''} ${highlightNewId === u.id ? 'new-highlight' : ''}`} style={{ borderBottom: '1px solid #f3f4f6', transition: 'background 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#f9fafb'} onMouseLeave={(e) => e.currentTarget.style.background = '#fff'}>
+                    <td style={{ padding: '16px 28px', fontSize: 14, fontWeight: 600, color: '#111827' }}>{studentId}</td>
+                    <td style={{ padding: '16px 28px', fontSize: 14, fontWeight: 500, color: '#111827' }}>{fullName}</td>
+                    <td style={{ padding: '16px 28px', fontSize: 14, color: '#6366f1' }}>{email}</td>
+                    <td style={{ padding: '16px 28px' }}>
+                      <span style={{ 
+                        padding: '4px 10px', 
+                        borderRadius: 6, 
+                        fontSize: 13, 
+                        fontWeight: 500,
+                        background: role === 'teacher' ? '#dbeafe' : '#dbeafe',
+                        color: role === 'teacher' ? '#1d4ed8' : '#2563eb'
+                      }}>
+                        {courseOrDept}
+                      </span>
+                    </td>
+                    {role === 'teacher' && (
+                      <td style={{ padding: '16px 28px', fontSize: 14, color: '#6b7280' }}>{specialization}</td>
+                    )}
+                    <td style={{ padding: '16px 28px' }}>
+                      <span style={{ 
+                        padding: '4px 10px', 
+                        borderRadius: 6, 
+                        fontSize: 13, 
+                        fontWeight: 500,
+                        background: statusVal === 'active' ? '#d1fae5' : statusVal === 'locked' ? '#fee2e2' : '#f3f4f6',
+                        color: statusVal === 'active' ? '#065f46' : statusVal === 'locked' ? '#991b1b' : '#6b7280'
+                      }}>
+                        {statusVal}
+                      </span>
+                    </td>
+                    <td style={{ padding: '16px 28px', textAlign: 'center' }}>
+                      <div className="actions" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, justifyContent: 'center' }}>
                       {!u.deleted_at ? (
                         <>
-                          <button type="button" className="action-icon view-button" title="View" onClick={() => { setDetailUser(u); setShowDetail(true); }}>
-                            <FiEye />
+                          <button type="button" className="modern-action-btn" title="View" onClick={() => { setDetailUser(u); setShowDetail(true); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = role === 'teacher' ? '#ede9fe' : '#dbeafe'; e.currentTarget.style.color = role === 'teacher' ? '#7c3aed' : '#6366f1'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                            <FiEye size={14} />
                           </button>
-                          <button type="button" className="action-icon" title="Edit" onClick={() => openEdit(u)}><FiEdit2 /></button>
-                          <button type="button" className="action-icon" title={u.is_locked ? 'Unlock' : 'Lock'} onClick={() => toggleLock(u.id, u.is_locked)}><FiLock /></button>
-                          <button type="button" className="action-icon text-danger" title="Archive" onClick={() => archiveUser(u.id)}><FiArchive /></button>
+                          <button type="button" className="modern-action-btn" title="Edit" onClick={() => openEdit(u)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = role === 'teacher' ? '#ede9fe' : '#dbeafe'; e.currentTarget.style.color = role === 'teacher' ? '#7c3aed' : '#6366f1'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                            <FiEdit2 size={14} />
+                          </button>
+                          <button type="button" className="modern-action-btn" title={u.is_locked ? 'Unlock' : 'Lock'} onClick={() => toggleLock(u.id, u.is_locked)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#fef3c7'; e.currentTarget.style.color = '#92400e'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                            <FiLock size={14} />
+                          </button>
+                          <button type="button" className="modern-action-btn" title="Archive" onClick={() => archiveUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#fee2e2'; e.currentTarget.style.color = '#991b1b'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                            <FiTrash2 size={14} />
+                          </button>
                         </>
                       ) : (
                         <>
-                          <button type="button" className="action-icon" title="Restore" onClick={() => restoreUser(u.id)}>♻️</button>
-                          <button type="button" className="action-icon text-danger" title="Delete Permanently" onClick={() => permanentDeleteUser(u.id)}><FiTrash2 /></button>
+                          <button type="button" className="modern-action-btn" title="Restore" onClick={() => restoreUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }}>♻️</button>
+                          <button type="button" className="modern-action-btn" title="Delete Permanently" onClick={() => permanentDeleteUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#fee2e2', color: '#991b1b', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }}>
+                            <FiTrash2 size={14} />
+                          </button>
                         </>
                       )}
                       </div>
@@ -693,68 +752,14 @@ export default function AdminUsers() {
         </div>
       </div>
 
-  {showModal && (modalRole === 'student' ? (
-    <div className="modal-overlay" role="dialog" aria-modal="true">
-      <div className="modal modal-wide" style={{ maxWidth: 820 }}>
-        <header className="modal-header">
-          <h3>{modalInitial && modalInitial.id ? 'Edit Student' : 'Add New Student'}</h3>
-          <button className="close" onClick={() => { setShowModal(false); setModalInitial(null); }}>{'×'}</button>
-        </header>
-        <form className="modal-body" onSubmit={e => { e.preventDefault(); handleModalSave(); }}>
-          <div className="modal-grid">
-            <div className="col">
-              <label>First Name *</label>
-              <input name="first_name" value={modalForm.first_name} onChange={e => handleModalChange('first_name', e.target.value)} placeholder="John" required />
-              {modalErrors.first_name && <div className="field-error" style={{ color: '#b91c1c', marginTop: 6 }}>{modalErrors.first_name}</div>}
-              <label>Last Name *</label>
-              <input name="last_name" value={modalForm.last_name} onChange={e => handleModalChange('last_name', e.target.value)} placeholder="Doe" required />
-              {modalErrors.last_name && <div className="field-error" style={{ color: '#b91c1c', marginTop: 6 }}>{modalErrors.last_name}</div>}
-              <label>Student ID</label>
-              <input name="student_id" value={modalForm.student_id} onChange={e => handleModalChange('student_id', e.target.value)} placeholder="ST2024001" />
-              <label>Email *</label>
-              <input name="email" type="email" value={modalForm.email} onChange={e => handleModalChange('email', e.target.value)} placeholder="student@school.edu" required />
-              {modalErrors.email && <div className="field-error" style={{ color: '#b91c1c', marginTop: 6 }}>{modalErrors.email}</div>}
-              <label>Sex</label>
-              <select value={modalForm.sex} onChange={e => handleModalChange('sex', e.target.value)}>
-                <option value="">Prefer not to say</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div className="col">
-              <label>Date of Birth</label>
-              <input name="date_of_birth" type="date" value={modalForm.date_of_birth} onChange={e => handleModalChange('date_of_birth', e.target.value)} />
-              <label>Enrollment Date</label>
-              <input name="date_of_enrollment" type="date" value={modalForm.date_of_enrollment} onChange={e => handleModalChange('date_of_enrollment', e.target.value)} />
-              <label>Phone</label>
-              <input name="phone_number" value={modalForm.phone_number} onChange={e => handleModalChange('phone_number', e.target.value)} placeholder="(555) 123-4567" />
-              <label>Year Level</label>
-              <input name="year_level" value={modalForm.year_level} onChange={e => handleModalChange('year_level', e.target.value)} placeholder="e.g. Freshman" />
-            </div>
-          </div>
-          <div className="modal-grid full">
-            <div className="col">
-              <label>Address</label>
-              <input name="address" value={modalForm.address} onChange={e => handleModalChange('address', e.target.value)} placeholder="123 Main St, City, State ZIP" />
-            </div>
-            <div className="col">
-              <label>Department</label>
-              <input name="department" value={modalForm.department} onChange={e => handleModalChange('department', e.target.value)} placeholder="Department name" />
-              <label>Course</label>
-              <input name="course" value={modalForm.course} onChange={e => handleModalChange('course', e.target.value)} placeholder="Course or major" />
-            </div>
-          </div>
-          <footer className="modal-footer">
-            <button type="button" onClick={() => { setShowModal(false); setModalInitial(null); }}>Cancel</button>
-            <button type="button" className="primary" onClick={() => { console.log('Modal submit clicked'); handleModalSave(); }} disabled={modalSubmitting}>{modalInitial && modalInitial.id ? (modalSubmitting ? 'Saving...' : 'Save Changes') : (modalSubmitting ? 'Adding...' : 'Add Student')}</button>
-          </footer>
-        </form>
-      </div>
-    </div>
-  ) : (
-    React.createElement(UserFormModal, { initial: modalInitial, role: modalRole || ((modalInitial && modalInitial.role) ? modalInitial.role : 'student'), onClose: () => { setShowModal(false); setModalInitial(null); }, onSave: saveFromUserForm })
-  ))}
+  {showModal && (
+    <UserFormModal 
+      initial={modalInitial}
+      role={modalRole || 'student'}
+      onClose={(source) => { handleModalClose(source || 'modal'); }}
+      onSave={saveFromUserForm}
+    />
+  )}
 
   {showDetail && React.createElement(StudentDetailModal, { user: detailUser, onClose: () => { setShowDetail(false); setDetailUser(null); }, onSaved: async () => { setShowDetail(false); await loadUsers(); await loadArchivedUsers(); } })}
     </div>

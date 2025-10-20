@@ -22379,7 +22379,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n/* retain blue for charts */\n:root.adm-dark, .adm-dark {\n  --bg: #030317;\n  --panel: #071026;\n  --muted: #9aa4c0;\n  --text: #e6eef8;\n  --accent: #7c3aed;\n}\n\n.admin-dashboard-layout {\n  display: flex;\n  min-height: 100vh;\n  background: linear-gradient(180deg, #f6fbff, #f0f7ff);\n  color: #0f172a;\n  font-family: Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial;\n}\n.admin-dashboard-layout .sidebar {\n  width: 240px;\n  background: #0b1220;\n  color: #0f172a;\n  padding: 20px;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n  box-shadow: 0 4px 20px rgba(2, 6, 23, 0.06);\n}\n.admin-dashboard-layout .sidebar .logo {\n  font-size: 1.15rem;\n  font-weight: 700;\n  text-align: center;\n}\n.admin-dashboard-layout .sidebar .nav {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.admin-dashboard-layout .sidebar .nav-item {\n  padding: 10px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  color: #dbeafe;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.admin-dashboard-layout .sidebar .nav-item.active {\n  background: rgba(255, 255, 255, 0.06);\n}\n.admin-dashboard-layout .sidebar + .admin-main,\n.admin-dashboard-layout .admin-main {\n  margin-left: 240px;\n  padding: 28px 32px;\n  flex: 1;\n  min-width: 0;\n  transition: margin-left 0.18s ease;\n}\n.admin-dashboard-layout .sidebar.collapsed + .admin-main {\n  margin-left: 72px;\n}\n\n/* Boxed controls for teachers - aligned, colored and compact */\n.teachers-page .controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 14px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, rgba(124, 58, 237, 0.04), rgba(6, 182, 212, 0.02));\n  border: 1px solid rgba(124, 58, 237, 0.06);\n  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.03);\n  margin-bottom: 12px;\n}\n\n.teachers-page .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n\n.teachers-page .controls-right {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n\n.teachers-page .teacher-search {\n  width: 480px;\n  max-width: 60%;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid rgba(37, 99, 235, 0.08);\n  background: linear-gradient(180deg, #fff, #fbfdff);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n\n.teachers-page select {\n  padding: 8px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  background: #fff;\n  min-width: 160px;\n}\n\n.teachers-page .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.teachers-page .filter-item {\n  color: #6b7280;\n  font-weight: 700;\n}\n\n.teachers-page .archived-btn {\n  padding: 8px 12px;\n  border-radius: 10px;\n  border: 1px solid transparent;\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  color: #2563eb;\n  font-weight: 700;\n  cursor: pointer;\n}\n\n.teachers-page .archived-btn.on {\n  background: linear-gradient(90deg, #fdf2f8, #fff1f2);\n  color: #be185d;\n  border-color: rgba(190, 24, 93, 0.06);\n}\n\n.teachers-page .view-toggle button {\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  background: transparent;\n  cursor: pointer;\n  font-weight: 800;\n}\n\n.teachers-page .view-toggle button.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n}\n\n.teachers-page .view-toggle {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.teachers-page .header-actions .icon-box {\n  padding: 8px 12px;\n  border-radius: 10px;\n  color: #fff;\n}\n\n.teachers-page .header-actions .icon-box svg {\n  color: inherit;\n}\n\n/* Archived toggle card for students page */\n.archived-toggle-card {\n  cursor: pointer;\n  border-radius: 12px;\n  padding: 10px 12px;\n  display: flex;\n  align-items: center;\n  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.03);\n  background: linear-gradient(90deg, #fff, #fbfdff);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  transition: transform 0.15s ease, box-shadow 0.15s ease;\n}\n\n.archived-toggle-card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n\n.archived-toggle-card.on {\n  background: linear-gradient(90deg, #fff1f2, #fff6f8);\n  border-color: rgba(190, 24, 93, 0.06);\n}\n\n.archived-toggle-card .archived-inner {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n\n.archived-toggle-card .archived-label {\n  font-weight: 800;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.archived-toggle-card .archived-count {\n  font-weight: 900;\n  font-size: 18px;\n  color: #be185d;\n}\n\n/* ensure table area sits below boxed controls if present */\n.teachers-page .table-wrapper {\n  margin-top: 8px;\n}\n\n/* Dark mode overrides - toggled by adding `adm-dark` class to <html> (documentElement) */\n:root.adm-dark, .adm-dark {\n  --bg: #071029;\n  --panel: #0b1220;\n  --muted: #94a3b8;\n  --text: #e6eef8;\n  --accent: #60a5fa;\n}\n\n.adm-dark .admin-dashboard-layout {\n  background: var(--bg);\n  color: var(--text);\n}\n\n.adm-dark .sidebar {\n  background: #041424;\n  color: var(--text);\n}\n\n.adm-dark .admin-main {\n  background: transparent;\n}\n\n.adm-dark .card {\n  background: var(--panel);\n  color: var(--text);\n  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);\n}\n\n.adm-dark .metric .label {\n  color: var(--muted);\n}\n\n.adm-dark .metric .value {\n  color: var(--text);\n}\n\n.adm-dark .recent-list li, .adm-dark .health-list li {\n  border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n}\n\n.adm-dark .badge {\n  background: rgba(255, 255, 255, 0.03);\n  color: var(--text);\n}\n\n.adm-dark .metric .icon {\n  background: rgba(255, 255, 255, 0.02);\n}\n\n.dark-toggle {\n  background: transparent;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  padding: 6px 8px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n\n.adm-dark .dark-toggle {\n  border-color: rgba(255, 255, 255, 0.06);\n}\n\n/* Header / breadcrumb */\n.adm-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 18px;\n  /* subtle header accent */\n}\n.adm-header .title-area {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.adm-header h1 {\n  margin: 0;\n  font-size: 20px;\n}\n.adm-header .breadcrumb {\n  color: #6b7280;\n  font-size: 0.95rem;\n}\n.adm-header .header-right {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.adm-header .title-area h1 {\n  color: #2563eb;\n  letter-spacing: -0.2px;\n}\n.adm-header .subtitle {\n  color: #6b7280;\n  margin-top: 4px;\n}\n\n/* Header controls (small pills) */\n.adm-header .last-updated {\n  background: transparent;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  padding: 6px 10px;\n  border-radius: 8px;\n  color: #6b7280;\n  font-size: 0.9rem;\n}\n\n.adm-header .view-analytics {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  padding: 6px 10px;\n  border-radius: 8px;\n  color: #2563eb;\n  font-weight: 700;\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n\n/* Boxed header small action styles (compact variants used in headers and cards) */\n.adm-header .header-action-box {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.adm-header .header-action-box .icon-box.small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  color: #0f172a;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.03);\n  cursor: pointer;\n  transition: transform 140ms ease, box-shadow 140ms ease;\n}\n\n.adm-header .header-action-box .icon-box.small:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);\n}\n\n.adm-header .header-action-box .icon-box.small.primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 8px 10px;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);\n}\n\n.adm-header .header-action-box .icon-box.small.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n}\n\n/* Compact archived toggle variant for denser card layouts */\n.archived-toggle-card.compact {\n  padding: 8px 10px;\n  border-radius: 10px;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n\n.archived-toggle-card.compact .archived-inner {\n  flex-direction: row;\n  align-items: center;\n  gap: 8px;\n}\n\n.archived-toggle-card.compact .archived-label {\n  font-weight: 800;\n  font-size: 12px;\n  color: #6b7280;\n}\n\n.archived-toggle-card.compact .archived-count {\n  font-weight: 900;\n  font-size: 16px;\n  color: #be185d;\n}\n\n/* Small action icons to match boxed look in tables and cards */\n.action-icon.small {\n  padding: 6px;\n  border-radius: 6px;\n  width: 36px;\n  height: 36px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.action-icon.small svg {\n  width: 16px;\n  height: 16px;\n}\n\n/* Table niceties for users/students */\n.students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\n/* Students table presentation improvements for readability */\n.students-list-modern tbody tr td {\n  vertical-align: middle;\n}\n\n.students-list-modern td {\n  padding: 12px 14px;\n}\n\n.students-list-modern td .avatar-circle {\n  width: 44px;\n  height: 44px;\n  border-radius: 22px;\n  font-size: 14px;\n}\n\n.students-list-modern td div[style] > div {\n  color: #0b1220; /* ensure primary text is darker */\n}\n\n.students-list-modern td div[style] > div:first-child {\n  font-weight: 800;\n  color: #0b1220;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 380px;\n}\n\n.students-list-modern .small-muted {\n  color: #475569;\n  font-size: 12px;\n}\n\n.students-list-modern .grade-chip {\n  background: #f8fafc;\n  color: #0b1220;\n}\n\n.students-list-modern .progress-bar .progress-fill {\n  background: #16a34a;\n}\n\n.students-list-modern .progress-bar.performance .progress-fill {\n  background: #0ea5e9;\n}\n\n.students-list-modern .status-pill {\n  background: #f1f5f9;\n  color: #0b1220;\n}\n\n.hero-banner {\n  border-radius: 12px;\n  padding: 28px 24px;\n  margin-bottom: 20px;\n  background: linear-gradient(90deg, #f8fbff 0%, #eef6ff 100%);\n  color: #0f172a;\n  border: 1px solid rgba(15, 23, 42, 0.03);\n}\n\n.hero-inner {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.hero-left h1 {\n  margin: 0;\n  font-size: 28px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n.hero-left p {\n  margin: 6px 0 12px;\n  opacity: 0.9;\n  color: #64748b;\n}\n\n.hero-cards {\n  display: flex;\n  gap: 12px;\n}\n\n.hero-card {\n  background: rgba(255, 255, 255, 0.08);\n  padding: 10px 14px;\n  border-radius: 8px;\n}\n\n.hero-card .card-title {\n  font-size: 12px;\n  opacity: 0.9;\n}\n\n.hero-card .card-sub {\n  font-weight: 700;\n}\n\n.hero-right .search-add {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n\n.hero-right .student-search {\n  padding: 10px 14px;\n  border-radius: 12px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  background: #fff;\n  min-width: 420px;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);\n}\n\n.student-search {\n  padding: 10px 12px;\n  border-radius: 8px;\n  border: none;\n  min-width: 360px;\n}\n\n.students-metrics {\n  display: flex;\n  gap: 12px;\n  margin-bottom: 18px;\n}\n\n.metric.card {\n  padding: 12px 14px;\n  border-radius: 10px;\n}\n\n.metric {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 14px;\n  transition: transform 0.12s ease, box-shadow 0.12s ease;\n}\n\n.metric .metric-icon {\n  width: 44px;\n  height: 44px;\n  border-radius: 10px;\n  flex: 0 0 44px;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);\n}\n\n.metric .metric-icon svg {\n  width: 22px;\n  height: 22px;\n  display: block;\n  margin: auto;\n  color: #fff;\n}\n\n.metric .label {\n  font-size: 13px;\n  color: #475569;\n  font-weight: 700;\n}\n\n.metric .value {\n  font-weight: 900;\n  font-size: 20px;\n  color: #0f172a;\n}\n\n.metric:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);\n}\n\n.color-blue {\n  background: linear-gradient(135deg, #60a5fa, #3b82f6);\n}\n\n.color-green {\n  background: linear-gradient(135deg, #34d399, #10b981);\n}\n\n.color-purple {\n  background: linear-gradient(135deg, #a78bfa, #8b5cf6);\n}\n\n.color-orange {\n  background: linear-gradient(135deg, #fb923c, #f97316);\n}\n\n.color-red {\n  background: linear-gradient(135deg, #fda4af, #ef4444);\n}\n\n.color-violet {\n  background: linear-gradient(135deg, #c084fc, #7c3aed);\n}\n\n.color-gray {\n  background: linear-gradient(135deg, #e9eef8, #f1f5f9);\n}\n\n.color-cyan {\n  background: linear-gradient(135deg, #67e8f9, #06b6d4);\n}\n\n/* Full-card colored variants so the whole metric card is colorful */\n.metric.metric-blue {\n  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);\n  color: #fff;\n}\n\n.metric.metric-blue .label, .metric.metric-blue .value {\n  color: #fff;\n}\n\n.metric.metric-blue .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-green {\n  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);\n  color: #052e1f;\n}\n\n.metric.metric-green .label, .metric.metric-green .value {\n  color: #052e1f;\n}\n\n.metric.metric-green .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-purple {\n  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);\n  color: #fff;\n}\n\n.metric.metric-purple .label, .metric.metric-purple .value {\n  color: #fff;\n}\n\n.metric.metric-purple .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-orange {\n  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);\n  color: #fff;\n}\n\n.metric.metric-orange .label, .metric.metric-orange .value {\n  color: #fff;\n}\n\n.metric.metric-orange .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-red {\n  background: linear-gradient(135deg, #fda4af 0%, #ef4444 100%);\n  color: #fff;\n}\n\n.metric.metric-red .label, .metric.metric-red .value {\n  color: #fff;\n}\n\n.metric.metric-red .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-violet {\n  background: linear-gradient(135deg, #c084fc 0%, #7c3aed 100%);\n  color: #fff;\n}\n\n.metric.metric-violet .label, .metric.metric-violet .value {\n  color: #fff;\n}\n\n.metric.metric-violet .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-cyan {\n  background: linear-gradient(135deg, #67e8f9 0%, #06b6d4 100%);\n  color: #042022;\n}\n\n.metric.metric-cyan .label, .metric.metric-cyan .value {\n  color: #042022;\n}\n\n.metric.metric-cyan .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-gray {\n  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);\n  color: #0f172a;\n}\n\n.metric.metric-gray .label, .metric.metric-gray .value {\n  color: #0f172a;\n}\n\n.metric.metric-gray .metric-icon {\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);\n}\n\n/* ensure svg icons in gray card are dark for visibility */\n.metric.metric-gray .metric-icon svg {\n  color: #0f172a;\n}\n\n/* Students-specific visual emphasis: bold, uppercase labels and high-contrast values */\n.students-metrics .metric {\n  padding: 18px;\n  border-radius: 14px;\n}\n\n.students-metrics .metric .label {\n  font-weight: 800;\n  font-size: 13px;\n  text-transform: uppercase;\n  letter-spacing: 0.6px;\n  opacity: 0.95;\n}\n\n.students-metrics .metric .value {\n  font-weight: 900;\n  font-size: 22px;\n}\n\n.students-metrics .metric.metric-gray .label, .students-metrics .metric.metric-gray .value {\n  color: #0f172a;\n  text-transform: none;\n  letter-spacing: 0;\n}\n\n/* Ensure values are bright on colored backgrounds */\n.students-metrics .metric.metric-blue .label, .students-metrics .metric.metric-blue .value,\n.students-metrics .metric.metric-green .label, .students-metrics .metric.metric-green .value,\n.students-metrics .metric.metric-purple .label, .students-metrics .metric.metric-purple .value,\n.students-metrics .metric.metric-orange .label, .students-metrics .metric.metric-orange .value,\n.students-metrics .metric.metric-red .label, .students-metrics .metric.metric-red .value,\n.students-metrics .metric.metric-violet .label, .students-metrics .metric.metric-violet .value,\n.students-metrics .metric.metric-cyan .label, .students-metrics .metric.metric-cyan .value {\n  color: #fff;\n  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);\n}\n\n.controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  margin-bottom: 12px;\n}\n\n.controls-left .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.controls-right {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.archived-toggle-card {\n  cursor: pointer;\n  padding: 8px 12px;\n  border-radius: 10px;\n  background: #f3f4f6;\n}\n\n.archived-toggle-card.on {\n  background: #eef2ff;\n}\n\n.students-table th, .students-table td {\n  padding: 14px 12px;\n  border-bottom: 1px solid #eef2f6;\n  text-align: left;\n}\n\n.students-table thead th {\n  background: transparent;\n  color: #334155;\n  font-weight: 700;\n  font-size: 13px;\n}\n\n.avatar-circle {\n  width: 40px;\n  height: 40px;\n  border-radius: 20px;\n  background: linear-gradient(135deg, #a78bfa, #60a5fa);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  font-weight: 800;\n}\n\n.grade-chip {\n  background: #f1f5f9;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n.small-muted {\n  color: #94a3b8;\n  font-size: 12px;\n}\n\n.progress-wrap {\n  width: 100%;\n}\n\n.progress-bar {\n  height: 10px;\n  background: #eef2f6;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.progress-bar .progress-fill {\n  height: 100%;\n  background: #34d399;\n  width: 0;\n}\n\n.progress-bar.performance .progress-fill {\n  background: #60a5fa;\n}\n\n.status-pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n  display: inline-block;\n}\n\n.status-pill.active {\n  background: #dcfce7;\n  color: #166534;\n}\n\n.status-pill.locked {\n  background: #fee2e2;\n  color: #991b1b;\n}\n\n.action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  color: #475569;\n  margin-left: 6px;\n}\n\n.action-icon.text-danger {\n  color: #ef4444;\n}\n\n.archived-row {\n  opacity: 0.6;\n  background: #fff7ed;\n}\n\n.archived-badge {\n  background: #f3f4f6;\n  color: #334155;\n  padding: 6px 8px;\n  border-radius: 6px;\n  font-weight: 700;\n}\n\n.new-highlight {\n  animation: highlight 1.2s ease;\n}\n\n@keyframes highlight {\n  from {\n    background: #ecfeff;\n  }\n  to {\n    background: transparent;\n  }\n}\n.students-table tbody tr {\n  transition: background 120ms ease, transform 120ms ease;\n}\n\n.students-table tbody tr:hover {\n  background: rgba(37, 99, 235, 0.03);\n  transform: translateY(-2px);\n}\n\n.students-table td, .students-table th {\n  padding: 10px 12px;\n  vertical-align: middle;\n  border-bottom: 1px solid rgba(15, 23, 42, 0.04);\n}\n\n.students-table .action-icon {\n  margin-right: 6px;\n}\n\n.archived-row {\n  opacity: 0.86;\n  background: linear-gradient(90deg, rgba(245, 245, 245, 0.6), rgba(255, 250, 250, 0.6));\n}\n\n.archived-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 800;\n  font-size: 12px;\n  background: linear-gradient(90deg, #fff1f2, #fff6f8);\n  color: #be185d;\n  border: 1px solid rgba(190, 24, 93, 0.06);\n}\n\n.new-highlight {\n  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.08);\n  border-left: 4px solid rgba(124, 58, 237, 0.6);\n}\n\n/* Metrics grid */\n.metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 20px;\n}\n.metrics-grid .metric-card {\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  border-radius: 12px;\n  padding: 14px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 40px rgba(11, 18, 40, 0.6);\n  cursor: pointer;\n  transition: transform 0.15s ease, box-shadow 0.15s ease;\n}\n.metrics-grid .metric-card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n.metrics-grid .metric-card .icon-box {\n  width: 56px;\n  height: 56px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 22px;\n  color: #fff;\n}\n.metrics-grid .metric-card .metric-info h3 {\n  margin: 0;\n  font-size: 20px;\n  font-weight: 800;\n}\n.metrics-grid .metric-card .metric-info p {\n  margin: 0;\n  color: #6b7280;\n  font-size: 13px;\n}\n.metrics-grid .metric-card.blue .icon-box {\n  background: #3b82f6;\n}\n.metrics-grid .metric-card.green .icon-box {\n  background: #34d399;\n}\n.metrics-grid .metric-card.purple .icon-box {\n  background: #7c3aed;\n}\n.metrics-grid .metric-card.cyan .icon-box {\n  background: #06b6d4;\n}\n.metrics-grid .metric-change {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 4px 8px;\n  border-radius: 999px;\n  font-size: 12px;\n  font-weight: 600;\n}\n.metrics-grid .metric-change.up {\n  background: rgba(34, 197, 94, 0.1);\n  color: #16a34a;\n}\n.metrics-grid .metric-change.down {\n  background: rgba(239, 68, 68, 0.08);\n  color: #dc2626;\n}\n.metrics-grid .left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.metrics-grid .icon {\n  width: 48px;\n  height: 48px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #eef2ff;\n}\n.metrics-grid .meta {\n  display: flex;\n  flex-direction: column;\n}\n.metrics-grid .meta .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.metrics-grid .meta .value {\n  font-size: 26px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n/* Documents page styles */\n.documents-page {\n  /* Documents header button styles: boxed, colored CTAs */\n  /* document card action buttons */\n}\n.documents-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 16px;\n}\n.documents-page .page-header .header-actions .header-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  align-items: flex-end;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import,\n.documents-page .page-header .header-actions .header-buttons .primary {\n  min-width: 180px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.documents-page .documents-top {\n  margin-top: 12px;\n  margin-bottom: 18px;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.08);\n  border-radius: 10px;\n  padding: 8px 12px;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  border: none;\n}\n.documents-page .page-header .header-actions .header-buttons .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import:hover, .documents-page .page-header .header-actions .header-buttons .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.12);\n}\n.documents-page .page-header .header-actions .header-buttons .primary.pulse {\n  animation: softPulse 2000ms ease-in-out infinite;\n}\n.documents-page .docs-metrics {\n  display: flex;\n  gap: 14px;\n  flex-wrap: wrap;\n}\n.documents-page .doc-metric.card {\n  min-width: 160px;\n  padding: 12px 14px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 36px rgba(2, 6, 23, 0.06);\n  cursor: default;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  border: 1px solid rgba(255, 255, 255, 0.02);\n}\n.documents-page .doc-metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.1);\n}\n.documents-page .doc-metric-left {\n  width: 56px;\n  height: 56px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 22px;\n  color: #fff;\n  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n}\n.documents-page .doc-metric-right {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.documents-page .metric-icon {\n  font-size: 20px;\n}\n.documents-page .doc-metric .label {\n  color: #6b7280;\n  font-weight: 800;\n  font-size: 13px;\n}\n.documents-page .doc-metric .value {\n  font-size: 20px;\n  font-weight: 900;\n}\n.documents-page .doc-metric.blue .doc-metric-left {\n  background: linear-gradient(135deg, #eef2ff, #bfdbfe);\n  color: #0b3b82;\n}\n.documents-page .doc-metric.green .doc-metric-left {\n  background: linear-gradient(135deg, #ecfdf5, #bbf7d0);\n  color: #065f46;\n}\n.documents-page .doc-metric.purple .doc-metric-left {\n  background: linear-gradient(135deg, #fbf0ff, #e9d5ff);\n  color: #6d028f;\n}\n.documents-page .doc-metric.orange .doc-metric-left {\n  background: linear-gradient(135deg, #fff7ed, #ffedd5);\n  color: #92400e;\n}\n.documents-page .doc-metric.cyan .doc-metric-left {\n  background: linear-gradient(135deg, #ecfeff, #cffafe);\n  color: #065f46;\n}\n.documents-page .doc-metric.yellow .doc-metric-left {\n  background: linear-gradient(135deg, #fff9db, #fff1a8);\n  color: #92400e;\n}\n.documents-page .doc-metric.teal .doc-metric-left {\n  background: linear-gradient(135deg, #ecfeff, #d1fae5);\n  color: #064e3b;\n}\n.documents-page .doc-metric .label {\n  color: #6b7280;\n  font-weight: 700;\n}\n.documents-page .doc-metric .value {\n  font-size: 22px;\n  font-weight: 800;\n}\n.documents-page .doc-metric.blue {\n  background: linear-gradient(135deg, #eef2ff, #f0f9ff);\n}\n.documents-page .doc-metric.green {\n  background: linear-gradient(135deg, #ecfdf5, #f0fdf4);\n}\n.documents-page .doc-metric.purple {\n  background: linear-gradient(135deg, #fbf0ff, #fff8ff);\n}\n.documents-page .doc-metric.orange {\n  background: linear-gradient(135deg, #fff7ed, #fffbf0);\n}\n.documents-page .doc-metric.cyan {\n  background: linear-gradient(135deg, #f0f9ff, #f7feff);\n}\n.documents-page .doc-metric.yellow {\n  background: linear-gradient(135deg, #fffbeb, #fffdf8);\n}\n.documents-page .doc-metric.teal {\n  background: linear-gradient(135deg, #ecfeff, #f2fdfd);\n}\n.documents-page .documents-controls {\n  margin-top: 12px;\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.documents-page .doc-search {\n  flex: 1;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n}\n.documents-page .documents-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.documents-page .quick-chips {\n  display: flex;\n  gap: 8px;\n}\n.documents-page .chip {\n  padding: 8px 10px;\n  border-radius: 999px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  background: #fff;\n  cursor: pointer;\n  font-weight: 700;\n}\n.documents-page .chip.on {\n  background: linear-gradient(90deg, #fff7ed, #fff1f0);\n  border-color: rgba(249, 115, 22, 0.06);\n}\n.documents-page .docs-view .view-toggle {\n  display: flex;\n  gap: 6px;\n}\n.documents-page .documents-grid {\n  margin-top: 18px;\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 18px;\n}\n.documents-page .documents-list {\n  margin-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.documents-page .doc-actions {\n  display: flex;\n  gap: 8px;\n  padding: 10px 14px 14px;\n  border-top: 1px solid rgba(15, 23, 42, 0.03);\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);\n}\n.documents-page .doc-actions .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 8px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  transition: transform 120ms ease, background 120ms ease;\n}\n.documents-page .doc-actions .action-icon:hover {\n  transform: translateY(-4px);\n  background: rgba(255, 255, 255, 0.04);\n}\n.documents-page .doc-actions .action-icon svg {\n  width: 18px;\n  height: 18px;\n}\n.documents-page .placeholder-row {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 18px;\n  align-items: start;\n}\n.documents-page .placeholder-card {\n  border-radius: 12px;\n  padding: 18px 18px 22px;\n  color: #fff;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n  align-self: start;\n  min-height: 140px;\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n  cursor: pointer;\n  transition: transform 0.18s ease, box-shadow 0.18s ease;\n}\n.documents-page .placeholder-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.08);\n}\n.documents-page .placeholder-card:focus {\n  outline: 3px solid rgba(124, 58, 237, 0.12);\n}\n.documents-page .placeholder-card {\n  background-size: 200% 200%;\n  animation: gradientShift 6s ease infinite;\n}\n@keyframes gradientShift {\n  0% {\n    background-position: 0% 50%;\n  }\n  50% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n}\n.documents-page .placeholder-inner {\n  text-align: left;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\n.documents-page .placeholder-icon {\n  font-size: 36px;\n  line-height: 1;\n  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);\n}\n.documents-page .placeholder-title {\n  margin-top: 0;\n  font-weight: 800;\n  font-size: 16px;\n}\n.documents-page .doc-badges .badge.small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: rgba(255, 255, 255, 0.08);\n  font-weight: 700;\n}\n.documents-page .primary {\n  background: linear-gradient(90deg, #6d28d9, #7c3aed);\n  color: #fff;\n  border: none;\n  padding: 10px 14px;\n  border-radius: 10px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.documents-page .hero-right .primary, .documents-page .students-panel .primary {\n  background: linear-gradient(90deg, #2563eb, #06b6d4);\n  box-shadow: 0 12px 36px rgba(37, 99, 235, 0.12);\n}\n.documents-page .primary.pulse {\n  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.12);\n  animation: pulse 2.4s infinite;\n}\n@keyframes pulse {\n  0% {\n    transform: translateY(0);\n  }\n  50% {\n    transform: translateY(-3px);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n.documents-page .documents-grid {\n  margin-top: 18px;\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 18px;\n}\n.documents-page .doc-card {\n  border-radius: 12px;\n  overflow: hidden;\n  background: linear-gradient(180deg, #fff, #fbfdff);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.documents-page .doc-card .doc-top {\n  height: 72px;\n  background: linear-gradient(135deg, #ff7aa2, #ff5b8f);\n}\n.documents-page .doc-card .doc-body {\n  padding: 12px 14px;\n}\n.documents-page .doc-card h4 {\n  margin: 0 0 6px 0;\n}\n.documents-page .doc-card .small-muted {\n  color: #6b7280;\n  font-size: 13px;\n}\n.documents-page .doc-card {\n  cursor: pointer;\n  transition: transform 0.18s ease, box-shadow 0.18s ease;\n}\n.documents-page .doc-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.08);\n}\n\n/* Lower content: Recent Activities and System Health */\n.content-grid {\n  display: grid;\n  grid-template-columns: 2fr 1fr;\n  gap: 18px;\n}\n.content-grid .card {\n  background: #0b1220;\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n.content-grid .recent .card-title {\n  font-weight: 700;\n  margin-bottom: 12px;\n}\n.content-grid .recent .recent-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.content-grid .recent .recent-item {\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #f3f6fb;\n  background: #fbfdff;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 8px;\n}\n.content-grid .recent .recent-item:hover {\n  background: #f1f8ff;\n  transform: translateY(-2px);\n  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.03);\n}\n.content-grid .recent .recent-item .info {\n  max-width: 78%;\n}\n.content-grid .recent .recent-item .time {\n  color: #94a3b8;\n  font-size: 12px;\n}\n.content-grid .recent .recent-item .icon {\n  width: 36px;\n  height: 36px;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #eef2ff;\n  color: #2563eb;\n  font-weight: 700;\n}\n.content-grid .recent .recent-item .act-sub {\n  color: #6b7280;\n  font-size: 0.92rem;\n  margin-top: 6px;\n}\n.content-grid .health .card-title {\n  font-weight: 700;\n  margin-bottom: 12px;\n}\n.content-grid .health .health-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.content-grid .health .health-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 0;\n  border-bottom: 1px solid #f1f5f9;\n}\n.content-grid .health .status {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.content-grid .health .status.good {\n  background: #ecfdf5;\n  color: #059669;\n}\n.content-grid .health .status.warn {\n  background: #fff7ed;\n  color: #b45309;\n}\n.content-grid .health .status.bad {\n  background: #fee2e2;\n  color: #991b1b;\n}\n.content-grid .health .badge.small {\n  padding: 6px 10px;\n  border-radius: 8px;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n/* Bottom charts row (Enrollment Growth & Weekly Attendance) */\n.charts-row {\n  display: grid;\n  grid-template-columns: 1fr 460px;\n  gap: 18px;\n  margin-top: 18px;\n  /* Enrollment area (left) — smooth gradient fill and soft axis/label colors */\n  /* Attendance bar (right) — compact legend + bar colors */\n  /* list-style summary under attendance chart */\n}\n@media (max-width: 1100px) {\n  .charts-row {\n    grid-template-columns: 1fr;\n  }\n}\n.charts-row .chart-card {\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  transition: transform 200ms ease, box-shadow 200ms ease;\n}\n.charts-row .chart-card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);\n}\n.charts-row .enrollment-area {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.charts-row .enrollment-area .card-head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.charts-row .enrollment-area .card-head h4 {\n  margin: 0;\n  font-weight: 800;\n  color: #0f172a;\n}\n.charts-row .enrollment-area .card-head .subtitle {\n  color: #6b7280;\n  font-size: 13px;\n}\n.charts-row .enrollment-chart-wrap {\n  height: 260px;\n  border-radius: 10px;\n  overflow: hidden;\n  background: linear-gradient(180deg, rgba(99, 102, 241, 0.04), rgba(37, 99, 235, 0.02));\n  padding: 8px;\n}\n.charts-row .attendance-compact {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.charts-row .attendance-compact .card-head {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 8px;\n}\n.charts-row .attendance-compact h4 {\n  margin: 0;\n  font-weight: 800;\n  color: #0f172a;\n}\n.charts-row .attendance-compact .legend {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  margin-top: 6px;\n}\n.charts-row .legend-item {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n  font-size: 13px;\n  color: #6b7280;\n}\n.charts-row .legend-swatch {\n  width: 12px;\n  height: 12px;\n  border-radius: 3px;\n  display: inline-block;\n}\n.charts-row .legend-swatch.present {\n  background: linear-gradient(90deg, #10b981, #06b6d4);\n}\n.charts-row .legend-swatch.absent {\n  background: linear-gradient(90deg, #ef4444, #fb7185);\n}\n.charts-row .attendance-chart-wrap {\n  height: 240px;\n  border-radius: 8px;\n  overflow: hidden;\n  padding: 8px;\n  background: linear-gradient(180deg, #fff, #fbfdff);\n}\n.charts-row .attendance-stats {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  margin-top: 8px;\n}\n.charts-row .attendance-stats .stat {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 8px 10px;\n  border-radius: 8px;\n  background: #fff;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.04);\n}\n\n/* Bottom grid for overview, activity and right column */\n.bottom-grid {\n  display: grid;\n  grid-template-columns: 1fr 420px;\n  gap: 20px;\n  margin-top: 20px;\n}\n\n.bottom-grid .department-overview {\n  background: #0b1220;\n  padding: 18px;\n  border-radius: 12px;\n}\n\n.bottom-grid .recent-activity {\n  background: #0b1220;\n  padding: 18px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n}\n\n.bottom-grid .right-column {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.right-column .performance-trends {\n  background: #0b1220;\n  padding: 14px;\n  border-radius: 12px;\n}\n\n.activity-list {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.activity-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 10px;\n  border-radius: 10px;\n  background: rgba(255, 255, 255, 0.02);\n}\n\n.activity-left {\n  width: 44px;\n  height: 44px;\n  border-radius: 8px;\n  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), #3b82f6);\n}\n\n.activity-title {\n  font-weight: 700;\n}\n\n.activity-desc {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.activity-time {\n  margin-left: auto;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.trends-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.trend-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.trend-name {\n  width: 80px;\n  color: #6b7280;\n}\n\n.trend-spark {\n  display: flex;\n  align-items: flex-end;\n  gap: 4px;\n  height: 36px;\n  flex: 1;\n}\n\n.spark-bar {\n  width: 8px;\n  background: linear-gradient(180deg, #34d399, #3b82f6);\n  border-radius: 4px;\n}\n\n.mini-cal {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.mini-cal.compact {\n  margin-top: 8px;\n}\n\n.mini-cal.compact .cal-weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 4px;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.mini-cal.compact .cal-grid {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 6px;\n}\n\n.mini-cal.compact .cal-cell {\n  padding: 6px;\n  border-radius: 8px;\n  text-align: center;\n  background: rgba(255, 255, 255, 0.02);\n  font-size: 12px;\n}\n\n.mini-cal.compact .cal-cell.today {\n  background: linear-gradient(90deg, rgba(59, 130, 246, 0.08), #3b82f6);\n  color: #fff;\n}\n\n/* Morning vs regular calendar themes */\n.mini-cal.morning {\n  background: linear-gradient(90deg, #fff9f0, #fffefc);\n  padding: 10px;\n  border-radius: 10px;\n}\n\n.mini-cal.morning .cal-header .cal-greeting {\n  color: #b45309;\n  font-size: 12px;\n}\n\n.mini-cal.morning .cal-cell.today {\n  box-shadow: 0 6px 20px rgba(244, 114, 23, 0.12);\n}\n\n.mini-cal.regular {\n  background: linear-gradient(90deg, #f7fbff, #fbfdff);\n  padding: 10px;\n  border-radius: 10px;\n}\n\n.mini-cal.regular .cal-header .cal-greeting {\n  color: #2563eb;\n  font-size: 12px;\n}\n\n.mini-cal.regular .cal-cell.today {\n  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);\n}\n\n.cal-header {\n  margin-bottom: 8px;\n}\n\n.cal-title {\n  display: flex;\n  flex-direction: column;\n}\n\n.cal-title strong {\n  font-size: 14px;\n}\n\n.cal-today {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.cal-weekdays .cal-day-name {\n  text-align: center;\n  font-weight: 700;\n  color: #6b7280;\n}\n\n.cal-cell.empty {\n  background: transparent;\n}\n\n/* Students table boxed header */\n.students-card {\n  border-radius: 12px;\n  overflow: hidden;\n  box-shadow: 0 6px 30px rgba(4, 8, 23, 0.12);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n}\n\n.students-card-header {\n  padding: 12px 16px;\n  background: linear-gradient(90deg, #0b1220 0%, #060911 100%);\n  color: #0f172a;\n  border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n  display: flex;\n  align-items: center;\n}\n\n.students-card-header .header-title {\n  font-size: 14px;\n  color: #dbeafe;\n  margin-right: 12px;\n}\n\n.students-card-header .columns-line {\n  font-size: 13px;\n  color: #bcd6ff;\n  opacity: 0.95;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.students-card-header .header-actions-inline {\n  margin-left: auto;\n}\n\n.students-card .students-table thead th {\n  background: transparent;\n  color: #cfe6ff;\n  font-weight: 700;\n}\n\n.students-card .students-table tbody td {\n  color: #e9f2ff;\n}\n\n.students-card .students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\n.students-card .card {\n  background: transparent;\n}\n\n/* small responsive tweak */\n@media (max-width: 900px) {\n  .students-card-header .columns-line {\n    font-size: 12px;\n  }\n}\n/* header inline action boxes */\n.students-card-header .header-actions-inline {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-card-header .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 10px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));\n  border: 1px solid rgba(255, 255, 255, 0.03);\n  color: #dbeafe;\n  cursor: pointer;\n}\n\n.students-card-header .icon-box svg {\n  width: 16px;\n  height: 16px;\n}\n\n.students-card-header .icon-box.add {\n  background: linear-gradient(90deg, #06b6d4, #7c3aed);\n  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.12);\n}\n\n.students-card-header .icon-box.import {\n  background: linear-gradient(90deg, #10b981, #06b6d4);\n  box-shadow: 0 6px 18px rgba(6, 182, 212, 0.08);\n}\n\n.students-card-header .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.08);\n}\n\n/* highlight newly added/imported row */\n.students-table tbody tr.new-highlight {\n  animation: highlightFade 6s ease forwards;\n}\n\n@keyframes highlightFade {\n  0% {\n    background: linear-gradient(90deg, rgba(99, 102, 241, 0.18), rgba(59, 130, 246, 0.12));\n  }\n  60% {\n    background: rgba(255, 255, 255, 0.02);\n  }\n  100% {\n    background: transparent;\n  }\n}\n@media (max-width: 1000px) {\n  .bottom-grid {\n    grid-template-columns: 1fr;\n  }\n  .right-column {\n    flex-direction: row;\n  }\n}\n/* System health boxed panel styles */\n.system-health {\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0c1424 100%);\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n\n.system-health h2 {\n  margin: 0 0 12px 0;\n}\n\n.health-rows {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.health-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.health-label {\n  width: 36%;\n  color: #6b7280;\n  font-weight: 600;\n}\n\n.health-bar-wrap {\n  flex: 1;\n  background: #f1f5f9;\n  height: 12px;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.health-bar {\n  height: 100%;\n  border-radius: 999px;\n  background: linear-gradient(90deg, #10b981, #60a5fa);\n  transition: width 300ms ease;\n}\n\n.health-row[data-status=warn] .health-bar {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n}\n\n.health-row[data-status=bad] .health-bar {\n  background: linear-gradient(90deg, #ef4444, #a11d1d);\n}\n\n.health-value {\n  width: 80px;\n  text-align: right;\n  font-weight: 700;\n}\n\n/* Bar graph card styles */\n.bar-graph {\n  padding: 16px;\n  border-radius: 12px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n\n.system-bargraph {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.system-bargraph .bar-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.bar-label {\n  width: 120px;\n  color: #6b7280;\n  font-weight: 600;\n}\n\n.bar-wrap {\n  flex: 1;\n  background: #f1f5f9;\n  height: 12px;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.bar-fill {\n  height: 100%;\n  background: linear-gradient(90deg, #10b981, #60a5fa);\n  border-radius: 999px;\n  transition: width 300ms ease;\n}\n\n.bar-val {\n  width: 56px;\n  text-align: right;\n  font-weight: 700;\n}\n\n@media (max-width: 900px) {\n  .health-label {\n    width: 40%;\n  }\n  .health-value {\n    width: 70px;\n  }\n}\n/* Dashboard specific large metrics and quick actions */\n.dashboard-metrics {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 14px;\n  margin-bottom: 16px;\n  /* pastel variants for each metric to mimic screenshot */\n  /* small change badge */\n}\n.dashboard-metrics .large-metric.card {\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;\n  cursor: pointer;\n  min-height: 72px;\n}\n.dashboard-metrics .dashboard-metrics .large-metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);\n}\n.dashboard-metrics .dashboard-metrics .large-metric .metric-inner {\n  position: relative;\n}\n.dashboard-metrics .dashboard-metrics .large-metric .metric-change {\n  position: absolute;\n  right: 12px;\n  top: 12px;\n}\n.dashboard-metrics .large-metric.card:nth-child(1) {\n  background: linear-gradient(90deg, #f3f4ff 0%, #f8f7ff 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(2) {\n  background: linear-gradient(90deg, #e8fff3 0%, #f5fff8 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(3) {\n  background: linear-gradient(90deg, #f0fbff 0%, #f7fdff 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(4) {\n  background: linear-gradient(90deg, #eafff4 0%, #f6fff9 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(5) {\n  background: linear-gradient(90deg, #fff4f6 0%, #fff8f9 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(6) {\n  background: linear-gradient(90deg, #fff6f0 0%, #fff9f6 100%);\n}\n.dashboard-metrics .metric-change {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  background: rgba(0, 0, 0, 0.03);\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.dashboard-metrics .metric-change.up {\n  color: #10b981;\n  background: rgba(16, 185, 129, 0.08);\n}\n.dashboard-metrics .metric-change.down {\n  color: #ef4444;\n  background: rgba(239, 68, 68, 0.08);\n}\n.dashboard-metrics .large-metric .metric-inner {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.dashboard-metrics .large-metric .metric-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n.dashboard-metrics .large-metric .metric-number {\n  font-size: 26px;\n  font-weight: 800;\n}\n\n/* New dashboard summary styles (screenshot-inspired) */\n.dashboard-summary {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n\n.dashboard-summary .top-metrics {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 20px;\n}\n\n.dashboard-summary .metric-card {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 18px 20px;\n  border-radius: 12px;\n  background: #ffffff;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  box-shadow: 0 8px 28px rgba(2, 6, 23, 0.06);\n}\n\n.dashboard-summary .metric-card .metric-left {\n  display: flex;\n  flex-direction: column;\n}\n\n.dashboard-summary .metric-card .label {\n  color: #6b7280;\n  font-size: 13px;\n  margin-bottom: 6px;\n}\n\n.dashboard-summary .metric-card .value {\n  font-size: 28px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n.dashboard-summary .metric-card .meta {\n  margin-top: 8px;\n  display: inline-block;\n  font-size: 12px;\n  padding: 6px 10px;\n  border-radius: 12px;\n  background: #eef2ff;\n  color: #2563eb;\n}\n\n.dashboard-summary .metric-card .metric-icon {\n  width: 48px;\n  height: 48px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #fff;\n  font-size: 18px;\n}\n\n.dashboard-summary .metric-card .metric-icon:empty {\n  background: linear-gradient(135deg, #60a5fa, #7c3aed);\n}\n\n.dashboard-summary .summary-bottom {\n  display: grid;\n  grid-template-columns: 1fr 340px;\n  gap: 20px;\n  align-items: start;\n}\n\n.recent-activities.card, .system-stats.card {\n  background: transparent;\n  border: none;\n  box-shadow: none;\n  padding: 0;\n}\n\n.recent-activities {\n  padding: 18px;\n  background: transparent;\n}\n\n.recent-activities h3 {\n  margin: 0 0 12px;\n  color: #7c3aed;\n}\n\n.recent-activities .activity-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.recent-activities .activity-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  background: #fff;\n  border-radius: 10px;\n  padding: 12px 16px;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.04);\n}\n\n.recent-activities .activity-item .dot {\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  background: #60a5fa;\n  flex: 0 0 10px;\n}\n\n.recent-activities .activity-body {\n  flex: 1;\n}\n\n.recent-activities .activity-title {\n  font-weight: 700;\n  color: #0f172a;\n}\n\n.recent-activities .activity-desc {\n  font-size: 13px;\n  color: #6b7280;\n}\n\n.recent-activities .activity-time {\n  font-size: 13px;\n  color: #9ca3af;\n  margin-left: 12px;\n}\n\n.system-stats {\n  padding: 18px;\n  background: transparent;\n}\n\n.system-stats h3 {\n  margin: 0 0 12px;\n  color: #fb923c;\n}\n\n.system-stats .stat-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.system-stats .stat-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background: #fff;\n  padding: 12px 14px;\n  border-radius: 10px;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.04);\n}\n\n.system-stats .stat-label {\n  color: #6b7280;\n}\n\n.system-stats .stat-value {\n  font-weight: 800;\n  color: #0f172a;\n}\n\n@media (max-width: 1100px) {\n  .dashboard-summary .top-metrics {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .dashboard-summary .summary-bottom {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 720px) {\n  .dashboard-summary .top-metrics {\n    grid-template-columns: 1fr;\n  }\n}\n/* Color variants & effects for metric cards */\n.metric-card.metric-blue {\n  background: linear-gradient(135deg, #eef6ff, #eef9ff);\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n\n.metric-card.metric-green {\n  background: linear-gradient(135deg, #ecfff6, #f0fffb);\n  border: 1px solid rgba(16, 185, 129, 0.06);\n}\n\n.metric-card.metric-purple {\n  background: linear-gradient(135deg, #f5f3ff, #f0eefb);\n  border: 1px solid rgba(124, 58, 237, 0.06);\n}\n\n.metric-card.metric-cyan {\n  background: linear-gradient(135deg, #ecfeff, #f0fdff);\n  border: 1px solid rgba(6, 182, 212, 0.06);\n}\n\n.metric-card.metric-orange {\n  background: linear-gradient(135deg, #fff7ed, #fff8f0);\n  border: 1px solid rgba(249, 115, 22, 0.06);\n}\n\n.metric-card {\n  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 180ms ease, border-color 180ms ease;\n}\n\n.metric-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);\n  border-color: rgba(15, 23, 42, 0.08);\n}\n\n.metric-card .icon-box {\n  width: 54px;\n  height: 54px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  color: #fff;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06);\n}\n\n.icon-box.color-blue {\n  background: linear-gradient(135deg, #60a5fa, #3b82f6);\n}\n\n.icon-box.color-green {\n  background: linear-gradient(135deg, #34d399, #10b981);\n}\n\n.icon-box.color-violet {\n  background: linear-gradient(135deg, #7c3aed, #a78bfa);\n}\n\n.icon-box.color-cyan {\n  background: linear-gradient(135deg, #06b6d4, #60f0ff);\n  color: #042022;\n}\n\n.icon-box.color-orange {\n  background: linear-gradient(135deg, #fb923c, #f97316);\n}\n\n/* subtle pulse for small meta badges when positive change */\n.metric-card .meta {\n  transition: transform 320ms ease, box-shadow 320ms ease;\n}\n\n.metric-card .meta.positive {\n  background: linear-gradient(90deg, #ecfeff, #eef6ff);\n  color: #065f46;\n  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.06);\n}\n\n.metric-card .meta.animated {\n  animation: popIn 420ms cubic-bezier(0.2, 0.9, 0.2, 1);\n}\n\n@keyframes popIn {\n  from {\n    transform: scale(0.88);\n    opacity: 0;\n  }\n  to {\n    transform: scale(1);\n    opacity: 1;\n  }\n}\n/* activity item hover glow */\n.recent-activities .activity-item {\n  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;\n}\n\n.recent-activities .activity-item:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);\n  background: linear-gradient(90deg, #fff, #fbfdff);\n}\n\n/* stat row accent on hover */\n.system-stats .stat-row {\n  transition: transform 180ms ease, box-shadow 180ms ease;\n}\n\n.system-stats .stat-row:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n\n.quick-actions {\n  display: none;\n}\n\n@media (max-width: 1000px) {\n  .dashboard-metrics {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .quick-grid {\n    flex-direction: column;\n  }\n}\n/* Course Management specific styling (top metrics, search bar, filters, table) */\n.courses-page {\n  /* colorful variants for each metric card */\n}\n.courses-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 16px;\n  flex-wrap: wrap;\n  padding: 18px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, #ffffff, #f8fbff);\n  box-shadow: 0 18px 44px rgba(37, 99, 235, 0.04);\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n.courses-page .page-header .header-actions {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  color: #fff;\n}\n.courses-page .page-header .header-buttons .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.08);\n  color: #042022;\n}\n.courses-page .page-header .header-buttons .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 12px 30px rgba(249, 115, 22, 0.08);\n  color: #2b1600;\n}\n.courses-page .page-header .header-buttons .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons .icon-box:hover, .courses-page .page-header .header-buttons .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n.courses-page h1, .courses-page h2, .courses-page h3 {\n  margin: 0;\n}\n.courses-page .breadcrumb {\n  color: #6b7280;\n  margin-bottom: 6px;\n}\n.courses-page .courses-top {\n  display: flex;\n  gap: 18px;\n  margin-bottom: 14px;\n  align-items: flex-start;\n}\n.courses-page .courses-top .courses-metrics {\n  flex: 1;\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n.courses-page .courses-top .metric.card {\n  flex: 1 1 160px;\n  padding: 14px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border: 1px solid rgba(37, 99, 235, 0.04);\n  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.03);\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.courses-page .courses-top .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 24px 60px rgba(37, 99, 235, 0.08);\n}\n.courses-page .courses-top .metric.card .label {\n  color: #64748b;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card .value {\n  font-size: 20px;\n  font-weight: 900;\n  color: #0f172a;\n}\n.courses-page .courses-top .metric.card.total {\n  border-left: 4px solid #2563eb;\n}\n.courses-page .courses-top .metric.card.active {\n  border-left: 4px solid #10b981;\n}\n.courses-page .courses-top .metric.card.inactive {\n  border-left: 4px solid #f59e0b;\n}\n.courses-page .courses-top .metric.card.students {\n  border-left: 4px solid #7c3aed;\n}\n.courses-page .courses-top .metric .icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px;\n}\n.courses-page .courses-top .metric .metric-title {\n  font-size: 13px;\n  color: #6b7280;\n}\n.courses-page .courses-top .metric .metric-value {\n  font-size: 20px;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card.total {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-left: 4px solid #2563eb;\n}\n.courses-page .courses-top .metric.card.active {\n  background: linear-gradient(90deg, #ecfdf5, #f0fdf4);\n  border-left: 4px solid #10b981;\n}\n.courses-page .courses-top .metric.card.inactive {\n  background: linear-gradient(90deg, #fff7ed, #fffaf0);\n  border-left: 4px solid #f59e0b;\n}\n.courses-page .courses-top .metric.card.students {\n  background: linear-gradient(90deg, #f5f3ff, #eef2ff);\n  border-left: 4px solid #7c3aed;\n}\n.courses-page .courses-top .metric.card.enrollment {\n  background: linear-gradient(90deg, #ecfeff, #f7feff);\n  border-left: 4px solid #06b6d4;\n}\n.courses-page .courses-top .metric.card.capacity {\n  background: linear-gradient(90deg, #fff8ef, #fff4f1);\n  border-left: 4px solid #f97316;\n}\n.courses-page .courses-top .metric.card .label {\n  color: #64748b;\n  font-size: 13px;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card .value {\n  font-size: 20px;\n  font-weight: 900;\n  color: #0f172a;\n}\n.courses-page .courses-controls {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  padding: 12px 0;\n}\n.courses-page .course-search {\n  width: 100%;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n}\n.courses-page .courses-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .chip {\n  background: #f1f5f9;\n  border-radius: 999px;\n  padding: 8px 10px;\n  border: 1px solid #eef2f7;\n  cursor: pointer;\n}\n.courses-page .chip.active {\n  background: #eef2ff;\n  border-color: #dbeafe;\n}\n.courses-page .courses-table {\n  margin-top: 8px;\n  overflow: auto;\n}\n.courses-page .courses-table table {\n  width: 100%;\n  border-collapse: collapse;\n  background: transparent;\n}\n.courses-page .courses-table th, .courses-page .courses-table td {\n  padding: 14px 12px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.courses-page .courses-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.courses-page .students-count {\n  color: #475569;\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .status-active {\n  background: #ecfdf5;\n  color: #059669;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n.courses-page .status-inactive {\n  background: #fff7ed;\n  color: #b45309;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n.courses-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n}\n.courses-page .action-icon.text-danger {\n  color: #dc2626;\n}\n.courses-page .courses-pagination {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  padding: 12px 0;\n}\n@media (max-width: 900px) {\n  .courses-page .courses-top {\n    flex-direction: column;\n  }\n  .courses-page .courses-top .courses-metrics {\n    width: 100%;\n  }\n}\n\n/* Reports page styles */\n.reports-page {\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n\n.reports-header {\n  background: transparent;\n}\n\n.reports-header h2 {\n  margin: 0;\n  font-size: 20px;\n  color: #0f172a;\n}\n\n.reports-header .page-sub {\n  color: #6b7280;\n  margin-top: 6px;\n}\n\n.reports-metrics {\n  display: flex;\n  gap: 16px;\n}\n\n.report-metric {\n  flex: 1;\n  padding: 18px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.04);\n}\n\n.report-metric.blue {\n  background: linear-gradient(90deg, #eef6ff, #f8fbff);\n}\n\n.report-metric.green {\n  background: linear-gradient(90deg, #ecfff5, #f7fffb);\n}\n\n.report-metric.purple {\n  background: linear-gradient(90deg, #fbf5ff, #fffaff);\n}\n\n.report-metric.orange {\n  background: linear-gradient(90deg, #fff8f2, #fffbf7);\n}\n\n.report-metric .metric-title {\n  color: #6b7280;\n  font-weight: 700;\n}\n\n.report-metric .metric-value {\n  font-size: 28px;\n  font-weight: 900;\n  margin-top: 6px;\n}\n\n.report-metric .metric-sub {\n  margin-top: 8px;\n}\n\n.chart-card {\n  padding: 18px;\n  border-radius: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.04);\n}\n\n.reports-bottom {\n  display: flex;\n  gap: 12px;\n}\n\n.small-card {\n  flex: 1;\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, #f7fbff, #ffffff);\n  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);\n}\n\n.small-card .card-title {\n  font-weight: 800;\n  color: #6b7280;\n}\n\n.small-card .card-value {\n  font-size: 20px;\n  font-weight: 900;\n  margin-top: 8px;\n}\n\n.small-card .progress {\n  height: 10px;\n  background: #eef2f7;\n  border-radius: 999px;\n  margin: 12px 0;\n  overflow: hidden;\n}\n\n.small-card .progress .fill {\n  height: 100%;\n  background: linear-gradient(90deg, #60a5fa, #0ea5e9);\n}\n\n.small-card .progress .fill.green {\n  background: linear-gradient(90deg, #4ade80, #10b981);\n}\n\n.small-card .progress .fill.purple {\n  background: linear-gradient(90deg, #c084fc, #8b5cf6);\n}\n\n@media (max-width: 900px) {\n  .reports-metrics {\n    flex-direction: column;\n  }\n  .reports-bottom {\n    flex-direction: column;\n  }\n}\n/* Teachers / Faculty page specific styling */\n.teachers-page {\n  /* optional pulse for the Add Faculty button */\n  /* small animation */\n}\n.teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 16px;\n  padding: 18px;\n  background: #0b1220;\n  border-radius: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  margin-bottom: 18px;\n  animation: fadeInUp 320ms ease both;\n}\n.teachers-page .page-header .breadcrumb {\n  color: #6b7280;\n  font-size: 0.95rem;\n  margin-bottom: 6px;\n}\n.teachers-page .page-header h2 {\n  margin: 0;\n  font-size: 20px;\n}\n.teachers-page .page-sub {\n  margin: 6px 0 0;\n  color: #6b7280;\n}\n.teachers-page .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n.teachers-page .header-actions .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .header-actions .icon-box {\n  padding: 8px 12px;\n  border-radius: 10px;\n  background: linear-gradient(90deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  cursor: pointer;\n  transition: transform 140ms ease, box-shadow 140ms ease;\n}\n.teachers-page .header-actions .icon-box:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);\n}\n.teachers-page .header-actions .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.08);\n}\n.teachers-page .header-actions .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  color: #2b1600;\n  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.08);\n}\n.teachers-page .header-actions .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .header-actions .icon-box:hover, .teachers-page .header-actions .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n.teachers-page .header-actions .primary.pulse {\n  animation: softPulse 2200ms ease-in-out infinite;\n}\n.teachers-page .metrics-row {\n  display: flex;\n  gap: 12px;\n  margin-top: 14px;\n  margin-bottom: 18px;\n  flex-wrap: wrap;\n}\n.teachers-page .metrics-row .metric.card {\n  flex: 0 0 160px;\n  padding: 12px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.teachers-page .metrics-row .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);\n}\n.teachers-page .metrics-row .metric .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.teachers-page .metrics-row .metric .value {\n  font-weight: 800;\n  font-size: 20px;\n}\n.teachers-page .table-wrapper {\n  margin-top: 6px;\n}\n.teachers-page .teachers-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.teachers-page .teachers-table thead th {\n  text-align: left;\n  padding: 12px 14px;\n  border-bottom: 1px solid #eef2f6;\n  color: #6b7280;\n  font-weight: 700;\n}\n.teachers-page .teachers-table tbody td {\n  padding: 12px 14px;\n  border-bottom: 1px solid #f3f6fb;\n}\n.teachers-page .teachers-table tbody tr:hover {\n  background: rgba(37, 99, 235, 0.02);\n  transform: translateY(-1px);\n}\n.teachers-page .status-pill {\n  display: inline-block;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.teachers-page .status-pill.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.teachers-page .status-pill.sabbatical {\n  background: #eff6ff;\n  color: #2563eb;\n}\n.teachers-page .status-pill.retired {\n  background: #fff1f2;\n  color: #be185d;\n}\n.teachers-page .status-pill.locked {\n  background: #fff7ed;\n  color: #b45309;\n}\n@keyframes fadeInUp {\n  from {\n    opacity: 0;\n    transform: translateY(6px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n/* Department overview interactive cards */\n.department-overview {\n  margin-top: 18px;\n}\n\n.department-list.grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 12px;\n  margin-top: 12px;\n}\n\n.department-card {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  border-radius: 10px;\n  background: #0b1220;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n  position: relative;\n  overflow: hidden;\n}\n\n.department-card::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  width: 6px;\n}\n\n.department-card .dept-head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.dept-name {\n  font-size: 14px;\n}\n\n.dept-body {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.counts-display {\n  font-weight: 700;\n  color: #0f172a;\n}\n\n.dept-controls {\n  display: flex;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n\n.dept-controls .small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: #f1f5f9;\n  border: 1px solid #eef2f7;\n  cursor: pointer;\n}\n\n.actions-card {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 8px;\n}\n\n.department-card input[type=number] {\n  width: 100%;\n  padding: 8px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n@media (max-width: 1000px) {\n  .department-list.grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n@media (max-width: 700px) {\n  .department-list.grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Students page extras */\n.students-page {\n  /* Ensure metric numbers are visible: use a solid gray color for better contrast */\n}\n.students-page .students-metrics .metric.card {\n  min-width: 120px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 14px;\n}\n.students-page .students-metrics.metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 12px;\n  margin-bottom: 14px;\n}\n.students-page .students-metrics .metric .icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 16px;\n  background: rgba(255, 255, 255, 0.06);\n}\n.students-page .metric-blue .icon {\n  background: linear-gradient(90deg, #e6f0ff, #dbeafe);\n}\n.students-page .metric-green .icon {\n  background: linear-gradient(90deg, #ecfdf5, #bbf7d0);\n}\n.students-page .metric-purple .icon {\n  background: linear-gradient(90deg, #eef2ff, #e9d5ff);\n}\n.students-page .metric-orange .icon {\n  background: linear-gradient(90deg, #fff7ed, #ffd8a8);\n}\n.students-page .metric-red .icon {\n  background: linear-gradient(90deg, #fff1f2, #fecaca);\n}\n.students-page .metric-violet .icon {\n  background: linear-gradient(90deg, #f5f3ff, #ede9fe);\n}\n.students-page .metric-gray .icon {\n  background: linear-gradient(90deg, #f3f4f6, #f8fafc);\n}\n.students-page .students-metrics .metric .label {\n  font-size: 13px;\n  color: #6b7280;\n}\n.students-page .students-metrics .metric .value {\n  font-size: 18px;\n  font-weight: 800;\n  color: #374151;\n}\n.students-page .students-metrics .metric.card {\n  background: #0b1220;\n  border-radius: 12px;\n  border: 1px solid #eef2f7;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  padding: 14px;\n  cursor: default;\n}\n.students-page .students-metrics .metric.card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.students-page .students-metrics .metric.card .icon {\n  margin-bottom: 6px;\n}\n.students-page .students-metrics .metric.metric-add {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  background: linear-gradient(90deg, #0ea5e9, #7c3aed);\n  color: #fff;\n  border: none;\n}\n.students-page .students-metrics .metric.metric-add .icon {\n  background: rgba(255, 255, 255, 0.12);\n  border-radius: 8px;\n  padding: 6px;\n}\n.students-page .students-table thead th {\n  background: transparent;\n  color: #0f172a;\n}\n.students-page .students-table tbody tr.selected-row {\n  background: linear-gradient(90deg, rgba(37, 99, 235, 0.04), rgba(96, 165, 250, 0.02));\n}\n.students-page .students-table tbody tr.archived-row {\n  opacity: 0.7;\n}\n.students-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n}\n.students-page .action-icon.text-danger {\n  color: #dc2626;\n}\n.students-page .badge {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.students-page .badge.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.students-page .badge.locked {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page .badge.archived {\n  background: #f3f4f6;\n  color: #374151;\n}\n.students-page .badge.graduated {\n  background: #eef2ff;\n  color: #2563eb;\n}\n.students-page .badge.suspended {\n  background: #fff7f0;\n  color: #c2410c;\n}\n.students-page .bulk-actions {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  padding: 10px 12px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, #fff, #fbfdff);\n  border: 1px solid #eef2f7;\n  margin-bottom: 12px;\n}\n.students-page .bulk-actions .btn {\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  cursor: pointer;\n}\n.students-page .bulk-actions .btn.warn {\n  background: #fff7ed;\n  color: #b45309;\n  border-color: #fef3c7;\n}\n.students-page .bulk-actions .btn.danger {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page select {\n  padding: 6px 8px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n  background: #fff;\n}\n\n/* Students header action buttons: import/export/add styles */\n.students-page .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.students-page .header-actions .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-page .header-actions .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  color: #fff;\n}\n\n.students-page .header-actions .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.12);\n  color: #042022;\n}\n\n.students-page .header-actions .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.12);\n  color: #2b1600;\n}\n\n.students-page .header-actions .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-page .header-actions .icon-box:hover, .students-page .header-actions .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n\n/* subtle pulse animation for Add button to draw attention */\n@keyframes softPulse {\n  0% {\n    transform: scale(1);\n    box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  }\n  50% {\n    transform: scale(1.02);\n    box-shadow: 0 26px 80px rgba(124, 58, 237, 0.16);\n  }\n  100% {\n    transform: scale(1);\n    box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  }\n}\n.students-page .header-actions .primary.pulse {\n  animation: softPulse 2200ms ease-in-out infinite;\n}\n\n.students-page .no-data {\n  text-align: center;\n  padding: 40px 20px;\n  color: #6b7280;\n}\n\n.students-page .no-data h3 {\n  margin: 0;\n  font-size: 18px;\n}\n\n.students-page .no-data p {\n  margin: 8px 0 0;\n}\n\n/* Color accents for each department card */\n.department-list.grid .department-card:nth-child(1)::before {\n  background: #3b82f6;\n}\n\n.department-list.grid .department-card:nth-child(2)::before {\n  background: #34d399;\n}\n\n.department-list.grid .department-card:nth-child(3)::before {\n  background: #7c3aed;\n}\n\n.department-list.grid .department-card:nth-child(4)::before {\n  background: #06b6d4;\n}\n\n.department-list.grid .department-card:nth-child(5)::before {\n  background: #3b82f6;\n}\n\n.department-list.grid .department-card:nth-child(6)::before {\n  background: #34d399;\n}\n\n.department-list.grid .department-card:nth-child(7)::before {\n  background: #7c3aed;\n}\n\n.department-list.grid .department-card:nth-child(8)::before {\n  background: #06b6d4;\n}\n\n/* Performance cards (top of bottom area) */\n.performance-cards {\n  margin-top: 18px;\n}\n\n.perf-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 16px;\n  margin-bottom: 18px;\n}\n\n.perf-card {\n  background: #0b1220;\n  padding: 16px;\n  border-radius: 12px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.perf-card .perf-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.perf-card .perf-value {\n  font-size: 22px;\n  font-weight: 800;\n}\n\n.perf-card .perf-sub {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.perf-card .perf-change {\n  margin-left: auto;\n  color: #10b981;\n  font-weight: 700;\n}\n\n.perf-card.blue {\n  border-left: 4px solid #3b82f6;\n}\n\n.perf-card.green {\n  border-left: 4px solid #34d399;\n}\n\n.perf-card.purple {\n  border-left: 4px solid #7c3aed;\n}\n\n.perf-card.cyan {\n  border-left: 4px solid #06b6d4;\n}\n\n/* Department alignment */\n.dept-align {\n  align-self: start;\n}\n\n/* Compact calendar tweaks */\n.mini-cal.compact .cal-grid {\n  grid-template-columns: repeat(7, 1fr);\n  gap: 4px;\n}\n\n.mini-cal.compact .cal-cell {\n  padding: 6px;\n  font-size: 12px;\n}\n\n@media (max-width: 1000px) {\n  .perf-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n.department-card .dept-name {\n  display: block;\n}\n\n.department-card .muted {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n/* list-style department overview */\n.department-list.list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n/* Hero right Add button styling (Add Student / Add Teacher) */\n.hero-right .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n  cursor: pointer;\n  font-weight: 800;\n}\n\n.hero-right .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 72px rgba(124, 58, 237, 0.18);\n}\n\n@media (max-width: 900px) {\n  .hero-right .primary {\n    padding: 8px 10px;\n    font-size: 14px;\n  }\n  .hero-right .student-search {\n    min-width: 180px;\n  }\n}\n.department-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 10px;\n  background: #0b1220;\n  border-radius: 10px;\n  border: 1px solid rgba(255, 255, 255, 0.04);\n}\n\n.department-row .row-left {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 42%;\n}\n\n.department-row .dot {\n  width: 12px;\n  height: 12px;\n  border-radius: 999px;\n  display: inline-block;\n}\n\n.department-row .dept-name {\n  font-weight: 700;\n}\n\n.department-row .row-center {\n  width: 36%;\n}\n\n.progress-wrap {\n  width: 100%;\n}\n\n.progress-bar {\n  height: 10px;\n  background: #f1f5f9;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.progress-fill {\n  height: 100%;\n  background: linear-gradient(90deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.9));\n}\n\n.row-right {\n  width: 22%;\n  text-align: right;\n}\n\n.counts-right {\n  font-weight: 700;\n}\n\n.edit-inline input {\n  width: 48%;\n  padding: 6px 8px;\n  margin-right: 4px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n.edit-actions .btn {\n  background: #3b82f6;\n  color: #fff;\n  padding: 6px 10px;\n  border-radius: 8px;\n  border: none;\n  margin-right: 8px;\n}\n\n.edit-actions .btn-link {\n  background: transparent;\n  border: none;\n  color: #6b7280;\n  cursor: pointer;\n}\n\n.actions-row {\n  background: transparent;\n  border: none;\n  box-shadow: none;\n}\n\n/* Teachers / Faculty specific styling to match the provided screenshot */\n.teachers-page {\n  /* Name column shows subtitle / role in muted text */\n  /* Actions styling - small icon buttons spaced evenly */\n  /* responsive tweaks */\n}\n.teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.teachers-page .breadcrumb {\n  color: #6b7280;\n  margin-bottom: 6px;\n}\n.teachers-page .teachers-metrics {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-bottom: 16px;\n}\n.teachers-page .teachers-metrics .metric.card {\n  padding: 14px;\n  min-width: 120px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  align-items: flex-start;\n}\n.teachers-page .teachers-metrics .metric .metric-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n.teachers-page .teachers-metrics .metric .metric-value {\n  font-size: 20px;\n  font-weight: 800;\n}\n.teachers-page .teachers-controls {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.teachers-page .teachers-controls .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n.teachers-page .teacher-search {\n  width: 100%;\n  max-width: 760px;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n}\n.teachers-page .teachers-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .table-wrapper.card {\n  padding: 0;\n}\n.teachers-page .landscape-table {\n  overflow: auto;\n}\n.teachers-page .landscape-table table {\n  width: 100%;\n  min-width: 1200px;\n  border-collapse: collapse;\n}\n.teachers-page .landscape-table th, .teachers-page .landscape-table td {\n  padding: 14px 16px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.teachers-page .landscape-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.teachers-page .landscape-table tbody tr.archived-row {\n  opacity: 0.75;\n}\n.teachers-page .name-meta {\n  display: flex;\n  flex-direction: column;\n}\n.teachers-page .name-meta .subtitle {\n  color: #6b7280;\n  font-size: 12px;\n  margin-top: 6px;\n}\n.teachers-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 8px;\n  margin-left: 6px;\n  color: #475569;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}\n.teachers-page .action-icon:hover {\n  background: #f1f5f9;\n}\n.teachers-page .action-icon.text-danger {\n  color: #dc2626;\n}\n@media (max-width: 900px) {\n  .teachers-page .teacher-search {\n    max-width: 100%;\n  }\n  .teachers-page .landscape-table table {\n    min-width: 900px;\n  }\n}\n\n/* Students page styles (matches screenshot layout) */\n.students-page {\n  /* boxed header */\n  /* landscape helper: allow a very wide table and horizontal scroll */\n}\n.students-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 12px;\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n}\n.students-page .page-title {\n  margin: 4px 0 2px;\n  font-size: 20px;\n  color: #0f172a;\n  font-weight: 800;\n}\n.students-page .page-sub {\n  margin: 2px 0 0;\n  color: #6b7280;\n}\n.students-page .students-metrics {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-bottom: 16px;\n}\n.students-page .students-metrics .metric.card {\n  padding: 14px;\n  min-width: 140px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.students-page .students-metrics .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.08);\n}\n.students-page .students-metrics .metric .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.students-page .students-metrics .metric .value {\n  font-size: 20px;\n  font-weight: 700;\n}\n.students-page .controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  gap: 12px;\n  margin-bottom: 12px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, rgba(7, 10, 34, 0.02), rgba(124, 58, 237, 0.02));\n  border: 1px solid rgba(124, 58, 237, 0.04);\n}\n.students-page .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n.students-page .controls-right {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.students-page .global-search {\n  width: 480px;\n  max-width: 60%;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n.students-page .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.students-page .filter-chips {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-left: 6px;\n}\n.students-page .chip {\n  padding: 8px 10px;\n  background: #f1f5f9;\n  border: 1px solid #eef2f7;\n  border-radius: 999px;\n  cursor: pointer;\n  font-weight: 700;\n  color: #475569;\n}\n.students-page .chip.active {\n  background: #eef2ff;\n  border-color: #dbeafe;\n  color: #2563eb;\n}\n.students-page .chip.clear {\n  background: transparent;\n  border: 1px dashed #e6eef8;\n  color: #64748b;\n}\n.students-page .view-toggle button {\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  background: transparent;\n  cursor: pointer;\n  transition: background 140ms ease, transform 120ms ease;\n}\n.students-page .view-toggle button:hover {\n  transform: translateY(-2px);\n}\n.students-page .view-toggle button.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);\n}\n.students-page .filter-item {\n  color: #6b7280;\n  margin-right: 6px;\n}\n.students-page .show-archived {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.students-page .table-wrapper {\n  overflow: auto;\n}\n.students-page .students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.students-page .landscape-table {\n  overflow: auto;\n}\n.students-page .landscape-table .students-table {\n  min-width: 1400px;\n}\n.students-page .students-table th, .students-page .students-table td {\n  padding: 14px 12px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.students-page .students-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.students-page .students-table tbody tr.archived-row {\n  opacity: 0.75;\n}\n.students-page .badge {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.students-page .badge.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.students-page .badge.locked {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page .badge.archived {\n  background: #f3f4f6;\n  color: #374151;\n}\n.students-page .badge.graduated {\n  background: #eef2ff;\n  color: #2563eb;\n}\n.students-page .badge.suspended {\n  background: #fff1f0;\n  color: #c2410c;\n}\n.students-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n  transition: transform 120ms ease, background 120ms ease;\n}\n.students-page .action-icon:hover {\n  transform: translateY(-2px);\n  background: rgba(37, 99, 235, 0.02);\n}\n.students-page .action-icon.text-danger {\n  color: #dc2626;\n}\n\n/* Students panel card (screenshot-inspired) */\n.students-panel {\n  background: #ffffff;\n  border-radius: 12px;\n  padding: 18px 20px;\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.03);\n  margin-bottom: 18px;\n  overflow: hidden;\n}\n\n.students-panel .small-muted {\n  color: #64748b;\n}\n\n.students-panel .student-search {\n  width: 100%;\n  max-width: 680px;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #f8fafc;\n}\n\n.students-panel table.students-table thead th {\n  color: #334155;\n  font-weight: 700;\n}\n\n.students-panel table.students-table tbody td {\n  color: #0f172a;\n}\n\n.students-panel table.students-table thead th {\n  border-bottom: 1px solid #eef2f7;\n}\n\n.students-panel tbody tr {\n  background: transparent;\n}\n\n.students-panel tbody tr:hover {\n  background: rgba(2, 6, 23, 0.02);\n  transform: none;\n}\n\n.students-panel .status-pill {\n  background: #ecfdf5;\n  color: #166534;\n  font-weight: 700;\n}\n\n.students-panel .status-pill.locked {\n  background: #fee2e2;\n  color: #991b1b;\n}\n\n.students-panel .action-icon {\n  width: 36px;\n  height: 36px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 8px;\n  background: transparent;\n  border: 1px solid transparent;\n  transition: background 120ms ease, transform 120ms ease;\n}\n\n.students-panel .action-icon:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n.students-panel .primary {\n  padding: 10px 14px;\n  border-radius: 10px;\n}\n\n.students-panel thead {\n  border-bottom: 1px solid #eef2f7;\n}\n\n.students-panel thead th {\n  padding: 14px 12px;\n}\n\n.students-panel tbody td {\n  padding: 14px 12px;\n}\n\n.students-panel .status-pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n\n.students-panel .actions {\n  display: flex;\n  gap: 8px;\n  justify-content: flex-end;\n}\n\n.students-panel .actions .action-icon {\n  padding: 8px;\n  border-radius: 8px;\n  background: transparent;\n}\n\n.students-panel .header-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n\n.students-panel .header-row .title {\n  font-weight: 800;\n  font-size: 16px;\n}\n\n.students-panel .header-row .subtitle {\n  color: #64748b;\n}\n\n/* Utility & responsive rules */\n@media (max-width: 1000px) {\n  .metrics-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 72px;\n  }\n  .admin-dashboard-layout .sidebar {\n    width: 72px;\n    padding: 14px;\n  }\n}\n@media (max-width: 720px) {\n  .metrics-grid {\n    grid-template-columns: 1fr;\n  }\n  .content-grid {\n    grid-template-columns: 1fr;\n  }\n  .admin-dashboard-layout .sidebar {\n    position: relative;\n    width: 100%;\n    height: auto;\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 0;\n    padding: 18px;\n  }\n}\n/* Small form elements and tables used across pages */\n.small-muted {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  background: #f1f5f9;\n}\n\n/* Layout fixes to prevent sidebar overlap and ensure modals/form inputs are visible */\n.admin-dashboard-layout .sidebar {\n  z-index: 20;\n}\n\n.admin-dashboard-layout .admin-main {\n  min-width: 0;\n}\n\n/* Modal/backdrop styling (modal overlays sidebar) */\n.modal-overlay {\n  position: fixed;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.35);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 99999; /* ensure it sits above everything including sidebar */\n}\n\n.modal {\n  position: relative;\n  background: #ffffff; /* make modal panel white */\n  color: #0f172a;\n  border-radius: 14px;\n  padding: 20px;\n  width: 680px;\n  max-width: calc(100% - 40px);\n  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.12);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  z-index: 100000;\n}\n\n/* Top accent bar for modal, adds color and modern feel */\n.modal::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  height: 6px;\n  border-top-left-radius: 14px;\n  border-top-right-radius: 14px;\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n}\n\n/* Modal header (title and close) */\n.modal .modal-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding-bottom: 12px;\n  margin-bottom: 8px;\n  border-bottom: 1px solid rgba(15, 23, 42, 0.03);\n}\n\n.modal .modal-header h3 {\n  margin: 0;\n  font-size: 18px;\n  color: #0f172a;\n}\n\n.modal .modal-close {\n  background: transparent;\n  border: none;\n  font-size: 18px;\n  cursor: pointer;\n  color: #475569;\n  padding: 6px;\n  border-radius: 8px;\n}\n\n.modal .modal-close:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n/* modal entrance animation */\n.modal.modal-wide {\n  transform: translateY(-6px);\n  opacity: 0;\n  animation: modalIn 220ms ease forwards;\n}\n\n@keyframes modalIn {\n  to {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n.modal .modal-body input, .modal .modal-body select {\n  background: #ffffff;\n  border: 1px solid #e6eef8;\n  padding: 12px 14px;\n  border-radius: 10px;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n\n.modal .modal-body input::-moz-placeholder, .modal .modal-body textarea::-moz-placeholder {\n  color: #94a3b8;\n}\n\n.modal .modal-body input::placeholder, .modal .modal-body textarea::placeholder {\n  color: #94a3b8;\n}\n\n.modal .modal-body input:focus, .modal .modal-body select:focus, .modal .modal-body textarea:focus {\n  outline: none;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);\n  border-color: rgba(124, 58, 237, 0.18);\n  transform: translateY(-2px);\n}\n\n.modal .modal-footer .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 16px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n}\n\n.modal .modal-footer .primary:disabled {\n  opacity: 0.7;\n}\n\n.modal .modal-footer button {\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid #eef2f7;\n}\n\n.modal-wide {\n  width: 920px;\n  max-width: calc(100% - 32px);\n}\n\n.modal .modal-body input,\n.modal .modal-body select,\n.modal .modal-body textarea,\n.user-form input,\n.user-form select,\n.role-fields input,\n.role-fields select,\n.role-fields textarea {\n  width: 100%;\n  box-sizing: border-box;\n  padding: 10px 12px;\n  margin-bottom: 10px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n/* Course form modal styles */\n.course-modal {\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border-radius: 12px;\n  padding: 0;\n  overflow: hidden;\n}\n\n.course-modal .modal-header {\n  padding: 18px;\n  border-bottom: 1px solid rgba(37, 99, 235, 0.04);\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n}\n\n.course-modal .modal-header h3 {\n  margin: 0;\n  font-size: 18px;\n}\n\n.course-modal .modal-header .modal-sub {\n  color: #64748b;\n  font-size: 13px;\n  margin-top: 6px;\n}\n\n.course-modal .modal-body {\n  padding: 16px;\n}\n\n.course-modal .form-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}\n\n.course-modal .form-group {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.course-modal label {\n  font-weight: 700;\n  color: #334155;\n}\n\n.course-modal input, .course-modal select {\n  padding: 10px 12px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n  background: #fff;\n  transition: box-shadow 180ms ease, transform 120ms ease;\n}\n\n.course-modal input:focus, .course-modal select:focus {\n  outline: none;\n  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);\n  transform: translateY(-2px);\n}\n\n.course-modal .modal-footer {\n  padding: 12px 18px;\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n  border-top: 1px solid rgba(15, 23, 42, 0.02);\n  background: transparent;\n}\n\n.course-modal .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  cursor: pointer;\n}\n\n.course-modal .btn-ghost {\n  background: transparent;\n  border: 1px solid #eef2f7;\n  padding: 8px 12px;\n  border-radius: 8px;\n  cursor: pointer;\n}\n\n@media (max-width: 900px) {\n  .course-modal .form-grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Status select styling */\n.course-modal .status-box {\n  display: flex;\n  flex-direction: column;\n}\n\n.course-modal .status-select {\n  padding: 10px 12px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  background: #fff;\n  font-weight: 700;\n  min-width: 160px;\n  transition: box-shadow 160ms ease, transform 140ms ease;\n}\n\n.course-modal .status-select.is-active {\n  background: linear-gradient(90deg, #ecfdf5, #f0fff4);\n  border-color: rgba(16, 185, 129, 0.12);\n  color: #064e3b;\n}\n\n.course-modal .status-select.is-inactive {\n  background: linear-gradient(90deg, #fff7ed, #fffaf0);\n  border-color: rgba(245, 158, 11, 0.12);\n  color: #7c2d12;\n}\n\n.course-modal .status-select:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);\n}\n\n.course-modal .status-select:focus {\n  box-shadow: 0 12px 36px rgba(37, 99, 235, 0.08);\n}\n\n/* Modal form helpers */\n.input-error {\n  color: #dc2626;\n  font-size: 12px;\n  margin-top: 6px;\n}\n\n.modal .modal-body .col input {\n  width: 100%;\n  box-sizing: border-box;\n}\n\n.modal .modal-body .col .small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n  cursor: pointer;\n}\n\n/* modal grid stacks on small screens */\n@media (max-width: 720px) {\n  .modal {\n    width: 94%;\n    padding: 14px;\n  }\n  .modal .modal-body .modal-grid,\n  .modal .modal-body .modal-grid.full {\n    grid-template-columns: 1fr;\n    gap: 0.75rem;\n  }\n}\n/* Prevent fixed sidebar covering content on medium screens */\n@media (max-width: 900px) {\n  .admin-dashboard-layout .sidebar {\n    position: relative;\n    width: 100%;\n    height: auto;\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 0;\n  }\n}\n/* Visible 'See' label next to view icon for accessibility/clarity */\n.view-button {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: transparent;\n  border: none;\n  color: #475569;\n}\n\n.view-button .action-label {\n  color: #6b7280;\n  font-weight: 700;\n  font-size: 13px;\n  display: inline-block;\n  line-height: 1;\n  vertical-align: middle;\n}\n\n.view-button:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n/* Centered modal variant used for detail views */\n.modal-backdrop, .modal-overlay {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.modal-centered .modal {\n  animation: modalScaleIn 220ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;\n  transform: scale(0.98);\n  opacity: 0;\n}\n\n@keyframes modalScaleIn {\n  to {\n    transform: scale(1);\n    opacity: 1;\n  }\n}\n.modal-card.with-shadow {\n  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.12);\n  border-radius: 12px;\n}\n\n.modal-card {\n  border-radius: 12px;\n  background: #fff;\n}\n\n.modal-backdrop {\n  position: fixed;\n  inset: 0;\n  background: rgba(10, 12, 20, 0.35);\n  z-index: 99999;\n}\n\n.modal-centered .modal {\n  max-width: 820px;\n  width: 92%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n/* retain blue for charts */\n:root.adm-dark, .adm-dark {\n  --bg: #030317;\n  --panel: #071026;\n  --muted: #9aa4c0;\n  --text: #e6eef8;\n  --accent: #7c3aed;\n}\n\n/* Chart color tokens used by JS via CSS variables */\n:root {\n  --chart-students: #2563eb; /* blue */\n  --chart-students-fill: rgba(59,130,246,0.12);\n  --chart-teachers: #10b981; /* green */\n  --chart-teachers-fill: rgba(16,185,129,0.08);\n  --chart-faculty: #10b981; /* alias for faculty/teachers */\n  --chart-faculty-fill: rgba(16,185,129,0.08);\n  --chart-courses: #f97316; /* orange */\n  --chart-courses-fill: rgba(249,115,22,0.08);\n  --chart-tooltip-bg: rgba(0,0,0,0.75);\n  /* Attendance colors */\n  --chart-attendance-present: #2563eb;\n  --chart-attendance-present-fill: rgba(59,130,246,0.12);\n  --chart-attendance-absent: #ef4444;\n  --chart-attendance-absent-fill: rgba(239,68,68,0.08);\n}\n\n/* Legend swatches for attendance chart */\n.legend-swatch {\n  display: inline-block;\n  width: 12px;\n  height: 12px;\n  border-radius: 3px;\n  margin-right: 8px;\n  vertical-align: middle;\n}\n\n.legend-swatch.present {\n  background: var(--chart-attendance-present);\n  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.08);\n}\n\n.legend-swatch.absent {\n  background: var(--chart-attendance-absent);\n  box-shadow: 0 4px 18px rgba(239, 68, 68, 0.06);\n}\n\n.admin-dashboard-layout {\n  display: flex;\n  min-height: 100vh;\n  background: linear-gradient(180deg, #f6fbff, #f0f7ff);\n  color: #0f172a;\n  font-family: Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial;\n}\n.admin-dashboard-layout .sidebar {\n  width: 240px;\n  background: #0b1220;\n  color: #0f172a;\n  padding: 20px;\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n  box-shadow: 0 4px 20px rgba(2, 6, 23, 0.06);\n}\n.admin-dashboard-layout .sidebar .logo {\n  font-size: 1.15rem;\n  font-weight: 700;\n  text-align: center;\n}\n.admin-dashboard-layout .sidebar .nav {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.admin-dashboard-layout .sidebar .nav-item {\n  padding: 10px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  color: #dbeafe;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.admin-dashboard-layout .sidebar .nav-item.active {\n  background: rgba(255, 255, 255, 0.06);\n}\n.admin-dashboard-layout .sidebar + .admin-main,\n.admin-dashboard-layout .admin-main {\n  margin-left: 240px;\n  padding: 28px 32px;\n  flex: 1;\n  min-width: 0;\n  transition: margin-left 0.18s ease;\n}\n.admin-dashboard-layout .sidebar.collapsed + .admin-main {\n  margin-left: 72px;\n}\n\n/* Boxed controls for teachers - aligned, colored and compact */\n.teachers-page .controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 14px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, rgba(124, 58, 237, 0.04), rgba(6, 182, 212, 0.02));\n  border: 1px solid rgba(124, 58, 237, 0.06);\n  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.03);\n  margin-bottom: 12px;\n}\n\n/* Make Students panel visually match Teachers: boxed card, colored icon, chips and button effects */\n.students-page .card.students-panel {\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.98), #ffffff);\n  border-radius: 12px;\n  padding: 20px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.04);\n}\n\n.students-page .students-panel .hero-icon {\n  width: 44px;\n  height: 44px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #fff;\n  box-shadow: 0 8px 30px rgba(79, 70, 229, 0.06);\n  background: linear-gradient(90deg, #4f46e5, #06b6d4);\n}\n\n.students-page .chip {\n  background: #f3f4f6;\n  color: #334155;\n  padding: 6px 10px;\n  border-radius: 999px;\n  border: 1px solid rgba(15, 23, 42, 0.03);\n  cursor: pointer;\n  transition: transform 0.12s ease, box-shadow 0.12s ease;\n}\n\n.students-page .chip.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  color: #2563eb;\n  border-color: rgba(37, 99, 235, 0.06);\n  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.03);\n  transform: translateY(-4px);\n}\n\n.students-page .chip .chip-count {\n  background: rgba(15, 23, 42, 0.03);\n  padding: 4px 8px;\n  border-radius: 999px;\n  margin-left: 8px;\n  font-weight: 800;\n}\n\n.students-page .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  border: none;\n  padding: 10px 14px;\n  border-radius: 8px;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.08);\n  transition: transform 0.12s ease, box-shadow 0.12s ease;\n}\n\n.students-page .primary:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 18px 40px rgba(79, 70, 229, 0.08);\n}\n\n.students-page .student-search {\n  width: 100%;\n  padding: 12px 14px;\n  border-radius: 8px;\n  border: none;\n  background: #f3f4f6;\n}\n\n.teachers-page .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n\n.teachers-page .controls-right {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n\n.teachers-page .teacher-search {\n  width: 480px;\n  max-width: 60%;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid rgba(37, 99, 235, 0.08);\n  background: linear-gradient(180deg, #fff, #fbfdff);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n\n.teachers-page select {\n  padding: 8px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  background: #fff;\n  min-width: 160px;\n}\n\n.teachers-page .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.teachers-page .filter-item {\n  color: #6b7280;\n  font-weight: 700;\n}\n\n.teachers-page .archived-btn {\n  padding: 8px 12px;\n  border-radius: 10px;\n  border: 1px solid transparent;\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  color: #2563eb;\n  font-weight: 700;\n  cursor: pointer;\n}\n\n.teachers-page .archived-btn.on {\n  background: linear-gradient(90deg, #fdf2f8, #fff1f2);\n  color: #be185d;\n  border-color: rgba(190, 24, 93, 0.06);\n}\n\n.teachers-page .view-toggle button {\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  background: transparent;\n  cursor: pointer;\n  font-weight: 800;\n}\n\n.teachers-page .view-toggle button.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n}\n\n.teachers-page .view-toggle {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.teachers-page .header-actions .icon-box {\n  padding: 8px 12px;\n  border-radius: 10px;\n  color: #fff;\n}\n\n.teachers-page .header-actions .icon-box svg {\n  color: inherit;\n}\n\n/* Archived toggle card for students page */\n.archived-toggle-card {\n  cursor: pointer;\n  border-radius: 12px;\n  padding: 10px 12px;\n  display: flex;\n  align-items: center;\n  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.03);\n  background: linear-gradient(90deg, #fff, #fbfdff);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  transition: transform 0.15s ease, box-shadow 0.15s ease;\n}\n\n.archived-toggle-card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n\n.archived-toggle-card.on {\n  background: linear-gradient(90deg, #fff1f2, #fff6f8);\n  border-color: rgba(190, 24, 93, 0.06);\n}\n\n.archived-toggle-card .archived-inner {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n\n.archived-toggle-card .archived-label {\n  font-weight: 800;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.archived-toggle-card .archived-count {\n  font-weight: 900;\n  font-size: 18px;\n  color: #be185d;\n}\n\n/* ensure table area sits below boxed controls if present */\n.teachers-page .table-wrapper {\n  margin-top: 8px;\n}\n\n/* Dark mode overrides - toggled by adding `adm-dark` class to <html> (documentElement) */\n:root.adm-dark, .adm-dark {\n  --bg: #071029;\n  --panel: #0b1220;\n  --muted: #94a3b8;\n  --text: #e6eef8;\n  --accent: #60a5fa;\n}\n\n.adm-dark .admin-dashboard-layout {\n  background: var(--bg);\n  color: var(--text);\n}\n\n.adm-dark .sidebar {\n  background: #041424;\n  color: var(--text);\n}\n\n.adm-dark .admin-main {\n  background: transparent;\n}\n\n.adm-dark .card {\n  background: var(--panel);\n  color: var(--text);\n  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);\n}\n\n.adm-dark .metric .label {\n  color: var(--muted);\n}\n\n.adm-dark .metric .value {\n  color: var(--text);\n}\n\n.adm-dark .recent-list li, .adm-dark .health-list li {\n  border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n}\n\n.adm-dark .badge {\n  background: rgba(255, 255, 255, 0.03);\n  color: var(--text);\n}\n\n.adm-dark .metric .icon {\n  background: rgba(255, 255, 255, 0.02);\n}\n\n.dark-toggle {\n  background: transparent;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  padding: 6px 8px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n\n.adm-dark .dark-toggle {\n  border-color: rgba(255, 255, 255, 0.06);\n}\n\n/* Header / breadcrumb */\n.adm-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 18px;\n  /* subtle header accent */\n}\n.adm-header .title-area {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.adm-header h1 {\n  margin: 0;\n  font-size: 20px;\n}\n.adm-header .breadcrumb {\n  color: #6b7280;\n  font-size: 0.95rem;\n}\n.adm-header .header-right {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.adm-header .title-area h1 {\n  color: #2563eb;\n  letter-spacing: -0.2px;\n}\n.adm-header .subtitle {\n  color: #6b7280;\n  margin-top: 4px;\n}\n\n/* Header controls (small pills) */\n.adm-header .last-updated {\n  background: transparent;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  padding: 6px 10px;\n  border-radius: 8px;\n  color: #6b7280;\n  font-size: 0.9rem;\n}\n\n.adm-header .view-analytics {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  padding: 6px 10px;\n  border-radius: 8px;\n  color: #2563eb;\n  font-weight: 700;\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n\n/* Boxed header small action styles (compact variants used in headers and cards) */\n.adm-header .header-action-box {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.adm-header .header-action-box .icon-box.small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  color: #0f172a;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.03);\n  cursor: pointer;\n  transition: transform 140ms ease, box-shadow 140ms ease;\n}\n\n.adm-header .header-action-box .icon-box.small:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);\n}\n\n.adm-header .header-action-box .icon-box.small.primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 8px 10px;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);\n}\n\n.adm-header .header-action-box .icon-box.small.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n}\n\n/* Compact archived toggle variant for denser card layouts */\n.archived-toggle-card.compact {\n  padding: 8px 10px;\n  border-radius: 10px;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n\n.archived-toggle-card.compact .archived-inner {\n  flex-direction: row;\n  align-items: center;\n  gap: 8px;\n}\n\n.archived-toggle-card.compact .archived-label {\n  font-weight: 800;\n  font-size: 12px;\n  color: #6b7280;\n}\n\n.archived-toggle-card.compact .archived-count {\n  font-weight: 900;\n  font-size: 16px;\n  color: #be185d;\n}\n\n/* Small action icons to match boxed look in tables and cards */\n.action-icon.small {\n  padding: 6px;\n  border-radius: 6px;\n  width: 36px;\n  height: 36px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.action-icon.small svg {\n  width: 16px;\n  height: 16px;\n}\n\n/* Boxed action buttons for user rows */\n.students-panel .actions .action-icon,\n.students-table .action-icon,\n.teachers-table .action-icon {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 40px;\n  height: 40px;\n  padding: 8px;\n  border-radius: 10px;\n  background: transparent;\n  border: 1px solid transparent;\n  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease, border-color 140ms ease;\n  position: relative;\n}\n\n.students-panel .actions .action-icon.edit {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n  color: #2563eb;\n}\n\n.students-panel .actions .action-icon.lock.active {\n  background: linear-gradient(90deg, #fff1f2, #ffecec);\n  border-color: rgba(239, 68, 68, 0.06);\n  color: #ef4444;\n}\n\n.students-panel .actions .action-icon.lock {\n  background: linear-gradient(90deg, #f8fafc, #fff);\n  border-color: rgba(15, 23, 42, 0.03);\n  color: #475569;\n}\n\n.students-panel .actions .action-icon.archive {\n  background: linear-gradient(90deg, #fff7ed, #fff2e6);\n  border-color: rgba(249, 115, 22, 0.06);\n  color: #be185d;\n}\n\n.students-panel .actions .action-icon.restore {\n  background: linear-gradient(90deg, #ecfeff, #e6fbff);\n  border-color: rgba(6, 182, 212, 0.06);\n  color: #075985;\n}\n\n.students-panel .actions .action-icon.delete {\n  background: linear-gradient(90deg, #fff1f2, #ffecec);\n  border-color: rgba(239, 68, 68, 0.06);\n  color: #b91c1c;\n}\n\n.students-panel .actions .action-icon:hover,\n.students-table .action-icon:hover,\n.teachers-table .action-icon:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);\n}\n\n/* small colored accent dot for active (locked) state */\n.students-panel .actions .action-icon.lock.active::after {\n  content: \"\";\n  position: absolute;\n  right: 8px;\n  top: 8px;\n  width: 8px;\n  height: 8px;\n  border-radius: 4px;\n  background: #ef4444;\n  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.12);\n}\n\n/* Table niceties for users/students */\n.students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\n/* Students table presentation improvements for readability */\n.students-list-modern tbody tr td {\n  vertical-align: middle;\n}\n\n.students-list-modern td {\n  padding: 12px 14px;\n}\n\n.students-list-modern td .avatar-circle {\n  width: 44px;\n  height: 44px;\n  border-radius: 22px;\n  font-size: 14px;\n}\n\n.students-list-modern td div[style] > div {\n  color: #0b1220; /* ensure primary text is darker */\n}\n\n.students-list-modern td div[style] > div:first-child {\n  font-weight: 800;\n  color: #0b1220;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  max-width: 380px;\n}\n\n.students-list-modern .small-muted {\n  color: #475569;\n  font-size: 12px;\n}\n\n.students-list-modern .grade-chip {\n  background: #f8fafc;\n  color: #0b1220;\n}\n\n.students-list-modern .progress-bar .progress-fill {\n  background: #16a34a;\n}\n\n.students-list-modern .progress-bar.performance .progress-fill {\n  background: #0ea5e9;\n}\n\n.students-list-modern .status-pill {\n  background: #f1f5f9;\n  color: #0b1220;\n}\n\n.hero-banner {\n  border-radius: 12px;\n  padding: 28px 24px;\n  margin-bottom: 20px;\n  background: linear-gradient(90deg, #f8fbff 0%, #eef6ff 100%);\n  color: #0f172a;\n  border: 1px solid rgba(15, 23, 42, 0.03);\n}\n\n.hero-inner {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.hero-left h1 {\n  margin: 0;\n  font-size: 28px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n.hero-left p {\n  margin: 6px 0 12px;\n  opacity: 0.9;\n  color: #64748b;\n}\n\n.hero-cards {\n  display: flex;\n  gap: 12px;\n}\n\n.hero-card {\n  background: rgba(255, 255, 255, 0.08);\n  padding: 10px 14px;\n  border-radius: 8px;\n}\n\n.hero-card .card-title {\n  font-size: 12px;\n  opacity: 0.9;\n}\n\n.hero-card .card-sub {\n  font-weight: 700;\n}\n\n.hero-right .search-add {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n\n.hero-right .student-search {\n  padding: 10px 14px;\n  border-radius: 12px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  background: #fff;\n  min-width: 420px;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);\n}\n\n.student-search {\n  padding: 10px 12px;\n  border-radius: 8px;\n  border: none;\n  min-width: 360px;\n}\n\n.students-metrics {\n  display: flex;\n  gap: 12px;\n  margin-bottom: 18px;\n}\n\n.metric.card {\n  padding: 12px 14px;\n  border-radius: 10px;\n}\n\n.metric {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 14px;\n  transition: transform 0.12s ease, box-shadow 0.12s ease;\n}\n\n.metric .metric-icon {\n  width: 44px;\n  height: 44px;\n  border-radius: 10px;\n  flex: 0 0 44px;\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);\n}\n\n.metric .metric-icon svg {\n  width: 22px;\n  height: 22px;\n  display: block;\n  margin: auto;\n  color: #fff;\n}\n\n.metric .label {\n  font-size: 13px;\n  color: #475569;\n  font-weight: 700;\n}\n\n.metric .value {\n  font-weight: 900;\n  font-size: 20px;\n  color: #0f172a;\n}\n\n.metric:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);\n}\n\n.color-blue {\n  background: linear-gradient(135deg, #60a5fa, #3b82f6);\n}\n\n.color-green {\n  background: linear-gradient(135deg, #34d399, #10b981);\n}\n\n.color-purple {\n  background: linear-gradient(135deg, #a78bfa, #8b5cf6);\n}\n\n.color-orange {\n  background: linear-gradient(135deg, #fb923c, #f97316);\n}\n\n.color-red {\n  background: linear-gradient(135deg, #fda4af, #ef4444);\n}\n\n.color-violet {\n  background: linear-gradient(135deg, #c084fc, #7c3aed);\n}\n\n.color-gray {\n  background: linear-gradient(135deg, #e9eef8, #f1f5f9);\n}\n\n.color-cyan {\n  background: linear-gradient(135deg, #67e8f9, #06b6d4);\n}\n\n/* Full-card colored variants so the whole metric card is colorful */\n.metric.metric-blue {\n  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);\n  color: #fff;\n}\n\n.metric.metric-blue .label, .metric.metric-blue .value {\n  color: #fff;\n}\n\n.metric.metric-blue .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-green {\n  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);\n  color: #052e1f;\n}\n\n.metric.metric-green .label, .metric.metric-green .value {\n  color: #052e1f;\n}\n\n.metric.metric-green .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-purple {\n  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);\n  color: #fff;\n}\n\n.metric.metric-purple .label, .metric.metric-purple .value {\n  color: #fff;\n}\n\n.metric.metric-purple .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-orange {\n  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);\n  color: #fff;\n}\n\n.metric.metric-orange .label, .metric.metric-orange .value {\n  color: #fff;\n}\n\n.metric.metric-orange .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-red {\n  background: linear-gradient(135deg, #fda4af 0%, #ef4444 100%);\n  color: #fff;\n}\n\n.metric.metric-red .label, .metric.metric-red .value {\n  color: #fff;\n}\n\n.metric.metric-red .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-violet {\n  background: linear-gradient(135deg, #c084fc 0%, #7c3aed 100%);\n  color: #fff;\n}\n\n.metric.metric-violet .label, .metric.metric-violet .value {\n  color: #fff;\n}\n\n.metric.metric-violet .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-cyan {\n  background: linear-gradient(135deg, #67e8f9 0%, #06b6d4 100%);\n  color: #042022;\n}\n\n.metric.metric-cyan .label, .metric.metric-cyan .value {\n  color: #042022;\n}\n\n.metric.metric-cyan .metric-icon {\n  box-shadow: none;\n  opacity: 0.95;\n}\n\n.metric.metric-gray {\n  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);\n  color: #0f172a;\n}\n\n.metric.metric-gray .label, .metric.metric-gray .value {\n  color: #0f172a;\n}\n\n.metric.metric-gray .metric-icon {\n  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);\n}\n\n/* ensure svg icons in gray card are dark for visibility */\n.metric.metric-gray .metric-icon svg {\n  color: #0f172a;\n}\n\n/* Students-specific visual emphasis: bold, uppercase labels and high-contrast values */\n.students-metrics .metric {\n  padding: 18px;\n  border-radius: 14px;\n}\n\n.students-metrics .metric .label {\n  font-weight: 800;\n  font-size: 13px;\n  text-transform: uppercase;\n  letter-spacing: 0.6px;\n  opacity: 0.95;\n}\n\n.students-metrics .metric .value {\n  font-weight: 900;\n  font-size: 22px;\n}\n\n.students-metrics .metric.metric-gray .label, .students-metrics .metric.metric-gray .value {\n  color: #0f172a;\n  text-transform: none;\n  letter-spacing: 0;\n}\n\n/* Ensure values are bright on colored backgrounds */\n.students-metrics .metric.metric-blue .label, .students-metrics .metric.metric-blue .value,\n.students-metrics .metric.metric-green .label, .students-metrics .metric.metric-green .value,\n.students-metrics .metric.metric-purple .label, .students-metrics .metric.metric-purple .value,\n.students-metrics .metric.metric-orange .label, .students-metrics .metric.metric-orange .value,\n.students-metrics .metric.metric-red .label, .students-metrics .metric.metric-red .value,\n.students-metrics .metric.metric-violet .label, .students-metrics .metric.metric-violet .value,\n.students-metrics .metric.metric-cyan .label, .students-metrics .metric.metric-cyan .value {\n  color: #fff;\n  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);\n}\n\n.controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  margin-bottom: 12px;\n}\n\n.controls-left .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.controls-right {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.archived-toggle-card {\n  cursor: pointer;\n  padding: 8px 12px;\n  border-radius: 10px;\n  background: #f3f4f6;\n}\n\n.archived-toggle-card.on {\n  background: #eef2ff;\n}\n\n.students-table th, .students-table td {\n  padding: 14px 12px;\n  border-bottom: 1px solid #eef2f6;\n  text-align: left;\n}\n\n.students-table thead th {\n  background: transparent;\n  color: #334155;\n  font-weight: 700;\n  font-size: 13px;\n}\n\n.avatar-circle {\n  width: 40px;\n  height: 40px;\n  border-radius: 20px;\n  background: linear-gradient(135deg, #a78bfa, #60a5fa);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  font-weight: 800;\n}\n\n.grade-chip {\n  background: #f1f5f9;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n.small-muted {\n  color: #94a3b8;\n  font-size: 12px;\n}\n\n.progress-wrap {\n  width: 100%;\n}\n\n.progress-bar {\n  height: 10px;\n  background: #eef2f6;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.progress-bar .progress-fill {\n  height: 100%;\n  background: #34d399;\n  width: 0;\n}\n\n.progress-bar.performance .progress-fill {\n  background: #60a5fa;\n}\n\n.status-pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n  display: inline-block;\n}\n\n.status-pill.active {\n  background: #dcfce7;\n  color: #166534;\n}\n\n.status-pill.locked {\n  background: #fee2e2;\n  color: #991b1b;\n}\n\n.action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  color: #475569;\n  margin-left: 6px;\n}\n\n.action-icon.text-danger {\n  color: #ef4444;\n}\n\n.archived-row {\n  opacity: 0.6;\n  background: #fff7ed;\n}\n\n.archived-badge {\n  background: #f3f4f6;\n  color: #334155;\n  padding: 6px 8px;\n  border-radius: 6px;\n  font-weight: 700;\n}\n\n.new-highlight {\n  animation: highlight 1.2s ease;\n}\n\n@keyframes highlight {\n  from {\n    background: #ecfeff;\n  }\n  to {\n    background: transparent;\n  }\n}\n.students-table tbody tr {\n  transition: background 120ms ease, transform 120ms ease;\n}\n\n.students-table tbody tr:hover {\n  background: rgba(37, 99, 235, 0.03);\n  transform: translateY(-2px);\n}\n\n.students-table td, .students-table th {\n  padding: 10px 12px;\n  vertical-align: middle;\n  border-bottom: 1px solid rgba(15, 23, 42, 0.04);\n}\n\n.students-table .action-icon {\n  margin-right: 6px;\n}\n\n.archived-row {\n  opacity: 0.86;\n  background: linear-gradient(90deg, rgba(245, 245, 245, 0.6), rgba(255, 250, 250, 0.6));\n}\n\n.archived-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 800;\n  font-size: 12px;\n  background: linear-gradient(90deg, #fff1f2, #fff6f8);\n  color: #be185d;\n  border: 1px solid rgba(190, 24, 93, 0.06);\n}\n\n.new-highlight {\n  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.08);\n  border-left: 4px solid rgba(124, 58, 237, 0.6);\n}\n\n/* Metrics grid */\n.metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 20px;\n  /* Enrollment Growth chart card styling */\n  /* subtle colored glow matching lines */\n}\n.metrics-grid .metric-card {\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  border-radius: 12px;\n  padding: 14px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 40px rgba(11, 18, 40, 0.6);\n  cursor: pointer;\n  transition: transform 0.15s ease, box-shadow 0.15s ease;\n}\n.metrics-grid .metric-card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n.metrics-grid .metric-card .icon-box {\n  width: 56px;\n  height: 56px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 22px;\n  color: #fff;\n}\n.metrics-grid .metric-card .metric-info h3 {\n  margin: 0;\n  font-size: 20px;\n  font-weight: 800;\n}\n.metrics-grid .metric-card .metric-info p {\n  margin: 0;\n  color: #6b7280;\n  font-size: 13px;\n}\n.metrics-grid .metric-card.blue .icon-box {\n  background: #3b82f6;\n}\n.metrics-grid .metric-card.green .icon-box {\n  background: #34d399;\n}\n.metrics-grid .metric-card.purple .icon-box {\n  background: #7c3aed;\n}\n.metrics-grid .metric-card.cyan .icon-box {\n  background: #06b6d4;\n}\n.metrics-grid .metric-change {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 4px 8px;\n  border-radius: 999px;\n  font-size: 12px;\n  font-weight: 600;\n}\n.metrics-grid .enrollment-area.card {\n  padding: 16px;\n  border-radius: 12px;\n  transition: transform 180ms ease, box-shadow 180ms ease;\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.metrics-grid .enrollment-area.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.06);\n}\n.metrics-grid .enrollment-chart-wrap {\n  height: 260px;\n}\n.metrics-grid .enrollment-area .chartjs-render-monitor {\n  border-radius: 8px;\n}\n.metrics-grid .metric-change.up {\n  background: rgba(34, 197, 94, 0.1);\n  color: #16a34a;\n}\n.metrics-grid .metric-change.down {\n  background: rgba(239, 68, 68, 0.08);\n  color: #dc2626;\n}\n.metrics-grid .left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.metrics-grid .icon {\n  width: 48px;\n  height: 48px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #eef2ff;\n}\n.metrics-grid .meta {\n  display: flex;\n  flex-direction: column;\n}\n.metrics-grid .meta .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.metrics-grid .meta .value {\n  font-size: 26px;\n  font-weight: 800;\n  color: #0f172a;\n}\n\n/* Documents page styles */\n.documents-page {\n  /* Documents header button styles: boxed, colored CTAs */\n  /* document card action buttons */\n}\n.documents-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 16px;\n}\n.documents-page .page-header .header-actions .header-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  align-items: flex-end;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import,\n.documents-page .page-header .header-actions .header-buttons .primary {\n  min-width: 180px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.documents-page .documents-top {\n  margin-top: 12px;\n  margin-bottom: 18px;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.08);\n  border-radius: 10px;\n  padding: 8px 12px;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  border: none;\n}\n.documents-page .page-header .header-actions .header-buttons .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.documents-page .page-header .header-actions .header-buttons .icon-box.import:hover, .documents-page .page-header .header-actions .header-buttons .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.12);\n}\n.documents-page .page-header .header-actions .header-buttons .primary.pulse {\n  animation: softPulse 2000ms ease-in-out infinite;\n}\n.documents-page .docs-metrics {\n  display: flex;\n  gap: 14px;\n  flex-wrap: wrap;\n}\n.documents-page .doc-metric.card {\n  min-width: 160px;\n  padding: 12px 14px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 36px rgba(2, 6, 23, 0.06);\n  cursor: default;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  border: 1px solid rgba(255, 255, 255, 0.02);\n}\n.documents-page .doc-metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.1);\n}\n.documents-page .doc-metric-left {\n  width: 56px;\n  height: 56px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 22px;\n  color: #fff;\n  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n}\n.documents-page .doc-metric-right {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.documents-page .metric-icon {\n  font-size: 20px;\n}\n.documents-page .doc-metric .label {\n  color: #6b7280;\n  font-weight: 800;\n  font-size: 13px;\n}\n.documents-page .doc-metric .value {\n  font-size: 20px;\n  font-weight: 900;\n}\n.documents-page .doc-metric.blue .doc-metric-left {\n  background: linear-gradient(135deg, #eef2ff, #bfdbfe);\n  color: #0b3b82;\n}\n.documents-page .doc-metric.green .doc-metric-left {\n  background: linear-gradient(135deg, #ecfdf5, #bbf7d0);\n  color: #065f46;\n}\n.documents-page .doc-metric.purple .doc-metric-left {\n  background: linear-gradient(135deg, #fbf0ff, #e9d5ff);\n  color: #6d028f;\n}\n.documents-page .doc-metric.orange .doc-metric-left {\n  background: linear-gradient(135deg, #fff7ed, #ffedd5);\n  color: #92400e;\n}\n.documents-page .doc-metric.cyan .doc-metric-left {\n  background: linear-gradient(135deg, #ecfeff, #cffafe);\n  color: #065f46;\n}\n.documents-page .doc-metric.yellow .doc-metric-left {\n  background: linear-gradient(135deg, #fff9db, #fff1a8);\n  color: #92400e;\n}\n.documents-page .doc-metric.teal .doc-metric-left {\n  background: linear-gradient(135deg, #ecfeff, #d1fae5);\n  color: #064e3b;\n}\n.documents-page .doc-metric .label {\n  color: #6b7280;\n  font-weight: 700;\n}\n.documents-page .doc-metric .value {\n  font-size: 22px;\n  font-weight: 800;\n}\n.documents-page .doc-metric.blue {\n  background: linear-gradient(135deg, #eef2ff, #f0f9ff);\n}\n.documents-page .doc-metric.green {\n  background: linear-gradient(135deg, #ecfdf5, #f0fdf4);\n}\n.documents-page .doc-metric.purple {\n  background: linear-gradient(135deg, #fbf0ff, #fff8ff);\n}\n.documents-page .doc-metric.orange {\n  background: linear-gradient(135deg, #fff7ed, #fffbf0);\n}\n.documents-page .doc-metric.cyan {\n  background: linear-gradient(135deg, #f0f9ff, #f7feff);\n}\n.documents-page .doc-metric.yellow {\n  background: linear-gradient(135deg, #fffbeb, #fffdf8);\n}\n.documents-page .doc-metric.teal {\n  background: linear-gradient(135deg, #ecfeff, #f2fdfd);\n}\n.documents-page .documents-controls {\n  margin-top: 12px;\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.documents-page .doc-search {\n  flex: 1;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n}\n.documents-page .documents-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.documents-page .quick-chips {\n  display: flex;\n  gap: 8px;\n}\n.documents-page .chip {\n  padding: 8px 10px;\n  border-radius: 999px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  background: #fff;\n  cursor: pointer;\n  font-weight: 700;\n}\n.documents-page .chip.on {\n  background: linear-gradient(90deg, #fff7ed, #fff1f0);\n  border-color: rgba(249, 115, 22, 0.06);\n}\n.documents-page .docs-view .view-toggle {\n  display: flex;\n  gap: 6px;\n}\n.documents-page .documents-grid {\n  margin-top: 18px;\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 18px;\n}\n.documents-page .documents-list {\n  margin-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.documents-page .doc-actions {\n  display: flex;\n  gap: 8px;\n  padding: 10px 14px 14px;\n  border-top: 1px solid rgba(15, 23, 42, 0.03);\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);\n}\n.documents-page .doc-actions .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 8px;\n  border-radius: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  transition: transform 120ms ease, background 120ms ease;\n}\n.documents-page .doc-actions .action-icon:hover {\n  transform: translateY(-4px);\n  background: rgba(255, 255, 255, 0.04);\n}\n.documents-page .doc-actions .action-icon svg {\n  width: 18px;\n  height: 18px;\n}\n.documents-page .placeholder-row {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 18px;\n  align-items: start;\n}\n.documents-page .placeholder-card {\n  border-radius: 12px;\n  padding: 18px 18px 22px;\n  color: #fff;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n  align-self: start;\n  min-height: 140px;\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n  cursor: pointer;\n  transition: transform 0.18s ease, box-shadow 0.18s ease;\n}\n.documents-page .placeholder-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.08);\n}\n.documents-page .placeholder-card:focus {\n  outline: 3px solid rgba(124, 58, 237, 0.12);\n}\n.documents-page .placeholder-card {\n  background-size: 200% 200%;\n  animation: gradientShift 6s ease infinite;\n}\n@keyframes gradientShift {\n  0% {\n    background-position: 0% 50%;\n  }\n  50% {\n    background-position: 100% 50%;\n  }\n  100% {\n    background-position: 0% 50%;\n  }\n}\n.documents-page .placeholder-inner {\n  text-align: left;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 8px;\n}\n.documents-page .placeholder-icon {\n  font-size: 36px;\n  line-height: 1;\n  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);\n}\n.documents-page .placeholder-title {\n  margin-top: 0;\n  font-weight: 800;\n  font-size: 16px;\n}\n.documents-page .doc-badges .badge.small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: rgba(255, 255, 255, 0.08);\n  font-weight: 700;\n}\n.documents-page .primary {\n  background: linear-gradient(90deg, #6d28d9, #7c3aed);\n  color: #fff;\n  border: none;\n  padding: 10px 14px;\n  border-radius: 10px;\n  font-weight: 800;\n  cursor: pointer;\n}\n.documents-page .hero-right .primary, .documents-page .students-panel .primary {\n  background: linear-gradient(90deg, #2563eb, #06b6d4);\n  box-shadow: 0 12px 36px rgba(37, 99, 235, 0.12);\n}\n.documents-page .primary.pulse {\n  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.12);\n  animation: pulse 2.4s infinite;\n}\n@keyframes pulse {\n  0% {\n    transform: translateY(0);\n  }\n  50% {\n    transform: translateY(-3px);\n  }\n  100% {\n    transform: translateY(0);\n  }\n}\n.documents-page .documents-grid {\n  margin-top: 18px;\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));\n  gap: 18px;\n}\n.documents-page .doc-card {\n  border-radius: 12px;\n  overflow: hidden;\n  background: linear-gradient(180deg, #fff, #fbfdff);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.documents-page .doc-card .doc-top {\n  height: 72px;\n  background: linear-gradient(135deg, #ff7aa2, #ff5b8f);\n}\n.documents-page .doc-card .doc-body {\n  padding: 12px 14px;\n}\n.documents-page .doc-card h4 {\n  margin: 0 0 6px 0;\n}\n.documents-page .doc-card .small-muted {\n  color: #6b7280;\n  font-size: 13px;\n}\n.documents-page .doc-card {\n  cursor: pointer;\n  transition: transform 0.18s ease, box-shadow 0.18s ease;\n}\n.documents-page .doc-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 28px 60px rgba(2, 6, 23, 0.08);\n}\n\n/* Lower content: Recent Activities and System Health */\n.content-grid {\n  display: grid;\n  grid-template-columns: 2fr 1fr;\n  gap: 18px;\n}\n.content-grid .card {\n  background: #0b1220;\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n.content-grid .recent {\n  /* ========================================\n     REDESIGNED RECENT ACTIVITIES - SCROLLABLE\n     ======================================== */\n  /* Webkit scrollbar styling (Chrome/Safari/Edge) - Modern purple gradient */\n  /* Firefox scrollbar styling */\n  /* Fade effect at bottom to indicate more content */\n  /* On dark mode ensure the overlay uses dark tint */\n}\n.content-grid .recent .card-title {\n  font-weight: 700;\n  margin-bottom: 12px;\n}\n.content-grid .recent .recent-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.content-grid .recent .recent-item {\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #f3f6fb;\n  background: #fbfdff;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 8px;\n}\n.content-grid .recent .recent-item:hover {\n  background: #f1f8ff;\n  transform: translateY(-2px);\n  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.03);\n}\n.content-grid .recent .recent-item .info {\n  max-width: 78%;\n}\n.content-grid .recent .recent-item .time {\n  color: #94a3b8;\n  font-size: 12px;\n}\n.content-grid .recent .recent-item .icon {\n  width: 36px;\n  height: 36px;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #eef2ff;\n  color: #2563eb;\n  font-weight: 700;\n}\n.content-grid .recent .recent-item .act-sub {\n  color: #6b7280;\n  font-size: 0.92rem;\n  margin-top: 6px;\n}\n.content-grid .recent .recent-list-wrapper {\n  position: relative;\n  max-height: 480px;\n  background: #ffffff;\n  border-radius: 12px;\n  overflow: hidden;\n}\n.content-grid .recent .recent-list-wrapper .scrollable {\n  overflow-y: auto;\n  max-height: 480px;\n  padding-right: 6px;\n  padding-bottom: 12px;\n}\n.content-grid .recent .recent-list-wrapper .scrollable::-webkit-scrollbar {\n  width: 10px;\n}\n.content-grid .recent .recent-list-wrapper .scrollable::-webkit-scrollbar-track {\n  background: #f1f5f9;\n  border-radius: 10px;\n  margin: 8px 0;\n}\n.content-grid .recent .recent-list-wrapper .scrollable::-webkit-scrollbar-thumb {\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  border-radius: 10px;\n  border: 2px solid #f1f5f9;\n  -webkit-transition: all 0.2s ease;\n  transition: all 0.2s ease;\n}\n.content-grid .recent .recent-list-wrapper .scrollable::-webkit-scrollbar-thumb:hover {\n  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);\n  border-color: #e2e8f0;\n}\n.content-grid .recent .recent-list-wrapper .scrollable {\n  scrollbar-width: thin;\n  scrollbar-color: #667eea #f1f5f9;\n}\n.content-grid .recent .recent-list-wrapper::after {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 50px;\n  pointer-events: none;\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95));\n  border-bottom-left-radius: 12px;\n  border-bottom-right-radius: 12px;\n  z-index: 1;\n}\n.content-grid .recent .adm-dark .recent-list-wrapper::after {\n  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));\n}\n.content-grid .health .card-title {\n  font-weight: 700;\n  margin-bottom: 12px;\n}\n.content-grid .health .health-list {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.content-grid .health .health-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 0;\n  border-bottom: 1px solid #f1f5f9;\n}\n.content-grid .health .status {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.content-grid .health .status.good {\n  background: #ecfdf5;\n  color: #059669;\n}\n.content-grid .health .status.warn {\n  background: #fff7ed;\n  color: #b45309;\n}\n.content-grid .health .status.bad {\n  background: #fee2e2;\n  color: #991b1b;\n}\n.content-grid .health .badge.small {\n  padding: 6px 10px;\n  border-radius: 8px;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n/* Modern Recent Activities Styling */\n.recent-activities .recent-list {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  margin-top: 12px;\n}\n.recent-activities .recent-item {\n  display: flex;\n  gap: 12px;\n  align-items: flex-start;\n  padding: 12px;\n  border-radius: 10px;\n  transition: all 0.2s ease;\n  background: #f8fafc;\n  border: 1px solid transparent;\n}\n.recent-activities .recent-item:hover {\n  background: #ffffff;\n  border-color: rgba(102, 126, 234, 0.2);\n  transform: translateX(4px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);\n}\n.recent-activities .recent-item.new {\n  animation: highlightActivity 2s ease;\n  border-color: rgba(102, 126, 234, 0.3);\n}\n.recent-activities .recent-item .recent-left {\n  width: 20px;\n  color: #667eea;\n  margin-top: 3px;\n  flex-shrink: 0;\n}\n.recent-activities .recent-item .recent-body {\n  flex: 1;\n  min-width: 0;\n}\n.recent-activities .recent-time {\n  flex-shrink: 0;\n  font-size: 11px;\n  color: #94a3b8;\n  white-space: nowrap;\n}\n.recent-activities .avatar {\n  width: 36px;\n  height: 36px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: 700;\n  font-size: 14px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: white;\n  flex-shrink: 0;\n}\n.recent-activities .avatar-initials {\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n}\n.recent-activities .avatar-system {\n  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);\n  font-size: 16px;\n}\n.recent-activities .action-badge {\n  display: inline-flex;\n  align-items: center;\n  padding: 4px 10px;\n  border-radius: 6px;\n  font-size: 11px;\n  font-weight: 600;\n}\n.recent-activities .action-badge.created {\n  background: #d1fae5;\n  color: #065f46;\n}\n.recent-activities .action-badge.deleted {\n  background: #fee2e2;\n  color: #991b1b;\n}\n.recent-activities .action-badge.archived {\n  background: #fef3c7;\n  color: #92400e;\n}\n.recent-activities .action-badge.restored {\n  background: #dbeafe;\n  color: #1e40af;\n}\n.recent-activities .action-badge.system {\n  background: #f1f5f9;\n  color: #475569;\n}\n.recent-activities .actor-name {\n  font-weight: 600;\n  color: #1e293b;\n  font-size: 13px;\n}\n.recent-activities .subject-link {\n  color: #667eea;\n  font-weight: 500;\n  cursor: pointer;\n}\n.recent-activities .subject-link:hover {\n  text-decoration: underline;\n}\n.recent-activities .recent-desc {\n  color: #64748b;\n  font-size: 12px;\n}\n.recent-activities .recent-footer {\n  text-align: center;\n  padding: 12px;\n  margin-top: 8px;\n}\n.recent-activities .recent-footer button {\n  color: #667eea;\n  font-size: 13px;\n  font-weight: 600;\n  background: none;\n  border: none;\n  cursor: pointer;\n}\n.recent-activities .recent-footer button:hover {\n  text-decoration: underline;\n}\n\n@keyframes highlightActivity {\n  0%, 100% {\n    background: #f8fafc;\n  }\n  50% {\n    background: #eef2ff;\n    border-color: rgba(102, 126, 234, 0.4);\n  }\n}\n.recent-activities .recent-item .recent-time {\n  white-space: nowrap;\n  margin-left: 8px;\n}\n\n.recent-activities .recent-item.new {\n  background: linear-gradient(90deg, rgba(6, 182, 212, 0.06), rgba(79, 70, 229, 0.03));\n  transform: translateY(-2px);\n  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.06);\n}\n\n.recent-activities .recent-item .recent-title {\n  font-weight: 700;\n}\n\n.recent-activities .recent-item .recent-desc {\n  font-size: 13px;\n  color: #6b7280;\n}\n\n.recent-activities .recent-footer {\n  margin-top: 8px;\n  display: flex;\n  justify-content: flex-start;\n}\n\n.recent-activities .recent-footer .show-more {\n  background: none;\n  border: 1px dashed #e6edf8;\n  padding: 6px 10px;\n  border-radius: 6px;\n  cursor: pointer;\n  color: #334155;\n}\n\n/* Compact, colorful recent activity variants */\n.recent-activities.compact .recent-list {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.recent-activities.compact .recent-item {\n  padding: 8px 10px;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background: #fff;\n  border: 1px solid #f1f7ff;\n}\n\n.recent-activities.compact .recent-item:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);\n}\n\n.recent-activities.compact .avatar {\n  width: 36px;\n  height: 36px;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: 700;\n  color: #fff;\n  flex: 0 0 36px;\n  font-size: 14px;\n}\n\n.recent-activities.compact .avatar-initials {\n  background: linear-gradient(135deg, #7c3aed, #06b6d4);\n}\n\n.recent-activities.compact .avatar img {\n  width: 36px;\n  height: 36px;\n  border-radius: 6px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n\n.recent-activities.compact .avatar-system {\n  background: linear-gradient(135deg, #e6edf8, #f1f5f9);\n  color: #334155;\n  font-size: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}\n\n.recent-activities.compact .recent-body {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n\n.recent-activities.compact .recent-top {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.recent-activities.compact .actor-name {\n  font-weight: 700;\n  color: #0f172a;\n  font-size: 13px;\n}\n\n.recent-activities.compact .action-text {\n  color: #475569;\n  font-size: 12px;\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.recent-activities.compact .subject-link {\n  color: #2563eb;\n  font-weight: 700;\n  font-size: 12px;\n}\n\n.recent-activities.compact .subject-link:hover {\n  text-decoration: underline;\n}\n\n.recent-activities.compact .recent-desc {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.recent-activities.compact .recent-time {\n  color: #94a3b8;\n  font-size: 11px;\n  margin-left: 12px;\n}\n\n/* Action badge (colored) */\n.action-badge {\n  padding: 4px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 11px;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n}\n\n.action-badge.created {\n  background: linear-gradient(90deg, #ecfdf5, #ddfcea);\n  color: #065f46;\n  border: 1px solid rgba(16, 185, 129, 0.06);\n}\n\n.action-badge.deleted {\n  background: linear-gradient(90deg, #fff1f2, #ffecec);\n  color: #88111a;\n  border: 1px solid rgba(239, 68, 68, 0.06);\n}\n\n.action-badge.archived {\n  background: linear-gradient(90deg, #fff7ed, #fff2e6);\n  color: #92400e;\n  border: 1px solid rgba(249, 115, 22, 0.06);\n}\n\n.action-badge.restored {\n  background: linear-gradient(90deg, #ecfeff, #e6fbff);\n  color: #075985;\n  border: 1px solid rgba(6, 182, 212, 0.06);\n}\n\n.action-badge.system {\n  background: #f1f5f9;\n  color: #334155;\n  border: 1px solid rgba(15, 23, 42, 0.03);\n}\n\n/* New item highlight pulse */\n.recent-activities .recent-item.new {\n  animation: recentPulse 1.2s ease;\n}\n\n@keyframes recentPulse {\n  0% {\n    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.18);\n  }\n  70% {\n    box-shadow: 0 18px 40px rgba(124, 58, 237, 0.06);\n  }\n  100% {\n    box-shadow: none;\n  }\n}\n/* Bottom charts row (Enrollment Overview) */\n.charts-row {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: 18px;\n  margin-top: 18px;\n  /* Enrollment area (left) — smooth gradient fill and soft axis/label colors */\n  /* Attendance bar (right) — compact legend + bar colors */\n  /* list-style summary under attendance chart */\n}\n.charts-row .chart-card {\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  transition: transform 200ms ease, box-shadow 200ms ease;\n}\n.charts-row .chart-card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);\n}\n.charts-row .enrollment-area {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.charts-row .enrollment-area .card-head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.charts-row .enrollment-area .card-head h4 {\n  margin: 0;\n  font-weight: 800;\n  color: #0f172a;\n}\n.charts-row .enrollment-area .card-head .subtitle {\n  color: #6b7280;\n  font-size: 13px;\n}\n.charts-row .enrollment-chart-wrap {\n  height: 260px;\n  border-radius: 10px;\n  overflow: hidden;\n  background: linear-gradient(180deg, rgba(99, 102, 241, 0.04), rgba(37, 99, 235, 0.02));\n  padding: 8px;\n}\n.charts-row .attendance-compact {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.charts-row .attendance-compact .card-head {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 8px;\n}\n.charts-row .attendance-compact h4 {\n  margin: 0;\n  font-weight: 800;\n  color: #0f172a;\n}\n.charts-row .attendance-compact .legend {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  margin-top: 6px;\n}\n.charts-row .legend-item {\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n  font-size: 13px;\n  color: #6b7280;\n}\n.charts-row .legend-swatch {\n  width: 12px;\n  height: 12px;\n  border-radius: 3px;\n  display: inline-block;\n}\n.charts-row .legend-swatch.present {\n  background: linear-gradient(90deg, #10b981, #06b6d4);\n}\n.charts-row .legend-swatch.absent {\n  background: linear-gradient(90deg, #ef4444, #fb7185);\n}\n.charts-row .attendance-chart-wrap {\n  height: 240px;\n  border-radius: 8px;\n  overflow: hidden;\n  padding: 8px;\n  background: linear-gradient(180deg, #fff, #fbfdff);\n}\n.charts-row .attendance-stats {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  margin-top: 8px;\n}\n.charts-row .attendance-stats .stat {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 8px 10px;\n  border-radius: 8px;\n  background: #fff;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.04);\n}\n\n/* Bottom grid for overview, activity and right column */\n.bottom-grid {\n  display: grid;\n  grid-template-columns: 1fr 420px;\n  gap: 20px;\n  margin-top: 20px;\n}\n\n.bottom-grid .department-overview {\n  background: #0b1220;\n  padding: 18px;\n  border-radius: 12px;\n}\n\n.bottom-grid .recent-activity {\n  background: #0b1220;\n  padding: 18px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n}\n\n.bottom-grid .right-column {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.right-column .performance-trends {\n  background: #0b1220;\n  padding: 14px;\n  border-radius: 12px;\n}\n\n.activity-list {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.activity-item {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 10px;\n  border-radius: 10px;\n  background: rgba(255, 255, 255, 0.02);\n}\n\n.activity-left {\n  width: 44px;\n  height: 44px;\n  border-radius: 8px;\n  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), #3b82f6);\n}\n\n.activity-title {\n  font-weight: 700;\n}\n\n.activity-desc {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.activity-time {\n  margin-left: auto;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.trends-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n.trend-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.trend-name {\n  width: 80px;\n  color: #6b7280;\n}\n\n.trend-spark {\n  display: flex;\n  align-items: flex-end;\n  gap: 4px;\n  height: 36px;\n  flex: 1;\n}\n\n.spark-bar {\n  width: 8px;\n  background: linear-gradient(180deg, #34d399, #3b82f6);\n  border-radius: 4px;\n}\n\n.mini-cal {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.mini-cal.compact {\n  margin-top: 8px;\n}\n\n.mini-cal.compact .cal-weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 4px;\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.mini-cal.compact .cal-grid {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 6px;\n}\n\n.mini-cal.compact .cal-cell {\n  padding: 6px;\n  border-radius: 8px;\n  text-align: center;\n  background: rgba(255, 255, 255, 0.02);\n  font-size: 12px;\n}\n\n.mini-cal.compact .cal-cell.today {\n  background: linear-gradient(90deg, rgba(59, 130, 246, 0.08), #3b82f6);\n  color: #fff;\n}\n\n/* Morning vs regular calendar themes */\n.mini-cal.morning {\n  background: linear-gradient(90deg, #fff9f0, #fffefc);\n  padding: 10px;\n  border-radius: 10px;\n}\n\n.mini-cal.morning .cal-header .cal-greeting {\n  color: #b45309;\n  font-size: 12px;\n}\n\n.mini-cal.morning .cal-cell.today {\n  box-shadow: 0 6px 20px rgba(244, 114, 23, 0.12);\n}\n\n.mini-cal.regular {\n  background: linear-gradient(90deg, #f7fbff, #fbfdff);\n  padding: 10px;\n  border-radius: 10px;\n}\n\n.mini-cal.regular .cal-header .cal-greeting {\n  color: #2563eb;\n  font-size: 12px;\n}\n\n.mini-cal.regular .cal-cell.today {\n  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);\n}\n\n.cal-header {\n  margin-bottom: 8px;\n}\n\n.cal-title {\n  display: flex;\n  flex-direction: column;\n}\n\n.cal-title strong {\n  font-size: 14px;\n}\n\n.cal-today {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.cal-weekdays .cal-day-name {\n  text-align: center;\n  font-weight: 700;\n  color: #6b7280;\n}\n\n.cal-cell.empty {\n  background: transparent;\n}\n\n/* Students table boxed header */\n.students-card {\n  border-radius: 12px;\n  overflow: hidden;\n  box-shadow: 0 6px 30px rgba(4, 8, 23, 0.12);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n}\n\n.students-card-header {\n  padding: 12px 16px;\n  background: linear-gradient(90deg, #0b1220 0%, #060911 100%);\n  color: #0f172a;\n  border-bottom: 1px solid rgba(255, 255, 255, 0.03);\n  display: flex;\n  align-items: center;\n}\n\n.students-card-header .header-title {\n  font-size: 14px;\n  color: #dbeafe;\n  margin-right: 12px;\n}\n\n.students-card-header .columns-line {\n  font-size: 13px;\n  color: #bcd6ff;\n  opacity: 0.95;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.students-card-header .header-actions-inline {\n  margin-left: auto;\n}\n\n.students-card .students-table thead th {\n  background: transparent;\n  color: #cfe6ff;\n  font-weight: 700;\n}\n\n.students-card .students-table tbody td {\n  color: #e9f2ff;\n}\n\n.students-card .students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n\n.students-card .card {\n  background: transparent;\n}\n\n/* small responsive tweak */\n@media (max-width: 900px) {\n  .students-card-header .columns-line {\n    font-size: 12px;\n  }\n}\n/* header inline action boxes */\n.students-card-header .header-actions-inline {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-card-header .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 10px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));\n  border: 1px solid rgba(255, 255, 255, 0.03);\n  color: #dbeafe;\n  cursor: pointer;\n}\n\n.students-card-header .icon-box svg {\n  width: 16px;\n  height: 16px;\n}\n\n.students-card-header .icon-box.add {\n  background: linear-gradient(90deg, #06b6d4, #7c3aed);\n  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.12);\n}\n\n.students-card-header .icon-box.import {\n  background: linear-gradient(90deg, #10b981, #06b6d4);\n  box-shadow: 0 6px 18px rgba(6, 182, 212, 0.08);\n}\n\n.students-card-header .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.08);\n}\n\n/* highlight newly added/imported row */\n.students-table tbody tr.new-highlight {\n  animation: highlightFade 6s ease forwards;\n}\n\n@keyframes highlightFade {\n  0% {\n    background: linear-gradient(90deg, rgba(99, 102, 241, 0.18), rgba(59, 130, 246, 0.12));\n  }\n  60% {\n    background: rgba(255, 255, 255, 0.02);\n  }\n  100% {\n    background: transparent;\n  }\n}\n@media (max-width: 1000px) {\n  .bottom-grid {\n    grid-template-columns: 1fr;\n  }\n  .right-column {\n    flex-direction: row;\n  }\n}\n/* System health boxed panel styles */\n.system-health {\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0c1424 100%);\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n\n.system-health h2 {\n  margin: 0 0 12px 0;\n}\n\n.health-rows {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.health-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.health-label {\n  width: 36%;\n  color: #6b7280;\n  font-weight: 600;\n}\n\n.health-bar-wrap {\n  flex: 1;\n  background: #f1f5f9;\n  height: 12px;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.health-bar {\n  height: 100%;\n  border-radius: 999px;\n  background: linear-gradient(90deg, #10b981, #60a5fa);\n  transition: width 300ms ease;\n}\n\n.health-row[data-status=warn] .health-bar {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n}\n\n.health-row[data-status=bad] .health-bar {\n  background: linear-gradient(90deg, #ef4444, #a11d1d);\n}\n\n.health-value {\n  width: 80px;\n  text-align: right;\n  font-weight: 700;\n}\n\n/* Bar graph card styles */\n.bar-graph {\n  padding: 16px;\n  border-radius: 12px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n}\n\n.system-bargraph {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.system-bargraph .bar-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.bar-label {\n  width: 120px;\n  color: #6b7280;\n  font-weight: 600;\n}\n\n.bar-wrap {\n  flex: 1;\n  background: #f1f5f9;\n  height: 12px;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.bar-fill {\n  height: 100%;\n  background: linear-gradient(90deg, #10b981, #60a5fa);\n  border-radius: 999px;\n  transition: width 300ms ease;\n}\n\n.bar-val {\n  width: 56px;\n  text-align: right;\n  font-weight: 700;\n}\n\n@media (max-width: 900px) {\n  .health-label {\n    width: 40%;\n  }\n  .health-value {\n    width: 70px;\n  }\n}\n/* Dashboard specific large metrics and quick actions */\n.dashboard-metrics {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 14px;\n  margin-bottom: 16px;\n  /* pastel variants for each metric to mimic screenshot */\n  /* small change badge */\n}\n.dashboard-metrics .large-metric.card {\n  border-radius: 12px;\n  padding: 18px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;\n  cursor: pointer;\n  min-height: 72px;\n}\n.dashboard-metrics .dashboard-metrics .large-metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);\n}\n.dashboard-metrics .dashboard-metrics .large-metric .metric-inner {\n  position: relative;\n}\n.dashboard-metrics .dashboard-metrics .large-metric .metric-change {\n  position: absolute;\n  right: 12px;\n  top: 12px;\n}\n.dashboard-metrics .large-metric.card:nth-child(1) {\n  background: linear-gradient(90deg, #f3f4ff 0%, #f8f7ff 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(2) {\n  background: linear-gradient(90deg, #e8fff3 0%, #f5fff8 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(3) {\n  background: linear-gradient(90deg, #f0fbff 0%, #f7fdff 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(4) {\n  background: linear-gradient(90deg, #eafff4 0%, #f6fff9 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(5) {\n  background: linear-gradient(90deg, #fff4f6 0%, #fff8f9 100%);\n}\n.dashboard-metrics .large-metric.card:nth-child(6) {\n  background: linear-gradient(90deg, #fff6f0 0%, #fff9f6 100%);\n}\n.dashboard-metrics .metric-change {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  background: rgba(0, 0, 0, 0.03);\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.dashboard-metrics .metric-change.up {\n  color: #10b981;\n  background: rgba(16, 185, 129, 0.08);\n}\n.dashboard-metrics .metric-change.down {\n  color: #ef4444;\n  background: rgba(239, 68, 68, 0.08);\n}\n.dashboard-metrics .large-metric .metric-inner {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.dashboard-metrics .large-metric .metric-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n.dashboard-metrics .large-metric .metric-number {\n  font-size: 26px;\n  font-weight: 800;\n}\n\n/* New dashboard summary styles (screenshot-inspired) */\n.dashboard-page .dashboard-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 28px;\n}\n.dashboard-page .dashboard-header .header-content h1 {\n  margin: 0 0 4px 0;\n  font-size: 28px;\n  font-weight: 700;\n  color: #0f172a;\n}\n.dashboard-page .dashboard-header .header-content .subtitle {\n  margin: 0;\n  color: #64748b;\n  font-size: 14px;\n}\n.dashboard-page .dashboard-header .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n.dashboard-page .dashboard-header .header-actions .year-selector {\n  padding: 10px 16px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.1);\n  background: #ffffff;\n  color: #0f172a;\n  font-size: 14px;\n  font-weight: 500;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.dashboard-page .dashboard-header .header-actions .year-selector:hover {\n  border-color: rgba(15, 23, 42, 0.2);\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);\n}\n.dashboard-page .dashboard-header .header-actions .year-selector:focus {\n  outline: none;\n  border-color: #667eea;\n  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);\n}\n.dashboard-page .dashboard-header .header-actions .btn-enroll-modern {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 20px;\n  border-radius: 10px;\n  border: none;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: #ffffff;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.2s ease;\n  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);\n}\n.dashboard-page .dashboard-header .header-actions .btn-enroll-modern:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);\n}\n.dashboard-page .dashboard-header .header-actions .btn-enroll-modern:active {\n  transform: translateY(0);\n}\n\n/* Top 8 Metric Cards Grid */\n.top-metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 18px;\n  margin-bottom: 24px;\n}\n\n.metric-card-modern {\n  background: #ffffff;\n  border-radius: 16px;\n  padding: 24px;\n  display: flex;\n  align-items: center;\n  gap: 18px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);\n  transition: transform 0.2s ease, box-shadow 0.2s ease;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  /* Gradient top border effect */\n  /* Color variants with gradient top borders */\n}\n.metric-card-modern::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  height: 4px;\n  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);\n}\n.metric-card-modern:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);\n}\n.metric-card-modern .metric-icon-box {\n  width: 56px;\n  height: 56px;\n  border-radius: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 24px;\n  flex-shrink: 0;\n  background: rgba(102, 126, 234, 0.1);\n}\n.metric-card-modern .metric-content {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n.metric-card-modern .metric-label {\n  font-size: 13px;\n  color: #64748b;\n  font-weight: 600;\n  letter-spacing: -0.2px;\n}\n.metric-card-modern .metric-value {\n  font-size: 32px;\n  font-weight: 700;\n  color: #0f172a;\n  line-height: 1;\n}\n.metric-card-modern .metric-change {\n  font-size: 12px;\n  font-weight: 600;\n  display: inline-flex;\n  align-items: center;\n  gap: 4px;\n  color: #10b981;\n}\n.metric-card-modern .metric-change.positive {\n  color: #10b981;\n}\n.metric-card-modern .metric-change.positive::before {\n  content: \"+\";\n}\n.metric-card-modern .metric-change.negative {\n  color: #ef4444;\n}\n.metric-card-modern .metric-change.negative::before {\n  content: \"\";\n}\n.metric-card-modern.blue::before {\n  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);\n}\n.metric-card-modern.blue .metric-icon-box {\n  background: rgba(102, 126, 234, 0.1);\n  color: #667eea;\n}\n.metric-card-modern.green::before {\n  background: linear-gradient(90deg, #10b981 0%, #059669 100%);\n}\n.metric-card-modern.green .metric-icon-box {\n  background: rgba(16, 185, 129, 0.1);\n  color: #10b981;\n}\n.metric-card-modern.purple::before {\n  background: linear-gradient(90deg, #a855f7 0%, #9333ea 100%);\n}\n.metric-card-modern.purple .metric-icon-box {\n  background: rgba(168, 85, 247, 0.1);\n  color: #a855f7;\n}\n.metric-card-modern.cyan::before {\n  background: linear-gradient(90deg, #06b6d4 0%, #0891b2 100%);\n}\n.metric-card-modern.cyan .metric-icon-box {\n  background: rgba(6, 182, 212, 0.1);\n  color: #06b6d4;\n}\n.metric-card-modern.blue-light::before {\n  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);\n}\n.metric-card-modern.blue-light .metric-icon-box {\n  background: rgba(59, 130, 246, 0.1);\n  color: #3b82f6;\n}\n.metric-card-modern.violet::before {\n  background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%);\n}\n.metric-card-modern.violet .metric-icon-box {\n  background: rgba(139, 92, 246, 0.1);\n  color: #8b5cf6;\n}\n.metric-card-modern.teal::before {\n  background: linear-gradient(90deg, #14b8a6 0%, #0d9488 100%);\n}\n.metric-card-modern.teal .metric-icon-box {\n  background: rgba(20, 184, 166, 0.1);\n  color: #14b8a6;\n}\n.metric-card-modern.orange::before {\n  background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);\n}\n.metric-card-modern.orange .metric-icon-box {\n  background: rgba(249, 115, 22, 0.1);\n  color: #f97316;\n}\n.metric-card-modern.pink::before {\n  background: linear-gradient(90deg, #ec4899 0%, #db2777 100%);\n}\n.metric-card-modern.pink .metric-icon-box {\n  background: rgba(236, 72, 153, 0.1);\n  color: #ec4899;\n}\n\n/* Three Charts Row */\n.charts-row-three {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 20px;\n  margin-bottom: 24px;\n}\n\n.chart-card-modern {\n  background: #ffffff;\n  border-radius: 16px;\n  padding: 24px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);\n  transition: transform 0.2s ease, box-shadow 0.2s ease;\n  /* Special styling for purple Students vs Teachers chart */\n  /* Special styling for green Weekly Attendance chart */\n}\n.chart-card-modern:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);\n}\n.chart-card-modern .chart-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 20px;\n}\n.chart-card-modern .chart-title-group h4 {\n  margin: 0 0 4px 0;\n  font-size: 16px;\n  font-weight: 700;\n  color: #0f172a;\n}\n.chart-card-modern .chart-title-group .chart-subtitle {\n  margin: 4px 0 0;\n  font-size: 12px;\n  color: #6b7280;\n}\n.chart-card-modern .chart-badge {\n  padding: 6px 12px;\n  border-radius: 8px;\n  font-size: 12px;\n  font-weight: 700;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: #ffffff;\n}\n.chart-card-modern .chart-badge.attendance-rate {\n  background: linear-gradient(135deg, #56ccf2 0%, #2f80ed 100%);\n}\n.chart-card-modern .chart-wrapper {\n  height: 240px;\n  position: relative;\n}\n.chart-card-modern.students-teachers {\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n}\n.chart-card-modern.students-teachers .chart-title-group h4,\n.chart-card-modern.students-teachers .chart-title-group .chart-subtitle {\n  color: #ffffff;\n}\n.chart-card-modern.attendance {\n  background: linear-gradient(135deg, #56ccf2 0%, #2f80ed 100%);\n}\n.chart-card-modern.attendance .chart-title-group h4,\n.chart-card-modern.attendance .chart-title-group .chart-subtitle {\n  color: #ffffff;\n}\n\n/* Bottom Row: Recent Activities + System Statistics */\n.bottom-row {\n  display: grid;\n  grid-template-columns: 2fr 1fr;\n  gap: 20px;\n}\n\n.recent-activities-card,\n.system-stats-card {\n  background: #ffffff;\n  border-radius: 14px;\n  padding: 24px;\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);\n}\n.recent-activities-card .section-header,\n.system-stats-card .section-header {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 20px;\n}\n.recent-activities-card .section-header .section-icon,\n.system-stats-card .section-header .section-icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n}\n.recent-activities-card .section-header h3,\n.system-stats-card .section-header h3 {\n  margin: 0;\n  font-size: 18px;\n  font-weight: 700;\n  color: #0f172a;\n}\n\n.system-stats-card .stat-list {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  margin-bottom: 20px;\n}\n.system-stats-card .stat-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 12px;\n  background: #f9fafb;\n  border-radius: 10px;\n  transition: transform 0.2s ease;\n}\n.system-stats-card .stat-row:hover {\n  transform: translateX(4px);\n  background: #f3f4f6;\n}\n.system-stats-card .stat-row .stat-icon {\n  width: 36px;\n  height: 36px;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  flex-shrink: 0;\n}\n.system-stats-card .stat-row .stat-label {\n  flex: 1;\n  font-size: 14px;\n  color: #6b7280;\n  font-weight: 600;\n}\n.system-stats-card .stat-row .stat-value {\n  font-size: 18px;\n  font-weight: 800;\n  color: #0f172a;\n}\n.system-stats-card .stats-footer {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n  padding-top: 20px;\n  border-top: 1px solid #e5e7eb;\n}\n.system-stats-card .stats-footer .footer-metric {\n  text-align: center;\n  padding: 12px;\n  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);\n  border-radius: 10px;\n}\n.system-stats-card .stats-footer .footer-metric .footer-value {\n  font-size: 24px;\n  font-weight: 800;\n  color: #0369a1;\n  margin-bottom: 4px;\n}\n.system-stats-card .stats-footer .footer-metric .footer-label {\n  font-size: 12px;\n  color: #6b7280;\n  font-weight: 600;\n}\n.system-stats-card .stats-footer .footer-metric:last-child {\n  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);\n}\n.system-stats-card .stats-footer .footer-metric:last-child .footer-value {\n  color: #92400e;\n}\n\n/* Responsive Design */\n@media (max-width: 1400px) {\n  .charts-row-three {\n    grid-template-columns: 1fr 1fr;\n  }\n  .charts-row-three .chart-card-modern:last-child {\n    grid-column: 1/-1;\n  }\n}\n@media (max-width: 1100px) {\n  .top-metrics-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .charts-row-three {\n    grid-template-columns: 1fr;\n  }\n  .bottom-row {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 720px) {\n  .top-metrics-grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Color variants & effects for metric cards */\n.metric-card.metric-blue {\n  background: linear-gradient(135deg, #eef6ff, #eef9ff);\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n\n.metric-card.metric-green {\n  background: linear-gradient(135deg, #ecfff6, #f0fffb);\n  border: 1px solid rgba(16, 185, 129, 0.06);\n}\n\n.metric-card.metric-purple {\n  background: linear-gradient(135deg, #f5f3ff, #f0eefb);\n  border: 1px solid rgba(124, 58, 237, 0.06);\n}\n\n.metric-card.metric-cyan {\n  background: linear-gradient(135deg, #ecfeff, #f0fdff);\n  border: 1px solid rgba(6, 182, 212, 0.06);\n}\n\n.metric-card.metric-orange {\n  background: linear-gradient(135deg, #fff7ed, #fff8f0);\n  border: 1px solid rgba(249, 115, 22, 0.06);\n}\n\n.metric-card {\n  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 180ms ease, border-color 180ms ease;\n}\n\n.metric-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);\n  border-color: rgba(15, 23, 42, 0.08);\n}\n\n.metric-card .icon-box {\n  width: 54px;\n  height: 54px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  color: #fff;\n  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06);\n}\n\n.icon-box.color-blue {\n  background: linear-gradient(135deg, #60a5fa, #3b82f6);\n}\n\n.icon-box.color-green {\n  background: linear-gradient(135deg, #34d399, #10b981);\n}\n\n.icon-box.color-violet {\n  background: linear-gradient(135deg, #7c3aed, #a78bfa);\n}\n\n.icon-box.color-cyan {\n  background: linear-gradient(135deg, #06b6d4, #60f0ff);\n  color: #042022;\n}\n\n.icon-box.color-orange {\n  background: linear-gradient(135deg, #fb923c, #f97316);\n}\n\n/* subtle pulse for small meta badges when positive change */\n.metric-card .meta {\n  transition: transform 320ms ease, box-shadow 320ms ease;\n}\n\n.metric-card .meta.positive {\n  background: linear-gradient(90deg, #ecfeff, #eef6ff);\n  color: #065f46;\n  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.06);\n}\n\n.metric-card .meta.animated {\n  animation: popIn 420ms cubic-bezier(0.2, 0.9, 0.2, 1);\n}\n\n@keyframes popIn {\n  from {\n    transform: scale(0.88);\n    opacity: 0;\n  }\n  to {\n    transform: scale(1);\n    opacity: 1;\n  }\n}\n/* activity item hover glow */\n.recent-activities .activity-item {\n  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;\n}\n\n.recent-activities .activity-item:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);\n  background: linear-gradient(90deg, #fff, #fbfdff);\n}\n\n/* stat row accent on hover */\n.system-stats .stat-row {\n  transition: transform 180ms ease, box-shadow 180ms ease;\n}\n\n.system-stats .stat-row:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.06);\n}\n\n.quick-actions {\n  display: none;\n}\n\n@media (max-width: 1000px) {\n  .dashboard-metrics {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .quick-grid {\n    flex-direction: column;\n  }\n}\n/* Course Management specific styling (top metrics, search bar, filters, table) */\n.courses-page {\n  /* colorful variants for each metric card */\n}\n.courses-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 16px;\n  flex-wrap: wrap;\n  padding: 18px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, #ffffff, #f8fbff);\n  box-shadow: 0 18px 44px rgba(37, 99, 235, 0.04);\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n.courses-page .page-header .header-actions {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  color: #fff;\n}\n.courses-page .page-header .header-buttons .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.08);\n  color: #042022;\n}\n.courses-page .page-header .header-buttons .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 12px 30px rgba(249, 115, 22, 0.08);\n  color: #2b1600;\n}\n.courses-page .page-header .header-buttons .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .page-header .header-buttons .icon-box:hover, .courses-page .page-header .header-buttons .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n.courses-page h1, .courses-page h2, .courses-page h3 {\n  margin: 0;\n}\n.courses-page .breadcrumb {\n  color: #6b7280;\n  margin-bottom: 6px;\n}\n.courses-page .courses-top {\n  display: flex;\n  gap: 18px;\n  margin-bottom: 14px;\n  align-items: flex-start;\n}\n.courses-page .courses-top .courses-metrics {\n  flex: 1;\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n}\n.courses-page .courses-top .metric.card {\n  flex: 1 1 160px;\n  padding: 14px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border: 1px solid rgba(37, 99, 235, 0.04);\n  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.03);\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.courses-page .courses-top .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 24px 60px rgba(37, 99, 235, 0.08);\n}\n.courses-page .courses-top .metric.card .label {\n  color: #64748b;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card .value {\n  font-size: 20px;\n  font-weight: 900;\n  color: #0f172a;\n}\n.courses-page .courses-top .metric.card.total {\n  border-left: 4px solid #2563eb;\n}\n.courses-page .courses-top .metric.card.active {\n  border-left: 4px solid #10b981;\n}\n.courses-page .courses-top .metric.card.inactive {\n  border-left: 4px solid #f59e0b;\n}\n.courses-page .courses-top .metric.card.students {\n  border-left: 4px solid #7c3aed;\n}\n.courses-page .courses-top .metric .icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px;\n}\n.courses-page .courses-top .metric .metric-title {\n  font-size: 13px;\n  color: #6b7280;\n}\n.courses-page .courses-top .metric .metric-value {\n  font-size: 20px;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card.total {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-left: 4px solid #2563eb;\n}\n.courses-page .courses-top .metric.card.active {\n  background: linear-gradient(90deg, #ecfdf5, #f0fdf4);\n  border-left: 4px solid #10b981;\n}\n.courses-page .courses-top .metric.card.inactive {\n  background: linear-gradient(90deg, #fff7ed, #fffaf0);\n  border-left: 4px solid #f59e0b;\n}\n.courses-page .courses-top .metric.card.students {\n  background: linear-gradient(90deg, #f5f3ff, #eef2ff);\n  border-left: 4px solid #7c3aed;\n}\n.courses-page .courses-top .metric.card.enrollment {\n  background: linear-gradient(90deg, #ecfeff, #f7feff);\n  border-left: 4px solid #06b6d4;\n}\n.courses-page .courses-top .metric.card.capacity {\n  background: linear-gradient(90deg, #fff8ef, #fff4f1);\n  border-left: 4px solid #f97316;\n}\n.courses-page .courses-top .metric.card .label {\n  color: #64748b;\n  font-size: 13px;\n  font-weight: 700;\n}\n.courses-page .courses-top .metric.card .value {\n  font-size: 20px;\n  font-weight: 900;\n  color: #0f172a;\n}\n.courses-page .courses-controls {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  padding: 12px 0;\n}\n.courses-page .course-search {\n  width: 100%;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n}\n.courses-page .courses-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .chip {\n  background: #f1f5f9;\n  border-radius: 999px;\n  padding: 8px 10px;\n  border: 1px solid #eef2f7;\n  cursor: pointer;\n}\n.courses-page .chip.active {\n  background: #eef2ff;\n  border-color: #dbeafe;\n}\n.courses-page .courses-table {\n  margin-top: 8px;\n  overflow: auto;\n}\n.courses-page .courses-table table {\n  width: 100%;\n  border-collapse: collapse;\n  background: transparent;\n}\n.courses-page .courses-table th, .courses-page .courses-table td {\n  padding: 14px 12px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.courses-page .courses-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.courses-page .students-count {\n  color: #475569;\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.courses-page .status-active {\n  background: #ecfdf5;\n  color: #059669;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n.courses-page .status-inactive {\n  background: #fff7ed;\n  color: #b45309;\n  padding: 6px 8px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n.courses-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n}\n.courses-page .action-icon.text-danger {\n  color: #dc2626;\n}\n.courses-page .courses-pagination {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  padding: 12px 0;\n}\n@media (max-width: 900px) {\n  .courses-page .courses-top {\n    flex-direction: column;\n  }\n  .courses-page .courses-top .courses-metrics {\n    width: 100%;\n  }\n}\n\n/* Reports page styles */\n.reports-page {\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\n\n.reports-header {\n  background: transparent;\n}\n\n.reports-header h2 {\n  margin: 0;\n  font-size: 20px;\n  color: #0f172a;\n}\n\n.reports-header .page-sub {\n  color: #6b7280;\n  margin-top: 6px;\n}\n\n.reports-metrics {\n  display: flex;\n  gap: 16px;\n}\n\n.report-metric {\n  flex: 1;\n  padding: 18px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.04);\n}\n\n.report-metric.blue {\n  background: linear-gradient(90deg, #eef6ff, #f8fbff);\n}\n\n.report-metric.green {\n  background: linear-gradient(90deg, #ecfff5, #f7fffb);\n}\n\n.report-metric.purple {\n  background: linear-gradient(90deg, #fbf5ff, #fffaff);\n}\n\n.report-metric.orange {\n  background: linear-gradient(90deg, #fff8f2, #fffbf7);\n}\n\n.report-metric .metric-title {\n  color: #6b7280;\n  font-weight: 700;\n}\n\n.report-metric .metric-value {\n  font-size: 28px;\n  font-weight: 900;\n  margin-top: 6px;\n}\n\n.report-metric .metric-sub {\n  margin-top: 8px;\n}\n\n.chart-card {\n  padding: 18px;\n  border-radius: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.04);\n}\n\n.reports-bottom {\n  display: flex;\n  gap: 12px;\n}\n\n.small-card {\n  flex: 1;\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, #f7fbff, #ffffff);\n  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);\n}\n\n.small-card .card-title {\n  font-weight: 800;\n  color: #6b7280;\n}\n\n.small-card .card-value {\n  font-size: 20px;\n  font-weight: 900;\n  margin-top: 8px;\n}\n\n.small-card .progress {\n  height: 10px;\n  background: #eef2f7;\n  border-radius: 999px;\n  margin: 12px 0;\n  overflow: hidden;\n}\n\n.small-card .progress .fill {\n  height: 100%;\n  background: linear-gradient(90deg, #60a5fa, #0ea5e9);\n}\n\n.small-card .progress .fill.green {\n  background: linear-gradient(90deg, #4ade80, #10b981);\n}\n\n.small-card .progress .fill.purple {\n  background: linear-gradient(90deg, #c084fc, #8b5cf6);\n}\n\n@media (max-width: 900px) {\n  .reports-metrics {\n    flex-direction: column;\n  }\n  .reports-bottom {\n    flex-direction: column;\n  }\n}\n/* Teachers / Faculty page specific styling */\n.teachers-page {\n  /* optional pulse for the Add Faculty button */\n  /* small animation */\n}\n.teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 16px;\n  padding: 18px;\n  background: #0b1220;\n  border-radius: 12px;\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  margin-bottom: 18px;\n  animation: fadeInUp 320ms ease both;\n}\n.teachers-page .page-header .breadcrumb {\n  color: #6b7280;\n  font-size: 0.95rem;\n  margin-bottom: 6px;\n}\n.teachers-page .page-header h2 {\n  margin: 0;\n  font-size: 20px;\n}\n.teachers-page .page-sub {\n  margin: 6px 0 0;\n  color: #6b7280;\n}\n.teachers-page .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n.teachers-page .header-actions .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .header-actions .icon-box {\n  padding: 8px 12px;\n  border-radius: 10px;\n  background: linear-gradient(90deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  cursor: pointer;\n  transition: transform 140ms ease, box-shadow 140ms ease;\n}\n.teachers-page .header-actions .icon-box:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);\n}\n.teachers-page .header-actions .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  color: #042022;\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.08);\n}\n.teachers-page .header-actions .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  color: #2b1600;\n  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.08);\n}\n.teachers-page .header-actions .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .header-actions .icon-box:hover, .teachers-page .header-actions .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n.teachers-page .header-actions .primary.pulse {\n  animation: softPulse 2200ms ease-in-out infinite;\n}\n.teachers-page .metrics-row {\n  display: flex;\n  gap: 12px;\n  margin-top: 14px;\n  margin-bottom: 18px;\n  flex-wrap: wrap;\n}\n.teachers-page .metrics-row .metric.card {\n  flex: 0 0 160px;\n  padding: 12px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.teachers-page .metrics-row .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);\n}\n.teachers-page .metrics-row .metric .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.teachers-page .metrics-row .metric .value {\n  font-weight: 800;\n  font-size: 20px;\n}\n.teachers-page .table-wrapper {\n  margin-top: 6px;\n}\n.teachers-page .teachers-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.teachers-page .teachers-table thead th {\n  text-align: left;\n  padding: 12px 14px;\n  border-bottom: 1px solid #eef2f6;\n  color: #6b7280;\n  font-weight: 700;\n}\n.teachers-page .teachers-table tbody td {\n  padding: 12px 14px;\n  border-bottom: 1px solid #f3f6fb;\n}\n.teachers-page .teachers-table tbody tr:hover {\n  background: rgba(37, 99, 235, 0.02);\n  transform: translateY(-1px);\n}\n.teachers-page .status-pill {\n  display: inline-block;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.teachers-page .status-pill.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.teachers-page .status-pill.sabbatical {\n  background: #eff6ff;\n  color: #2563eb;\n}\n.teachers-page .status-pill.retired {\n  background: #fff1f2;\n  color: #be185d;\n}\n.teachers-page .status-pill.locked {\n  background: #fff7ed;\n  color: #b45309;\n}\n@keyframes fadeInUp {\n  from {\n    opacity: 0;\n    transform: translateY(6px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n/* Department overview interactive cards */\n.department-overview {\n  margin-top: 18px;\n}\n\n.department-list.grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 12px;\n  margin-top: 12px;\n}\n\n.department-card {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  border-radius: 10px;\n  background: #0b1220;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  border: 1px solid rgba(255, 255, 255, 0.04);\n  position: relative;\n  overflow: hidden;\n}\n\n.department-card::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  width: 6px;\n}\n\n.department-card .dept-head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.dept-name {\n  font-size: 14px;\n}\n\n.dept-body {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.counts-display {\n  font-weight: 700;\n  color: #0f172a;\n}\n\n.dept-controls {\n  display: flex;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n\n.dept-controls .small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: #f1f5f9;\n  border: 1px solid #eef2f7;\n  cursor: pointer;\n}\n\n.actions-card {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 8px;\n}\n\n.department-card input[type=number] {\n  width: 100%;\n  padding: 8px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n@media (max-width: 1000px) {\n  .department-list.grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n@media (max-width: 700px) {\n  .department-list.grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Students page extras */\n.students-page {\n  /* Ensure metric numbers are visible: use a solid gray color for better contrast */\n}\n.students-page .students-metrics .metric.card {\n  min-width: 120px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 14px;\n}\n.students-page .students-metrics.metrics-grid {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  gap: 12px;\n  margin-bottom: 14px;\n}\n.students-page .students-metrics .metric .icon {\n  width: 40px;\n  height: 40px;\n  border-radius: 10px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 16px;\n  background: rgba(255, 255, 255, 0.06);\n}\n.students-page .metric-blue .icon {\n  background: linear-gradient(90deg, #e6f0ff, #dbeafe);\n}\n.students-page .metric-green .icon {\n  background: linear-gradient(90deg, #ecfdf5, #bbf7d0);\n}\n.students-page .metric-purple .icon {\n  background: linear-gradient(90deg, #eef2ff, #e9d5ff);\n}\n.students-page .metric-orange .icon {\n  background: linear-gradient(90deg, #fff7ed, #ffd8a8);\n}\n.students-page .metric-red .icon {\n  background: linear-gradient(90deg, #fff1f2, #fecaca);\n}\n.students-page .metric-violet .icon {\n  background: linear-gradient(90deg, #f5f3ff, #ede9fe);\n}\n.students-page .metric-gray .icon {\n  background: linear-gradient(90deg, #f3f4f6, #f8fafc);\n}\n.students-page .students-metrics .metric .label {\n  font-size: 13px;\n  color: #6b7280;\n}\n.students-page .students-metrics .metric .value {\n  font-size: 18px;\n  font-weight: 800;\n  color: #374151;\n}\n.students-page .students-metrics .metric.card {\n  background: #0b1220;\n  border-radius: 12px;\n  border: 1px solid #eef2f7;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  padding: 14px;\n  cursor: default;\n}\n.students-page .students-metrics .metric.card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.04);\n}\n.students-page .students-metrics .metric.card .icon {\n  margin-bottom: 6px;\n}\n.students-page .students-metrics .metric.metric-add {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  background: linear-gradient(90deg, #0ea5e9, #7c3aed);\n  color: #fff;\n  border: none;\n}\n.students-page .students-metrics .metric.metric-add .icon {\n  background: rgba(255, 255, 255, 0.12);\n  border-radius: 8px;\n  padding: 6px;\n}\n.students-page .students-table thead th {\n  background: transparent;\n  color: #0f172a;\n}\n.students-page .students-table tbody tr.selected-row {\n  background: linear-gradient(90deg, rgba(37, 99, 235, 0.04), rgba(96, 165, 250, 0.02));\n}\n.students-page .students-table tbody tr.archived-row {\n  opacity: 0.7;\n}\n.students-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n}\n.students-page .action-icon.text-danger {\n  color: #dc2626;\n}\n.students-page .badge {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.students-page .badge.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.students-page .badge.locked {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page .badge.archived {\n  background: #f3f4f6;\n  color: #374151;\n}\n.students-page .badge.graduated {\n  background: #eef2ff;\n  color: #2563eb;\n}\n.students-page .badge.suspended {\n  background: #fff7f0;\n  color: #c2410c;\n}\n.students-page .bulk-actions {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  padding: 10px 12px;\n  border-radius: 8px;\n  background: linear-gradient(90deg, #fff, #fbfdff);\n  border: 1px solid #eef2f7;\n  margin-bottom: 12px;\n}\n.students-page .bulk-actions .btn {\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  cursor: pointer;\n}\n.students-page .bulk-actions .btn.warn {\n  background: #fff7ed;\n  color: #b45309;\n  border-color: #fef3c7;\n}\n.students-page .bulk-actions .btn.danger {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page select {\n  padding: 6px 8px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n  background: #fff;\n}\n\n/* Students header action buttons: import/export/add styles */\n.students-page .header-actions {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.students-page .header-actions .header-buttons {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-page .header-actions .icon-box {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 12px;\n  border-radius: 10px;\n  cursor: pointer;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n  color: #fff;\n}\n\n.students-page .header-actions .icon-box.import {\n  background: linear-gradient(90deg, #06b6d4, #10b981);\n  box-shadow: 0 12px 36px rgba(6, 182, 212, 0.12);\n  color: #042022;\n}\n\n.students-page .header-actions .icon-box.export {\n  background: linear-gradient(90deg, #f59e0b, #f97316);\n  box-shadow: 0 12px 36px rgba(249, 115, 22, 0.12);\n  color: #2b1600;\n}\n\n.students-page .header-actions .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n}\n\n.students-page .header-actions .icon-box:hover, .students-page .header-actions .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 22px 60px rgba(124, 58, 237, 0.14);\n}\n\n/* subtle pulse animation for Add button to draw attention */\n@keyframes softPulse {\n  0% {\n    transform: scale(1);\n    box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  }\n  50% {\n    transform: scale(1.02);\n    box-shadow: 0 26px 80px rgba(124, 58, 237, 0.16);\n  }\n  100% {\n    transform: scale(1);\n    box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  }\n}\n.students-page .header-actions .primary.pulse {\n  animation: softPulse 2200ms ease-in-out infinite;\n}\n\n.students-page .no-data {\n  text-align: center;\n  padding: 40px 20px;\n  color: #6b7280;\n}\n\n.students-page .no-data h3 {\n  margin: 0;\n  font-size: 18px;\n}\n\n.students-page .no-data p {\n  margin: 8px 0 0;\n}\n\n/* Color accents for each department card */\n.department-list.grid .department-card:nth-child(1)::before {\n  background: #3b82f6;\n}\n\n.department-list.grid .department-card:nth-child(2)::before {\n  background: #34d399;\n}\n\n.department-list.grid .department-card:nth-child(3)::before {\n  background: #7c3aed;\n}\n\n.department-list.grid .department-card:nth-child(4)::before {\n  background: #06b6d4;\n}\n\n.department-list.grid .department-card:nth-child(5)::before {\n  background: #3b82f6;\n}\n\n.department-list.grid .department-card:nth-child(6)::before {\n  background: #34d399;\n}\n\n.department-list.grid .department-card:nth-child(7)::before {\n  background: #7c3aed;\n}\n\n.department-list.grid .department-card:nth-child(8)::before {\n  background: #06b6d4;\n}\n\n/* Performance cards (top of bottom area) */\n.performance-cards {\n  margin-top: 18px;\n}\n\n.perf-grid {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 16px;\n  margin-bottom: 18px;\n}\n\n.perf-card {\n  background: #0b1220;\n  padding: 16px;\n  border-radius: 12px;\n  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.perf-card .perf-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.perf-card .perf-value {\n  font-size: 22px;\n  font-weight: 800;\n}\n\n.perf-card .perf-sub {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n.perf-card .perf-change {\n  margin-left: auto;\n  font-weight: 800;\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-size: 12px;\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n}\n\n.perf-card .perf-change.positive {\n  background: linear-gradient(90deg, #ecfdf5, #ddfcea);\n  color: #065f46;\n  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.06);\n}\n\n.perf-card .perf-change.negative {\n  background: linear-gradient(90deg, #fff1f2, #ffecec);\n  color: #991b1b;\n  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.06);\n}\n\n.perf-card .perf-change.neutral {\n  background: linear-gradient(90deg, #f8fafc, #ffffff);\n  color: #475569;\n  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.03);\n}\n\n/* stronger colored perf-card variants */\n.perf-card.blue {\n  background: linear-gradient(135deg, #eef6ff, #eef9ff);\n  border: 1px solid rgba(37, 99, 235, 0.06);\n}\n\n.perf-card.green {\n  background: linear-gradient(135deg, #ecfff6, #f0fffb);\n  border: 1px solid rgba(16, 185, 129, 0.06);\n}\n\n.perf-card.purple {\n  background: linear-gradient(135deg, #f5f3ff, #f0eefb);\n  border: 1px solid rgba(124, 58, 237, 0.06);\n}\n\n.perf-card.cyan {\n  background: linear-gradient(135deg, #ecfeff, #f0fdff);\n  border: 1px solid rgba(6, 182, 212, 0.06);\n}\n\n.perf-card.orange {\n  background: linear-gradient(135deg, #fff7ed, #fff8f0);\n  border: 1px solid rgba(249, 115, 22, 0.06);\n}\n\n/* subtle lift on hover */\n.perf-card {\n  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 180ms ease, border-color 180ms ease;\n}\n\n.perf-card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);\n}\n\n/* entrance animation for perf-cards */\n.perf-card {\n  opacity: 0;\n  transform-origin: center top;\n  animation: perfIn 420ms ease forwards;\n}\n\n@keyframes perfIn {\n  to {\n    opacity: 1;\n    transform: translateY(0) scale(1);\n  }\n}\n.perf-change .trend-icon {\n  font-size: 12px;\n  line-height: 1;\n  display: inline-block;\n  margin-right: 6px;\n}\n\n.perf-card.blue {\n  border-left: 4px solid #3b82f6;\n}\n\n.perf-card.green {\n  border-left: 4px solid #34d399;\n}\n\n.perf-card.purple {\n  border-left: 4px solid #7c3aed;\n}\n\n.perf-card.cyan {\n  border-left: 4px solid #06b6d4;\n}\n\n/* Department alignment */\n.dept-align {\n  align-self: start;\n}\n\n/* Compact calendar tweaks */\n.mini-cal.compact .cal-grid {\n  grid-template-columns: repeat(7, 1fr);\n  gap: 4px;\n}\n\n.mini-cal.compact .cal-cell {\n  padding: 6px;\n  font-size: 12px;\n}\n\n@media (max-width: 1000px) {\n  .perf-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n.department-card .dept-name {\n  display: block;\n}\n\n.department-card .muted {\n  color: #6b7280;\n  font-size: 12px;\n}\n\n/* list-style department overview */\n.department-list.list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n/* Hero right Add button styling (Add Student / Add Teacher) */\n.hero-right .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 18px 48px rgba(124, 58, 237, 0.12);\n  display: inline-flex;\n  gap: 8px;\n  align-items: center;\n  cursor: pointer;\n  font-weight: 800;\n}\n\n.hero-right .primary:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 28px 72px rgba(124, 58, 237, 0.18);\n}\n\n@media (max-width: 900px) {\n  .hero-right .primary {\n    padding: 8px 10px;\n    font-size: 14px;\n  }\n  .hero-right .student-search {\n    min-width: 180px;\n  }\n}\n.department-row {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 10px;\n  background: #0b1220;\n  border-radius: 10px;\n  border: 1px solid rgba(255, 255, 255, 0.04);\n}\n\n.department-row .row-left {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 42%;\n}\n\n.department-row .dot {\n  width: 12px;\n  height: 12px;\n  border-radius: 999px;\n  display: inline-block;\n}\n\n.department-row .dept-name {\n  font-weight: 700;\n}\n\n.department-row .row-center {\n  width: 36%;\n}\n\n.progress-wrap {\n  width: 100%;\n}\n\n.progress-bar {\n  height: 10px;\n  background: #f1f5f9;\n  border-radius: 999px;\n  overflow: hidden;\n}\n\n.progress-fill {\n  height: 100%;\n  background: linear-gradient(90deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.9));\n}\n\n.row-right {\n  width: 22%;\n  text-align: right;\n}\n\n.counts-right {\n  font-weight: 700;\n}\n\n.edit-inline input {\n  width: 48%;\n  padding: 6px 8px;\n  margin-right: 4px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n.edit-actions .btn {\n  background: #3b82f6;\n  color: #fff;\n  padding: 6px 10px;\n  border-radius: 8px;\n  border: none;\n  margin-right: 8px;\n}\n\n.edit-actions .btn-link {\n  background: transparent;\n  border: none;\n  color: #6b7280;\n  cursor: pointer;\n}\n\n.actions-row {\n  background: transparent;\n  border: none;\n  box-shadow: none;\n}\n\n/* Teachers / Faculty specific styling to match the provided screenshot */\n.teachers-page {\n  /* Name column shows subtitle / role in muted text */\n  /* Actions styling - small icon buttons spaced evenly */\n  /* responsive tweaks */\n}\n.teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.teachers-page .breadcrumb {\n  color: #6b7280;\n  margin-bottom: 6px;\n}\n.teachers-page .teachers-metrics {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-bottom: 16px;\n}\n.teachers-page .teachers-metrics .metric.card {\n  padding: 14px;\n  min-width: 120px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  align-items: flex-start;\n}\n.teachers-page .teachers-metrics .metric .metric-title {\n  color: #6b7280;\n  font-size: 13px;\n}\n.teachers-page .teachers-metrics .metric .metric-value {\n  font-size: 20px;\n  font-weight: 800;\n}\n.teachers-page .teachers-controls {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.teachers-page .teachers-controls .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n.teachers-page .teacher-search {\n  width: 100%;\n  max-width: 760px;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n}\n.teachers-page .teachers-controls .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.teachers-page .table-wrapper.card {\n  padding: 0;\n}\n.teachers-page .landscape-table {\n  overflow: auto;\n}\n.teachers-page .landscape-table table {\n  width: 100%;\n  min-width: 1200px;\n  border-collapse: collapse;\n}\n.teachers-page .landscape-table th, .teachers-page .landscape-table td {\n  padding: 14px 16px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.teachers-page .landscape-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.teachers-page .landscape-table tbody tr.archived-row {\n  opacity: 0.75;\n}\n.teachers-page .name-meta {\n  display: flex;\n  flex-direction: column;\n}\n.teachers-page .name-meta .subtitle {\n  color: #6b7280;\n  font-size: 12px;\n  margin-top: 6px;\n}\n.teachers-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 8px;\n  margin-left: 6px;\n  color: #475569;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}\n.teachers-page .action-icon:hover {\n  background: #f1f5f9;\n}\n.teachers-page .action-icon.text-danger {\n  color: #dc2626;\n}\n@media (max-width: 900px) {\n  .teachers-page .teacher-search {\n    max-width: 100%;\n  }\n  .teachers-page .landscape-table table {\n    min-width: 900px;\n  }\n}\n\n/* Modern Students and Teachers page styles */\n.students-page, .teachers-page {\n  padding: 24px;\n  /* Modern Page Header */\n  /* Modern Metrics Cards */\n  /* Filter Section */\n  /* Modern Table Card */\n  /* Name Cell */\n  /* Badges */\n  /* Status Badges */\n  /* Action Buttons */\n  /* Legacy styles - keeping for backward compatibility */\n  /* landscape helper: allow a very wide table and horizontal scroll */\n}\n.students-page .page-header-modern, .teachers-page .page-header-modern {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 24px;\n}\n.students-page .page-header-modern h1, .teachers-page .page-header-modern h1 {\n  margin: 0;\n  font-size: 28px;\n  font-weight: 800;\n  color: #0f172a;\n}\n.students-page .page-header-modern .subtitle, .teachers-page .page-header-modern .subtitle {\n  margin-top: 6px;\n  font-size: 14px;\n  color: #6b7280;\n}\n.students-page .page-header-modern .header-actions-modern, .teachers-page .page-header-modern .header-actions-modern {\n  display: flex;\n  gap: 12px;\n}\n.students-page .page-header-modern .header-actions-modern .btn-modern, .teachers-page .page-header-modern .header-actions-modern .btn-modern {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 18px;\n  border-radius: 10px;\n  border: none;\n  font-weight: 600;\n  font-size: 14px;\n  cursor: pointer;\n  transition: transform 0.2s ease, box-shadow 0.2s ease;\n}\n.students-page .page-header-modern .header-actions-modern .btn-modern:hover, .teachers-page .page-header-modern .header-actions-modern .btn-modern:hover {\n  transform: translateY(-2px);\n}\n.students-page .page-header-modern .header-actions-modern .btn-modern.btn-import, .teachers-page .page-header-modern .header-actions-modern .btn-modern.btn-import {\n  background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);\n  color: #ffffff;\n  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);\n}\n.students-page .page-header-modern .header-actions-modern .btn-modern.btn-import:hover, .teachers-page .page-header-modern .header-actions-modern .btn-modern.btn-import:hover {\n  box-shadow: 0 6px 30px rgba(6, 182, 212, 0.4);\n}\n.students-page .page-header-modern .header-actions-modern .btn-modern.btn-export, .teachers-page .page-header-modern .header-actions-modern .btn-modern.btn-export {\n  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);\n  color: #ffffff;\n  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);\n}\n.students-page .page-header-modern .header-actions-modern .btn-modern.btn-export:hover, .teachers-page .page-header-modern .header-actions-modern .btn-modern.btn-export:hover {\n  box-shadow: 0 6px 30px rgba(249, 115, 22, 0.4);\n}\n.students-page .page-header-modern .header-actions-modern .btn-modern.btn-primary, .teachers-page .page-header-modern .header-actions-modern .btn-modern.btn-primary {\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: #ffffff;\n  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);\n}\n.students-page .page-header-modern .header-actions-modern .btn-modern.btn-primary:hover, .teachers-page .page-header-modern .header-actions-modern .btn-modern.btn-primary:hover {\n  box-shadow: 0 6px 30px rgba(102, 126, 234, 0.4);\n}\n.students-page .metrics-cards-modern, .teachers-page .metrics-cards-modern {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 18px;\n  margin-bottom: 24px;\n}\n.students-page .filter-section-modern, .teachers-page .filter-section-modern {\n  background: #ffffff;\n  border-radius: 14px;\n  padding: 20px;\n  margin-bottom: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n}\n.students-page .filter-section-modern .filter-chips-modern, .teachers-page .filter-section-modern .filter-chips-modern {\n  display: flex;\n  gap: 10px;\n  margin-bottom: 16px;\n  flex-wrap: wrap;\n}\n.students-page .filter-section-modern .filter-chips-modern .chip-modern, .teachers-page .filter-section-modern .filter-chips-modern .chip-modern {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 8px 16px;\n  border-radius: 20px;\n  border: 2px solid #e5e7eb;\n  background: #ffffff;\n  font-weight: 600;\n  font-size: 14px;\n  color: #6b7280;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.students-page .filter-section-modern .filter-chips-modern .chip-modern:hover, .teachers-page .filter-section-modern .filter-chips-modern .chip-modern:hover {\n  border-color: #667eea;\n  color: #667eea;\n  transform: translateY(-2px);\n}\n.students-page .filter-section-modern .filter-chips-modern .chip-modern.active, .teachers-page .filter-section-modern .filter-chips-modern .chip-modern.active {\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  border-color: transparent;\n  color: #ffffff;\n  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);\n}\n.students-page .filter-section-modern .filter-chips-modern .chip-modern .chip-count, .teachers-page .filter-section-modern .filter-chips-modern .chip-modern .chip-count {\n  background: rgba(0, 0, 0, 0.1);\n  padding: 2px 8px;\n  border-radius: 10px;\n  font-size: 12px;\n  font-weight: 700;\n}\n.students-page .filter-section-modern .search-box-modern .search-input-modern, .teachers-page .filter-section-modern .search-box-modern .search-input-modern {\n  width: 100%;\n  padding: 12px 16px;\n  border-radius: 10px;\n  border: 2px solid #e5e7eb;\n  font-size: 14px;\n  transition: all 0.2s ease;\n}\n.students-page .filter-section-modern .search-box-modern .search-input-modern:focus, .teachers-page .filter-section-modern .search-box-modern .search-input-modern:focus {\n  outline: none;\n  border-color: #667eea;\n  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);\n}\n.students-page .filter-section-modern .search-box-modern .search-input-modern::-moz-placeholder, .teachers-page .filter-section-modern .search-box-modern .search-input-modern::-moz-placeholder {\n  color: #9ca3af;\n}\n.students-page .filter-section-modern .search-box-modern .search-input-modern::placeholder, .teachers-page .filter-section-modern .search-box-modern .search-input-modern::placeholder {\n  color: #9ca3af;\n}\n.students-page .table-card-modern, .teachers-page .table-card-modern {\n  background: #ffffff;\n  border-radius: 14px;\n  padding: 0;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  overflow: hidden;\n}\n.students-page .table-card-modern .modern-table, .teachers-page .table-card-modern .modern-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.students-page .table-card-modern .modern-table thead, .teachers-page .table-card-modern .modern-table thead {\n  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);\n}\n.students-page .table-card-modern .modern-table thead th, .teachers-page .table-card-modern .modern-table thead th {\n  padding: 16px;\n  text-align: left;\n  font-weight: 700;\n  font-size: 13px;\n  color: #374151;\n  text-transform: uppercase;\n  letter-spacing: 0.5px;\n  border-bottom: 2px solid #e5e7eb;\n}\n.students-page .table-card-modern .modern-table thead th.text-right, .teachers-page .table-card-modern .modern-table thead th.text-right {\n  text-align: right;\n}\n.students-page .table-card-modern .modern-table tbody tr, .teachers-page .table-card-modern .modern-table tbody tr {\n  transition: all 0.2s ease;\n  border-bottom: 1px solid #f3f4f6;\n}\n.students-page .table-card-modern .modern-table tbody tr:hover, .teachers-page .table-card-modern .modern-table tbody tr:hover {\n  background: linear-gradient(90deg, rgba(102, 126, 234, 0.03), rgba(118, 75, 162, 0.02));\n  transform: scale(1.002);\n}\n.students-page .table-card-modern .modern-table tbody tr.row-highlight, .teachers-page .table-card-modern .modern-table tbody tr.row-highlight {\n  background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.05));\n  animation: highlightFade 3s ease-out;\n}\n.students-page .table-card-modern .modern-table tbody tr.row-archived, .teachers-page .table-card-modern .modern-table tbody tr.row-archived {\n  opacity: 0.6;\n  background: #f9fafb;\n}\n.students-page .table-card-modern .modern-table tbody tr td, .teachers-page .table-card-modern .modern-table tbody tr td {\n  padding: 16px;\n  font-size: 14px;\n  color: #1f2937;\n}\n.students-page .table-card-modern .modern-table tbody tr td.text-right, .teachers-page .table-card-modern .modern-table tbody tr td.text-right {\n  text-align: right;\n}\n.students-page .table-card-modern .table-footer-modern, .teachers-page .table-card-modern .table-footer-modern {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 16px 20px;\n  background: #f9fafb;\n  border-top: 1px solid #e5e7eb;\n}\n.students-page .table-card-modern .table-footer-modern .table-footer-info, .teachers-page .table-card-modern .table-footer-modern .table-footer-info {\n  font-size: 14px;\n  color: #6b7280;\n  font-weight: 500;\n}\n.students-page .name-cell, .teachers-page .name-cell {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n.students-page .name-cell .avatar-circle-modern, .teachers-page .name-cell .avatar-circle-modern {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #ffffff;\n  font-weight: 700;\n  font-size: 16px;\n  flex-shrink: 0;\n}\n.students-page .name-cell .name-primary, .teachers-page .name-cell .name-primary {\n  font-weight: 600;\n  color: #0f172a;\n}\n.students-page .name-cell .name-secondary, .teachers-page .name-cell .name-secondary {\n  font-size: 12px;\n  color: #6b7280;\n  margin-top: 2px;\n}\n.students-page .badge-id, .students-page .badge-year, .students-page .badge-gpa, .teachers-page .badge-id, .teachers-page .badge-year, .teachers-page .badge-gpa {\n  display: inline-block;\n  padding: 4px 12px;\n  border-radius: 12px;\n  font-size: 13px;\n  font-weight: 600;\n}\n.students-page .badge-id, .teachers-page .badge-id {\n  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);\n  color: #1e40af;\n}\n.students-page .badge-year, .teachers-page .badge-year {\n  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);\n  color: #92400e;\n}\n.students-page .badge-gpa, .teachers-page .badge-gpa {\n  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);\n  color: #065f46;\n}\n.students-page .status-badge, .teachers-page .status-badge {\n  display: inline-block;\n  padding: 6px 12px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: 700;\n  text-transform: capitalize;\n}\n.students-page .status-badge.status-active, .teachers-page .status-badge.status-active {\n  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);\n  color: #065f46;\n}\n.students-page .status-badge.status-inactive, .students-page .status-badge.status-suspended, .teachers-page .status-badge.status-inactive, .teachers-page .status-badge.status-suspended {\n  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);\n  color: #991b1b;\n}\n.students-page .status-badge.status-graduated, .teachers-page .status-badge.status-graduated {\n  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);\n  color: #5b21b6;\n}\n.students-page .status-badge.status-locked, .teachers-page .status-badge.status-locked {\n  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);\n  color: #9a3412;\n}\n.students-page .action-buttons, .teachers-page .action-buttons {\n  display: inline-flex;\n  gap: 8px;\n}\n.students-page .action-buttons .action-btn, .teachers-page .action-buttons .action-btn {\n  width: 36px;\n  height: 36px;\n  border-radius: 8px;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.students-page .action-buttons .action-btn.action-edit, .teachers-page .action-buttons .action-btn.action-edit {\n  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);\n  color: #1e40af;\n}\n.students-page .action-buttons .action-btn.action-edit:hover, .teachers-page .action-buttons .action-btn.action-edit:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);\n}\n.students-page .action-buttons .action-btn.action-lock, .teachers-page .action-buttons .action-btn.action-lock {\n  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);\n  color: #92400e;\n}\n.students-page .action-buttons .action-btn.action-lock:hover, .teachers-page .action-buttons .action-btn.action-lock:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);\n}\n.students-page .action-buttons .action-btn.action-lock.active, .teachers-page .action-buttons .action-btn.action-lock.active {\n  background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);\n}\n.students-page .action-buttons .action-btn.action-archive, .teachers-page .action-buttons .action-btn.action-archive {\n  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);\n  color: #991b1b;\n}\n.students-page .action-buttons .action-btn.action-archive:hover, .teachers-page .action-buttons .action-btn.action-archive:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);\n}\n.students-page .action-buttons .action-btn.action-restore, .teachers-page .action-buttons .action-btn.action-restore {\n  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);\n  color: #065f46;\n}\n.students-page .action-buttons .action-btn.action-restore:hover, .teachers-page .action-buttons .action-btn.action-restore:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);\n}\n.students-page .action-buttons .action-btn.action-delete, .teachers-page .action-buttons .action-btn.action-delete {\n  background: linear-gradient(135deg, #fee2e2 0%, #fca5a5 100%);\n  color: #7f1d1d;\n}\n.students-page .action-buttons .action-btn.action-delete:hover, .teachers-page .action-buttons .action-btn.action-delete:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);\n}\n.students-page .page-header, .teachers-page .page-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 12px;\n  padding: 16px;\n  border-radius: 12px;\n  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%);\n  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n}\n.students-page .page-title, .teachers-page .page-title {\n  margin: 4px 0 2px;\n  font-size: 20px;\n  color: #0f172a;\n  font-weight: 800;\n}\n.students-page .page-sub, .teachers-page .page-sub {\n  margin: 2px 0 0;\n  color: #6b7280;\n}\n.students-page .students-metrics, .teachers-page .students-metrics {\n  display: flex;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-bottom: 16px;\n}\n.students-page .students-metrics .metric.card, .teachers-page .students-metrics .metric.card {\n  padding: 14px;\n  min-width: 140px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  transition: transform 160ms ease, box-shadow 160ms ease;\n}\n.students-page .students-metrics .metric.card:hover, .teachers-page .students-metrics .metric.card:hover {\n  transform: translateY(-6px);\n  box-shadow: 0 18px 40px rgba(124, 58, 237, 0.08);\n}\n.students-page .students-metrics .metric .label, .teachers-page .students-metrics .metric .label {\n  color: #6b7280;\n  font-size: 13px;\n}\n.students-page .students-metrics .metric .value, .teachers-page .students-metrics .metric .value {\n  font-size: 20px;\n  font-weight: 700;\n}\n.students-page .controls-card, .teachers-page .controls-card {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  gap: 12px;\n  margin-bottom: 12px;\n  border-radius: 12px;\n  background: linear-gradient(90deg, rgba(7, 10, 34, 0.02), rgba(124, 58, 237, 0.02));\n  border: 1px solid rgba(124, 58, 237, 0.04);\n}\n.students-page .controls-left, .teachers-page .controls-left {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n  flex: 1;\n}\n.students-page .controls-right, .teachers-page .controls-right {\n  display: flex;\n  gap: 12px;\n  align-items: center;\n}\n.students-page .global-search, .teachers-page .global-search {\n  width: 480px;\n  max-width: 60%;\n  padding: 12px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n.students-page .filters, .teachers-page .filters {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.students-page .filter-chips, .teachers-page .filter-chips {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-left: 6px;\n}\n.students-page .chip, .teachers-page .chip {\n  padding: 8px 10px;\n  background: #f1f5f9;\n  border: 1px solid #eef2f7;\n  border-radius: 999px;\n  cursor: pointer;\n  font-weight: 700;\n  color: #475569;\n}\n.students-page .chip.active, .teachers-page .chip.active {\n  background: #eef2ff;\n  border-color: #dbeafe;\n  color: #2563eb;\n}\n.students-page .chip.clear, .teachers-page .chip.clear {\n  background: transparent;\n  border: 1px dashed #e6eef8;\n  color: #64748b;\n}\n.students-page .view-toggle button, .teachers-page .view-toggle button {\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  background: transparent;\n  cursor: pointer;\n  transition: background 140ms ease, transform 120ms ease;\n}\n.students-page .view-toggle button:hover, .teachers-page .view-toggle button:hover {\n  transform: translateY(-2px);\n}\n.students-page .view-toggle button.active, .teachers-page .view-toggle button.active {\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n  border-color: rgba(37, 99, 235, 0.06);\n  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);\n}\n.students-page .filter-item, .teachers-page .filter-item {\n  color: #6b7280;\n  margin-right: 6px;\n}\n.students-page .show-archived, .teachers-page .show-archived {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n.students-page .table-wrapper, .teachers-page .table-wrapper {\n  overflow: auto;\n}\n.students-page .students-table, .teachers-page .students-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.students-page .landscape-table, .teachers-page .landscape-table {\n  overflow: auto;\n}\n.students-page .landscape-table .students-table, .teachers-page .landscape-table .students-table {\n  min-width: 1400px;\n}\n.students-page .students-table th, .students-page .students-table td, .teachers-page .students-table th, .teachers-page .students-table td {\n  padding: 14px 12px;\n  text-align: left;\n  border-bottom: 1px solid #f1f5f9;\n  font-size: 14px;\n}\n.students-page .students-table thead th, .teachers-page .students-table thead th {\n  background: transparent;\n  color: #0f172a;\n  font-weight: 700;\n}\n.students-page .students-table tbody tr.archived-row, .teachers-page .students-table tbody tr.archived-row {\n  opacity: 0.75;\n}\n.students-page .badge, .teachers-page .badge {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n  font-size: 12px;\n}\n.students-page .badge.active, .teachers-page .badge.active {\n  background: #ecfdf5;\n  color: #059669;\n}\n.students-page .badge.locked, .teachers-page .badge.locked {\n  background: #fff1f2;\n  color: #b91c1c;\n}\n.students-page .badge.archived, .teachers-page .badge.archived {\n  background: #f3f4f6;\n  color: #374151;\n}\n.students-page .badge.graduated, .teachers-page .badge.graduated {\n  background: #eef2ff;\n  color: #2563eb;\n}\n.students-page .badge.suspended, .teachers-page .badge.suspended {\n  background: #fff1f0;\n  color: #c2410c;\n}\n.students-page .action-icon, .teachers-page .action-icon {\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 6px;\n  margin-left: 6px;\n  color: #475569;\n  transition: transform 120ms ease, background 120ms ease;\n}\n.students-page .action-icon:hover, .teachers-page .action-icon:hover {\n  transform: translateY(-2px);\n  background: rgba(37, 99, 235, 0.02);\n}\n.students-page .action-icon.text-danger, .teachers-page .action-icon.text-danger {\n  color: #dc2626;\n}\n\n/* Students panel card (screenshot-inspired) */\n.students-panel {\n  background: #ffffff;\n  border-radius: 12px;\n  padding: 18px 20px;\n  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.06);\n  border: 1px solid rgba(15, 23, 42, 0.03);\n  margin-bottom: 18px;\n  overflow: hidden;\n}\n\n.students-panel .small-muted {\n  color: #64748b;\n}\n\n.students-panel .student-search {\n  width: 100%;\n  max-width: 680px;\n  padding: 12px 14px;\n  border-radius: 10px;\n  border: 1px solid #eef2f7;\n  background: #f8fafc;\n}\n\n.students-panel table.students-table thead th {\n  color: #334155;\n  font-weight: 700;\n}\n\n.students-panel table.students-table tbody td {\n  color: #0f172a;\n}\n\n.students-panel table.students-table thead th {\n  border-bottom: 1px solid #eef2f7;\n}\n\n.students-panel tbody tr {\n  background: transparent;\n}\n\n.students-panel tbody tr:hover {\n  background: rgba(2, 6, 23, 0.02);\n  transform: none;\n}\n\n.students-panel .status-pill {\n  background: #ecfdf5;\n  color: #166534;\n  font-weight: 700;\n}\n\n.students-panel .status-pill.locked {\n  background: #fee2e2;\n  color: #991b1b;\n}\n\n.students-panel .action-icon {\n  width: 36px;\n  height: 36px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 8px;\n  background: transparent;\n  border: 1px solid transparent;\n  transition: background 120ms ease, transform 120ms ease;\n}\n\n.students-panel .action-icon:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n.students-panel .primary {\n  padding: 10px 14px;\n  border-radius: 10px;\n}\n\n.students-panel thead {\n  border-bottom: 1px solid #eef2f7;\n}\n\n.students-panel thead th {\n  padding: 14px 12px;\n}\n\n.students-panel tbody td {\n  padding: 14px 12px;\n}\n\n.students-panel .status-pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  font-weight: 700;\n}\n\n.students-panel .actions {\n  display: flex;\n  gap: 8px;\n  justify-content: flex-end;\n}\n\n.students-panel .actions .action-icon {\n  padding: 8px;\n  border-radius: 8px;\n  background: transparent;\n}\n\n.students-panel .header-row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n\n.students-panel .header-row .title {\n  font-weight: 800;\n  font-size: 16px;\n}\n\n.students-panel .header-row .subtitle {\n  color: #64748b;\n}\n\n/* Utility & responsive rules */\n@media (max-width: 1000px) {\n  .metrics-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 72px;\n  }\n  .admin-dashboard-layout .sidebar {\n    width: 72px;\n    padding: 14px;\n  }\n}\n@media (max-width: 720px) {\n  .metrics-grid {\n    grid-template-columns: 1fr;\n  }\n  .content-grid {\n    grid-template-columns: 1fr;\n  }\n  .admin-dashboard-layout .sidebar {\n    position: relative;\n    width: 100%;\n    height: auto;\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 0;\n    padding: 18px;\n  }\n}\n/* Small form elements and tables used across pages */\n.small-muted {\n  color: #6b7280;\n  font-size: 13px;\n}\n\n.pill {\n  padding: 6px 10px;\n  border-radius: 999px;\n  background: #f1f5f9;\n}\n\n/* Layout fixes to prevent sidebar overlap and ensure modals/form inputs are visible */\n.admin-dashboard-layout .sidebar {\n  z-index: 20;\n}\n\n.admin-dashboard-layout .admin-main {\n  min-width: 0;\n}\n\n/* Modal/backdrop styling (modal overlays sidebar) */\n.modal-overlay {\n  position: fixed;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.35);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 99999; /* ensure it sits above everything including sidebar */\n}\n\n.modal {\n  position: relative;\n  background: #ffffff; /* make modal panel white */\n  color: #0f172a;\n  border-radius: 14px;\n  padding: 20px;\n  width: 680px;\n  max-width: calc(100% - 40px);\n  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.12);\n  border: 1px solid rgba(15, 23, 42, 0.04);\n  z-index: 100000;\n}\n\n/* Top accent bar for modal, adds color and modern feel */\n.modal::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  height: 6px;\n  border-top-left-radius: 14px;\n  border-top-right-radius: 14px;\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n}\n\n/* Modal header (title and close) */\n.modal .modal-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  padding-bottom: 12px;\n  margin-bottom: 8px;\n  border-bottom: 1px solid rgba(15, 23, 42, 0.03);\n}\n\n.modal .modal-header h3 {\n  margin: 0;\n  font-size: 18px;\n  color: #0f172a;\n}\n\n.modal .modal-close {\n  background: transparent;\n  border: none;\n  font-size: 18px;\n  cursor: pointer;\n  color: #475569;\n  padding: 6px;\n  border-radius: 8px;\n}\n\n.modal .modal-close:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n/* modal entrance animation */\n.modal.modal-wide {\n  transform: translateY(-6px);\n  opacity: 0;\n  animation: modalIn 220ms ease forwards;\n}\n\n@keyframes modalIn {\n  to {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n.modal .modal-body input, .modal .modal-body select {\n  background: #ffffff;\n  border: 1px solid #e6eef8;\n  padding: 12px 14px;\n  border-radius: 10px;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);\n}\n\n.modal .modal-body input::-moz-placeholder, .modal .modal-body textarea::-moz-placeholder {\n  color: #94a3b8;\n}\n\n.modal .modal-body input::placeholder, .modal .modal-body textarea::placeholder {\n  color: #94a3b8;\n}\n\n.modal .modal-body input:focus, .modal .modal-body select:focus, .modal .modal-body textarea:focus {\n  outline: none;\n  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);\n  border-color: rgba(124, 58, 237, 0.18);\n  transform: translateY(-2px);\n}\n\n.modal .modal-footer .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 16px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n}\n\n.modal .modal-footer .primary:disabled {\n  opacity: 0.7;\n}\n\n.modal .modal-footer button {\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid #eef2f7;\n}\n\n.modal-wide {\n  width: 920px;\n  max-width: calc(100% - 32px);\n}\n\n.modal .modal-body input,\n.modal .modal-body select,\n.modal .modal-body textarea,\n.user-form input,\n.user-form select,\n.role-fields input,\n.role-fields select,\n.role-fields textarea {\n  width: 100%;\n  box-sizing: border-box;\n  padding: 10px 12px;\n  margin-bottom: 10px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n}\n\n/* Course form modal styles */\n.course-modal {\n  background: linear-gradient(180deg, #ffffff, #fbfdff);\n  border-radius: 12px;\n  padding: 0;\n  overflow: hidden;\n}\n\n.course-modal .modal-header {\n  padding: 18px;\n  border-bottom: 1px solid rgba(37, 99, 235, 0.04);\n  background: linear-gradient(90deg, #eef2ff, #f8fbff);\n}\n\n.course-modal .modal-header h3 {\n  margin: 0;\n  font-size: 18px;\n}\n\n.course-modal .modal-header .modal-sub {\n  color: #64748b;\n  font-size: 13px;\n  margin-top: 6px;\n}\n\n.course-modal .modal-body {\n  padding: 16px;\n}\n\n.course-modal .form-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 12px;\n}\n\n.course-modal .form-group {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.course-modal label {\n  font-weight: 700;\n  color: #334155;\n}\n\n.course-modal input, .course-modal select {\n  padding: 10px 12px;\n  border-radius: 8px;\n  border: 1px solid #e6eef8;\n  background: #fff;\n  transition: box-shadow 180ms ease, transform 120ms ease;\n}\n\n.course-modal input:focus, .course-modal select:focus {\n  outline: none;\n  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);\n  transform: translateY(-2px);\n}\n\n.course-modal .modal-footer {\n  padding: 12px 18px;\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n  border-top: 1px solid rgba(15, 23, 42, 0.02);\n  background: transparent;\n}\n\n/* ========================================\n   MODERN USER FORM MODAL REDESIGN\n   ======================================== */\n.modal-modern {\n  background: #ffffff;\n  border-radius: 20px;\n  padding: 0;\n  overflow: hidden;\n  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(124, 58, 237, 0.08);\n  border: none;\n  transform: translateY(-10px);\n  opacity: 0;\n  animation: modalSlideIn 0.3s ease forwards;\n}\n\n@keyframes modalSlideIn {\n  to {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n.modal-modern::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  height: 4px;\n  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);\n}\n\n/* Modern Header */\n.modal-header-modern {\n  padding: 24px 28px;\n  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);\n  border-bottom: 1px solid rgba(102, 126, 234, 0.08);\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.modal-header-content {\n  display: flex;\n  align-items: center;\n  gap: 16px;\n}\n\n.modal-icon {\n  width: 48px;\n  height: 48px;\n  border-radius: 14px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);\n}\n\n.modal-header-modern h3 {\n  margin: 0;\n  font-size: 22px;\n  font-weight: 700;\n  color: #1e293b;\n  letter-spacing: -0.02em;\n}\n\n.modal-subtitle {\n  margin: 4px 0 0 0;\n  font-size: 14px;\n  color: #64748b;\n  font-weight: 400;\n}\n\n.modal-close-btn {\n  width: 36px;\n  height: 36px;\n  border-radius: 10px;\n  border: none;\n  background: rgba(100, 116, 139, 0.08);\n  color: #64748b;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.modal-close-btn:hover {\n  background: rgba(239, 68, 68, 0.1);\n  color: #ef4444;\n  transform: rotate(90deg);\n}\n\n/* Modern Body */\n.modal-body-modern {\n  padding: 28px;\n  background: #ffffff;\n  max-height: 70vh;\n  overflow-y: auto;\n  /* Custom scrollbar */\n}\n.modal-body-modern::-webkit-scrollbar {\n  width: 8px;\n}\n.modal-body-modern::-webkit-scrollbar-track {\n  background: #f1f5f9;\n  border-radius: 10px;\n}\n.modal-body-modern::-webkit-scrollbar-thumb {\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  border-radius: 10px;\n}\n.modal-body-modern::-webkit-scrollbar-thumb:hover {\n  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);\n}\n\n.modal-grid-modern {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 24px;\n  margin-bottom: 24px;\n}\n.modal-grid-modern.full {\n  grid-template-columns: 1fr 1fr;\n}\n\n.col-modern {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n\n/* Form Groups */\n.form-group-modern {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.form-group-modern label {\n  font-size: 14px;\n  font-weight: 600;\n  color: #334155;\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n\n/* Input with Icon */\n.input-with-icon {\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n.input-with-icon .input-icon {\n  position: absolute;\n  left: 14px;\n  color: #94a3b8;\n  pointer-events: none;\n  transition: color 0.2s ease;\n}\n.input-with-icon input,\n.input-with-icon select {\n  width: 100%;\n  padding: 12px 14px 12px 42px;\n  border: 2px solid #e2e8f0;\n  border-radius: 12px;\n  font-size: 14px;\n  color: #1e293b;\n  background: #ffffff;\n  transition: all 0.2s ease;\n  box-sizing: border-box;\n}\n.input-with-icon input:focus,\n.input-with-icon select:focus {\n  outline: none;\n  border-color: #667eea;\n  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);\n  transform: translateY(-1px);\n}\n.input-with-icon input:focus ~ .input-icon,\n.input-with-icon select:focus ~ .input-icon {\n  color: #667eea;\n}\n.input-with-icon input::-moz-placeholder, .input-with-icon select::-moz-placeholder {\n  color: #cbd5e1;\n}\n.input-with-icon input::placeholder,\n.input-with-icon select::placeholder {\n  color: #cbd5e1;\n}\n\n.select-modern {\n  width: 100%;\n  padding: 12px 14px;\n  border: 2px solid #e2e8f0;\n  border-radius: 12px;\n  font-size: 14px;\n  color: #1e293b;\n  background: #ffffff;\n  transition: all 0.2s ease;\n  box-sizing: border-box;\n  cursor: pointer;\n}\n.select-modern:focus {\n  outline: none;\n  border-color: #667eea;\n  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);\n}\n\n/* Error Messages */\n.input-error {\n  font-size: 12px;\n  color: #ef4444;\n  margin-top: -4px;\n  display: flex;\n  align-items: center;\n  gap: 4px;\n}\n.input-error::before {\n  content: \"⚠\";\n  font-size: 14px;\n}\n\n/* Modern Footer */\n.modal-footer-modern {\n  padding: 20px 28px;\n  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);\n  border-top: 1px solid rgba(102, 126, 234, 0.08);\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 12px;\n}\n\n.btn-cancel-modern {\n  padding: 11px 24px;\n  border: 2px solid #e2e8f0;\n  border-radius: 12px;\n  background: #ffffff;\n  color: #64748b;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.btn-cancel-modern:hover:not(:disabled) {\n  background: #f8fafc;\n  border-color: #cbd5e1;\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);\n}\n.btn-cancel-modern:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.btn-save-modern {\n  padding: 11px 28px;\n  border: none;\n  border-radius: 12px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: #ffffff;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.2s ease;\n  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.btn-save-modern:hover:not(:disabled) {\n  transform: translateY(-2px);\n  box-shadow: 0 12px 28px rgba(102, 126, 234, 0.4);\n}\n.btn-save-modern:disabled {\n  opacity: 0.7;\n  cursor: not-allowed;\n}\n\n.spinner-modern {\n  display: inline-block;\n  width: 14px;\n  height: 14px;\n  border: 2px solid rgba(255, 255, 255, 0.3);\n  border-top-color: #ffffff;\n  border-radius: 50%;\n  animation: spin 0.6s linear infinite;\n}\n\n@keyframes spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n/* Responsive Design */\n@media (max-width: 768px) {\n  .modal-grid-modern,\n  .modal-grid-modern.full {\n    grid-template-columns: 1fr;\n    gap: 16px;\n  }\n  .modal-header-modern {\n    padding: 20px;\n  }\n  .modal-body-modern {\n    padding: 20px;\n  }\n  .modal-footer-modern {\n    padding: 16px 20px;\n    flex-direction: column;\n  }\n  .modal-footer-modern button {\n    width: 100%;\n  }\n  .modal-icon {\n    width: 40px;\n    height: 40px;\n  }\n  .modal-header-modern h3 {\n    font-size: 18px;\n  }\n}\n.course-modal .primary {\n  background: linear-gradient(90deg, #7c3aed, #06b6d4);\n  color: #fff;\n  padding: 10px 14px;\n  border-radius: 10px;\n  border: none;\n  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.12);\n  cursor: pointer;\n}\n\n.course-modal .btn-ghost {\n  background: transparent;\n  border: 1px solid #eef2f7;\n  padding: 8px 12px;\n  border-radius: 8px;\n  cursor: pointer;\n}\n\n@media (max-width: 900px) {\n  .course-modal .form-grid {\n    grid-template-columns: 1fr;\n  }\n}\n/* Status select styling */\n.course-modal .status-box {\n  display: flex;\n  flex-direction: column;\n}\n\n.course-modal .status-select {\n  padding: 10px 12px;\n  border-radius: 10px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  background: #fff;\n  font-weight: 700;\n  min-width: 160px;\n  transition: box-shadow 160ms ease, transform 140ms ease;\n}\n\n.course-modal .status-select.is-active {\n  background: linear-gradient(90deg, #ecfdf5, #f0fff4);\n  border-color: rgba(16, 185, 129, 0.12);\n  color: #064e3b;\n}\n\n.course-modal .status-select.is-inactive {\n  background: linear-gradient(90deg, #fff7ed, #fffaf0);\n  border-color: rgba(245, 158, 11, 0.12);\n  color: #7c2d12;\n}\n\n.course-modal .status-select:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);\n}\n\n.course-modal .status-select:focus {\n  box-shadow: 0 12px 36px rgba(37, 99, 235, 0.08);\n}\n\n/* Modal form helpers */\n.input-error {\n  color: #dc2626;\n  font-size: 12px;\n  margin-top: 6px;\n}\n\n.modal .modal-body .col input {\n  width: 100%;\n  box-sizing: border-box;\n}\n\n.modal .modal-body .col .small {\n  padding: 6px 8px;\n  border-radius: 8px;\n  border: 1px solid #eef2f7;\n  background: #fbfdff;\n  cursor: pointer;\n}\n\n/* modal grid stacks on small screens */\n@media (max-width: 720px) {\n  .modal {\n    width: 94%;\n    padding: 14px;\n  }\n  .modal .modal-body .modal-grid,\n  .modal .modal-body .modal-grid.full {\n    grid-template-columns: 1fr;\n    gap: 0.75rem;\n  }\n}\n/* ========================================\n   COURSE MANAGEMENT PAGE STYLES - TABLE LAYOUT\n   ======================================== */\n.admin-courses-page {\n  padding: 28px;\n  background: #f8fafc;\n  min-height: 100vh;\n}\n\n/* Header with Breadcrumb */\n.page-header-courses {\n  margin-bottom: 24px;\n}\n.page-header-courses .breadcrumb {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 13px;\n  margin-bottom: 12px;\n  color: #64748b;\n}\n.page-header-courses .breadcrumb .breadcrumb-item.active {\n  color: #1e293b;\n  font-weight: 600;\n}\n.page-header-courses .breadcrumb .breadcrumb-separator {\n  color: #cbd5e1;\n}\n.page-header-courses h1 {\n  font-size: 28px;\n  font-weight: 700;\n  color: #1e293b;\n  margin: 0 0 8px 0;\n}\n.page-header-courses .subtitle {\n  color: #64748b;\n  font-size: 15px;\n  margin: 0;\n}\n\n/* Action Buttons Row */\n.action-buttons-row {\n  display: flex;\n  gap: 12px;\n  margin-bottom: 24px;\n  justify-content: flex-end;\n}\n.action-buttons-row .btn-action {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 20px;\n  border-radius: 10px;\n  border: none;\n  font-size: 14px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.action-buttons-row .btn-action.btn-import {\n  background: #06b6d4;\n  color: white;\n}\n.action-buttons-row .btn-action.btn-import:hover {\n  background: #0891b2;\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);\n}\n.action-buttons-row .btn-action.btn-export {\n  background: #f97316;\n  color: white;\n}\n.action-buttons-row .btn-action.btn-export:hover {\n  background: #ea580c;\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);\n}\n.action-buttons-row .btn-action.btn-add {\n  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);\n  color: white;\n}\n.action-buttons-row .btn-action.btn-add:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);\n}\n\n/* Stats Cards - Horizontal Layout */\n.courses-stats-cards {\n  display: grid;\n  grid-template-columns: repeat(6, 1fr);\n  gap: 16px;\n  margin-bottom: 24px;\n}\n.courses-stats-cards .stat-card {\n  background: #ffffff;\n  border: 1px solid #e2e8f0;\n  border-radius: 12px;\n  padding: 20px;\n  text-align: left;\n  transition: all 0.2s ease;\n}\n.courses-stats-cards .stat-card:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);\n  border-color: #cbd5e1;\n}\n.courses-stats-cards .stat-card .stat-label {\n  font-size: 13px;\n  color: #64748b;\n  margin-bottom: 8px;\n  font-weight: 500;\n}\n.courses-stats-cards .stat-card .stat-value {\n  font-size: 28px;\n  font-weight: 700;\n  color: #1e293b;\n}\n\n/* Search and Filters Section */\n.search-filter-section {\n  background: #ffffff;\n  border: 1px solid #e2e8f0;\n  border-radius: 12px;\n  padding: 20px;\n  margin-bottom: 24px;\n}\n.search-filter-section .search-box-table {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 12px 16px;\n  background: #f8fafc;\n  border: 1px solid #e2e8f0;\n  border-radius: 10px;\n  margin-bottom: 16px;\n}\n.search-filter-section .search-box-table svg {\n  color: #94a3b8;\n  flex-shrink: 0;\n}\n.search-filter-section .search-box-table input {\n  flex: 1;\n  border: none;\n  outline: none;\n  background: transparent;\n  font-size: 14px;\n  color: #1e293b;\n}\n.search-filter-section .search-box-table input::-moz-placeholder {\n  color: #cbd5e1;\n}\n.search-filter-section .search-box-table input::placeholder {\n  color: #cbd5e1;\n}\n.search-filter-section .filters-row {\n  display: flex;\n  gap: 12px;\n}\n.search-filter-section .filters-row .filter-select {\n  flex: 1;\n  padding: 10px 14px;\n  border: 1px solid #e2e8f0;\n  border-radius: 10px;\n  background: #ffffff;\n  font-size: 14px;\n  color: #475569;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.search-filter-section .filters-row .filter-select:hover {\n  border-color: #cbd5e1;\n}\n.search-filter-section .filters-row .filter-select:focus {\n  outline: none;\n  border-color: #667eea;\n  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);\n}\n\n/* Courses Table */\n.courses-table-container {\n  background: #ffffff;\n  border: 1px solid #e2e8f0;\n  border-radius: 12px;\n  overflow: hidden;\n}\n\n.courses-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.courses-table thead {\n  background: #f8fafc;\n  border-bottom: 2px solid #e2e8f0;\n}\n.courses-table thead th {\n  padding: 14px 16px;\n  text-align: left;\n  font-size: 13px;\n  font-weight: 600;\n  color: #475569;\n  text-transform: uppercase;\n  letter-spacing: 0.03em;\n}\n.courses-table tbody tr {\n  border-bottom: 1px solid #f1f5f9;\n  transition: all 0.2s ease;\n}\n.courses-table tbody tr:hover {\n  background: #f8fafc;\n}\n.courses-table tbody tr:last-child {\n  border-bottom: none;\n}\n.courses-table tbody td {\n  padding: 16px;\n  font-size: 14px;\n  color: #475569;\n  vertical-align: middle;\n}\n.courses-table .course-cell .course-name {\n  font-weight: 600;\n  color: #1e293b;\n  margin-bottom: 4px;\n}\n.courses-table .course-cell .course-code {\n  font-size: 12px;\n  color: #64748b;\n  font-weight: 500;\n}\n.courses-table .enrollment-cell {\n  font-weight: 600;\n  color: #1e293b;\n}\n.courses-table .enrollment-cell .enrollment-max {\n  color: #94a3b8;\n  font-weight: 400;\n}\n.courses-table .status-badge-table {\n  display: inline-block;\n  padding: 5px 12px;\n  border-radius: 20px;\n  font-size: 12px;\n  font-weight: 600;\n}\n.courses-table .status-badge-table.active {\n  background: #d1fae5;\n  color: #065f46;\n}\n.courses-table .status-badge-table.inactive {\n  background: #fee2e2;\n  color: #991b1b;\n}\n.courses-table .status-badge-table.completed {\n  background: #dbeafe;\n  color: #1e40af;\n}\n.courses-table .actions-cell {\n  display: flex;\n  gap: 6px;\n  align-items: center;\n}\n.courses-table .actions-cell .action-btn {\n  width: 32px;\n  height: 32px;\n  border-radius: 8px;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.courses-table .actions-cell .action-btn.view {\n  background: rgba(59, 130, 246, 0.1);\n  color: #3b82f6;\n}\n.courses-table .actions-cell .action-btn.view:hover {\n  background: rgba(59, 130, 246, 0.2);\n  transform: translateY(-2px);\n}\n.courses-table .actions-cell .action-btn.edit {\n  background: rgba(168, 85, 247, 0.1);\n  color: #a855f7;\n}\n.courses-table .actions-cell .action-btn.edit:hover {\n  background: rgba(168, 85, 247, 0.2);\n  transform: translateY(-2px);\n}\n.courses-table .actions-cell .action-btn.delete {\n  background: rgba(239, 68, 68, 0.1);\n  color: #ef4444;\n}\n.courses-table .actions-cell .action-btn.delete:hover {\n  background: rgba(239, 68, 68, 0.2);\n  transform: translateY(-2px);\n}\n.courses-table .actions-cell .action-btn.enroll {\n  background: rgba(16, 185, 129, 0.1);\n  color: #10b981;\n}\n.courses-table .actions-cell .action-btn.enroll:hover {\n  background: rgba(16, 185, 129, 0.2);\n  transform: translateY(-2px);\n}\n\n/* Empty State */\n.empty-state-table {\n  text-align: center;\n  padding: 80px 20px;\n  background: #ffffff;\n  border: 1px solid #e2e8f0;\n  border-radius: 12px;\n}\n.empty-state-table svg {\n  color: #cbd5e1;\n  margin-bottom: 20px;\n}\n.empty-state-table h3 {\n  margin: 0 0 10px 0;\n  font-size: 20px;\n  color: #1e293b;\n}\n.empty-state-table p {\n  color: #64748b;\n  margin-bottom: 24px;\n}\n\n/* Loading State */\n.loading-state {\n  text-align: center;\n  padding: 60px 20px;\n  font-size: 16px;\n  color: #64748b;\n  background: #ffffff;\n  border: 1px solid #e2e8f0;\n  border-radius: 12px;\n}\n\n/* Enrollment Modal Specific Styles */\n.modal-enroll-large {\n  max-width: 1200px !important;\n  width: 95% !important;\n}\n\n.enrollment-body-large {\n  max-height: 70vh;\n  overflow: hidden;\n  padding: 0 !important;\n}\n\n.enrollment-layout {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 24px;\n  padding: 24px;\n  height: 100%;\n}\n\n.enrollment-column {\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n}\n\n.enrollment-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 16px;\n  padding-bottom: 12px;\n  border-bottom: 2px solid #e2e8f0;\n}\n.enrollment-header h4 {\n  font-size: 16px;\n  font-weight: 700;\n  color: #1e293b;\n  margin: 0;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.enrollment-header h4 svg {\n  color: #667eea;\n}\n.enrollment-header .capacity-info {\n  font-size: 13px;\n  font-weight: 600;\n  color: #64748b;\n  padding: 4px 12px;\n  background: #f1f5f9;\n  border-radius: 20px;\n}\n\n.students-table-container {\n  flex: 1;\n  overflow-y: auto;\n  border: 1px solid #e2e8f0;\n  border-radius: 10px;\n  background: #ffffff;\n}\n.students-table-container::-webkit-scrollbar {\n  width: 8px;\n}\n.students-table-container::-webkit-scrollbar-track {\n  background: #f8fafc;\n}\n.students-table-container::-webkit-scrollbar-thumb {\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  border-radius: 10px;\n}\n.students-table-container::-webkit-scrollbar-thumb:hover {\n  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);\n}\n\n.enrollment-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.enrollment-table thead {\n  position: sticky;\n  top: 0;\n  background: #f8fafc;\n  z-index: 1;\n}\n.enrollment-table thead th {\n  padding: 12px 14px;\n  text-align: left;\n  font-size: 12px;\n  font-weight: 600;\n  color: #475569;\n  text-transform: uppercase;\n  letter-spacing: 0.03em;\n  border-bottom: 2px solid #e2e8f0;\n}\n.enrollment-table tbody tr {\n  border-bottom: 1px solid #f1f5f9;\n  transition: all 0.2s ease;\n}\n.enrollment-table tbody tr:hover {\n  background: #f8fafc;\n}\n.enrollment-table tbody tr:last-child {\n  border-bottom: none;\n}\n.enrollment-table tbody td {\n  padding: 12px 14px;\n  font-size: 13px;\n  color: #475569;\n  vertical-align: middle;\n}\n.enrollment-table .student-cell {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.enrollment-table .student-cell .student-avatar-small {\n  width: 32px;\n  height: 32px;\n  border-radius: 8px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  font-weight: 700;\n  font-size: 13px;\n  flex-shrink: 0;\n}\n.enrollment-table .student-cell .student-name-text {\n  font-weight: 600;\n  color: #1e293b;\n}\n.enrollment-table .student-id-badge {\n  display: inline-block;\n  padding: 4px 10px;\n  background: #f1f5f9;\n  border-radius: 6px;\n  font-size: 12px;\n  font-weight: 600;\n  color: #64748b;\n}\n.enrollment-table .email-cell {\n  color: #64748b;\n  font-size: 12px;\n}\n.enrollment-table .btn-table-action {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  padding: 6px 12px;\n  border-radius: 6px;\n  border: none;\n  font-size: 12px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n.enrollment-table .btn-table-action.add {\n  background: rgba(16, 185, 129, 0.1);\n  color: #10b981;\n}\n.enrollment-table .btn-table-action.add:hover:not(:disabled) {\n  background: rgba(16, 185, 129, 0.2);\n  transform: translateY(-1px);\n}\n.enrollment-table .btn-table-action.add:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.enrollment-table .btn-table-action.remove {\n  background: rgba(239, 68, 68, 0.1);\n  color: #ef4444;\n}\n.enrollment-table .btn-table-action.remove:hover {\n  background: rgba(239, 68, 68, 0.2);\n  transform: translateY(-1px);\n}\n\n.empty-enrollment {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 60px 20px;\n  background: #f8fafc;\n  border: 2px dashed #e2e8f0;\n  border-radius: 10px;\n  text-align: center;\n  color: #94a3b8;\n}\n.empty-enrollment svg {\n  margin-bottom: 16px;\n}\n.empty-enrollment p {\n  margin: 0 0 8px 0;\n  font-size: 16px;\n  font-weight: 600;\n  color: #475569;\n}\n.empty-enrollment span {\n  font-size: 13px;\n  color: #94a3b8;\n}\n\n/* Textarea styling for course form */\n.form-group-modern textarea {\n  width: 100%;\n  padding: 12px 14px;\n  border: 2px solid #e2e8f0;\n  border-radius: 12px;\n  font-size: 14px;\n  color: #1e293b;\n  font-family: inherit;\n  resize: vertical;\n  transition: all 0.2s ease;\n}\n.form-group-modern textarea:focus {\n  outline: none;\n  border-color: #667eea;\n  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);\n}\n.form-group-modern textarea::-moz-placeholder {\n  color: #cbd5e1;\n}\n.form-group-modern textarea::placeholder {\n  color: #cbd5e1;\n}\n\n/* Responsive Design for Courses */\n@media (max-width: 1400px) {\n  .courses-stats-cards {\n    grid-template-columns: repeat(3, 1fr);\n  }\n}\n@media (max-width: 1024px) {\n  .courses-stats-cards {\n    grid-template-columns: repeat(2, 1fr);\n  }\n  .courses-table {\n    font-size: 13px;\n  }\n  .courses-table thead th,\n  .courses-table tbody td {\n    padding: 12px;\n  }\n  .filters-row {\n    flex-direction: column;\n  }\n}\n@media (max-width: 768px) {\n  .admin-courses-page {\n    padding: 16px;\n  }\n  .courses-stats-cards {\n    grid-template-columns: 1fr;\n  }\n  .action-buttons-row {\n    flex-direction: column;\n  }\n  .action-buttons-row .btn-action {\n    width: 100%;\n    justify-content: center;\n  }\n  .courses-table-container {\n    overflow-x: auto;\n  }\n  .courses-table {\n    min-width: 800px;\n  }\n  .page-header-courses h1 {\n    font-size: 22px;\n  }\n}\n/* Prevent fixed sidebar covering content on medium screens */\n@media (max-width: 900px) {\n  .admin-dashboard-layout .sidebar {\n    position: relative;\n    width: 100%;\n    height: auto;\n  }\n  .admin-dashboard-layout .admin-main {\n    margin-left: 0;\n  }\n}\n/* Dashboard middle grid: Enrollment Overview + Upcoming Events side by side */\n.dashboard-middle-grid {\n  display: grid;\n  grid-template-columns: 2fr 1fr;\n  gap: 24px;\n  margin-top: 24px;\n}\n@media (max-width: 1200px) {\n  .dashboard-middle-grid {\n    grid-template-columns: 1fr;\n  }\n}\n\n/* Upcoming Events & Recent Activity Sections */\n.upcoming-events-card {\n  background: #ffffff;\n  border-radius: 16px;\n  padding: 24px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);\n}\n.upcoming-events-card .section-header {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin-bottom: 20px;\n}\n.upcoming-events-card .section-header .calendar-icon {\n  color: #f59e0b;\n  font-size: 18px;\n}\n.upcoming-events-card .section-header h3 {\n  margin: 0;\n  font-size: 17px;\n  font-weight: 700;\n  color: #0f172a;\n}\n.upcoming-events-card .event-item {\n  display: flex;\n  align-items: flex-start;\n  gap: 14px;\n  padding: 16px;\n  border-radius: 12px;\n  background: #f8fafc;\n  margin-bottom: 12px;\n  border-left: 3px solid #e2e8f0;\n  transition: all 0.2s ease;\n  /* Color variants for event left border */\n}\n.upcoming-events-card .event-item:hover {\n  background: #f1f5f9;\n  border-left-color: #f59e0b;\n}\n.upcoming-events-card .event-item:last-child {\n  margin-bottom: 0;\n}\n.upcoming-events-card .event-item .event-date {\n  flex-shrink: 0;\n  text-align: center;\n}\n.upcoming-events-card .event-item .event-date .month {\n  font-size: 11px;\n  color: #64748b;\n  font-weight: 600;\n  text-transform: uppercase;\n}\n.upcoming-events-card .event-item .event-date .day {\n  font-size: 18px;\n  font-weight: 700;\n  color: #0f172a;\n  line-height: 1;\n}\n.upcoming-events-card .event-item .event-details {\n  flex: 1;\n}\n.upcoming-events-card .event-item .event-details .event-title {\n  font-size: 14px;\n  font-weight: 600;\n  color: #0f172a;\n  margin-bottom: 4px;\n}\n.upcoming-events-card .event-item .event-details .event-time {\n  font-size: 12px;\n  color: #64748b;\n}\n.upcoming-events-card .event-item.event-yellow {\n  border-left-color: #f59e0b;\n}\n.upcoming-events-card .event-item.event-green {\n  border-left-color: #10b981;\n}\n.upcoming-events-card .event-item.event-blue {\n  border-left-color: #3b82f6;\n}\n.upcoming-events-card .event-item.event-purple {\n  border-left-color: #a855f7;\n}\n\n/* Recent Activity Horizontal Section (Bottom) */\n.recent-activity-horizontal {\n  margin-top: 24px;\n}\n.recent-activity-horizontal .recent-activity-card .activity-list-horizontal {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 16px;\n}\n@media (max-width: 1400px) {\n  .recent-activity-horizontal .recent-activity-card .activity-list-horizontal {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n@media (max-width: 768px) {\n  .recent-activity-horizontal .recent-activity-card .activity-list-horizontal {\n    grid-template-columns: 1fr;\n  }\n}\n.recent-activity-horizontal .recent-activity-card .activity-list-horizontal .activity-item {\n  background: #f8fafc;\n  padding: 16px;\n  border-radius: 12px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  transition: all 0.2s ease;\n}\n.recent-activity-horizontal .recent-activity-card .activity-list-horizontal .activity-item:hover {\n  background: #f1f5f9;\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);\n}\n\n.recent-activity-card {\n  background: #ffffff;\n  border-radius: 16px;\n  padding: 24px;\n  border: 1px solid rgba(15, 23, 42, 0.06);\n  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);\n}\n.recent-activity-card .section-header {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin-bottom: 20px;\n}\n.recent-activity-card .section-header .activity-icon {\n  color: #3b82f6;\n  font-size: 18px;\n}\n.recent-activity-card .section-header h3 {\n  margin: 0;\n  font-size: 17px;\n  font-weight: 700;\n  color: #0f172a;\n}\n.recent-activity-card .activity-list {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.recent-activity-card .activity-item {\n  display: flex;\n  align-items: flex-start;\n  gap: 14px;\n  /* Icon color variants */\n}\n.recent-activity-card .activity-item .activity-icon-box {\n  width: 44px;\n  height: 44px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 18px;\n  flex-shrink: 0;\n  background: rgba(59, 130, 246, 0.1);\n  color: #3b82f6;\n}\n.recent-activity-card .activity-item .activity-content {\n  flex: 1;\n}\n.recent-activity-card .activity-item .activity-content .activity-text {\n  font-size: 14px;\n  color: #0f172a;\n  margin-bottom: 4px;\n  font-weight: 500;\n}\n.recent-activity-card .activity-item .activity-content .activity-text strong {\n  font-weight: 600;\n  color: #0f172a;\n}\n.recent-activity-card .activity-item .activity-content .activity-time {\n  font-size: 12px;\n  color: #64748b;\n}\n.recent-activity-card .activity-item.activity-user .activity-icon-box {\n  background: rgba(59, 130, 246, 0.1);\n  color: #3b82f6;\n}\n.recent-activity-card .activity-item.activity-course .activity-icon-box {\n  background: rgba(249, 115, 22, 0.1);\n  color: #f97316;\n}\n.recent-activity-card .activity-item.activity-clock .activity-icon-box {\n  background: rgba(6, 182, 212, 0.1);\n  color: #06b6d4;\n}\n.recent-activity-card .activity-item.activity-bell .activity-icon-box {\n  background: rgba(16, 185, 129, 0.1);\n  color: #10b981;\n}\n\n/* Visible 'See' label next to view icon for accessibility/clarity */\n.view-button {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  padding: 6px 8px;\n  border-radius: 8px;\n  background: transparent;\n  border: none;\n  color: #475569;\n}\n\n.view-button .action-label {\n  color: #6b7280;\n  font-weight: 700;\n  font-size: 13px;\n  display: inline-block;\n  line-height: 1;\n  vertical-align: middle;\n}\n\n.view-button:hover {\n  background: rgba(15, 23, 42, 0.03);\n  transform: translateY(-2px);\n}\n\n/* Centered modal variant used for detail views */\n.modal-backdrop, .modal-overlay {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.modal-centered .modal {\n  animation: modalScaleIn 220ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;\n  transform: scale(0.98);\n  opacity: 0;\n}\n\n@keyframes modalScaleIn {\n  to {\n    transform: scale(1);\n    opacity: 1;\n  }\n}\n.modal-card.with-shadow {\n  box-shadow: 0 30px 80px rgba(2, 6, 23, 0.12);\n  border-radius: 12px;\n}\n\n.modal-card {\n  border-radius: 12px;\n  background: #fff;\n}\n\n.modal-backdrop {\n  position: fixed;\n  inset: 0;\n  background: rgba(10, 12, 20, 0.35);\n  z-index: 99999;\n}\n\n.modal-centered .modal {\n  max-width: 820px;\n  width: 92%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -59193,7 +59193,7 @@ function Login() {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "login-card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-        children: "Welcome Back"
+        children: "Saint Joseph Institute of Technology"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "subtitle",
         children: "Sign in to access your account"
@@ -59608,7 +59608,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.js");
 /* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Register */ "./resources/js/components/Register.js");
 /* harmony import */ var _pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/admin/AdminDashboard */ "./resources/js/components/pages/admin/AdminDashboard.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _pages_admin_AdminCourses__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/admin/AdminCourses */ "./resources/js/components/pages/admin/AdminCourses.js");
+/* harmony import */ var _pages_admin_AdminReports__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/admin/AdminReports */ "./resources/js/components/pages/admin/AdminReports.js");
+/* harmony import */ var _pages_admin_AdminDocuments__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/admin/AdminDocuments */ "./resources/js/components/pages/admin/AdminDocuments.js");
+/* harmony import */ var _pages_admin_AdminSettings__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/admin/AdminSettings */ "./resources/js/components/pages/admin/AdminSettings.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -59619,45 +59623,1530 @@ __webpack_require__.r(__webpack_exports__);
 // ✅ Only Admin Dashboard (inside the admin folder)
 
 
+
+
+
+
 function Router() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Navigate, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Navigate, {
           to: "/login"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
         path: "/login",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
         path: "/register",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Register__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Register__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
         path: "/admin/dashboard",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
         path: "/admin/users",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__["default"], {
           initialPage: "users"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
         path: "/admin/students",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__["default"], {
           initialPage: "students"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
         path: "/admin/teachers",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_5__["default"], {
           initialPage: "teachers"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+        path: "/admin/courses",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_admin_AdminCourses__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+        path: "/admin/reports",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_admin_AdminReports__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+        path: "/admin/documents",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_admin_AdminDocuments__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+        path: "/admin/settings",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_admin_AdminSettings__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
         path: "*",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h1", {
           children: "404 - Page Not Found"
         })
       })]
     })
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/admin/AdminCourses.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/pages/admin/AdminCourses.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AdminCourses)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/pages/admin/Sidebar.js");
+/* harmony import */ var _sass_AdminDashboard_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../sass/AdminDashboard.scss */ "./resources/sass/AdminDashboard.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+function AdminCourses() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('courses'),
+    _useState2 = _slicedToArray(_useState, 2),
+    activePage = _useState2[0],
+    setActivePage = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    courses = _useState4[0],
+    setCourses = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    students = _useState6[0],
+    setStudents = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState8 = _slicedToArray(_useState7, 2),
+    loading = _useState8[0],
+    setLoading = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState0 = _slicedToArray(_useState9, 2),
+    searchTerm = _useState0[0],
+    setSearchTerm = _useState0[1];
+  var _useState1 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
+    _useState10 = _slicedToArray(_useState1, 2),
+    statusFilter = _useState10[0],
+    setStatusFilter = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
+    _useState12 = _slicedToArray(_useState11, 2),
+    semesterFilter = _useState12[0],
+    setSemesterFilter = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
+    _useState14 = _slicedToArray(_useState13, 2),
+    creditsFilter = _useState14[0],
+    setCreditsFilter = _useState14[1];
+
+  // Course Modal State
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState16 = _slicedToArray(_useState15, 2),
+    showCourseModal = _useState16[0],
+    setShowCourseModal = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    editingCourse = _useState18[0],
+    setEditingCourse = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      name: '',
+      code: '',
+      description: '',
+      credits: '',
+      department: '',
+      semester: '',
+      teacher_id: '',
+      max_students: '',
+      schedule: '',
+      status: 'active'
+    }),
+    _useState20 = _slicedToArray(_useState19, 2),
+    courseForm = _useState20[0],
+    setCourseForm = _useState20[1];
+
+  // Enrollment Modal State
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState22 = _slicedToArray(_useState21, 2),
+    showEnrollModal = _useState22[0],
+    setShowEnrollModal = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState24 = _slicedToArray(_useState23, 2),
+    selectedCourse = _useState24[0],
+    setSelectedCourse = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState26 = _slicedToArray(_useState25, 2),
+    enrolledStudents = _useState26[0],
+    setEnrolledStudents = _useState26[1];
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState28 = _slicedToArray(_useState27, 2),
+    availableStudents = _useState28[0],
+    setAvailableStudents = _useState28[1];
+
+  // Load data on mount
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    loadCourses();
+    loadStudents();
+  }, []);
+  var loadCourses = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var res, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            _context.p = 0;
+            setLoading(true);
+            _context.n = 1;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/admin/courses');
+          case 1:
+            res = _context.v;
+            setCourses(res.data.courses || []);
+            _context.n = 3;
+            break;
+          case 2:
+            _context.p = 2;
+            _t = _context.v;
+            console.error('Failed to load courses', _t);
+          case 3:
+            _context.p = 3;
+            setLoading(false);
+            return _context.f(3);
+          case 4:
+            return _context.a(2);
+        }
+      }, _callee, null, [[0, 2, 3, 4]]);
+    }));
+    return function loadCourses() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var loadStudents = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+      var res, _t2;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            _context2.p = 0;
+            _context2.n = 1;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/admin/users?role=student');
+          case 1:
+            res = _context2.v;
+            setStudents(res.data.users || res.data || []);
+            _context2.n = 3;
+            break;
+          case 2:
+            _context2.p = 2;
+            _t2 = _context2.v;
+            console.error('Failed to load students', _t2);
+          case 3:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[0, 2]]);
+    }));
+    return function loadStudents() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var openAddCourse = function openAddCourse() {
+    setEditingCourse(null);
+    setCourseForm({
+      name: '',
+      code: '',
+      description: '',
+      credits: '',
+      department: '',
+      semester: '',
+      teacher_id: '',
+      max_students: '',
+      schedule: '',
+      status: 'active'
+    });
+    setShowCourseModal(true);
+  };
+  var openEditCourse = function openEditCourse(course) {
+    setEditingCourse(course);
+    setCourseForm({
+      name: course.name || '',
+      code: course.code || '',
+      description: course.description || '',
+      credits: course.credits || '',
+      department: course.department || '',
+      semester: course.semester || '',
+      teacher_id: course.teacher_id || '',
+      max_students: course.max_students || '',
+      schedule: course.schedule || '',
+      status: course.status || 'active'
+    });
+    setShowCourseModal(true);
+  };
+  var handleSaveCourse = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(e) {
+      var _err$response, _t3;
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
+          case 0:
+            e.preventDefault();
+            _context3.p = 1;
+            if (!editingCourse) {
+              _context3.n = 3;
+              break;
+            }
+            _context3.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/admin/courses/".concat(editingCourse.id), courseForm);
+          case 2:
+            _context3.n = 4;
+            break;
+          case 3:
+            _context3.n = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/courses', courseForm);
+          case 4:
+            setShowCourseModal(false);
+            _context3.n = 5;
+            return loadCourses();
+          case 5:
+            try {
+              window.dispatchEvent(new CustomEvent('admin:courses-changed', {
+                detail: {
+                  active_courses: courses.length
+                }
+              }));
+            } catch (e) {}
+            _context3.n = 7;
+            break;
+          case 6:
+            _context3.p = 6;
+            _t3 = _context3.v;
+            console.error('Failed to save course', _t3);
+            alert(((_err$response = _t3.response) === null || _err$response === void 0 || (_err$response = _err$response.data) === null || _err$response === void 0 ? void 0 : _err$response.message) || 'Failed to save course');
+          case 7:
+            return _context3.a(2);
+        }
+      }, _callee3, null, [[1, 6]]);
+    }));
+    return function handleSaveCourse(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var handleDeleteCourse = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(courseId) {
+      var _t4;
+      return _regenerator().w(function (_context4) {
+        while (1) switch (_context4.p = _context4.n) {
+          case 0:
+            if (confirm('Are you sure you want to delete this course?')) {
+              _context4.n = 1;
+              break;
+            }
+            return _context4.a(2);
+          case 1:
+            _context4.p = 1;
+            _context4.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/api/admin/courses/".concat(courseId));
+          case 2:
+            _context4.n = 3;
+            return loadCourses();
+          case 3:
+            try {
+              window.dispatchEvent(new CustomEvent('admin:courses-changed', {
+                detail: {
+                  active_courses: courses.length
+                }
+              }));
+            } catch (e) {}
+            _context4.n = 5;
+            break;
+          case 4:
+            _context4.p = 4;
+            _t4 = _context4.v;
+            console.error('Failed to delete course', _t4);
+            alert('Failed to delete course');
+          case 5:
+            return _context4.a(2);
+        }
+      }, _callee4, null, [[1, 4]]);
+    }));
+    return function handleDeleteCourse(_x2) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  var openEnrollModal = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(course) {
+      var enrollRes, enrolled, enrolledIds, available, _t5;
+      return _regenerator().w(function (_context5) {
+        while (1) switch (_context5.p = _context5.n) {
+          case 0:
+            setSelectedCourse(course);
+            _context5.p = 1;
+            _context5.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/admin/courses/".concat(course.id, "/enrollments"));
+          case 2:
+            enrollRes = _context5.v;
+            enrolled = enrollRes.data.students || enrollRes.data.enrollments || [];
+            setEnrolledStudents(enrolled);
+
+            // Filter available students (not enrolled)
+            enrolledIds = enrolled.map(function (s) {
+              return s.id || s.student_id;
+            });
+            available = students.filter(function (s) {
+              return !enrolledIds.includes(s.id);
+            });
+            setAvailableStudents(available);
+            setShowEnrollModal(true);
+            _context5.n = 4;
+            break;
+          case 3:
+            _context5.p = 3;
+            _t5 = _context5.v;
+            console.error('Failed to load enrollments', _t5);
+            setEnrolledStudents([]);
+            setAvailableStudents(students);
+            setShowEnrollModal(true);
+          case 4:
+            return _context5.a(2);
+        }
+      }, _callee5, null, [[1, 3]]);
+    }));
+    return function openEnrollModal(_x3) {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+  var handleEnrollStudent = /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(studentId) {
+      var _err$response2, _t6;
+      return _regenerator().w(function (_context6) {
+        while (1) switch (_context6.p = _context6.n) {
+          case 0:
+            _context6.p = 0;
+            _context6.n = 1;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/admin/courses/".concat(selectedCourse.id, "/enroll"), {
+              student_id: studentId
+            });
+          case 1:
+            _context6.n = 2;
+            return loadCourses();
+          case 2:
+            openEnrollModal(selectedCourse);
+            _context6.n = 4;
+            break;
+          case 3:
+            _context6.p = 3;
+            _t6 = _context6.v;
+            console.error('Failed to enroll student', _t6);
+            alert(((_err$response2 = _t6.response) === null || _err$response2 === void 0 || (_err$response2 = _err$response2.data) === null || _err$response2 === void 0 ? void 0 : _err$response2.message) || 'Failed to enroll student');
+          case 4:
+            return _context6.a(2);
+        }
+      }, _callee6, null, [[0, 3]]);
+    }));
+    return function handleEnrollStudent(_x4) {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+  var handleUnenrollStudent = /*#__PURE__*/function () {
+    var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(studentId) {
+      var _t7;
+      return _regenerator().w(function (_context7) {
+        while (1) switch (_context7.p = _context7.n) {
+          case 0:
+            if (confirm('Remove this student from the course?')) {
+              _context7.n = 1;
+              break;
+            }
+            return _context7.a(2);
+          case 1:
+            _context7.p = 1;
+            _context7.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/admin/courses/".concat(selectedCourse.id, "/unenroll"), {
+              student_id: studentId
+            });
+          case 2:
+            _context7.n = 3;
+            return loadCourses();
+          case 3:
+            openEnrollModal(selectedCourse);
+            _context7.n = 5;
+            break;
+          case 4:
+            _context7.p = 4;
+            _t7 = _context7.v;
+            console.error('Failed to unenroll student', _t7);
+            alert('Failed to remove student');
+          case 5:
+            return _context7.a(2);
+        }
+      }, _callee7, null, [[1, 4]]);
+    }));
+    return function handleUnenrollStudent(_x5) {
+      return _ref7.apply(this, arguments);
+    };
+  }();
+  var filteredCourses = courses.filter(function (course) {
+    var searchLower = searchTerm.toLowerCase();
+    var matchesSearch = (course.name || '').toLowerCase().includes(searchLower) || (course.code || '').toLowerCase().includes(searchLower) || (course.department || '').toLowerCase().includes(searchLower) || (course.teacher_name || '').toLowerCase().includes(searchLower);
+    var matchesStatus = statusFilter === 'all' || (course.status || 'active').toLowerCase() === statusFilter.toLowerCase();
+    var matchesSemester = semesterFilter === 'all' || course.semester === semesterFilter;
+    var matchesCredits = creditsFilter === 'all' || course.credits === creditsFilter;
+    return matchesSearch && matchesStatus && matchesSemester && matchesCredits;
+  });
+  var totalEnrollments = courses.reduce(function (sum, c) {
+    return sum + (c.enrollment_count || 0);
+  }, 0);
+  var activeCourses = courses.filter(function (c) {
+    return (c.status || 'active') === 'active';
+  }).length;
+  var inactiveCourses = courses.filter(function (c) {
+    return c.status === 'inactive';
+  }).length;
+  var avgEnrollment = courses.length > 0 ? Math.round(totalEnrollments / courses.length) : 0;
+  var atCapacity = courses.filter(function (c) {
+    return c.enrollment_count >= c.max_students && c.max_students > 0;
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "admin-dashboard-layout",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      activePage: activePage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("main", {
+      className: "admin-main",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "admin-courses-page",
+        style: {
+          padding: '24px 32px',
+          background: '#f8f9fa',
+          minHeight: '100vh'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          style: {
+            marginBottom: 24
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              marginBottom: 8
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h1", {
+                style: {
+                  margin: 0,
+                  fontSize: 24,
+                  fontWeight: 700,
+                  color: '#f59e0b',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8
+                },
+                children: ["Course Management", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+                  style: {
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: '#fef3c7',
+                    color: '#f59e0b',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    padding: '4px 12px',
+                    borderRadius: 12
+                  },
+                  children: [courses.length, " courses"]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                style: {
+                  margin: '4px 0 0 0',
+                  fontSize: 14,
+                  color: '#9ca3af'
+                },
+                children: "Manage courses and curriculum"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+                width: "20",
+                height: "20",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "#9ca3af",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("rect", {
+                  x: "3",
+                  y: "4",
+                  width: "18",
+                  height: "18",
+                  rx: "2",
+                  ry: "2",
+                  strokeWidth: 2
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("line", {
+                  x1: "16",
+                  y1: "2",
+                  x2: "16",
+                  y2: "6",
+                  strokeWidth: 2
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("line", {
+                  x1: "8",
+                  y1: "2",
+                  x2: "8",
+                  y2: "6",
+                  strokeWidth: 2
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("line", {
+                  x1: "3",
+                  y1: "10",
+                  x2: "21",
+                  y2: "10",
+                  strokeWidth: 2
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+                style: {
+                  padding: '6px 32px 6px 8px',
+                  borderRadius: 8,
+                  border: '1px solid #e5e7eb',
+                  fontSize: 14,
+                  color: '#6b7280',
+                  background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px',
+                  appearance: 'none',
+                  cursor: 'pointer',
+                  outline: 'none'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "",
+                  children: "2024-2025"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "2023-2024",
+                  children: "2023-2024"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "2022-2023",
+                  children: "2022-2023"
+                })]
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            background: '#f3f4f6',
+            borderRadius: 12,
+            padding: '16px 20px',
+            marginBottom: 20
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              gap: 12,
+              alignItems: 'center',
+              marginBottom: 12
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                color: '#6b7280',
+                fontSize: 13,
+                fontWeight: 600
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("svg", {
+                width: "16",
+                height: "16",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                })
+              }), "Filters:"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+              value: statusFilter,
+              onChange: function onChange(e) {
+                return setStatusFilter(e.target.value);
+              },
+              style: {
+                padding: '6px 28px 6px 10px',
+                borderRadius: 8,
+                border: '1px solid #d1d5db',
+                fontSize: 13,
+                color: '#374151',
+                background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 6px center/14px',
+                appearance: 'none',
+                cursor: 'pointer',
+                outline: 'none'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                value: "all",
+                children: "All Departments"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                value: "computer-science",
+                children: "Computer Science"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                value: "engineering",
+                children: "Engineering"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                value: "business",
+                children: "Business"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+              value: semesterFilter,
+              onChange: function onChange(e) {
+                return setSemesterFilter(e.target.value);
+              },
+              style: {
+                padding: '6px 28px 6px 10px',
+                borderRadius: 8,
+                border: '1px solid #d1d5db',
+                fontSize: 13,
+                color: '#374151',
+                background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 6px center/14px',
+                appearance: 'none',
+                cursor: 'pointer',
+                outline: 'none'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                value: "all",
+                children: "All Status"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                value: "active",
+                children: "Active"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                value: "inactive",
+                children: "Inactive"
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              gap: 12
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                flex: 1,
+                position: 'relative'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("svg", {
+                style: {
+                  position: 'absolute',
+                  left: 12,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: '#9ca3af'
+                },
+                width: "18",
+                height: "18",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "text",
+                placeholder: "Search courses...",
+                value: searchTerm,
+                onChange: function onChange(e) {
+                  return setSearchTerm(e.target.value);
+                },
+                style: {
+                  width: '100%',
+                  padding: '10px 16px 10px 40px',
+                  borderRadius: 8,
+                  background: '#fff',
+                  border: '1px solid #e5e7eb',
+                  fontSize: 14,
+                  outline: 'none',
+                  transition: 'border 0.2s'
+                },
+                onFocus: function onFocus(e) {
+                  return e.target.style.borderColor = '#f59e0b';
+                },
+                onBlur: function onBlur(e) {
+                  return e.target.style.borderColor = '#e5e7eb';
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              style: {
+                padding: '10px 16px',
+                borderRadius: 8,
+                border: '1px solid #e5e7eb',
+                background: '#fff',
+                color: '#374151',
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                transition: 'all 0.2s'
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                e.currentTarget.style.background = '#f9fafb';
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                e.currentTarget.style.background = '#fff';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiDownload, {
+                size: 16
+              }), " Export"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              onClick: openAddCourse,
+              style: {
+                padding: '10px 20px',
+                borderRadius: 8,
+                border: 'none',
+                background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)',
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'transform 0.2s',
+                boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)'
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                return e.currentTarget.style.transform = 'translateY(-2px)';
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                return e.currentTarget.style.transform = 'translateY(0)';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {
+                size: 18
+              }), " Add Course"]
+            })]
+          })]
+        }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          style: {
+            textAlign: 'center',
+            padding: '60px 0',
+            color: '#6b7280'
+          },
+          children: "Loading courses..."
+        }) : filteredCourses.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            textAlign: 'center',
+            padding: '60px 0'
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+            size: 48,
+            color: "#d1d5db"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+            style: {
+              margin: '16px 0 8px',
+              color: '#374151'
+            },
+            children: "No courses found"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+            style: {
+              color: '#6b7280',
+              marginBottom: 24
+            },
+            children: "Try adjusting your filters or add a new course"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+            onClick: openAddCourse,
+            style: {
+              padding: '10px 20px',
+              borderRadius: 8,
+              border: 'none',
+              background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)',
+              color: '#fff',
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {
+              size: 16
+            }), " Add Course"]
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
+            gap: 24
+          },
+          children: filteredCourses.map(function (course) {
+            var enrollmentPercent = course.max_students > 0 ? (course.enrollment_count || 0) / course.max_students * 100 : 0;
+            var gradientColor = course.department === 'Computer Science' ? 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)' : course.department === 'Engineering' ? 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)' : 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)';
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                background: '#fff',
+                borderRadius: 16,
+                overflow: 'hidden',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+                transition: 'transform 0.2s, box-shadow 0.2s'
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12)';
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                style: {
+                  height: 4,
+                  background: gradientColor
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                style: {
+                  padding: 24
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+                  style: {
+                    margin: '0 0 4px 0',
+                    fontSize: 18,
+                    fontWeight: 600,
+                    color: '#111827'
+                  },
+                  children: course.name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                  style: {
+                    margin: '0 0 16px 0',
+                    fontSize: 14,
+                    color: '#6b7280'
+                  },
+                  children: course.code
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                  style: {
+                    margin: '0 0 20px 0',
+                    fontSize: 14,
+                    color: '#6b7280',
+                    lineHeight: 1.5
+                  },
+                  children: course.description || 'No description available'
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  style: {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 12,
+                    marginBottom: 20
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    style: {
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+                      size: 16,
+                      color: "#6b7280"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                      style: {
+                        fontSize: 13,
+                        color: '#374151'
+                      },
+                      children: course.department || 'General'
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+                      style: {
+                        padding: '2px 8px',
+                        borderRadius: 6,
+                        fontSize: 12,
+                        fontWeight: 500,
+                        background: '#dbeafe',
+                        color: '#1d4ed8',
+                        marginLeft: 'auto'
+                      },
+                      children: [course.credits || 3, " Credits"]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    style: {
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {
+                      size: 16,
+                      color: "#6b7280"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                      style: {
+                        flex: 1
+                      },
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                        style: {
+                          fontSize: 13,
+                          color: '#374151',
+                          marginBottom: 4
+                        },
+                        children: [course.enrollment_count || 0, " / ", course.max_students || 50, " Students"]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                        style: {
+                          height: 6,
+                          background: '#e5e7eb',
+                          borderRadius: 3,
+                          overflow: 'hidden'
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                          style: {
+                            height: '100%',
+                            background: gradientColor,
+                            width: "".concat(Math.min(enrollmentPercent, 100), "%"),
+                            transition: 'width 0.3s'
+                          }
+                        })
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    style: {
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiClock, {
+                      size: 16,
+                      color: "#6b7280"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                      style: {
+                        fontSize: 13,
+                        color: '#374151'
+                      },
+                      children: course.schedule || 'Schedule TBD'
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  style: {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    paddingTop: 16,
+                    borderTop: '1px solid #f3f4f6'
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                      style: {
+                        fontSize: 12,
+                        color: '#6b7280',
+                        marginBottom: 2
+                      },
+                      children: course.teacher_name || 'No instructor'
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                      style: {
+                        padding: '4px 10px',
+                        borderRadius: 6,
+                        fontSize: 12,
+                        fontWeight: 500,
+                        background: course.status === 'active' ? '#d1fae5' : '#f3f4f6',
+                        color: course.status === 'active' ? '#065f46' : '#6b7280'
+                      },
+                      children: course.status || 'active'
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    style: {
+                      display: 'flex',
+                      gap: 4
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                      onClick: function onClick() {
+                        return openEditCourse(course);
+                      },
+                      title: "Edit",
+                      style: {
+                        width: 32,
+                        height: 32,
+                        borderRadius: 6,
+                        border: 'none',
+                        background: '#f3f4f6',
+                        color: '#6b7280',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s'
+                      },
+                      onMouseEnter: function onMouseEnter(e) {
+                        e.currentTarget.style.background = '#fef3c7';
+                        e.currentTarget.style.color = '#f59e0b';
+                      },
+                      onMouseLeave: function onMouseLeave(e) {
+                        e.currentTarget.style.background = '#f3f4f6';
+                        e.currentTarget.style.color = '#6b7280';
+                      },
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEdit2, {
+                        size: 14
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                      onClick: function onClick() {
+                        return handleDeleteCourse(course.id);
+                      },
+                      title: "Delete",
+                      style: {
+                        width: 32,
+                        height: 32,
+                        borderRadius: 6,
+                        border: 'none',
+                        background: '#f3f4f6',
+                        color: '#6b7280',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s'
+                      },
+                      onMouseEnter: function onMouseEnter(e) {
+                        e.currentTarget.style.background = '#fee2e2';
+                        e.currentTarget.style.color = '#991b1b';
+                      },
+                      onMouseLeave: function onMouseLeave(e) {
+                        e.currentTarget.style.background = '#f3f4f6';
+                        e.currentTarget.style.color = '#6b7280';
+                      },
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiTrash2, {
+                        size: 14
+                      })
+                    })]
+                  })]
+                })]
+              })]
+            }, course.id);
+          })
+        }), showCourseModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "modal-overlay",
+          onClick: function onClick() {
+            return setShowCourseModal(false);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "modal modal-modern modal-course",
+            onClick: function onClick(e) {
+              return e.stopPropagation();
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "modal-header-modern",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "modal-header-content",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "modal-icon",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+                    size: 24
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+                    children: editingCourse ? 'Edit Course' : 'Add New Course'
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                    className: "modal-subtitle",
+                    children: editingCourse ? 'Update course information' : 'Create a new course'
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                className: "modal-close-btn",
+                onClick: function onClick() {
+                  return setShowCourseModal(false);
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiX, {
+                  size: 20
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+              onSubmit: handleSaveCourse,
+              className: "modal-body-modern",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "modal-grid-modern",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "form-group-modern",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: "Course Name *"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    type: "text",
+                    placeholder: "Introduction to Computer Science",
+                    value: courseForm.name,
+                    onChange: function onChange(e) {
+                      return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                        name: e.target.value
+                      }));
+                    },
+                    required: true
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "form-group-modern",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: "Course Code *"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    type: "text",
+                    placeholder: "CS101",
+                    value: courseForm.code,
+                    onChange: function onChange(e) {
+                      return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                        code: e.target.value
+                      }));
+                    },
+                    required: true
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "form-group-modern",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  children: "Description"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+                  placeholder: "Brief description of the course...",
+                  value: courseForm.description,
+                  onChange: function onChange(e) {
+                    return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                      description: e.target.value
+                    }));
+                  },
+                  rows: "3"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "modal-grid-modern",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "form-group-modern",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: "Credits"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    type: "number",
+                    placeholder: "3",
+                    value: courseForm.credits,
+                    onChange: function onChange(e) {
+                      return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                        credits: e.target.value
+                      }));
+                    }
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "form-group-modern",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: "Max Students"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    type: "number",
+                    placeholder: "30",
+                    value: courseForm.max_students,
+                    onChange: function onChange(e) {
+                      return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                        max_students: e.target.value
+                      }));
+                    }
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "modal-grid-modern",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "form-group-modern",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: "Department"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    type: "text",
+                    placeholder: "Computer Science",
+                    value: courseForm.department,
+                    onChange: function onChange(e) {
+                      return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                        department: e.target.value
+                      }));
+                    }
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "form-group-modern",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: "Semester"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+                    value: courseForm.semester,
+                    onChange: function onChange(e) {
+                      return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                        semester: e.target.value
+                      }));
+                    },
+                    className: "select-modern",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                      value: "",
+                      children: "Select semester"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                      value: "Fall 2025",
+                      children: "Fall 2025"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                      value: "Spring 2026",
+                      children: "Spring 2026"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                      value: "Summer 2026",
+                      children: "Summer 2026"
+                    })]
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "modal-grid-modern",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "form-group-modern",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: "Schedule"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    type: "text",
+                    placeholder: "MWF 10:00-11:00",
+                    value: courseForm.schedule,
+                    onChange: function onChange(e) {
+                      return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                        schedule: e.target.value
+                      }));
+                    }
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "form-group-modern",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                    children: "Status"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+                    value: courseForm.status,
+                    onChange: function onChange(e) {
+                      return setCourseForm(_objectSpread(_objectSpread({}, courseForm), {}, {
+                        status: e.target.value
+                      }));
+                    },
+                    className: "select-modern",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                      value: "active",
+                      children: "Active"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                      value: "inactive",
+                      children: "Inactive"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                      value: "completed",
+                      children: "Completed"
+                    })]
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "modal-footer-modern",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                  type: "button",
+                  className: "btn-cancel-modern",
+                  onClick: function onClick() {
+                    return setShowCourseModal(false);
+                  },
+                  children: "Cancel"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                  type: "submit",
+                  className: "btn-save-modern",
+                  children: editingCourse ? 'Update Course' : 'Create Course'
+                })]
+              })]
+            })]
+          })
+        }), showEnrollModal && selectedCourse && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "modal-overlay",
+          onClick: function onClick() {
+            return setShowEnrollModal(false);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "modal modal-modern modal-enroll-large",
+            onClick: function onClick(e) {
+              return e.stopPropagation();
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "modal-header-modern",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "modal-header-content",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "modal-icon",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {
+                    size: 24
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+                    children: "Manage Course Enrollments"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+                    className: "modal-subtitle",
+                    children: [selectedCourse.name, " (", selectedCourse.code, ")"]
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                className: "modal-close-btn",
+                onClick: function onClick() {
+                  return setShowEnrollModal(false);
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiX, {
+                  size: 20
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              className: "modal-body-modern enrollment-body-large",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "enrollment-layout",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "enrollment-column",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    className: "enrollment-header",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h4", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiCheck, {
+                        size: 18
+                      }), "Enrolled Students (", enrolledStudents.length, ")"]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                      className: "capacity-info",
+                      children: selectedCourse.max_students ? "".concat(enrolledStudents.length, " / ").concat(selectedCourse.max_students) : 'Unlimited'
+                    })]
+                  }), enrolledStudents.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    className: "empty-enrollment",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {
+                      size: 32
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                      children: "No students enrolled yet"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                      children: "Select students from the available list to enroll"
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "students-table-container",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
+                      className: "enrollment-table",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                            children: "Student"
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                            children: "ID"
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                            children: "Email"
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                            children: "Action"
+                          })]
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
+                        children: enrolledStudents.map(function (student) {
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                                className: "student-cell",
+                                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                                  className: "student-avatar-small",
+                                  children: (student.name || student.first_name || 'S')[0].toUpperCase()
+                                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                                  className: "student-name-text",
+                                  children: student.name || "".concat(student.first_name || '', " ").concat(student.last_name || '').trim()
+                                })]
+                              })
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                                className: "student-id-badge",
+                                children: student.student_id || '-'
+                              })
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                              className: "email-cell",
+                              children: student.email || '-'
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+                                className: "btn-table-action remove",
+                                onClick: function onClick() {
+                                  return handleUnenrollStudent(student.id);
+                                },
+                                title: "Remove from course",
+                                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiX, {
+                                  size: 14
+                                }), " Remove"]
+                              })
+                            })]
+                          }, student.id);
+                        })
+                      })]
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "enrollment-column",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "enrollment-header",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h4", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUserPlus, {
+                        size: 18
+                      }), "Available Students (", availableStudents.length, ")"]
+                    })
+                  }), availableStudents.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    className: "empty-enrollment",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiCheck, {
+                      size: 32
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                      children: "All students are enrolled"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                      children: "There are no more students available to enroll"
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                    className: "students-table-container",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
+                      className: "enrollment-table",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                            children: "Student"
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                            children: "ID"
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                            children: "Email"
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                            children: "Action"
+                          })]
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
+                        children: availableStudents.map(function (student) {
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                                className: "student-cell",
+                                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                                  className: "student-avatar-small",
+                                  children: (student.name || student.first_name || 'S')[0].toUpperCase()
+                                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                                  className: "student-name-text",
+                                  children: student.name || "".concat(student.first_name || '', " ").concat(student.last_name || '').trim()
+                                })]
+                              })
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                                className: "student-id-badge",
+                                children: student.student_id || '-'
+                              })
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                              className: "email-cell",
+                              children: student.email || '-'
+                            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+                                className: "btn-table-action add",
+                                onClick: function onClick() {
+                                  return handleEnrollStudent(student.id);
+                                },
+                                title: "Add to course",
+                                disabled: selectedCourse.max_students && enrolledStudents.length >= selectedCourse.max_students,
+                                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {
+                                  size: 14
+                                }), " Add"]
+                              })
+                            })]
+                          }, student.id);
+                        })
+                      })]
+                    })
+                  })]
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              className: "modal-footer-modern",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                className: "btn-cancel-modern",
+                onClick: function onClick() {
+                  return setShowEnrollModal(false);
+                },
+                children: "Close"
+              })
+            })]
+          })
+        })]
+      })
+    })]
   });
 }
 
@@ -59675,23 +61164,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ AdminDashboard)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/pages/admin/Sidebar.js");
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
-/* harmony import */ var _UserFormModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./UserFormModal */ "./resources/js/components/pages/admin/UserFormModal.js");
-/* harmony import */ var _CourseFormModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CourseFormModal */ "./resources/js/components/pages/admin/CourseFormModal.js");
-/* harmony import */ var _UserDetailModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./UserDetailModal */ "./resources/js/components/pages/admin/UserDetailModal.js");
-/* harmony import */ var _AdminUsers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AdminUsers */ "./resources/js/components/pages/admin/AdminUsers.js");
-/* harmony import */ var _sass_AdminDashboard_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../sass/AdminDashboard.scss */ "./resources/sass/AdminDashboard.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _labels__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./labels */ "./resources/js/components/pages/admin/labels.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/pages/admin/Sidebar.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
+/* harmony import */ var _UserFormModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./UserFormModal */ "./resources/js/components/pages/admin/UserFormModal.js");
+/* harmony import */ var _CourseFormModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CourseFormModal */ "./resources/js/components/pages/admin/CourseFormModal.js");
+/* harmony import */ var _UserDetailModal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./UserDetailModal */ "./resources/js/components/pages/admin/UserDetailModal.js");
+/* harmony import */ var _AdminUsers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./AdminUsers */ "./resources/js/components/pages/admin/AdminUsers.js");
+/* harmony import */ var _sass_AdminDashboard_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../sass/AdminDashboard.scss */ "./resources/sass/AdminDashboard.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -59702,6 +61191,8 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+
 
 
 
@@ -59715,29 +61206,67 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 var API = "/api/admin";
-chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_5__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.LinearScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_5__.Legend, chart_js__WEBPACK_IMPORTED_MODULE_5__.Filler);
+chart_js__WEBPACK_IMPORTED_MODULE_6__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_6__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_6__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_6__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_6__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_6__.LinearScale, chart_js__WEBPACK_IMPORTED_MODULE_6__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_6__.Legend, chart_js__WEBPACK_IMPORTED_MODULE_6__.Filler);
 
 // Enrollment area chart (left) sample data/options
 var enrollmentLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-// Plain data object (Chart component expects an object). Use a static
-// translucent background color instead of calculating a canvas gradient.
-var enrollmentData = {
-  labels: enrollmentLabels,
-  datasets: [{
-    label: 'Students',
-    data: [1020, 1080, 1130, 1170, 1190, 1210],
-    fill: true,
-    // fallback gradient color as a static value
-    backgroundColor: 'rgba(59,130,246,0.12)',
-    tension: 0.3,
-    pointRadius: 0
-  }, {
-    label: 'Teachers',
-    data: [45, 46, 47, 48, 48, 49],
-    fill: false,
-    tension: 0.3,
-    pointRadius: 0
-  }]
+
+// Helper: read CSS variables for chart colors (defined in SCSS). This keeps
+// color values out of JS source code and centralizes them in stylesheets.
+var getChartColors = function getChartColors() {
+  try {
+    var s = getComputedStyle(document.documentElement);
+    var students = s.getPropertyValue('--chart-students') || '';
+    var studentsFill = s.getPropertyValue('--chart-students-fill') || '';
+    var teachers = s.getPropertyValue('--chart-teachers') || '';
+    var teachersFill = s.getPropertyValue('--chart-teachers-fill') || '';
+    return {
+      students: students.trim() || undefined,
+      studentsFill: studentsFill.trim() || undefined,
+      teachers: teachers.trim() || undefined,
+      teachersFill: teachersFill.trim() || undefined
+    };
+  } catch (e) {
+    return {};
+  }
+};
+
+// Factory to create enrollment chart data from stats or defaults. This is
+// intentionally a pure function so the chart data can be produced on demand
+// and only when we want it to update (for example, after a user is added).
+var makeEnrollmentData = function makeEnrollmentData() {
+  var statsData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var colors = typeof window !== 'undefined' ? getChartColors() : {};
+  // Prefer server-provided series if present, otherwise fall back to sensible
+  // sample data so the chart always has values to render.
+  var studentsSeries = Array.isArray(statsData.students_series) && statsData.students_series.length ? statsData.students_series : [1020, 1080, 1130, 1170, 1190, 1210];
+  var teachersSeries = Array.isArray(statsData.teachers_series) && statsData.teachers_series.length ? statsData.teachers_series : [45, 46, 47, 48, 48, 49];
+  return {
+    labels: enrollmentLabels,
+    datasets: [{
+      label: 'Students',
+      data: studentsSeries,
+      fill: true,
+      backgroundColor: colors.studentsFill || undefined,
+      borderColor: colors.students || undefined,
+      borderWidth: 2,
+      tension: 0.35,
+      pointRadius: 4,
+      pointBackgroundColor: colors.students || undefined,
+      pointHoverRadius: 6,
+      pointHoverBackgroundColor: '#fff'
+    }, {
+      label: 'Teachers',
+      data: teachersSeries,
+      fill: false,
+      borderColor: colors.teachers || undefined,
+      borderWidth: 2,
+      tension: 0.35,
+      pointRadius: 4,
+      pointBackgroundColor: colors.teachers || undefined,
+      pointHoverRadius: 6
+    }]
+  };
 };
 var enrollmentOptions = {
   responsive: true,
@@ -59749,7 +61278,26 @@ var enrollmentOptions = {
       labels: {
         usePointStyle: true
       }
+    },
+    tooltip: {
+      mode: 'index',
+      intersect: false,
+      backgroundColor: 'rgba(0,0,0,0.75)',
+      callbacks: {
+        // hide the title so the month label (e.g. 'Apr') is not shown in the tooltip
+        title: function title() {
+          return '';
+        }
+      }
     }
+  },
+  interaction: {
+    mode: 'nearest',
+    intersect: false
+  },
+  animation: {
+    duration: 700,
+    easing: 'easeOutCubic'
   },
   scales: {
     x: {
@@ -59757,7 +61305,7 @@ var enrollmentOptions = {
         display: false
       },
       ticks: {
-        color: '#6b7280'
+        display: false
       }
     },
     y: {
@@ -59774,19 +61322,114 @@ var enrollmentOptions = {
 
 // Attendance bar chart (right) sample data/options
 var attendanceLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-var attendanceData = {
-  labels: attendanceLabels,
-  datasets: [{
-    label: 'present',
-    data: [1100, 1120, 1115, 1130, 1125],
-    borderRadius: 6,
-    barThickness: 36
-  }, {
-    label: 'absent',
-    data: [40, 35, 38, 30, 45],
-    borderRadius: 6,
-    barThickness: 36
-  }]
+var makeAttendanceData = function makeAttendanceData() {
+  var presentSeries = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var absentSeries = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var colors = typeof window !== 'undefined' ? getChartColors() : {};
+  var presentColor = colors.attendancePresent || getComputedStyle(document.documentElement).getPropertyValue('--chart-attendance-present').trim();
+  var presentFill = colors.attendancePresentFill || getComputedStyle(document.documentElement).getPropertyValue('--chart-attendance-present-fill').trim();
+  var absentColor = colors.attendanceAbsent || getComputedStyle(document.documentElement).getPropertyValue('--chart-attendance-absent').trim();
+  var absentFill = colors.attendanceAbsentFill || getComputedStyle(document.documentElement).getPropertyValue('--chart-attendance-absent-fill').trim();
+  return {
+    labels: attendanceLabels,
+    datasets: [{
+      label: 'present',
+      data: presentSeries.length ? presentSeries : [0, 0, 0, 0, 0],
+      /* scriptable background so we can draw a nice gradient using the chart canvas */
+      backgroundColor: function backgroundColor(context) {
+        try {
+          var chart = context.chart;
+          var ctx = chart.ctx;
+          var h = chart.height || 240;
+          var g = ctx.createLinearGradient(0, 0, 0, h);
+          g.addColorStop(0, presentColor || presentFill || 'rgba(37,99,235,0.8)');
+          g.addColorStop(1, presentFill || presentColor + '22' || 0);
+          return g;
+        } catch (e) {
+          return presentColor || presentFill;
+        }
+      },
+      borderColor: presentColor || undefined,
+      borderRadius: 8,
+      barThickness: 32
+    }, {
+      label: 'absent',
+      data: absentSeries.length ? absentSeries : [0, 0, 0, 0, 0],
+      backgroundColor: function backgroundColor(context) {
+        try {
+          var chart = context.chart;
+          var ctx = chart.ctx;
+          var h = chart.height || 240;
+          var g = ctx.createLinearGradient(0, 0, 0, h);
+          g.addColorStop(0, absentColor || absentFill || 'rgba(239,68,68,0.9)');
+          g.addColorStop(1, absentFill || absentColor + '22' || 0);
+          return g;
+        } catch (e) {
+          return absentColor || absentFill;
+        }
+      },
+      borderColor: absentColor || undefined,
+      borderRadius: 8,
+      barThickness: 32
+    }]
+  };
+};
+
+// Try to extract weekly attendance series arrays from server-provided `stats`.
+// We accept multiple possible key shapes to be tolerant to backend changes.
+var getWeeklyAttendanceFromStats = function getWeeklyAttendanceFromStats(s) {
+  var labelsLen = attendanceLabels.length || 5;
+  if (!s || _typeof(s) !== 'object') return {
+    present: Array(labelsLen).fill(0),
+    absent: Array(labelsLen).fill(0)
+  };
+  var tryGet = function tryGet(obj, key) {
+    try {
+      if (!obj) return undefined;
+      var v = obj[key];
+      if (Array.isArray(v)) return v;
+      return undefined;
+    } catch (e) {
+      return undefined;
+    }
+  };
+  var present = tryGet(s, 'weekly_present') || tryGet(s, 'attendance_week_present') || tryGet(s, 'weeklyAttendancePresent') || undefined;
+  var absent = tryGet(s, 'weekly_absent') || tryGet(s, 'attendance_week_absent') || tryGet(s, 'weeklyAttendanceAbsent') || undefined;
+
+  // support nested object like s.attendance_week = { present: [...], absent: [...] }
+  if ((!present || !absent) && s.attendance_week && _typeof(s.attendance_week) === 'object') {
+    present = present || (Array.isArray(s.attendance_week.present) ? s.attendance_week.present : undefined);
+    absent = absent || (Array.isArray(s.attendance_week.absent) ? s.attendance_week.absent : undefined);
+  }
+
+  // Normalize to numbers and ensure length matches labels; pad with zeros if needed
+  var toNumArr = function toNumArr(arr) {
+    if (!Array.isArray(arr)) return [];
+    return arr.map(function (v) {
+      var n = Number(v);
+      return Number.isFinite(n) ? n : 0;
+    });
+  };
+  present = toNumArr(present);
+  absent = toNumArr(absent);
+
+  // If both empty, try fallback: some APIs provide a single 'attendances' array
+  if ((!present || !present.length) && Array.isArray(s.attendances)) {
+    // assume attendances alternates present values or maps to present only
+    present = s.attendances.slice(0, labelsLen).map(function (v) {
+      return Number(v) || 0;
+    });
+  }
+
+  // pad/slice
+  while (present.length < labelsLen) present.push(0);
+  while (absent.length < labelsLen) absent.push(0);
+  if (present.length > labelsLen) present = present.slice(0, labelsLen);
+  if (absent.length > labelsLen) absent = absent.slice(0, labelsLen);
+  return {
+    present: present,
+    absent: absent
+  };
 };
 var attendanceOptions = {
   responsive: true,
@@ -59795,6 +61438,9 @@ var attendanceOptions = {
     legend: {
       display: true,
       position: 'bottom'
+    },
+    tooltip: {
+      backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-tooltip-bg') || 'rgba(0,0,0,0.75)'
     }
   },
   scales: {
@@ -59823,17 +61469,17 @@ var MetricCard = function MetricCard(_ref) {
     value = _ref.value,
     color = _ref.color,
     onClick = _ref.onClick;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
     className: "metric-card ".concat(color),
     onClick: onClick,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       className: "icon-box",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(Icon, {})
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(Icon, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
       className: "metric-info",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
         children: value
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         children: title
       })]
     })]
@@ -59858,38 +61504,49 @@ function AdminDashboard(_ref2) {
     _useState8 = _slicedToArray(_useState7, 2),
     stats = _useState8[0],
     setStats = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
+      return makeEnrollmentData({});
+    }),
     _useState0 = _slicedToArray(_useState9, 2),
-    activities = _useState0[0],
-    setActivities = _useState0[1];
-  var _useState1 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    enrollmentChartData = _useState0[0],
+    setEnrollmentChartData = _useState0[1];
+  var enrollmentInitedRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
+  var _useState1 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState10 = _slicedToArray(_useState1, 2),
-    showModal = _useState10[0],
-    setShowModal = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    activities = _useState10[0],
+    setActivities = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState12 = _slicedToArray(_useState11, 2),
-    editing = _useState12[0],
-    setEditing = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("student"),
+    showModal = _useState12[0],
+    setShowModal = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState14 = _slicedToArray(_useState13, 2),
-    modalRole = _useState14[0],
-    setModalRole = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    editing = _useState14[0],
+    setEditing = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("student"),
     _useState16 = _slicedToArray(_useState15, 2),
-    selectedUser = _useState16[0],
-    setSelectedUser = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    modalRole = _useState16[0],
+    setModalRole = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState18 = _slicedToArray(_useState17, 2),
-    showCourseModal = _useState18[0],
-    setShowCourseModal = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    selectedUser = _useState18[0],
+    setSelectedUser = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState20 = _slicedToArray(_useState19, 2),
-    coursesList = _useState20[0],
-    setCoursesList = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    showCourseModal = _useState20[0],
+    setShowCourseModal = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState22 = _slicedToArray(_useState21, 2),
-    docModal = _useState22[0],
-    setDocModal = _useState22[1];
+    coursesList = _useState22[0],
+    setCoursesList = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState24 = _slicedToArray(_useState23, 2),
+    docModal = _useState24[0],
+    setDocModal = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("2024-2025"),
+    _useState26 = _slicedToArray(_useState25, 2),
+    selectedYear = _useState26[0],
+    setSelectedYear = _useState26[1];
   var openDocModal = function openDocModal(data) {
     return setDocModal(data);
   };
@@ -59898,8 +61555,13 @@ function AdminDashboard(_ref2) {
   };
   var pollRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var POLL_INTERVAL = 15000; // ms - poll every 15s as a safe default
-  // chart removed per design
 
+  // Update enrollment chart whenever stats change
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (stats && Object.keys(stats).length > 0) {
+      setEnrollmentChartData(makeEnrollmentData(stats));
+    }
+  }, [stats]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchAll();
     // try to fetch activities as well on mount
@@ -59920,6 +61582,76 @@ function AdminDashboard(_ref2) {
     };
     window.addEventListener('admin:users-changed', onUsersChanged);
     window.addEventListener('admin:activities-changed', onActivitiesChanged);
+
+    // Update enrollment chart when a new user is created
+    var onUserCreated = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(ev) {
+        var result, newStats, _t;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.p = _context.n) {
+            case 0:
+              _context.p = 0;
+              _context.n = 1;
+              return fetchAll();
+            case 1:
+              result = _context.v;
+              // compute new chart data from fresh stats (backend can return series)
+              newStats = result && result.stats ? result.stats : {};
+              setEnrollmentChartData(makeEnrollmentData(newStats));
+              _context.n = 3;
+              break;
+            case 2:
+              _context.p = 2;
+              _t = _context.v;
+              console.warn('onUserCreated handler failed', _t);
+            case 3:
+              return _context.a(2);
+          }
+        }, _callee, null, [[0, 2]]);
+      }));
+      return function onUserCreated(_x) {
+        return _ref3.apply(this, arguments);
+      };
+    }();
+    window.addEventListener('admin:user-created', onUserCreated);
+
+    // Also listen for a more generic 'admin:users-changed' event and refresh the
+    // chart if the event carries detail that suggests an add operation occurred.
+    var onUsersChangedDetail = /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(ev) {
+        var d, added, result, newStats, _t2;
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.p = _context2.n) {
+            case 0:
+              _context2.p = 0;
+              d = ev && ev.detail; // common shapes: { added: n } or { action: 'added', id: 123 } or { type: 'created' }
+              added = d && (d.added || d.action && d.action === 'added' || d.type && d.type === 'created');
+              if (!added) {
+                _context2.n = 2;
+                break;
+              }
+              _context2.n = 1;
+              return fetchAll();
+            case 1:
+              result = _context2.v;
+              newStats = result && result.stats ? result.stats : {};
+              setEnrollmentChartData(makeEnrollmentData(newStats));
+            case 2:
+              _context2.n = 4;
+              break;
+            case 3:
+              _context2.p = 3;
+              _t2 = _context2.v;
+            case 4:
+              return _context2.a(2);
+          }
+        }, _callee2, null, [[0, 3]]);
+      }));
+      return function onUsersChangedDetail(_x2) {
+        return _ref4.apply(this, arguments);
+      };
+    }();
+    window.addEventListener('admin:users-changed', onUsersChangedDetail);
     return function () {
       if (pollRef.current) {
         clearInterval(pollRef.current);
@@ -59927,7 +61659,14 @@ function AdminDashboard(_ref2) {
       }
       window.removeEventListener('admin:users-changed', onUsersChanged);
       window.removeEventListener('admin:activities-changed', onActivitiesChanged);
+      window.removeEventListener('admin:user-created', onUserCreated);
+      window.removeEventListener('admin:users-changed', onUsersChangedDetail);
     };
+
+    // NOTE: helper functions for extracting user ids and finding users
+    // were accidentally placed here inside the useEffect scope which made
+    // them unavailable to the component render. They have been moved into
+    // the RecentActivitiesWidget where they're used.
   }, []);
 
   // Derived/fallback stats: if the server /dashboard endpoint fails or returns empty,
@@ -59946,33 +61685,33 @@ function AdminDashboard(_ref2) {
 
   // Generic save handler for UserFormModal so AdminDashboard can create/update users
   var saveUserFromModal = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(payload, isEdit) {
-      var res, _t;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.p = _context.n) {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(payload, isEdit) {
+      var res, _t3;
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
           case 0:
-            _context.p = 0;
+            _context3.p = 0;
             res = null;
             if (!(isEdit && payload && payload.id)) {
-              _context.n = 2;
+              _context3.n = 2;
               break;
             }
-            _context.n = 1;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/admin/users/".concat(payload.id), payload);
+            _context3.n = 1;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/admin/users/".concat(payload.id), payload);
           case 1:
-            res = _context.v;
-            _context.n = 4;
+            res = _context3.v;
+            _context3.n = 4;
             break;
           case 2:
             // ensure name and password exist for server validation
             if (!payload.name) payload.name = "".concat(payload.first_name || '', " ").concat(payload.last_name || '').trim();
             if (!payload.password) payload.password = Math.random().toString(36).slice(-8) + 'A1!';
-            _context.n = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payload);
+            _context3.n = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/admin/users', payload);
           case 3:
-            res = _context.v;
+            res = _context3.v;
           case 4:
-            _context.n = 5;
+            _context3.n = 5;
             return fetchAll();
           case 5:
             try {
@@ -59996,58 +61735,72 @@ function AdminDashboard(_ref2) {
                 } catch (e) {}
               }
             } catch (e) {/* ignore */}
-            return _context.a(2, Promise.resolve(res && res.data ? res.data : {}));
+            return _context3.a(2, Promise.resolve(res && res.data ? res.data : {}));
           case 6:
-            _context.p = 6;
-            _t = _context.v;
-            console.error('Save from modal failed', _t);
-            return _context.a(2, Promise.reject(_t));
+            _context3.p = 6;
+            _t3 = _context3.v;
+            console.error('Save from modal failed', _t3);
+            return _context3.a(2, Promise.reject(_t3));
         }
-      }, _callee, null, [[0, 6]]);
+      }, _callee3, null, [[0, 6]]);
     }));
-    return function saveUserFromModal(_x, _x2) {
-      return _ref3.apply(this, arguments);
+    return function saveUserFromModal(_x3, _x4) {
+      return _ref5.apply(this, arguments);
     };
   }();
   function fetchAll() {
     return _fetchAll.apply(this, arguments);
   } // re-fetch users whenever the archived toggle changes so the server can return trashed rows
   function _fetchAll() {
-    _fetchAll = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10() {
-      var usersUrl, _yield$Promise$all, _yield$Promise$all2, usersRes, statsRes, _t11;
-      return _regenerator().w(function (_context10) {
-        while (1) switch (_context10.p = _context10.n) {
+    _fetchAll = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0() {
+      var usersUrl, _yield$Promise$all, _yield$Promise$all2, usersRes, statsRes, statsData, _t0;
+      return _regenerator().w(function (_context0) {
+        while (1) switch (_context0.p = _context0.n) {
           case 0:
-            _context10.p = 0;
+            _context0.p = 0;
             // include archived users when the admin toggles the archived view
             usersUrl = API + "/users" + (showArchived ? "?archived=1" : "");
-            _context10.n = 1;
-            return Promise.all([axios__WEBPACK_IMPORTED_MODULE_1___default().get(usersUrl)["catch"](function () {
+            _context0.n = 1;
+            return Promise.all([axios__WEBPACK_IMPORTED_MODULE_2___default().get(usersUrl)["catch"](function () {
               return {
                 data: []
               };
-            }), axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + "/dashboard")["catch"](function () {
+            }), axios__WEBPACK_IMPORTED_MODULE_2___default().get(API + "/dashboard")["catch"](function () {
               return {
                 data: {}
               };
             })]);
           case 1:
-            _yield$Promise$all = _context10.v;
+            _yield$Promise$all = _context0.v;
             _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
             usersRes = _yield$Promise$all2[0];
             statsRes = _yield$Promise$all2[1];
             setUsers(usersRes.data || []);
-            setStats(statsRes.data || {});
-            _context10.n = 3;
-            break;
+            statsData = statsRes.data || {};
+            setStats(statsData);
+
+            // Always update the enrollment chart with fresh stats data
+            // This ensures the chart reflects current student/teacher counts
+            try {
+              setEnrollmentChartData(makeEnrollmentData(statsData));
+              enrollmentInitedRef.current = true;
+            } catch (e) {
+              console.warn('Failed to update enrollment chart', e);
+            }
+            return _context0.a(2, {
+              users: usersRes.data || [],
+              stats: statsData
+            });
           case 2:
-            _context10.p = 2;
-            _t11 = _context10.v;
-            console.error(_t11);
-          case 3:
-            return _context10.a(2);
+            _context0.p = 2;
+            _t0 = _context0.v;
+            console.error(_t0);
+            return _context0.a(2, {
+              users: [],
+              stats: {}
+            });
         }
-      }, _callee10, null, [[0, 2]]);
+      }, _callee0, null, [[0, 2]]);
     }));
     return _fetchAll.apply(this, arguments);
   }
@@ -60060,316 +61813,827 @@ function AdminDashboard(_ref2) {
   // fetch recent activities from server if endpoint exists
   function fetchActivities() {
     return _fetchActivities.apply(this, arguments);
-  } // derive archived users from users list for dashboard pages
+  } // Fetch a single user by id from the server and set it as selectedUser
   function _fetchActivities() {
-    _fetchActivities = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee11() {
-      var res, _t12;
-      return _regenerator().w(function (_context11) {
-        while (1) switch (_context11.p = _context11.n) {
+    _fetchActivities = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1() {
+      var res, _t1;
+      return _regenerator().w(function (_context1) {
+        while (1) switch (_context1.p = _context1.n) {
           case 0:
-            _context11.p = 0;
-            _context11.n = 1;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + '/activities')["catch"](function () {
+            _context1.p = 0;
+            _context1.n = 1;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get(API + '/activities')["catch"](function () {
               return {
                 data: []
               };
             });
           case 1:
-            res = _context11.v;
+            res = _context1.v;
             // expect an array of { title, desc, time }
             setActivities(Array.isArray(res.data) ? res.data : []);
-            _context11.n = 3;
+            _context1.n = 3;
             break;
           case 2:
-            _context11.p = 2;
-            _t12 = _context11.v;
-            console.error('Failed to load activities', _t12);
+            _context1.p = 2;
+            _t1 = _context1.v;
+            console.error('Failed to load activities', _t1);
             setActivities([]);
           case 3:
-            return _context11.a(2);
+            return _context1.a(2);
         }
-      }, _callee11, null, [[0, 2]]);
+      }, _callee1, null, [[0, 2]]);
     }));
     return _fetchActivities.apply(this, arguments);
   }
+  var fetchUserById = /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(id) {
+      var res, _t4;
+      return _regenerator().w(function (_context4) {
+        while (1) switch (_context4.p = _context4.n) {
+          case 0:
+            if (id) {
+              _context4.n = 1;
+              break;
+            }
+            return _context4.a(2, null);
+          case 1:
+            _context4.p = 1;
+            _context4.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get("".concat(API, "/users/").concat(id))["catch"](function () {
+              return {
+                data: null
+              };
+            });
+          case 2:
+            res = _context4.v;
+            if (!(res && res.data)) {
+              _context4.n = 3;
+              break;
+            }
+            // merge into users cache (non-destructive) so future lookups find it
+            setUsers(function (prev) {
+              try {
+                var exists = (prev || []).some(function (u) {
+                  return String(u.id) === String(res.data.id);
+                });
+                if (exists) return prev;
+                return [res.data].concat(prev || []);
+              } catch (e) {
+                return prev;
+              }
+            });
+            setSelectedUser(res.data);
+            setShowModal(true);
+            return _context4.a(2, res.data);
+          case 3:
+            return _context4.a(2, null);
+          case 4:
+            _context4.p = 4;
+            _t4 = _context4.v;
+            console.error('Failed to fetch user by id', id, _t4);
+            return _context4.a(2, null);
+        }
+      }, _callee4, null, [[1, 4]]);
+    }));
+    return function fetchUserById(_x5) {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+
+  // derive archived users from users list for dashboard pages
   var archivedUsers = (users || []).filter(function (u) {
     return !!u.deleted_at;
   });
 
+  // Redesigned Recent Activities widget: scrollable compact list (no "Show N more").
+  // It shows actor (avatar/initials), actor name, action + subject text, optional
+  // details, and relative time. Keeps backward compatibility with older activity
+  // shapes ({ title, desc, time }).
+  var RecentActivitiesWidget = function RecentActivitiesWidget(_ref7) {
+    var _ref7$activities = _ref7.activities,
+      activities = _ref7$activities === void 0 ? [] : _ref7$activities,
+      _ref7$maxItems = _ref7.maxItems,
+      maxItems = _ref7$maxItems === void 0 ? 200 : _ref7$maxItems,
+      _ref7$maxVisible = _ref7.maxVisible,
+      maxVisible = _ref7$maxVisible === void 0 ? null : _ref7$maxVisible;
+    var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState28 = _slicedToArray(_useState27, 2),
+      highlightKey = _useState28[0],
+      setHighlightKey = _useState28[1];
+    var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState30 = _slicedToArray(_useState29, 2),
+      overlayVisible = _useState30[0],
+      setOverlayVisible = _useState30[1];
+    var prevLenRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)((activities || []).length);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+      if ((activities || []).length > prevLenRef.current) {
+        // new activity arrived -> briefly highlight the top item
+        setHighlightKey(Date.now());
+        setTimeout(function () {
+          return setHighlightKey(null);
+        }, 6000);
+      }
+      prevLenRef.current = (activities || []).length;
+    }, [activities]);
+    var renderAvatar = function renderAvatar(actor) {
+      // Use a clear 'system' avatar when there's no actor or no name; avoid ambiguous single-letter fallbacks.
+      if (!actor) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        className: "avatar avatar-system",
+        title: "System",
+        children: "\u2699\uFE0F"
+      });
+      if (actor.avatar_url) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
+        src: actor.avatar_url,
+        alt: actor.name || 'avatar',
+        className: "avatar"
+      });
+      var name = (actor.name || actor.email || '').toString().trim();
+      if (!name) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        className: "avatar avatar-system",
+        title: "System",
+        children: "\u2699\uFE0F"
+      });
+      var initials = name.split(' ').map(function (s) {
+        return s[0];
+      }).filter(Boolean).slice(0, 2).join('').toUpperCase();
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        className: "avatar avatar-initials",
+        title: name,
+        children: initials
+      });
+    };
+    var capitalizeWords = function capitalizeWords(s) {
+      return (s || '').toString().split(/\s+/).map(function (w) {
+        return w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : '';
+      }).join(' ').trim();
+    };
+    var sanitizeLabel = function sanitizeLabel(s) {
+      if (!s) return '';
+      // remove occurrences like 'id=18', 'user id=18', 'id:18' (case-insensitive)
+      var out = s.toString().replace(/\b(?:user\s*)?id\s*[:=]?\s*\d+\b/ig, '');
+      // remove stray hashes like '#18'
+      out = out.replace(/#\s*\d+\b/g, '');
+      // collapse multiple spaces and trim
+      out = out.replace(/[\s\-–:_]{2,}/g, ' ').trim();
+      return out;
+    };
+    var relativeTime = function relativeTime(input) {
+      if (!input) return '';
+      var now = Date.now();
+      var then = new Date(input).getTime ? new Date(input).getTime() : NaN;
+      if (isNaN(then)) return input;
+      var sec = Math.round((now - then) / 1000);
+      if (sec < 10) return 'just now';
+      if (sec < 60) return "".concat(sec, "s ago");
+      var min = Math.round(sec / 60);
+      if (min < 60) return "".concat(min, "m ago");
+      var hr = Math.round(min / 60);
+      if (hr < 24) return "".concat(hr, "h ago");
+      var days = Math.round(hr / 24);
+      if (days < 30) return "".concat(days, "d ago");
+      var months = Math.round(days / 30);
+      if (months < 12) return "".concat(months, "mo ago");
+      var years = Math.round(months / 12);
+      return "".concat(years, "y ago");
+    };
+    var extractUserIdFromText = function extractUserIdFromText(text) {
+      if (!text) return null;
+      var m = text.match(/user\s*id\s*[:=]?\s*(\d+)/i) || text.match(/id\s*[:=]?\s*(\d+)/i) || text.match(/#\s*(\d+)\b/);
+      return m ? Number(m[1]) : null;
+    };
+    var findUserById = function findUserById(id) {
+      if (!id) return null;
+      return (users || []).find(function (u) {
+        return Number(u.id) === Number(id) || String(u.id) === String(id);
+      }) || null;
+    };
+
+    // limit to most recent `maxItems` entries
+    var list = (activities || []).slice(0, maxItems);
+
+    // compute preview list (collapsed) vs. full list (overlay)
+    var previewCount = maxVisible || 6;
+    var previewList = (list || []).slice(0, previewCount);
+    var extraCount = Math.max(0, (list || []).length - previewCount);
+
+    // if maxVisible is provided, compute an approximate maxHeight so the container
+    // becomes scrollable instead of extending the page. We assume ~64px per item
+    // in compact mode; CSS can still enforce exact values.
+    var maxHeightStyle = maxVisible ? {
+      maxHeight: Math.max(120, previewCount * 64) + 'px'
+    } : undefined;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+      className: "recent-list-wrapper",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        className: "recent-list compact scrollable",
+        style: maxHeightStyle,
+        children: previewList.map(function (it, i) {
+          // activity can be in several shapes; normalize fields for rendering
+          var actor = it.actor || it.user || it.performed_by || null;
+          var time = it.time || it.created_at || it.timestamp || '';
+          var desc = it.desc || it.details || it.description || '';
+          // create a cleaned version of the description for display (remove id fragments)
+          var cleanedDesc = sanitizeLabel(desc || '');
+
+          // try to determine action and subject
+          var rawTitle = (it.title || it.type || '').toString();
+          var action = sanitizeLabel(it.action || rawTitle || '').toString();
+          var subjectRaw = it.subject || it.target || '';
+
+          // If activity mentions a user id (eg. "user id=18"), resolve that user's name from `users`
+          var scanText = "".concat(rawTitle, " ").concat(desc, " ").concat(subjectRaw);
+          var mentionedUserId = extractUserIdFromText(scanText);
+          var mentionedUser = mentionedUserId ? findUserById(mentionedUserId) : null;
+
+          // show only the user's name/email (or a concise fallback) — avoid repeating `(id=NN)` in the UI
+          var subjectLabel = mentionedUser ? mentionedUser.name || mentionedUser.email || "User #".concat(mentionedUserId) : sanitizeLabel(subjectRaw || cleanedDesc || '').toString();
+          var shortDesc = cleanedDesc ? cleanedDesc.length > 70 ? cleanedDesc.slice(0, 67) + '...' : cleanedDesc : '';
+
+          // actor display name
+          var actorDisplay = actor && (actor.name || actor.email) || it.actor_name || it.performed_by_name || 'System';
+
+          // choose badge class and title-case text based on action keyword
+          var actionKey = (action || '').toString().toLowerCase();
+          var badgeClass = 'system';
+          if (actionKey.includes('create') || actionKey.includes('created')) badgeClass = 'created';else if (actionKey.includes('delete') || actionKey.includes('deleted')) badgeClass = 'deleted';else if (actionKey.includes('archive') || actionKey.includes('archived')) badgeClass = 'archived';else if (actionKey.includes('restore') || actionKey.includes('restored')) badgeClass = 'restored';
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "recent-item ".concat(highlightKey && i === 0 ? 'new' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "recent-left",
+              onClick: function onClick() {
+                if (mentionedUser) setSelectedUser(mentionedUser);else if (mentionedUserId) fetchUserById(mentionedUserId);
+              },
+              style: {
+                cursor: mentionedUser || mentionedUserId ? 'pointer' : 'default'
+              },
+              children: renderAvatar(actor)
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "recent-body",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                className: "recent-top",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                  style: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                    className: "action-badge ".concat(badgeClass),
+                    style: {
+                      display: 'inline-flex',
+                      alignItems: 'center'
+                    },
+                    children: capitalizeWords(actionKey.replace(/_/g, ' ') || 'Action')
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                    className: "actor-name",
+                    onClick: function onClick() {
+                      if (mentionedUser) setSelectedUser(mentionedUser);else if (mentionedUserId) fetchUserById(mentionedUserId);
+                    },
+                    style: {
+                      cursor: mentionedUser || mentionedUserId ? 'pointer' : 'default'
+                    },
+                    children: actorDisplay
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                  className: "action-text small-muted",
+                  style: {
+                    marginTop: 2
+                  },
+                  title: desc || '',
+                  children: [subjectLabel ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                    className: "subject-link",
+                    onClick: function onClick() {
+                      if (mentionedUser) setSelectedUser(mentionedUser);else if (mentionedUserId) fetchUserById(mentionedUserId);
+                    },
+                    style: {
+                      cursor: mentionedUser || mentionedUserId ? 'pointer' : 'default',
+                      textDecoration: mentionedUser ? 'underline' : 'none'
+                    },
+                    children: subjectLabel
+                  }) : null, shortDesc ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                    style: {
+                      marginLeft: 8
+                    },
+                    className: "recent-desc",
+                    children: shortDesc
+                  }) : null]
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "recent-time small-muted",
+              children: relativeTime(time)
+            })]
+          }, i);
+        })
+      }), overlayVisible ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        className: "activities-overlay",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "overlay-inner card",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "overlay-head",
+            style: {
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
+              style: {
+                margin: 0
+              },
+              children: "All Activities"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
+                className: "action-icon",
+                onClick: function onClick() {
+                  return setOverlayVisible(false);
+                },
+                title: "Close",
+                children: "\u2715"
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "overlay-list scrollable",
+            style: {
+              maxHeight: '60vh',
+              marginTop: 12
+            },
+            children: (list || []).map(function (it, i) {
+              var actor = it.actor || it.user || it.performed_by || null;
+              var time = it.time || it.created_at || it.timestamp || '';
+              var desc = it.desc || it.details || it.description || '';
+              var rawTitle = (it.title || it.type || '').toString();
+              var action = sanitizeLabel(it.action || rawTitle || '').toString();
+              var subjectRaw = it.subject || it.target || '';
+              var scanText = "".concat(rawTitle, " ").concat(desc, " ").concat(subjectRaw);
+              var mentionedUserId = extractUserIdFromText(scanText);
+              var mentionedUser = mentionedUserId ? findUserById(mentionedUserId) : null;
+              var subjectLabel = mentionedUser ? mentionedUser.name || mentionedUser.email || "User #".concat(mentionedUserId) : sanitizeLabel(subjectRaw || desc || '').toString();
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                className: "recent-item dense ".concat(i === 0 ? 'new' : ''),
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  className: "recent-left",
+                  onClick: function onClick() {
+                    if (mentionedUser) setSelectedUser(mentionedUser);else if (mentionedUserId) fetchUserById(mentionedUserId);
+                  },
+                  style: {
+                    cursor: mentionedUser || mentionedUserId ? 'pointer' : 'default'
+                  },
+                  children: renderAvatar(actor)
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  className: "recent-body",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                    className: "recent-top",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                      style: {
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8
+                      },
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                        className: "action-badge small",
+                        children: capitalizeWords((action || '').toString().replace(/_/g, ' ') || 'Action')
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                        className: "actor-name",
+                        style: {
+                          fontSize: 13
+                        },
+                        children: actor && (actor.name || actor.email) || it.actor_name || it.performed_by_name || 'System'
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                      className: "action-text small-muted",
+                      style: {
+                        marginTop: 4
+                      },
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                        className: "subject-link",
+                        onClick: function onClick() {
+                          if (mentionedUser) setSelectedUser(mentionedUser);else if (mentionedUserId) fetchUserById(mentionedUserId);
+                        },
+                        style: {
+                          cursor: mentionedUser || mentionedUserId ? 'pointer' : 'default',
+                          textDecoration: mentionedUser ? 'underline' : 'none'
+                        },
+                        children: subjectLabel
+                      })
+                    })]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  className: "recent-time small-muted",
+                  children: relativeTime(time)
+                })]
+              }, i);
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            style: {
+              marginTop: 12,
+              textAlign: 'right'
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
+              className: "primary",
+              onClick: function onClick() {
+                return setOverlayVisible(false);
+              },
+              children: "Close"
+            })
+          })]
+        })
+      }) : null]
+    });
+  };
+
   // chart data removed
 
   var Dashboard = function Dashboard() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+    // Calculate metrics with change percentages
+    var studentGrowth = Number(stats.student_growth) || Number(stats.new_students_30) || 2;
+    var studentGrowthChange = stats.student_growth_change || '+5%';
+    var courseCompletion = Number(stats.course_completion_percent) || 0;
+    var courseCompletionChange = stats.course_completion_change || '+2.5%';
+    var studentSatisfaction = Number(stats.student_satisfaction) || 0;
+    var studentSatisfactionChange = stats.student_satisfaction_change || '-3%';
+    var avgGPA = Number(stats.avg_gpa) || 0;
+    var avgGPAChange = stats.avg_gpa_change || '+0.2';
+    var totalStudents = Number(stats.total_students) || 1248;
+    var totalStudentsChange = stats.total_students_change || '+7%';
+    var totalTeachers = Number(stats.total_teachers) || 0;
+    var totalTeachersChange = stats.total_teachers_change || '+0%';
+    var activeCourses = Number(stats.active_courses) || 0;
+    var activeCoursesChange = stats.active_courses_change || '+0%';
+    var enrollmentRate = Number(stats.enrollment_rate) || 94;
+    var enrollmentRateChange = stats.enrollment_rate_change || '+4%';
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
       className: "dashboard-page",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "dashboard-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h1", {
-          children: "Admin Dashboard"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
-          className: "subtitle",
-          children: "Real-time overview of your school management system"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-        className: "performance-cards",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(PerformanceCards, {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "dashboard-summary",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "top-metrics",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric-card card metric-blue",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "metric-left",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "label",
-                children: "Total Students"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "value",
-                children: Number(stats.total_students) || 0
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "meta small-muted",
-                children: stats.students_change_label || '+0% from last month'
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "metric-icon",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                className: "icon-box color-blue",
-                children: "\uD83C\uDF93"
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric-card card metric-purple",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "metric-left",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "label",
-                children: "Total Teachers"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "value",
-                children: Number(stats.total_teachers) || 0
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "meta small-muted",
-                children: stats.teachers_change_label || '+0% from last month'
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "metric-icon",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                className: "icon-box color-violet",
-                children: "\uD83D\uDC65"
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric-card card metric-cyan",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "metric-left",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "label",
-                children: "Active Courses"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "value",
-                children: Number(stats.active_courses) || 0
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "meta small-muted",
-                children: stats.courses_change_label || '+0% from last month'
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "metric-icon",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                className: "icon-box color-cyan",
-                children: "\uD83D\uDCDA"
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric-card card metric-orange",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "metric-left",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "label",
-                children: "Enrollment Rate"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "value",
-                children: (Number(stats.enrollment_rate) || 0) + '%'
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "meta small-muted",
-                children: stats.enrollment_change_label || '+0% from last month'
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "metric-icon",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                className: "icon-box color-orange",
-                children: "\uD83D\uDCC8"
-              })
-            })]
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "header-content",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h1", {
+            children: "Dashboard"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+            className: "subtitle",
+            children: "Welcome back, Admin"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "summary-bottom",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "recent-activities card",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
-              children: "Recent Activities"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "activity-list",
-              children: (activities && activities.length ? activities : [{
-                title: 'New student enrolled',
-                desc: 'Emma Wilson',
-                time: '5 minutes ago'
-              }, {
-                title: 'Teacher account locked',
-                desc: 'Dr. James Smith',
-                time: '15 minutes ago'
-              }, {
-                title: 'Course updated',
-                desc: 'Advanced Mathematics',
-                time: '1 hour ago'
-              }, {
-                title: 'Student archived',
-                desc: 'Michael Brown',
-                time: '2 hours ago'
-              }, {
-                title: 'Teacher unlocked',
-                desc: 'Sarah Johnson',
-                time: '3 hours ago'
-              }]).map(function (it, i) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                  className: "activity-item",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                    className: "dot"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                    className: "activity-body",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                      className: "activity-title",
-                      children: it.title
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                      className: "activity-desc small-muted",
-                      children: it.desc
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                    className: "activity-time small-muted",
-                    children: it.time
-                  })]
-                }, i);
-              })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "header-actions",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("select", {
+            className: "year-selector",
+            value: selectedYear,
+            onChange: function onChange(e) {
+              return setSelectedYear(e.target.value);
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
+              value: "2024-2025",
+              children: "2024-2025"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
+              value: "2023-2024",
+              children: "2023-2024"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
+              value: "2022-2023",
+              children: "2022-2023"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "system-stats card",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
-              children: "System Statistics"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "stat-list",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                className: "stat-row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "stat-label",
-                  children: "Active Students"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "stat-value",
-                  children: Number(stats.total_students) || 0
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                className: "stat-row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "stat-label",
-                  children: "Archived Students"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "stat-value",
-                  children: Number(stats.archived_students) || 0
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                className: "stat-row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "stat-label",
-                  children: "Locked Accounts"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "stat-value",
-                  children: Number(stats.locked_accounts) || 0
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                className: "stat-row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "stat-label",
-                  children: "Unlocked Accounts"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "stat-value",
-                  children: Number(stats.unlocked_accounts) || 0
-                })]
-              })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
+            className: "btn-enroll-modern",
+            onClick: function onClick() {
+              return setShowModal(true);
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiUserPlus, {
+              size: 16
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              children: "Enroll Student"
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "charts-row",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "chart-card enrollment-area card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "card-head",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h4", {
-              children: "Enrollment Growth"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "subtitle small-muted",
-              children: "Students vs Teachers over months"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+        className: "top-metrics-grid",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "metric-card-modern blue",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "metric-icon-box",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              className: "metric-emoji",
+              children: "\uD83D\uDCC8"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "metric-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-label",
+              children: "Student Growth"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-value",
+              children: studentGrowth
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-change positive",
+              children: studentGrowthChange
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "enrollment-chart-wrap",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Line, {
-              data: enrollmentData,
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "metric-card-modern green",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "metric-icon-box",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              className: "metric-emoji",
+              children: "\u2705"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "metric-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-label",
+              children: "Course Completion"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "metric-value",
+              children: [courseCompletion, "%"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-change positive",
+              children: courseCompletionChange
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "metric-card-modern purple",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "metric-icon-box",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              className: "metric-emoji",
+              children: "\u2B50"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "metric-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-label",
+              children: "Student Satisfaction"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "metric-value",
+              children: [studentSatisfaction, "%"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-change negative",
+              children: studentSatisfactionChange
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "metric-card-modern cyan",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "metric-icon-box",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              className: "metric-emoji",
+              children: "\uD83C\uDFAF"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "metric-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-label",
+              children: "Average GPA"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-value",
+              children: avgGPA
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-change positive",
+              children: avgGPAChange
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "metric-card-modern blue-light",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "metric-icon-box",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              className: "metric-emoji",
+              children: "\uD83D\uDC68\u200D\uD83C\uDF93"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "metric-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-label",
+              children: "Total Students"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-value",
+              children: totalStudents.toLocaleString()
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-change positive",
+              children: totalStudentsChange
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "metric-card-modern violet",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "metric-icon-box",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              className: "metric-emoji",
+              children: "\uFFFD\u200D\uD83C\uDFEB"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "metric-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-label",
+              children: "Total Teachers"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-value",
+              children: totalTeachers
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-change positive",
+              children: totalTeachersChange
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "metric-card-modern teal",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "metric-icon-box",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              className: "metric-emoji",
+              children: "\uD83D\uDCDA"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "metric-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-label",
+              children: "Active Courses"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-value",
+              children: activeCourses
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-change positive",
+              children: activeCoursesChange
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "metric-card-modern orange",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "metric-icon-box",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+              className: "metric-emoji",
+              children: "\uD83D\uDD25"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "metric-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-label",
+              children: "Enrollment Rate"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "metric-value",
+              children: [enrollmentRate, "%"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "metric-change positive",
+              children: enrollmentRateChange
+            })]
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+        className: "dashboard-middle-grid",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "chart-card-modern enrollment",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "chart-header",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              className: "chart-title-group",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h4", {
+                children: "Enrollment Overview"
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "chart-wrapper",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_5__.Line, {
+              data: enrollmentChartData,
               options: enrollmentOptions
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "chart-card attendance-compact card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "card-head",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h4", {
-              children: "Weekly Attendance"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "attendance-chart-wrap",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Bar, {
-              data: attendanceData,
-              options: attendanceOptions
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "legend",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "legend-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                className: "legend-swatch absent"
-              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                className: "small-muted",
-                children: "absent"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "upcoming-events-card",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "section-header",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiCalendar, {
+              className: "calendar-icon"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
+              children: "Upcoming Events"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "event-item event-yellow",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "event-date",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "month",
+                children: "Oct"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "day",
+                children: "25"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "legend-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                className: "legend-swatch present"
-              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                className: "small-muted",
-                children: "present"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "event-details",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "event-title",
+                children: "Parent-Teacher Meeting"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "event-time",
+                children: "2:00 PM"
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "attendance-stats",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "stat",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "small-muted",
-                children: "Average Present"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "stat-val",
-                children: "1,127"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "event-item event-blue",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "event-date",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "month",
+                children: "Nov"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "day",
+                children: "5"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "stat",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "small-muted",
-                children: "Average Absent"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "stat-val",
-                children: "37"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "event-details",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "event-title",
+                children: "Semester Exams Begin"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "event-time",
+                children: "9:00 AM"
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "event-item event-green",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "event-date",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "month",
+                children: "Nov"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "day",
+                children: "12"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "event-details",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "event-title",
+                children: "Sports Day"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "event-time",
+                children: "10:00 AM"
               })]
             })]
           })]
         })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        className: "recent-activity-horizontal",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          className: "recent-activity-card",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            className: "section-header",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiActivity, {
+              className: "activity-icon"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
+              children: "Recent Activity"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            className: "activity-list-horizontal",
+            children: activities.length > 0 ? activities.slice(0, 4).map(function (activity, index) {
+              var _activity$title, _activity$title2, _activity$title3, _activity$title4, _activity$title5, _activity$title6, _activity$title7, _activity$title8;
+              // Determine icon and class based on activity type
+              var icon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiActivity, {});
+              var activityClass = 'activity-user';
+              if ((_activity$title = activity.title) !== null && _activity$title !== void 0 && _activity$title.toLowerCase().includes('course')) {
+                icon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiBook, {});
+                activityClass = 'activity-course';
+              } else if ((_activity$title2 = activity.title) !== null && _activity$title2 !== void 0 && _activity$title2.toLowerCase().includes('schedule') || (_activity$title3 = activity.title) !== null && _activity$title3 !== void 0 && _activity$title3.toLowerCase().includes('updated')) {
+                icon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiClock, {});
+                activityClass = 'activity-clock';
+              } else if ((_activity$title4 = activity.title) !== null && _activity$title4 !== void 0 && _activity$title4.toLowerCase().includes('result') || (_activity$title5 = activity.title) !== null && _activity$title5 !== void 0 && _activity$title5.toLowerCase().includes('published')) {
+                icon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiCheckCircle, {});
+                activityClass = 'activity-bell';
+              } else if ((_activity$title6 = activity.title) !== null && _activity$title6 !== void 0 && _activity$title6.toLowerCase().includes('enrolled') || (_activity$title7 = activity.title) !== null && _activity$title7 !== void 0 && _activity$title7.toLowerCase().includes('student') || (_activity$title8 = activity.title) !== null && _activity$title8 !== void 0 && _activity$title8.toLowerCase().includes('teacher')) {
+                icon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiUser, {});
+                activityClass = 'activity-user';
+              }
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                className: "activity-item ".concat(activityClass),
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  className: "activity-icon-box",
+                  children: icon
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                  className: "activity-content",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                    className: "activity-text",
+                    dangerouslySetInnerHTML: {
+                      __html: activity.title || activity.desc || 'Activity update'
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                    className: "activity-time",
+                    children: activity.time || 'Just now'
+                  })]
+                })]
+              }, index);
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              className: "activity-item activity-user",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                className: "activity-icon-box",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiActivity, {})
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                className: "activity-content",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  className: "activity-text",
+                  children: "No recent activity"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  className: "activity-time",
+                  children: "-"
+                })]
+              })]
+            })
+          })]
+        })
       })]
     });
   };
@@ -60419,21 +62683,21 @@ function AdminDashboard(_ref2) {
       change: gpaChange,
       color: 'cyan'
     }];
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       className: "perf-grid",
       children: cards.map(function (c, i) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "perf-card ".concat(c.color),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "perf-title",
             children: c.title
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "perf-value",
             children: c.value
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "perf-sub",
             children: c.sub
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "perf-change",
             children: c.change
           })]
@@ -60444,739 +62708,49 @@ function AdminDashboard(_ref2) {
 
   // MiniCalendar removed per design request
 
+  // Render the existing AdminUsers component configured for teachers so the UI
+  // is identical to the Students view. AdminUsers handles searching, filters,
+  // archived view, modals and export/import features already.
   var TeachersPage = function TeachersPage() {
-    var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState24 = _slicedToArray(_useState23, 2),
-      searchT = _useState24[0],
-      setSearchT = _useState24[1];
-    var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
-      _useState26 = _slicedToArray(_useState25, 2),
-      filterStatusT = _useState26[0],
-      setFilterStatusT = _useState26[1];
-    var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState28 = _slicedToArray(_useState27, 2),
-      filterDeptT = _useState28[0],
-      setFilterDeptT = _useState28[1];
-    var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState30 = _slicedToArray(_useState29, 2),
-      filterPosT = _useState30[0],
-      setFilterPosT = _useState30[1];
-    var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState32 = _slicedToArray(_useState31, 2),
-      importPreviewT = _useState32[0],
-      setImportPreviewT = _useState32[1];
-    var teachersAll = users.filter(function (u) {
-      return u.role === 'teacher';
-    });
-
-    // derive lists for selects
-    var departmentsList = Array.from(new Set(teachersAll.map(function (t) {
-      var _t$teacher;
-      return (((_t$teacher = t.teacher) === null || _t$teacher === void 0 ? void 0 : _t$teacher.department) || t.department || '').toString();
-    }).filter(Boolean))).sort();
-    var positionsList = Array.from(new Set(teachersAll.map(function (t) {
-      var _t$teacher2;
-      return (((_t$teacher2 = t.teacher) === null || _t$teacher2 === void 0 ? void 0 : _t$teacher2.position) || t.position || '').toString();
-    }).filter(Boolean))).sort();
-    var visible = teachersAll.filter(function (t) {
-      if (showArchived) return !!t.deleted_at;
-      return !t.deleted_at;
-    });
-    var filtered = visible.filter(function (t) {
-      var q = (searchT || '').toLowerCase().trim();
-      if (q) {
-        var _t$teacher3, _t$teacher4, _t$teacher5;
-        var hay = ((t.name || '') + ' ' + (t.email || '') + ' ' + (((_t$teacher3 = t.teacher) === null || _t$teacher3 === void 0 ? void 0 : _t$teacher3.faculty_id) || '') + ' ' + (((_t$teacher4 = t.teacher) === null || _t$teacher4 === void 0 ? void 0 : _t$teacher4.course) || '') + ' ' + (((_t$teacher5 = t.teacher) === null || _t$teacher5 === void 0 ? void 0 : _t$teacher5.department) || '')).toLowerCase();
-        if (!hay.includes(q)) return false;
-      }
-      if (filterStatusT && filterStatusT !== 'all') {
-        var _t$teacher6;
-        var st = (((_t$teacher6 = t.teacher) === null || _t$teacher6 === void 0 ? void 0 : _t$teacher6.status) || t.status || '').toLowerCase();
-        if (filterStatusT === 'locked') {
-          if (!t.is_locked) return false;
-        } else if (st !== filterStatusT.toLowerCase()) return false;
-      }
-      if (filterDeptT) {
-        var _t$teacher7;
-        var dept = (((_t$teacher7 = t.teacher) === null || _t$teacher7 === void 0 ? void 0 : _t$teacher7.department) || t.department || '').toString().toLowerCase();
-        if (!dept.includes(filterDeptT.toLowerCase())) return false;
-      }
-      if (filterPosT) {
-        var _t$teacher8;
-        var pos = (((_t$teacher8 = t.teacher) === null || _t$teacher8 === void 0 ? void 0 : _t$teacher8.position) || t.position || '').toString().toLowerCase();
-        if (!pos.includes(filterPosT.toLowerCase())) return false;
-      }
-      return true;
-    });
-
-    // derived counts for the chips (mirrors students UI)
-    var totalTeachers = teachersAll.length;
-    var activeCountT = teachersAll.filter(function (t) {
-      return !t.deleted_at && !t.is_locked;
-    }).length;
-    var archivedCountT = teachersAll.filter(function (t) {
-      return !!t.deleted_at;
-    }).length;
-    var lockedCountT = teachersAll.filter(function (t) {
-      return !!t.is_locked;
-    }).length;
-    var handleTeacherExport = function handleTeacherExport() {
-      var rows = filtered.map(function (u) {
-        var t = u.teacher || {};
-        return {
-          faculty_id: t.faculty_id || u.faculty_id || "EMP".concat(String(u.id).padStart(6, '0')),
-          first_name: t.first_name || u.first_name || (u.name ? u.name.split(' ')[0] : ''),
-          last_name: t.last_name || u.last_name || (u.name ? u.name.split(' ').slice(1).join(' ') : ''),
-          sex: t.sex || u.sex || '',
-          email: u.email || '',
-          date_of_birth: t.date_of_birth || u.date_of_birth || '',
-          phone_number: t.phone_number || u.phone_number || '',
-          address: t.address || u.address || '',
-          course: t.course || t.major || u.course || '',
-          department: t.department || u.department || '',
-          status: t.status || u.status || '',
-          courses_handled: Array.isArray(t.courses_handled) ? t.courses_handled.join(', ') : t.courses_handled || '',
-          position: t.position || u.position || ''
-        };
-      });
-      var csv = [Object.keys(rows[0] || {}).join(',')].concat(rows.map(function (r) {
-        return Object.values(r).map(function (v) {
-          return '"' + String(v || '').replace(/"/g, '""') + '"';
-        }).join(',');
-      })).join('\n');
-      var blob = new Blob([csv], {
-        type: 'text/csv'
-      });
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url;
-      a.download = 'teachers-export.csv';
-      a.click();
-      URL.revokeObjectURL(url);
-    };
-    var handleTeacherImportFile = function handleTeacherImportFile(file) {
-      if (!file) return;
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        var text = e.target.result;
-        var lines = text.split(/\r?\n/).filter(Boolean);
-        if (!lines.length) return alert('Empty file');
-        var headers = lines[0].split(',').map(function (h) {
-          return h.replace(/"/g, '').trim();
-        });
-        var data = lines.slice(1, 200).map(function (l) {
-          var cols = l.split(',').map(function (c) {
-            return c.replace(/^\s*"|"\s*$/g, '').trim();
-          });
-          var obj = {};
-          headers.forEach(function (h, i) {
-            obj[h] = cols[i] || '';
-          });
-          return obj;
-        });
-        if (!confirm("Import ".concat(data.length, " rows as teachers?"))) return;
-        _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
-          var _iterator, _step, r, payload, _t2, _t3;
-          return _regenerator().w(function (_context2) {
-            while (1) switch (_context2.p = _context2.n) {
-              case 0:
-                _iterator = _createForOfIteratorHelper(data);
-                _context2.p = 1;
-                _iterator.s();
-              case 2:
-                if ((_step = _iterator.n()).done) {
-                  _context2.n = 7;
-                  break;
-                }
-                r = _step.value;
-                _context2.p = 3;
-                payload = {
-                  role: 'teacher',
-                  faculty_id: r.faculty_id || r.teacher_id || '',
-                  first_name: r.first_name || '',
-                  last_name: r.last_name || '',
-                  sex: r.sex || '',
-                  email: r.email || '',
-                  date_of_birth: r.date_of_birth || '',
-                  phone_number: r.phone_number || r.phone || '',
-                  address: r.address || '',
-                  course: r.course || r.major || '',
-                  department: r.department || '',
-                  status: r.status || 'Active',
-                  courses_handled: r.courses_handled || r.courses || '',
-                  position: r.position || ''
-                };
-                if (!payload.name) payload.name = "".concat(payload.first_name || '', " ").concat(payload.last_name || '').trim();
-                if (!payload.password) payload.password = Math.random().toString(36).slice(-8) + 'A1!';
-                _context2.n = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payload)["catch"](function (e) {
-                  console.warn('teacher import failed', e);
-                  return null;
-                });
-              case 4:
-                try {
-                  window.dispatchEvent(new CustomEvent('admin:activities-changed'));
-                } catch (e) {}
-                _context2.n = 6;
-                break;
-              case 5:
-                _context2.p = 5;
-                _t2 = _context2.v;
-                console.error('Row import error', _t2);
-              case 6:
-                _context2.n = 2;
-                break;
-              case 7:
-                _context2.n = 9;
-                break;
-              case 8:
-                _context2.p = 8;
-                _t3 = _context2.v;
-                _iterator.e(_t3);
-              case 9:
-                _context2.p = 9;
-                _iterator.f();
-                return _context2.f(9);
-              case 10:
-                _context2.n = 11;
-                return fetchAll();
-              case 11:
-                alert('Import completed');
-              case 12:
-                return _context2.a(2);
-            }
-          }, _callee2, null, [[3, 5], [1, 8, 9, 10]]);
-        }))();
-      };
-      reader.readAsText(file);
-    };
-    var archiveTeacher = /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(id) {
-        var _t4;
-        return _regenerator().w(function (_context3) {
-          while (1) switch (_context3.p = _context3.n) {
-            case 0:
-              if (confirm('Archive this faculty member?')) {
-                _context3.n = 1;
-                break;
-              }
-              return _context3.a(2);
-            case 1:
-              _context3.p = 1;
-              _context3.n = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/api/admin/users/".concat(id));
-            case 2:
-              _context3.n = 3;
-              return fetchAll();
-            case 3:
-              // notify other admin components and activities list
-              try {
-                window.dispatchEvent(new CustomEvent('admin:users-changed'));
-              } catch (e) {}
-              try {
-                window.dispatchEvent(new CustomEvent('admin:activities-changed'));
-              } catch (e) {}
-              alert('Archived');
-              _context3.n = 5;
-              break;
-            case 4:
-              _context3.p = 4;
-              _t4 = _context3.v;
-              console.error(_t4);
-              alert('Failed');
-            case 5:
-              return _context3.a(2);
-          }
-        }, _callee3, null, [[1, 4]]);
-      }));
-      return function archiveTeacher(_x3) {
-        return _ref5.apply(this, arguments);
-      };
-    }();
-    var restoreTeacher = /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(id) {
-        var _t5;
-        return _regenerator().w(function (_context4) {
-          while (1) switch (_context4.p = _context4.n) {
-            case 0:
-              _context4.p = 0;
-              _context4.n = 1;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/admin/users/".concat(id, "/restore"));
-            case 1:
-              _context4.n = 2;
-              return fetchAll();
-            case 2:
-              try {
-                window.dispatchEvent(new CustomEvent('admin:users-changed'));
-              } catch (e) {}
-              try {
-                window.dispatchEvent(new CustomEvent('admin:activities-changed'));
-              } catch (e) {}
-              alert('Restored');
-              _context4.n = 4;
-              break;
-            case 3:
-              _context4.p = 3;
-              _t5 = _context4.v;
-              console.error(_t5);
-              alert('Failed');
-            case 4:
-              return _context4.a(2);
-          }
-        }, _callee4, null, [[0, 3]]);
-      }));
-      return function restoreTeacher(_x4) {
-        return _ref6.apply(this, arguments);
-      };
-    }();
-    var toggleLockTeacher = /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(id, locked) {
-        var _t6;
-        return _regenerator().w(function (_context5) {
-          while (1) switch (_context5.p = _context5.n) {
-            case 0:
-              _context5.p = 0;
-              _context5.n = 1;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/admin/users/".concat(id, "/").concat(locked ? 'unlock' : 'lock'));
-            case 1:
-              _context5.n = 2;
-              return fetchAll();
-            case 2:
-              try {
-                window.dispatchEvent(new CustomEvent('admin:users-changed'));
-              } catch (e) {}
-              try {
-                window.dispatchEvent(new CustomEvent('admin:activities-changed'));
-              } catch (e) {}
-              _context5.n = 4;
-              break;
-            case 3:
-              _context5.p = 3;
-              _t6 = _context5.v;
-              console.error(_t6);
-              alert('Failed');
-            case 4:
-              return _context5.a(2);
-          }
-        }, _callee5, null, [[0, 3]]);
-      }));
-      return function toggleLockTeacher(_x5, _x6) {
-        return _ref7.apply(this, arguments);
-      };
-    }();
-    var deleteTeacher = /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(id) {
-        var _t7;
-        return _regenerator().w(function (_context6) {
-          while (1) switch (_context6.p = _context6.n) {
-            case 0:
-              if (confirm('Permanently delete this faculty member?')) {
-                _context6.n = 1;
-                break;
-              }
-              return _context6.a(2);
-            case 1:
-              _context6.p = 1;
-              _context6.n = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/api/admin/users/".concat(id, "?force=1"));
-            case 2:
-              _context6.n = 3;
-              return fetchAll();
-            case 3:
-              try {
-                window.dispatchEvent(new CustomEvent('admin:users-changed'));
-              } catch (e) {}
-              try {
-                window.dispatchEvent(new CustomEvent('admin:activities-changed'));
-              } catch (e) {}
-              alert('Deleted');
-              _context6.n = 5;
-              break;
-            case 4:
-              _context6.p = 4;
-              _t7 = _context6.v;
-              console.error(_t7);
-              alert('Failed');
-            case 5:
-              return _context6.a(2);
-          }
-        }, _callee6, null, [[1, 4]]);
-      }));
-      return function deleteTeacher(_x7) {
-        return _ref8.apply(this, arguments);
-      };
-    }();
-
-    // fire activity change events so Recent Activities updates
-    var _notifyActivities = function _notifyActivities() {
-      try {
-        window.dispatchEvent(new CustomEvent('admin:activities-changed'));
-      } catch (e) {}
-    };
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-      className: "page teachers-page",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-        className: "hero-banner",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "hero-inner",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "hero-left",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h1", {
-              children: "Teacher Management"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
-              children: "Manage faculty records and accounts"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "hero-cards",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                className: "hero-card",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "card-title",
-                  children: "Today"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "card-sub",
-                  children: new Date().toLocaleDateString(undefined, {
-                    weekday: 'long',
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric'
-                  })
-                })]
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "hero-right"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "card students-panel",
-        style: {
-          padding: 20,
-          borderRadius: 12
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          style: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            gap: 12,
-            marginBottom: 12
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            style: {
-              flex: 1
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-                gap: 16
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                style: {
-                  width: 44,
-                  height: 44,
-                  borderRadius: 12,
-                  background: 'linear-gradient(90deg,#4f46e5,#06b6d4)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff'
-                },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiUsers, {})
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  style: {
-                    fontSize: 16,
-                    fontWeight: 700
-                  },
-                  children: "Teachers"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                  className: "small-muted",
-                  children: "View and manage faculty information"
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              style: {
-                display: 'flex',
-                gap: 8,
-                marginTop: 14,
-                alignItems: 'center'
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
-                type: "button",
-                className: "chip ".concat(filterStatusT === 'all' && !showArchived ? 'active' : ''),
-                onClick: function onClick() {
-                  setFilterStatusT('all');
-                  setShowArchived(false);
-                },
-                "aria-pressed": filterStatusT === 'all' && !showArchived,
-                children: ["All Teachers ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                  className: "chip-count",
-                  children: totalTeachers
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
-                type: "button",
-                className: "chip ".concat(filterStatusT === 'active' && !showArchived ? 'active' : ''),
-                onClick: function onClick() {
-                  setFilterStatusT('active');
-                  setShowArchived(false);
-                },
-                "aria-pressed": filterStatusT === 'active' && !showArchived,
-                children: ["Active ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                  className: "chip-count",
-                  children: activeCountT
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
-                type: "button",
-                className: "chip ".concat(showArchived || filterStatusT === 'archived' ? 'active' : ''),
-                onClick: function onClick() {
-                  setFilterStatusT('archived');
-                  setShowArchived(true);
-                },
-                "aria-pressed": showArchived || filterStatusT === 'archived',
-                children: ["Archived ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                  className: "chip-count",
-                  children: archivedCountT
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
-                type: "button",
-                className: "chip ".concat(filterStatusT === 'locked' && !showArchived ? 'active' : ''),
-                onClick: function onClick() {
-                  setFilterStatusT('locked');
-                  setShowArchived(false);
-                },
-                "aria-pressed": filterStatusT === 'locked' && !showArchived,
-                children: ["Locked ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                  className: "chip-count",
-                  children: lockedCountT
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              style: {
-                marginTop: 12
-              },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
-                className: "student-search",
-                placeholder: "Search teachers...",
-                value: searchT,
-                onChange: function onChange(e) {
-                  return setSearchT(e.target.value);
-                },
-                style: {
-                  width: '100%',
-                  padding: '12px 14px',
-                  borderRadius: 8,
-                  background: '#f3f4f6',
-                  border: 'none'
-                }
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            style: {
-              display: 'flex',
-              alignItems: 'center'
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-              className: "primary",
-              onClick: function onClick() {
-                setModalRole('teacher');
-                setShowModal(true);
-              },
-              style: {
-                padding: '10px 16px'
-              },
-              children: "+ Add Teacher"
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-          style: {
-            overflowX: 'auto'
-          },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("table", {
-            className: "students-table",
-            style: {
-              width: '100%',
-              borderCollapse: 'collapse'
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("thead", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                  style: {
-                    textAlign: 'left',
-                    padding: '12px 8px'
-                  },
-                  children: "Name"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                  style: {
-                    textAlign: 'left',
-                    padding: '12px 8px'
-                  },
-                  children: "Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                  style: {
-                    textAlign: 'left',
-                    padding: '12px 8px'
-                  },
-                  children: "Subject"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                  style: {
-                    textAlign: 'left',
-                    padding: '12px 8px'
-                  },
-                  children: "Department"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                  style: {
-                    textAlign: 'left',
-                    padding: '12px 8px'
-                  },
-                  children: "Status"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                  style: {
-                    textAlign: 'right',
-                    padding: '12px 8px'
-                  },
-                  children: "Actions"
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("tbody", {
-              children: filtered.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("tr", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  colSpan: 6,
-                  style: {
-                    padding: 20
-                  },
-                  children: "No teachers found"
-                })
-              }) : filtered.map(function (t) {
-                var teacher = t.teacher || {};
-                var fullName = t.name || "".concat(teacher.first_name || '', " ").concat(teacher.last_name || '').trim();
-                var email = t.email || '';
-                var subject = teacher.specialization || teacher.course || t.subject || '—';
-                var department = teacher.department || teacher.department || '';
-                var statusVal = (teacher.status || t.status || 'Active').toString();
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
-                  className: "".concat(t.deleted_at ? 'archived-row' : ''),
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                    style: {
-                      padding: '12px 8px'
-                    },
-                    children: fullName
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                    style: {
-                      padding: '12px 8px'
-                    },
-                    children: email
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                    style: {
-                      padding: '12px 8px'
-                    },
-                    children: subject
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                    style: {
-                      padding: '12px 8px'
-                    },
-                    children: department
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                    style: {
-                      padding: '12px 8px'
-                    },
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                      className: "status-pill ".concat((statusVal || '').toLowerCase()),
-                      children: statusVal
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                    style: {
-                      padding: '12px 8px',
-                      textAlign: 'right'
-                    },
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                      className: "actions",
-                      style: {
-                        display: 'inline-flex',
-                        alignItems: 'center'
-                      },
-                      children: !t.deleted_at ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                          type: "button",
-                          className: "action-icon view-button",
-                          title: "View",
-                          onClick: function onClick() {
-                            return setSelectedUser(t);
-                          },
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiEye, {})
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                          type: "button",
-                          className: "action-icon",
-                          title: "Edit",
-                          onClick: function onClick() {
-                            setEditing(t);
-                            setModalRole('teacher');
-                            setShowModal(true);
-                          },
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiEdit2, {})
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                          type: "button",
-                          className: "action-icon",
-                          title: t.is_locked ? 'Unlock' : 'Lock',
-                          onClick: function onClick() {
-                            return toggleLockTeacher(t.id, t.is_locked);
-                          },
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiLock, {})
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                          type: "button",
-                          className: "action-icon text-danger",
-                          title: "Archive",
-                          onClick: function onClick() {
-                            return archiveTeacher(t.id);
-                          },
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiArchive, {})
-                        })]
-                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                          type: "button",
-                          className: "action-icon",
-                          title: "Restore",
-                          onClick: function onClick() {
-                            return restoreTeacher(t.id);
-                          },
-                          children: "\u267B\uFE0F"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                          type: "button",
-                          className: "action-icon text-danger",
-                          title: "Delete Permanently",
-                          onClick: function onClick() {
-                            return deleteTeacher(t.id);
-                          },
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiTrash2, {})
-                        })]
-                      })
-                    })
-                  })]
-                }, t.id);
-              })
-            })]
-          })
-        })]
-      })]
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_AdminUsers__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      role: "teacher"
     });
   };
   var CoursesPage = function CoursesPage() {
-    var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    // NOTE: Course modals are scoped inside CoursesPage. Do not render them at AdminDashboard root
+    // or you'll get ReferenceError on state variables and flicker due to overlay stacking.
+    var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState32 = _slicedToArray(_useState31, 2),
+      courseSearch = _useState32[0],
+      setCourseSearch = _useState32[1];
+    var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState34 = _slicedToArray(_useState33, 2),
-      courseSearch = _useState34[0],
-      setCourseSearch = _useState34[1];
+      filterStatusC = _useState34[0],
+      setFilterStatusC = _useState34[1];
     var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState36 = _slicedToArray(_useState35, 2),
-      filterStatusC = _useState36[0],
-      setFilterStatusC = _useState36[1];
+      filterSemesterC = _useState36[0],
+      setFilterSemesterC = _useState36[1];
     var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
       _useState38 = _slicedToArray(_useState37, 2),
-      filterSemesterC = _useState38[0],
-      setFilterSemesterC = _useState38[1];
-    var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
+      filterCreditsC = _useState38[0],
+      setFilterCreditsC = _useState38[1];
+    var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState40 = _slicedToArray(_useState39, 2),
-      filterCreditsC = _useState40[0],
-      setFilterCreditsC = _useState40[1];
+      showCourseAddModal = _useState40[0],
+      setShowCourseAddModal = _useState40[1];
+    var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState42 = _slicedToArray(_useState41, 2),
+      editingCourse = _useState42[0],
+      setEditingCourse = _useState42[1];
+    var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState44 = _slicedToArray(_useState43, 2),
+      showEnrollModal = _useState44[0],
+      setShowEnrollModal = _useState44[1];
+    var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState46 = _slicedToArray(_useState45, 2),
+      enrollCourse = _useState46[0],
+      setEnrollCourse = _useState46[1];
 
     // programs (departments) provided by the user
     var programs = [{
@@ -61308,274 +62882,605 @@ function AdminDashboard(_ref2) {
       };
       reader.readAsText(file);
     };
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       className: "page courses-page",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "page-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "breadcrumb",
-            children: ["School System \xA0 > \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("strong", {
-              children: "Course Management"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
-            children: "Course Management"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
-            className: "page-sub",
-            children: "Manage courses, schedules, and enrollment across all departments"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-          className: "header-actions",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "header-buttons",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
-              id: "courses-import",
-              type: "file",
-              accept: ".csv",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+        className: "modern-management-card",
+        style: {
+          background: '#fff',
+          borderRadius: 16,
+          padding: 0,
+          overflow: 'hidden',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.08)'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          style: {
+            background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+            padding: '24px 28px',
+            color: '#fff'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12,
+              marginBottom: 8
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               style: {
-                display: 'none'
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: 'rgba(255,255,255,0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 24
               },
-              onChange: function onChange(e) {
-                return handleCourseImportFile(e.target.files && e.target.files[0]);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
-              className: "icon-box import",
-              onClick: function onClick() {
-                var _document$getElementB;
-                return (_document$getElementB = document.getElementById('courses-import')) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.click();
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiUpload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiBook, {
+                size: 24
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
                 style: {
-                  marginLeft: 8
+                  margin: 0,
+                  fontSize: 24,
+                  fontWeight: 700
                 },
-                children: "Import"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
-              className: "icon-box export",
-              onClick: handleCourseExport,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiDownload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                children: "Course Management"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
                 style: {
-                  marginLeft: 8
+                  margin: 0,
+                  fontSize: 14,
+                  opacity: 0.9
                 },
-                children: "Export"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
-              className: "primary",
-              onClick: function onClick() {
-                return setShowCourseModal(true);
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                style: {
-                  marginLeft: 8
-                },
-                children: "Add Course"
+                children: "Manage courses, schedules, and enrollment across all departments"
               })]
             })]
           })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-        className: "courses-top",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "courses-metrics",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric card total",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "label",
-              children: "Total Courses"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "value",
-              children: courses.length
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          style: {
+            padding: '20px 28px',
+            borderBottom: '1px solid #e5e7eb'
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              gap: 12,
+              marginBottom: 16,
+              flexWrap: 'wrap'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
+              onClick: function onClick() {
+                return setFilterStatusC('all');
+              },
+              style: {
+                padding: '8px 16px',
+                borderRadius: 20,
+                border: filterStatusC === 'all' ? '2px solid #f59e0b' : '1px solid #e5e7eb',
+                background: filterStatusC === 'all' ? '#fff7ed' : '#fff',
+                color: filterStatusC === 'all' ? '#f59e0b' : '#6b7280',
+                fontWeight: 600,
+                fontSize: 14,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                transition: 'all 0.2s'
+              },
+              children: ["All Courses ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                style: {
+                  background: '#f59e0b',
+                  color: '#fff',
+                  borderRadius: 12,
+                  padding: '2px 8px',
+                  fontSize: 12,
+                  fontWeight: 700
+                },
+                children: courses.length
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
+              onClick: function onClick() {
+                return setFilterStatusC('active');
+              },
+              style: {
+                padding: '8px 16px',
+                borderRadius: 20,
+                border: filterStatusC === 'active' ? '2px solid #10b981' : '1px solid #e5e7eb',
+                background: filterStatusC === 'active' ? '#ecfdf5' : '#fff',
+                color: filterStatusC === 'active' ? '#10b981' : '#6b7280',
+                fontWeight: 600,
+                fontSize: 14,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                transition: 'all 0.2s'
+              },
+              children: ["Active ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                style: {
+                  background: '#10b981',
+                  color: '#fff',
+                  borderRadius: 12,
+                  padding: '2px 8px',
+                  fontSize: 12,
+                  fontWeight: 700
+                },
+                children: courses.filter(function (c) {
+                  return (c.status || '').toLowerCase() === 'active';
+                }).length
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
+              onClick: function onClick() {
+                return setFilterStatusC('inactive');
+              },
+              style: {
+                padding: '8px 16px',
+                borderRadius: 20,
+                border: filterStatusC === 'inactive' ? '2px solid #6b7280' : '1px solid #e5e7eb',
+                background: filterStatusC === 'inactive' ? '#f3f4f6' : '#fff',
+                color: filterStatusC === 'inactive' ? '#6b7280' : '#6b7280',
+                fontWeight: 600,
+                fontSize: 14,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+                transition: 'all 0.2s'
+              },
+              children: ["Inactive ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                style: {
+                  background: '#6b7280',
+                  color: '#fff',
+                  borderRadius: 12,
+                  padding: '2px 8px',
+                  fontSize: 12,
+                  fontWeight: 700
+                },
+                children: courses.filter(function (c) {
+                  return (c.status || '').toLowerCase() === 'inactive';
+                }).length
+              })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric card active",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "label",
-              children: "Active"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "value",
-              children: courses.filter(function (c) {
-                return (c.status || '').toLowerCase() === 'active';
-              }).length
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric card inactive",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "label",
-              children: "Inactive"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "value",
-              children: courses.filter(function (c) {
-                return (c.status || '').toLowerCase() === 'inactive';
-              }).length
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric card students",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "label",
-              children: "Total Students"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "value",
-              children: derivedTotalStudents
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric card enrollment",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "label",
-              children: "Avg. Enrollment"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "value",
-              children: function () {
-                if (!courses || !courses.length) return 0;
-                var sum = courses.reduce(function (s, c) {
-                  var parts = (c.enrolled || '').split('/');
-                  var n = parseInt(parts[0] || '0', 10);
-                  return s + (Number.isFinite(n) ? n : 0);
-                }, 0);
-                return Math.round(sum / courses.length) || 0;
-              }()
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "metric card capacity",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "label",
-              children: "At Capacity"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "value",
-              children: courses.filter(function (c) {
-                var parts = (c.enrolled || '').split('/');
-                return parts.length === 2 && Number(parts[0]) >= Number(parts[1]);
-              }).length
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              gap: 12,
+              alignItems: 'center',
+              flexWrap: 'wrap'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              style: {
+                flex: 1,
+                minWidth: 250,
+                position: 'relative'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiSearch, {
+                style: {
+                  position: 'absolute',
+                  left: 14,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: '#9ca3af',
+                  fontSize: 18
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("input", {
+                type: "text",
+                placeholder: "Search by course name, code, teacher, or department...",
+                value: courseSearch,
+                onChange: function onChange(e) {
+                  return setCourseSearch(e.target.value);
+                },
+                style: {
+                  width: '100%',
+                  padding: '10px 14px 10px 42px',
+                  borderRadius: 10,
+                  border: '1px solid #e5e7eb',
+                  fontSize: 14,
+                  outline: 'none',
+                  transition: 'all 0.2s'
+                },
+                onFocus: function onFocus(e) {
+                  return e.target.style.borderColor = '#f59e0b';
+                },
+                onBlur: function onBlur(e) {
+                  return e.target.style.borderColor = '#e5e7eb';
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("select", {
+              value: filterSemesterC,
+              onChange: function onChange(e) {
+                return setFilterSemesterC(e.target.value);
+              },
+              style: {
+                padding: '10px 14px',
+                borderRadius: 10,
+                border: '1px solid #e5e7eb',
+                fontSize: 14,
+                outline: 'none',
+                cursor: 'pointer'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
+                value: "all",
+                children: "All Semesters"
+              }), semesters.map(function (s) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
+                  value: s,
+                  children: s
+                }, s);
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("select", {
+              value: filterCreditsC,
+              onChange: function onChange(e) {
+                return setFilterCreditsC(e.target.value);
+              },
+              style: {
+                padding: '10px 14px',
+                borderRadius: 10,
+                border: '1px solid #e5e7eb',
+                fontSize: 14,
+                outline: 'none',
+                cursor: 'pointer'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
+                value: "all",
+                children: "All Credits"
+              }), credits.map(function (c) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
+                  value: c,
+                  children: c
+                }, c);
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
+              onClick: function onClick() {
+                return setShowCourseAddModal(true);
+              },
+              style: {
+                padding: '10px 20px',
+                borderRadius: 10,
+                border: 'none',
+                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                color: '#fff',
+                fontWeight: 600,
+                fontSize: 14,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'all 0.2s',
+                boxShadow: '0 2px 4px rgba(245,158,11,0.2)'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiPlus, {
+                size: 18
+              }), " Add Course"]
             })]
           })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "courses-controls",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
-          className: "course-search",
-          placeholder: "Search by course name, code, teacher, or department...",
-          value: courseSearch,
-          onChange: function onChange(e) {
-            return setCourseSearch(e.target.value);
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "filters",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", {
-            value: filterStatusC,
-            onChange: function onChange(e) {
-              return setFilterStatusC(e.target.value);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          style: {
+            padding: 28
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            style: {
+              overflowX: 'auto'
             },
-            className: "filter-select",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-              value: "all",
-              children: "All Status"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-              value: "active",
-              children: "Active"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-              value: "inactive",
-              children: "Inactive"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", {
-            value: filterSemesterC,
-            onChange: function onChange(e) {
-              return setFilterSemesterC(e.target.value);
-            },
-            className: "filter-select",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-              value: "all",
-              children: "All Semesters"
-            }), semesters.map(function (s) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: s,
-                children: s
-              }, s);
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("select", {
-            value: filterCreditsC,
-            onChange: function onChange(e) {
-              return setFilterCreditsC(e.target.value);
-            },
-            className: "filter-select",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-              value: "all",
-              children: "All Credits"
-            }), credits.map(function (c) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
-                value: c,
-                children: c
-              }, c);
-            })]
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-        className: "courses-table card",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("table", {
-          className: "courses-table",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("thead", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Course"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Department"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Teacher"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Enrollment"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Schedule"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Credits"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Status"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("th", {
-                children: "Actions"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("table", {
+              style: {
+                width: '100%',
+                borderCollapse: 'separate',
+                borderSpacing: 0
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("thead", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("tr", {
+                  style: {
+                    background: '#f9fafb',
+                    borderBottom: '2px solid #e5e7eb'
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
+                    style: {
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    },
+                    children: "Course"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
+                    style: {
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    },
+                    children: "Department"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
+                    style: {
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    },
+                    children: "Teacher"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
+                    style: {
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    },
+                    children: "Enrollment"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
+                    style: {
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    },
+                    children: "Schedule"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
+                    style: {
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    },
+                    children: "Credits"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
+                    style: {
+                      padding: '12px 16px',
+                      textAlign: 'left',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    },
+                    children: "Status"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("th", {
+                    style: {
+                      padding: '12px 16px',
+                      textAlign: 'center',
+                      fontWeight: 600,
+                      fontSize: 13,
+                      color: '#6b7280',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em'
+                    },
+                    children: "Actions"
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("tbody", {
+                children: filtered.map(function (c, i) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("tr", {
+                    style: {
+                      borderBottom: '1px solid #f3f4f6',
+                      transition: 'all 0.2s'
+                    },
+                    onMouseEnter: function onMouseEnter(e) {
+                      return e.currentTarget.style.background = '#fffbeb';
+                    },
+                    onMouseLeave: function onMouseLeave(e) {
+                      return e.currentTarget.style.background = 'transparent';
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("td", {
+                      style: {
+                        padding: '14px 16px'
+                      },
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                        style: {
+                          fontWeight: 600,
+                          fontSize: 14,
+                          color: '#111827',
+                          marginBottom: 2
+                        },
+                        children: c.name
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                        style: {
+                          fontSize: 12,
+                          color: '#9ca3af'
+                        },
+                        children: c.code
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
+                      style: {
+                        padding: '14px 16px',
+                        fontSize: 14,
+                        color: '#6b7280'
+                      },
+                      children: c.department
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
+                      style: {
+                        padding: '14px 16px',
+                        fontSize: 14,
+                        color: '#6b7280'
+                      },
+                      children: c.teacher
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
+                      style: {
+                        padding: '14px 16px',
+                        fontSize: 14,
+                        color: '#6b7280'
+                      },
+                      children: c.enrolled
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
+                      style: {
+                        padding: '14px 16px',
+                        fontSize: 14,
+                        color: '#6b7280'
+                      },
+                      children: c.schedule
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
+                      style: {
+                        padding: '14px 16px',
+                        fontSize: 14,
+                        color: '#6b7280'
+                      },
+                      children: c.credits
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
+                      style: {
+                        padding: '14px 16px'
+                      },
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                        style: {
+                          display: 'inline-block',
+                          padding: '4px 12px',
+                          borderRadius: 12,
+                          fontSize: 12,
+                          fontWeight: 600,
+                          background: (c.status || '').toLowerCase() === 'active' ? '#d1fae5' : '#f3f4f6',
+                          color: (c.status || '').toLowerCase() === 'active' ? '#065f46' : '#6b7280'
+                        },
+                        children: c.status
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("td", {
+                      style: {
+                        padding: '14px 16px',
+                        textAlign: 'center'
+                      },
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                        style: {
+                          display: 'flex',
+                          gap: 8,
+                          justifyContent: 'center'
+                        },
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
+                          style: {
+                            padding: 8,
+                            borderRadius: 8,
+                            border: 'none',
+                            background: '#fff',
+                            color: '#6b7280',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'all 0.2s',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+                          },
+                          onMouseEnter: function onMouseEnter(e) {
+                            e.currentTarget.style.background = '#f59e0b';
+                            e.currentTarget.style.color = '#fff';
+                          },
+                          onMouseLeave: function onMouseLeave(e) {
+                            e.currentTarget.style.background = '#fff';
+                            e.currentTarget.style.color = '#6b7280';
+                          },
+                          title: "View",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiEye, {
+                            size: 16
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
+                          style: {
+                            padding: 8,
+                            borderRadius: 8,
+                            border: 'none',
+                            background: '#fff',
+                            color: '#6b7280',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'all 0.2s',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+                          },
+                          onMouseEnter: function onMouseEnter(e) {
+                            e.currentTarget.style.background = '#f59e0b';
+                            e.currentTarget.style.color = '#fff';
+                          },
+                          onMouseLeave: function onMouseLeave(e) {
+                            e.currentTarget.style.background = '#fff';
+                            e.currentTarget.style.color = '#6b7280';
+                          },
+                          title: "Edit",
+                          onClick: function onClick() {
+                            setEditingCourse(c);
+                            setShowCourseAddModal(true);
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiEdit2, {
+                            size: 16
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
+                          style: {
+                            padding: 8,
+                            borderRadius: 8,
+                            border: 'none',
+                            background: '#fff',
+                            color: '#6b7280',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'all 0.2s',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+                          },
+                          onMouseEnter: function onMouseEnter(e) {
+                            e.currentTarget.style.background = '#f59e0b';
+                            e.currentTarget.style.color = '#fff';
+                          },
+                          onMouseLeave: function onMouseLeave(e) {
+                            e.currentTarget.style.background = '#fff';
+                            e.currentTarget.style.color = '#6b7280';
+                          },
+                          title: "Enroll Students",
+                          onClick: function onClick() {
+                            setEnrollCourse(c);
+                            setShowEnrollModal(true);
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiUserPlus, {
+                            size: 16
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
+                          style: {
+                            padding: 8,
+                            borderRadius: 8,
+                            border: 'none',
+                            background: '#fff',
+                            color: '#ef4444',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'all 0.2s',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+                          },
+                          onMouseEnter: function onMouseEnter(e) {
+                            e.currentTarget.style.background = '#ef4444';
+                            e.currentTarget.style.color = '#fff';
+                          },
+                          onMouseLeave: function onMouseLeave(e) {
+                            e.currentTarget.style.background = '#fff';
+                            e.currentTarget.style.color = '#ef4444';
+                          },
+                          title: "Delete",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiTrash2, {
+                            size: 16
+                          })
+                        })]
+                      })
+                    })]
+                  }, i);
+                })
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("tbody", {
-            children: filtered.map(function (c, i) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("td", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("strong", {
-                    children: c.name
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                    className: "small-muted",
-                    children: c.code
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: c.department
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: c.teacher
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: c.enrolled
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: c.schedule
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: c.credits
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                    className: "status-pill ".concat((c.status || '').toLowerCase()),
-                    children: c.status
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("td", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                    className: "action-icon",
-                    title: "View",
-                    children: "\uD83D\uDC41\uFE0F"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                    className: "action-icon",
-                    title: "Edit",
-                    children: "\u270E"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-                    className: "action-icon text-danger",
-                    title: "Delete",
-                    children: "\uD83D\uDDD1\uFE0F"
-                  })]
-                })]
-              }, i);
-            })
-          })]
-        })
-      })]
+          })
+        })]
+      })
     });
   };
   var DocumentsPage = function DocumentsPage() {
@@ -61591,24 +63496,24 @@ function AdminDashboard(_ref2) {
     };
 
     // documents state (server-backed list)
-    var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-      _useState42 = _slicedToArray(_useState41, 2),
-      docsState = _useState42[0],
-      setDocsState = _useState42[1];
+    var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState48 = _slicedToArray(_useState47, 2),
+      docsState = _useState48[0],
+      setDocsState = _useState48[1];
 
     // load persisted documents from server on mount
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
       var mounted = true;
-      _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
-        var res, _t8;
-        return _regenerator().w(function (_context7) {
-          while (1) switch (_context7.p = _context7.n) {
+      _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+        var res, _t5;
+        return _regenerator().w(function (_context5) {
+          while (1) switch (_context5.p = _context5.n) {
             case 0:
-              _context7.p = 0;
-              _context7.n = 1;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + '/documents');
+              _context5.p = 0;
+              _context5.n = 1;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(API + '/documents');
             case 1:
-              res = _context7.v;
+              res = _context5.v;
               if (mounted && Array.isArray(res.data)) {
                 setDocsState(res.data.map(function (d) {
                   return {
@@ -61621,33 +63526,33 @@ function AdminDashboard(_ref2) {
                   };
                 }));
               }
-              _context7.n = 3;
+              _context5.n = 3;
               break;
             case 2:
-              _context7.p = 2;
-              _t8 = _context7.v;
-              console.warn('Failed to fetch documents', _t8);
+              _context5.p = 2;
+              _t5 = _context5.v;
+              console.warn('Failed to fetch documents', _t5);
             case 3:
-              return _context7.a(2);
+              return _context5.a(2);
           }
-        }, _callee7, null, [[0, 2]]);
+        }, _callee5, null, [[0, 2]]);
       }))();
       return function () {
         mounted = false;
       };
     }, []);
-    var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('grid'),
-      _useState44 = _slicedToArray(_useState43, 2),
-      docsView = _useState44[0],
-      setDocsView = _useState44[1];
-    var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState46 = _slicedToArray(_useState45, 2),
-      filterFav = _useState46[0],
-      setFilterFav = _useState46[1];
-    var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
-      _useState48 = _slicedToArray(_useState47, 2),
-      filterVisibility = _useState48[0],
-      setFilterVisibility = _useState48[1];
+    var _useState49 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('grid'),
+      _useState50 = _slicedToArray(_useState49, 2),
+      docsView = _useState50[0],
+      setDocsView = _useState50[1];
+    var _useState51 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState52 = _slicedToArray(_useState51, 2),
+      filterFav = _useState52[0],
+      setFilterFav = _useState52[1];
+    var _useState53 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
+      _useState54 = _slicedToArray(_useState53, 2),
+      filterVisibility = _useState54[0],
+      setFilterVisibility = _useState54[1];
 
     // file input ref handler
     var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
@@ -61656,30 +63561,30 @@ function AdminDashboard(_ref2) {
       return (_fileInputRef$current = fileInputRef.current) === null || _fileInputRef$current === void 0 ? void 0 : _fileInputRef$current.click();
     };
     var handleFiles = /*#__PURE__*/function () {
-      var _ref0 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(files) {
-        var form, res, uploaded, _t9;
-        return _regenerator().w(function (_context8) {
-          while (1) switch (_context8.p = _context8.n) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(files) {
+        var form, res, uploaded, _t6;
+        return _regenerator().w(function (_context6) {
+          while (1) switch (_context6.p = _context6.n) {
             case 0:
               if (!(!files || !files.length)) {
-                _context8.n = 1;
+                _context6.n = 1;
                 break;
               }
-              return _context8.a(2);
+              return _context6.a(2);
             case 1:
               form = new FormData();
               Array.from(files).forEach(function (f) {
                 return form.append('files[]', f);
               });
-              _context8.p = 2;
-              _context8.n = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post(API + '/documents', form, {
+              _context6.p = 2;
+              _context6.n = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post(API + '/documents', form, {
                 headers: {
                   'Content-Type': 'multipart/form-data'
                 }
               });
             case 3:
-              res = _context8.v;
+              res = _context6.v;
               uploaded = res.data && res.data.uploaded ? res.data.uploaded : [];
               if (uploaded.length) {
                 // prepend to list
@@ -61703,74 +63608,74 @@ function AdminDashboard(_ref2) {
                   }));
                 } catch (e) {}
               }
-              _context8.n = 5;
+              _context6.n = 5;
               break;
             case 4:
-              _context8.p = 4;
-              _t9 = _context8.v;
-              console.error('Upload failed', _t9);
+              _context6.p = 4;
+              _t6 = _context6.v;
+              console.error('Upload failed', _t6);
               alert('Upload failed. Check console for details.');
             case 5:
-              _context8.p = 5;
+              _context6.p = 5;
               // clear input so selecting same file again works
               try {
                 if (fileInputRef.current) fileInputRef.current.value = '';
               } catch (e) {}
-              return _context8.f(5);
+              return _context6.f(5);
             case 6:
-              return _context8.a(2);
+              return _context6.a(2);
           }
-        }, _callee8, null, [[2, 4, 5, 6]]);
+        }, _callee6, null, [[2, 4, 5, 6]]);
       }));
-      return function handleFiles(_x8) {
-        return _ref0.apply(this, arguments);
+      return function handleFiles(_x6) {
+        return _ref9.apply(this, arguments);
       };
     }();
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
       className: "page documents-page",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "page-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "breadcrumb",
-            children: ["School System \xA0 > \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("strong", {
+            children: ["School System \xA0 > \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("strong", {
               children: "Documents"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
             children: "Documents Management"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
             className: "page-sub",
             children: "Centralized document library and file management"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           className: "header-actions",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "header-buttons",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
               className: "icon-box import",
               title: "Bulk Upload",
               onClick: function onClick() {
                 return openUpload();
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiUpload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiUpload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
                 children: "Bulk Upload"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
               className: "primary",
               title: "Upload Document",
               onClick: function onClick() {
                 return openUpload();
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
                 children: "Upload Document"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("input", {
               ref: fileInputRef,
               type: "file",
               accept: "*/*",
@@ -61784,147 +63689,147 @@ function AdminDashboard(_ref2) {
             })]
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "documents-top",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "docs-metrics",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-metric card blue",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "doc-metric-left",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "metric-icon",
                 children: "\uD83D\uDCC4"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-metric-right",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "label",
                 children: "Total Files"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "value",
                 children: metrics.total_files
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-metric card green",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "doc-metric-left",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "metric-icon",
                 children: "\uD83C\uDF10"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-metric-right",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "label",
                 children: "Public"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "value",
                 children: metrics["public"]
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-metric card purple",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "doc-metric-left",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "metric-icon",
                 children: "\uD83D\uDD12"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-metric-right",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "label",
                 children: "Private"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "value",
                 children: metrics["private"]
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-metric card orange",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "doc-metric-left",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "metric-icon",
                 children: "\u2B07\uFE0F"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-metric-right",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "label",
                 children: "Downloads"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "value",
                 children: metrics.downloads
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-metric card cyan",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "doc-metric-left",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "metric-icon",
                 children: "\uD83D\uDC41\uFE0F"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-metric-right",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "label",
                 children: "Views"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "value",
                 children: metrics.views
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-metric card yellow",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "doc-metric-left",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "metric-icon",
                 children: "\u2B50"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-metric-right",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "label",
                 children: "Favorites"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "value",
                 children: metrics.favorites
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-metric card teal",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "doc-metric-left",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "metric-icon",
                 children: "\uD83D\uDCC5"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-metric-right",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "label",
                 children: "This Week"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "value",
                 children: metrics.week
               })]
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "documents-controls",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("input", {
             className: "doc-search",
             placeholder: "Search documents, authors, or tags..."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "filters",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "quick-chips",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "chip ".concat(filterFav ? 'on' : ''),
                 onClick: function onClick() {
                   return setFilterFav(function (s) {
@@ -61932,47 +63837,47 @@ function AdminDashboard(_ref2) {
                   });
                 },
                 children: "\u2605 Favorites"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "chip ".concat(filterVisibility === 'all' ? 'on' : ''),
                 onClick: function onClick() {
                   return setFilterVisibility('all');
                 },
                 children: "All"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "chip ".concat(filterVisibility === 'public' ? 'on' : ''),
                 onClick: function onClick() {
                   return setFilterVisibility('public');
                 },
                 children: "Public"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "chip ".concat(filterVisibility === 'private' ? 'on' : ''),
                 onClick: function onClick() {
                   return setFilterVisibility('private');
                 },
                 children: "Private"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("select", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("select", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
                 children: "All Categories"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("select", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("select", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
                 children: "All Types"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("select", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("select", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
                 children: "Latest First"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "view-toggle docs-view",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 title: "Grid view",
                 className: docsView === 'grid' ? 'active' : '',
                 onClick: function onClick() {
                   return setDocsView('grid');
                 },
                 children: "\u25A6"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 title: "List view",
                 className: docsView === 'list' ? 'active' : '',
                 onClick: function onClick() {
@@ -61983,70 +63888,70 @@ function AdminDashboard(_ref2) {
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
         className: docsView === 'grid' ? 'documents-grid' : 'documents-list',
         children: docsState.length === 0 ? null : docsState.map(function (d, i) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-card card ".concat(d.visibility === 'Private' ? 'is-private' : ''),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
               className: "doc-top",
               style: {
                 background: "linear-gradient(135deg, ".concat(['#ff7aa2', '#7c3aed', '#06b6d4', '#f97316', '#34d399'][i % 5], ", #ff7aa2)")
               }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-body",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 style: {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center'
                 },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h4", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h4", {
                   style: {
                     margin: 0
                   },
                   children: d.title
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "doc-badges",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                     className: "badge small",
                     children: d.visibility
                   })
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
                 className: "small-muted",
                 children: d.description
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "doc-actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "action-icon",
                 title: "View",
-                onClick: /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
-                  var res, _t0;
-                  return _regenerator().w(function (_context9) {
-                    while (1) switch (_context9.p = _context9.n) {
+                onClick: /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
+                  var res, _t7;
+                  return _regenerator().w(function (_context7) {
+                    while (1) switch (_context7.p = _context7.n) {
                       case 0:
-                        _context9.p = 0;
-                        _context9.n = 1;
-                        return axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + '/documents/' + d.id);
+                        _context7.p = 0;
+                        _context7.n = 1;
+                        return axios__WEBPACK_IMPORTED_MODULE_2___default().get(API + '/documents/' + d.id);
                       case 1:
-                        res = _context9.v;
+                        res = _context7.v;
                         openDocModal(res.data);
-                        _context9.n = 3;
+                        _context7.n = 3;
                         break;
                       case 2:
-                        _context9.p = 2;
-                        _t0 = _context9.v;
-                        console.error('Failed to load document', _t0);
+                        _context7.p = 2;
+                        _t7 = _context7.v;
+                        console.error('Failed to load document', _t7);
                         alert('Failed to load document details');
                       case 3:
-                        return _context9.a(2);
+                        return _context7.a(2);
                     }
-                  }, _callee9, null, [[0, 2]]);
+                  }, _callee7, null, [[0, 2]]);
                 })),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiEye, {})
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiEye, {})
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "action-icon",
                 title: "Download",
                 onClick: function onClick() {
@@ -62065,33 +63970,33 @@ function AdminDashboard(_ref2) {
                     alert('Download failed');
                   }
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiDownload, {})
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiDownload, {})
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "action-icon",
                 title: "Copy link",
-                onClick: /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0() {
-                  var link, _t1;
-                  return _regenerator().w(function (_context0) {
-                    while (1) switch (_context0.p = _context0.n) {
+                onClick: /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
+                  var link, _t8;
+                  return _regenerator().w(function (_context8) {
+                    while (1) switch (_context8.p = _context8.n) {
                       case 0:
-                        _context0.p = 0;
+                        _context8.p = 0;
                         link = d.url || window.location.origin + API + '/documents/' + d.id + '/download';
-                        _context0.n = 1;
+                        _context8.n = 1;
                         return navigator.clipboard.writeText(link);
                       case 1:
                         alert('Link copied to clipboard');
-                        _context0.n = 3;
+                        _context8.n = 3;
                         break;
                       case 2:
-                        _context0.p = 2;
-                        _t1 = _context0.v;
+                        _context8.p = 2;
+                        _t8 = _context8.v;
                         prompt('Copy this link', d.url || window.location.origin + API + '/documents/' + d.id + '/download');
                       case 3:
-                        return _context0.a(2);
+                        return _context8.a(2);
                     }
-                  }, _callee0, null, [[0, 2]]);
+                  }, _callee8, null, [[0, 2]]);
                 })),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiCopy, {})
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiCopy, {})
               })]
             })]
           }, d.id);
@@ -62138,14 +64043,15 @@ function AdminDashboard(_ref2) {
     var studentsSeries = [420, 440, 460, 450, 470, 485, 495, 510];
     var facultySeries = [40, 42, 43, 46, 47, 48, 49, 50];
     var coursesSeries = [80, 82, 85, 89, 90, 92, 94, 95];
+    var colors = typeof window !== 'undefined' ? getChartColors() : {};
     var areaData = {
       labels: months,
       datasets: [{
         label: 'Students',
         data: studentsSeries,
-        backgroundColor: 'rgba(37,99,235,0.12)',
-        borderColor: 'rgba(37,99,235,0.95)',
-        pointBackgroundColor: 'rgba(37,99,235,1)',
+        backgroundColor: colors.studentsFill || undefined,
+        borderColor: colors.students || undefined,
+        pointBackgroundColor: colors.students || undefined,
         pointBorderColor: '#fff',
         borderWidth: 2,
         fill: true,
@@ -62154,9 +64060,9 @@ function AdminDashboard(_ref2) {
       }, {
         label: 'Faculty',
         data: facultySeries,
-        backgroundColor: 'rgba(16,185,129,0.08)',
-        borderColor: 'rgba(16,185,129,0.95)',
-        pointBackgroundColor: 'rgba(16,185,129,1)',
+        backgroundColor: colors.facultyFill || undefined,
+        borderColor: colors.faculty || undefined,
+        pointBackgroundColor: colors.faculty || undefined,
         pointBorderColor: '#fff',
         borderWidth: 2,
         fill: false,
@@ -62165,9 +64071,9 @@ function AdminDashboard(_ref2) {
       }, {
         label: 'Courses',
         data: coursesSeries,
-        backgroundColor: 'rgba(249,115,22,0.08)',
-        borderColor: 'rgba(249,115,22,0.95)',
-        pointBackgroundColor: 'rgba(249,115,22,1)',
+        backgroundColor: colors.coursesFill || undefined,
+        borderColor: colors.courses || undefined,
+        pointBackgroundColor: colors.courses || undefined,
         pointBorderColor: '#fff',
         borderWidth: 2,
         fill: false,
@@ -62184,7 +64090,8 @@ function AdminDashboard(_ref2) {
         },
         tooltip: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          backgroundColor: getChartColors() && getChartColors().tooltip || undefined
         }
       },
       scales: {
@@ -62193,124 +64100,396 @@ function AdminDashboard(_ref2) {
         }
       }
     };
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       className: "page reports-page",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "reports-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "breadcrumb",
-          children: ["School System \xA0 > \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("strong", {
-            children: "Reports"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
-          children: "Reports & Analytics"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
-          className: "page-sub",
-          children: "Comprehensive insights and data visualization"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-        className: "reports-metrics",
-        children: cards.map(function (c, i) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "report-metric card ".concat(c.color),
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-              className: "metric-left",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "metric-title",
-                children: c.title
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-                className: "metric-value",
-                children: c.value
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                className: "metric-sub small-muted",
-                children: ["from last semester ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
-                  className: "metric-change",
-                  children: c.change
-                })]
-              })]
-            })
-          }, i);
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "card chart-card",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
-          children: "Enrollment Trends"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
-          className: "small-muted",
-          children: "Student, faculty, and course growth over time"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+        className: "modern-management-card",
+        style: {
+          background: '#fff',
+          borderRadius: 16,
+          padding: 0,
+          overflow: 'hidden',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.08)'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           style: {
-            height: 280
+            background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
+            padding: '24px 28px',
+            color: '#fff'
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Bar, {
-            data: areaData,
-            options: areaOptions
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12,
+              marginBottom: 8
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              style: {
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: 'rgba(255,255,255,0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 24
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiFileText, {
+                size: 24
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
+                style: {
+                  margin: 0,
+                  fontSize: 24,
+                  fontWeight: 700
+                },
+                children: "Reports & Analytics"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+                style: {
+                  margin: 0,
+                  fontSize: 14,
+                  opacity: 0.9
+                },
+                children: "Comprehensive insights and data visualization"
+              })]
+            })]
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          style: {
+            padding: '28px',
+            borderBottom: '1px solid #e5e7eb'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            style: {
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: 16
+            },
+            children: cards.map(function (c, i) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  background: c.color === 'blue' ? 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)' : c.color === 'green' ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' : c.color === 'purple' ? 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)' : 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                  borderRadius: 12,
+                  padding: 20,
+                  color: '#fff',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                  transition: 'all 0.3s'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  style: {
+                    fontSize: 13,
+                    opacity: 0.9,
+                    marginBottom: 8,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    fontWeight: 600
+                  },
+                  children: c.title
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  style: {
+                    fontSize: 32,
+                    fontWeight: 700,
+                    marginBottom: 4
+                  },
+                  children: c.value
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                  style: {
+                    fontSize: 12,
+                    opacity: 0.85,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                    children: "from last semester"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                    style: {
+                      background: 'rgba(255,255,255,0.2)',
+                      padding: '2px 8px',
+                      borderRadius: 8,
+                      fontWeight: 600
+                    },
+                    children: c.change
+                  })]
+                })]
+              }, i);
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          style: {
+            padding: 28,
+            borderBottom: '1px solid #e5e7eb'
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            style: {
+              marginBottom: 20
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
+              style: {
+                fontSize: 18,
+                fontWeight: 700,
+                color: '#111827',
+                marginBottom: 4
+              },
+              children: "Enrollment Trends"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+              style: {
+                fontSize: 14,
+                color: '#6b7280',
+                margin: 0
+              },
+              children: "Student, faculty, and course growth over time"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            style: {
+              background: '#f9fafb',
+              borderRadius: 12,
+              padding: 20
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+              style: {
+                height: 280
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_5__.Bar, {
+                data: areaData,
+                options: areaOptions
+              })
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          style: {
+            padding: 28
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
+            style: {
+              fontSize: 18,
+              fontWeight: 700,
+              color: '#111827',
+              marginBottom: 16
+            },
+            children: "Recent Activity (30 Days)"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+            style: {
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 16
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+                borderRadius: 12,
+                padding: 20,
+                border: '1px solid #bfdbfe'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: 12
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                  style: {
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#1e40af'
+                  },
+                  children: "New Students"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  style: {
+                    width: 40,
+                    height: 40,
+                    borderRadius: 10,
+                    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    fontSize: 18,
+                    fontWeight: 700
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiUsers, {
+                    size: 20
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  fontSize: 28,
+                  fontWeight: 700,
+                  color: '#1e3a8a',
+                  marginBottom: 8
+                },
+                children: ["+", newStudents30]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                style: {
+                  background: '#e0e7ff',
+                  borderRadius: 8,
+                  height: 8,
+                  marginBottom: 8,
+                  overflow: 'hidden'
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  style: {
+                    background: 'linear-gradient(90deg, #3b82f6 0%, #2563eb 100%)',
+                    height: '100%',
+                    width: "".concat(Math.min(100, newStudents30 * 5), "%"),
+                    transition: 'width 0.5s',
+                    borderRadius: 8
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  fontSize: 12,
+                  color: '#3730a3'
+                },
+                children: [Math.min(100, newStudents30 ? Math.round(newStudents30 / Math.max(1, totalStudents) * 100) : 0), "% of enrollment target"]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
+                borderRadius: 12,
+                padding: 20,
+                border: '1px solid #a7f3d0'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: 12
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                  style: {
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#065f46'
+                  },
+                  children: "New Faculty"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  style: {
+                    width: 40,
+                    height: 40,
+                    borderRadius: 10,
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    fontSize: 18,
+                    fontWeight: 700
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiUser, {
+                    size: 20
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  fontSize: 28,
+                  fontWeight: 700,
+                  color: '#064e3b',
+                  marginBottom: 8
+                },
+                children: ["+", newFaculty30]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                style: {
+                  background: '#d1fae5',
+                  borderRadius: 8,
+                  height: 8,
+                  marginBottom: 8,
+                  overflow: 'hidden'
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  style: {
+                    background: 'linear-gradient(90deg, #10b981 0%, #059669 100%)',
+                    height: '100%',
+                    width: "".concat(Math.min(100, newFaculty30 * 10), "%"),
+                    transition: 'width 0.5s',
+                    borderRadius: 8
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  fontSize: 12,
+                  color: '#047857'
+                },
+                children: [Math.min(100, newFaculty30 ? Math.round(newFaculty30 / Math.max(1, facultyMembers) * 100) : 0), "% of hiring target"]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%)',
+                borderRadius: 12,
+                padding: 20,
+                border: '1px solid #e9d5ff'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: 12
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+                  style: {
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#6b21a8'
+                  },
+                  children: "New Courses"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  style: {
+                    width: 40,
+                    height: 40,
+                    borderRadius: 10,
+                    background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    fontSize: 18,
+                    fontWeight: 700
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiBook, {
+                    size: 20
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  fontSize: 28,
+                  fontWeight: 700,
+                  color: '#581c87',
+                  marginBottom: 8
+                },
+                children: ["+", newCourses30]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                style: {
+                  background: '#e9d5ff',
+                  borderRadius: 8,
+                  height: 8,
+                  marginBottom: 8,
+                  overflow: 'hidden'
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+                  style: {
+                    background: 'linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%)',
+                    height: '100%',
+                    width: "".concat(Math.min(100, newCourses30 * 5), "%"),
+                    transition: 'width 0.5s',
+                    borderRadius: 8
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                style: {
+                  fontSize: 12,
+                  color: '#6b21a8'
+                },
+                children: [Math.min(100, newCourses30 ? Math.round(newCourses30 / Math.max(1, (coursesList || []).length) * 100) : 0), "% of course expansion goal"]
+              })]
+            })]
+          })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-        className: "reports-bottom",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "small-card card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "card-title",
-            children: "New Students (30d)"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "card-value",
-            children: ["+", newStudents30]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "progress",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "fill",
-              style: {
-                width: "".concat(Math.min(100, newStudents30 * 5), "%")
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "small-muted",
-            children: [Math.min(100, newStudents30 ? Math.round(newStudents30 / Math.max(1, totalStudents) * 100) : 0), "% of enrollment target"]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "small-card card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "card-title",
-            children: "New Faculty (30d)"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "card-value",
-            children: ["+", newFaculty30]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "progress",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "fill green",
-              style: {
-                width: "".concat(Math.min(100, newFaculty30 * 10), "%")
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "small-muted",
-            children: [Math.min(100, newFaculty30 ? Math.round(newFaculty30 / Math.max(1, facultyMembers) * 100) : 0), "% of hiring target"]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          className: "small-card card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "card-title",
-            children: "New Courses (30d)"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "card-value",
-            children: ["+", newCourses30]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-            className: "progress",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
-              className: "fill purple",
-              style: {
-                width: "".concat(Math.min(100, newCourses30 * 5), "%")
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-            className: "small-muted",
-            children: [Math.min(100, newCourses30 ? Math.round(newCourses30 / Math.max(1, (coursesList || []).length) * 100) : 0), "% of course expansion goal"]
-          })]
-        })]
-      })]
+      })
     });
   };
   var CalendarPage = function CalendarPage() {
@@ -62337,43 +64516,43 @@ function AdminDashboard(_ref2) {
       title: 'Exam',
       count: 1
     }];
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
       className: "page calendar-page",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "page-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "breadcrumb",
-            children: ["School System \xA0 > \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("strong", {
+            children: ["School System \xA0 > \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("strong", {
               children: "Calendar"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
             children: "Calendar Management"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
             className: "page-sub",
             children: "Manage school events and important dates"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           className: "header-actions",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "header-buttons",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
               className: "icon-box export",
               onClick: function onClick() {
                 return alert('Export not configured');
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiDownload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiDownload, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
                 children: "Export"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("button", {
               className: "primary",
               onClick: function onClick() {
                 return alert('Add event (not implemented)');
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiPlus, {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                 style: {
                   marginLeft: 8
                 },
@@ -62382,98 +64561,98 @@ function AdminDashboard(_ref2) {
             })]
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "metrics-grid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "metric-card blue",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "icon-box",
             children: "\uD83D\uDCC5"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "metric-info",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
               children: totalEvents
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
               children: "Total Events"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "metric-card purple",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "icon-box",
             children: "\uD83D\uDD52"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "metric-info",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
               children: thisMonth
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
               children: "This Month"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "metric-card green",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "icon-box",
             children: "\uD83D\uDCC8"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "metric-info",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
               children: upcoming
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
               children: "Upcoming"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "metric-card orange",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "icon-box",
             children: "\u26A0\uFE0F"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "metric-info",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
               children: highPriority
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
               children: "High Priority"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "metric-card yellow",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "icon-box",
             children: "\uD83D\uDD14"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "metric-info",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
               children: withReminders
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
               children: "With Reminders"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "metric-card cyan",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "icon-box",
             children: "\uD83D\uDC65"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "metric-info",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
               children: publicEvents
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
               children: "Public Events"
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "card",
         style: {
           marginTop: 18
         },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
           children: "Events by Category"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
           className: "small-muted",
           children: "Distribution across event types"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           style: {
             display: 'grid',
             gridTemplateColumns: 'repeat(5, 1fr)',
@@ -62481,45 +64660,45 @@ function AdminDashboard(_ref2) {
             marginTop: 12
           },
           children: categories.map(function (c, i) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "card",
               style: {
                 padding: 14
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 style: {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center'
                 },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                     style: {
                       fontWeight: 800
                     },
                     children: c.title
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                     className: "small-muted",
                     style: {
                       marginTop: 6
                     },
                     children: "14% of total"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   style: {
                     fontWeight: 900,
                     fontSize: 20
                   },
                   children: c.count
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 style: {
                   height: 8,
                   background: '#f1f5f9',
                   borderRadius: 6,
                   marginTop: 12
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   style: {
                     width: "".concat(c.count / Math.max(1, totalEvents) * 100, "%"),
                     height: '100%',
@@ -62531,50 +64710,50 @@ function AdminDashboard(_ref2) {
             }, i);
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
         style: {
           marginTop: 18
         },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           className: "card",
           style: {
             padding: 12
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             style: {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center'
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               style: {
                 display: 'flex',
                 gap: 12,
                 alignItems: 'center'
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "icon-box",
                 children: "\u25C0"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 style: {
                   fontWeight: 800
                 },
                 children: "October 2025"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "icon-box",
                 children: "\u25B6"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               style: {
                 display: 'flex',
                 gap: 8,
                 alignItems: 'center'
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                 className: "small-muted",
                 children: "Filter:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("select", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("option", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("select", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
                   children: "All Events"
                 })
               })]
@@ -62587,226 +64766,228 @@ function AdminDashboard(_ref2) {
   var renderContent = function renderContent() {
     switch (activePage) {
       case "dashboard":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(Dashboard, {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(Dashboard, {});
       case "documents":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(DocumentsPage, {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(DocumentsPage, {});
       case "users":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_AdminUsers__WEBPACK_IMPORTED_MODULE_9__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_AdminUsers__WEBPACK_IMPORTED_MODULE_10__["default"], {});
       case "students":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_AdminUsers__WEBPACK_IMPORTED_MODULE_9__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_AdminUsers__WEBPACK_IMPORTED_MODULE_10__["default"], {});
       case "teachers":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(TeachersPage, {});
+        // Use the dedicated TeachersPage component so the Teachers view shows
+        // the correct headers, filters, and actions (fixes Students/Teachers mismatch).
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(TeachersPage, {});
       case "courses":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(CoursesPage, {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(CoursesPage, {});
       case "reports":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(ReportsPage, {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(ReportsPage, {});
       default:
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           children: "Under development"
         });
     }
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
     className: "admin-dashboard-layout",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {
       activePage: activePage,
       onNavigate: setActivePage
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("main", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("main", {
       className: "admin-main",
       children: renderContent()
-    }), showModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_UserFormModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), showModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_UserFormModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
       initial: editing,
       role: modalRole,
       onClose: function onClose() {
         return setShowModal(false);
       },
       onSave: saveUserFromModal
-    }), showCourseModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_CourseFormModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), showCourseModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_CourseFormModal__WEBPACK_IMPORTED_MODULE_8__["default"], {
       onClose: function onClose() {
         return setShowCourseModal(false);
       }
-    }), selectedUser && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_UserDetailModal__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), selectedUser && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_UserDetailModal__WEBPACK_IMPORTED_MODULE_9__["default"], {
       user: selectedUser,
       type: selectedUser && (selectedUser.role === 'teacher' || selectedUser.teacher) ? 'teacher' : 'student',
       onClose: function onClose() {
         return setSelectedUser(null);
       }
-    }), docModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+    }), docModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       className: "modal-overlay",
       role: "dialog",
       "aria-modal": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
         className: "doc-detail-modal card",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
           className: "modal-close",
           onClick: closeDocModal,
           children: "\u2715"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "doc-head",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "doc-icon",
             children: "\uD83D\uDCC4"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-title",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
               children: docModal.title
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
               className: "small-muted",
               children: docModal.description
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "doc-grid",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-card-meta card",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "meta-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "meta-col",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-label",
                   children: "Category"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-value",
                   children: "Administrative"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "meta-col",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-label",
                   children: "Uploaded By"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-value",
                   children: docModal.uploaded_by || 'Admin'
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "meta-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "meta-col",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-label",
                   children: "Size"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-value",
                   children: docModal.size ? Math.round(docModal.size / 1024) + ' KB' : '—'
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "meta-col",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-label",
                   children: "Upload Date"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-value",
                   children: docModal.created_at
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "meta-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "meta-col",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-label",
                   children: "Visibility"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-value",
                   children: docModal.visibility
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "meta-col",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-label",
                   children: "Last Modified"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "meta-value",
                   children: docModal.created_at
                 })]
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-card-stats card",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h4", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h4", {
               children: "Statistics"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "stats-grid",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "stat card stat-downloads",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "stat-value",
                   children: docModal.downloads || '0'
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "stat-label",
                   children: "Downloads"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "stat card stat-views",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "stat-value",
                   children: docModal.views || '0'
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "stat-label",
                   children: "Views"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
                 className: "stat card stat-access",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "stat-value",
                   children: docModal.visibility === 'Public' ? 'Yes' : 'No'
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                   className: "stat-label",
                   children: "Public Access"
                 })]
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
             className: "doc-card-tags card",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h4", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h4", {
               children: "Tags"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "tags",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                 className: "tag",
                 children: "meeting"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                 className: "tag",
                 children: "faculty"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
                 className: "tag",
                 children: "notes"
               })]
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
           className: "doc-modal-actions",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
             className: "btn",
             onClick: closeDocModal,
             children: "Close"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
             className: "btn",
-            onClick: /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1() {
-              var _t10;
-              return _regenerator().w(function (_context1) {
-                while (1) switch (_context1.p = _context1.n) {
+            onClick: /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
+              var _t9;
+              return _regenerator().w(function (_context9) {
+                while (1) switch (_context9.p = _context9.n) {
                   case 0:
-                    _context1.p = 0;
-                    _context1.n = 1;
+                    _context9.p = 0;
+                    _context9.n = 1;
                     return navigator.clipboard.writeText(docModal.url || window.location.origin + '/api/admin/documents/' + docModal.id + '/download');
                   case 1:
                     alert('Link copied');
-                    _context1.n = 3;
+                    _context9.n = 3;
                     break;
                   case 2:
-                    _context1.p = 2;
-                    _t10 = _context1.v;
+                    _context9.p = 2;
+                    _t9 = _context9.v;
                     prompt('Copy link', docModal.url || window.location.origin + '/api/admin/documents/' + docModal.id + '/download');
                   case 3:
-                    return _context1.a(2);
+                    return _context9.a(2);
                 }
-              }, _callee1, null, [[0, 2]]);
+              }, _callee9, null, [[0, 2]]);
             })),
             children: "Copy Link"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("a", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("a", {
             className: "btn primary",
             href: API + '/documents/' + docModal.id + '/download',
             target: "_blank",
@@ -62820,6 +65001,2946 @@ function AdminDashboard(_ref2) {
 }
 
 // Department overview removed per user request
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/admin/AdminDocuments.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/pages/admin/AdminDocuments.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AdminDocuments)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/pages/admin/Sidebar.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _sass_AdminDashboard_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../sass/AdminDashboard.scss */ "./resources/sass/AdminDashboard.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+function AdminDocuments() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('documents'),
+    _useState2 = _slicedToArray(_useState, 2),
+    activePage = _useState2[0],
+    setActivePage = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    documents = _useState4[0],
+    setDocuments = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState6 = _slicedToArray(_useState5, 2),
+    loading = _useState6[0],
+    setLoading = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState8 = _slicedToArray(_useState7, 2),
+    searchTerm = _useState8[0],
+    setSearchTerm = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('2024-2025'),
+    _useState0 = _slicedToArray(_useState9, 2),
+    selectedYear = _useState0[0],
+    setSelectedYear = _useState0[1];
+  var _useState1 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState10 = _slicedToArray(_useState1, 2),
+    showUploadModal = _useState10[0],
+    setShowUploadModal = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      title: '',
+      category: 'Policy',
+      file: null
+    }),
+    _useState12 = _slicedToArray(_useState11, 2),
+    uploadForm = _useState12[0],
+    setUploadForm = _useState12[1];
+
+  // Sample documents data
+  var sampleDocuments = [
+  // Policy
+  {
+    id: 1,
+    title: 'Student Handbook 2024-2025',
+    category: 'Policy',
+    size: '2.4 MB',
+    date: '2024-09-01',
+    type: 'pdf'
+  }, {
+    id: 2,
+    title: 'Code of Conduct',
+    category: 'Policy',
+    size: '892 KB',
+    date: '2024-08-10',
+    type: 'pdf'
+  },
+  // Academic
+  {
+    id: 3,
+    title: 'Curriculum Guidelines',
+    category: 'Academic',
+    size: '1.8 MB',
+    date: '2024-08-15',
+    type: 'pdf'
+  },
+  // Administrative
+  {
+    id: 4,
+    title: 'Staff Directory',
+    category: 'Administrative',
+    size: '156 KB',
+    date: '2024-09-05',
+    type: 'xlsx'
+  },
+  // Facilities
+  {
+    id: 5,
+    title: 'Campus Map',
+    category: 'Facilities',
+    size: '3.2 MB',
+    date: '2024-08-20',
+    type: 'pdf'
+  },
+  // Safety
+  {
+    id: 6,
+    title: 'Emergency Procedures',
+    category: 'Safety',
+    size: '1.1 MB',
+    date: '2024-09-01',
+    type: 'pdf'
+  }];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    loadDocuments();
+  }, []);
+  var loadDocuments = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var res, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            _context.p = 0;
+            setLoading(true);
+            // Try to load from API
+            _context.n = 1;
+            return axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/admin/documents');
+          case 1:
+            res = _context.v;
+            setDocuments(res.data.documents || []);
+            _context.n = 3;
+            break;
+          case 2:
+            _context.p = 2;
+            _t = _context.v;
+            console.log('Using sample data');
+            // Use sample data if API fails
+            setDocuments(sampleDocuments);
+          case 3:
+            _context.p = 3;
+            setLoading(false);
+            return _context.f(3);
+          case 4:
+            return _context.a(2);
+        }
+      }, _callee, null, [[0, 2, 3, 4]]);
+    }));
+    return function loadDocuments() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var handleUploadDocument = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(e) {
+      var formData, _t2;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            e.preventDefault();
+            _context2.p = 1;
+            formData = new FormData();
+            formData.append('title', uploadForm.title);
+            formData.append('category', uploadForm.category);
+            formData.append('file', uploadForm.file);
+            _context2.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/admin/documents', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+          case 2:
+            setShowUploadModal(false);
+            setUploadForm({
+              title: '',
+              category: 'Policy',
+              file: null
+            });
+            loadDocuments();
+            _context2.n = 4;
+            break;
+          case 3:
+            _context2.p = 3;
+            _t2 = _context2.v;
+            console.error('Failed to upload document', _t2);
+            alert('Failed to upload document');
+          case 4:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[1, 3]]);
+    }));
+    return function handleUploadDocument(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleDeleteDocument = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(docId) {
+      var _t3;
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
+          case 0:
+            if (confirm('Are you sure you want to delete this document?')) {
+              _context3.n = 1;
+              break;
+            }
+            return _context3.a(2);
+          case 1:
+            _context3.p = 1;
+            _context3.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"]("/api/admin/documents/".concat(docId));
+          case 2:
+            loadDocuments();
+            _context3.n = 4;
+            break;
+          case 3:
+            _context3.p = 3;
+            _t3 = _context3.v;
+            console.error('Failed to delete document', _t3);
+            alert('Failed to delete document');
+          case 4:
+            return _context3.a(2);
+        }
+      }, _callee3, null, [[1, 3]]);
+    }));
+    return function handleDeleteDocument(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var handleDownloadDocument = function handleDownloadDocument(doc) {
+    console.log('Downloading:', doc.title);
+    alert("Downloading ".concat(doc.title, "..."));
+  };
+  var handleViewDocument = function handleViewDocument(doc) {
+    console.log('Viewing:', doc.title);
+    alert("Opening ".concat(doc.title, "..."));
+  };
+  var filteredDocuments = documents.filter(function (doc) {
+    var searchLower = searchTerm.toLowerCase();
+    return (doc.title || '').toLowerCase().includes(searchLower) || (doc.category || '').toLowerCase().includes(searchLower);
+  });
+
+  // Group documents by category
+  var categories = ['Policy', 'Academic', 'Administrative', 'Facilities', 'Safety'];
+  var groupedDocuments = categories.reduce(function (acc, category) {
+    acc[category] = filteredDocuments.filter(function (doc) {
+      return doc.category === category;
+    });
+    return acc;
+  }, {});
+  var getFileIcon = function getFileIcon(type) {
+    switch (type) {
+      case 'pdf':
+        return {
+          icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiFileText,
+          color: '#ef4444'
+        };
+      case 'xlsx':
+      case 'xls':
+        return {
+          icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiFile,
+          color: '#10b981'
+        };
+      case 'docx':
+      case 'doc':
+        return {
+          icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiFileText,
+          color: '#3b82f6'
+        };
+      default:
+        return {
+          icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiFile,
+          color: '#6b7280'
+        };
+    }
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "admin-dashboard-layout",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      activePage: activePage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("main", {
+      className: "admin-main",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        style: {
+          padding: '24px 32px',
+          background: '#f8f9fa',
+          minHeight: '100vh'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            marginBottom: 28
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              marginBottom: 24
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+                style: {
+                  margin: 0,
+                  fontSize: 28,
+                  fontWeight: 700,
+                  color: '#111827'
+                },
+                children: "Documents"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                style: {
+                  margin: '4px 0 0 0',
+                  fontSize: 14,
+                  color: '#6b7280'
+                },
+                children: "Manage academic and administrative documents"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiCalendar, {
+                size: 20,
+                color: "#9ca3af"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+                value: selectedYear,
+                onChange: function onChange(e) {
+                  return setSelectedYear(e.target.value);
+                },
+                style: {
+                  padding: '8px 32px 8px 12px',
+                  borderRadius: 8,
+                  border: '1px solid #e5e7eb',
+                  fontSize: 14,
+                  color: '#374151',
+                  background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px',
+                  appearance: 'none',
+                  cursor: 'pointer',
+                  outline: 'none'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "2024-2025",
+                  children: "2024-2025"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "2023-2024",
+                  children: "2023-2024"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                  value: "2022-2023",
+                  children: "2022-2023"
+                })]
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              gap: 12,
+              alignItems: 'center'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                flex: 1,
+                position: 'relative'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiSearch, {
+                style: {
+                  position: 'absolute',
+                  left: 14,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: '#9ca3af'
+                },
+                size: 18
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "text",
+                placeholder: "Search documents...",
+                value: searchTerm,
+                onChange: function onChange(e) {
+                  return setSearchTerm(e.target.value);
+                },
+                style: {
+                  width: '100%',
+                  padding: '12px 16px 12px 44px',
+                  borderRadius: 10,
+                  background: '#fff',
+                  border: '1px solid #e5e7eb',
+                  fontSize: 14,
+                  outline: 'none',
+                  transition: 'border 0.2s'
+                },
+                onFocus: function onFocus(e) {
+                  return e.target.style.borderColor = '#6366f1';
+                },
+                onBlur: function onBlur(e) {
+                  return e.target.style.borderColor = '#e5e7eb';
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              onClick: function onClick() {
+                return setShowUploadModal(true);
+              },
+              style: {
+                padding: '12px 24px',
+                borderRadius: 10,
+                border: 'none',
+                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'transform 0.2s',
+                boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)'
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                return e.currentTarget.style.transform = 'translateY(-2px)';
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                return e.currentTarget.style.transform = 'translateY(0)';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiUpload, {
+                size: 16
+              }), " Upload Document"]
+            })]
+          })]
+        }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          style: {
+            textAlign: 'center',
+            padding: '60px 0',
+            color: '#6b7280'
+          },
+          children: "Loading documents..."
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+            gap: 24
+          },
+          children: categories.map(function (category) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                background: '#fff',
+                borderRadius: 12,
+                padding: '24px 28px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+                border: '1px solid #f3f4f6'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+                style: {
+                  margin: '0 0 8px 0',
+                  fontSize: 18,
+                  fontWeight: 600,
+                  color: '#111827'
+                },
+                children: category
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+                style: {
+                  margin: '0 0 20px 0',
+                  fontSize: 13,
+                  color: '#9ca3af'
+                },
+                children: [groupedDocuments[category].length, " document", groupedDocuments[category].length !== 1 ? 's' : '']
+              }), groupedDocuments[category].length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                style: {
+                  textAlign: 'center',
+                  padding: '32px 0',
+                  color: '#9ca3af',
+                  fontSize: 13
+                },
+                children: "No documents in this category"
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                style: {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 12
+                },
+                children: groupedDocuments[category].map(function (doc) {
+                  var fileInfo = getFileIcon(doc.type);
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    style: {
+                      background: '#f9fafb',
+                      borderRadius: 10,
+                      padding: '14px 16px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 12,
+                      transition: 'all 0.2s',
+                      cursor: 'pointer'
+                    },
+                    onMouseEnter: function onMouseEnter(e) {
+                      e.currentTarget.style.background = '#f3f4f6';
+                      e.currentTarget.style.transform = 'translateX(4px)';
+                    },
+                    onMouseLeave: function onMouseLeave(e) {
+                      e.currentTarget.style.background = '#f9fafb';
+                      e.currentTarget.style.transform = 'translateX(0)';
+                    },
+                    onClick: function onClick() {
+                      return handleViewDocument(doc);
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                      style: {
+                        width: 40,
+                        height: 40,
+                        borderRadius: 8,
+                        background: "".concat(fileInfo.color, "15"),
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      },
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(fileInfo.icon, {
+                        size: 20,
+                        color: fileInfo.color
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                      style: {
+                        flex: 1,
+                        minWidth: 0
+                      },
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                        style: {
+                          fontSize: 14,
+                          fontWeight: 600,
+                          color: '#111827',
+                          marginBottom: 2,
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis'
+                        },
+                        children: doc.title
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                        style: {
+                          fontSize: 12,
+                          color: '#9ca3af'
+                        },
+                        children: [doc.size, " \u2022 ", doc.date]
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                      style: {
+                        display: 'flex',
+                        gap: 4,
+                        flexShrink: 0
+                      },
+                      onClick: function onClick(e) {
+                        return e.stopPropagation();
+                      },
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                        onClick: function onClick(e) {
+                          e.stopPropagation();
+                          handleDownloadDocument(doc);
+                        },
+                        title: "Download",
+                        style: {
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          border: 'none',
+                          background: '#fff',
+                          color: '#6b7280',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s'
+                        },
+                        onMouseEnter: function onMouseEnter(e) {
+                          e.currentTarget.style.background = '#dbeafe';
+                          e.currentTarget.style.color = '#3b82f6';
+                        },
+                        onMouseLeave: function onMouseLeave(e) {
+                          e.currentTarget.style.background = '#fff';
+                          e.currentTarget.style.color = '#6b7280';
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiDownload, {
+                          size: 14
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                        onClick: function onClick(e) {
+                          e.stopPropagation();
+                          handleDeleteDocument(doc.id);
+                        },
+                        title: "Delete",
+                        style: {
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          border: 'none',
+                          background: '#fff',
+                          color: '#6b7280',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s'
+                        },
+                        onMouseEnter: function onMouseEnter(e) {
+                          e.currentTarget.style.background = '#fee2e2';
+                          e.currentTarget.style.color = '#ef4444';
+                        },
+                        onMouseLeave: function onMouseLeave(e) {
+                          e.currentTarget.style.background = '#fff';
+                          e.currentTarget.style.color = '#6b7280';
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiTrash2, {
+                          size: 14
+                        })
+                      })]
+                    })]
+                  }, doc.id);
+                })
+              })]
+            }, category);
+          })
+        }), showUploadModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          style: {
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: 20
+          },
+          onClick: function onClick() {
+            return setShowUploadModal(false);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              background: '#fff',
+              borderRadius: 16,
+              padding: 32,
+              maxWidth: 500,
+              width: '100%',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)'
+            },
+            onClick: function onClick(e) {
+              return e.stopPropagation();
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+              style: {
+                margin: '0 0 8px 0',
+                fontSize: 24,
+                fontWeight: 700,
+                color: '#111827'
+              },
+              children: "Upload Document"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+              style: {
+                margin: '0 0 24px 0',
+                fontSize: 14,
+                color: '#6b7280'
+              },
+              children: "Add a new document to the library"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+              onSubmit: handleUploadDocument,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                style: {
+                  marginBottom: 20
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 8
+                  },
+                  children: "Document Title *"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  value: uploadForm.title,
+                  onChange: function onChange(e) {
+                    return setUploadForm(_objectSpread(_objectSpread({}, uploadForm), {}, {
+                      title: e.target.value
+                    }));
+                  },
+                  placeholder: "Enter document title",
+                  required: true,
+                  style: {
+                    width: '100%',
+                    padding: '10px 14px',
+                    borderRadius: 8,
+                    border: '1px solid #e5e7eb',
+                    fontSize: 14,
+                    outline: 'none'
+                  }
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                style: {
+                  marginBottom: 20
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 8
+                  },
+                  children: "Category *"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+                  value: uploadForm.category,
+                  onChange: function onChange(e) {
+                    return setUploadForm(_objectSpread(_objectSpread({}, uploadForm), {}, {
+                      category: e.target.value
+                    }));
+                  },
+                  style: {
+                    width: '100%',
+                    padding: '10px 40px 10px 14px',
+                    borderRadius: 8,
+                    border: '1px solid #e5e7eb',
+                    fontSize: 14,
+                    color: '#374151',
+                    background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 12px center/16px',
+                    appearance: 'none',
+                    cursor: 'pointer',
+                    outline: 'none'
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                    value: "Policy",
+                    children: "Policy"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                    value: "Academic",
+                    children: "Academic"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                    value: "Administrative",
+                    children: "Administrative"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                    value: "Facilities",
+                    children: "Facilities"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                    value: "Safety",
+                    children: "Safety"
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                style: {
+                  marginBottom: 28
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 8
+                  },
+                  children: "File *"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "file",
+                  onChange: function onChange(e) {
+                    return setUploadForm(_objectSpread(_objectSpread({}, uploadForm), {}, {
+                      file: e.target.files[0]
+                    }));
+                  },
+                  required: true,
+                  style: {
+                    width: '100%',
+                    padding: '10px 14px',
+                    borderRadius: 8,
+                    border: '1px solid #e5e7eb',
+                    fontSize: 14,
+                    cursor: 'pointer'
+                  }
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                style: {
+                  display: 'flex',
+                  gap: 12,
+                  justifyContent: 'flex-end'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                  type: "button",
+                  onClick: function onClick() {
+                    return setShowUploadModal(false);
+                  },
+                  style: {
+                    padding: '10px 20px',
+                    borderRadius: 8,
+                    border: '1px solid #e5e7eb',
+                    background: '#fff',
+                    color: '#374151',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    cursor: 'pointer'
+                  },
+                  children: "Cancel"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                  type: "submit",
+                  style: {
+                    padding: '10px 20px',
+                    borderRadius: 8,
+                    border: 'none',
+                    background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                    color: '#fff',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)'
+                  },
+                  children: "Upload"
+                })]
+              })]
+            })]
+          })
+        })]
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/admin/AdminReports.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/pages/admin/AdminReports.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AdminReports)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/dist/index.js");
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/pages/admin/Sidebar.js");
+/* harmony import */ var _sass_AdminDashboard_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../sass/AdminDashboard.scss */ "./resources/sass/AdminDashboard.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+
+function AdminReports() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('reports'),
+    _useState2 = _slicedToArray(_useState, 2),
+    activePage = _useState2[0],
+    setActivePage = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState6 = _slicedToArray(_useState5, 2),
+    totalTeachers = _useState6[0],
+    setTotalTeachers = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('+0%'),
+    _useState8 = _slicedToArray(_useState7, 2),
+    totalTeachersChange = _useState8[0],
+    setTotalTeachersChange = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState0 = _slicedToArray(_useState9, 2),
+    activeCourses = _useState0[0],
+    setActiveCourses = _useState0[1];
+  var API = '/api/admin';
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var mounted = true;
+    var fetchDashboardStats = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+        var res, _t;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.p = _context.n) {
+            case 0:
+              _context.p = 0;
+              _context.n = 1;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get(API + '/dashboard')["catch"](function () {
+                return {
+                  data: null
+                };
+              });
+            case 1:
+              res = _context.v;
+              if (mounted) {
+                _context.n = 2;
+                break;
+              }
+              return _context.a(2);
+            case 2:
+              if (res && res.data) {
+                setTotalTeachers(Number(res.data.total_teachers) || 0);
+                setTotalTeachersChange(res.data.total_teachers_change || '+0%');
+                // if backend later provides active courses in dashboard, use it
+                if (typeof res.data.active_courses !== 'undefined') setActiveCourses(Number(res.data.active_courses) || 0);
+              }
+              _context.n = 4;
+              break;
+            case 3:
+              _context.p = 3;
+              _t = _context.v;
+              console.error('Failed to fetch dashboard stats', _t);
+            case 4:
+              return _context.a(2);
+          }
+        }, _callee, null, [[0, 3]]);
+      }));
+      return function fetchDashboardStats() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    // Do not fetch on mount - keep initial counts at 0 until an admin action occurs.
+    // Rely on dispatched events to trigger updates so a fresh install shows zero.
+
+    var onUsersChanged = function onUsersChanged(ev) {
+      try {
+        // If event provided stats, apply them immediately; otherwise fetch from API
+        var d = ev && ev.detail ? ev.detail : null;
+        if (d && (typeof d.total_teachers !== 'undefined' || typeof d.total_students !== 'undefined')) {
+          if (typeof d.total_teachers !== 'undefined') setTotalTeachers(Number(d.total_teachers) || 0);
+          if (typeof d.total_teachers_change !== 'undefined') setTotalTeachersChange(d.total_teachers_change || '+0%');
+        } else {
+          fetchDashboardStats()["catch"](function () {});
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    var onCoursesChanged = function onCoursesChanged(ev) {
+      try {
+        var d = ev && ev.detail ? ev.detail : null;
+        if (d && typeof d.active_courses !== 'undefined') {
+          setActiveCourses(Number(d.active_courses) || 0);
+        } else {
+          // fallback: fetch full dashboard stats
+          fetchDashboardStats()["catch"](function () {});
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    window.addEventListener('admin:users-changed', onUsersChanged);
+    window.addEventListener('admin:courses-changed', onCoursesChanged);
+    return function () {
+      mounted = false;
+      window.removeEventListener('admin:users-changed', onUsersChanged);
+      window.removeEventListener('admin:courses-changed', onCoursesChanged);
+    };
+  }, []);
+
+  // Sample data for enrollment trends chart
+  var enrollmentTrendsData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+    datasets: [{
+      label: 'Students',
+      data: [420, 450, 480, 460, 490, 510, 520, 540],
+      backgroundColor: 'rgba(99, 102, 241, 0.2)',
+      borderColor: 'rgba(99, 102, 241, 1)',
+      borderWidth: 2,
+      borderRadius: 8,
+      barThickness: 40
+    }, {
+      label: 'Faculty',
+      data: [60, 80, 100, 90, 110, 120, 130, 140],
+      backgroundColor: 'rgba(203, 213, 225, 0.5)',
+      borderColor: 'rgba(203, 213, 225, 1)',
+      borderWidth: 2,
+      borderRadius: 8,
+      barThickness: 40
+    }, {
+      label: 'Courses',
+      data: [50, 70, 90, 80, 100, 110, 120, 130],
+      backgroundColor: 'rgba(203, 213, 225, 0.3)',
+      borderColor: 'rgba(203, 213, 225, 1)',
+      borderWidth: 2,
+      borderRadius: 8,
+      barThickness: 40
+    }]
+  };
+  var chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        padding: 12,
+        titleFont: {
+          size: 13,
+          weight: '600'
+        },
+        bodyFont: {
+          size: 12
+        },
+        cornerRadius: 8
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 600,
+        ticks: {
+          stepSize: 100,
+          font: {
+            size: 11
+          },
+          color: '#9ca3af'
+        },
+        grid: {
+          color: 'rgba(0, 0, 0, 0.05)',
+          drawBorder: false
+        }
+      },
+      x: {
+        ticks: {
+          font: {
+            size: 11
+          },
+          color: '#9ca3af'
+        },
+        grid: {
+          display: false
+        }
+      }
+    }
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    className: "admin-dashboard-layout",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      activePage: activePage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("main", {
+      className: "admin-main",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        style: {
+          background: '#f8f9fa',
+          minHeight: '100vh'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          style: {
+            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+            padding: '32px 40px',
+            boxShadow: '0 4px 12px rgba(99, 102, 241, 0.2)'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            style: {
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              style: {
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: 'rgba(255, 255, 255, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backdropFilter: 'blur(10px)'
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiTrendingUp, {
+                size: 24,
+                color: "#fff"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+                style: {
+                  margin: 0,
+                  fontSize: 28,
+                  fontWeight: 700,
+                  color: '#fff'
+                },
+                children: "Reports & Analytics"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+                style: {
+                  margin: '4px 0 0 0',
+                  fontSize: 14,
+                  color: 'rgba(255, 255, 255, 0.9)'
+                },
+                children: "Comprehensive insights and data visualization"
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          style: {
+            padding: '32px 40px'
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            style: {
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 20,
+              marginBottom: 32
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                borderRadius: 16,
+                padding: '24px 28px',
+                boxShadow: '0 4px 16px rgba(59, 130, 246, 0.3)',
+                color: '#fff',
+                position: 'relative',
+                overflow: 'hidden'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                style: {
+                  position: 'absolute',
+                  top: -20,
+                  right: -20,
+                  width: 120,
+                  height: 120,
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  filter: 'blur(30px)'
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  position: 'relative',
+                  zIndex: 1
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 13,
+                    fontWeight: 600,
+                    opacity: 0.9,
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5
+                  },
+                  children: "TOTAL STUDENTS"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 48,
+                    fontWeight: 700,
+                    marginTop: 8,
+                    marginBottom: 8
+                  },
+                  children: "13"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                  style: {
+                    fontSize: 12,
+                    opacity: 0.9,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    children: "from last semester"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    style: {
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      padding: '2px 8px',
+                      borderRadius: 12,
+                      fontSize: 11,
+                      fontWeight: 600
+                    },
+                    children: "+0%"
+                  })]
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                borderRadius: 16,
+                padding: '24px 28px',
+                boxShadow: '0 4px 16px rgba(16, 185, 129, 0.3)',
+                color: '#fff',
+                position: 'relative',
+                overflow: 'hidden'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                style: {
+                  position: 'absolute',
+                  top: -20,
+                  right: -20,
+                  width: 120,
+                  height: 120,
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  filter: 'blur(30px)'
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  position: 'relative',
+                  zIndex: 1
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 13,
+                    fontWeight: 600,
+                    opacity: 0.9,
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5
+                  },
+                  children: "COMPLETION RATE"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 48,
+                    fontWeight: 700,
+                    marginTop: 8,
+                    marginBottom: 8
+                  },
+                  children: "0%"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                  style: {
+                    fontSize: 12,
+                    opacity: 0.9,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    children: "from last semester"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    style: {
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      padding: '2px 8px',
+                      borderRadius: 12,
+                      fontSize: 11,
+                      fontWeight: 600
+                    },
+                    children: "+0%"
+                  })]
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                borderRadius: 16,
+                padding: '24px 28px',
+                boxShadow: '0 4px 16px rgba(139, 92, 246, 0.3)',
+                color: '#fff',
+                position: 'relative',
+                overflow: 'hidden'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                style: {
+                  position: 'absolute',
+                  top: -20,
+                  right: -20,
+                  width: 120,
+                  height: 120,
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  filter: 'blur(30px)'
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  position: 'relative',
+                  zIndex: 1
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 13,
+                    fontWeight: 600,
+                    opacity: 0.9,
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5
+                  },
+                  children: "AVERAGE GPA"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 48,
+                    fontWeight: 700,
+                    marginTop: 8,
+                    marginBottom: 8
+                  },
+                  children: "0"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                  style: {
+                    fontSize: 12,
+                    opacity: 0.9,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    children: "from last semester"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    style: {
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      padding: '2px 8px',
+                      borderRadius: 12,
+                      fontSize: 11,
+                      fontWeight: 600
+                    },
+                    children: "+0"
+                  })]
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #f97316 0%, #ef4444 100%)',
+                borderRadius: 16,
+                padding: '24px 28px',
+                boxShadow: '0 4px 16px rgba(249, 115, 22, 0.18)',
+                color: '#fff',
+                position: 'relative',
+                overflow: 'hidden'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                style: {
+                  position: 'absolute',
+                  top: -20,
+                  right: -20,
+                  width: 120,
+                  height: 120,
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.06)',
+                  filter: 'blur(30px)'
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  position: 'relative',
+                  zIndex: 1
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 13,
+                    fontWeight: 600,
+                    opacity: 0.95,
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5
+                  },
+                  children: "TOTAL TEACHERS"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 48,
+                    fontWeight: 700,
+                    marginTop: 8,
+                    marginBottom: 8
+                  },
+                  children: totalTeachers
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                  style: {
+                    fontSize: 12,
+                    opacity: 0.95,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    children: "from last month"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    style: {
+                      background: 'rgba(255, 255, 255, 0.15)',
+                      padding: '2px 8px',
+                      borderRadius: 12,
+                      fontSize: 11,
+                      fontWeight: 600
+                    },
+                    children: totalTeachersChange
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                style: {
+                  position: 'absolute',
+                  top: 20,
+                  right: 20,
+                  width: 48,
+                  height: 48,
+                  borderRadius: 12,
+                  background: 'rgba(255,255,255,0.12)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                  style: {
+                    fontSize: 20
+                  },
+                  role: "img",
+                  "aria-label": "books",
+                  children: "\uD83D\uDCDA"
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                borderRadius: 16,
+                padding: '24px 28px',
+                boxShadow: '0 4px 16px rgba(99, 102, 241, 0.18)',
+                color: '#fff',
+                position: 'relative',
+                overflow: 'hidden'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                style: {
+                  position: 'absolute',
+                  top: -20,
+                  right: -20,
+                  width: 120,
+                  height: 120,
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.06)',
+                  filter: 'blur(30px)'
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  position: 'relative',
+                  zIndex: 1
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 13,
+                    fontWeight: 600,
+                    opacity: 0.95,
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5
+                  },
+                  children: "ACTIVE COURSES"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 48,
+                    fontWeight: 700,
+                    marginTop: 8,
+                    marginBottom: 8
+                  },
+                  children: activeCourses
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 12,
+                    opacity: 0.95,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    children: "current semester"
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                style: {
+                  position: 'absolute',
+                  top: 20,
+                  right: 20,
+                  width: 48,
+                  height: 48,
+                  borderRadius: 12,
+                  background: 'rgba(255,255,255,0.12)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+                  size: 20,
+                  color: "#fff"
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              style: {
+                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                borderRadius: 16,
+                padding: '24px 28px',
+                boxShadow: '0 4px 16px rgba(245, 158, 11, 0.3)',
+                color: '#fff',
+                position: 'relative',
+                overflow: 'hidden'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                style: {
+                  position: 'absolute',
+                  top: -20,
+                  right: -20,
+                  width: 120,
+                  height: 120,
+                  borderRadius: '50%',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  filter: 'blur(30px)'
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  position: 'relative',
+                  zIndex: 1
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 13,
+                    fontWeight: 600,
+                    opacity: 0.9,
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5
+                  },
+                  children: "FACULTY MEMBERS"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 48,
+                    fontWeight: 700,
+                    marginTop: 8,
+                    marginBottom: 8
+                  },
+                  children: "0"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                  style: {
+                    fontSize: 12,
+                    opacity: 0.9,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    children: "from last semester"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                    style: {
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      padding: '2px 8px',
+                      borderRadius: 12,
+                      fontSize: 11,
+                      fontWeight: 600
+                    },
+                    children: "+0"
+                  })]
+                })]
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            style: {
+              background: '#fff',
+              borderRadius: 16,
+              padding: '28px 32px',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+              marginBottom: 32
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+              style: {
+                margin: '0 0 8px 0',
+                fontSize: 18,
+                fontWeight: 600,
+                color: '#111827'
+              },
+              children: "Enrollment Trends"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+              style: {
+                margin: '0 0 24px 0',
+                fontSize: 14,
+                color: '#6b7280'
+              },
+              children: "Student, faculty, and course growth over time"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              style: {
+                height: 320
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Bar, {
+                data: enrollmentTrendsData,
+                options: chartOptions
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+              style: {
+                margin: '0 0 20px 0',
+                fontSize: 18,
+                fontWeight: 600,
+                color: '#111827'
+              },
+              children: "Recent Activity (30 Days)"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              style: {
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                gap: 20
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.1) 100%)',
+                  border: '1px solid rgba(59, 130, 246, 0.2)',
+                  borderRadius: 16,
+                  padding: '24px 28px',
+                  position: 'relative',
+                  overflow: 'hidden'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    width: 48,
+                    height: 48,
+                    borderRadius: 12,
+                    background: '#3b82f6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {
+                    size: 24,
+                    color: "#fff"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#6b7280',
+                    marginBottom: 12
+                  },
+                  children: "New Students"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 42,
+                    fontWeight: 700,
+                    color: '#111827',
+                    marginBottom: 16
+                  },
+                  children: "+13"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    height: 6,
+                    background: 'rgba(59, 130, 246, 0.2)',
+                    borderRadius: 3,
+                    overflow: 'hidden',
+                    marginBottom: 8
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                    style: {
+                      height: '100%',
+                      width: '100%',
+                      background: '#3b82f6',
+                      borderRadius: 3
+                    }
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 12,
+                    color: '#3b82f6',
+                    fontWeight: 600
+                  },
+                  children: "100% of enrollment target"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%)',
+                  border: '1px solid rgba(16, 185, 129, 0.2)',
+                  borderRadius: 16,
+                  padding: '24px 28px',
+                  position: 'relative',
+                  overflow: 'hidden'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    width: 48,
+                    height: 48,
+                    borderRadius: 12,
+                    background: '#10b981',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUserCheck, {
+                    size: 24,
+                    color: "#fff"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#6b7280',
+                    marginBottom: 12
+                  },
+                  children: "New Faculty"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 42,
+                    fontWeight: 700,
+                    color: '#111827',
+                    marginBottom: 16
+                  },
+                  children: "+0"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    height: 6,
+                    background: 'rgba(16, 185, 129, 0.2)',
+                    borderRadius: 3,
+                    overflow: 'hidden',
+                    marginBottom: 8
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                    style: {
+                      height: '100%',
+                      width: '0%',
+                      background: '#10b981',
+                      borderRadius: 3
+                    }
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 12,
+                    color: '#10b981',
+                    fontWeight: 600
+                  },
+                  children: "0% of hiring target"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                style: {
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0.1) 100%)',
+                  border: '1px solid rgba(139, 92, 246, 0.2)',
+                  borderRadius: 16,
+                  padding: '24px 28px',
+                  position: 'relative',
+                  overflow: 'hidden'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    width: 48,
+                    height: 48,
+                    borderRadius: 12,
+                    background: '#8b5cf6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)'
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+                    size: 24,
+                    color: "#fff"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#6b7280',
+                    marginBottom: 12
+                  },
+                  children: "New Courses"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 42,
+                    fontWeight: 700,
+                    color: '#111827',
+                    marginBottom: 16
+                  },
+                  children: "+0"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    height: 6,
+                    background: 'rgba(139, 92, 246, 0.2)',
+                    borderRadius: 3,
+                    overflow: 'hidden',
+                    marginBottom: 8
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                    style: {
+                      height: '100%',
+                      width: '0%',
+                      background: '#8b5cf6',
+                      borderRadius: 3
+                    }
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  style: {
+                    fontSize: 12,
+                    color: '#8b5cf6',
+                    fontWeight: 600
+                  },
+                  children: "0% of course expansion goal"
+                })]
+              })]
+            })]
+          })]
+        })]
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/admin/AdminSettings.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/pages/admin/AdminSettings.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AdminSettings)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/pages/admin/Sidebar.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _sass_AdminDashboard_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../sass/AdminDashboard.scss */ "./resources/sass/AdminDashboard.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+function AdminSettings() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('settings'),
+    _useState2 = _slicedToArray(_useState, 2),
+    activePage = _useState2[0],
+    setActivePage = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('profile'),
+    _useState4 = _slicedToArray(_useState3, 2),
+    activeTab = _useState4[0],
+    setActiveTab = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    loading = _useState6[0],
+    setLoading = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      firstName: 'Admin',
+      lastName: 'User',
+      email: 'admin@school.edu',
+      phone: '+1 (555) 123-4567',
+      avatar: null
+    }),
+    _useState8 = _slicedToArray(_useState7, 2),
+    profileForm = _useState8[0],
+    setProfileForm = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      schoolName: 'Springfield High School',
+      address: '123 Main Street',
+      city: 'Springfield',
+      state: 'IL',
+      zipCode: '62701',
+      country: 'United States'
+    }),
+    _useState0 = _slicedToArray(_useState9, 2),
+    schoolForm = _useState0[0],
+    setSchoolForm = _useState0[1];
+  var _useState1 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      emailNotifications: true,
+      pushNotifications: false,
+      studentEnrollment: true,
+      courseUpdates: true,
+      systemAlerts: true
+    }),
+    _useState10 = _slicedToArray(_useState1, 2),
+    notificationSettings = _useState10[0],
+    setNotificationSettings = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      currentPassword: '',
+      newPassword: '',
+      confirmPassword: ''
+    }),
+    _useState12 = _slicedToArray(_useState11, 2),
+    securityForm = _useState12[0],
+    setSecurityForm = _useState12[1];
+  var handleProfileSave = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(e) {
+      var _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            e.preventDefault();
+            setLoading(true);
+            _context.p = 1;
+            _context.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_3___default().put('/api/admin/profile', profileForm);
+          case 2:
+            alert('Profile updated successfully!');
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            console.error('Failed to update profile', _t);
+            alert('Failed to update profile');
+          case 4:
+            _context.p = 4;
+            setLoading(false);
+            return _context.f(4);
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 3, 4, 5]]);
+    }));
+    return function handleProfileSave(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var handleSchoolSave = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(e) {
+      var _t2;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            e.preventDefault();
+            setLoading(true);
+            _context2.p = 1;
+            _context2.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_3___default().put('/api/admin/school-settings', schoolForm);
+          case 2:
+            alert('School settings updated successfully!');
+            _context2.n = 4;
+            break;
+          case 3:
+            _context2.p = 3;
+            _t2 = _context2.v;
+            console.error('Failed to update school settings', _t2);
+            alert('Failed to update school settings');
+          case 4:
+            _context2.p = 4;
+            setLoading(false);
+            return _context2.f(4);
+          case 5:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[1, 3, 4, 5]]);
+    }));
+    return function handleSchoolSave(_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleNotificationSave = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(e) {
+      var _t3;
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
+          case 0:
+            e.preventDefault();
+            setLoading(true);
+            _context3.p = 1;
+            _context3.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_3___default().put('/api/admin/notification-settings', notificationSettings);
+          case 2:
+            alert('Notification settings updated successfully!');
+            _context3.n = 4;
+            break;
+          case 3:
+            _context3.p = 3;
+            _t3 = _context3.v;
+            console.error('Failed to update notification settings', _t3);
+            alert('Failed to update notification settings');
+          case 4:
+            _context3.p = 4;
+            setLoading(false);
+            return _context3.f(4);
+          case 5:
+            return _context3.a(2);
+        }
+      }, _callee3, null, [[1, 3, 4, 5]]);
+    }));
+    return function handleNotificationSave(_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var handleSecuritySave = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(e) {
+      var _err$response, _t4;
+      return _regenerator().w(function (_context4) {
+        while (1) switch (_context4.p = _context4.n) {
+          case 0:
+            e.preventDefault();
+            if (!(securityForm.newPassword !== securityForm.confirmPassword)) {
+              _context4.n = 1;
+              break;
+            }
+            alert('Passwords do not match!');
+            return _context4.a(2);
+          case 1:
+            setLoading(true);
+            _context4.p = 2;
+            _context4.n = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_3___default().put('/api/admin/change-password', {
+              current_password: securityForm.currentPassword,
+              new_password: securityForm.newPassword
+            });
+          case 3:
+            alert('Password changed successfully!');
+            setSecurityForm({
+              currentPassword: '',
+              newPassword: '',
+              confirmPassword: ''
+            });
+            _context4.n = 5;
+            break;
+          case 4:
+            _context4.p = 4;
+            _t4 = _context4.v;
+            console.error('Failed to change password', _t4);
+            alert(((_err$response = _t4.response) === null || _err$response === void 0 || (_err$response = _err$response.data) === null || _err$response === void 0 ? void 0 : _err$response.message) || 'Failed to change password');
+          case 5:
+            _context4.p = 5;
+            setLoading(false);
+            return _context4.f(5);
+          case 6:
+            return _context4.a(2);
+        }
+      }, _callee4, null, [[2, 4, 5, 6]]);
+    }));
+    return function handleSecuritySave(_x4) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  var handlePhotoChange = function handlePhotoChange(e) {
+    var file = e.target.files[0];
+    if (file) {
+      var reader = new FileReader();
+      reader.onload = function (event) {
+        setProfileForm(_objectSpread(_objectSpread({}, profileForm), {}, {
+          avatar: event.target.result
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  var tabs = [{
+    id: 'profile',
+    label: 'Profile',
+    icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiUser
+  }, {
+    id: 'school',
+    label: 'School',
+    icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiShield
+  }, {
+    id: 'notifications',
+    label: 'Notifications',
+    icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiBell
+  }, {
+    id: 'security',
+    label: 'Security',
+    icon: react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiLock
+  }];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "admin-dashboard-layout",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      activePage: activePage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("main", {
+      className: "admin-main",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        style: {
+          padding: '28px 40px',
+          background: '#f8f9fa',
+          minHeight: '100vh'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            marginBottom: 24
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+            style: {
+              margin: 0,
+              fontSize: 28,
+              fontWeight: 700,
+              color: '#111827'
+            },
+            children: "Settings"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+            style: {
+              margin: '6px 0 0 0',
+              fontSize: 14,
+              color: '#6b7280'
+            },
+            children: "Manage your school administration settings"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          style: {
+            display: 'flex',
+            gap: 6,
+            marginBottom: 24,
+            background: '#f3f4f6',
+            padding: '6px',
+            borderRadius: 10,
+            width: 'fit-content'
+          },
+          children: tabs.map(function (tab) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              onClick: function onClick() {
+                return setActiveTab(tab.id);
+              },
+              style: {
+                padding: '8px 18px',
+                borderRadius: 7,
+                border: 'none',
+                background: activeTab === tab.id ? '#fff' : 'transparent',
+                color: activeTab === tab.id ? '#111827' : '#6b7280',
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 7,
+                transition: 'all 0.2s',
+                boxShadow: activeTab === tab.id ? '0 1px 3px rgba(0,0,0,0.08)' : 'none'
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                if (activeTab !== tab.id) e.currentTarget.style.background = 'rgba(255, 255, 255, 0.5)';
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                if (activeTab !== tab.id) e.currentTarget.style.background = 'transparent';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(tab.icon, {
+                size: 16
+              }), tab.label]
+            }, tab.id);
+          })
+        }), activeTab === 'profile' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            background: '#fff',
+            borderRadius: 12,
+            padding: '28px 32px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+            maxWidth: 820,
+            border: '1px solid #f3f4f6'
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+            style: {
+              margin: '0 0 6px 0',
+              fontSize: 18,
+              fontWeight: 600,
+              color: '#111827'
+            },
+            children: "Admin Profile"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+            style: {
+              margin: '0 0 28px 0',
+              fontSize: 13,
+              color: '#9ca3af'
+            },
+            children: "Update your personal information"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+            onSubmit: handleProfileSave,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                gap: 16,
+                marginBottom: 28,
+                paddingBottom: 28,
+                borderBottom: '1px solid #f3f4f6'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                style: {
+                  width: 90,
+                  height: 90,
+                  borderRadius: '50%',
+                  background: '#e5e7eb',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 28,
+                  fontWeight: 600,
+                  color: '#6b7280',
+                  overflow: 'hidden'
+                },
+                children: profileForm.avatar ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                  src: profileForm.avatar,
+                  alt: "Avatar",
+                  style: {
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }
+                }) : 'AD'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  htmlFor: "photo-upload",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    style: {
+                      padding: '9px 18px',
+                      borderRadius: 8,
+                      border: '1px solid #e5e7eb',
+                      background: '#fff',
+                      color: '#374151',
+                      fontSize: 13,
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 7,
+                      transition: 'all 0.2s'
+                    },
+                    onMouseEnter: function onMouseEnter(e) {
+                      e.currentTarget.style.background = '#f9fafb';
+                      e.currentTarget.style.borderColor = '#d1d5db';
+                    },
+                    onMouseLeave: function onMouseLeave(e) {
+                      e.currentTarget.style.background = '#fff';
+                      e.currentTarget.style.borderColor = '#e5e7eb';
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiCamera, {
+                      size: 15
+                    }), " Change Photo"]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  id: "photo-upload",
+                  type: "file",
+                  accept: "image/*",
+                  onChange: handlePhotoChange,
+                  style: {
+                    display: 'none'
+                  }
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 20,
+                marginBottom: 20
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 7
+                  },
+                  children: "First Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  value: profileForm.firstName,
+                  onChange: function onChange(e) {
+                    return setProfileForm(_objectSpread(_objectSpread({}, profileForm), {}, {
+                      firstName: e.target.value
+                    }));
+                  },
+                  placeholder: "Admin",
+                  style: {
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: 7,
+                    border: '1px solid #e5e7eb',
+                    background: '#f9fafb',
+                    fontSize: 14,
+                    outline: 'none',
+                    color: '#111827'
+                  }
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 7
+                  },
+                  children: "Last Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  value: profileForm.lastName,
+                  onChange: function onChange(e) {
+                    return setProfileForm(_objectSpread(_objectSpread({}, profileForm), {}, {
+                      lastName: e.target.value
+                    }));
+                  },
+                  placeholder: "User",
+                  style: {
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: 7,
+                    border: '1px solid #e5e7eb',
+                    background: '#f9fafb',
+                    fontSize: 14,
+                    outline: 'none',
+                    color: '#111827'
+                  }
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 20,
+                marginBottom: 28
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 7
+                  },
+                  children: "Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "email",
+                  value: profileForm.email,
+                  onChange: function onChange(e) {
+                    return setProfileForm(_objectSpread(_objectSpread({}, profileForm), {}, {
+                      email: e.target.value
+                    }));
+                  },
+                  placeholder: "admin@school.edu",
+                  style: {
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: 7,
+                    border: '1px solid #e5e7eb',
+                    background: '#f9fafb',
+                    fontSize: 14,
+                    outline: 'none',
+                    color: '#111827'
+                  }
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 7
+                  },
+                  children: "Phone"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "tel",
+                  value: profileForm.phone,
+                  onChange: function onChange(e) {
+                    return setProfileForm(_objectSpread(_objectSpread({}, profileForm), {}, {
+                      phone: e.target.value
+                    }));
+                  },
+                  placeholder: "+1 (555) 123-4567",
+                  style: {
+                    width: '100%',
+                    padding: '9px 12px',
+                    borderRadius: 7,
+                    border: '1px solid #e5e7eb',
+                    background: '#f9fafb',
+                    fontSize: 14,
+                    outline: 'none',
+                    color: '#111827'
+                  }
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              type: "submit",
+              disabled: loading,
+              style: {
+                padding: '10px 22px',
+                borderRadius: 8,
+                border: 'none',
+                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: loading ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 7,
+                transition: 'transform 0.2s',
+                boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)',
+                opacity: loading ? 0.7 : 1
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                return !loading && (e.currentTarget.style.transform = 'translateY(-2px)');
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                return e.currentTarget.style.transform = 'translateY(0)';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiSave, {
+                size: 15
+              }), " ", loading ? 'Saving...' : 'Save Changes']
+            })]
+          })]
+        }), activeTab === 'school' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            background: '#fff',
+            borderRadius: 16,
+            padding: '32px 36px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+            maxWidth: 900
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+            style: {
+              margin: '0 0 8px 0',
+              fontSize: 20,
+              fontWeight: 600,
+              color: '#111827'
+            },
+            children: "School Information"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+            style: {
+              margin: '0 0 32px 0',
+              fontSize: 14,
+              color: '#6b7280'
+            },
+            children: "Update your school details and contact information"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+            onSubmit: handleSchoolSave,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                marginBottom: 24
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                style: {
+                  display: 'block',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: '#374151',
+                  marginBottom: 8
+                },
+                children: "School Name"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "text",
+                value: schoolForm.schoolName,
+                onChange: function onChange(e) {
+                  return setSchoolForm(_objectSpread(_objectSpread({}, schoolForm), {}, {
+                    schoolName: e.target.value
+                  }));
+                },
+                placeholder: "Springfield High School",
+                style: {
+                  width: '100%',
+                  padding: '10px 14px',
+                  borderRadius: 8,
+                  border: '1px solid #e5e7eb',
+                  background: '#f9fafb',
+                  fontSize: 14,
+                  outline: 'none',
+                  color: '#111827'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                marginBottom: 24
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                style: {
+                  display: 'block',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: '#374151',
+                  marginBottom: 8
+                },
+                children: "Address"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "text",
+                value: schoolForm.address,
+                onChange: function onChange(e) {
+                  return setSchoolForm(_objectSpread(_objectSpread({}, schoolForm), {}, {
+                    address: e.target.value
+                  }));
+                },
+                placeholder: "123 Main Street",
+                style: {
+                  width: '100%',
+                  padding: '10px 14px',
+                  borderRadius: 8,
+                  border: '1px solid #e5e7eb',
+                  background: '#f9fafb',
+                  fontSize: 14,
+                  outline: 'none',
+                  color: '#111827'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr 1fr',
+                gap: 24,
+                marginBottom: 32
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 8
+                  },
+                  children: "City"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  value: schoolForm.city,
+                  onChange: function onChange(e) {
+                    return setSchoolForm(_objectSpread(_objectSpread({}, schoolForm), {}, {
+                      city: e.target.value
+                    }));
+                  },
+                  placeholder: "Springfield",
+                  style: {
+                    width: '100%',
+                    padding: '10px 14px',
+                    borderRadius: 8,
+                    border: '1px solid #e5e7eb',
+                    background: '#f9fafb',
+                    fontSize: 14,
+                    outline: 'none',
+                    color: '#111827'
+                  }
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 8
+                  },
+                  children: "State"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  value: schoolForm.state,
+                  onChange: function onChange(e) {
+                    return setSchoolForm(_objectSpread(_objectSpread({}, schoolForm), {}, {
+                      state: e.target.value
+                    }));
+                  },
+                  placeholder: "IL",
+                  style: {
+                    width: '100%',
+                    padding: '10px 14px',
+                    borderRadius: 8,
+                    border: '1px solid #e5e7eb',
+                    background: '#f9fafb',
+                    fontSize: 14,
+                    outline: 'none',
+                    color: '#111827'
+                  }
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  style: {
+                    display: 'block',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#374151',
+                    marginBottom: 8
+                  },
+                  children: "Zip Code"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                  type: "text",
+                  value: schoolForm.zipCode,
+                  onChange: function onChange(e) {
+                    return setSchoolForm(_objectSpread(_objectSpread({}, schoolForm), {}, {
+                      zipCode: e.target.value
+                    }));
+                  },
+                  placeholder: "62701",
+                  style: {
+                    width: '100%',
+                    padding: '10px 14px',
+                    borderRadius: 8,
+                    border: '1px solid #e5e7eb',
+                    background: '#f9fafb',
+                    fontSize: 14,
+                    outline: 'none',
+                    color: '#111827'
+                  }
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              type: "submit",
+              disabled: loading,
+              style: {
+                padding: '12px 24px',
+                borderRadius: 8,
+                border: 'none',
+                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: loading ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'transform 0.2s',
+                boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)',
+                opacity: loading ? 0.7 : 1
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                return !loading && (e.currentTarget.style.transform = 'translateY(-2px)');
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                return e.currentTarget.style.transform = 'translateY(0)';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiSave, {
+                size: 16
+              }), " ", loading ? 'Saving...' : 'Save Changes']
+            })]
+          })]
+        }), activeTab === 'notifications' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            background: '#fff',
+            borderRadius: 16,
+            padding: '32px 36px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+            maxWidth: 900
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+            style: {
+              margin: '0 0 8px 0',
+              fontSize: 20,
+              fontWeight: 600,
+              color: '#111827'
+            },
+            children: "Notification Preferences"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+            style: {
+              margin: '0 0 32px 0',
+              fontSize: 14,
+              color: '#6b7280'
+            },
+            children: "Manage how you receive notifications"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+            onSubmit: handleNotificationSave,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              style: {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 20,
+                marginBottom: 32
+              },
+              children: [{
+                key: 'emailNotifications',
+                label: 'Email Notifications',
+                description: 'Receive notifications via email'
+              }, {
+                key: 'pushNotifications',
+                label: 'Push Notifications',
+                description: 'Receive push notifications in your browser'
+              }, {
+                key: 'studentEnrollment',
+                label: 'Student Enrollment Alerts',
+                description: 'Get notified when new students enroll'
+              }, {
+                key: 'courseUpdates',
+                label: 'Course Update Notifications',
+                description: 'Receive updates about course changes'
+              }, {
+                key: 'systemAlerts',
+                label: 'System Alerts',
+                description: 'Important system notifications and alerts'
+              }].map(function (item) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  style: {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '16px 20px',
+                    background: '#f9fafb',
+                    borderRadius: 10,
+                    border: '1px solid #f3f4f6'
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                      style: {
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: '#111827',
+                        marginBottom: 4
+                      },
+                      children: item.label
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                      style: {
+                        fontSize: 13,
+                        color: '#6b7280'
+                      },
+                      children: item.description
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
+                    style: {
+                      position: 'relative',
+                      display: 'inline-block',
+                      width: 48,
+                      height: 26,
+                      cursor: 'pointer'
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                      type: "checkbox",
+                      checked: notificationSettings[item.key],
+                      onChange: function onChange(e) {
+                        return setNotificationSettings(_objectSpread(_objectSpread({}, notificationSettings), {}, _defineProperty({}, item.key, e.target.checked)));
+                      },
+                      style: {
+                        opacity: 0,
+                        width: 0,
+                        height: 0
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                      style: {
+                        position: 'absolute',
+                        cursor: 'pointer',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: notificationSettings[item.key] ? '#6366f1' : '#d1d5db',
+                        transition: '0.3s',
+                        borderRadius: 26
+                      },
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                        style: {
+                          position: 'absolute',
+                          content: '',
+                          height: 20,
+                          width: 20,
+                          left: notificationSettings[item.key] ? 25 : 3,
+                          bottom: 3,
+                          background: 'white',
+                          transition: '0.3s',
+                          borderRadius: '50%'
+                        }
+                      })
+                    })]
+                  })]
+                }, item.key);
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              type: "submit",
+              disabled: loading,
+              style: {
+                padding: '12px 24px',
+                borderRadius: 8,
+                border: 'none',
+                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: loading ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'transform 0.2s',
+                boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)',
+                opacity: loading ? 0.7 : 1
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                return !loading && (e.currentTarget.style.transform = 'translateY(-2px)');
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                return e.currentTarget.style.transform = 'translateY(0)';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiSave, {
+                size: 16
+              }), " ", loading ? 'Saving...' : 'Save Changes']
+            })]
+          })]
+        }), activeTab === 'security' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            background: '#fff',
+            borderRadius: 16,
+            padding: '32px 36px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+            maxWidth: 900
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+            style: {
+              margin: '0 0 8px 0',
+              fontSize: 20,
+              fontWeight: 600,
+              color: '#111827'
+            },
+            children: "Security Settings"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+            style: {
+              margin: '0 0 32px 0',
+              fontSize: 14,
+              color: '#6b7280'
+            },
+            children: "Update your password and security preferences"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+            onSubmit: handleSecuritySave,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                marginBottom: 24
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                style: {
+                  display: 'block',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: '#374151',
+                  marginBottom: 8
+                },
+                children: "Current Password"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "password",
+                value: securityForm.currentPassword,
+                onChange: function onChange(e) {
+                  return setSecurityForm(_objectSpread(_objectSpread({}, securityForm), {}, {
+                    currentPassword: e.target.value
+                  }));
+                },
+                placeholder: "Enter current password",
+                style: {
+                  width: '100%',
+                  padding: '10px 14px',
+                  borderRadius: 8,
+                  border: '1px solid #e5e7eb',
+                  background: '#f9fafb',
+                  fontSize: 14,
+                  outline: 'none',
+                  color: '#111827'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                marginBottom: 24
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                style: {
+                  display: 'block',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: '#374151',
+                  marginBottom: 8
+                },
+                children: "New Password"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "password",
+                value: securityForm.newPassword,
+                onChange: function onChange(e) {
+                  return setSecurityForm(_objectSpread(_objectSpread({}, securityForm), {}, {
+                    newPassword: e.target.value
+                  }));
+                },
+                placeholder: "Enter new password",
+                style: {
+                  width: '100%',
+                  padding: '10px 14px',
+                  borderRadius: 8,
+                  border: '1px solid #e5e7eb',
+                  background: '#f9fafb',
+                  fontSize: 14,
+                  outline: 'none',
+                  color: '#111827'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              style: {
+                marginBottom: 32
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                style: {
+                  display: 'block',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: '#374151',
+                  marginBottom: 8
+                },
+                children: "Confirm New Password"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                type: "password",
+                value: securityForm.confirmPassword,
+                onChange: function onChange(e) {
+                  return setSecurityForm(_objectSpread(_objectSpread({}, securityForm), {}, {
+                    confirmPassword: e.target.value
+                  }));
+                },
+                placeholder: "Confirm new password",
+                style: {
+                  width: '100%',
+                  padding: '10px 14px',
+                  borderRadius: 8,
+                  border: '1px solid #e5e7eb',
+                  background: '#f9fafb',
+                  fontSize: 14,
+                  outline: 'none',
+                  color: '#111827'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              type: "submit",
+              disabled: loading,
+              style: {
+                padding: '12px 24px',
+                borderRadius: 8,
+                border: 'none',
+                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: 600,
+                cursor: loading ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'transform 0.2s',
+                boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)',
+                opacity: loading ? 0.7 : 1
+              },
+              onMouseEnter: function onMouseEnter(e) {
+                return !loading && (e.currentTarget.style.transform = 'translateY(-2px)');
+              },
+              onMouseLeave: function onMouseLeave(e) {
+                return e.currentTarget.style.transform = 'translateY(0)';
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_1__.FiSave, {
+                size: 16
+              }), " ", loading ? 'Updating...' : 'Update Password']
+            })]
+          })]
+        })]
+      })
+    })]
+  });
+}
 
 /***/ }),
 
@@ -62933,7 +68054,11 @@ function ModalErrorBoundary(_ref) {
   }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(C, null, children);
 }
-function AdminUsers() {
+function AdminUsers(_ref2) {
+  var _ref2$role = _ref2.role,
+    role = _ref2$role === void 0 ? 'student' : _ref2$role;
+  var mountedRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(true);
+  var highlightTimerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     users = _useState2[0],
@@ -62950,7 +68075,7 @@ function AdminUsers() {
     _useState8 = _slicedToArray(_useState7, 2),
     modalInitial = _useState8[0],
     setModalInitial = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('student'),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(role),
     _useState0 = _slicedToArray(_useState9, 2),
     modalRole = _useState0[0],
     setModalRole = _useState0[1];
@@ -63017,111 +68142,111 @@ function AdminUsers() {
     _useState38 = _slicedToArray(_useState37, 2),
     viewMode = _useState38[0],
     setViewMode = _useState38[1]; // 'list' or 'grid'
-  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState40 = _slicedToArray(_useState39, 2),
-    showInlineForm = _useState40[0],
-    setShowInlineForm = _useState40[1];
 
-  // simple inline form state (fallback)
-  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      name: '',
-      student_id: '',
-      email: ''
-    }),
-    _useState42 = _slicedToArray(_useState41, 2),
-    inlineForm = _useState42[0],
-    setInlineForm = _useState42[1];
-  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
-    _useState44 = _slicedToArray(_useState43, 2),
-    inlineErrors = _useState44[0],
-    setInlineErrors = _useState44[1];
+  // fallback inline form removed
+
+  // Page-level labels derived from the `role` prop so the same component can
+  // render Learners or Instructors pages without hard-coded strings.
+  var pageType = role === 'teacher' ? 'Instructor' : 'Learner';
+  var pagePlural = pageType + 's';
+  var pageLower = pageType.toLowerCase();
 
   // load users (non-archived students)
   var loadUsers = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
       var res, u, _t;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.p = _context.n) {
           case 0:
             _context.p = 0;
             _context.n = 1;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/admin/users?role=student');
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/admin/users?role=".concat(role));
           case 1:
             res = _context.v;
             u = Array.isArray(res.data) ? res.data : [];
-            setUsers(u);
-            try {
-              console.debug('loadUsers: fetched', u.length, 'students', u.map(function (x) {
-                return {
-                  id: x.id,
-                  email: x.email,
-                  deleted_at: x.deleted_at || x.student && x.student.deleted_at || null
-                };
-              }));
-            } catch (e) {}
-            _context.n = 3;
-            break;
+            if (mountedRef.current) {
+              _context.n = 2;
+              break;
+            }
+            return _context.a(2);
           case 2:
-            _context.p = 2;
+            setUsers(u);
+            // debug logging removed to reduce console noise
+            try {/* console.debug('loadUsers fetched', u.length); */} catch (e) {}
+            _context.n = 5;
+            break;
+          case 3:
+            _context.p = 3;
             _t = _context.v;
             console.error('Failed to load users', _t);
+            if (mountedRef.current) {
+              _context.n = 4;
+              break;
+            }
+            return _context.a(2);
+          case 4:
             setUsers([]);
-          case 3:
+          case 5:
             return _context.a(2);
         }
-      }, _callee, null, [[0, 2]]);
+      }, _callee, null, [[0, 3]]);
     }));
     return function loadUsers() {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
   // load archived (trashed) users separately
   var loadArchivedUsers = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
       var res, a, _t2;
       return _regenerator().w(function (_context2) {
         while (1) switch (_context2.p = _context2.n) {
           case 0:
             _context2.p = 0;
             _context2.n = 1;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/admin/users?role=student&archived=1');
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/admin/users?role=".concat(role, "&archived=1"));
           case 1:
             res = _context2.v;
             a = Array.isArray(res.data) ? res.data : [];
-            setArchivedUsers(a);
-            try {
-              console.debug('loadArchivedUsers: fetched', a.length, 'archived students', a.map(function (x) {
-                return {
-                  id: x.id,
-                  email: x.email,
-                  deleted_at: x.deleted_at || x.student && x.student.deleted_at || null
-                };
-              }));
-            } catch (e) {}
-            _context2.n = 3;
-            break;
+            if (mountedRef.current) {
+              _context2.n = 2;
+              break;
+            }
+            return _context2.a(2);
           case 2:
-            _context2.p = 2;
+            setArchivedUsers(a);
+            // debug logging removed to reduce console noise
+            try {/* console.debug('loadArchivedUsers fetched', a.length); */} catch (e) {}
+            _context2.n = 5;
+            break;
+          case 3:
+            _context2.p = 3;
             _t2 = _context2.v;
             console.error('Failed to load archived users', _t2);
+            if (mountedRef.current) {
+              _context2.n = 4;
+              break;
+            }
+            return _context2.a(2);
+          case 4:
             setArchivedUsers([]);
-          case 3:
+          case 5:
             return _context2.a(2);
         }
-      }, _callee2, null, [[0, 2]]);
+      }, _callee2, null, [[0, 3]]);
     }));
     return function loadArchivedUsers() {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
   var archiveUser = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(id) {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(id) {
       var _t3;
       return _regenerator().w(function (_context3) {
         while (1) switch (_context3.p = _context3.n) {
           case 0:
-            if (confirm('Archive this student?')) {
+            if (confirm("Archive this ".concat(pageLower, "?"))) {
               _context3.n = 1;
               break;
             }
@@ -63140,21 +68265,21 @@ function AdminUsers() {
             try {
               window.dispatchEvent(new CustomEvent('admin:users-changed'));
             } catch (e) {}
-            alert('Student archived');
+            alert("".concat(pageType, " archived"));
             _context3.n = 6;
             break;
           case 5:
             _context3.p = 5;
             _t3 = _context3.v;
             console.error('Archive failed', _t3);
-            alert('Failed to archive student');
+            alert("Failed to archive ".concat(pageLower));
           case 6:
             return _context3.a(2);
         }
       }, _callee3, null, [[1, 5]]);
     }));
     return function archiveUser(_x) {
-      return _ref4.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
@@ -63163,7 +68288,7 @@ function AdminUsers() {
   // selection removed
 
   var updateStatusInline = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(userId, newStatus) {
+    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(userId, newStatus) {
       var _t4;
       return _regenerator().w(function (_context4) {
         while (1) switch (_context4.p = _context4.n) {
@@ -63193,11 +68318,11 @@ function AdminUsers() {
       }, _callee4, null, [[0, 4]]);
     }));
     return function updateStatusInline(_x2, _x3) {
-      return _ref5.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
   var restoreUser = /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(id) {
+    var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(id) {
       var _t5;
       return _regenerator().w(function (_context5) {
         while (1) switch (_context5.p = _context5.n) {
@@ -63215,30 +68340,30 @@ function AdminUsers() {
             try {
               window.dispatchEvent(new CustomEvent('admin:users-changed'));
             } catch (e) {}
-            alert('Student restored');
+            alert("".concat(pageType, " restored"));
             _context5.n = 5;
             break;
           case 4:
             _context5.p = 4;
             _t5 = _context5.v;
             console.error('Restore failed', _t5);
-            alert('Failed to restore student');
+            alert("Failed to restore ".concat(pageLower));
           case 5:
             return _context5.a(2);
         }
       }, _callee5, null, [[0, 4]]);
     }));
     return function restoreUser(_x4) {
-      return _ref6.apply(this, arguments);
+      return _ref7.apply(this, arguments);
     };
   }();
   var permanentDeleteUser = /*#__PURE__*/function () {
-    var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(id) {
+    var _ref8 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(id) {
       var _t6;
       return _regenerator().w(function (_context6) {
         while (1) switch (_context6.p = _context6.n) {
           case 0:
-            if (confirm('Permanently delete this student? This cannot be undone.')) {
+            if (confirm("Permanently delete this ".concat(pageLower, "? This cannot be undone."))) {
               _context6.n = 1;
               break;
             }
@@ -63254,25 +68379,25 @@ function AdminUsers() {
             try {
               window.dispatchEvent(new CustomEvent('admin:users-changed'));
             } catch (e) {}
-            alert('Student permanently deleted');
+            alert("".concat(pageType, " permanently deleted"));
             _context6.n = 5;
             break;
           case 4:
             _context6.p = 4;
             _t6 = _context6.v;
             console.error('Permanent delete failed', _t6);
-            alert('Failed to permanently delete student');
+            alert("Failed to permanently delete ".concat(pageLower));
           case 5:
             return _context6.a(2);
         }
       }, _callee6, null, [[1, 4]]);
     }));
     return function permanentDeleteUser(_x5) {
-      return _ref7.apply(this, arguments);
+      return _ref8.apply(this, arguments);
     };
   }();
   var toggleLock = /*#__PURE__*/function () {
-    var _ref8 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(id, currentlyLocked) {
+    var _ref9 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(id, currentlyLocked) {
       var _t7;
       return _regenerator().w(function (_context7) {
         while (1) switch (_context7.p = _context7.n) {
@@ -63310,12 +68435,13 @@ function AdminUsers() {
       }, _callee7, null, [[0, 5]]);
     }));
     return function toggleLock(_x6, _x7) {
-      return _ref8.apply(this, arguments);
+      return _ref9.apply(this, arguments);
     };
   }();
 
   // fetch users on mount and whenever archived toggle changes
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    mountedRef.current = true;
     loadUsers();
     loadArchivedUsers()["catch"](function () {});
 
@@ -63326,6 +68452,7 @@ function AdminUsers() {
     };
     window.addEventListener('admin:users-changed', onUsersChanged);
     return function () {
+      mountedRef.current = false;
       window.removeEventListener('admin:users-changed', onUsersChanged);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63340,18 +68467,22 @@ function AdminUsers() {
     var tick = function tick() {
       try {
         var n = new Date();
-        setNow(n);
+        if (mountedRef.current) setNow(n);
         // if date changed (midnight) -> refresh
         if (n.toDateString() !== lastHourRef.date) {
           lastHourRef.date = n.toDateString();
-          loadUsers()["catch"](function () {});
-          loadArchivedUsers()["catch"](function () {});
+          if (mountedRef.current) {
+            loadUsers()["catch"](function () {});
+            loadArchivedUsers()["catch"](function () {});
+          }
         }
         // if we crossed into morning (before 6 -> >=6) trigger a refresh
         if (lastHourRef.hour < 6 && n.getHours() >= 6) {
           try {
-            loadUsers()["catch"](function () {});
-            loadArchivedUsers()["catch"](function () {});
+            if (mountedRef.current) {
+              loadUsers()["catch"](function () {});
+              loadArchivedUsers()["catch"](function () {});
+            }
           } catch (e) {}
         }
         lastHourRef.hour = n.getHours();
@@ -63368,8 +68499,7 @@ function AdminUsers() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   var openAdd = function openAdd() {
-    var roleParam = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'student';
-    console.log('openAdd called');
+    var roleParam = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : role;
     try {
       prevGlobalOverlaysRef.current = Array.from(document.querySelectorAll('.modal-overlay'));
     } catch (e) {
@@ -63378,7 +68508,6 @@ function AdminUsers() {
     setModalInitial(null);
     setModalRole(roleParam || 'student');
     // open the modal form
-    setShowInlineForm(false);
     setModalForm({
       first_name: '',
       last_name: '',
@@ -63394,11 +68523,12 @@ function AdminUsers() {
       status: 'Active',
       year_level: ''
     });
+    modalOpenTimeRef.current = Date.now();
     setShowModal(true);
   };
 
   // modal form state for built-in modal
-  var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       first_name: '',
       last_name: '',
       student_id: '',
@@ -63413,37 +68543,54 @@ function AdminUsers() {
       year_level: '',
       sex: ''
     }),
+    _useState40 = _slicedToArray(_useState39, 2),
+    modalForm = _useState40[0],
+    setModalForm = _useState40[1];
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState42 = _slicedToArray(_useState41, 2),
+    modalErrors = _useState42[0],
+    setModalErrors = _useState42[1];
+  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState44 = _slicedToArray(_useState43, 2),
+    modalSubmitting = _useState44[0],
+    setModalSubmitting = _useState44[1];
+  var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState46 = _slicedToArray(_useState45, 2),
-    modalForm = _useState46[0],
-    setModalForm = _useState46[1];
-  var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
-    _useState48 = _slicedToArray(_useState47, 2),
-    modalErrors = _useState48[0],
-    setModalErrors = _useState48[1];
-  var _useState49 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState50 = _slicedToArray(_useState49, 2),
-    modalSubmitting = _useState50[0],
-    setModalSubmitting = _useState50[1];
-  var _useState51 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState52 = _slicedToArray(_useState51, 2),
-    showFallbackModal = _useState52[0],
-    setShowFallbackModal = _useState52[1];
-  var fallbackTimerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    modalServerMessage = _useState46[0],
+    setModalServerMessage = _useState46[1];
+  var firstErrorRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  // fallback modal removed
   var prevGlobalOverlaysRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+  var modalOpenTimeRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
+  var handleModalClose = function handleModalClose() {
+    var source = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'unknown';
+    try {
+      var elapsed = modalOpenTimeRef.current ? Date.now() - modalOpenTimeRef.current : null;
+      try {
+        console.debug('[AdminUsers] handleModalClose', {
+          source: source,
+          elapsed: elapsed
+        });
+      } catch (e) {}
+    } catch (e) {}
+    setShowModal(false);
+    setModalInitial(null);
+  };
   var handleModalChange = function handleModalChange(k, v) {
     return setModalForm(function (f) {
       return _objectSpread(_objectSpread({}, f), {}, _defineProperty({}, k, v));
     });
   };
   var handleModalSave = /*#__PURE__*/function () {
-    var _ref9 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
-      var errs, payload, gen, payloadFiltered, res, data, fieldErrs, _t8;
+    var _ref0 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
+      var errs, emailLower, allUsers, byEmail, el, sid, _allUsers, bySid, _el, payload, gen, payloadFiltered, res, data, fieldErrs, order, firstKey, _el2, _t8, _t9;
       return _regenerator().w(function (_context8) {
         while (1) switch (_context8.p = _context8.n) {
           case 0:
             errs = {};
             if (!modalForm.first_name) errs.first_name = 'First name is required';
             if (!modalForm.last_name) errs.last_name = 'Last name is required';
+            if (!modalForm.email) errs.email = 'Email is required';
             // student_id is optional; backend will generate if missing
             if (modalForm.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(modalForm.email)) errs.email = 'Valid email required';
             setModalErrors(errs);
@@ -63453,10 +68600,63 @@ function AdminUsers() {
             }
             return _context8.a(2);
           case 1:
+            _context8.p = 1;
+            emailLower = (modalForm.email || '').toString().toLowerCase().trim();
+            if (!emailLower) {
+              _context8.n = 2;
+              break;
+            }
+            allUsers = (users || []).concat(archivedUsers || []);
+            byEmail = allUsers.find(function (u) {
+              return (u.email || '').toString().toLowerCase() === emailLower && !(modalInitial && modalInitial.id && String(u.id) === String(modalInitial.id));
+            });
+            if (!byEmail) {
+              _context8.n = 2;
+              break;
+            }
+            setModalErrors({
+              email: 'This email is already used by another account'
+            });
+            try {
+              el = document.querySelector('.modal-body [name="email"]');
+              if (el && typeof el.focus === 'function') el.focus();
+            } catch (e) {}
+            return _context8.a(2);
+          case 2:
+            sid = (modalForm.student_id || '').toString().trim();
+            if (!sid) {
+              _context8.n = 3;
+              break;
+            }
+            _allUsers = (users || []).concat(archivedUsers || []);
+            bySid = _allUsers.find(function (u) {
+              return (u.student && u.student.student_id) === sid && !(modalInitial && modalInitial.id && String(u.id) === String(modalInitial.id));
+            });
+            if (!bySid) {
+              _context8.n = 3;
+              break;
+            }
+            setModalErrors({
+              student_id: 'That Student ID is already linked to another account'
+            });
+            try {
+              _el = document.querySelector('.modal-body [name="student_id"]');
+              if (_el && typeof _el.focus === 'function') _el.focus();
+            } catch (e) {}
+            return _context8.a(2);
+          case 3:
+            _context8.n = 5;
+            break;
+          case 4:
+            _context8.p = 4;
+            _t8 = _context8.v;
+            console.warn('Duplicate check failed', _t8);
+          case 5:
+            setModalServerMessage('');
             setModalSubmitting(true);
-            _context8.p = 2;
+            _context8.p = 6;
             payload = {
-              role: 'student',
+              role: modalRole || role,
               student_id: modalForm.student_id,
               first_name: modalForm.first_name,
               last_name: modalForm.last_name,
@@ -63477,42 +68677,40 @@ function AdminUsers() {
               gen = function gen() {
                 return Math.random().toString(36).slice(-8) + 'A1!';
               };
-              payload.password = gen();
+              payload.password = payload.password || gen();
             }
             // strip empty values so backend doesn't receive blank strings
-            payloadFiltered = Object.fromEntries(Object.entries(payload).filter(function (_ref0) {
-              var _ref1 = _slicedToArray(_ref0, 2),
-                k = _ref1[0],
-                v = _ref1[1];
+            payloadFiltered = Object.fromEntries(Object.entries(payload).filter(function (_ref1) {
+              var _ref10 = _slicedToArray(_ref1, 2),
+                k = _ref10[0],
+                v = _ref10[1];
               return v !== '' && v !== null && typeof v !== 'undefined';
             }));
             res = null;
             if (!(modalInitial && modalInitial.id)) {
-              _context8.n = 4;
+              _context8.n = 8;
               break;
             }
-            _context8.n = 3;
+            _context8.n = 7;
             return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/admin/users/".concat(modalInitial.id), payloadFiltered);
-          case 3:
+          case 7:
             res = _context8.v;
-            _context8.n = 6;
+            _context8.n = 10;
             break;
-          case 4:
-            _context8.n = 5;
+          case 8:
+            _context8.n = 9;
             return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payloadFiltered);
-          case 5:
+          case 9:
             res = _context8.v;
-          case 6:
+          case 10:
             setShowModal(false);
             setModalInitial(null);
-            setShowInlineForm(false);
-            setShowFallbackModal(false);
-            _context8.n = 7;
+            _context8.n = 11;
             return loadUsers();
-          case 7:
-            _context8.n = 8;
+          case 11:
+            _context8.n = 12;
             return loadArchivedUsers();
-          case 8:
+          case 12:
             try {
               window.dispatchEvent(new CustomEvent('admin:users-changed', {
                 detail: res && res.data && res.data.stats ? res.data.stats : {}
@@ -63523,20 +68721,23 @@ function AdminUsers() {
                 detail: res && res.data && res.data.stats ? res.data.stats : {}
               }));
             } catch (e) {}
-            _context8.n = 12;
+            _context8.n = 16;
             break;
-          case 9:
-            _context8.p = 9;
-            _t8 = _context8.v;
-            console.error('Save failed', _t8);
+          case 13:
+            _context8.p = 13;
+            _t9 = _context8.v;
+            console.error('Save failed', _t9);
+            try {
+              if (_t9 && _t9.response && _t9.response.status === 422) console.warn('422 response body:', _t9.response.data);
+            } catch (_) {}
             // try to map server-side validation errors (Laravel 422) into modalErrors
-            if (!(_t8 && _t8.response && _t8.response.status === 422 && _t8.response.data && _typeof(_t8.response.data) === 'object')) {
-              _context8.n = 11;
+            if (!(_t9 && _t9.response && _t9.response.status === 422 && _t9.response.data && _typeof(_t9.response.data) === 'object')) {
+              _context8.n = 15;
               break;
             }
-            data = _t8.response.data; // Laravel usually returns { message: '', errors: { field: [msgs] } }
+            data = _t9.response.data; // Laravel usually returns { message: '', errors: { field: [msgs] } }
             if (!data.errors) {
-              _context8.n = 10;
+              _context8.n = 14;
               break;
             }
             fieldErrs = {};
@@ -63544,32 +68745,47 @@ function AdminUsers() {
               fieldErrs[k] = data.errors[k].join(' ');
             });
             setModalErrors(fieldErrs);
+            // also show server message if present
+            if (data.message) setModalServerMessage(data.message);
+            try {
+              // focus first invalid field for faster correction
+              order = ['first_name', 'last_name', 'email', 'student_id', 'date_of_birth', 'phone_number', 'course', 'department', 'status', 'date_of_enrollment', 'year_level', 'address'];
+              firstKey = order.find(function (k) {
+                return fieldErrs[k];
+              });
+              if (firstKey) {
+                _el2 = document.querySelector(".modal-body [name=\"".concat(firstKey, "\"]"));
+                if (_el2 && typeof _el2.focus === 'function') _el2.focus();
+              }
+            } catch (_e) {}
             setModalSubmitting(false);
             return _context8.a(2);
-          case 10:
-            if (data.message) alert(data.message);
+          case 14:
+            if (data.message) {
+              setModalServerMessage(data.message || 'Validation failed');
+            }
             setModalSubmitting(false);
             return _context8.a(2);
-          case 11:
+          case 15:
             // generic fallback
-            alert(_t8 && _t8.message ? _t8.message : 'Failed to save student');
+            alert(_t9 && _t9.message ? _t9.message : 'Failed to save student');
             setModalSubmitting(false);
-          case 12:
+          case 16:
             setModalSubmitting(false);
-          case 13:
+          case 17:
             return _context8.a(2);
         }
-      }, _callee8, null, [[2, 9]]);
+      }, _callee8, null, [[6, 13], [1, 4]]);
     }));
     return function handleModalSave() {
-      return _ref9.apply(this, arguments);
+      return _ref0.apply(this, arguments);
     };
   }();
 
   // onSave handler for UserFormModal (receives payload from modal)
   var saveFromUserForm = /*#__PURE__*/function () {
-    var _ref10 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(payload, isEdit) {
-      var res, _res, resp, errObj, err, _t9;
+    var _ref11 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(payload, isEdit) {
+      var res, _res, resp, errObj, err, _t0;
       return _regenerator().w(function (_context9) {
         while (1) switch (_context9.p = _context9.n) {
           case 0:
@@ -63593,6 +68809,8 @@ function AdminUsers() {
             } catch (e) {}
             return _context9.a(2, Promise.resolve(res && res.data ? res.data : {}));
           case 4:
+            // ensure required fields: backend requires password on create
+            if (!payload.password) payload.password = Math.random().toString(36).slice(-8) + 'A1!';
             _context9.n = 5;
             return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payload);
           case 5:
@@ -63620,14 +68838,14 @@ function AdminUsers() {
             break;
           case 9:
             _context9.p = 9;
-            _t9 = _context9.v;
-            console.error('Save from UserForm failed', _t9);
+            _t0 = _context9.v;
+            console.error('Save from UserForm failed', _t0);
             // propagate validation errors to caller (UserFormModal)
-            if (!(_t9 && _t9.response && _t9.response.status === 422 && _t9.response.data)) {
+            if (!(_t0 && _t0.response && _t0.response.status === 422 && _t0.response.data)) {
               _context9.n = 10;
               break;
             }
-            resp = _t9.response.data;
+            resp = _t0.response.data;
             errObj = {};
             if (resp.errors) {
               Object.keys(resp.errors).forEach(function (k) {
@@ -63639,15 +68857,15 @@ function AdminUsers() {
             err.fields = errObj;
             return _context9.a(2, Promise.reject(err));
           case 10:
-            alert(_t9 && _t9.message ? _t9.message : 'Failed to save user');
-            return _context9.a(2, Promise.reject(_t9));
+            alert(_t0 && _t0.message ? _t0.message : 'Failed to save user');
+            return _context9.a(2, Promise.reject(_t0));
           case 11:
             return _context9.a(2);
         }
       }, _callee9, null, [[0, 9]]);
     }));
     return function saveFromUserForm(_x8, _x9) {
-      return _ref10.apply(this, arguments);
+      return _ref11.apply(this, arguments);
     };
   }();
 
@@ -63657,14 +68875,20 @@ function AdminUsers() {
       try {
         var id = ev && ev.detail && ev.detail.id;
         if (id) {
+          if (!mountedRef.current) return;
           setHighlightNewId(id);
           // clear highlight after a few seconds
-          setTimeout(function () {
-            return setHighlightNewId(null);
+          try {
+            if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+          } catch (e) {}
+          highlightTimerRef.current = setTimeout(function () {
+            if (mountedRef.current) setHighlightNewId(null);
           }, 6000);
           // refresh lists in case other page created it
-          loadUsers()["catch"](function () {});
-          loadArchivedUsers()["catch"](function () {});
+          if (mountedRef.current) {
+            loadUsers()["catch"](function () {});
+            loadArchivedUsers()["catch"](function () {});
+          }
         }
       } catch (e) {
         console.error('user-created handler failed', e);
@@ -63672,7 +68896,10 @@ function AdminUsers() {
     };
     window.addEventListener('admin:user-created', onUserCreated);
     return function () {
-      return window.removeEventListener('admin:user-created', onUserCreated);
+      window.removeEventListener('admin:user-created', onUserCreated);
+      try {
+        if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+      } catch (e) {}
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -63707,7 +68934,7 @@ function AdminUsers() {
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url;
-    a.download = 'students-export.csv';
+    a.download = "".concat(pageLower, "s-export.csv");
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -63742,7 +68969,7 @@ function AdminUsers() {
       if (confirm("Preview ".concat(data.length, " rows (showing up to 50). Import now?"))) {
         // map rows to payloads and POST sequentially (safe)
         _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0() {
-          var _iterator, _step, r, payload, res, _t0, _t1;
+          var _iterator, _step, r, payload, res, _t1, _t10;
           return _regenerator().w(function (_context0) {
             while (1) switch (_context0.p = _context0.n) {
               case 0:
@@ -63757,7 +68984,7 @@ function AdminUsers() {
                 r = _step.value;
                 _context0.p = 3;
                 payload = {
-                  role: 'student',
+                  role: pageLower,
                   student_id: r.student_id || r.id || '',
                   first_name: r.first_name || r.first || '',
                   last_name: r.last_name || r.surname || r.last || '',
@@ -63793,8 +69020,8 @@ function AdminUsers() {
                 break;
               case 5:
                 _context0.p = 5;
-                _t0 = _context0.v;
-                console.error('Row import error', _t0);
+                _t1 = _context0.v;
+                console.error('Row import error', _t1);
               case 6:
                 _context0.n = 2;
                 break;
@@ -63803,8 +69030,8 @@ function AdminUsers() {
                 break;
               case 8:
                 _context0.p = 8;
-                _t1 = _context0.v;
-                _iterator.e(_t1);
+                _t10 = _context0.v;
+                _iterator.e(_t10);
               case 9:
                 _context0.p = 9;
                 _iterator.f();
@@ -63830,85 +69057,33 @@ function AdminUsers() {
     console.log('openEdit called for user', user && user.id);
     setModalInitial(user);
     setModalRole(user && (user.role ? user.role : 'student'));
+    // prefill modal form with existing values for a better edit experience
+    try {
+      var s = user && (user.student || {});
+      setModalForm({
+        first_name: s.first_name || (user.name ? user.name.split(' ')[0] || '' : ''),
+        last_name: s.last_name || (user.name ? user.name.split(' ').slice(1).join(' ') || '' : ''),
+        student_id: s.student_id || '',
+        email: user.email || s.email || '',
+        sex: s.sex || '',
+        date_of_birth: s.date_of_birth || '',
+        phone_number: s.phone_number || '',
+        address: s.address || '',
+        course: s.course || '',
+        department: s.department || '',
+        status: s.status || 'Active',
+        date_of_enrollment: s.date_of_enrollment || '',
+        year_level: s.year_level || ''
+      });
+    } catch (e) {/* ignore */}
     setShowModal(true);
   };
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    try {
-      console.log('AdminUsers showModal changed', {
-        showModal: showModal,
-        modalInitial: modalInitial,
-        modalRole: modalRole
-      });
-    } catch (e) {}
-  }, [showModal, modalInitial, modalRole]);
 
-  // If the standard modal fails to appear (overlay missing), show a safe fallback form
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // clear any previous timer
-    try {
-      if (fallbackTimerRef.current) {
-        clearTimeout(fallbackTimerRef.current);
-        fallbackTimerRef.current = null;
-      }
-    } catch (e) {}
-    if (!showModal) {
-      setShowFallbackModal(false);
-      setShowInlineForm(false);
-      return;
-    }
-    // wait briefly for any other modal to mount, then check DOM
-    fallbackTimerRef.current = setTimeout(function () {
-      try {
-        var hasVisibleModal = !!document.querySelector('.modal-overlay .modal, .modal.modal-wide');
-        if (!hasVisibleModal) {
-          console.warn('No modal detected — showing fallback form');
-          setShowFallbackModal(true);
-          setShowInlineForm(true);
-        } else {
-          setShowFallbackModal(false);
-          setShowInlineForm(false);
-        }
-      } catch (e) {
-        console.warn('fallback detection failed', e);
-        setShowFallbackModal(true);
-      }
-    }, 300);
-    return function () {
-      try {
-        if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current);
-      } catch (e) {}
-    };
-  }, [showModal]);
+  // debug effect removed to reduce log spam on modal toggles
 
-  // Workaround: hide only overlays that existed before opening our modal so we don't hide the modal we created.
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!showModal) return;
-    var els = prevGlobalOverlaysRef.current || [];
-    try {
-      els.forEach(function (el) {
-        if (!el) return;
-        el.__prevDisplay = el.style.display;
-        el.__prevBg = el.style.background;
-        el.style.display = 'none';
-      });
-      return function () {
-        try {
-          (els || []).forEach(function (el) {
-            if (!el) return;
-            el.style.display = el.__prevDisplay || '';
-            el.style.background = el.__prevBg || '';
-            delete el.__prevDisplay;
-            delete el.__prevBg;
-          });
-        } catch (e) {
-          console.warn('restore overlays failed', e);
-        }
-      };
-    } catch (e) {
-      console.warn('overlay hide failed', e);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showModal]);
+  // Fallback detection removed entirely
+
+  // All overlay/scroll effects disabled to prevent any interference with modal open/close
 
   // derived metrics
   var totalStudents = ((users === null || users === void 0 ? void 0 : users.length) || 0) + ((archivedUsers === null || archivedUsers === void 0 ? void 0 : archivedUsers.length) || 0);
@@ -63972,17 +69147,17 @@ function AdminUsers() {
     return true;
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    className: "admin-users students-page",
+    className: "admin-users ".concat(pageLower, "-page"),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "hero-banner",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "hero-inner",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "hero-left",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-            children: "Student Management"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-            children: "Manage student records and accounts"
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h1", {
+            children: [pageType, " Management"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+            children: ["Manage ", pageLower, " records and accounts"]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "hero-cards",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -64005,451 +69180,663 @@ function AdminUsers() {
           className: "hero-right"
         })]
       })
-    }), showInlineForm && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "card",
-      style: {
-        padding: 14,
-        margin: '12px 0'
-      },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
-        style: {
-          marginTop: 0
-        },
-        children: "Add Student (fallback)"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        style: {
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          gap: 8
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-          placeholder: "Full name",
-          value: inlineForm.name,
-          onChange: function onChange(e) {
-            return setInlineForm(function (f) {
-              return _objectSpread(_objectSpread({}, f), {}, {
-                name: e.target.value
-              });
-            });
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-          placeholder: "Student ID",
-          value: inlineForm.student_id,
-          onChange: function onChange(e) {
-            return setInlineForm(function (f) {
-              return _objectSpread(_objectSpread({}, f), {}, {
-                student_id: e.target.value
-              });
-            });
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-          placeholder: "Email",
-          value: inlineForm.email,
-          onChange: function onChange(e) {
-            return setInlineForm(function (f) {
-              return _objectSpread(_objectSpread({}, f), {}, {
-                email: e.target.value
-              });
-            });
-          }
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        style: {
-          marginTop: 10,
-          display: 'flex',
-          gap: 8
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-          className: "primary",
-          onClick: /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1() {
-            var errs, payload, res, resp, _t10;
-            return _regenerator().w(function (_context1) {
-              while (1) switch (_context1.p = _context1.n) {
-                case 0:
-                  errs = {};
-                  if (!inlineForm.name) errs.name = 'Name required';
-                  // student_id optional for import/fallback
-                  if (!inlineForm.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inlineForm.email)) errs.email = 'Valid email required';
-                  setInlineErrors(errs);
-                  if (!Object.keys(errs).length) {
-                    _context1.n = 1;
-                    break;
-                  }
-                  return _context1.a(2);
-                case 1:
-                  _context1.p = 1;
-                  payload = {
-                    role: 'student',
-                    name: inlineForm.name,
-                    student_id: inlineForm.student_id,
-                    email: inlineForm.email
-                  };
-                  _context1.n = 2;
-                  return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/admin/users', payload);
-                case 2:
-                  res = _context1.v;
-                  if (!(res && res.data && res.data.id)) {
-                    _context1.n = 4;
-                    break;
-                  }
-                  alert('Student added');
-                  setShowInlineForm(false);
-                  setInlineForm({
-                    name: '',
-                    student_id: '',
-                    email: ''
-                  });
-                  _context1.n = 3;
-                  return loadUsers();
-                case 3:
-                  try {
-                    window.dispatchEvent(new CustomEvent('admin:users-changed', {
-                      detail: res && res.data && res.data.stats ? res.data.stats : {}
-                    }));
-                  } catch (e) {}
-                  try {
-                    window.dispatchEvent(new CustomEvent('admin:user-created', {
-                      detail: res && res.data && res.data.stats ? res.data.stats : {}
-                    }));
-                  } catch (e) {}
-                case 4:
-                  _context1.n = 8;
-                  break;
-                case 5:
-                  _context1.p = 5;
-                  _t10 = _context1.v;
-                  console.error('Inline add failed', _t10);
-                  if (!(_t10 && _t10.response && _t10.response.status === 422 && _t10.response.data)) {
-                    _context1.n = 7;
-                    break;
-                  }
-                  resp = _t10.response.data;
-                  if (!resp.errors) {
-                    _context1.n = 6;
-                    break;
-                  }
-                  setInlineErrors(Object.keys(resp.errors).reduce(function (acc, k) {
-                    return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, k, resp.errors[k].join(' ')));
-                  }, {}));
-                  return _context1.a(2);
-                case 6:
-                  if (resp.message) alert(resp.message);
-                  return _context1.a(2);
-                case 7:
-                  alert(_t10 && _t10.message ? _t10.message : 'Failed to add student');
-                case 8:
-                  return _context1.a(2);
-              }
-            }, _callee1, null, [[1, 5]]);
-          })),
-          children: "Save"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-          onClick: function onClick() {
-            return setShowInlineForm(false);
-          },
-          children: "Cancel"
-        })]
-      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "card students-panel",
+      className: "modern-management-card",
       style: {
-        padding: 20,
-        borderRadius: 12
+        background: '#fff',
+        borderRadius: 16,
+        padding: 0,
+        overflow: 'hidden',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.08)'
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         style: {
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          gap: 12,
-          marginBottom: 12
+          padding: '24px 28px',
+          borderBottom: '1px solid #f3f4f6'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start'
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h2", {
+              style: {
+                margin: 0,
+                fontSize: 24,
+                fontWeight: 700,
+                color: '#111827',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8
+              },
+              children: [pagePlural, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+                style: {
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: role === 'teacher' ? '#ede9fe' : '#dbeafe',
+                  color: role === 'teacher' ? '#7c3aed' : '#6366f1',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  padding: '4px 12px',
+                  borderRadius: 12
+                },
+                children: [totalStudents, " ", totalStudents === 1 ? pageLower : pageLower + 's']
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+              style: {
+                margin: '8px 0 0 0',
+                fontSize: 14,
+                color: '#6b7280'
+              },
+              children: ["Manage ", pageLower, " records and enrollment"]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+            value: filterYear,
+            onChange: function onChange(e) {
+              return setFilterYear(e.target.value);
+            },
+            style: {
+              padding: '8px 32px 8px 12px',
+              borderRadius: 8,
+              border: '1px solid #e5e7eb',
+              fontSize: 14,
+              color: '#6b7280',
+              background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px',
+              appearance: 'none',
+              cursor: 'pointer',
+              outline: 'none'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+              value: "",
+              children: "2024-2025"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+              value: "2023-2024",
+              children: "2023-2024"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+              value: "2022-2023",
+              children: "2022-2023"
+            })]
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        style: {
+          padding: '20px 28px',
+          borderBottom: '1px solid #f3f4f6',
+          background: '#fafbfc'
         },
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           style: {
-            flex: 1
+            display: 'flex',
+            gap: 12,
+            alignItems: 'center',
+            marginBottom: 16
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             style: {
               display: 'flex',
               alignItems: 'center',
-              gap: 16
+              gap: 6,
+              color: '#6b7280',
+              fontSize: 14,
+              fontWeight: 600
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("svg", {
+              width: "16",
+              height: "16",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+              })
+            }), "Filters:"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+            value: filterStatus,
+            onChange: function onChange(e) {
+              var val = e.target.value;
+              setFilterStatus(val);
+              setShowArchived(val === 'archived');
+            },
+            style: {
+              padding: '8px 32px 8px 12px',
+              borderRadius: 8,
+              border: '1px solid #e5e7eb',
+              fontSize: 14,
+              color: '#374151',
+              background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px',
+              appearance: 'none',
+              cursor: 'pointer',
+              outline: 'none'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+              value: "all",
+              children: "All Status"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+              value: "active",
+              children: "Active"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+              value: "locked",
+              children: "Locked"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+              value: "archived",
+              children: "Archived"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+            value: filterDepartment,
+            onChange: function onChange(e) {
+              return setFilterDepartment(e.target.value);
+            },
+            style: {
+              padding: '8px 32px 8px 12px',
+              borderRadius: 8,
+              border: '1px solid #e5e7eb',
+              fontSize: 14,
+              color: '#374151',
+              background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px',
+              appearance: 'none',
+              cursor: 'pointer',
+              outline: 'none'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+              value: "",
+              children: "All Departments"
+            }), departments.map(function (d) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                value: d,
+                children: d
+              }, d);
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          style: {
+            display: 'flex',
+            gap: 12
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            style: {
+              flex: 1,
+              position: 'relative'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("svg", {
               style: {
-                width: 44,
-                height: 44,
-                borderRadius: 12,
-                background: 'linear-gradient(90deg,#4f46e5,#06b6d4)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff'
+                position: 'absolute',
+                left: 12,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: '#9ca3af'
               },
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUsers, {})
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                style: {
-                  fontSize: 16,
-                  fontWeight: 700
-                },
-                children: "Students"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "small-muted",
-                children: "View and manage student information"
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            style: {
-              display: 'flex',
-              gap: 8,
-              marginTop: 14,
-              alignItems: 'center'
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-              className: "chip ".concat(filterStatus === 'all' && !showArchived ? 'active' : ''),
-              type: "button",
-              onClick: function onClick() {
-                setFilterStatus('all');
-                setShowArchived(false);
-              },
-              "aria-pressed": filterStatus === 'all' && !showArchived,
-              children: ["All Students ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "chip-count",
-                children: totalStudents
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-              className: "chip ".concat(filterStatus === 'active' && !showArchived ? 'active' : ''),
-              type: "button",
-              onClick: function onClick() {
-                setFilterStatus('active');
-                setShowArchived(false);
-              },
-              "aria-pressed": filterStatus === 'active' && !showArchived,
-              children: ["Active ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "chip-count",
-                children: activeCount
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-              className: "chip ".concat(showArchived || filterStatus === 'archived' ? 'active' : ''),
-              type: "button",
-              onClick: function onClick() {
-                setFilterStatus('archived');
-                setShowArchived(true);
-              },
-              "aria-pressed": showArchived || filterStatus === 'archived',
-              children: ["Archived ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "chip-count",
-                children: archivedUsers.length
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-              className: "chip ".concat(filterStatus === 'locked' && !showArchived ? 'active' : ''),
-              type: "button",
-              onClick: function onClick() {
-                setFilterStatus('locked');
-                setShowArchived(false);
-              },
-              "aria-pressed": filterStatus === 'locked' && !showArchived,
-              children: ["Locked ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "chip-count",
-                children: lockedCount
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            style: {
-              marginTop: 12
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-              className: "student-search",
-              placeholder: "Search students...",
+              width: "18",
+              height: "18",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+              type: "text",
+              placeholder: "Search ".concat(pageLower, "s..."),
               value: search,
               onChange: function onChange(e) {
                 return setSearch(e.target.value);
               },
               style: {
                 width: '100%',
-                padding: '12px 14px',
+                padding: '10px 16px 10px 40px',
                 borderRadius: 8,
-                background: '#f3f4f6',
-                border: 'none'
+                background: '#fff',
+                border: '1px solid #e5e7eb',
+                fontSize: 14,
+                outline: 'none',
+                transition: 'border 0.2s'
+              },
+              onFocus: function onFocus(e) {
+                return e.target.style.borderColor = role === 'teacher' ? '#8b5cf6' : '#6366f1';
+              },
+              onBlur: function onBlur(e) {
+                return e.target.style.borderColor = '#e5e7eb';
               }
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          style: {
-            display: 'flex',
-            alignItems: 'center'
-          },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-            className: "primary",
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
             onClick: function onClick() {
-              return openAdd('student');
+              return exportToCSV();
             },
             style: {
-              padding: '10px 16px'
+              padding: '10px 16px',
+              borderRadius: 8,
+              border: '1px solid #e5e7eb',
+              background: '#fff',
+              color: '#374151',
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              transition: 'all 0.2s'
             },
-            children: "+ Add Student"
-          })
+            onMouseEnter: function onMouseEnter(e) {
+              e.currentTarget.style.background = '#f9fafb';
+            },
+            onMouseLeave: function onMouseLeave(e) {
+              e.currentTarget.style.background = '#fff';
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiDownload, {
+              size: 16
+            }), " Export"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+            onClick: function onClick() {
+              return openAdd(pageLower);
+            },
+            style: {
+              padding: '10px 20px',
+              borderRadius: 8,
+              border: 'none',
+              background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+              color: '#fff',
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              transition: 'transform 0.2s',
+              boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)'
+            },
+            onMouseEnter: function onMouseEnter(e) {
+              return e.currentTarget.style.transform = 'translateY(-2px)';
+            },
+            onMouseLeave: function onMouseLeave(e) {
+              return e.currentTarget.style.transform = 'translateY(0)';
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPlus, {
+              size: 18
+            }), " Add ", pageType]
+          })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         style: {
           overflowX: 'auto'
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
-          className: "students-table",
+          className: "modern-table",
           style: {
             width: '100%',
             borderCollapse: 'collapse'
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+              style: {
+                borderBottom: '2px solid #f3f4f6'
+              },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 style: {
                   textAlign: 'left',
-                  padding: '12px 8px'
+                  padding: '16px 28px',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#6b7280',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                },
+                children: role === 'teacher' ? 'Faculty ID' : 'Student ID'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                style: {
+                  textAlign: 'left',
+                  padding: '16px 28px',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#6b7280',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
                 },
                 children: "Name"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 style: {
                   textAlign: 'left',
-                  padding: '12px 8px'
+                  padding: '16px 28px',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#6b7280',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
                 },
                 children: "Email"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 style: {
                   textAlign: 'left',
-                  padding: '12px 8px'
+                  padding: '16px 28px',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#6b7280',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
                 },
-                children: "Grade"
+                children: role === 'teacher' ? 'Department' : 'Course'
+              }), role === 'teacher' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                style: {
+                  textAlign: 'left',
+                  padding: '16px 28px',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#6b7280',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                },
+                children: "Specialization"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 style: {
                   textAlign: 'left',
-                  padding: '12px 8px'
-                },
-                children: "Enrollment Date"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                style: {
-                  textAlign: 'left',
-                  padding: '12px 8px'
+                  padding: '16px 28px',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#6b7280',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
                 },
                 children: "Status"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 style: {
-                  textAlign: 'right',
-                  padding: '12px 8px'
+                  textAlign: 'center',
+                  padding: '16px 28px',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#6b7280',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
                 },
                 children: "Actions"
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
             children: filteredList.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tr", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                colSpan: 6,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
+                colSpan: role === 'teacher' ? 7 : 6,
                 style: {
-                  padding: 20
+                  padding: '40px 28px',
+                  textAlign: 'center',
+                  color: '#9ca3af',
+                  fontSize: 14
                 },
-                children: "No students found"
+                children: ["No ", pageLower, "s found"]
               })
             }) : filteredList.map(function (u) {
               var student = u.student || {};
-              var fullName = u.name || "".concat(student.first_name || '', " ").concat(student.last_name || '').trim();
+              var teacher = u.teacher || {};
+              var profile = role === 'teacher' ? teacher : student;
+              var fullName = u.name || "".concat(profile.first_name || '', " ").concat(profile.last_name || '').trim();
               var email = u.email || '';
-              var grade = student.year_level || u.year_level || '—';
-              var enrollment = student.date_of_enrollment || student.enrollment_date || u.date_of_enrollment || u.enrollment_date || '';
-              var statusVal = (student.status || u.status || 'Active').toString();
-              var enrollmentText = enrollment ? new Date(enrollment).toLocaleDateString() : '—';
+              var studentId = profile.student_id || profile.faculty_id || u.student_id || '—';
+              var courseOrDept = (role === 'teacher' ? profile.department : profile.course) || u.course || profile.major || '—';
+              var specialization = profile.specialization || profile.position || profile.subject || '—';
+              var statusVal = (profile.status || u.status || 'active').toString().toLowerCase();
+              var enrollmentText = '';
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                 className: "".concat(u.deleted_at ? 'archived-row' : '', " ").concat(highlightNewId === u.id ? 'new-highlight' : ''),
+                style: {
+                  borderBottom: '1px solid #f3f4f6',
+                  transition: 'background 0.2s'
+                },
+                onMouseEnter: function onMouseEnter(e) {
+                  return e.currentTarget.style.background = '#f9fafb';
+                },
+                onMouseLeave: function onMouseLeave(e) {
+                  return e.currentTarget.style.background = '#fff';
+                },
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   style: {
-                    padding: '12px 8px'
+                    padding: '16px 28px',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: '#111827'
+                  },
+                  children: studentId
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '16px 28px',
+                    fontSize: 14,
+                    fontWeight: 500,
+                    color: '#111827'
                   },
                   children: fullName
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   style: {
-                    padding: '12px 8px'
+                    padding: '16px 28px',
+                    fontSize: 14,
+                    color: '#6366f1'
                   },
                   children: email
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   style: {
-                    padding: '12px 8px'
-                  },
-                  children: grade
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                  style: {
-                    padding: '12px 8px'
-                  },
-                  children: enrollmentText
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                  style: {
-                    padding: '12px 8px'
+                    padding: '16px 28px'
                   },
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                    className: "status-pill ".concat((statusVal || '').toLowerCase()),
+                    style: {
+                      padding: '4px 10px',
+                      borderRadius: 6,
+                      fontSize: 13,
+                      fontWeight: 500,
+                      background: role === 'teacher' ? '#dbeafe' : '#dbeafe',
+                      color: role === 'teacher' ? '#1d4ed8' : '#2563eb'
+                    },
+                    children: courseOrDept
+                  })
+                }), role === 'teacher' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '16px 28px',
+                    fontSize: 14,
+                    color: '#6b7280'
+                  },
+                  children: specialization
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  style: {
+                    padding: '16px 28px'
+                  },
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                    style: {
+                      padding: '4px 10px',
+                      borderRadius: 6,
+                      fontSize: 13,
+                      fontWeight: 500,
+                      background: statusVal === 'active' ? '#d1fae5' : statusVal === 'locked' ? '#fee2e2' : '#f3f4f6',
+                      color: statusVal === 'active' ? '#065f46' : statusVal === 'locked' ? '#991b1b' : '#6b7280'
+                    },
                     children: statusVal
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   style: {
-                    padding: '12px 8px',
-                    textAlign: 'right'
+                    padding: '16px 28px',
+                    textAlign: 'center'
                   },
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                     className: "actions",
                     style: {
                       display: 'inline-flex',
-                      alignItems: 'center'
+                      alignItems: 'center',
+                      gap: 4,
+                      justifyContent: 'center'
                     },
                     children: !u.deleted_at ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                         type: "button",
-                        className: "action-icon view-button",
+                        className: "modern-action-btn",
                         title: "View",
                         onClick: function onClick() {
                           setDetailUser(u);
                           setShowDetail(true);
                         },
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEye, {})
+                        style: {
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          border: 'none',
+                          background: '#f3f4f6',
+                          color: '#6b7280',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s'
+                        },
+                        onMouseEnter: function onMouseEnter(e) {
+                          e.currentTarget.style.background = role === 'teacher' ? '#ede9fe' : '#dbeafe';
+                          e.currentTarget.style.color = role === 'teacher' ? '#7c3aed' : '#6366f1';
+                        },
+                        onMouseLeave: function onMouseLeave(e) {
+                          e.currentTarget.style.background = '#f3f4f6';
+                          e.currentTarget.style.color = '#6b7280';
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEye, {
+                          size: 14
+                        })
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                         type: "button",
-                        className: "action-icon",
+                        className: "modern-action-btn",
                         title: "Edit",
                         onClick: function onClick() {
                           return openEdit(u);
                         },
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEdit2, {})
+                        style: {
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          border: 'none',
+                          background: '#f3f4f6',
+                          color: '#6b7280',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s'
+                        },
+                        onMouseEnter: function onMouseEnter(e) {
+                          e.currentTarget.style.background = role === 'teacher' ? '#ede9fe' : '#dbeafe';
+                          e.currentTarget.style.color = role === 'teacher' ? '#7c3aed' : '#6366f1';
+                        },
+                        onMouseLeave: function onMouseLeave(e) {
+                          e.currentTarget.style.background = '#f3f4f6';
+                          e.currentTarget.style.color = '#6b7280';
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiEdit2, {
+                          size: 14
+                        })
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                         type: "button",
-                        className: "action-icon",
+                        className: "modern-action-btn",
                         title: u.is_locked ? 'Unlock' : 'Lock',
                         onClick: function onClick() {
                           return toggleLock(u.id, u.is_locked);
                         },
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiLock, {})
+                        style: {
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          border: 'none',
+                          background: '#f3f4f6',
+                          color: '#6b7280',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s'
+                        },
+                        onMouseEnter: function onMouseEnter(e) {
+                          e.currentTarget.style.background = '#fef3c7';
+                          e.currentTarget.style.color = '#92400e';
+                        },
+                        onMouseLeave: function onMouseLeave(e) {
+                          e.currentTarget.style.background = '#f3f4f6';
+                          e.currentTarget.style.color = '#6b7280';
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiLock, {
+                          size: 14
+                        })
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                         type: "button",
-                        className: "action-icon text-danger",
+                        className: "modern-action-btn",
                         title: "Archive",
                         onClick: function onClick() {
                           return archiveUser(u.id);
                         },
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiArchive, {})
+                        style: {
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          border: 'none',
+                          background: '#f3f4f6',
+                          color: '#6b7280',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s'
+                        },
+                        onMouseEnter: function onMouseEnter(e) {
+                          e.currentTarget.style.background = '#fee2e2';
+                          e.currentTarget.style.color = '#991b1b';
+                        },
+                        onMouseLeave: function onMouseLeave(e) {
+                          e.currentTarget.style.background = '#f3f4f6';
+                          e.currentTarget.style.color = '#6b7280';
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiTrash2, {
+                          size: 14
+                        })
                       })]
                     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                         type: "button",
-                        className: "action-icon",
+                        className: "modern-action-btn",
                         title: "Restore",
                         onClick: function onClick() {
                           return restoreUser(u.id);
                         },
+                        style: {
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          border: 'none',
+                          background: '#f3f4f6',
+                          color: '#6b7280',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s'
+                        },
                         children: "\u267B\uFE0F"
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                         type: "button",
-                        className: "action-icon text-danger",
+                        className: "modern-action-btn",
                         title: "Delete Permanently",
                         onClick: function onClick() {
                           return permanentDeleteUser(u.id);
                         },
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiTrash2, {})
+                        style: {
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          border: 'none',
+                          background: '#fee2e2',
+                          color: '#991b1b',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s'
+                        },
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiTrash2, {
+                          size: 14
+                        })
                       })]
                     })
                   })
@@ -64459,246 +69846,34 @@ function AdminUsers() {
           })]
         })
       })]
-    }), showModal && (modalRole === 'student' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "modal-overlay",
-      role: "dialog",
-      "aria-modal": "true",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "modal modal-wide",
-        style: {
-          maxWidth: 820
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("header", {
-          className: "modal-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
-            children: modalInitial && modalInitial.id ? 'Edit Student' : 'Add New Student'
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-            className: "close",
-            onClick: function onClick() {
-              setShowModal(false);
-              setModalInitial(null);
-            },
-            children: '×'
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
-          className: "modal-body",
-          onSubmit: function onSubmit(e) {
-            e.preventDefault();
-            handleModalSave();
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "modal-grid",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "col",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "First Name *"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "first_name",
-                value: modalForm.first_name,
-                onChange: function onChange(e) {
-                  return handleModalChange('first_name', e.target.value);
-                },
-                placeholder: "John",
-                required: true
-              }), modalErrors.first_name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "field-error",
-                style: {
-                  color: '#b91c1c',
-                  marginTop: 6
-                },
-                children: modalErrors.first_name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Last Name *"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "last_name",
-                value: modalForm.last_name,
-                onChange: function onChange(e) {
-                  return handleModalChange('last_name', e.target.value);
-                },
-                placeholder: "Doe",
-                required: true
-              }), modalErrors.last_name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "field-error",
-                style: {
-                  color: '#b91c1c',
-                  marginTop: 6
-                },
-                children: modalErrors.last_name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Student ID"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "student_id",
-                value: modalForm.student_id,
-                onChange: function onChange(e) {
-                  return handleModalChange('student_id', e.target.value);
-                },
-                placeholder: "ST2024001"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Email *"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "email",
-                type: "email",
-                value: modalForm.email,
-                onChange: function onChange(e) {
-                  return handleModalChange('email', e.target.value);
-                },
-                placeholder: "student@school.edu",
-                required: true
-              }), modalErrors.email && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "field-error",
-                style: {
-                  color: '#b91c1c',
-                  marginTop: 6
-                },
-                children: modalErrors.email
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Sex"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
-                value: modalForm.sex,
-                onChange: function onChange(e) {
-                  return handleModalChange('sex', e.target.value);
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-                  value: "",
-                  children: "Prefer not to say"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-                  value: "Male",
-                  children: "Male"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-                  value: "Female",
-                  children: "Female"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-                  value: "Other",
-                  children: "Other"
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "col",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Date of Birth"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "date_of_birth",
-                type: "date",
-                value: modalForm.date_of_birth,
-                onChange: function onChange(e) {
-                  return handleModalChange('date_of_birth', e.target.value);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Enrollment Date"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "date_of_enrollment",
-                type: "date",
-                value: modalForm.date_of_enrollment,
-                onChange: function onChange(e) {
-                  return handleModalChange('date_of_enrollment', e.target.value);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Phone"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "phone_number",
-                value: modalForm.phone_number,
-                onChange: function onChange(e) {
-                  return handleModalChange('phone_number', e.target.value);
-                },
-                placeholder: "(555) 123-4567"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Year Level"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "year_level",
-                value: modalForm.year_level,
-                onChange: function onChange(e) {
-                  return handleModalChange('year_level', e.target.value);
-                },
-                placeholder: "e.g. Freshman"
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "modal-grid full",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "col",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Address"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "address",
-                value: modalForm.address,
-                onChange: function onChange(e) {
-                  return handleModalChange('address', e.target.value);
-                },
-                placeholder: "123 Main St, City, State ZIP"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "col",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Department"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "department",
-                value: modalForm.department,
-                onChange: function onChange(e) {
-                  return handleModalChange('department', e.target.value);
-                },
-                placeholder: "Department name"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-                children: "Course"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-                name: "course",
-                value: modalForm.course,
-                onChange: function onChange(e) {
-                  return handleModalChange('course', e.target.value);
-                },
-                placeholder: "Course or major"
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("footer", {
-            className: "modal-footer",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              type: "button",
-              onClick: function onClick() {
-                setShowModal(false);
-                setModalInitial(null);
-              },
-              children: "Cancel"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              type: "button",
-              className: "primary",
-              onClick: function onClick() {
-                console.log('Modal submit clicked');
-                handleModalSave();
-              },
-              disabled: modalSubmitting,
-              children: modalInitial && modalInitial.id ? modalSubmitting ? 'Saving...' : 'Save Changes' : modalSubmitting ? 'Adding...' : 'Add Student'
-            })]
-          })]
-        })]
-      })
-    }) : (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UserFormModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), showModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_UserFormModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
       initial: modalInitial,
-      role: modalRole || (modalInitial && modalInitial.role ? modalInitial.role : 'student'),
-      onClose: function onClose() {
-        setShowModal(false);
-        setModalInitial(null);
+      role: modalRole || 'student',
+      onClose: function onClose(source) {
+        handleModalClose(source || 'modal');
       },
       onSave: saveFromUserForm
-    }))), showDetail && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StudentDetailModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), showDetail && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StudentDetailModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
       user: detailUser,
       onClose: function onClose() {
         setShowDetail(false);
         setDetailUser(null);
       },
       onSaved: function () {
-        var _onSaved = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10() {
-          return _regenerator().w(function (_context10) {
-            while (1) switch (_context10.n) {
+        var _onSaved = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1() {
+          return _regenerator().w(function (_context1) {
+            while (1) switch (_context1.n) {
               case 0:
                 setShowDetail(false);
-                _context10.n = 1;
+                _context1.n = 1;
                 return loadUsers();
               case 1:
-                _context10.n = 2;
+                _context1.n = 2;
                 return loadArchivedUsers();
               case 2:
-                return _context10.a(2);
+                return _context1.a(2);
             }
-          }, _callee10);
+          }, _callee1);
         }));
         function onSaved() {
           return _onSaved.apply(this, arguments);
@@ -64921,11 +70096,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Sidebar)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
-/* harmony import */ var _sass_Sidebar_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../../sass/Sidebar.scss */ "./resources/sass/Sidebar.scss");
+/* harmony import */ var _labels__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./labels */ "./resources/js/components/pages/admin/labels.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
+/* harmony import */ var _sass_Sidebar_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../../sass/Sidebar.scss */ "./resources/sass/Sidebar.scss");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -64947,10 +70123,11 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
 function Sidebar(_ref) {
   var activePage = _ref.activePage,
     onNavigate = _ref.onNavigate;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     collapsed = _useState2[0],
@@ -64966,31 +70143,31 @@ function Sidebar(_ref) {
   var items = [{
     id: "dashboard",
     label: "Dashboard",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiHome)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiHome)
   }, {
     id: "students",
-    label: "Students",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiUsers)
+    label: _labels__WEBPACK_IMPORTED_MODULE_1__.roleLabels.student.plural,
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiUsers)
   }, {
     id: "teachers",
-    label: "Teachers",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiUsers)
+    label: _labels__WEBPACK_IMPORTED_MODULE_1__.roleLabels.teacher.plural,
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiUsers)
   }, {
     id: "courses",
     label: "Course Management",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiBookOpen)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiBookOpen)
   }, {
     id: "reports",
     label: "Reports",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiBarChart2)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiBarChart2)
   }, {
     id: "documents",
     label: "Documents",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiFileText)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiFileText)
   }, {
     id: "settings",
     label: "Settings",
-    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiSettings)
+    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiSettings)
   }];
 
   // Persist collapsed state between page reloads
@@ -65052,7 +70229,7 @@ function Sidebar(_ref) {
             case 0:
               _context2.p = 0;
               _context2.n = 1;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/admin/dashboard');
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/admin/dashboard');
             case 1:
               res = _context2.v;
               if (mounted) {
@@ -65078,7 +70255,7 @@ function Sidebar(_ref) {
                       case 0:
                         _context.p = 0;
                         _context.n = 1;
-                        return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/admin/dashboard');
+                        return axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/admin/dashboard');
                       case 1:
                         r2 = _context.v;
                         if (mounted) setStats(r2.data || {});
@@ -65132,7 +70309,24 @@ function Sidebar(_ref) {
     };
   }, []);
   var handleClick = function handleClick(item) {
-    // If caller provided an onNavigate callback (single-page), use it.
+    // Always use route navigation for standalone pages (courses, reports, documents, settings)
+    var standalonePages = ['courses', 'reports', 'documents', 'settings'];
+    if (standalonePages.includes(item.id)) {
+      switch (item.id) {
+        case 'courses':
+          return navigate('/admin/courses');
+        case 'reports':
+          return navigate('/admin/reports');
+        case 'documents':
+          return navigate('/admin/documents');
+        case 'settings':
+          return navigate('/admin/settings');
+        default:
+          return;
+      }
+    }
+
+    // If caller provided an onNavigate callback (single-page), use it for dashboard pages.
     if (typeof onNavigate === 'function') {
       onNavigate(item.id);
       return;
@@ -65148,12 +70342,6 @@ function Sidebar(_ref) {
       case 'teachers':
         // route Teachers to the admin dashboard view as requested
         return navigate('/admin/dashboard');
-      case 'courses':
-        return navigate('/admin/courses');
-      case 'reports':
-        return navigate('/admin/reports');
-      case 'settings':
-        return navigate('/admin/settings');
       default:
         return;
     }
@@ -65178,7 +70366,7 @@ function Sidebar(_ref) {
             logoutBtn.textContent = "Logging out...";
             _context3.p = 2;
             _context3.n = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/logout", {}, {
+            return axios__WEBPACK_IMPORTED_MODULE_3___default().post("/logout", {}, {
               withCredentials: true
             });
           case 3:
@@ -65227,7 +70415,7 @@ function Sidebar(_ref) {
     className: 'logo'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
     className: 'logo-icon'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiBookOpen)), !collapsed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiBookOpen)), !collapsed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
     className: 'logo-text'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
     className: 'site-title'
@@ -65249,7 +70437,7 @@ function Sidebar(_ref) {
       });
     },
     title: collapsed ? 'Expand sidebar' : 'Collapse sidebar'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiMenu))),
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiMenu))),
   /*#__PURE__*/
   // Top view selector (compact)
   react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -65261,7 +70449,7 @@ function Sidebar(_ref) {
     value: "admin"
   }, "Admin View")), collapsed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "view-icon"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiHome)),
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiHome)),
   /*#__PURE__*/
   // mobile open button
   react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
@@ -65272,7 +70460,7 @@ function Sidebar(_ref) {
       });
     },
     title: 'Toggle sidebar'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiMenu))),
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiMenu))),
   /*#__PURE__*/
   // Small user panel
   react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -65342,7 +70530,7 @@ function Sidebar(_ref) {
     className: 'logout-btn',
     onClick: handleLogout,
     title: 'Logout'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_3__.FiLogOut), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_4__.FiLogOut), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
     style: {
       marginLeft: 8
     }
@@ -65589,6 +70777,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ UserFormModal)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fi */ "./node_modules/react-icons/fi/index.mjs");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -65601,6 +70791,8 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
 
 function UserFormModal(_ref) {
   var initial = _ref.initial,
@@ -65647,10 +70839,27 @@ function UserFormModal(_ref) {
     _useState8 = _slicedToArray(_useState7, 2),
     errors = _useState8[0],
     setErrors = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState0 = _slicedToArray(_useState9, 2),
+    submitMessage = _useState0[0],
+    setSubmitMessage = _useState0[1];
+  var watchdogRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef(null);
+
+  // Ensure the internal form.role always reflects the `role` prop passed by the
+  // parent. Some callers render this modal for 'teacher' and expect the form to
+  // initialize with that role; if the prop changes we should keep the form in
+  // sync so the conditional fields and submit payload are correct.
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setForm(function (f) {
+      return _objectSpread(_objectSpread({}, f), {}, {
+        role: role || f.role || 'student'
+      });
+    });
+  }, [role]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (initial) {
       setForm(function (f) {
-        var _initial$student, _initial$student2, _initial$student3, _initial$student4, _initial$student5, _initial$student6, _initial$student7, _initial$student8, _initial$student9, _initial$student0, _initial$teacher, _initial$teacher2, _initial$student1, _initial$teacher3, _initial$teacher4, _initial$teacher5, _initial$student10, _initial$teacher6;
+        var _initial$student, _initial$student2, _initial$student3, _initial$student4, _initial$student5, _initial$student6, _initial$student7, _initial$student8, _initial$student9, _initial$student0, _initial$teacher, _initial$teacher2, _initial$teacher3, _initial$student1, _initial$teacher4, _initial$teacher5, _initial$teacher6, _initial$student10, _initial$teacher7;
         return _objectSpread(_objectSpread({}, f), {}, {
           name: initial.name || (initial.first_name ? "".concat(initial.first_name, " ").concat(initial.last_name || '').trim() : ''),
           student_id: ((_initial$student = initial.student) === null || _initial$student === void 0 ? void 0 : _initial$student.student_id) || initial.student_id || '',
@@ -65664,45 +70873,43 @@ function UserFormModal(_ref) {
           emergency_contact: ((_initial$student8 = initial.student) === null || _initial$student8 === void 0 ? void 0 : _initial$student8.emergency_contact) || '',
           emergency_phone: ((_initial$student9 = initial.student) === null || _initial$student9 === void 0 ? void 0 : _initial$student9.emergency_phone) || '',
           status: ((_initial$student0 = initial.student) === null || _initial$student0 === void 0 ? void 0 : _initial$student0.status) || initial.status || 'Active',
-          faculty_id: ((_initial$teacher = initial.teacher) === null || _initial$teacher === void 0 ? void 0 : _initial$teacher.faculty_id) || initial.faculty_id || '',
-          position: ((_initial$teacher2 = initial.teacher) === null || _initial$teacher2 === void 0 ? void 0 : _initial$teacher2.position) || initial.position || '',
-          department: ((_initial$student1 = initial.student) === null || _initial$student1 === void 0 ? void 0 : _initial$student1.department) || ((_initial$teacher3 = initial.teacher) === null || _initial$teacher3 === void 0 ? void 0 : _initial$teacher3.department) || initial.department || '',
-          courses_handled: Array.isArray((_initial$teacher4 = initial.teacher) === null || _initial$teacher4 === void 0 ? void 0 : _initial$teacher4.courses_handled) ? initial.teacher.courses_handled.join(', ') : ((_initial$teacher5 = initial.teacher) === null || _initial$teacher5 === void 0 ? void 0 : _initial$teacher5.courses_handled) || '',
+          faculty_id: ((_initial$teacher = initial.teacher) === null || _initial$teacher === void 0 ? void 0 : _initial$teacher.teacher_id) || ((_initial$teacher2 = initial.teacher) === null || _initial$teacher2 === void 0 ? void 0 : _initial$teacher2.faculty_id) || initial.faculty_id || '',
+          position: ((_initial$teacher3 = initial.teacher) === null || _initial$teacher3 === void 0 ? void 0 : _initial$teacher3.position) || initial.position || '',
+          department: ((_initial$student1 = initial.student) === null || _initial$student1 === void 0 ? void 0 : _initial$student1.department) || ((_initial$teacher4 = initial.teacher) === null || _initial$teacher4 === void 0 ? void 0 : _initial$teacher4.department) || initial.department || '',
+          courses_handled: Array.isArray((_initial$teacher5 = initial.teacher) === null || _initial$teacher5 === void 0 ? void 0 : _initial$teacher5.courses_handled) ? initial.teacher.courses_handled.join(', ') : ((_initial$teacher6 = initial.teacher) === null || _initial$teacher6 === void 0 ? void 0 : _initial$teacher6.courses_handled) || '',
           role: initial.role || f.role || role || 'student',
           // optionally set sex if provided on profile
-          sex: ((_initial$student10 = initial.student) === null || _initial$student10 === void 0 ? void 0 : _initial$student10.sex) || ((_initial$teacher6 = initial.teacher) === null || _initial$teacher6 === void 0 ? void 0 : _initial$teacher6.sex) || initial.sex || f.sex || ''
+          sex: ((_initial$student10 = initial.student) === null || _initial$student10 === void 0 ? void 0 : _initial$student10.sex) || ((_initial$teacher7 = initial.teacher) === null || _initial$teacher7 === void 0 ? void 0 : _initial$teacher7.sex) || initial.sex || f.sex || ''
         });
       });
     }
   }, [initial]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // debug logging to trace modal lifecycle
+    // set a minimal global flag so parent can detect mount if needed
     try {
-      console.log('UserFormModal mounted', {
-        initial: initial,
-        role: role
-      });
+      if (typeof window !== 'undefined') {
+        window.__adminUserModalMounted = true;
+        window.__adminUserModalRole = role;
+        try {
+          console.debug('[UserFormModal] mounted for role', role);
+        } catch (e) {}
+      }
     } catch (e) {}
     return function () {
       try {
-        console.log('UserFormModal unmounted');
+        if (typeof window !== 'undefined') {
+          window.__adminUserModalMounted = false;
+          try {
+            console.debug('[UserFormModal] unmounted for role', role);
+          } catch (e) {}
+        }
       } catch (e) {}
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // push to on-page debug panel if available
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    try {
-      if (window && typeof window.__pushModalDebug === 'function') window.__pushModalDebug("UserFormModal mounted role=".concat(role, " initial=").concat(initial ? initial.id : 'null'));
-    } catch (e) {}
-    return function () {
-      try {
-        if (window && typeof window.__pushModalDebug === 'function') window.__pushModalDebug('UserFormModal unmounted');
-      } catch (e) {}
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // NOTE: removed on-page push of debug messages to avoid showing any badge or 'unmounted' text.
+
   var handleChange = function handleChange(e) {
     var _e$target = e.target,
       name = _e$target.name,
@@ -65723,6 +70930,22 @@ function UserFormModal(_ref) {
     setErrors(err);
     if (Object.keys(err).length) return;
     setSubmitting(true);
+    setSubmitMessage('');
+    // watchdog: if request takes too long, reset UI and inform the user
+    try {
+      if (watchdogRef.current) {
+        clearTimeout(watchdogRef.current);
+        watchdogRef.current = null;
+      }
+    } catch (_) {}
+    watchdogRef.current = setTimeout(function () {
+      try {
+        setSubmitting(false);
+      } catch (_e) {}
+      try {
+        setSubmitMessage('Taking longer than expected. Please check your connection or try again.');
+      } catch (_e) {}
+    }, 15000);
     // assemble payload matching ERD fields
     var roleVal = form.role || role || 'student';
 
@@ -65744,6 +70967,7 @@ function UserFormModal(_ref) {
     if (roleVal === 'teacher') {
       var _payload = _objectSpread(_objectSpread({}, base), {}, {
         faculty_id: form.faculty_id,
+        teacher_id: form.teacher_id || form.faculty_id || undefined,
         first_name: first_name,
         last_name: last_name,
         sex: form.sex,
@@ -65768,37 +70992,49 @@ function UserFormModal(_ref) {
         return v !== '' && v !== null && typeof v !== 'undefined';
       }));
       Promise.resolve(onSave(_payloadFiltered, !!initial)).then(function (res) {
-        // on success show a short success indicator so user sees it's persisted
+        // on success, clear errors and close immediately
         try {
-          setSubmitting(false);
           setErrors({});
         } catch (e) {}
         try {
-          // optionally allow parent to pass back created user info; highlight handled elsewhere
-          // show a tiny success state then close
-          var t = setTimeout(function () {
-            clearTimeout(t);
-            try {
-              onClose();
-            } catch (e) {}
-          }, 900);
-        } catch (e) {
-          try {
-            onClose();
-          } catch (_) {}
-        }
+          onClose && onClose('save-success');
+        } catch (e) {}
       })["catch"](function (err) {
-        setSubmitting(false);
         // if the caller attached field errors, surface them inline
         if (err && err.fields && _typeof(err.fields) === 'object') {
           setErrors(err.fields);
           return;
+        }
+        // show server response for debugging
+        try {
+          if (err && err.response) {
+            var s = err.response.status;
+            var d = err.response.data;
+            console.warn('UserFormModal save error', s, d);
+            alert('Save failed: ' + (d && (d.message || JSON.stringify(d)) || s));
+            if (d && d.errors) setErrors(Object.keys(d.errors).reduce(function (acc, k) {
+              return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, k, d.errors[k].join(' ')));
+            }, {}));
+            return;
+          }
+        } catch (e) {
+          console.error('error showing save error', e);
         }
         if (err && err.message) {
           alert(err.message);
           return;
         }
         alert('Failed to save user');
+      })["finally"](function () {
+        try {
+          if (watchdogRef.current) {
+            clearTimeout(watchdogRef.current);
+            watchdogRef.current = null;
+          }
+        } catch (_e) {}
+        try {
+          setSubmitting(false);
+        } catch (_e) {}
       });
       return;
     }
@@ -65830,23 +71066,12 @@ function UserFormModal(_ref) {
     }));
     Promise.resolve(onSave(payloadFiltered, !!initial)).then(function (res) {
       try {
-        setSubmitting(false);
         setErrors({});
       } catch (e) {}
       try {
-        var t = setTimeout(function () {
-          clearTimeout(t);
-          try {
-            onClose();
-          } catch (e) {}
-        }, 900);
-      } catch (e) {
-        try {
-          onClose();
-        } catch (_) {}
-      }
+        onClose && onClose('save-success');
+      } catch (e) {}
     })["catch"](function (err) {
-      setSubmitting(false);
       if (err && err.fields && _typeof(err.fields) === 'object') {
         setErrors(err.fields);
         return;
@@ -65856,84 +71081,165 @@ function UserFormModal(_ref) {
         return;
       }
       alert('Failed to save user');
+    })["finally"](function () {
+      try {
+        if (watchdogRef.current) {
+          clearTimeout(watchdogRef.current);
+          watchdogRef.current = null;
+        }
+      } catch (_e) {}
+      try {
+        setSubmitting(false);
+      } catch (_e) {}
     });
   };
   // build role-specific fragments to keep the JSX (createElement) tree simple and parser-friendly
-  var studentTopLeft = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Student ID'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  var studentTopLeft = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Student ID'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiAward, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'student_id',
     value: form.student_id,
     onChange: handleChange,
-    placeholder: 'ST2024001',
-    style: {
-      width: '100%'
-    }
-  }), errors.student_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    placeholder: 'ST2024001'
+  })), errors.student_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
     className: 'input-error'
-  }, errors.student_id) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Email *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  }, errors.student_id) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Email *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiMail, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'email',
     type: 'email',
     value: form.email,
     onChange: handleChange,
     placeholder: 'student@school.edu'
-  }), errors.email ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+  })), errors.email ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
     className: 'input-error'
-  }, errors.email) : null,
-  /*#__PURE__*/
-  // password removed from student form
-  react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Major *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  }, errors.email) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Major *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'major',
     value: form.major,
     onChange: handleChange,
     placeholder: 'Select major'
-  }), errors.major ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+  })), errors.major ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
     className: 'input-error'
-  }, errors.major) : null);
-  var teacherTopLeft = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Faculty ID'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  }, errors.major) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Phone *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPhone, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    name: 'phone_number',
+    value: form.phone_number,
+    onChange: handleChange,
+    placeholder: '(555) 123-4567'
+  }))));
+  var teacherTopLeft = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Faculty ID'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiAward, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'faculty_id',
     value: form.faculty_id,
     onChange: handleChange,
     placeholder: 'FAC2024001'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Email *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Email *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiMail, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'email',
     type: 'email',
     value: form.email,
     onChange: handleChange,
     placeholder: 'teacher@school.edu'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Password *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-    name: 'password',
-    type: 'password',
-    value: form.password,
-    onChange: handleChange,
-    placeholder: 'Enter a password',
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Position'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Position'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'position',
     value: form.position,
     onChange: handleChange,
     placeholder: 'Professor / Lecturer'
-  }));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Phone *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPhone, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    name: 'phone_number',
+    value: form.phone_number,
+    onChange: handleChange,
+    placeholder: '(555) 123-4567'
+  }))));
   var topLeft = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'col'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Full Name *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    className: 'col-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Full Name *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUser, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'name',
     value: form.name,
     onChange: handleChange,
     placeholder: 'John Doe',
     required: true
-  }), form.role === 'student' ? studentTopLeft : teacherTopLeft);
+  }))), form.role === 'student' ? studentTopLeft : teacherTopLeft);
   var topRight = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'col'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Date of Birth *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    className: 'col-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Date of Birth *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiCalendar, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'date_of_birth',
     type: 'date',
     value: form.date_of_birth,
     onChange: handleChange
-  }),
-  // show Sex for teachers, Enrollment Date for students
-  role === 'teacher' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Sex'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
+  }))),
+  /*#__PURE__*/
+  // Sex field for both students and teachers
+  react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Sex'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
     name: 'sex',
     value: form.sex,
-    onChange: handleChange
+    onChange: handleChange,
+    className: 'select-modern'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
     value: ''
   }, 'Prefer not to say'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
@@ -65942,20 +71248,27 @@ function UserFormModal(_ref) {
     value: 'Female'
   }, 'Female'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
     value: 'Other'
-  }, 'Other'))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Enrollment Date'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  }, 'Other'))),
+  // Enrollment Date for students only
+  role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Enrollment Date'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiCalendar, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'enrollment_date',
     type: 'date',
     value: form.enrollment_date,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Phone *'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-    name: 'phone_number',
-    value: form.phone_number,
-    onChange: handleChange,
-    placeholder: '(555) 123-4567'
-  }), form.role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Academic Year') : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Department'), form.role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
+  }))) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, form.role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Academic Year') : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Department'), form.role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
     name: 'academic_year',
     value: form.academic_year,
-    onChange: handleChange
+    onChange: handleChange,
+    className: 'select-modern'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
     value: ''
   }, 'Select year'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
@@ -65966,45 +71279,82 @@ function UserFormModal(_ref) {
     value: 'Junior'
   }, 'Junior'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
     value: 'Senior'
-  }, 'Senior')) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  }, 'Senior')) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'department',
     value: form.department,
-    onChange: handleChange
-  }));
-  var middleLeftStudent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Emergency Contact'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    onChange: handleChange,
+    placeholder: 'Enter department'
+  }))));
+  var middleLeftStudent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Emergency Contact'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUser, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'emergency_contact',
     value: form.emergency_contact,
     onChange: handleChange,
     placeholder: 'Name (Relationship)'
-  }));
-  var middleLeftTeacher = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Courses Handled (comma separated)'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+  })));
+  var middleLeftTeacher = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Courses Handled (comma separated)'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiBook, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'courses_handled',
     value: form.courses_handled,
     onChange: handleChange,
     placeholder: 'Course A, Course B'
-  }));
+  })));
   var middleLeft = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'col'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Address'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    className: 'col-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Address'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiMapPin, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'address',
     value: form.address,
     onChange: handleChange,
     placeholder: '123 Main St, City, State ZIP'
-  }), form.role === 'student' ? middleLeftStudent : middleLeftTeacher);
+  }))), form.role === 'student' ? middleLeftStudent : middleLeftTeacher);
 
   // no live preview — removed per request
 
   var middleRight = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'col'
-  }, form.role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Emergency Phone'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    className: 'col-modern'
+  }, form.role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Emergency Phone'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'input-with-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiPhone, {
+    className: 'input-icon',
+    size: 18
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
     name: 'emergency_phone',
     value: form.emergency_phone,
     onChange: handleChange,
     placeholder: '(555) 000-0000'
-  })) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Status *'), form.role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
+  }))) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'form-group-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('label', null, 'Status *'), form.role === 'student' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
     name: 'status',
     value: form.status,
-    onChange: handleChange
+    onChange: handleChange,
+    className: 'select-modern'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
     value: 'Active'
   }, 'Active'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
@@ -66016,7 +71366,8 @@ function UserFormModal(_ref) {
   }, 'Locked')) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('select', {
     name: 'status',
     value: form.status,
-    onChange: handleChange
+    onChange: handleChange,
+    className: 'select-modern'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
     value: 'Active'
   }, 'Active'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
@@ -66025,38 +71376,180 @@ function UserFormModal(_ref) {
     value: 'Retired'
   }, 'Retired'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('option', {
     value: 'Locked'
-  }, 'Locked')));
+  }, 'Locked'))));
   var isTeacher = (form.role || role) === 'teacher';
   var modalInner = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'modal modal-wide'
+    className: 'modal modal-wide modal-modern',
+    'data-admin-user-modal': '1',
+    style: {
+      maxWidth: '960px',
+      width: '100%',
+      boxSizing: 'border-box',
+      margin: '0 auto',
+      position: 'relative'
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('header', {
-    className: 'modal-header'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, initial ? isTeacher ? 'Edit Teacher' : 'Edit Student' : isTeacher ? 'Add New Teacher' : 'Add New Student'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    className: 'close',
-    onClick: onClose
-  }, '×')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('form', {
-    onSubmit: submit,
-    className: 'modal-body'
+    className: 'modal-header-modern'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'modal-grid'
+    className: 'modal-header-content'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'modal-icon'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiUser, {
+    size: 24
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, initial ? isTeacher ? 'Edit Teacher' : 'Edit Student' : isTeacher ? 'Add New Teacher' : 'Add New Student'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('p', {
+    className: 'modal-subtitle'
+  }, initial ? 'Update the information below' : 'Fill in the information to create a new ' + (isTeacher ? 'teacher' : 'student')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
+    className: 'modal-close-btn',
+    onClick: onClose,
+    type: 'button'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fi__WEBPACK_IMPORTED_MODULE_2__.FiX, {
+    size: 20
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('form', {
+    onSubmit: submit,
+    className: 'modal-body-modern'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'modal-grid-modern'
   }, topLeft, topRight), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'modal-grid full'
-  }, middleLeft, middleRight), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('footer', {
-    className: 'modal-footer'
+    className: 'modal-grid-modern full'
+  }, middleLeft, middleRight), submitMessage ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'submit-message',
+    style: {
+      marginTop: 8,
+      color: '#92400e',
+      background: '#fff7ed',
+      border: '1px solid #fed7aa',
+      padding: 10,
+      borderRadius: 8
+    }
+  }, submitMessage) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('footer', {
+    className: 'modal-footer-modern'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
     type: 'button',
+    className: 'btn-cancel-modern',
     onClick: onClose,
     disabled: submitting
   }, 'Cancel'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
     type: 'submit',
-    className: 'primary',
+    className: 'btn-save-modern',
     disabled: submitting
-  }, submitting ? 'Saving...' : initial ? 'Save Changes' : isTeacher ? 'Add Teacher' : 'Add Student'))));
+  }, submitting ? (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', {
+    className: 'spinner-modern'
+  }), 'Saving...')) : initial ? 'Save Changes' : isTeacher ? 'Add Teacher' : 'Add Student'))));
+
+  // When bare=true, return the inner modal content only. Parent is responsible for overlay.
   if (bare) return modalInner;
+
+  // Render into a top-level portal so this modal is never hidden behind other overlays
+  try {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      var root = document.getElementById('admin-modal-root');
+      if (!root) {
+        root = document.createElement('div');
+        root.id = 'admin-modal-root';
+        // keep the root simple; z-index is applied on the overlay element below
+        document.body.appendChild(root);
+      }
+      var overlay = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+        className: 'modal-overlay',
+        style: {
+          zIndex: 10000,
+          position: 'fixed',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '24px',
+          overflowY: 'auto',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        },
+        onMouseDown: function onMouseDown(e) {
+          // Only close on mouseDown if clicking directly on backdrop (not modal content)
+          // Use mouseDown instead of onClick to prevent bubbling issues
+          if (e.target === e.currentTarget) {
+            e.preventDefault();
+            e.stopPropagation();
+            onClose && onClose('backdrop-click');
+          }
+        },
+        onClick: function onClick(e) {
+          // Prevent any click events from bubbling
+          if (e.target === e.currentTarget) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }
+      },
+      /*#__PURE__*/
+      // ensure the modal is scrollable on small viewports and centered
+      react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(modalInner, {
+        style: Object.assign({}, modalInner.props && modalInner.props.style || {}, {
+          maxHeight: '90vh',
+          overflowY: 'auto',
+          margin: '0 auto',
+          alignSelf: 'center',
+          position: 'relative',
+          left: 'initial',
+          transform: 'none'
+        }),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        } // prevent clicks inside modal from bubbling to overlay
+      }));
+      return /*#__PURE__*/(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal)(overlay, root);
+    }
+  } catch (e) {/* fall through to inline */}
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'modal-overlay'
-  }, modalInner);
+    className: 'modal-overlay',
+    style: {
+      zIndex: 10000,
+      position: 'fixed',
+      inset: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '24px',
+      overflowY: 'auto'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(modalInner, {
+    style: Object.assign({}, modalInner.props && modalInner.props.style || {}, {
+      maxHeight: '90vh',
+      overflowY: 'auto',
+      margin: '0 auto',
+      alignSelf: 'center',
+      position: 'relative',
+      left: 'initial',
+      transform: 'none'
+    })
+  }));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/admin/labels.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/pages/admin/labels.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   roleLabels: () => (/* binding */ roleLabels)
+/* harmony export */ });
+var roleLabels = {
+  student: {
+    singular: 'Student',
+    plural: 'Students'
+  },
+  teacher: {
+    singular: 'Teacher',
+    plural: 'Teachers'
+  }
+};
+
+// Convenience default export
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (roleLabels);
 
 /***/ }),
 

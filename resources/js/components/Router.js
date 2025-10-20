@@ -7,6 +7,10 @@ import Register from "./Register";
 
 // ✅ Only Admin Dashboard (inside the admin folder)
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminCourses from "./pages/admin/AdminCourses";
+import AdminReports from "./pages/admin/AdminReports";
+import AdminDocuments from "./pages/admin/AdminDocuments";
+import AdminSettings from "./pages/admin/AdminSettings";
 
 
 
@@ -27,6 +31,10 @@ export default function Router() {
   <Route path="/admin/users" element={<AdminDashboard initialPage="users" />} />
   <Route path="/admin/students" element={<AdminDashboard initialPage="students" />} />
   <Route path="/admin/teachers" element={<AdminDashboard initialPage="teachers" />} />
+  <Route path="/admin/courses" element={<AdminCourses />} />
+  <Route path="/admin/reports" element={<AdminReports />} />
+  <Route path="/admin/documents" element={<AdminDocuments />} />
+  <Route path="/admin/settings" element={<AdminSettings />} />
 
         {/* Fallback for any unknown routes */}
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
