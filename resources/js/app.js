@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Router from "./components/Router";
+import ModalHost from './components/ModalHost';
+import { SettingsProvider } from './contexts/SettingsContext';
 import axios from "axios";
 
 // ✅ Configure Axios
@@ -66,7 +68,15 @@ window.addEventListener('unhandledrejection', (ev) => {
 });
 
 try {
-  ReactDOM.render(<Router />, document.getElementById("app"));
+  ReactDOM.render(
+    React.createElement(React.Fragment, null,
+      React.createElement(SettingsProvider, null,
+        React.createElement(Router, null),
+        React.createElement(ModalHost, null)
+      )
+    ),
+    document.getElementById("app")
+  );
 } catch (e) {
   showClientErrorOverlay(e);
 }

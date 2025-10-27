@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\SystemActivity;
@@ -36,6 +37,258 @@ class AdminController extends Controller
             'new_faculty_30' => $newFaculty,
             'new_courses_30' => $newCourses,
         ]);
+    }
+
+    // List courses (returns lightweight structure expected by frontend)
+    public function courses(Request $request)
+    {
+        $rows = \App\Models\Course::orderBy('created_at', 'desc')->get();
+        $out = $rows->map(function($c) {
+            $enrolled = null;
+            try {
+                $enrolled = $c->students()->count();
+            } catch (\Exception $e) {
+                // fallback to enrollment_count column if present
+                $enrolled = $c->enrollment_count ?? 0;
+            }
+
+            return [
+                'id' => $c->id,
+                // map DB columns to frontend-friendly names
+                'name' => $c->course_name ?? null,
+                'code' => $c->course_code ?? null,
+                'description' => $c->description ?? null,
+                'credits' => $c->units ?? null,
+                'department' => $c->department ?? null,
+                'semester' => $c->semester ?? null,
+                // legacy teacher column stores a name string in this schema
+                'teacher_name' => $c->teacher ?? null,
+                'teacher_id' => $c->teacher_id ?? null,
+                'max_students' => $c->max_students ?? null,
+                'status' => $c->status ?? null,
+                'enrollment_count' => $enrolled,
+                'created_at' => $c->created_at ? $c->created_at->toDateTimeString() : null,
+            ];
+        });
+        return response()->json(['courses' => $out]);
+    }
+
+    // Create a new course
+    public function addCourse(Request $request)
+    {
+        try {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'code' => 'nullable|string|max:64',
+                'description' => 'nullable|string',
+                'credits' => 'nullable|integer|min:0',
+                'department' => 'nullable|string|max:255',
+                'semester' => 'nullable|string|max:64',
+                'teacher_id' => 'nullable|integer',
+                'max_students' => 'nullable|integer|min:0',
+                'status' => 'nullable|string|in:active,inactive,completed',
+            ]);
+        } catch (ValidationException $ve) {
+            return response()->json(['message' => 'The given data was invalid.', 'errors' => $ve->errors()], 422);
+        }
+
+        try {
+            // map frontend fields to the existing schema: course_name, course_code, teacher, units
+            $teacherName = null;
+            if (!empty($validated['teacher_id'])) {
+                $t = \App\Models\Teacher::find($validated['teacher_id']);
+                if ($t) $teacherName = trim(($t->first_name ?? '') . ' ' . ($t->last_name ?? ''));
+            }
+
+            // Persist available fields (columns added by migration)
+            $course = \App\Models\Course::create([
+                'course_name' => $validated['name'],
+                'course_code' => $validated['code'] ?? null,
+                'description' => $validated['description'] ?? null,
+                'units' => $validated['credits'] ?? 3,
+                'department' => $validated['department'] ?? null,
+                'semester' => $validated['semester'] ?? null,
+                'max_students' => $validated['max_students'] ?? 0,
+                'status' => $validated['status'] ?? 'active',
+                'teacher' => $teacherName ?? null,
+            ]);
+
+            return response()->json(['message' => 'Course created', 'course' => [
+                'id' => $course->id,
+                'name' => $course->course_name,
+                'code' => $course->course_code,
+                'description' => $course->description,
+                'credits' => $course->units,
+                'department' => $course->department,
+                'semester' => $course->semester,
+                'teacher_name' => $course->teacher,
+                'created_at' => $course->created_at ? $course->created_at->toDateTimeString() : null,
+            ]], 201);
+        } catch (\Exception $e) {
+            Log::error('addCourse failed', ['error' => $e->getMessage(), 'payload' => $request->all()]);
+            return response()->json(['message' => 'Server error while creating course.'], 500);
+        }
+    }
+
+    // Enroll a student into a course
+    public function enrollStudent(Request $request, $courseId)
+    {
+        try {
+            $validated = $request->validate([
+                'student_id' => 'required|integer|exists:students,id',
+            ]);
+        } catch (ValidationException $ve) {
+            return response()->json(['message' => 'The given data was invalid.', 'errors' => $ve->errors()], 422);
+        }
+
+        $course = \App\Models\Course::findOrFail($courseId);
+        $student = \App\Models\Student::findOrFail($validated['student_id']);
+
+        // Prevent student from enrolling into more than one course
+        try {
+            $existing = $student->courses()->count();
+            if ($existing > 0) {
+                return response()->json(['message' => 'Student is already enrolled in another course.'], 409);
+            }
+        } catch (\Exception $e) {
+            // ignore and continue - fallback to attach unique constraint
+        }
+
+        try {
+            // attach via pivot; unique constraint prevents duplicates
+            $course->students()->attach($student->id);
+
+            // update enrollment_count cached column if present (or compute on the fly)
+            if (Schema::hasColumn('courses', 'enrollment_count')) {
+                $course->enrollment_count = $course->students()->count();
+                $course->save();
+            }
+
+            return response()->json(['message' => 'Student enrolled successfully', 'course_id' => $course->id, 'student_id' => $student->id]);
+        } catch (\Illuminate\Database\QueryException $qe) {
+            // unique violation -> already enrolled
+            return response()->json(['message' => 'Student is already enrolled in this course.'], 409);
+        } catch (\Exception $e) {
+            Log::error('Enroll failed', ['error' => $e->getMessage(), 'course' => $courseId, 'student' => $validated['student_id']]);
+            return response()->json(['message' => 'Server error while enrolling student.'], 500);
+        }
+    }
+
+    // Return list of student ids that already have enrollments (any course)
+    public function studentsWithEnrollments(Request $request)
+    {
+        try {
+            $ids = \DB::table('course_student')->select('student_id')->distinct()->pluck('student_id')->toArray();
+            return response()->json(['student_ids' => $ids]);
+        } catch (\Exception $e) {
+            Log::error('studentsWithEnrollments failed', ['error' => $e->getMessage()]);
+            return response()->json(['student_ids' => []]);
+        }
+    }
+
+    // Update an existing course
+    public function updateCourse(Request $request, $courseId)
+    {
+        try {
+            $course = \App\Models\Course::findOrFail($courseId);
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'code' => 'nullable|string|max:64',
+                'description' => 'nullable|string',
+                'credits' => 'nullable|integer|min:0',
+                'department' => 'nullable|string|max:255',
+                'semester' => 'nullable|string|max:64',
+                'teacher_id' => 'nullable|integer',
+                'max_students' => 'nullable|integer|min:0',
+                'status' => 'nullable|string|in:active,inactive,completed',
+            ]);
+
+            if (!empty($validated['teacher_id'])) {
+                $t = \App\Models\Teacher::find($validated['teacher_id']);
+                $teacherName = $t ? trim(($t->first_name ?? '') . ' ' . ($t->last_name ?? '')) : null;
+            } else {
+                $teacherName = null;
+            }
+
+            $course->course_name = $validated['name'];
+            $course->course_code = $validated['code'] ?? $course->course_code;
+            $course->description = $validated['description'] ?? $course->description;
+            $course->units = $validated['credits'] ?? $course->units;
+            $course->department = $validated['department'] ?? $course->department;
+            $course->semester = $validated['semester'] ?? $course->semester;
+            $course->max_students = $validated['max_students'] ?? $course->max_students;
+            $course->status = $validated['status'] ?? $course->status;
+            if ($teacherName !== null) $course->teacher = $teacherName;
+
+            $course->save();
+
+            return response()->json(['message' => 'Course updated', 'course' => [
+                'id' => $course->id,
+                'name' => $course->course_name,
+                'code' => $course->course_code,
+                'description' => $course->description,
+                'credits' => $course->units,
+                'department' => $course->department,
+                'semester' => $course->semester,
+                'teacher_name' => $course->teacher,
+                'max_students' => $course->max_students,
+                'status' => $course->status,
+            ]]);
+        } catch (ValidationException $ve) {
+            return response()->json(['message' => 'The given data was invalid.', 'errors' => $ve->errors()], 422);
+        } catch (\Exception $e) {
+            Log::error('updateCourse failed', ['error' => $e->getMessage(), 'payload' => $request->all()]);
+            return response()->json(['message' => 'Server error while updating course.'], 500);
+        }
+    }
+
+    // Delete a course
+    public function deleteCourse(Request $request, $courseId)
+    {
+        try {
+            $course = \App\Models\Course::findOrFail($courseId);
+            $course->delete();
+            return response()->json(['message' => 'Course deleted']);
+        } catch (\Exception $e) {
+            Log::error('deleteCourse failed', ['error' => $e->getMessage(), 'course' => $courseId]);
+            return response()->json(['message' => 'Server error while deleting course.'], 500);
+        }
+    }
+
+    // List enrollments for a course
+    public function courseEnrollments(Request $request, $courseId)
+    {
+        $course = \App\Models\Course::findOrFail($courseId);
+        $students = $course->students()->get()->map(function($s) {
+            return [
+                'id' => $s->id,
+                'student_id' => $s->student_id,
+                'first_name' => $s->first_name,
+                'last_name' => $s->last_name,
+                'name' => $s->first_name . ' ' . $s->last_name,
+                'email' => $s->email,
+            ];
+        });
+        return response()->json(['students' => $students]);
+    }
+
+    // Unenroll a student
+    public function unenrollStudent(Request $request, $courseId)
+    {
+        try {
+            $validated = $request->validate(['student_id' => 'required|integer|exists:students,id']);
+        } catch (ValidationException $ve) {
+            return response()->json(['message' => 'The given data was invalid.', 'errors' => $ve->errors()], 422);
+        }
+
+        try {
+            $course = \App\Models\Course::findOrFail($courseId);
+            $course->students()->detach($validated['student_id']);
+            return response()->json(['message' => 'Student unenrolled']);
+        } catch (\Exception $e) {
+            Log::error('unenrollStudent failed', ['error' => $e->getMessage(), 'course' => $courseId, 'student' => $validated['student_id']]);
+            return response()->json(['message' => 'Server error while unenrolling student.'], 500);
+        }
     }
 
     // Get all users
@@ -568,6 +821,7 @@ class AdminController extends Controller
     // Lock a user account
     public function lock($id)
     {
+    try { Log::info('AdminController::lock called', ['id' => $id, 'requester' => auth()->id(), 'ip' => request()->ip(), 'time' => now()->toDateTimeString()]); } catch (\Exception $e) {}
         $user = User::findOrFail($id);
         $user->is_locked = true;
         $user->save();
@@ -586,6 +840,7 @@ class AdminController extends Controller
     // Unlock a user account
     public function unlock($id)
     {
+    try { Log::info('AdminController::unlock called', ['id' => $id, 'requester' => auth()->id(), 'ip' => request()->ip(), 'time' => now()->toDateTimeString()]); } catch (\Exception $e) {}
         $user = User::findOrFail($id);
         $user->is_locked = false;
         $user->save();
@@ -604,6 +859,7 @@ class AdminController extends Controller
     // Toggle lock
     public function toggleLock($id)
     {
+    try { Log::info('AdminController::toggleLock called', ['id' => $id, 'requester' => auth()->id(), 'ip' => request()->ip(), 'time' => now()->toDateTimeString()]); } catch (\Exception $e) {}
         $user = User::findOrFail($id);
         $user->is_locked = !$user->is_locked;
         $user->save();
@@ -643,18 +899,38 @@ class AdminController extends Controller
     public function documents(Request $request)
     {
         $docs = Document::orderBy('created_at', 'desc')->get()->map(function($d) {
+            // Calculate file size
+            $fileSize = $d->size ? round($d->size / 1024) : 0;
+            $sizeStr = $fileSize < 1024 ? $fileSize . ' KB' : round($fileSize / 1024, 1) . ' MB';
+            
+            // Get file type from mime or title
+            $type = 'pdf';
+            if ($d->mime) {
+                if (strpos($d->mime, 'pdf') !== false) $type = 'pdf';
+                elseif (strpos($d->mime, 'word') !== false || strpos($d->mime, 'doc') !== false) $type = 'word';
+                elseif (strpos($d->mime, 'sheet') !== false || strpos($d->mime, 'excel') !== false) $type = 'excel';
+            }
+            
             return [
                 'id' => $d->id,
                 'title' => $d->title,
                 'description' => $d->description,
                 'mime' => $d->mime,
-                'size' => $d->size,
+                'size' => $sizeStr,
+                'type' => $type,
+                'category' => $d->category ?? 'General',
+                'author' => 'Admin',
+                'date' => $d->created_at ? $d->created_at->format('M d, Y') : '',
                 'visibility' => $d->visibility,
                 'url' => $d->url,
+                'path' => $d->path,
+                'share_token' => $d->share_token,
+                'share_link' => $d->share_link,
+                'starred' => $d->starred,
                 'created_at' => $d->created_at->toDateTimeString(),
             ];
         });
-        return response()->json($docs);
+        return response()->json(['documents' => $docs]);
     }
 
     // Store uploaded document(s)
@@ -666,30 +942,46 @@ class AdminController extends Controller
             return response()->json(['message' => 'No files uploaded'], 400);
         }
 
+        // Get category, author, and description from request
+        $category = $request->input('category', 'General');
+        $author = $request->input('author', 'Admin');
+        $description = $request->input('description', '');
+
         $saved = [];
         $files = is_array($files) ? $files : [$files];
         foreach ($files as $file) {
             try {
                 $path = $file->store('documents');
+                
+                // Build document description with size and custom description
+                $fileSize = round($file->getSize() / 1024);
+                $sizeStr = $fileSize < 1024 ? $fileSize . ' KB' : round($fileSize / 1024, 1) . ' MB';
+                $docDescription = $description ?: ($file->getClientOriginalExtension() . ' • ' . $sizeStr);
+                
                 $doc = Document::create([
                     'title' => $file->getClientOriginalName(),
-                    'description' => $file->getClientOriginalExtension() . ' • ' . round($file->getSize() / 1024) . ' KB',
+                    'description' => $docDescription,
                     'path' => $path,
                     'mime' => $file->getClientMimeType(),
                     'size' => $file->getSize(),
                     'visibility' => 'Public',
                     'created_by' => auth()->id() ?: null,
+                    'category' => $category,
                 ]);
 
                 // record activity
-                try { SystemActivity::create(['action' => 'document_uploaded', 'performed_by' => auth()->id() ? (string)auth()->id() : 'system', 'details' => 'Uploaded document id=' . $doc->id . ' title=' . $doc->title]); } catch (\Exception $e) {}
+                try { SystemActivity::create(['action' => 'document_uploaded', 'performed_by' => auth()->id() ? (string)auth()->id() : 'system', 'details' => 'Uploaded document id=' . $doc->id . ' title=' . $doc->title . ' category=' . $category]); } catch (\Exception $e) {}
 
                 $saved[] = [
                     'id' => $doc->id,
                     'title' => $doc->title,
                     'description' => $doc->description,
                     'mime' => $doc->mime,
-                    'size' => $doc->size,
+                    'size' => $sizeStr,
+                    'type' => $file->getClientOriginalExtension(),
+                    'category' => $category,
+                    'author' => $author,
+                    'date' => $doc->created_at->format('Y-m-d'),
                     'visibility' => $doc->visibility,
                     'url' => $doc->url,
                     'created_at' => $doc->created_at->toDateTimeString(),
@@ -699,7 +991,7 @@ class AdminController extends Controller
             }
         }
 
-        return response()->json(['uploaded' => $saved]);
+        return response()->json(['documents' => $saved]);
     }
 
     // Return a single document metadata
@@ -719,6 +1011,43 @@ class AdminController extends Controller
         ]);
     }
 
+    // Update a document
+    public function updateDocument(Request $request, $id)
+    {
+        $d = Document::findOrFail($id);
+        
+        $validated = $request->validate([
+            'title' => 'sometimes|string|max:255',
+            'description' => 'sometimes|string|nullable',
+            'visibility' => 'sometimes|string|in:Public,Private,Shared',
+            'category' => 'sometimes|string|max:255',
+            'starred' => 'sometimes|boolean',
+        ]);
+
+        $d->update($validated);
+
+        // Log activity
+        try {
+            SystemActivity::create([
+                'action' => 'document_updated',
+                'performed_by' => auth()->id() ? (string)auth()->id() : 'system',
+                'details' => 'Updated document id=' . $d->id . ' title=' . $d->title
+            ]);
+        } catch (\Exception $e) {}
+
+        return response()->json([
+            'message' => 'Document updated successfully',
+            'document' => [
+                'id' => $d->id,
+                'title' => $d->title,
+                'description' => $d->description,
+                'visibility' => $d->visibility,
+                'category' => $d->category,
+                'starred' => $d->starred,
+            ]
+        ]);
+    }
+
     // Download a document file
     public function downloadDocument($id)
     {
@@ -728,5 +1057,42 @@ class AdminController extends Controller
         }
         // Stream download with original filename
         return Storage::download($d->path, $d->title);
+    }
+
+    // Generate a shareable link for a document
+    public function generateShareLink($id)
+    {
+        $doc = Document::findOrFail($id);
+        
+        // Generate token if doesn't exist
+        if (!$doc->share_token) {
+            $doc->generateShareToken();
+        }
+
+        // Log activity
+        try {
+            SystemActivity::create([
+                'action' => 'document_share_link_generated',
+                'performed_by' => auth()->id() ? (string)auth()->id() : 'system',
+                'details' => 'Generated share link for document id=' . $doc->id . ' title=' . $doc->title
+            ]);
+        } catch (\Exception $e) {}
+
+        return response()->json([
+            'share_link' => $doc->share_link,
+            'share_token' => $doc->share_token,
+            'message' => 'Share link generated successfully'
+        ]);
+    }
+
+    // Revoke share link
+    public function revokeShareLink($id)
+    {
+        $doc = Document::findOrFail($id);
+        $doc->share_token = null;
+        $doc->share_expires_at = null;
+        $doc->save();
+
+        return response()->json(['message' => 'Share link revoked successfully']);
     }
 }

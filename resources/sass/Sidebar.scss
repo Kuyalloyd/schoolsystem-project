@@ -1,18 +1,20 @@
 .sidebar {
   width: 260px;
   height: 100vh;
-  background: #0b1220;
+  background: linear-gradient(180deg, rgba(26, 31, 46, 0.95) 0%, rgba(15, 20, 25, 0.98) 100%), 
+              url('/images/SJIT_Final_Logo.original.png') center/cover no-repeat;
   color: #f9fafb;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
   font-family: "Inter", sans-serif;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
   transition: width 0.2s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 }
 
 /* === TOP SECTION (Logo only, clean) === */
@@ -34,12 +36,14 @@
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: #1e293b;
+  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #1a472a;
   font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(254, 220, 0, 0.4);
 }
 
 .logo-text .site-title {
@@ -106,9 +110,10 @@
 }
 
 .sidebar-nav li.active button {
-  background: rgba(37, 99, 235, 0.18);
-  color: #3b82f6;
-  border-left: 4px solid #3b82f6;
+  background: linear-gradient(90deg, rgba(254, 220, 0, 0.2) 0%, rgba(254, 220, 0, 0.08) 100%);
+  color: #FEDC00;
+  border-left: 4px solid #FEDC00;
+  font-weight: 600;
 }
 
 .sidebar-nav .icon {
@@ -116,18 +121,20 @@
 }
 
 .sidebar-nav .badge {
-  background: rgba(37, 99, 235, 0.25);
+  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);
+  color: #1a472a;
   padding: 2px 8px;
   border-radius: 999px;
   font-size: 0.75rem;
   margin-left: auto;
+  font-weight: 600;
 }
 
 /* === FOOTER (Admin user + logout) === */
 .sidebar-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(254, 220, 0, 0.15);
   padding: 1rem 1rem 1.5rem; /* moved slightly up */
-  background: #0b1220;
+  background: linear-gradient(180deg, rgba(26, 71, 42, 0.8) 0%, rgba(15, 46, 26, 0.95) 100%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -142,7 +149,7 @@
 }
 
 .footer-meta .avatar {
-  background: #1e293b;
+  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -150,7 +157,8 @@
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: #f9fafb;
+  color: #1a472a;
+  box-shadow: 0 2px 6px rgba(254, 220, 0, 0.3);
 }
 
 .footer-text {
@@ -171,10 +179,10 @@
 /* === LOGOUT BUTTON === */
 .logout-btn {
   width: 100%;
-  background: #1e293b;
-  border: none;
+  background: linear-gradient(135deg, rgba(254, 220, 0, 0.15) 0%, rgba(245, 196, 0, 0.12) 100%);
+  border: 1px solid rgba(254, 220, 0, 0.25);
   border-radius: 0.6rem;
-  color: #f9fafb;
+  color: #FEDC00;
   padding: 0.55rem 0;
   cursor: pointer;
   display: flex;
@@ -184,10 +192,12 @@
   transition: all 0.2s ease;
   font-size: 0.9rem;
   margin-top: 0.3rem;
+  font-weight: 600;
 }
 
 .logout-btn:hover {
-  background: rgba(239, 68, 68, 0.15);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.15) 100%);
+  border-color: rgba(239, 68, 68, 0.3);
   color: #f87171;
 }
 

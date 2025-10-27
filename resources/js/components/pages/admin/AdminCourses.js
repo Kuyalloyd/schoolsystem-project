@@ -8,11 +8,14 @@ export default function AdminCourses() {
   const [activePage, setActivePage] = useState('courses');
   const [courses, setCourses] = useState([]);
   const [students, setStudents] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [semesterFilter, setSemesterFilter] = useState('all');
   const [creditsFilter, setCreditsFilter] = useState('all');
+  const [departmentFilter, setDepartmentFilter] = useState('all');
+  const [departments, setDepartments] = useState([]);
   
   // Course Modal State
   const [showCourseModal, setShowCourseModal] = useState(false);
@@ -24,10 +27,7 @@ export default function AdminCourses() {
     credits: '',
     department: '',
     semester: '',
-    teacher_id: '',
-    max_students: '',
-    schedule: '',
-    status: 'active'
+    max_students: ''
   });
 
   // Enrollment Modal State
@@ -35,18 +35,28 @@ export default function AdminCourses() {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [enrolledStudents, setEnrolledStudents] = useState([]);
   const [availableStudents, setAvailableStudents] = useState([]);
+  const [allEnrolledStudentIds, setAllEnrolledStudentIds] = useState(new Set());
 
   // Load data on mount
   useEffect(() => {
     loadCourses();
     loadStudents();
+    loadTeachers();
   }, []);
 
   const loadCourses = async () => {
     try {
       setLoading(true);
       const res = await axios.get('/api/admin/courses');
-      setCourses(res.data.courses || []);
+      const fetched = res.data.courses || [];
+      setCourses(fetched);
+      // derive departments from fetched courses so the filter options include newly added departments
+      try {
+        const deps = Array.from(new Set((fetched || []).map(c => (c.department || '').toString().trim()).filter(Boolean))).sort();
+        setDepartments(deps);
+      } catch (e) {
+        setDepartments([]);
+      }
     } catch (err) {
       console.error('Failed to load courses', err);
     } finally {
@@ -57,9 +67,44 @@ export default function AdminCourses() {
   const loadStudents = async () => {
     try {
       const res = await axios.get('/api/admin/users?role=student');
-      setStudents(res.data.users || res.data || []);
+      const users = res.data.users || res.data || [];
+      // Map returned users to student profile objects (use students.id from student relation)
+      const studentsList = (users || []).map(u => {
+        // if user has a related student profile, use that id and profile fields
+        if (u && u.student) {
+          return {
+            id: u.student.id,
+            student_id: u.student.student_id || null,
+            first_name: u.student.first_name || (u.first_name || ''),
+            last_name: u.student.last_name || (u.last_name || ''),
+            name: (u.student.first_name || u.first_name || '') + ' ' + (u.student.last_name || u.last_name || ''),
+            email: u.student.email || u.email || '',
+            user_id: u.id || null,
+          };
+        }
+        // fallback: construct a lightweight student-like object from the user row
+        return {
+          id: null,
+          student_id: null,
+          first_name: u.first_name || '',
+          last_name: u.last_name || '',
+          name: u.name || u.email || `User ${u.id}`,
+          email: u.email || '',
+          user_id: u.id || null,
+        };
+      });
+      setStudents(studentsList);
     } catch (err) {
       console.error('Failed to load students', err);
+    }
+  };
+
+  const loadTeachers = async () => {
+    try {
+      const res = await axios.get('/api/admin/users?role=teacher');
+      setTeachers(res.data.users || res.data || []);
+    } catch (err) {
+      console.error('Failed to load teachers', err);
     }
   };
 
@@ -72,10 +117,7 @@ export default function AdminCourses() {
       credits: '',
       department: '',
       semester: '',
-      teacher_id: '',
-      max_students: '',
-      schedule: '',
-      status: 'active'
+      max_students: ''
     });
     setShowCourseModal(true);
   };
@@ -89,10 +131,7 @@ export default function AdminCourses() {
       credits: course.credits || '',
       department: course.department || '',
       semester: course.semester || '',
-      teacher_id: course.teacher_id || '',
-      max_students: course.max_students || '',
-      schedule: course.schedule || '',
-      status: course.status || 'active'
+      max_students: course.max_students || ''
     });
     setShowCourseModal(true);
   };
@@ -139,6 +178,16 @@ export default function AdminCourses() {
       const available = students.filter(s => !enrolledIds.includes(s.id));
       setAvailableStudents(available);
       
+      // Also fetch students that are already enrolled in any course so we can disable them
+      try {
+        const allEnrolledRes = await axios.get('/api/admin/students/enrolled');
+        const enrolledIdsAny = allEnrolledRes.data.student_ids || [];
+        // store on state in a lightweight set for fast lookup
+        setAllEnrolledStudentIds(new Set(enrolledIdsAny));
+      } catch (e) {
+        setAllEnrolledStudentIds(new Set());
+      }
+
       setShowEnrollModal(true);
     } catch (err) {
       console.error('Failed to load enrollments', err);
@@ -188,9 +237,9 @@ export default function AdminCourses() {
     
     const matchesStatus = statusFilter === 'all' || (course.status || 'active').toLowerCase() === statusFilter.toLowerCase();
     const matchesSemester = semesterFilter === 'all' || course.semester === semesterFilter;
+    const matchesDepartment = departmentFilter === 'all' || ((course.department || '').toString().toLowerCase() === (departmentFilter || '').toString().toLowerCase());
     const matchesCredits = creditsFilter === 'all' || course.credits === creditsFilter;
-    
-    return matchesSearch && matchesStatus && matchesSemester && matchesCredits;
+    return matchesSearch && matchesStatus && matchesSemester && matchesCredits && matchesDepartment;
   });
 
   const totalEnrollments = courses.reduce((sum, c) => sum + (c.enrollment_count || 0), 0);
@@ -222,6 +271,10 @@ export default function AdminCourses() {
               style={{ padding: '6px 32px 6px 8px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#6b7280', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
             >
               <option value="">2024-2025</option>
+              <option value="2025-2026">2025-2026</option>
+              <option value="2026-2027">2026-2027</option>
+              <option value="2027-2028">2027-2028</option>
+              <option value="2028-2029">2028-2029</option>
               <option value="2023-2024">2023-2024</option>
               <option value="2022-2023">2022-2023</option>
             </select>
@@ -237,19 +290,20 @@ export default function AdminCourses() {
             Filters:
           </div>
           <select 
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            style={{ padding: '6px 28px 6px 10px', borderRadius: 8, border: '1px solid #d1d5db', fontSize: 13, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 6px center/14px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+            value={departmentFilter}
+            onChange={(e) => setDepartmentFilter(e.target.value)}
+            style={{ padding: '6px 28px 6px 10px', borderRadius: 8, border: '1px solid #d1d5db', fontSize: 13, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'#6b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 6px center/14px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
           >
             <option value="all">All Departments</option>
-            <option value="computer-science">Computer Science</option>
-            <option value="engineering">Engineering</option>
-            <option value="business">Business</option>
+            {(departments || []).map(dep => (
+              <option key={dep} value={dep}>{dep}</option>
+            ))}
           </select>
+          {/* Calendar filters removed */}
           <select 
-            value={semesterFilter}
-            onChange={(e) => setSemesterFilter(e.target.value)}
-            style={{ padding: '6px 28px 6px 10px', borderRadius: 8, border: '1px solid #d1d5db', fontSize: 13, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 6px center/14px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            style={{ padding: '6px 28px 6px 10px', borderRadius: 8, border: '1px solid #d1d5db', fontSize: 13, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'#6b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 6px center/14px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -257,8 +311,8 @@ export default function AdminCourses() {
           </select>
         </div>
 
-        <div style={{ display: 'flex', gap: 12 }}>
-          <div style={{ flex: 1, position: 'relative' }}>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+          <div style={{ flex: '1 1 200px', maxWidth: '400px', minWidth: '200px', position: 'relative' }}>
             <svg style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             <input 
               type="text"
@@ -270,21 +324,23 @@ export default function AdminCourses() {
               onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
             />
           </div>
-          <button 
-            style={{ padding: '10px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s' }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
-          >
-            <FiDownload size={16} /> Export
-          </button>
-          <button 
-            onClick={openAddCourse} 
-            style={{ padding: '10px 20px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)', color: '#fff', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'transform 0.2s', boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)' }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-          >
-            <FiPlus size={18} /> Add Course
-          </button>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <button 
+              style={{ padding: '10px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s', whiteSpace: 'nowrap' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
+            >
+              <FiDownload size={16} /> Export
+            </button>
+            <button 
+              onClick={openAddCourse} 
+              style={{ padding: '10px 20px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)', color: '#fff', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'transform 0.2s', boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)', whiteSpace: 'nowrap', flexShrink: 0 }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <FiPlus size={18} /> Add Course
+            </button>
+          </div>
         </div>
       </div>
 
@@ -340,16 +396,13 @@ export default function AdminCourses() {
                       </div>
                     </div>
                     
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <FiClock size={16} color="#6b7280" />
-                      <span style={{ fontSize: 13, color: '#374151' }}>{course.schedule || 'Schedule TBD'}</span>
-                    </div>
+                    {/* Schedule removed from course card */}
                   </div>
                   
                   {/* Footer */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #f3f4f6' }}>
                     <div>
-                      <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 2 }}>{course.teacher_name || 'No instructor'}</div>
+                      <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 2 }}>{course.teacher_name || ''}</div>
                       <span style={{ 
                         padding: '4px 10px', 
                         borderRadius: 6, 
@@ -362,6 +415,15 @@ export default function AdminCourses() {
                       </span>
                     </div>
                     <div style={{ display: 'flex', gap: 4 }}>
+                      <button
+                        onClick={() => openEnrollModal(course)}
+                        title="Enroll Student"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg,#6d28d9,#7c3aed)', color: '#fff', cursor: 'pointer' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.opacity = 0.95; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.opacity = 1; }}
+                      >
+                        <FiUserPlus size={14} /> Enroll Student
+                      </button>
                       <button 
                         onClick={() => openEditCourse(course)}
                         title="Edit" 
@@ -410,113 +472,101 @@ export default function AdminCourses() {
               </button>
             </div>
             
-            <form onSubmit={handleSaveCourse} className="modal-body-modern">
-              <div className="modal-grid-modern">
-                <div className="form-group-modern">
-                  <label>Course Name *</label>
-                  <input
-                    type="text"
-                    placeholder="Introduction to Computer Science"
-                    value={courseForm.name}
-                    onChange={(e) => setCourseForm({ ...courseForm, name: e.target.value })}
-                    required
-                  />
+            <form onSubmit={handleSaveCourse} className="modal-body-modern course-form-box">
+              <div className="form-section-box">
+                <div className="form-section-head">
+                  <strong>Basic Information</strong>
                 </div>
-                
+                <div className="modal-grid-modern">
+                  <div className="form-group-modern">
+                    <label>Course Name *</label>
+                    <input
+                      type="text"
+                      placeholder="Introduction to Computer Science"
+                      value={courseForm.name}
+                      onChange={(e) => setCourseForm({ ...courseForm, name: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group-modern">
+                    <label>Course Code *</label>
+                    <input
+                      type="text"
+                      placeholder="CS101"
+                      value={courseForm.code}
+                      onChange={(e) => setCourseForm({ ...courseForm, code: e.target.value })}
+                      required
+                    />
+                  </div>
+                </div>
+
                 <div className="form-group-modern">
-                  <label>Course Code *</label>
-                  <input
-                    type="text"
-                    placeholder="CS101"
-                    value={courseForm.code}
-                    onChange={(e) => setCourseForm({ ...courseForm, code: e.target.value })}
-                    required
+                  <label>Description</label>
+                  <textarea
+                    placeholder="Brief description of the course..."
+                    value={courseForm.description}
+                    onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
+                    rows="3"
                   />
                 </div>
               </div>
 
-              <div className="form-group-modern">
-                <label>Description</label>
-                <textarea
-                  placeholder="Brief description of the course..."
-                  value={courseForm.description}
-                  onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
-                  rows="3"
-                />
-              </div>
+              <div className="form-section-box">
+                <div className="form-section-head">
+                  <strong>Capacity & Schedule</strong>
+                </div>
+                <div className="modal-grid-modern">
+                  <div className="form-group-modern">
+                    <label>Credits</label>
+                    <input
+                      type="number"
+                      placeholder="3"
+                      value={courseForm.credits}
+                      onChange={(e) => setCourseForm({ ...courseForm, credits: e.target.value })}
+                    />
+                  </div>
 
-              <div className="modal-grid-modern">
-                <div className="form-group-modern">
-                  <label>Credits</label>
-                  <input
-                    type="number"
-                    placeholder="3"
-                    value={courseForm.credits}
-                    onChange={(e) => setCourseForm({ ...courseForm, credits: e.target.value })}
-                  />
+                  <div className="form-group-modern">
+                    <label>Max Students</label>
+                    <input
+                      type="number"
+                      placeholder="30"
+                      value={courseForm.max_students}
+                      onChange={(e) => setCourseForm({ ...courseForm, max_students: e.target.value })}
+                    />
+                  </div>
                 </div>
-                
-                <div className="form-group-modern">
-                  <label>Max Students</label>
-                  <input
-                    type="number"
-                    placeholder="30"
-                    value={courseForm.max_students}
-                    onChange={(e) => setCourseForm({ ...courseForm, max_students: e.target.value })}
-                  />
-                </div>
-              </div>
 
-              <div className="modal-grid-modern">
-                <div className="form-group-modern">
-                  <label>Department</label>
-                  <input
-                    type="text"
-                    placeholder="Computer Science"
-                    value={courseForm.department}
-                    onChange={(e) => setCourseForm({ ...courseForm, department: e.target.value })}
-                  />
-                </div>
-                
-                <div className="form-group-modern">
-                  <label>Semester</label>
-                  <select
-                    value={courseForm.semester}
-                    onChange={(e) => setCourseForm({ ...courseForm, semester: e.target.value })}
-                    className="select-modern"
-                  >
-                    <option value="">Select semester</option>
-                    <option value="Fall 2025">Fall 2025</option>
-                    <option value="Spring 2026">Spring 2026</option>
-                    <option value="Summer 2026">Summer 2026</option>
-                  </select>
+                <div className="modal-grid-modern">
+                  <div className="form-group-modern">
+                    <label>Department</label>
+                    <input
+                      type="text"
+                      placeholder="Computer Science"
+                      value={courseForm.department}
+                      onChange={(e) => setCourseForm({ ...courseForm, department: e.target.value })}
+                    />
+                  </div>
+
+                  <div className="form-group-modern">
+                    <label>Year</label>
+                    <select
+                      value={courseForm.semester}
+                      onChange={(e) => setCourseForm({ ...courseForm, semester: e.target.value })}
+                      className="select-modern"
+                    >
+                      <option value="">2024-2025</option>
+                      <option value="2025-2026">2025-2026</option>
+                      <option value="2026-2027">2026-2027</option>
+                      <option value="2027-2028">2027-2028</option>
+                      <option value="2028-2029">2028-2029</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
-              <div className="modal-grid-modern">
-                <div className="form-group-modern">
-                  <label>Schedule</label>
-                  <input
-                    type="text"
-                    placeholder="MWF 10:00-11:00"
-                    value={courseForm.schedule}
-                    onChange={(e) => setCourseForm({ ...courseForm, schedule: e.target.value })}
-                  />
-                </div>
-                
-                <div className="form-group-modern">
-                  <label>Status</label>
-                  <select
-                    value={courseForm.status}
-                    onChange={(e) => setCourseForm({ ...courseForm, status: e.target.value })}
-                    className="select-modern"
-                  >
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                    <option value="completed">Completed</option>
-                  </select>
-                </div>
-              </div>
+              {/* Status & Instructor section removed per user request */}
 
               <div className="modal-footer-modern">
                 <button type="button" className="btn-cancel-modern" onClick={() => setShowCourseModal(false)}>
@@ -667,7 +717,10 @@ export default function AdminCourses() {
                                   className="btn-table-action add"
                                   onClick={() => handleEnrollStudent(student.id)}
                                   title="Add to course"
-                                  disabled={selectedCourse.max_students && enrolledStudents.length >= selectedCourse.max_students}
+                                  disabled={
+                                    (selectedCourse.max_students && enrolledStudents.length >= selectedCourse.max_students)
+                                    || (student.id && allEnrolledStudentIds && allEnrolledStudentIds.has(student.id))
+                                  }
                                 >
                                   <FiPlus size={14} /> Add
                                 </button>

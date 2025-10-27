@@ -1,144 +1,183 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FiUsers, FiUserCheck, FiBook, FiAward, FiTrendingUp } from 'react-icons/fi';
-import { Bar } from 'react-chartjs-2';
+import { FiFileText, FiPieChart, FiTrendingUp, FiDownload, FiBarChart } from 'react-icons/fi';
+import { Bar, Line } from 'react-chartjs-2';
 import Sidebar from './Sidebar';
 import "../../../../sass/AdminDashboard.scss";
 
 export default function AdminReports() {
   const [activePage, setActivePage] = useState('reports');
-  const [loading, setLoading] = useState(false);
-  const [totalTeachers, setTotalTeachers] = useState(0);
-  const [totalTeachersChange, setTotalTeachersChange] = useState('+0%');
-  const [activeCourses, setActiveCourses] = useState(0);
-  const API = '/api/admin';
-
-  useEffect(() => {
-    let mounted = true;
-    const fetchDashboardStats = async () => {
-      try {
-        const res = await axios.get(API + '/dashboard').catch(() => ({ data: null }));
-        if (!mounted) return;
-        if (res && res.data) {
-          setTotalTeachers(Number(res.data.total_teachers) || 0);
-          setTotalTeachersChange(res.data.total_teachers_change || '+0%');
-          // if backend later provides active courses in dashboard, use it
-          if (typeof res.data.active_courses !== 'undefined') setActiveCourses(Number(res.data.active_courses) || 0);
-        }
-      } catch (e) {
-        console.error('Failed to fetch dashboard stats', e);
-      }
-    };
-
-    // Do not fetch on mount - keep initial counts at 0 until an admin action occurs.
-    // Rely on dispatched events to trigger updates so a fresh install shows zero.
-
-    const onUsersChanged = (ev) => {
-      try {
-        // If event provided stats, apply them immediately; otherwise fetch from API
-        const d = ev && ev.detail ? ev.detail : null;
-        if (d && (typeof d.total_teachers !== 'undefined' || typeof d.total_students !== 'undefined')) {
-          if (typeof d.total_teachers !== 'undefined') setTotalTeachers(Number(d.total_teachers) || 0);
-          if (typeof d.total_teachers_change !== 'undefined') setTotalTeachersChange(d.total_teachers_change || '+0%');
-        } else {
-          fetchDashboardStats().catch(() => {});
-        }
-      } catch (e) { console.error(e); }
-    };
-
-    const onCoursesChanged = (ev) => {
-      try {
-        const d = ev && ev.detail ? ev.detail : null;
-        if (d && typeof d.active_courses !== 'undefined') {
-          setActiveCourses(Number(d.active_courses) || 0);
-        } else {
-          // fallback: fetch full dashboard stats
-          fetchDashboardStats().catch(() => {});
-        }
-      } catch (e) { console.error(e); }
-    };
-
-    window.addEventListener('admin:users-changed', onUsersChanged);
-    window.addEventListener('admin:courses-changed', onCoursesChanged);
-
-    return () => {
-      mounted = false;
-      window.removeEventListener('admin:users-changed', onUsersChanged);
-      window.removeEventListener('admin:courses-changed', onCoursesChanged);
-    };
-  }, []);
+  const [selectedYear, setSelectedYear] = useState('2024-2025');
+  const [reportType, setReportType] = useState('Enrollment');
+  const [department, setDepartment] = useState('All Departments');
+  const [format, setFormat] = useState('PDF');
+  const [semester, setSemester] = useState('All Semesters');
+  const [status, setStatus] = useState('All Status');
+  const [departments, setDepartments] = useState([]);
   
-  // Sample data for enrollment trends chart
-  const enrollmentTrendsData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+  // CSV Export function
+  const exportToCSV = (reportName, data) => {
+    const csvContent = data.map(row => row.join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${reportName.replace(/\s+/g, '_')}_${selectedYear}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // Export function for individual reports
+  const handleExport = (reportName) => {
+    // Sample data for each report type
+    const sampleData = {
+      'Student Enrollment': [
+        ['Student ID', 'Name', 'Course', 'Year Level', 'Status', 'Enrollment Date'],
+        ['ST2024001', 'John Doe', 'Computer Science', 'Freshman', 'Active', '2024-09-01'],
+        ['ST2024002', 'Jane Smith', 'Engineering', 'Sophomore', 'Active', '2024-09-01'],
+        ['ST2024003', 'Bob Johnson', 'Business', 'Junior', 'Active', '2024-09-01'],
+      ],
+      'Academic Performance': [
+        ['Department', 'Average Score', 'Passing Rate %', 'Total Students'],
+        ['Computer Science', '85', '95', '120'],
+        ['Engineering', '78', '88', '95'],
+        ['Business', '82', '92', '110'],
+        ['Arts', '88', '98', '80'],
+      ],
+      'Course Distribution': [
+        ['Course', 'Department', 'Enrolled Students', 'Capacity', 'Percentage'],
+        ['Introduction to Programming', 'Computer Science', '45', '50', '90%'],
+        ['Data Structures', 'Computer Science', '38', '40', '95%'],
+        ['Mechanical Engineering', 'Engineering', '42', '45', '93%'],
+        ['Business Management', 'Business', '50', '55', '91%'],
+      ],
+      'Attendance': [
+        ['Month', 'Total Students', 'Present', 'Absent', 'Attendance Rate %'],
+        ['September', '405', '373', '32', '92%'],
+        ['October', '405', '361', '44', '89%'],
+        ['November', '405', '369', '36', '91%'],
+        ['December', '405', '352', '53', '87%'],
+      ]
+    };
+
+    const data = sampleData[reportName] || [['No data available']];
+    exportToCSV(reportName, data);
+  };
+
+  // Generate custom report
+  const handleGenerateReport = () => {
+    const customData = [
+      ['Report Type', reportType],
+      ['Department', department],
+      ['Academic Year', selectedYear],
+      ['Semester', semester],
+      ['Status', status],
+      ['Format', format],
+      ['Generated On', new Date().toLocaleDateString()],
+      [''],
+      ['Data will be populated based on selected criteria']
+    ];
+    
+    exportToCSV(`Custom_${reportType}_Report`, customData);
+  };
+  
+  // Department Performance Chart Data
+  const departmentData = {
+    labels: ['CS', 'ENG', 'BUS', 'ART'],
     datasets: [
       {
-        label: 'Students',
-        data: [420, 450, 480, 460, 490, 510, 520, 540],
-        backgroundColor: 'rgba(99, 102, 241, 0.2)',
-        borderColor: 'rgba(99, 102, 241, 1)',
-        borderWidth: 2,
-        borderRadius: 8,
+        label: 'Average Score',
+        data: [85, 78, 82, 88],
+        backgroundColor: '#6366f1',
+        borderRadius: 6,
         barThickness: 40,
       },
       {
-        label: 'Faculty',
-        data: [60, 80, 100, 90, 110, 120, 130, 140],
-        backgroundColor: 'rgba(203, 213, 225, 0.5)',
-        borderColor: 'rgba(203, 213, 225, 1)',
-        borderWidth: 2,
-        borderRadius: 8,
-        barThickness: 40,
-      },
-      {
-        label: 'Courses',
-        data: [50, 70, 90, 80, 100, 110, 120, 130],
-        backgroundColor: 'rgba(203, 213, 225, 0.3)',
-        borderColor: 'rgba(203, 213, 225, 1)',
-        borderWidth: 2,
-        borderRadius: 8,
+        label: 'Passing Rate %',
+        data: [95, 88, 92, 98],
+        backgroundColor: '#10b981',
+        borderRadius: 6,
         barThickness: 40,
       }
     ]
   };
 
-  const chartOptions = {
+  // Attendance Trends Chart Data
+  const attendanceData = {
+    labels: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+    datasets: [{
+      data: [92, 89, 91, 87, 90, 93],
+      borderColor: '#8b5cf6',
+      backgroundColor: 'transparent',
+      tension: 0.4,
+      pointBackgroundColor: '#8b5cf6',
+      pointBorderColor: '#fff',
+      pointBorderWidth: 2,
+      pointRadius: 5,
+      pointHoverRadius: 7,
+    }]
+  };
+
+  const departmentChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false,
-      },
-      tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        padding: 12,
-        titleFont: { size: 13, weight: '600' },
-        bodyFont: { size: 12 },
-        cornerRadius: 8,
+        display: true,
+        position: 'bottom',
+        labels: {
+          padding: 15,
+          font: { size: 12 },
+          usePointStyle: true,
+          pointStyle: 'rect',
+        }
       }
     },
     scales: {
       y: {
         beginAtZero: true,
-        max: 600,
-        ticks: {
-          stepSize: 100,
-          font: { size: 11 },
-          color: '#9ca3af'
-        },
-        grid: {
-          color: 'rgba(0, 0, 0, 0.05)',
-          drawBorder: false,
-        }
+        max: 100,
+        ticks: { font: { size: 11 }, color: '#9ca3af' },
+        grid: { color: 'rgba(0, 0, 0, 0.05)' }
       },
       x: {
-        ticks: {
-          font: { size: 11 },
-          color: '#9ca3af'
-        },
-        grid: {
-          display: false,
-        }
+        ticks: { font: { size: 11 }, color: '#9ca3af' },
+        grid: { display: false }
+      }
+    }
+  };
+
+  useEffect(() => {
+    // derive department list from courses so Reports filters reflect newly created departments
+    const loadDepartments = async () => {
+      try {
+        const res = await axios.get('/api/admin/courses');
+        const fetched = res.data.courses || [];
+        const deps = Array.from(new Set((fetched || []).map(c => (c.department || '').toString().trim()).filter(Boolean))).sort();
+        setDepartments(deps);
+      } catch (e) {
+        setDepartments([]);
+      }
+    };
+    loadDepartments();
+  }, []);
+
+  const attendanceChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      y: {
+        min: 80,
+        max: 100,
+        ticks: { font: { size: 11 }, color: '#9ca3af' },
+        grid: { color: 'rgba(0, 0, 0, 0.05)' }
+      },
+      x: {
+        ticks: { font: { size: 11 }, color: '#9ca3af' },
+        grid: { display: false }
       }
     }
   };
@@ -147,448 +186,307 @@ export default function AdminReports() {
     <div className="admin-dashboard-layout">
       <Sidebar activePage={activePage} />
       <main className="admin-main">
-        <div style={{ background: '#f8f9fa', minHeight: '100vh' }}>
+        <div style={{ padding: '28px 40px', background: '#f8f9fa', minHeight: '100vh' }}>
           
-          {/* Purple Header Banner */}
-          <div style={{ 
-            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', 
-            padding: '32px 40px',
-            boxShadow: '0 4px 12px rgba(99, 102, 241, 0.2)'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ 
-                width: 48, 
-                height: 48, 
-                borderRadius: 12, 
-                background: 'rgba(255, 255, 255, 0.2)', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                backdropFilter: 'blur(10px)'
-              }}>
-                <FiTrendingUp size={24} color="#fff" />
-              </div>
-              <div>
-                <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color: '#fff' }}>
-                  Reports & Analytics
-                </h1>
-                <p style={{ margin: '4px 0 0 0', fontSize: 14, color: 'rgba(255, 255, 255, 0.9)' }}>
-                  Comprehensive insights and data visualization
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ padding: '32px 40px' }}>
-            
-            {/* Stats Cards Row */}
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-              gap: 20, 
-              marginBottom: 32 
-            }}>
-              
-              {/* Total Students Card */}
-              <div style={{ 
-                background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', 
-                borderRadius: 16, 
-                padding: '24px 28px',
-                boxShadow: '0 4px 16px rgba(59, 130, 246, 0.3)',
-                color: '#fff',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: -20, 
-                  right: -20, 
-                  width: 120, 
-                  height: 120, 
-                  borderRadius: '50%', 
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  filter: 'blur(30px)'
-                }}></div>
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, opacity: 0.9, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                    TOTAL STUDENTS
-                  </div>
-                  <div style={{ fontSize: 48, fontWeight: 700, marginTop: 8, marginBottom: 8 }}>13</div>
-                  <div style={{ fontSize: 12, opacity: 0.9, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span>from last semester</span>
-                    <span style={{ 
-                      background: 'rgba(255, 255, 255, 0.2)', 
-                      padding: '2px 8px', 
-                      borderRadius: 12, 
-                      fontSize: 11,
-                      fontWeight: 600
-                    }}>+0%</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Completion Rate Card */}
-              <div style={{ 
-                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', 
-                borderRadius: 16, 
-                padding: '24px 28px',
-                boxShadow: '0 4px 16px rgba(16, 185, 129, 0.3)',
-                color: '#fff',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: -20, 
-                  right: -20, 
-                  width: 120, 
-                  height: 120, 
-                  borderRadius: '50%', 
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  filter: 'blur(30px)'
-                }}></div>
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, opacity: 0.9, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                    COMPLETION RATE
-                  </div>
-                  <div style={{ fontSize: 48, fontWeight: 700, marginTop: 8, marginBottom: 8 }}>0%</div>
-                  <div style={{ fontSize: 12, opacity: 0.9, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span>from last semester</span>
-                    <span style={{ 
-                      background: 'rgba(255, 255, 255, 0.2)', 
-                      padding: '2px 8px', 
-                      borderRadius: 12, 
-                      fontSize: 11,
-                      fontWeight: 600
-                    }}>+0%</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Average GPA Card */}
-              <div style={{ 
-                background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', 
-                borderRadius: 16, 
-                padding: '24px 28px',
-                boxShadow: '0 4px 16px rgba(139, 92, 246, 0.3)',
-                color: '#fff',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: -20, 
-                  right: -20, 
-                  width: 120, 
-                  height: 120, 
-                  borderRadius: '50%', 
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  filter: 'blur(30px)'
-                }}></div>
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, opacity: 0.9, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                    AVERAGE GPA
-                  </div>
-                  <div style={{ fontSize: 48, fontWeight: 700, marginTop: 8, marginBottom: 8 }}>0</div>
-                  <div style={{ fontSize: 12, opacity: 0.9, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span>from last semester</span>
-                    <span style={{ 
-                      background: 'rgba(255, 255, 255, 0.2)', 
-                      padding: '2px 8px', 
-                      borderRadius: 12, 
-                      fontSize: 11,
-                      fontWeight: 600
-                    }}>+0</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Total Teachers Card */}
-              <div style={{ 
-                background: 'linear-gradient(135deg, #f97316 0%, #ef4444 100%)', 
-                borderRadius: 16, 
-                padding: '24px 28px',
-                boxShadow: '0 4px 16px rgba(249, 115, 22, 0.18)',
-                color: '#fff',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: -20, 
-                  right: -20, 
-                  width: 120, 
-                  height: 120, 
-                  borderRadius: '50%', 
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  filter: 'blur(30px)'
-                }}></div>
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, opacity: 0.95, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                    TOTAL TEACHERS
-                  </div>
-                  <div style={{ fontSize: 48, fontWeight: 700, marginTop: 8, marginBottom: 8 }}>{totalTeachers}</div>
-                  <div style={{ fontSize: 12, opacity: 0.95, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span>from last month</span>
-                    <span style={{ 
-                      background: 'rgba(255, 255, 255, 0.15)', 
-                      padding: '2px 8px', 
-                      borderRadius: 12, 
-                      fontSize: 11,
-                      fontWeight: 600
-                    }}>{totalTeachersChange}</span>
-                  </div>
-                </div>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: 20, 
-                  right: 20,
-                  width: 48,
-                  height: 48,
-                  borderRadius: 12,
-                  background: 'rgba(255,255,255,0.12)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <span style={{ fontSize: 20 }} role="img" aria-label="books">📚</span>
-                </div>
-              </div>
-
-              {/* Active Courses Card */}
-              <div style={{ 
-                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', 
-                borderRadius: 16, 
-                padding: '24px 28px',
-                boxShadow: '0 4px 16px rgba(99, 102, 241, 0.18)',
-                color: '#fff',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: -20, 
-                  right: -20, 
-                  width: 120, 
-                  height: 120, 
-                  borderRadius: '50%', 
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  filter: 'blur(30px)'
-                }}></div>
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, opacity: 0.95, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                    ACTIVE COURSES
-                  </div>
-                  <div style={{ fontSize: 48, fontWeight: 700, marginTop: 8, marginBottom: 8 }}>{activeCourses}</div>
-                  <div style={{ fontSize: 12, opacity: 0.95, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span>current semester</span>
-                  </div>
-                </div>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: 20, 
-                  right: 20,
-                  width: 48,
-                  height: 48,
-                  borderRadius: 12,
-                  background: 'rgba(255,255,255,0.12)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <FiBook size={20} color="#fff" />
-                </div>
-              </div>
-
-              {/* Faculty Members Card */}
-              <div style={{ 
-                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', 
-                borderRadius: 16, 
-                padding: '24px 28px',
-                boxShadow: '0 4px 16px rgba(245, 158, 11, 0.3)',
-                color: '#fff',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: -20, 
-                  right: -20, 
-                  width: 120, 
-                  height: 120, 
-                  borderRadius: '50%', 
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  filter: 'blur(30px)'
-                }}></div>
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, opacity: 0.9, textTransform: 'uppercase', letterSpacing: 0.5 }}>
-                    FACULTY MEMBERS
-                  </div>
-                  <div style={{ fontSize: 48, fontWeight: 700, marginTop: 8, marginBottom: 8 }}>0</div>
-                  <div style={{ fontSize: 12, opacity: 0.9, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span>from last semester</span>
-                    <span style={{ 
-                      background: 'rgba(255, 255, 255, 0.2)', 
-                      padding: '2px 8px', 
-                      borderRadius: 12, 
-                      fontSize: 11,
-                      fontWeight: 600
-                    }}>+0</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Enrollment Trends Chart */}
-            <div style={{ 
-              background: '#fff', 
-              borderRadius: 16, 
-              padding: '28px 32px', 
-              boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-              marginBottom: 32
-            }}>
-              <h3 style={{ margin: '0 0 8px 0', fontSize: 18, fontWeight: 600, color: '#111827' }}>
-                Enrollment Trends
-              </h3>
-              <p style={{ margin: '0 0 24px 0', fontSize: 14, color: '#6b7280' }}>
-                Student, faculty, and course growth over time
-              </p>
-              <div style={{ height: 320 }}>
-                <Bar data={enrollmentTrendsData} options={chartOptions} />
-              </div>
-            </div>
-
-            {/* Recent Activity Cards */}
+          {/* Header */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
             <div>
-              <h3 style={{ margin: '0 0 20px 0', fontSize: 18, fontWeight: 600, color: '#111827' }}>
-                Recent Activity (30 Days)
-              </h3>
-              
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-                gap: 20 
-              }}>
-                
-                {/* New Students Card */}
-                <div style={{ 
-                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.1) 100%)',
-                  border: '1px solid rgba(59, 130, 246, 0.2)',
-                  borderRadius: 16, 
-                  padding: '24px 28px',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}>
-                  <div style={{ 
-                    position: 'absolute', 
-                    top: 20, 
-                    right: 20,
-                    width: 48,
-                    height: 48,
-                    borderRadius: 12,
-                    background: '#3b82f6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
-                  }}>
-                    <FiUsers size={24} color="#fff" />
-                  </div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#6b7280', marginBottom: 12 }}>
-                    New Students
-                  </div>
-                  <div style={{ fontSize: 42, fontWeight: 700, color: '#111827', marginBottom: 16 }}>
-                    +13
-                  </div>
-                  <div style={{ height: 6, background: 'rgba(59, 130, 246, 0.2)', borderRadius: 3, overflow: 'hidden', marginBottom: 8 }}>
-                    <div style={{ height: '100%', width: '100%', background: '#3b82f6', borderRadius: 3 }}></div>
-                  </div>
-                  <div style={{ fontSize: 12, color: '#3b82f6', fontWeight: 600 }}>
-                    100% of enrollment target
-                  </div>
-                </div>
+              <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color: '#111827' }}>Reports</h1>
+              <p style={{ margin: '6px 0 0 0', fontSize: 14, color: '#6b7280' }}>Generate and view academic reports</p>
+            </div>
+            <select
+              value={selectedYear}
+              onChange={(e) => setSelectedYear(e.target.value)}
+              style={{ 
+                padding: '8px 32px 8px 12px', 
+                borderRadius: 8, 
+                border: '1px solid #e5e7eb', 
+                fontSize: 14, 
+                color: '#374151', 
+                background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', 
+                appearance: 'none', 
+                cursor: 'pointer' 
+              }}
+            >
+              <option value="2024-2025">2024-2025</option>
+              <option value="2025-2026">2025-2026</option>
+              <option value="2026-2027">2026-2027</option>
+              <option value="2027-2028">2027-2028</option>
+              <option value="2028-2029">2028-2029</option>
+              <option value="2023-2024">2023-2024</option>
+              <option value="2022-2023">2022-2023</option>
+              <option value="2021-2022">2021-2022</option>
+              <option value="2020-2021">2020-2021</option>
+            </select>
+          </div>
 
-                {/* New Faculty Card */}
-                <div style={{ 
-                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%)',
-                  border: '1px solid rgba(16, 185, 129, 0.2)',
-                  borderRadius: 16, 
-                  padding: '24px 28px',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}>
-                  <div style={{ 
-                    position: 'absolute', 
-                    top: 20, 
-                    right: 20,
-                    width: 48,
-                    height: 48,
-                    borderRadius: 12,
-                    background: '#10b981',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
-                  }}>
-                    <FiUserCheck size={24} color="#fff" />
-                  </div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#6b7280', marginBottom: 12 }}>
-                    New Faculty
-                  </div>
-                  <div style={{ fontSize: 42, fontWeight: 700, color: '#111827', marginBottom: 16 }}>
-                    +0
-                  </div>
-                  <div style={{ height: 6, background: 'rgba(16, 185, 129, 0.2)', borderRadius: 3, overflow: 'hidden', marginBottom: 8 }}>
-                    <div style={{ height: '100%', width: '0%', background: '#10b981', borderRadius: 3 }}></div>
-                  </div>
-                  <div style={{ fontSize: 12, color: '#10b981', fontWeight: 600 }}>
-                    0% of hiring target
-                  </div>
-                </div>
+          {/* Filters Row */}
+          <div style={{ display: 'flex', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
+            <select
+              value={semester}
+              onChange={(e) => setSemester(e.target.value)}
+              style={{ 
+                padding: '8px 32px 8px 12px', 
+                borderRadius: 8, 
+                border: '1px solid #e5e7eb', 
+                fontSize: 13, 
+                color: '#374151', 
+                background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', 
+                appearance: 'none', 
+                cursor: 'pointer',
+                minWidth: '140px'
+              }}
+            >
+              <option value="All Semesters">All Semesters</option>
+              <option value="First Semester">First Semester</option>
+              <option value="Second Semester">Second Semester</option>
+              <option value="Summer">Summer</option>
+            </select>
 
-                {/* New Courses Card */}
-                <div style={{ 
-                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0.1) 100%)',
-                  border: '1px solid rgba(139, 92, 246, 0.2)',
-                  borderRadius: 16, 
-                  padding: '24px 28px',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}>
-                  <div style={{ 
-                    position: 'absolute', 
-                    top: 20, 
-                    right: 20,
-                    width: 48,
-                    height: 48,
-                    borderRadius: 12,
-                    background: '#8b5cf6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)'
-                  }}>
-                    <FiBook size={24} color="#fff" />
-                  </div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#6b7280', marginBottom: 12 }}>
-                    New Courses
-                  </div>
-                  <div style={{ fontSize: 42, fontWeight: 700, color: '#111827', marginBottom: 16 }}>
-                    +0
-                  </div>
-                  <div style={{ height: 6, background: 'rgba(139, 92, 246, 0.2)', borderRadius: 3, overflow: 'hidden', marginBottom: 8 }}>
-                    <div style={{ height: '100%', width: '0%', background: '#8b5cf6', borderRadius: 3 }}></div>
-                  </div>
-                  <div style={{ fontSize: 12, color: '#8b5cf6', fontWeight: 600 }}>
-                    0% of course expansion goal
-                  </div>
-                </div>
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              style={{ 
+                padding: '8px 32px 8px 12px', 
+                borderRadius: 8, 
+                border: '1px solid #e5e7eb', 
+                fontSize: 13, 
+                color: '#374151', 
+                background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', 
+                appearance: 'none', 
+                cursor: 'pointer',
+                minWidth: '120px'
+              }}
+            >
+              <option value="All Status">All Status</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Graduated">Graduated</option>
+              <option value="Suspended">Suspended</option>
+            </select>
 
+            <select
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              style={{ 
+                padding: '8px 32px 8px 12px', 
+                borderRadius: 8, 
+                border: '1px solid #e5e7eb', 
+                fontSize: 13, 
+                color: '#374151', 
+                background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', 
+                appearance: 'none', 
+                cursor: 'pointer',
+                minWidth: '160px'
+              }}
+            >
+              <option value="All Departments">All Departments</option>
+              {(departments || []).map(dep => (
+                <option key={dep} value={dep}>{dep}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Report Cards Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(450px, 1fr))', gap: 20, marginBottom: 32 }}>
+            
+            {/* Student Enrollment Report */}
+            <div style={{ background: '#fff', borderRadius: 12, padding: '20px 24px', border: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+                <div style={{ width: 44, height: 44, borderRadius: 10, background: '#dbeafe', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FiFileText size={20} color="#3b82f6" />
+                </div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: '#111827' }}>Student Enrollment Report</h3>
+                  <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280' }}>Complete list of enrolled students</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => handleExport('Student Enrollment')}
+                style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap', transition: 'all 0.2s' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
+              >
+                <FiDownload size={15} /> Export
+              </button>
+            </div>
+
+            {/* Academic Performance */}
+            <div style={{ background: '#fff', borderRadius: 12, padding: '20px 24px', border: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+                <div style={{ width: 44, height: 44, borderRadius: 10, background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FiBarChart size={20} color="#10b981" />
+                </div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: '#111827' }}>Academic Performance</h3>
+                  <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280' }}>Department-wise performance metrics</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => handleExport('Academic Performance')}
+                style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap', transition: 'all 0.2s' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
+              >
+                <FiDownload size={15} /> Export
+              </button>
+            </div>
+
+            {/* Course Distribution */}
+            <div style={{ background: '#fff', borderRadius: 12, padding: '20px 24px', border: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+                <div style={{ width: 44, height: 44, borderRadius: 10, background: '#fef3c7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FiPieChart size={20} color="#f59e0b" />
+                </div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: '#111827' }}>Course Distribution</h3>
+                  <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280' }}>Enrollment by course and department</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => handleExport('Course Distribution')}
+                style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap', transition: 'all 0.2s' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
+              >
+                <FiDownload size={15} /> Export
+              </button>
+            </div>
+
+            {/* Attendance Report */}
+            <div style={{ background: '#fff', borderRadius: 12, padding: '20px 24px', border: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+                <div style={{ width: 44, height: 44, borderRadius: 10, background: '#f3e8ff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FiTrendingUp size={20} color="#8b5cf6" />
+                </div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: '#111827' }}>Attendance Report</h3>
+                  <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280' }}>Student attendance statistics</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => handleExport('Attendance')}
+                style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap', transition: 'all 0.2s' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
+              >
+                <FiDownload size={15} /> Export
+              </button>
+            </div>
+
+          </div>
+
+          {/* Charts Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 32 }}>
+            
+            {/* Department Performance Chart */}
+            <div style={{ background: '#fff', borderRadius: 12, padding: '24px 28px', border: '1px solid #f3f4f6' }}>
+              <h3 style={{ margin: 0, fontSize: 16, fontWeight: 600, color: '#111827' }}>Department Performance</h3>
+              <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280', marginBottom: 20 }}>Average scores and passing rates by department</p>
+              <div style={{ height: 280 }}>
+                <Bar data={departmentData} options={departmentChartOptions} />
+              </div>
+            </div>
+
+            {/* Attendance Trends Chart */}
+            <div style={{ background: '#fff', borderRadius: 12, padding: '24px 28px', border: '1px solid #f3f4f6' }}>
+              <h3 style={{ margin: 0, fontSize: 16, fontWeight: 600, color: '#111827' }}>Attendance Trends</h3>
+              <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280', marginBottom: 20 }}>Monthly attendance rate percentage</p>
+              <div style={{ height: 280 }}>
+                <Line data={attendanceData} options={attendanceChartOptions} />
               </div>
             </div>
 
           </div>
+
+          {/* Custom Report Generator */}
+          <div style={{ background: '#fff', borderRadius: 12, padding: '28px 32px', border: '1px solid #f3f4f6' }}>
+            <h3 style={{ margin: 0, fontSize: 18, fontWeight: 600, color: '#111827' }}>Custom Report Generator</h3>
+            <p style={{ margin: '6px 0 0 0', fontSize: 14, color: '#6b7280', marginBottom: 24 }}>Create customized reports based on specific criteria</p>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', gap: 20, marginBottom: 24 }}>
+              
+              <div>
+                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 7 }}>Report Type</label>
+                <select
+                  value={reportType}
+                  onChange={(e) => setReportType(e.target.value)}
+                  style={{ width: '100%', padding: '9px 32px 9px 12px', borderRadius: 7, border: '1px solid #e5e7eb', fontSize: 14, color: '#111827', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+                >
+                  <option value="Enrollment">Enrollment</option>
+                  <option value="Performance">Performance</option>
+                  <option value="Attendance">Attendance</option>
+                </select>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 7 }}>Department</label>
+                <select
+                  value={department}
+                  onChange={(e) => setDepartment(e.target.value)}
+                  style={{ width: '100%', padding: '9px 32px 9px 12px', borderRadius: 7, border: '1px solid #e5e7eb', fontSize: 14, color: '#111827', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+                >
+                  <option value="All Departments">All Departments</option>
+                  {(departments || []).map(dep => (
+                    <option key={dep} value={dep}>{dep}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 7 }}>Semester</label>
+                <select
+                  value={semester}
+                  onChange={(e) => setSemester(e.target.value)}
+                  style={{ width: '100%', padding: '9px 32px 9px 12px', borderRadius: 7, border: '1px solid #e5e7eb', fontSize: 14, color: '#111827', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+                >
+                  <option value="All Semesters">All Semesters</option>
+                  <option value="First Semester">First Semester</option>
+                  <option value="Second Semester">Second Semester</option>
+                  <option value="Summer">Summer</option>
+                </select>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 7 }}>Status</label>
+                <select
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                  style={{ width: '100%', padding: '9px 32px 9px 12px', borderRadius: 7, border: '1px solid #e5e7eb', fontSize: 14, color: '#111827', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+                >
+                  <option value="All Status">All Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+                  <option value="Graduated">Graduated</option>
+                  <option value="Suspended">Suspended</option>
+                </select>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 7 }}>Format</label>
+                <select
+                  value={format}
+                  onChange={(e) => setFormat(e.target.value)}
+                  style={{ width: '100%', padding: '9px 32px 9px 12px', borderRadius: 7, border: '1px solid #e5e7eb', fontSize: 14, color: '#111827', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+                >
+                  <option value="PDF">PDF</option>
+                  <option value="Excel">Excel</option>
+                  <option value="CSV">CSV</option>
+                </select>
+              </div>
+
+            </div>
+
+            <button 
+              onClick={handleGenerateReport}
+              style={{ padding: '10px 20px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', color: '#fff', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)', transition: 'transform 0.2s' }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <FiDownload size={16} /> Generate Report
+            </button>
+          </div>
+
         </div>
       </main>
     </div>

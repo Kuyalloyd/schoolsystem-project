@@ -1,8 +1,6 @@
 .login-page {
   display: flex;
   align-items: center;
-  display: flex;
-  align-items: center;
   justify-content: center;
   min-height: 100vh;
   color: #0f172a;
@@ -33,34 +31,27 @@
 
   .login-card {
     z-index: 2;
-  background: rgba(0, 133, 66, 0.85);
-  color: #fff;
-  padding: 2.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 20px 60px rgba(0, 133, 66, 0.18), 0 2px 16px rgba(0,0,0,0.10);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-  animation: popInModal 0.7s cubic-bezier(.4,0,.2,1);
-  position: relative;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-@keyframes popInModal {
-  0% { transform: scale(0.92) translateY(40px); opacity: 0; }
-  60% { transform: scale(1.04) translateY(-8px); opacity: 1; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
-}
+    background: rgba(255, 255, 255, 0.95);
+    color: #0f172a;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out;
+    position: relative;
 
     h2 {
       margin-bottom: 0.5rem;
       font-size: 1.75rem;
       font-weight: 700;
-  color: #fff;
+      color: #002D72;
     }
 
     .subtitle {
-  color: #e6ffe6;
+      color: #64748b;
       font-size: 0.9rem;
       margin-bottom: 2rem;
     }
@@ -214,10 +205,4 @@
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
-}
-
-@keyframes popInModal {
-  0% { transform: scale(0.92) translateY(40px); opacity: 0; }
-  60% { transform: scale(1.04) translateY(-8px); opacity: 1; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
 }

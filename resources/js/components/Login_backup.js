@@ -95,65 +95,47 @@ export default function Login() {
 
   return (
     <div className="login-page fade-in">
-      {/* Hero Section */}
-      <div className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">
-            Be Ambitious. Be Future-Ready.
-          </h1>
-          <h2 className="hero-subtitle">
-            Be Ready To Reach Your Dreams.
-          </h2>
-          <p className="hero-description">
-            Get The Best Programs For You To Achieve Your Goals
-          </p>
-          <button className="hero-btn">LEARN HOW</button>
-        </div>
-      </div>
+      <div className="login-card">
+        <h2>Saint Joseph Institute of Technology
+        </h2>
+        <p className="subtitle">Sign in to access your account</p>
 
-      {/* Login Form Section */}
-      <div className="login-section">
-        <div className="login-card">
-          <h2>Saint Joseph Institute of Technology</h2>
-          <p className="subtitle">Sign in to access your account</p>
-
-          <form onSubmit={handleLogin} autoComplete="off" className="login-form">
-            <div className="input-group">
-              <input
-                type="email"
+        <form onSubmit={handleLogin} autoComplete="off" className="login-form">
+          <div className="input-group">
+            <input
+              type="email"
                 placeholder="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                disabled={loading}
-              />
-            </div>
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
 
-            <div className="input-group">
-              <input
-                type="password"
+          <div className="input-group">
+            <input
+              type="password"
                 placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={loading}
-              />
-            </div>
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              disabled={loading}
+            />
+          </div>
 
-            <button type="submit" disabled={loading} className="login-btn">
-              {loading ? "Logging in..." : "Login"}
-            </button>
+          <button type="submit" disabled={loading} className="login-btn">
+            {loading ? "Logging in..." : "Login"}
+          </button>
 
-            {error && <p className="error-message">{error}</p>}
-          </form>
+          {error && <p className="error-message">{error}</p>}
+        </form>
 
-          <p className="create-account">
-            Don't have an account?{" "}
-            <a href="/register" className="link">
-              Create one
-            </a>
-          </p>
-        </div>
+        <p className="create-account">
+          Don’t have an account?{" "}
+          <a href="/register" className="link">
+            Create one
+          </a>
+        </p>
       </div>
     </div>
   );

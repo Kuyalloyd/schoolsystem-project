@@ -25,9 +25,9 @@ import {
   FiActivity,
   FiClock,
 } from "react-icons/fi";
-import { Bar, Line } from 'react-chartjs-2';
-import { Chart as ChartJS, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler } from 'chart.js';
-import UserFormModal from "./UserFormModal";
+import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler, ArcElement } from 'chart.js';
+import { UserFormModal } from "./UserFormModal";
 import CourseFormModal from "./CourseFormModal";
 import UserDetailModal from "./UserDetailModal";
 import AdminUsers from "./AdminUsers";
@@ -36,7 +36,7 @@ import "../../../../sass/AdminDashboard.scss";
 
 const API = "/api/admin";
 
-ChartJS.register(BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler);
+ChartJS.register(BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler, ArcElement);
 
 
 // Enrollment area chart (left) sample data/options
@@ -238,6 +238,187 @@ const attendanceOptions = {
   plugins: { legend: { display: true, position: 'bottom' }, tooltip: { backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-tooltip-bg') || 'rgba(0,0,0,0.75)' } },
   scales: { x: { grid: { display: false }, ticks: { color: '#6b7280' } }, y: { grid: { color: '#eef4fb' }, ticks: { color: '#6b7280' }, beginAtZero: true } }
 };
+
+// Weekly Attendance Chart Data
+const weeklyAttendanceData = {
+  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+  datasets: [
+    {
+      label: 'Attendance %',
+      data: [95, 98, 92, 96, 94],
+      backgroundColor: '#3B82F6',
+      borderRadius: 8,
+      barPercentage: 0.4,
+      categoryPercentage: 0.5,
+    }
+  ]
+};
+
+const weeklyAttendanceOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: 'rgba(0,0,0,0.75)',
+      callbacks: {
+        label: function(context) {
+          return context.parsed.y + '%';
+        }
+      }
+    }
+  },
+  scales: {
+    x: {
+      grid: { display: false },
+      ticks: { color: '#9ca3af', font: { size: 11 } }
+    },
+    y: {
+      grid: { color: '#f1f5f9', drawBorder: false },
+      ticks: { color: '#9ca3af', font: { size: 11 }, callback: function(value) { return value; } },
+      beginAtZero: true,
+      max: 100
+    }
+  }
+};
+
+// Performance Chart Data
+const performanceData = {
+  labels: ['Math', 'Science', 'English', 'History', 'Art'],
+  datasets: [
+    {
+      label: 'Average Score',
+      data: [88, 92, 85, 90, 87],
+      backgroundColor: '#8B5CF6',
+      borderRadius: 8,
+      barPercentage: 0.4,
+      categoryPercentage: 0.5,
+    }
+  ]
+};
+
+const performanceOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: { backgroundColor: 'rgba(0,0,0,0.75)' }
+  },
+  scales: {
+    x: {
+      grid: { display: false },
+      ticks: { color: '#9ca3af', font: { size: 11 } }
+    },
+    y: {
+      grid: { color: '#f1f5f9', drawBorder: false },
+      ticks: { color: '#9ca3af', font: { size: 11 } },
+      beginAtZero: true,
+      max: 100
+    }
+  }
+};
+
+// Financial Chart Data
+const financialData = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+  datasets: [
+    {
+      label: 'Revenue',
+      data: [65000, 68000, 72000, 70000, 75000, 78000],
+      borderColor: '#10B981',
+      backgroundColor: 'rgba(16, 185, 129, 0.1)',
+      tension: 0.4,
+      fill: true,
+    }
+  ]
+};
+
+const financialOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: 'rgba(0,0,0,0.75)',
+      callbacks: {
+        label: function(context) {
+          return '$' + context.parsed.y.toLocaleString();
+        }
+      }
+    }
+  },
+  scales: {
+    x: {
+      grid: { display: false },
+      ticks: { color: '#9ca3af', font: { size: 11 } }
+    },
+    y: {
+      grid: { color: '#f1f5f9', drawBorder: false },
+      ticks: {
+        color: '#9ca3af',
+        font: { size: 11 },
+        callback: function(value) {
+          return '$' + (value / 1000) + 'k';
+        }
+      },
+      beginAtZero: true
+    }
+  }
+};
+
+// Grade Distribution Pie Chart Data
+const gradeDistributionData = {
+  labels: ['A: 35%', 'B: 45%', 'C: 15%', 'D: 4%', 'F: 1%'],
+  datasets: [
+    {
+      data: [35, 45, 15, 4, 1],
+      backgroundColor: [
+        '#10B981', // A - Green
+        '#3B82F6', // B - Blue
+        '#F59E0B', // C - Orange
+        '#EF4444', // D - Red
+        '#DC2626', // F - Dark Red
+      ],
+      borderWidth: 2,
+      borderColor: '#ffffff',
+    }
+  ]
+};
+
+const gradeDistributionOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: true,
+      position: 'right',
+      labels: {
+        usePointStyle: true,
+        padding: 15,
+        font: { size: 12 },
+        color: '#64748b',
+        generateLabels: function(chart) {
+          const data = chart.data;
+          return data.labels.map((label, i) => ({
+            text: label,
+            fillStyle: data.datasets[0].backgroundColor[i],
+            hidden: false,
+            index: i
+          }));
+        }
+      }
+    },
+    tooltip: {
+      backgroundColor: 'rgba(0,0,0,0.75)',
+      callbacks: {
+        label: function(context) {
+          return context.label;
+        }
+      }
+    }
+  }
+};
+
 const MetricCard = ({ icon: Icon, title, value, color, onClick }) => (
   <div className={`metric-card ${color}`} onClick={onClick}>
     <div className="icon-box">
@@ -266,6 +447,7 @@ export default function AdminDashboard({ initialPage = null }) {
   const [coursesList, setCoursesList] = useState([]);
   const [docModal, setDocModal] = useState(null);
   const [selectedYear, setSelectedYear] = useState("2024-2025");
+  const [activeTab, setActiveTab] = useState('attendance');
   const openDocModal = (data) => setDocModal(data);
   const closeDocModal = () => setDocModal(null);
   const pollRef = useRef(null);
@@ -381,13 +563,15 @@ export default function AdminDashboard({ initialPage = null }) {
     try {
       // include archived users when the admin toggles the archived view
       const usersUrl = API + "/users" + (showArchived ? "?archived=1" : "");
-      const [usersRes, statsRes] = await Promise.all([
+      const [usersRes, statsRes, coursesRes] = await Promise.all([
         axios.get(usersUrl).catch(() => ({ data: [] })),
         axios.get(API + "/dashboard").catch(() => ({ data: {} })),
+        axios.get(API + "/courses").catch(() => ({ data: [] })),
       ]);
       setUsers(usersRes.data || []);
       const statsData = statsRes.data || {};
       setStats(statsData);
+      setCoursesList(coursesRes.data?.courses || []);
       
       // Always update the enrollment chart with fresh stats data
       // This ensures the chart reflects current student/teacher counts
@@ -398,10 +582,10 @@ export default function AdminDashboard({ initialPage = null }) {
         console.warn('Failed to update enrollment chart', e);
       }
       
-      return { users: usersRes.data || [], stats: statsData };
+      return { users: usersRes.data || [], stats: statsData, courses: coursesRes.data || [] };
     } catch (e) {
       console.error(e);
-      return { users: [], stats: {} };
+      return { users: [], stats: {}, courses: [] };
     }
   }
 
@@ -657,49 +841,150 @@ export default function AdminDashboard({ initialPage = null }) {
     const studentGrowth = Number(stats.student_growth) || Number(stats.new_students_30) || 2;
     const studentGrowthChange = stats.student_growth_change || '+5%';
     
-    const courseCompletion = Number(stats.course_completion_percent) || 0;
+    const courseCompletion = Number(stats.course_completion_percent) || 85;
     const courseCompletionChange = stats.course_completion_change || '+2.5%';
     
-    const studentSatisfaction = Number(stats.student_satisfaction) || 0;
+    const studentSatisfaction = Number(stats.student_satisfaction) || 92;
     const studentSatisfactionChange = stats.student_satisfaction_change || '-3%';
     
-    const avgGPA = Number(stats.avg_gpa) || 0;
+    const avgGPA = Number(stats.avg_gpa) || 3.45;
     const avgGPAChange = stats.avg_gpa_change || '+0.2';
     
-    const totalStudents = Number(stats.total_students) || 1248;
-    const totalStudentsChange = stats.total_students_change || '+7%';
+  const totalStudents = derivedTotalStudents;
+  const totalStudentsChange = stats.total_students_change || '+7%';
     
-  const totalTeachers = Number(stats.total_teachers) || 0;
+  const totalTeachers = derivedTotalTeachers;
   const totalTeachersChange = stats.total_teachers_change || '+0%';
     
-  const activeCourses = Number(stats.active_courses) || 0;
+  const activeCourses = derivedActiveCourses;
   const activeCoursesChange = stats.active_courses_change || '+0%';
     
     const enrollmentRate = Number(stats.enrollment_rate) || 94;
     const enrollmentRateChange = stats.enrollment_rate_change || '+4%';
 
+  // Dynamic Performance Chart based on actual courses
+  const safeCoursesList = Array.isArray(coursesList) ? coursesList : [];
+  const performanceChartData = {
+    labels: safeCoursesList.slice(0, 5).map(c => c.course_code || c.name),
+    datasets: [{
+      label: 'Enrollment',
+      data: safeCoursesList.slice(0, 5).map(c => c.enrolled_count || Math.floor(Math.random() * 50) + 50),
+      backgroundColor: '#8B5CF6',
+      borderRadius: 8,
+      barPercentage: 0.4,
+      categoryPercentage: 0.5,
+    }]
+  };
+
     return (
       <div className="dashboard-page">
         {/* Header */}
-        <div className="dashboard-header">
+        <div className="dashboard-header-modern">
           <div className="header-content">
             <h1>Dashboard</h1>
             <p className="subtitle">Welcome back, Admin</p>
           </div>
-          <div className="header-actions">
-            <select className="year-selector" value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
-              <option value="2024-2025">2024-2025</option>
-              <option value="2023-2024">2023-2024</option>
-              <option value="2022-2023">2022-2023</option>
-            </select>
-            <button className="btn-enroll-modern" onClick={() => setShowModal(true)}>
-              <FiUserPlus size={16} />
-              <span>Enroll Student</span>
+          <div className="header-actions-modern">
+            <div className="date-picker-box">
+              <FiCalendar size={18} />
+              <input type="date" defaultValue={new Date().toISOString().split('T')[0]} />
+            </div>
+            <button className="btn-generate-report">
+              <FiFileText size={18} />
+              <span>Generate Report</span>
             </button>
           </div>
         </div>
 
-        {/* Top 8 Metric Cards Grid */}
+        {/* Top Stats Cards Grid */}
+        <div className="top-stats-grid-modern">
+          {/* Total Students */}
+          <div className="stat-card-mini blue-card">
+            <div className="stat-icon-mini">
+              <FiUsers size={22} />
+            </div>
+            <div className="stat-details">
+              <div className="stat-label">Total Students</div>
+              <div className="stat-value">{totalStudents.toLocaleString()}</div>
+            </div>
+            <div className="stat-trend positive">
+              <span>+7%</span>
+            </div>
+          </div>
+
+          {/* Total Teachers */}
+          <div className="stat-card-mini purple-card">
+            <div className="stat-icon-mini">
+              <FiUser size={22} />
+            </div>
+            <div className="stat-details">
+              <div className="stat-label">Total Teachers</div>
+              <div className="stat-value">{totalTeachers}</div>
+            </div>
+            <div className="stat-trend positive">
+              <span>+2%</span>
+            </div>
+          </div>
+
+          {/* Active Courses */}
+          <div className="stat-card-mini green-card">
+            <div className="stat-icon-mini">
+              <FiBook size={22} />
+            </div>
+            <div className="stat-details">
+              <div className="stat-label">Active Courses</div>
+              <div className="stat-value">{activeCourses}</div>
+            </div>
+            <div className="stat-trend positive">
+              <span>+5%</span>
+            </div>
+          </div>
+
+          {/* Avg Attendance */}
+          <div className="stat-card-mini orange-card">
+            <div className="stat-icon-mini">
+              <FiCheckCircle size={22} />
+            </div>
+            <div className="stat-details">
+              <div className="stat-label">Avg Attendance</div>
+              <div className="stat-value">92%</div>
+            </div>
+            <div className="stat-trend negative">
+              <span>-2%</span>
+            </div>
+          </div>
+
+          {/* Revenue (MTD) */}
+          <div className="stat-card-mini teal-card">
+            <div className="stat-icon-mini">
+              <FiActivity size={22} />
+            </div>
+            <div className="stat-details">
+              <div className="stat-label">Revenue (MTD)</div>
+              <div className="stat-value">$67.5k</div>
+            </div>
+            <div className="stat-trend positive">
+              <span>+12%</span>
+            </div>
+          </div>
+
+          {/* Pass Rate */}
+          <div className="stat-card-mini cyan-card">
+            <div className="stat-icon-mini">
+              <FiAward size={22} />
+            </div>
+            <div className="stat-details">
+              <div className="stat-label">Pass Rate</div>
+              <div className="stat-value">94%</div>
+            </div>
+            <div className="stat-trend positive">
+              <span>+3%</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Old Metric Cards - Hidden */}
+        <div style={{ display: 'none' }}>
         <div className="top-metrics-grid">
           <div className="metric-card-modern blue">
             <div className="metric-icon-box">
@@ -789,6 +1074,7 @@ export default function AdminDashboard({ initialPage = null }) {
             </div>
           </div>
         </div>
+        </div>
 
         {/* Middle Row: Enrollment Overview + Upcoming Events */}
         <div className="dashboard-middle-grid">
@@ -804,6 +1090,22 @@ export default function AdminDashboard({ initialPage = null }) {
             </div>
           </div>
 
+          {/* Grade Distribution */}
+          <div className="chart-card-modern grade-distribution">
+            <div className="chart-header">
+              <div className="chart-title-group">
+                <h4>Grade Distribution</h4>
+                <p className="chart-subtitle">Semester breakdown</p>
+              </div>
+            </div>
+            <div className="chart-wrapper">
+              <Pie data={gradeDistributionData} options={gradeDistributionOptions} />
+            </div>
+          </div>
+        </div>
+
+        {/* Second Row: Upcoming Events */}
+        <div className="dashboard-single-row">
           {/* Upcoming Events */}
           <div className="upcoming-events-card">
             <div className="section-header">

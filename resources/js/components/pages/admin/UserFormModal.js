@@ -1,11 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from 'react-dom';
 import { FiX, FiUser, FiMail, FiPhone, FiMapPin, FiCalendar, FiBook, FiAward } from 'react-icons/fi';
 
-export default function UserFormModal({ initial, onClose, onSave, role = 'student', bare = false }) {
+export function UserFormModal({ visible = true, initial, onClose, onSave, role = 'student', bare = false, simple = false }) {
+  const componentMountedRef = useRef(true);
+  const allowCloseRef = useRef(false);
+  
+  // Protected onClose - only allows close when explicitly allowed
+  const protectedOnClose = (source) => {
+    console.log('[UserFormModal] protectedOnClose called, source:', source);
+    console.log('[UserFormModal] allowCloseRef.current:', allowCloseRef.current);
+    
+    // Only allow close for these specific sources
+    const allowedSources = ['save-success', 'cancel-button', 'close-button'];
+    
+    if (!allowedSources.includes(source)) {
+      console.error('[UserFormModal] ⛔ BLOCKED onClose - source not allowed:', source);
+      return;
+    }
+    
+    console.log('[UserFormModal] ✓ Allowing close, source:', source);
+    allowCloseRef.current = true;
+    if (onClose) {
+      onClose(source);
+    }
+  };
+  
   const [form, setForm] = useState({
     name: "",
+    first_name: '',
     student_id: "",
+    last_name: '',
     date_of_birth: "",
     enrollment_date: "",
     email: "",
@@ -24,12 +49,15 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
     position: '',
     department: '',
     courses_handled: '',
+    fillup_date: '',
   });
   const [submitting, setSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [submitMessage, setSubmitMessage] = useState('');
   const watchdogRef = React.useRef(null);
+  const mountTimeRef = React.useRef(Date.now());
+  const shouldStayMountedRef = React.useRef(true);
 
   // Ensure the internal form.role always reflects the `role` prop passed by the
   // parent. Some callers render this modal for 'teacher' and expect the form to
@@ -43,7 +71,9 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
     if (initial) {
       setForm((f) => ({
         ...f,
-        name: initial.name || (initial.first_name ? `${initial.first_name} ${initial.last_name || ''}`.trim() : ''),
+          name: initial.name || (initial.first_name ? `${initial.first_name} ${initial.last_name || ''}`.trim() : ''),
+          first_name: initial.first_name || (initial.name ? (initial.name.split(' ')[0] || '') : ''),
+          last_name: initial.last_name || (initial.name ? (initial.name.split(' ').slice(1).join(' ') || '') : ''),
         student_id: initial.student?.student_id || initial.student_id || '',
   date_of_birth: initial.date_of_birth || initial.student?.date_of_birth || '',
   enrollment_date: initial.student?.enrollment_date || initial.enrollment_date || '',
@@ -62,6 +92,7 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
         role: initial.role || f.role || role || 'student',
         // optionally set sex if provided on profile
         sex: initial.student?.sex || initial.teacher?.sex || initial.sex || f.sex || '',
+        fillup_date: initial.teacher?.fillup_date || initial.fillup_date || ''
       }));
     }
   }, [initial]);
@@ -72,14 +103,21 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
       if (typeof window !== 'undefined') {
         window.__adminUserModalMounted = true;
         window.__adminUserModalRole = role;
-        try { console.debug('[UserFormModal] mounted for role', role); } catch(e){}
+        shouldStayMountedRef.current = true;
+        console.log('[UserFormModal] ✅✅✅ MOUNTED for role:', role, 'initial:', initial ? 'edit mode' : 'create mode');
+        console.log('[UserFormModal] Mount time:', new Date().toISOString());
       }
-    } catch(e){}
+    } catch(e){
+      console.error('[UserFormModal] mount error:', e);
+    }
     return () => {
       try {
         if (typeof window !== 'undefined') {
           window.__adminUserModalMounted = false;
-          try { console.debug('[UserFormModal] unmounted for role', role); } catch(e){}
+          console.error('[UserFormModal] ❌❌❌ UNMOUNTED for role:', role);
+          console.error('[UserFormModal] Unmount time:', new Date().toISOString());
+          console.error('[UserFormModal] shouldStayMountedRef was:', shouldStayMountedRef.current);
+          console.trace('[UserFormModal] UNMOUNT STACK TRACE:');
         }
       } catch(e){}
     };
@@ -90,14 +128,40 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((f) => ({ ...f, [name]: value }));
+    setForm((f) => {
+      const next = { ...f, [name]: value };
+      try {
+        // keep `name` in sync with first_name/last_name when either changes
+        if (name === 'first_name') {
+          next.name = `${value || ''} ${next.last_name || ''}`.trim();
+        } else if (name === 'last_name') {
+          next.name = `${next.first_name || ''} ${value || ''}`.trim();
+        } else if (name === 'name') {
+          // if user edits full name directly, attempt to split into first/last
+          const parts = (value || '').trim().split(/\s+/);
+          if (parts.length) {
+            next.first_name = parts[0] || '';
+            next.last_name = parts.slice(1).join(' ') || '';
+          }
+        }
+      } catch (e) { /* ignore sync errors */ }
+      return next;
+    });
   };
 
   const submit = (e) => {
     e.preventDefault();
     // minimal client-side validation
     const err = {};
-    if (!form.name || !form.name.trim()) err.name = 'Full name is required';
+    // Ensure roleVal is defined before use
+    const roleVal = form.role || role || 'student';
+    // Require first and last names for students and teachers
+    if ((roleVal === 'student') || (roleVal === 'teacher')) {
+      if (!form.first_name || !form.first_name.trim()) err.first_name = 'First name is required';
+      if (!form.last_name || !form.last_name.trim()) err.last_name = 'Last name is required';
+    } else {
+      if (!form.name || !form.name.trim()) err.name = 'Full name is required';
+    }
     // student fields are optional on the client; backend will generate or validate as needed
     if (!form.email || !form.email.trim()) err.email = 'Email is required';
     // simple email pattern
@@ -112,13 +176,13 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
       try { setSubmitting(false); } catch(_e){}
       try { setSubmitMessage('Taking longer than expected. Please check your connection or try again.'); } catch(_e){}
     }, 15000);
-    // assemble payload matching ERD fields
-    const roleVal = form.role || role || 'student';
+  // assemble payload matching ERD fields (roleVal already defined above)
 
     // split name into first_name / last_name for backend compatibility
-    const parts = (form.name || '').trim().split(/\s+/);
-    const first_name = parts.length ? parts[0] : '';
-    const last_name = parts.length > 1 ? parts.slice(1).join(' ') : '';
+  // prefer explicit first_name/last_name when present, otherwise split 'name'
+  const nameParts = (form.name || '').trim().split(/\s+/);
+  const first_name = form.first_name || (nameParts.length ? nameParts[0] : '');
+  const last_name = form.last_name || (nameParts.length > 1 ? nameParts.slice(1).join(' ') : '');
 
     const base = {
       name: form.name,
@@ -134,34 +198,64 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
     if (roleVal === 'teacher') {
       const payload = {
         ...base,
-        faculty_id: form.faculty_id,
+        faculty_id: form.faculty_id || undefined,
         teacher_id: form.teacher_id || form.faculty_id || undefined,
-        first_name,
-        last_name,
-        sex: form.sex,
+        first_name: first_name || form.first_name || 'Teacher',
+        last_name: last_name || form.last_name || 'Account',
+        sex: form.sex || undefined,
         email: form.email,
-        date_of_birth: form.date_of_birth,
-        phone_number: form.phone_number,
-        address: form.address,
-        course: form.major || form.course || '',
-        department: form.department,
-        status: form.status,
-        courses_handled: form.courses_handled,
-        position: form.position,
+        date_of_birth: form.date_of_birth || undefined,
+        phone_number: form.phone_number || undefined,
+        address: form.address || undefined,
+        department: form.department || undefined,
+        status: form.status || 'Active',
+        courses_handled: form.courses_handled || undefined,
+        fillup_date: form.fillup_date || undefined,
+        position: form.position || undefined,
       };
       if (initial && initial.id) payload.id = initial.id;
       // include password for new user creation
       if (!(initial && initial.id)) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
         // strip empty values so the server doesn't receive blank strings that overwrite required columns
         const payloadFiltered = Object.fromEntries(Object.entries(payload).filter(([k,v]) => v !== '' && v !== null && typeof v !== 'undefined'));
+        
+        console.log('[UserFormModal] 📤 Sending STUDENT payload:', payloadFiltered);
+        console.log('[UserFormModal] Role: student, isEdit:', !!initial);
+        
         Promise.resolve(onSave(payloadFiltered, !!initial)).then((res) => {
+        console.log('[UserFormModal] ✅ Student save successful!', res);
         // on success, clear errors and close immediately
         try { setErrors({}); } catch(e){}
-  try { onClose && onClose('save-success'); } catch(e){}
+  try { protectedOnClose('save-success'); } catch(e){}
       }).catch((err) => {
+        console.error('[UserFormModal] ❌ Student save failed:', err);
+        console.error('[UserFormModal] Error response:', err.response);
+        
+        // Show detailed error
+        if (err && err.response && err.response.data) {
+          const data = err.response.data;
+          console.error('[UserFormModal] Server error data:', data);
+          
+          // Handle validation errors
+          if (data.errors && typeof data.errors === 'object') {
+            setErrors(data.errors);
+            const errorMsg = Object.values(data.errors).flat().join('\n');
+            alert('Validation failed:\n\n' + errorMsg);
+            return;
+          }
+          
+          // Handle other error messages
+          if (data.message) {
+            alert('Error: ' + data.message);
+            return;
+          }
+        }
+        
         // if the caller attached field errors, surface them inline
         if (err && err.fields && typeof err.fields === 'object') {
           setErrors(err.fields);
+          const errorMsg = Object.values(err.fields).flat().join('\n');
+          alert('Validation failed:\n\n' + errorMsg);
           return;
         }
         // show server response for debugging
@@ -170,13 +264,12 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
             const s = err.response.status;
             const d = err.response.data;
             console.warn('UserFormModal save error', s, d);
-            alert('Save failed: ' + (d && (d.message || JSON.stringify(d)) || s));
             if (d && d.errors) setErrors(Object.keys(d.errors).reduce((acc,k)=> ({ ...acc, [k]: d.errors[k].join(' ') }), {}));
             return;
           }
         } catch(e) { console.error('error showing save error', e); }
-        if (err && err.message) { alert(err.message); return; }
-        alert('Failed to save user');
+        if (err && err.message) { alert('Error: ' + err.message); return; }
+        alert('Failed to save student. Check console for details.');
       }).finally(() => { try { if (watchdogRef.current) { clearTimeout(watchdogRef.current); watchdogRef.current = null; } } catch(_e){} try { setSubmitting(false); } catch(_e){} });
       return;
     }
@@ -202,23 +295,92 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
   if (initial && initial.id) payload.id = initial.id;
   if (!(initial && initial.id)) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
   const payloadFiltered = Object.fromEntries(Object.entries(payload).filter(([k,v]) => v !== '' && v !== null && typeof v !== 'undefined'));
+  
+  console.log('[UserFormModal] 📤 Sending payload:', payloadFiltered);
+  console.log('[UserFormModal] Role:', role, 'isEdit:', !!initial);
+  
   Promise.resolve(onSave(payloadFiltered, !!initial)).then((res) => {
+    console.log('[UserFormModal] ✅ Save successful!', res);
     try { setErrors({}); } catch(e){}
-  try { onClose && onClose('save-success'); } catch(e){}
+    try { protectedOnClose('save-success'); } catch(e){}
   }).catch((err) => {
+    console.error('[UserFormModal] ❌ Save failed:', err);
+    console.error('[UserFormModal] Error response:', err.response);
+    
+    // Show detailed error
+    if (err && err.response && err.response.data) {
+      const data = err.response.data;
+      console.error('[UserFormModal] Server error data:', data);
+      
+      // Handle validation errors
+      if (data.errors && typeof data.errors === 'object') {
+        setErrors(data.errors);
+        const errorMsg = Object.values(data.errors).flat().join('\n');
+        alert('Validation failed:\n\n' + errorMsg);
+        return;
+      }
+      
+      // Handle other error messages
+      if (data.message) {
+        alert('Error: ' + data.message);
+        return;
+      }
+    }
+    
     if (err && err.fields && typeof err.fields === 'object') {
       setErrors(err.fields);
+      const errorMsg = Object.values(err.fields).flat().join('\n');
+      alert('Validation failed:\n\n' + errorMsg);
       return;
     }
+    
     if (err && err.message) {
-      alert(err.message);
+      alert('Error: ' + err.message);
       return;
     }
-    alert('Failed to save user');
-  }).finally(() => { try { if (watchdogRef.current) { clearTimeout(watchdogRef.current); watchdogRef.current = null; } } catch(_e){} try { setSubmitting(false); } catch(_e){} });
+    
+    alert('Failed to save teacher. Check console for details.');
+  }).finally(() => { 
+    try { if (watchdogRef.current) { clearTimeout(watchdogRef.current); watchdogRef.current = null; } } catch(_e){} 
+    try { setSubmitting(false); } catch(_e){} 
+  });
   };
   // build role-specific fragments to keep the JSX (createElement) tree simple and parser-friendly
-  const studentTopLeft = React.createElement(React.Fragment, null,
+  const studentTopLeft = simple ? React.createElement(React.Fragment, null,
+    React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'Student ID'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiAward, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'student_id', value: form.student_id, onChange: handleChange, placeholder: 'ST2024001' })
+      ),
+      errors.student_id ? React.createElement('div', { className: 'input-error' }, errors.student_id) : null
+    ),
+    React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'Course *'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiBook, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'major', value: form.major, onChange: handleChange, placeholder: 'Select course' })
+      ),
+      errors.major ? React.createElement('div', { className: 'input-error' }, errors.major) : null
+    )
+  ) : React.createElement(React.Fragment, null,
+    // explicit first/last name for students
+    React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'First Name *'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiUser, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'first_name', value: form.first_name, onChange: handleChange, placeholder: 'John' })
+      ),
+      errors.first_name ? React.createElement('div', { className: 'input-error' }, errors.first_name) : null
+    ),
+    React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'Last Name *'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiUser, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'last_name', value: form.last_name, onChange: handleChange, placeholder: 'Doe' })
+      ),
+      errors.last_name ? React.createElement('div', { className: 'input-error' }, errors.last_name) : null
+    ),
     React.createElement('div', { className: 'form-group-modern' },
       React.createElement('label', null, 'Student ID'),
       React.createElement('div', { className: 'input-with-icon' },
@@ -254,10 +416,33 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
 
   const teacherTopLeft = React.createElement(React.Fragment, null,
     React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'First Name *'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiUser, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'first_name', value: form.first_name, onChange: handleChange, placeholder: 'John', required: true })
+      ),
+      errors.first_name ? React.createElement('div', { className: 'input-error' }, errors.first_name) : null
+    ),
+    React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'Last Name *'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiUser, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'last_name', value: form.last_name, onChange: handleChange, placeholder: 'Doe', required: true })
+      ),
+      errors.last_name ? React.createElement('div', { className: 'input-error' }, errors.last_name) : null
+    ),
+    React.createElement('div', { className: 'form-group-modern' },
       React.createElement('label', null, 'Faculty ID'),
       React.createElement('div', { className: 'input-with-icon' },
         React.createElement(FiAward, { className: 'input-icon', size: 18 }),
         React.createElement('input', { name: 'faculty_id', value: form.faculty_id, onChange: handleChange, placeholder: 'FAC2024001' })
+      )
+    ),
+    React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'Fillup Date'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiCalendar, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'fillup_date', type: 'date', value: form.fillup_date, onChange: handleChange })
       )
     ),
     React.createElement('div', { className: 'form-group-modern' },
@@ -274,13 +459,7 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
         React.createElement('input', { name: 'position', value: form.position, onChange: handleChange, placeholder: 'Professor / Lecturer' })
       )
     ),
-    React.createElement('div', { className: 'form-group-modern' },
-      React.createElement('label', null, 'Phone *'),
-      React.createElement('div', { className: 'input-with-icon' },
-        React.createElement(FiPhone, { className: 'input-icon', size: 18 }),
-        React.createElement('input', { name: 'phone_number', value: form.phone_number, onChange: handleChange, placeholder: '(555) 123-4567' })
-      )
-    )
+    // Phone moved to right column for teachers to balance form height
   );
 
   const topLeft = React.createElement('div', { className: 'col-modern' },
@@ -294,7 +473,15 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
     (form.role === 'student' ? studentTopLeft : teacherTopLeft)
   );
 
-  const topRight = React.createElement('div', { className: 'col-modern' },
+  const topRight = simple ? React.createElement('div', { className: 'col-modern' },
+    React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'Date of Enrollment'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiCalendar, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'enrollment_date', type: 'date', value: form.enrollment_date, onChange: handleChange })
+      )
+    )
+  ) : React.createElement('div', { className: 'col-modern' },
     React.createElement('div', { className: 'form-group-modern' },
       React.createElement('label', null, 'Date of Birth *'),
       React.createElement('div', { className: 'input-with-icon' },
@@ -318,6 +505,14 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
       React.createElement('div', { className: 'input-with-icon' },
         React.createElement(FiCalendar, { className: 'input-icon', size: 18 }),
         React.createElement('input', { name: 'enrollment_date', type: 'date', value: form.enrollment_date, onChange: handleChange })
+      )
+    ) : null),
+    // For teachers (non-students), include Phone in the right column to balance the form
+    (form.role === 'teacher' ? React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'Phone *'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiPhone, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'phone_number', value: form.phone_number, onChange: handleChange, placeholder: '(555) 123-4567' })
       )
     ) : null),
     React.createElement('div', { className: 'form-group-modern' },
@@ -391,7 +586,9 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
           React.createElement('option', { value: 'Locked' }, 'Locked')
         )
       )
-    )
+    ),
+    // (No duplicate Courses Handled on right column — it's rendered in middleLeftTeacher)
+    null
   );
 
   const isTeacher = (form.role || role) === 'teacher';
@@ -413,7 +610,18 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
           )
         )
       ),
-      React.createElement('button', { className: 'modal-close-btn', onClick: onClose, type: 'button' },
+      React.createElement('button', { 
+        className: 'modal-close-btn', 
+        onClick: (e) => { 
+          e.preventDefault(); 
+          e.stopPropagation();
+          console.log('[UserFormModal] X button clicked - calling protectedOnClose');
+          // Set a flag on window so parent knows user intentionally clicked X
+          try { window.__userClickedCloseButton = true; } catch(e){}
+          protectedOnClose('close-button'); 
+        }, 
+        type: 'button' 
+      },
         React.createElement(FiX, { size: 20 })
       )
     ),
@@ -421,12 +629,24 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
       'form',
       { onSubmit: submit, className: 'modal-body-modern' },
       React.createElement('div', { className: 'modal-grid-modern' }, topLeft, topRight),
-      React.createElement('div', { className: 'modal-grid-modern full' }, middleLeft, middleRight),
+      (!simple ? React.createElement('div', { className: 'modal-grid-modern full' }, middleLeft, middleRight) : null),
       (submitMessage ? React.createElement('div', { className: 'submit-message', style: { marginTop: 8, color: '#92400e', background: '#fff7ed', border: '1px solid #fed7aa', padding: 10, borderRadius: 8 } }, submitMessage) : null),
       React.createElement(
         'footer',
         { className: 'modal-footer-modern' },
-        React.createElement('button', { type: 'button', className: 'btn-cancel-modern', onClick: onClose, disabled: submitting }, 'Cancel'),
+        React.createElement('button', { 
+          type: 'button', 
+          className: 'btn-cancel-modern', 
+          onClick: (e) => { 
+            e.preventDefault(); 
+            e.stopPropagation();
+            console.log('[UserFormModal] Cancel button clicked - calling protectedOnClose');
+            // Set a flag on window so parent knows user intentionally clicked Cancel
+            try { window.__userClickedCloseButton = true; } catch(e){}
+            protectedOnClose('cancel-button'); 
+          }, 
+          disabled: submitting 
+        }, 'Cancel'),
         React.createElement('button', { type: 'submit', className: 'btn-save-modern', disabled: submitting }, 
           submitting ? (
             React.createElement('span', null, 
@@ -456,19 +676,20 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
         'div',
         { 
           className: 'modal-overlay', 
-          style: { zIndex: 10000, position: 'fixed', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', overflowY: 'auto', backgroundColor: 'rgba(0, 0, 0, 0.5)' },
+          style: { zIndex: 10000, position: 'fixed', inset: 0, display: visible ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center', padding: '24px', overflowY: 'auto', backgroundColor: 'rgba(0, 0, 0, 0.5)' },
           onMouseDown: (e) => {
-            // Only close on mouseDown if clicking directly on backdrop (not modal content)
-            // Use mouseDown instead of onClick to prevent bubbling issues
+            // DISABLED: Backdrop clicks no longer close the modal
+            // Users must use X button or Cancel button
             if (e.target === e.currentTarget) {
+              console.log('[UserFormModal] Backdrop mouseDown detected - IGNORING (use X or Cancel button)');
               e.preventDefault();
               e.stopPropagation();
-              onClose && onClose('backdrop-click');
             }
           },
           onClick: (e) => {
             // Prevent any click events from bubbling
             if (e.target === e.currentTarget) {
+              console.log('[UserFormModal] Backdrop click detected - IGNORING');
               e.preventDefault();
               e.stopPropagation();
             }
@@ -483,6 +704,5 @@ export default function UserFormModal({ initial, onClose, onSave, role = 'studen
       return createPortal(overlay, root);
     }
   } catch (e) { /* fall through to inline */ }
-
-  return React.createElement('div', { className: 'modal-overlay', style: { zIndex: 10000, position: 'fixed', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', overflowY: 'auto' } }, React.cloneElement(modalInner, { style: Object.assign({}, modalInner.props && modalInner.props.style || {}, { maxHeight: '90vh', overflowY: 'auto', margin: '0 auto', alignSelf: 'center', position: 'relative', left: 'initial', transform: 'none' }) }));
+  return React.createElement('div', { className: 'modal-overlay', style: { zIndex: 10000, position: 'fixed', inset: 0, display: visible ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center', padding: '24px', overflowY: 'auto' } }, React.cloneElement(modalInner, { style: Object.assign({}, modalInner.props && modalInner.props.style || {}, { maxHeight: '90vh', overflowY: 'auto', margin: '0 auto', alignSelf: 'center', position: 'relative', left: 'initial', transform: 'none' }) }));
 }

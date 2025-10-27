@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { roleLabels } from './labels';
 import { useNavigate } from "react-router-dom";
+import { useSettings } from '../../../contexts/SettingsContext';
 import axios from "axios";
 import {
   FiHome,
@@ -18,6 +19,7 @@ import "./../../../../sass/Sidebar.scss";
 
 export default function Sidebar({ activePage, onNavigate }) {
   const navigate = useNavigate();
+  const { schoolName, logo } = useSettings();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [stats, setStats] = useState({});
@@ -29,7 +31,7 @@ export default function Sidebar({ activePage, onNavigate }) {
     { id: "courses", label: "Course Management", icon: React.createElement(FiBookOpen) },
     { id: "reports", label: "Reports", icon: React.createElement(FiBarChart2) },
     { id: "documents", label: "Documents", icon: React.createElement(FiFileText) },
-    { id: "settings", label: "Settings", icon: React.createElement(FiSettings) },
+    { id: "settings", label: "System Settings", icon: React.createElement(FiSettings) },
   ];
 
 
@@ -199,8 +201,13 @@ export default function Sidebar({ activePage, onNavigate }) {
       { className: "sidebar-top" },
       // logo + title
       React.createElement('div', { className: 'logo' },
-        React.createElement('div', { className: 'logo-icon' }, React.createElement(FiBookOpen)),
-        !collapsed && React.createElement('div', { className: 'logo-text' }, React.createElement('div', { className: 'site-title' }, 'School Admin'), React.createElement('div', { className: 'site-sub muted' }, 'Management System'))
+        logo 
+          ? React.createElement('img', { src: logo, alt: 'Logo', style: { width: 32, height: 32, borderRadius: 6, objectFit: 'cover' } })
+          : React.createElement('div', { className: 'logo-icon' }, React.createElement(FiBookOpen)),
+        !collapsed && React.createElement('div', { className: 'logo-text' }, 
+          React.createElement('div', { className: 'site-title' }, schoolName || 'School Admin'), 
+          React.createElement('div', { className: 'site-sub muted' }, 'Management System')
+        )
       ),
       // collapse toggle
       React.createElement(

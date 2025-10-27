@@ -1,33 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { FiUpload, FiDownload, FiPlus, FiEye, FiEdit2, FiLock, FiTrash2, FiUsers, FiCheckCircle, FiAward, FiAlertTriangle, FiBook, FiArchive } from 'react-icons/fi';
-import UserFormModal from './UserFormModal';
+import { UserFormModal } from './UserFormModal';
 import StudentDetailModal from './StudentDetailModal';
 
-  // Simple ErrorBoundary to catch render errors inside modal components
-function ModalErrorBoundary({ children }) {
-  class C extends React.Component {
-    constructor(props) { super(props); this.state = { hasError: false, error: null, info: null }; }
-    static getDerivedStateFromError(err) { return { hasError: true, error: err }; }
-  componentDidCatch(error, info) { try { console.error('Modal render error: ', error); } catch(e){}; this.setState({ info }); }
-    render() {
-      if (this.state.hasError) {
-        return React.createElement('div', { style: { padding: 20, background: '#fff', borderRadius: 8 } }, React.createElement('h3', null, 'Modal failed to load'), React.createElement('pre', { style: { whiteSpace: 'pre-wrap', color: '#b91c1c' } }, this.state.error && this.state.error.toString()));
-      }
-      return this.props.children;
-    }
-  }
-  return React.createElement(C, null, children);
-}
-
 export default function AdminUsers({ role = 'student' }) {
-  const mountedRef = useRef(true);
-  const highlightTimerRef = useRef(null);
-  const [users, setUsers] = useState([]);
-  const [archivedUsers, setArchivedUsers] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModalInternal] = useState(false);
   const [modalInitial, setModalInitial] = useState(null);
   const [modalRole, setModalRole] = useState(role);
+  // missing shared state/refs used across the component
+  const [users, setUsers] = useState([]);
+  const [archivedUsers, setArchivedUsers] = useState([]);
+  const mountedRef = useRef(false);
+  const modalShouldStayOpenRef = useRef(false);
+  const highlightTimerRef = useRef(null);
+  
+  // Protected setShowModal - only allows setting to false when explicitly allowed
+  const setShowModal = (value) => {
+    console.log('[AdminUsers] setShowModal called with:', value);
+    console.log('[AdminUsers] modalShouldStayOpenRef.current:', modalShouldStayOpenRef.current);
+    
+    if (value === false && modalShouldStayOpenRef.current) {
+      console.error('[AdminUsers] ⛔⛔⛔ BLOCKED setShowModal(false) - modalShouldStayOpenRef is TRUE');
+      console.trace('[AdminUsers] BLOCKED setShowModal stack trace:');
+      return; // BLOCK the close
+    }
+    
+    console.log('[AdminUsers] ✓ Allowing setShowModal:', value);
+    setShowModalInternal(value);
+  };
+  
   const [search, setSearch] = useState('');
   const [showArchived, setShowArchived] = useState(false);
   const [filterStatus, setFilterStatus] = useState('all');
@@ -36,14 +38,31 @@ export default function AdminUsers({ role = 'student' }) {
   const [filterMajor, setFilterMajor] = useState('');
   const [filterDepartment, setFilterDepartment] = useState('');
   const [filterYear, setFilterYear] = useState('');
+  const [filterDate, setFilterDate] = useState('');
   const [detailUser, setDetailUser] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
+  const [actionMessage, setActionMessage] = useState('');
+  const [actionMessageType, setActionMessageType] = useState('success');
+  const actionMessageTimerRef = useRef(null);
+  const [actionHighlightId, setActionHighlightId] = useState(null);
+  const actionHighlightTimerRef = useRef(null);
   const [now, setNow] = useState(() => new Date());
   // selection removed
   const [importPreview, setImportPreview] = useState(null);
   const [importRows, setImportRows] = useState([]);
   const [highlightNewId, setHighlightNewId] = useState(null);
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'grid'
+  
+  // Monitor showModal changes
+  useEffect(() => {
+    console.log('[AdminUsers] 🔔 showModal changed to:', showModal);
+    console.log('[AdminUsers] modalShouldStayOpenRef.current:', modalShouldStayOpenRef.current);
+    if (!showModal && modalShouldStayOpenRef.current) {
+      console.error('[AdminUsers] ❌❌❌ ERROR: showModal is FALSE but modalShouldStayOpenRef is TRUE!');
+      console.error('[AdminUsers] This should never happen! Modal was forcefully closed somehow.');
+      console.trace('[AdminUsers] showModal change stack trace:');
+    }
+  }, [showModal]);
 
   // fallback inline form removed
 
@@ -89,11 +108,28 @@ export default function AdminUsers({ role = 'student' }) {
   const archiveUser = async (id) => {
     if (!confirm(`Archive this ${pageLower}?`)) return;
     try {
-      await axios.delete(`/api/admin/users/${id}`);
-      await loadUsers(); await loadArchivedUsers();
-      try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-      alert(`${pageType} archived`);
-    } catch (err) { console.error('Archive failed', err); alert(`Failed to archive ${pageLower}`); }
+      const res = await axios.delete(`/api/admin/users/${id}`);
+      // optimistic in-memory update: move user to archived list or mark deleted_at
+      const existing = users.find(u => String(u.id) === String(id)) || archivedUsers.find(u => String(u.id) === String(id));
+      const timestamp = new Date().toISOString();
+      if (existing) {
+        const updated = { ...existing, deleted_at: timestamp };
+        // remove from users (active list)
+        setUsers(prev => prev.filter(u => String(u.id) !== String(id)));
+        // ensure it's present at the top of archivedUsers
+        setArchivedUsers(prev => {
+          const exists = prev.find(x => String(x.id) === String(id));
+          if (exists) return prev.map(x => (String(x.id) === String(id) ? updated : x));
+          return [updated, ...prev];
+        });
+      } else {
+        // fallback: refresh lists if we couldn't find the user locally
+        await loadUsers(); await loadArchivedUsers();
+      }
+  // local optimistic update applied; avoid forcing a full reload to prevent UI flicker
+      showActionMessage(`${pageType} archived successfully`, 'success');
+      return res && res.data ? res.data : {};
+    } catch (err) { console.error('Archive failed', err); showActionMessage(`Failed to archive ${pageLower}`, 'error'); return null; }
   };
 
   // bulk actions removed (selection removed)
@@ -111,40 +147,155 @@ export default function AdminUsers({ role = 'student' }) {
 
   const restoreUser = async (id) => {
     try {
-      await axios.post(`/api/admin/users/${id}/restore`);
-      await loadUsers();
-      await loadArchivedUsers();
-      try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-      alert(`${pageType} restored`);
-    } catch (err) {
-      console.error('Restore failed', err);
-      alert(`Failed to restore ${pageLower}`);
-    }
+      const res = await axios.post(`/api/admin/users/${id}/restore`);
+      // Optimistic in-memory restore: move from archivedUsers back into users
+      const existing = archivedUsers.find(u => String(u.id) === String(id)) || users.find(u => String(u.id) === String(id));
+      if (existing) {
+        const updated = { ...existing, deleted_at: null };
+        // remove from archivedUsers
+        setArchivedUsers(prev => prev.filter(u => String(u.id) !== String(id)));
+        // ensure user is in users list at top
+        setUsers(prev => {
+          const already = prev.find(u => String(u.id) === String(id));
+          if (already) return prev.map(u => (String(u.id) === String(id) ? updated : u));
+          return [updated, ...prev];
+        });
+      } else {
+        // if we couldn't find the object locally, refresh lists
+        await loadUsers(); await loadArchivedUsers();
+      }
+  // local optimistic restore applied; avoid forcing a full reload to prevent UI flicker
+      showActionMessage(`${pageType} restored successfully`, 'success');
+      return res && res.data ? res.data : {};
+    } catch (err) { console.error('Restore failed', err); showActionMessage(`Failed to restore ${pageLower}`, 'error'); return null; }
   };
 
   const permanentDeleteUser = async (id) => {
     if (!confirm(`Permanently delete this ${pageLower}? This cannot be undone.`)) return;
     try {
-      await axios.delete(`/api/admin/users/${id}?force=1`);
-      await loadArchivedUsers();
+      const res = await axios.delete(`/api/admin/users/${id}?force=1`);
+      setArchivedUsers(prev => prev.filter(u => String(u.id) !== String(id)));
       try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-      alert(`${pageType} permanently deleted`);
-    } catch (err) {
-      console.error('Permanent delete failed', err);
-      alert(`Failed to permanently delete ${pageLower}`);
-    }
+      showActionMessage(`${pageType} permanently deleted`, 'success');
+      return res && res.data ? res.data : {};
+    } catch (err) { console.error('Permanent delete failed', err); showActionMessage(`Failed to permanently delete ${pageLower}`, 'error'); return null; }
   };
 
   const toggleLock = async (id, currentlyLocked) => {
     try {
-      if (currentlyLocked) await axios.post(`/api/admin/users/${id}/unlock`);
-      else await axios.post(`/api/admin/users/${id}/lock`);
-      await loadUsers();
-      try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+      let res = null;
+      if (currentlyLocked) res = await axios.post(`/api/admin/users/${id}/unlock`);
+      else res = await axios.post(`/api/admin/users/${id}/lock`);
+      // update both active and archived lists so the row remains visible regardless of filters
+      setUsers(prev => prev.map(u => (String(u.id) === String(id) ? { ...u, is_locked: !currentlyLocked } : u)));
+      setArchivedUsers(prev => prev.map(u => (String(u.id) === String(id) ? { ...u, is_locked: !currentlyLocked } : u)));
+  // Optimistic lock state updated locally. Do not dispatch a global reload event.
+  showActionMessage(currentlyLocked ? `${pageType} unlocked` : `${pageType} locked`, 'success');
+      return res && res.data ? res.data : {};
     } catch (err) {
-      console.error('Lock toggle failed', err);
-      alert('Failed to change lock status');
+      // Improved diagnostics: log status and response body when available
+      try {
+        if (err && err.response) {
+          console.error('Lock toggle failed - response status:', err.response.status, 'data:', err.response.data);
+          const serverMsg = (err.response.data && (err.response.data.message || err.response.data.error)) ? (err.response.data.message || err.response.data.error) : null;
+          showActionMessage(serverMsg ? `Failed to change lock status: ${serverMsg}` : 'Failed to change lock status', 'error');
+          // If the direct lock/unlock endpoint failed (maybe due to routing/permission), try the toggle endpoint as a fallback
+          try {
+            const fallback = await axios.post(`/api/admin/users/${id}/toggle-lock`);
+            // update UI to reflect toggled state from fallback on both lists
+            setUsers(prev => prev.map(u => (String(u.id) === String(id) ? { ...u, is_locked: !currentlyLocked } : u)));
+            setArchivedUsers(prev => prev.map(u => (String(u.id) === String(id) ? { ...u, is_locked: !currentlyLocked } : u)));
+            try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+            showActionMessage(`${pageType} lock toggled (fallback)`, 'success');
+            return fallback && fallback.data ? fallback.data : {};
+          } catch (fbErr) {
+            console.error('Fallback toggle-lock failed', fbErr);
+          }
+        } else {
+          console.error('Lock toggle failed (no response available)', err);
+        }
+      } catch (logErr) { console.error('Error while handling lock toggle failure', logErr); }
+      showActionMessage('Failed to change lock status', 'error');
+      return null;
     }
+  };
+
+  const showActionMessage = (text, type = 'success', id = null) => {
+    try { if (actionMessageTimerRef.current) clearTimeout(actionMessageTimerRef.current); } catch(e){}
+    setActionMessage(text);
+    setActionMessageType(type);
+    // optionally highlight the affected row
+    if (id) showActionHighlight(id);
+    actionMessageTimerRef.current = setTimeout(() => { setActionMessage(''); }, 4500);
+  };
+
+  const showActionHighlight = (id) => {
+    try { if (actionHighlightTimerRef.current) clearTimeout(actionHighlightTimerRef.current); } catch(e){}
+    setActionHighlightId(id);
+    actionHighlightTimerRef.current = setTimeout(() => { setActionHighlightId(null); }, 2200);
+  };
+
+  const exportToCSV = () => {
+    const dataToExport = filteredList;
+    if (dataToExport.length === 0) {
+      alert('No data to export');
+      return;
+    }
+
+    let csvContent = '';
+    
+    if (role === 'teacher') {
+      // Headers for teachers
+      csvContent = 'Faculty ID,Name,Email,Department,Specialization,Status\n';
+
+      // Data rows
+      dataToExport.forEach(u => {
+        const teacher = u.teacher || {};
+        const profile = teacher;
+        const fullName = u.name || `${profile.first_name || ''} ${profile.last_name || ''}`.trim();
+        const email = u.email || '';
+        // backend stores the id in `teacher_id` but older frontends used `faculty_id`
+        const facultyId = profile.teacher_id || profile.faculty_id || (u.teacher && u.teacher.teacher_id) || u.student_id || '';
+        const department = profile.department || '';
+        const specialization = profile.specialization || profile.position || profile.subject || '';
+        const statusVal = (profile.status || u.status || 'active').toString();
+
+        csvContent += `"${facultyId}","${fullName}","${email}","${department}","${specialization}","${statusVal}"\n`;
+      });
+    } else {
+      // Headers for students - remove DB ID column
+      csvContent = 'User ID,Student ID,First Name,Last Name,Sex,Email,Course,Department,Status,Date of Enrollment,Year Level\n';
+      
+      // Data rows
+      dataToExport.forEach(u => {
+        const student = u.student || {};
+        const profile = student;
+        const userId = u.user_id || '';
+        const studentId = profile.student_id || u.student_id || '';
+        const firstName = profile.first_name || u.first_name || (u.name ? u.name.split(' ')[0] : '') || '';
+        const lastName = profile.last_name || u.last_name || (u.name ? u.name.split(' ').slice(1).join(' ') : '') || '';
+        const sex = profile.sex || u.sex || '';
+        const email = u.email || '';
+        const course = profile.course || u.course || profile.major || '';
+        const department = profile.department || u.department || '';
+        const statusVal = (profile.status || u.status || 'active').toString();
+        const enrollmentDate = profile.date_of_enrollment || u.date_of_enrollment || (u.created_at ? new Date(u.created_at).toLocaleDateString() : '');
+        const yearLevel = profile.year_level || u.year_level || '';
+        
+        csvContent += `"${userId}","${studentId}","${firstName}","${lastName}","${sex}","${email}","${course}","${department}","${statusVal}","${enrollmentDate}","${yearLevel}"\n`;
+      });
+    }
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${pageType}s_${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   // fetch users on mount and whenever archived toggle changes
@@ -154,7 +305,22 @@ export default function AdminUsers({ role = 'student' }) {
     loadArchivedUsers().catch(() => {});
 
     // listen for global events
-    const onUsersChanged = () => { loadUsers().catch(()=>{}); loadArchivedUsers().catch(()=>{}); };
+    // If a modal is currently open and marked as "should stay open" we ignore
+    // server-triggered reloads. This prevents the user list from flashing or
+    // briefly becoming empty while the modal is active (save/edit flows use
+    // optimistic local updates instead).
+    const onUsersChanged = async () => {
+      try {
+        if (modalShouldStayOpenRef.current) {
+          // modal is open and intentionally preventing closes/reloads — ignore
+          console.log('[AdminUsers] Ignoring admin:users-changed while modal is open');
+          return;
+        }
+        await loadUsers().catch(() => {});
+        await loadArchivedUsers().catch(() => {});
+      } catch (e) { console.warn('onUsersChanged handler failed', e); }
+    };
+
     window.addEventListener('admin:users-changed', onUsersChanged);
     return () => { mountedRef.current = false; window.removeEventListener('admin:users-changed', onUsersChanged); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -187,17 +353,80 @@ export default function AdminUsers({ role = 'student' }) {
   }, []);
 
   const openAdd = (roleParam = role) => {
-    try { prevGlobalOverlaysRef.current = Array.from(document.querySelectorAll('.modal-overlay')); } catch(e) { prevGlobalOverlaysRef.current = []; }
-    setModalInitial(null);
-    setModalRole(roleParam || 'student');
-    // open the modal form
-  setModalForm({ first_name: '', last_name: '', student_id: '', email: '', sex: '', date_of_birth: '', date_of_enrollment: '', phone_number: '', department: '', address: '', course: '', status: 'Active', year_level: '' });
+    console.log('[AdminUsers] ========== OPEN ADD START ==========');
+    console.log('[AdminUsers] openAdd called for role:', roleParam || role);
+    
+    const actualRole = roleParam || role || 'student';
+    
+    // Set flags FIRST
     modalOpenTimeRef.current = Date.now();
-    setShowModal(true);
+    modalShouldStayOpenRef.current = true;
+    console.log('[AdminUsers] modalShouldStayOpenRef set to TRUE');
+    console.log('[AdminUsers] modalOpenTimeRef set to:', modalOpenTimeRef.current);
+    
+    // Update all state
+    setModalInitial(null);
+    setModalRole(actualRole);
+    
+    // Initialize form fields based on role
+    if (actualRole === 'teacher') {
+      setModalForm({ 
+        first_name: '', 
+        last_name: '', 
+        faculty_id: '', 
+        email: '', 
+        sex: '', 
+        date_of_birth: '', 
+        phone_number: '', 
+        department: '', 
+        address: '', 
+        position: '', 
+        courses_handled: '',
+        status: 'Active'
+      });
+    } else {
+      setModalForm({ 
+        first_name: '', 
+        last_name: '', 
+        student_id: '', 
+        email: '', 
+        sex: '', 
+        date_of_birth: '', 
+        date_of_enrollment: '', 
+        phone_number: '', 
+        department: '', 
+        address: '', 
+        course: '', 
+        status: 'Active', 
+        year_level: '' 
+      });
+    }
+    
+    // Open modal via global ModalHost so the modal stays mounted independently
+    console.log('[AdminUsers] Dispatching open-user-modal event');
+    try { window.dispatchEvent(new CustomEvent('open-user-modal', { detail: { role: actualRole, initial: null } })); } catch(e) { console.error('failed to dispatch open-user-modal', e); }
+    console.log('[AdminUsers] ========== OPEN ADD END ==========');
   };
 
   // modal form state for built-in modal
-  const [modalForm, setModalForm] = useState({ first_name: '', last_name: '', student_id: '', email: '', date_of_birth: '', date_of_enrollment: '', phone_number: '', department: '', address: '', course: '', status: 'Active', year_level: '', sex: '' });
+  const [modalForm, setModalForm] = useState({ 
+    first_name: '', 
+    last_name: '', 
+    student_id: '', 
+    faculty_id: '',
+    email: '', 
+    date_of_birth: '', 
+    date_of_enrollment: '', 
+    phone_number: '', 
+    department: '', 
+    address: '', 
+    course: '', 
+    position: '',
+    courses_handled: '',
+    status: 'Active', 
+    year_level: '', 
+    sex: '' 
+  });
   const [modalErrors, setModalErrors] = useState({});
   const [modalSubmitting, setModalSubmitting] = useState(false);
   const [modalServerMessage, setModalServerMessage] = useState('');
@@ -207,11 +436,51 @@ export default function AdminUsers({ role = 'student' }) {
   const modalOpenTimeRef = useRef(0);
 
   const handleModalClose = (source = 'unknown') => {
-    try {
-      const elapsed = modalOpenTimeRef.current ? Date.now() - modalOpenTimeRef.current : null;
-      try { console.debug('[AdminUsers] handleModalClose', { source, elapsed }); } catch(e){}
-    } catch(e){}
-    setShowModal(false); setModalInitial(null);
+    console.log('[AdminUsers] ========================================');
+    console.log('[AdminUsers] handleModalClose called - Source:', source);
+    console.log('[AdminUsers] modalShouldStayOpenRef.current:', modalShouldStayOpenRef.current);
+    console.log('[AdminUsers] ========================================');
+    
+    // ABSOLUTE PROTECTION: If ref says stay open, don't allow ANY close except explicit user actions
+    if (modalShouldStayOpenRef.current) {
+      const userClickedButton = window.__userClickedCloseButton;
+      
+      // Only these exact scenarios can close when modal should stay open:
+      // 1. User explicitly clicked Cancel or X button
+      if (userClickedButton && (source === 'cancel-button' || source === 'close-button')) {
+        console.log('[AdminUsers] ✓ User clicked Cancel/X button - ALLOWED close');
+        window.__userClickedCloseButton = false;
+        modalShouldStayOpenRef.current = false;
+        setShowModal(false); 
+        setModalInitial(null);
+        setModalRole(role);
+        return;
+      }
+      
+      // 2. Save was successful  
+      if (source === 'save-success') {
+        console.log('[AdminUsers] ✓ Save successful - ALLOWED close');
+        modalShouldStayOpenRef.current = false;
+        setShowModal(false); 
+        setModalInitial(null);
+        setModalRole(role);
+        return;
+      }
+      
+      // 3. EVERYTHING ELSE IS BLOCKED
+      console.error('[AdminUsers] ⛔⛔⛔ BLOCKED CLOSE ATTEMPT ⛔⛔⛔');
+      console.error('[AdminUsers] Source:', source);
+      console.error('[AdminUsers] userClickedButton:', userClickedButton);
+      console.error('[AdminUsers] Modal will stay open until Save or Cancel');
+      // Do NOT close modal
+      return;
+    }
+    
+    // If we reach here, modalShouldStayOpenRef is false, allow close
+    console.log('[AdminUsers] ✓ modalShouldStayOpenRef is false - closing');
+    setShowModal(false); 
+    setModalInitial(null);
+    setModalRole(role);
   };
 
   const handleModalChange = (k, v) => setModalForm(f => ({ ...f, [k]: v }));
@@ -250,9 +519,9 @@ export default function AdminUsers({ role = 'student' }) {
   setModalServerMessage('');
   setModalSubmitting(true);
     try {
+      const actualRole = modalRole || role;
       const payload = {
-        role: modalRole || role,
-        student_id: modalForm.student_id,
+        role: actualRole,
         first_name: modalForm.first_name,
         last_name: modalForm.last_name,
         email: modalForm.email,
@@ -262,12 +531,23 @@ export default function AdminUsers({ role = 'student' }) {
         date_of_birth: modalForm.date_of_birth || null,
         phone_number: modalForm.phone_number || null,
         address: modalForm.address || null,
-        course: modalForm.course || null,
         department: modalForm.department || null,
         status: modalForm.status || 'Active',
-        date_of_enrollment: modalForm.date_of_enrollment || null,
-        year_level: modalForm.year_level || null,
       };
+      
+      // Add role-specific fields
+      if (actualRole === 'teacher') {
+        payload.faculty_id = modalForm.faculty_id || null;
+        payload.teacher_id = modalForm.faculty_id || null;
+        payload.position = modalForm.position || null;
+        payload.courses_handled = modalForm.courses_handled || null;
+      } else {
+        payload.student_id = modalForm.student_id;
+        payload.course = modalForm.course || null;
+        payload.date_of_enrollment = modalForm.date_of_enrollment || null;
+        payload.year_level = modalForm.year_level || null;
+      }
+      
       // when creating, include a temporary password so backend validation succeeds
       if (!(modalInitial && modalInitial.id)) {
         const gen = () => (Math.random().toString(36).slice(-8) + 'A1!');
@@ -278,14 +558,35 @@ export default function AdminUsers({ role = 'student' }) {
 
       let res = null;
       if (modalInitial && modalInitial.id) {
+        // edit: send update and merge changes into local lists to avoid full reload
         res = await axios.put(`/api/admin/users/${modalInitial.id}`, payloadFiltered);
+        // optimistic local merge: update both lists so row stays visible
+        setUsers(prev => prev.map(u => (String(u.id) === String(modalInitial.id) ? { ...u, ...payloadFiltered } : u)));
+        setArchivedUsers(prev => prev.map(u => (String(u.id) === String(modalInitial.id) ? { ...u, ...payloadFiltered } : u)));
       } else {
+        // create: post and insert returned user into local list if provided to avoid reload flash
         res = await axios.post('/api/admin/users', payloadFiltered);
+        const created = res && res.data && res.data.user ? res.data.user : null;
+        if (created) {
+          // if created role matches current page role, add to local users list
+          try {
+            if ((created.role || payloadFiltered.role || role) === role) {
+              setUsers(prev => [created, ...prev]);
+            }
+            setHighlightNewId(created.id);
+            if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+            highlightTimerRef.current = setTimeout(() => { if (mountedRef.current) setHighlightNewId(null); }, 6000);
+          } catch(e) { console.warn('Failed to insert created user into local list', e); }
+        } else {
+          // fallback to full reload if server didn't return created user
+          await loadUsers(); await loadArchivedUsers();
+        }
       }
-  setShowModal(false); setModalInitial(null);
-      await loadUsers(); await loadArchivedUsers();
-      try { window.dispatchEvent(new CustomEvent('admin:users-changed', { detail: (res && res.data && res.data.stats) ? res.data.stats : {} })); } catch(e){}
-      try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: (res && res.data && res.data.stats) ? res.data.stats : {} })); } catch(e){}
+
+      // DO NOT close modal here - let the callback from UserFormModal handle it
+      // This prevents premature closing before the save animation completes
+  // Avoid triggering a global reload event here; we merged/inserted locally to prevent flicker.
+  try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: (res && res.data && res.data.user) ? { id: res.data.user.id } : {} })); } catch(e){}
     } catch (e) {
       console.error('Save failed', e);
       try { if (e && e.response && e.response.status === 422) console.warn('422 response body:', e.response.data); } catch(_) {}
@@ -329,19 +630,32 @@ export default function AdminUsers({ role = 'student' }) {
     try {
       if (isEdit && payload && payload.id) {
         const res = await axios.put(`/api/admin/users/${payload.id}`, payload);
-        // refresh lists
-        await loadUsers(); await loadArchivedUsers();
-        try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
+        // merge payload into local lists (avoid full reload)
+        try {
+          setUsers(prev => prev.map(u => (String(u.id) === String(payload.id) ? { ...u, ...payload } : u)));
+          setArchivedUsers(prev => prev.map(u => (String(u.id) === String(payload.id) ? { ...u, ...payload } : u)));
+        } catch (e) { console.warn('Failed to merge updated user locally', e); }
+        // Do not dispatch a global reload here: we've merged the update locally
+        // to avoid UI flicker and possible disappearance of rows.
         return Promise.resolve(res && res.data ? res.data : {});
       } else {
         // ensure required fields: backend requires password on create
         if (!payload.password) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
         const res = await axios.post('/api/admin/users', payload);
-        // refresh lists
-        await loadUsers(); await loadArchivedUsers();
-        try { window.dispatchEvent(new CustomEvent('admin:users-changed')); } catch(e){}
-        // also dispatch a created event with id so other listeners can act
-        try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: (res && res.data && res.data.user) ? { id: res.data.user.id } : {} })); } catch(e){}
+        const created = res && res.data && res.data.user ? res.data.user : null;
+        if (created) {
+          try {
+            if ((created.role || payload.role || role) === role) setUsers(prev => [created, ...prev]);
+            setHighlightNewId(created.id);
+            if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+            highlightTimerRef.current = setTimeout(() => { if (mountedRef.current) setHighlightNewId(null); }, 6000);
+          } catch (e) { console.warn('Failed to insert created user into local list', e); }
+        } else {
+          // fallback to reloading lists when server didn't return created user
+          await loadUsers(); await loadArchivedUsers();
+        }
+  // We already inserted the created user locally; only notify other listeners about the creation.
+  try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: created ? { id: created.id } : {} })); } catch(e){}
         return Promise.resolve(res && res.data ? res.data : {});
       }
     } catch (e) {
@@ -374,8 +688,7 @@ export default function AdminUsers({ role = 'student' }) {
           // clear highlight after a few seconds
           try { if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current); } catch(e){}
           highlightTimerRef.current = setTimeout(() => { if (mountedRef.current) setHighlightNewId(null); }, 6000);
-          // refresh lists in case other page created it
-          if (mountedRef.current) { loadUsers().catch(() => {}); loadArchivedUsers().catch(() => {}); }
+          // Do NOT reload lists here; rely on optimistic insertion where possible to avoid flash.
         }
       } catch (e) { console.error('user-created handler failed', e); }
     };
@@ -467,29 +780,44 @@ export default function AdminUsers({ role = 'student' }) {
   };
 
   const openEdit = (user) => {
-    console.log('openEdit called for user', user && user.id);
+    console.log('[AdminUsers] ========== OPEN EDIT START ==========');
+    console.log('[AdminUsers] openEdit called for user', user && user.id);
+    
+    // Set protection flags FIRST
+    modalOpenTimeRef.current = Date.now();
+    modalShouldStayOpenRef.current = true;
+    console.log('[AdminUsers] modalShouldStayOpenRef set to TRUE');
+    console.log('[AdminUsers] modalOpenTimeRef set to:', modalOpenTimeRef.current);
+    
     setModalInitial(user);
     setModalRole(user && ((user.role) ? user.role : 'student'));
     // prefill modal form with existing values for a better edit experience
     try {
-      const s = user && (user.student || {});
+      // prefer the specific profile (student or teacher) when present
+      const profile = user && (user.student || user.teacher || {});
       setModalForm({
-        first_name: (s.first_name || (user.name ? (user.name.split(' ')[0] || '') : '')),
-        last_name: (s.last_name || (user.name ? (user.name.split(' ').slice(1).join(' ') || '') : '')),
-        student_id: (s.student_id || ''),
-        email: (user.email || s.email || ''),
-        sex: (s.sex || ''),
-        date_of_birth: (s.date_of_birth || ''),
-        phone_number: (s.phone_number || ''),
-        address: (s.address || ''),
-        course: (s.course || ''),
-        department: (s.department || ''),
-        status: (s.status || 'Active'),
-        date_of_enrollment: (s.date_of_enrollment || ''),
-        year_level: (s.year_level || ''),
+        first_name: (profile.first_name || (user.name ? (user.name.split(' ')[0] || '') : '')),
+        last_name: (profile.last_name || (user.name ? (user.name.split(' ').slice(1).join(' ') || '') : '')),
+        student_id: (profile.student_id || ''),
+        faculty_id: (profile.teacher_id || profile.faculty_id || ''),
+        email: (user.email || profile.email || ''),
+        sex: (profile.sex || ''),
+        date_of_birth: (profile.date_of_birth || ''),
+        phone_number: (profile.phone_number || ''),
+        address: (profile.address || ''),
+        course: (profile.course || ''),
+        department: (profile.department || ''),
+        status: (profile.status || 'Active'),
+        date_of_enrollment: (profile.date_of_enrollment || ''),
+        year_level: (profile.year_level || ''),
+        position: (profile.position || ''),
+        courses_handled: (profile.courses_handled || ''),
       });
     } catch(e) { /* ignore */ }
-    setShowModal(true);
+    
+  console.log('[AdminUsers] Dispatching open-user-modal event for edit');
+  try { window.dispatchEvent(new CustomEvent('open-user-modal', { detail: { role: modalRole || role, initial: user } })); } catch(e) { console.error('failed to dispatch open-user-modal', e); }
+    console.log('[AdminUsers] ========== OPEN EDIT END ==========');
   };
 
   // debug effect removed to reduce log spam on modal toggles
@@ -545,6 +873,20 @@ export default function AdminUsers({ role = 'student' }) {
 
   return (
     <div className={`admin-users ${pageLower}-page`}>
+      {/* Toast for action messages */}
+      {actionMessage ? (
+        <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 1100, pointerEvents: 'auto', transition: 'transform 240ms ease, opacity 240ms ease', transform: 'translateY(0)', opacity: 1 }}>
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center', minWidth: 260, padding: '10px 14px', borderRadius: 10, boxShadow: '0 10px 30px rgba(2,6,23,0.12)', background: actionMessageType === 'success' ? '#ecfdf5' : '#fff1f2', color: actionMessageType === 'success' ? '#065f46' : '#7f1d1d', fontWeight: 700 }}>
+            <div style={{ width: 36, height: 36, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', background: actionMessageType === 'success' ? '#dcfce7' : '#fee2e2', color: actionMessageType === 'success' ? '#065f46' : '#7f1d1d' }}>
+              {actionMessageType === 'success' ? <FiCheckCircle size={18} /> : <FiAlertTriangle size={18} />}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ fontSize: 13 }}>{actionMessage}</div>
+              <div style={{ fontSize: 11, opacity: 0.7 }}>{new Date().toLocaleTimeString()}</div>
+            </div>
+          </div>
+        </div>
+      ) : null}
       <div className="hero-banner">
         <div className="hero-inner">
           <div className="hero-left">
@@ -570,8 +912,8 @@ export default function AdminUsers({ role = 'student' }) {
       <div className="modern-management-card" style={{ background: '#fff', borderRadius: 16, padding: 0, overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }}>
         {/* Header Section */}
         <div style={{ padding: '24px 28px', borderBottom: '1px solid #f3f4f6' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 auto' }}>
               <h2 style={{ margin: 0, fontSize: 24, fontWeight: 700, color: '#111827', display: 'flex', alignItems: 'center', gap: 8 }}>
                 {pagePlural}
                 <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: role === 'teacher' ? '#ede9fe' : '#dbeafe', color: role === 'teacher' ? '#7c3aed' : '#6366f1', fontSize: 14, fontWeight: 600, padding: '4px 12px', borderRadius: 12 }}>
@@ -580,22 +922,17 @@ export default function AdminUsers({ role = 'student' }) {
               </h2>
               <p style={{ margin: '8px 0 0 0', fontSize: 14, color: '#6b7280' }}>Manage {pageLower} records and enrollment</p>
             </div>
-            <select
-              value={filterYear}
-              onChange={(e) => setFilterYear(e.target.value)}
-              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#6b7280', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
-            >
-              <option value="">2024-2025</option>
-              <option value="2023-2024">2023-2024</option>
-              <option value="2022-2023">2022-2023</option>
-            </select>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexShrink: 0 }}>
+              <label style={{ fontSize: 13, color: '#6b7280', fontWeight: 600 }}>Date</label>
+              <input type="date" value={filterDate} onChange={(e) => setFilterDate(e.target.value)} style={{ padding: '8px 12px', borderRadius: 8, border: '1px solid #e5e7eb' }} />
+            </div>
           </div>
         </div>
 
         {/* Filters */}
         <div style={{ padding: '20px 28px', borderBottom: '1px solid #f3f4f6', background: '#fafbfc' }}>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 16 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#6b7280', fontSize: 14, fontWeight: 600 }}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#6b7280', fontSize: 14, fontWeight: 600, minWidth: '70px' }}>
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
               Filters:
             </div>
@@ -606,7 +943,7 @@ export default function AdminUsers({ role = 'student' }) {
                 setFilterStatus(val);
                 setShowArchived(val === 'archived');
               }}
-              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none', minWidth: '140px' }}
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -616,15 +953,15 @@ export default function AdminUsers({ role = 'student' }) {
             <select
               value={filterDepartment}
               onChange={(e) => setFilterDepartment(e.target.value)}
-              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
+              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none', minWidth: '160px' }}
             >
               <option value="">All Departments</option>
               {departments.map(d => <option key={d} value={d}>{d}</option>)}
             </select>
           </div>
 
-          <div style={{ display: 'flex', gap: 12 }}>
-            <div style={{ flex: 1, position: 'relative' }}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 200px', maxWidth: '400px', minWidth: '200px', position: 'relative' }}>
               <svg style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
               <input 
                 type="text"
@@ -636,114 +973,206 @@ export default function AdminUsers({ role = 'student' }) {
                 onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
               />
             </div>
-            <button 
-              onClick={() => exportToCSV()} 
-              style={{ padding: '10px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s' }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
-            >
-              <FiDownload size={16} /> Export
-            </button>
-            <button 
-              onClick={() => openAdd(pageLower)} 
-              style={{ padding: '10px 20px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', color: '#fff', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'transform 0.2s', boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)' }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-            >
-              <FiPlus size={18} /> Add {pageType}
-            </button>
+            <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+              <button 
+                onClick={() => exportToCSV()} 
+                style={{ padding: '10px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s', whiteSpace: 'nowrap' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
+              >
+                <FiDownload size={16} /> Export
+              </button>
+              <button 
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  openAdd(role);
+                }} 
+                style={{ padding: '10px 20px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', color: '#fff', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'transform 0.2s', boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)', whiteSpace: 'nowrap', flexShrink: 0 }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                <FiPlus size={18} /> Add {pageType}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Table */}
         <div style={{ overflowX: 'auto' }}>
-          <table className="modern-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table className="modern-table" style={{ width: '100%', borderCollapse: 'collapse', minWidth: role === 'student' ? '1400px' : '1200px' }}>
             <thead>
               <tr style={{ borderBottom: '2px solid #f3f4f6' }}>
-                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{role === 'teacher' ? 'Faculty ID' : 'Student ID'}</th>
-                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Name</th>
-                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email</th>
-                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{role === 'teacher' ? 'Department' : 'Course'}</th>
-                {role === 'teacher' && (
-                  <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Specialization</th>
+                {role === 'student' ? (
+                    <>
+                      <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Student ID</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>First Name</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Last Name</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Sex</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Course</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Department</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Status</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Enrollment Date</th>
+                    <th style={{ textAlign: 'left', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Year Level</th>
+                    <th style={{ textAlign: 'center', padding: '12px 16px', fontSize: 11, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Actions</th>
+                  </>
+                ) : (
+                  <>
+                    <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Faculty ID</th>
+                    <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Name</th>
+                    <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email</th>
+                    <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Department</th>
+                    <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Specialization</th>
+                    <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Status</th>
+                    <th style={{ textAlign: 'center', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Actions</th>
+                  </>
                 )}
-                <th style={{ textAlign: 'left', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Status</th>
-                <th style={{ textAlign: 'center', padding: '16px 28px', fontSize: 12, fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredList.length === 0 ? (
-                <tr><td colSpan={role === 'teacher' ? 7 : 6} style={{ padding: '40px 28px', textAlign: 'center', color: '#9ca3af', fontSize: 14 }}>No {pageLower}s found</td></tr>
+                <tr><td colSpan={role === 'student' ? 12 : 7} style={{ padding: '40px 28px', textAlign: 'center', color: '#9ca3af', fontSize: 14 }}>No {pageLower}s found</td></tr>
               ) : filteredList.map((u) => {
                 const student = u.student || {};
                 const teacher = u.teacher || {};
                 const profile = role === 'teacher' ? teacher : student;
                 const fullName = u.name || `${profile.first_name || ''} ${profile.last_name || ''}`.trim();
+                const firstName = profile.first_name || u.first_name || '—';
+                const lastName = profile.last_name || u.last_name || '—';
+                const sex = profile.sex || u.sex || '—';
                 const email = u.email || '';
-                const studentId = profile.student_id || profile.faculty_id || u.student_id || '—';
+                const studentId = profile.student_id || u.student_id || '—';
+                // For teachers, the identifier is stored as teacher_id (legacy name faculty_id may exist)
+                const facultyId = (role === 'teacher') ? (profile.teacher_id || profile.faculty_id || u.teacher_id || '—') : studentId;
+                const dateOfBirth = profile.date_of_birth || u.date_of_birth || '—';
+                const phoneNumber = profile.phone_number || u.phone_number || '—';
+                const address = profile.address || u.address || '—';
+                const course = profile.course || u.course || profile.major || '—';
+                const department = profile.department || u.department || '—';
+                const dateOfEnrollment = profile.date_of_enrollment || u.date_of_enrollment || u.created_at ? new Date(u.created_at).toLocaleDateString() : '—';
+                const yearLevel = profile.year_level || u.year_level || '—';
                 const courseOrDept = (role === 'teacher' ? profile.department : profile.course) || u.course || profile.major || '—';
                 const specialization = profile.specialization || profile.position || profile.subject || '—';
                 const statusVal = (profile.status || u.status || 'active').toString().toLowerCase();
                 const enrollmentText = '';
                 return (
-                  <tr key={u.id} className={`${u.deleted_at ? 'archived-row' : ''} ${highlightNewId === u.id ? 'new-highlight' : ''}`} style={{ borderBottom: '1px solid #f3f4f6', transition: 'background 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#f9fafb'} onMouseLeave={(e) => e.currentTarget.style.background = '#fff'}>
-                    <td style={{ padding: '16px 28px', fontSize: 14, fontWeight: 600, color: '#111827' }}>{studentId}</td>
-                    <td style={{ padding: '16px 28px', fontSize: 14, fontWeight: 500, color: '#111827' }}>{fullName}</td>
-                    <td style={{ padding: '16px 28px', fontSize: 14, color: '#6366f1' }}>{email}</td>
-                    <td style={{ padding: '16px 28px' }}>
-                      <span style={{ 
-                        padding: '4px 10px', 
-                        borderRadius: 6, 
-                        fontSize: 13, 
-                        fontWeight: 500,
-                        background: role === 'teacher' ? '#dbeafe' : '#dbeafe',
-                        color: role === 'teacher' ? '#1d4ed8' : '#2563eb'
-                      }}>
-                        {courseOrDept}
-                      </span>
-                    </td>
-                    {role === 'teacher' && (
-                      <td style={{ padding: '16px 28px', fontSize: 14, color: '#6b7280' }}>{specialization}</td>
+                  <tr key={u.id} className={`${u.deleted_at ? 'archived-row' : ''} ${highlightNewId === u.id ? 'new-highlight' : ''}`} style={{ borderBottom: '1px solid #f3f4f6', transition: 'background 0.2s', background: actionHighlightId === u.id ? 'linear-gradient(90deg, rgba(236,253,245,0.7), rgba(220,252,231,0.4))' : undefined }} onMouseEnter={(e) => e.currentTarget.style.background = actionHighlightId === u.id ? 'linear-gradient(90deg, rgba(236,253,245,0.9), rgba(220,252,231,0.8))' : '#f9fafb'} onMouseLeave={(e) => e.currentTarget.style.background = actionHighlightId === u.id ? 'linear-gradient(90deg, rgba(236,253,245,0.7), rgba(220,252,231,0.4))' : '#fff'}>
+                    {role === 'student' ? (
+                      <>
+                <td style={{ padding: '12px 16px', fontSize: 13, fontWeight: 600, color: '#111827' }}>{studentId}</td>
+                        <td style={{ padding: '12px 16px', fontSize: 13, color: '#111827' }}>{firstName}</td>
+                        <td style={{ padding: '12px 16px', fontSize: 13, color: '#111827' }}>{lastName}</td>
+                        <td style={{ padding: '12px 16px', fontSize: 13, color: '#6b7280' }}>{sex}</td>
+                        <td style={{ padding: '12px 16px', fontSize: 13, color: '#6366f1' }}>{email}</td>
+                        <td style={{ padding: '12px 16px', fontSize: 13 }}>
+                          <span style={{ padding: '4px 8px', borderRadius: 6, fontSize: 12, fontWeight: 500, background: '#dbeafe', color: '#2563eb' }}>
+                            {course}
+                          </span>
+                        </td>
+                        <td style={{ padding: '12px 16px', fontSize: 13, color: '#6b7280' }}>{department}</td>
+                        <td style={{ padding: '12px 16px' }}>
+                          <span style={{ 
+                            padding: '4px 8px', 
+                            borderRadius: 6, 
+                            fontSize: 12, 
+                            fontWeight: 500,
+                            background: statusVal === 'active' ? '#d1fae5' : statusVal === 'locked' ? '#fee2e2' : '#f3f4f6',
+                            color: statusVal === 'active' ? '#065f46' : statusVal === 'locked' ? '#991b1b' : '#6b7280'
+                          }}>
+                            {statusVal}
+                          </span>
+                        </td>
+                        <td style={{ padding: '12px 16px', fontSize: 13, color: '#6b7280' }}>{dateOfEnrollment}</td>
+                        <td style={{ padding: '12px 16px', fontSize: 13, color: '#6b7280' }}>{yearLevel}</td>
+                        <td style={{ padding: '12px 16px', textAlign: 'center' }}>
+                          <div className="actions" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, justifyContent: 'center' }}>
+                          {!u.deleted_at ? (
+                            <>
+                              <button type="button" className="modern-action-btn" title="View" onClick={(e) => { e.stopPropagation(); e.preventDefault(); console.log('[AdminUsers] action=view for user', u && u.id); setDetailUser(u); setShowDetail(true); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#dbeafe'; e.currentTarget.style.color = '#6366f1'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                                <FiEye size={14} />
+                              </button>
+                              <button type="button" className="modern-action-btn" title="Edit" onClick={(e) => { e.stopPropagation(); e.preventDefault(); console.log('[AdminUsers] action=edit for user', u && u.id); openEdit(u); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#dbeafe'; e.currentTarget.style.color = '#6366f1'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                                <FiEdit2 size={14} />
+                              </button>
+                              <button type="button" className="modern-action-btn" title={u.is_locked ? 'Unlock' : 'Lock'} onClick={(e) => { e.stopPropagation(); e.preventDefault(); console.log('[AdminUsers] action=toggleLock for user', u && u.id, 'currentlyLocked=', u && u.is_locked); toggleLock(u.id, u.is_locked); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#fef3c7'; e.currentTarget.style.color = '#92400e'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                                <FiLock size={14} />
+                              </button>
+                              <button type="button" className="modern-action-btn" title="Archive" onClick={(e) => { e.stopPropagation(); e.preventDefault(); console.log('[AdminUsers] action=archive for user', u && u.id); archiveUser(u.id); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#fee2e2'; e.currentTarget.style.color = '#991b1b'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                                <FiTrash2 size={14} />
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              <button type="button" className="modern-action-btn" title="Restore" onClick={() => restoreUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }}>♻️</button>
+                              <button type="button" className="modern-action-btn" title="Delete Permanently" onClick={() => permanentDeleteUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#fee2e2', color: '#991b1b', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }}>
+                                <FiTrash2 size={14} />
+                              </button>
+                            </>
+                          )}
+                          </div>
+                        </td>
+                      </>
+                    ) : (
+                      <>
+                        <td style={{ padding: '16px 28px', fontSize: 14, fontWeight: 600, color: '#111827' }}>{facultyId}</td>
+                        <td style={{ padding: '16px 28px', fontSize: 14, fontWeight: 500, color: '#111827' }}>{fullName}</td>
+                        <td style={{ padding: '16px 28px', fontSize: 14, color: '#6366f1' }}>{email}</td>
+                        <td style={{ padding: '16px 28px' }}>
+                          <span style={{ 
+                            padding: '4px 10px', 
+                            borderRadius: 6, 
+                            fontSize: 13, 
+                            fontWeight: 500,
+                            background: '#dbeafe',
+                            color: '#1d4ed8'
+                          }}>
+                            {courseOrDept}
+                          </span>
+                        </td>
+                        <td style={{ padding: '16px 28px', fontSize: 14, color: '#6b7280' }}>{specialization}</td>
+                        <td style={{ padding: '16px 28px' }}>
+                          <span style={{ 
+                            padding: '4px 10px', 
+                            borderRadius: 6, 
+                            fontSize: 13, 
+                            fontWeight: 500,
+                            background: statusVal === 'active' ? '#d1fae5' : statusVal === 'locked' ? '#fee2e2' : '#f3f4f6',
+                            color: statusVal === 'active' ? '#065f46' : statusVal === 'locked' ? '#991b1b' : '#6b7280'
+                          }}>
+                            {statusVal}
+                          </span>
+                        </td>
+                        <td style={{ padding: '16px 28px', textAlign: 'center' }}>
+                          <div className="actions" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, justifyContent: 'center' }}>
+                          {!u.deleted_at ? (
+                            <>
+                              <button type="button" className="modern-action-btn" title="View" onClick={(e) => { e.stopPropagation(); e.preventDefault(); console.log('[AdminUsers] action=view for user', u && u.id); setDetailUser(u); setShowDetail(true); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#ede9fe'; e.currentTarget.style.color = '#7c3aed'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                                <FiEye size={14} />
+                              </button>
+                              <button type="button" className="modern-action-btn" title="Edit" onClick={(e) => { e.stopPropagation(); e.preventDefault(); console.log('[AdminUsers] action=edit for user', u && u.id); openEdit(u); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#ede9fe'; e.currentTarget.style.color = '#7c3aed'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                                <FiEdit2 size={14} />
+                              </button>
+                              <button type="button" className="modern-action-btn" title={u.is_locked ? 'Unlock' : 'Lock'} onClick={(e) => { e.stopPropagation(); e.preventDefault(); console.log('[AdminUsers] action=toggleLock for user', u && u.id, 'currentlyLocked=', u && u.is_locked); toggleLock(u.id, u.is_locked); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#fef3c7'; e.currentTarget.style.color = '#92400e'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                                <FiLock size={14} />
+                              </button>
+                              <button type="button" className="modern-action-btn" title="Archive" onClick={(e) => { e.stopPropagation(); e.preventDefault(); console.log('[AdminUsers] action=archive for user', u && u.id); archiveUser(u.id); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#fee2e2'; e.currentTarget.style.color = '#991b1b'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
+                                <FiTrash2 size={14} />
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              <button type="button" className="modern-action-btn" title="Restore" onClick={() => restoreUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }}>♻️</button>
+                              <button type="button" className="modern-action-btn" title="Delete Permanently" onClick={() => permanentDeleteUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#fee2e2', color: '#991b1b', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }}>
+                                <FiTrash2 size={14} />
+                              </button>
+                            </>
+                          )}
+                          </div>
+                        </td>
+                      </>
                     )}
-                    <td style={{ padding: '16px 28px' }}>
-                      <span style={{ 
-                        padding: '4px 10px', 
-                        borderRadius: 6, 
-                        fontSize: 13, 
-                        fontWeight: 500,
-                        background: statusVal === 'active' ? '#d1fae5' : statusVal === 'locked' ? '#fee2e2' : '#f3f4f6',
-                        color: statusVal === 'active' ? '#065f46' : statusVal === 'locked' ? '#991b1b' : '#6b7280'
-                      }}>
-                        {statusVal}
-                      </span>
-                    </td>
-                    <td style={{ padding: '16px 28px', textAlign: 'center' }}>
-                      <div className="actions" style={{ display: 'inline-flex', alignItems: 'center', gap: 4, justifyContent: 'center' }}>
-                      {!u.deleted_at ? (
-                        <>
-                          <button type="button" className="modern-action-btn" title="View" onClick={() => { setDetailUser(u); setShowDetail(true); }} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = role === 'teacher' ? '#ede9fe' : '#dbeafe'; e.currentTarget.style.color = role === 'teacher' ? '#7c3aed' : '#6366f1'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
-                            <FiEye size={14} />
-                          </button>
-                          <button type="button" className="modern-action-btn" title="Edit" onClick={() => openEdit(u)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = role === 'teacher' ? '#ede9fe' : '#dbeafe'; e.currentTarget.style.color = role === 'teacher' ? '#7c3aed' : '#6366f1'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
-                            <FiEdit2 size={14} />
-                          </button>
-                          <button type="button" className="modern-action-btn" title={u.is_locked ? 'Unlock' : 'Lock'} onClick={() => toggleLock(u.id, u.is_locked)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#fef3c7'; e.currentTarget.style.color = '#92400e'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
-                            <FiLock size={14} />
-                          </button>
-                          <button type="button" className="modern-action-btn" title="Archive" onClick={() => archiveUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.background = '#fee2e2'; e.currentTarget.style.color = '#991b1b'; }} onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}>
-                            <FiTrash2 size={14} />
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button type="button" className="modern-action-btn" title="Restore" onClick={() => restoreUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }}>♻️</button>
-                          <button type="button" className="modern-action-btn" title="Delete Permanently" onClick={() => permanentDeleteUser(u.id)} style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#fee2e2', color: '#991b1b', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }}>
-                            <FiTrash2 size={14} />
-                          </button>
-                        </>
-                      )}
-                      </div>
-                    </td>
                   </tr>
                 );
               })}
@@ -752,14 +1181,7 @@ export default function AdminUsers({ role = 'student' }) {
         </div>
       </div>
 
-  {showModal && (
-    <UserFormModal 
-      initial={modalInitial}
-      role={modalRole || 'student'}
-      onClose={(source) => { handleModalClose(source || 'modal'); }}
-      onSave={saveFromUserForm}
-    />
-  )}
+  {/* Modal rendered by global ModalHost via events */}
 
   {showDetail && React.createElement(StudentDetailModal, { user: detailUser, onClose: () => { setShowDetail(false); setDetailUser(null); }, onSaved: async () => { setShowDetail(false); await loadUsers(); await loadArchivedUsers(); } })}
     </div>

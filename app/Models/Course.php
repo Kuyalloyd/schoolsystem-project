@@ -15,6 +15,15 @@ class Course extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'code', 'credits', 'description',
+        // Columns that exist in the courses table (including newly added ones)
+        'course_name', 'course_code', 'units', 'teacher', 'description', 'department', 'semester', 'max_students', 'status'
     ];
+
+    /**
+     * Students enrolled in this course (many-to-many via course_student pivot)
+     */
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'course_student', 'course_id', 'student_id')->withTimestamps();
+    }
 }
