@@ -226,6 +226,65 @@ export default function AdminCourses() {
     }
   };
 
+  // Export courses to CSV
+  const handleExportCourses = () => {
+    console.log('🚀 [EXPORT] Starting course export...');
+    
+    if (!filteredCourses || filteredCourses.length === 0) {
+      alert('No courses to export');
+      return;
+    }
+    
+    try {
+      // Prepare CSV data
+      const rows = filteredCourses.map(course => ({
+        Code: course.code || '',
+        Name: course.name || '',
+        Department: course.department || '',
+        Credits: course.credits || '',
+        Semester: course.semester || '',
+        Teacher: course.teacher_name || '',
+        'Max Students': course.max_students || '',
+        Enrolled: course.enrollment_count || 0,
+        Status: course.status || 'active'
+      }));
+      
+      // Build CSV
+      const headers = Object.keys(rows[0]);
+      const csv = [headers.join(',')]
+        .concat(rows.map(row => 
+          headers.map(header => '"' + String(row[header] || '').replace(/"/g, '""') + '"').join(',')
+        ))
+        .join('\n');
+      
+      console.log('✅ [EXPORT] CSV generated, rows:', rows.length);
+      
+      // Create and download
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `courses-export-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      
+      console.log('✅ [EXPORT] Triggering download...');
+      a.click();
+      
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        console.log('✅ [EXPORT] Complete!');
+      }, 500);
+      
+      alert(`✅ Export successful!\n\nFile: courses-export-${new Date().toISOString().slice(0, 10)}.csv\nRows: ${rows.length}\n\nCheck your Downloads folder.`);
+      
+    } catch (error) {
+      console.error('❌ [EXPORT] Failed:', error);
+      alert('Export failed: ' + error.message);
+    }
+  };
+
   const filteredCourses = courses.filter(course => {
     const searchLower = searchTerm.toLowerCase();
     const matchesSearch = (
@@ -264,20 +323,6 @@ export default function AdminCourses() {
               </span>
             </h1>
             <p style={{ margin: '4px 0 0 0', fontSize: 14, color: '#9ca3af' }}>Manage courses and curriculum</p>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#9ca3af"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth={2} /><line x1="16" y1="2" x2="16" y2="6" strokeWidth={2} /><line x1="8" y1="2" x2="8" y2="6" strokeWidth={2} /><line x1="3" y1="10" x2="21" y2="10" strokeWidth={2} /></svg>
-            <select
-              style={{ padding: '6px 32px 6px 8px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#6b7280', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
-            >
-              <option value="">2024-2025</option>
-              <option value="2025-2026">2025-2026</option>
-              <option value="2026-2027">2026-2027</option>
-              <option value="2027-2028">2027-2028</option>
-              <option value="2028-2029">2028-2029</option>
-              <option value="2023-2024">2023-2024</option>
-              <option value="2022-2023">2022-2023</option>
-            </select>
           </div>
         </div>
       </div>
@@ -326,9 +371,10 @@ export default function AdminCourses() {
           </div>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
             <button 
-              style={{ padding: '10px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s', whiteSpace: 'nowrap' }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
+              onClick={handleExportCourses}
+              style={{ padding: '10px 16px', borderRadius: 8, border: '2px solid #10b981', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', color: '#fff', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s', whiteSpace: 'nowrap', boxShadow: '0 2px 8px rgba(16,185,129,0.3)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <FiDownload size={16} /> Export
             </button>
@@ -547,21 +593,6 @@ export default function AdminCourses() {
                       value={courseForm.department}
                       onChange={(e) => setCourseForm({ ...courseForm, department: e.target.value })}
                     />
-                  </div>
-
-                  <div className="form-group-modern">
-                    <label>Year</label>
-                    <select
-                      value={courseForm.semester}
-                      onChange={(e) => setCourseForm({ ...courseForm, semester: e.target.value })}
-                      className="select-modern"
-                    >
-                      <option value="">2024-2025</option>
-                      <option value="2025-2026">2025-2026</option>
-                      <option value="2026-2027">2026-2027</option>
-                      <option value="2027-2028">2027-2028</option>
-                      <option value="2028-2029">2028-2029</option>
-                    </select>
                   </div>
                 </div>
               </div>

@@ -31,6 +31,14 @@ export default function AdminSettings() {
     favicon: null
   });
 
+  // Add security features state
+  const [securityForm, setSecurityForm] = useState({
+    twoFactorAuth: false,
+    ipWhitelist: false,
+    emailVerification: true,
+    activityLogging: true
+  });
+
   // Function to apply appearance settings to the site
   const applyAppearanceSettings = (settings) => {
     const root = document.documentElement;
@@ -114,8 +122,8 @@ export default function AdminSettings() {
     
     setLoading(true);
     try {
-      console.log('Saving settings:', settingsForm);
-      const res = await axios.put('/api/admin/settings', settingsForm);
+      const payload = { ...settingsForm, ...securityForm };
+      const res = await axios.put('/api/admin/settings', payload);
       alert(res?.data?.message || 'Settings saved successfully!');
       // Refresh settings in context so changes appear immediately across the site
       await refreshSettings();
@@ -1047,51 +1055,126 @@ export default function AdminSettings() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  {[
-                    { label: 'Two-Factor Authentication', desc: 'Require 2FA for admin accounts' },
-                    { label: 'IP Whitelist', desc: 'Restrict access to specific IP addresses' },
-                    { label: 'Email Verification', desc: 'Require email verification for new accounts' },
-                    { label: 'Activity Logging', desc: 'Log all user activities for audit trail' }
-                  ].map((item, i) => (
-                    <div key={i} style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'space-between',
-                      padding: '12px 16px',
-                      background: '#f9fafb',
-                      borderRadius: 8,
-                      border: '1px solid #f0f1f3'
-                    }}>
-                      <div>
-                        <div style={{ fontSize: 14, fontWeight: 600, color: '#111827', marginBottom: 2 }}>{item.label}</div>
-                        <div style={{ fontSize: 12, color: '#9ca3af' }}>{item.desc}</div>
-                      </div>
-                      <label style={{ position: 'relative', display: 'inline-block', width: 44, height: 24, cursor: 'pointer' }}>
-                        <input type="checkbox" defaultChecked={i === 2 || i === 3} style={{ opacity: 0, width: 0, height: 0 }} />
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: '#f9fafb', borderRadius: 8, border: '1px solid #f0f1f3' }}>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: '#111827', marginBottom: 2 }}>Two-Factor Authentication</div>
+                      <div style={{ fontSize: 12, color: '#9ca3af' }}>Require 2FA for admin accounts</div>
+                    </div>
+                    <label style={{ position: 'relative', display: 'inline-block', width: 44, height: 24, cursor: 'pointer' }}>
+                      <input type="checkbox" checked={securityForm.twoFactorAuth} onChange={e => setSecurityForm(f => ({ ...f, twoFactorAuth: e.target.checked }))} style={{ opacity: 0, width: 0, height: 0 }} />
+                      <span style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        right: 0, 
+                        bottom: 0, 
+                        background: securityForm.twoFactorAuth ? '#10b981' : '#d1d5db',
+                        borderRadius: 24,
+                        transition: '0.3s'
+                      }}>
                         <span style={{ 
                           position: 'absolute', 
-                          top: 0, 
-                          left: 0, 
-                          right: 0, 
-                          bottom: 0, 
-                          background: (i === 2 || i === 3) ? '#10b981' : '#d1d5db',
-                          borderRadius: 24,
+                          height: 18, 
+                          width: 18, 
+                          left: securityForm.twoFactorAuth ? 22 : 3, 
+                          bottom: 3, 
+                          background: '#fff',
+                          borderRadius: '50%',
                           transition: '0.3s'
-                        }}>
-                          <span style={{ 
-                            position: 'absolute', 
-                            height: 18, 
-                            width: 18, 
-                            left: (i === 2 || i === 3) ? 22 : 3, 
-                            bottom: 3, 
-                            background: '#fff',
-                            borderRadius: '50%',
-                            transition: '0.3s'
-                          }}></span>
-                        </span>
-                      </label>
+                        }}></span>
+                      </span>
+                    </label>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: '#f9fafb', borderRadius: 8, border: '1px solid #f0f1f3' }}>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: '#111827', marginBottom: 2 }}>IP Whitelist</div>
+                      <div style={{ fontSize: 12, color: '#9ca3af' }}>Restrict access to specific IP addresses</div>
                     </div>
-                  ))}
+                    <label style={{ position: 'relative', display: 'inline-block', width: 44, height: 24, cursor: 'pointer' }}>
+                      <input type="checkbox" checked={securityForm.ipWhitelist} onChange={e => setSecurityForm(f => ({ ...f, ipWhitelist: e.target.checked }))} style={{ opacity: 0, width: 0, height: 0 }} />
+                      <span style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        right: 0, 
+                        bottom: 0, 
+                        background: securityForm.ipWhitelist ? '#10b981' : '#d1d5db',
+                        borderRadius: 24,
+                        transition: '0.3s'
+                      }}>
+                        <span style={{ 
+                          position: 'absolute', 
+                          height: 18, 
+                          width: 18, 
+                          left: securityForm.ipWhitelist ? 22 : 3, 
+                          bottom: 3, 
+                          background: '#fff',
+                          borderRadius: '50%',
+                          transition: '0.3s'
+                        }}></span>
+                      </span>
+                    </label>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: '#f9fafb', borderRadius: 8, border: '1px solid #f0f1f3' }}>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: '#111827', marginBottom: 2 }}>Email Verification</div>
+                      <div style={{ fontSize: 12, color: '#9ca3af' }}>Require email verification for new accounts</div>
+                    </div>
+                    <label style={{ position: 'relative', display: 'inline-block', width: 44, height: 24, cursor: 'pointer' }}>
+                      <input type="checkbox" checked={securityForm.emailVerification} onChange={e => setSecurityForm(f => ({ ...f, emailVerification: e.target.checked }))} style={{ opacity: 0, width: 0, height: 0 }} />
+                      <span style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        right: 0, 
+                        bottom: 0, 
+                        background: securityForm.emailVerification ? '#10b981' : '#d1d5db',
+                        borderRadius: 24,
+                        transition: '0.3s'
+                      }}>
+                        <span style={{ 
+                          position: 'absolute', 
+                          height: 18, 
+                          width: 18, 
+                          left: securityForm.emailVerification ? 22 : 3, 
+                          bottom: 3, 
+                          background: '#fff',
+                          borderRadius: '50%',
+                          transition: '0.3s'
+                        }}></span>
+                      </span>
+                    </label>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: '#f9fafb', borderRadius: 8, border: '1px solid #f0f1f3' }}>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: '#111827', marginBottom: 2 }}>Activity Logging</div>
+                      <div style={{ fontSize: 12, color: '#9ca3af' }}>Log all user activities for audit trail</div>
+                    </div>
+                    <label style={{ position: 'relative', display: 'inline-block', width: 44, height: 24, cursor: 'pointer' }}>
+                      <input type="checkbox" checked={securityForm.activityLogging} onChange={e => setSecurityForm(f => ({ ...f, activityLogging: e.target.checked }))} style={{ opacity: 0, width: 0, height: 0 }} />
+                      <span style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        right: 0, 
+                        bottom: 0, 
+                        background: securityForm.activityLogging ? '#10b981' : '#d1d5db',
+                        borderRadius: 24,
+                        transition: '0.3s'
+                      }}>
+                        <span style={{ 
+                          position: 'absolute', 
+                          height: 18, 
+                          width: 18, 
+                          left: securityForm.activityLogging ? 22 : 3, 
+                          bottom: 3, 
+                          background: '#fff',
+                          borderRadius: '50%',
+                          transition: '0.3s'
+                        }}></span>
+                      </span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>

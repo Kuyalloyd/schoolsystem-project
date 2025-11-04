@@ -75,9 +75,11 @@ export default function AdminUsers({ role = 'student' }) {
   // load users (non-archived students)
   const loadUsers = async () => {
     try {
+      console.log('[AdminUsers] 🔄 Loading users for role:', role);
       const res = await axios.get(`/api/admin/users?role=${role}`);
       const u = Array.isArray(res.data) ? res.data : [];
       if (!mountedRef.current) return; 
+      console.log('[AdminUsers] ✅ Loaded', u.length, role, 'users');
       setUsers(u);
   // debug logging removed to reduce console noise
   try { /* console.debug('loadUsers fetched', u.length); */ } catch(e){}
@@ -301,6 +303,7 @@ export default function AdminUsers({ role = 'student' }) {
   // fetch users on mount and whenever archived toggle changes
   useEffect(() => {
     mountedRef.current = true;
+    console.log('[AdminUsers] 🔄 Component mounted/updated - loading users for role:', role);
     loadUsers();
     loadArchivedUsers().catch(() => {});
 
@@ -316,6 +319,7 @@ export default function AdminUsers({ role = 'student' }) {
           console.log('[AdminUsers] Ignoring admin:users-changed while modal is open');
           return;
         }
+        console.log('[AdminUsers] 🔄 Reloading users due to admin:users-changed event');
         await loadUsers().catch(() => {});
         await loadArchivedUsers().catch(() => {});
       } catch (e) { console.warn('onUsersChanged handler failed', e); }
@@ -324,7 +328,7 @@ export default function AdminUsers({ role = 'student' }) {
     window.addEventListener('admin:users-changed', onUsersChanged);
     return () => { mountedRef.current = false; window.removeEventListener('admin:users-changed', onUsersChanged); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showArchived]);
+  }, [showArchived, role]); // Added 'role' to dependencies to reload when switching between students/teachers
 
   // Keep the current time updated and trigger a morning/day change refresh.
   useEffect(() => {
@@ -563,29 +567,32 @@ export default function AdminUsers({ role = 'student' }) {
         // optimistic local merge: update both lists so row stays visible
         setUsers(prev => prev.map(u => (String(u.id) === String(modalInitial.id) ? { ...u, ...payloadFiltered } : u)));
         setArchivedUsers(prev => prev.map(u => (String(u.id) === String(modalInitial.id) ? { ...u, ...payloadFiltered } : u)));
+        // Reload to ensure changes are reflected
+        await loadUsers();
+        await loadArchivedUsers();
       } else {
-        // create: post and insert returned user into local list if provided to avoid reload flash
+        // create: post new user
         res = await axios.post('/api/admin/users', payloadFiltered);
         const created = res && res.data && res.data.user ? res.data.user : null;
-        if (created) {
-          // if created role matches current page role, add to local users list
-          try {
-            if ((created.role || payloadFiltered.role || role) === role) {
-              setUsers(prev => [created, ...prev]);
-            }
-            setHighlightNewId(created.id);
-            if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
-            highlightTimerRef.current = setTimeout(() => { if (mountedRef.current) setHighlightNewId(null); }, 6000);
-          } catch(e) { console.warn('Failed to insert created user into local list', e); }
-        } else {
-          // fallback to full reload if server didn't return created user
-          await loadUsers(); await loadArchivedUsers();
+        
+        // Small delay to ensure backend has committed
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Always reload both lists to show the new user
+        await loadUsers();
+        await loadArchivedUsers();
+        
+        // Highlight the newly created user
+        if (created && created.id) {
+          setHighlightNewId(created.id);
+          if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+          highlightTimerRef.current = setTimeout(() => { if (mountedRef.current) setHighlightNewId(null); }, 6000);
         }
       }
 
       // DO NOT close modal here - let the callback from UserFormModal handle it
       // This prevents premature closing before the save animation completes
-  // Avoid triggering a global reload event here; we merged/inserted locally to prevent flicker.
+  // Notify other components about the user change
   try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: (res && res.data && res.data.user) ? { id: res.data.user.id } : {} })); } catch(e){}
     } catch (e) {
       console.error('Save failed', e);
@@ -635,27 +642,32 @@ export default function AdminUsers({ role = 'student' }) {
           setUsers(prev => prev.map(u => (String(u.id) === String(payload.id) ? { ...u, ...payload } : u)));
           setArchivedUsers(prev => prev.map(u => (String(u.id) === String(payload.id) ? { ...u, ...payload } : u)));
         } catch (e) { console.warn('Failed to merge updated user locally', e); }
-        // Do not dispatch a global reload here: we've merged the update locally
-        // to avoid UI flicker and possible disappearance of rows.
+        // Reload lists to ensure changes are reflected
+        await loadUsers();
+        await loadArchivedUsers();
         return Promise.resolve(res && res.data ? res.data : {});
       } else {
         // ensure required fields: backend requires password on create
         if (!payload.password) payload.password = (Math.random().toString(36).slice(-8) + 'A1!');
         const res = await axios.post('/api/admin/users', payload);
         const created = res && res.data && res.data.user ? res.data.user : null;
-        if (created) {
-          try {
-            if ((created.role || payload.role || role) === role) setUsers(prev => [created, ...prev]);
-            setHighlightNewId(created.id);
-            if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
-            highlightTimerRef.current = setTimeout(() => { if (mountedRef.current) setHighlightNewId(null); }, 6000);
-          } catch (e) { console.warn('Failed to insert created user into local list', e); }
-        } else {
-          // fallback to reloading lists when server didn't return created user
-          await loadUsers(); await loadArchivedUsers();
+        
+        // Small delay to ensure backend has committed the transaction
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Reload both lists to ensure fresh data is displayed
+        await loadUsers(); 
+        await loadArchivedUsers();
+        
+        // Highlight the newly created user
+        if (created && created.id) {
+          setHighlightNewId(created.id);
+          if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+          highlightTimerRef.current = setTimeout(() => { if (mountedRef.current) setHighlightNewId(null); }, 6000);
         }
-  // We already inserted the created user locally; only notify other listeners about the creation.
-  try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: created ? { id: created.id } : {} })); } catch(e){}
+        
+        // Notify other listeners about the creation
+        try { window.dispatchEvent(new CustomEvent('admin:user-created', { detail: created ? { id: created.id } : {} })); } catch(e){}
         return Promise.resolve(res && res.data ? res.data : {});
       }
     } catch (e) {
@@ -692,8 +704,23 @@ export default function AdminUsers({ role = 'student' }) {
         }
       } catch (e) { console.error('user-created handler failed', e); }
     };
+    
+    const onUsersChanged = async () => {
+      try {
+        if (!mountedRef.current) return;
+        console.log('[AdminUsers] 🔄 Reloading users list after change event');
+        await loadUsers();
+        await loadArchivedUsers();
+      } catch (e) { console.error('users-changed handler failed', e); }
+    };
+    
     window.addEventListener('admin:user-created', onUserCreated);
-    return () => { window.removeEventListener('admin:user-created', onUserCreated); try { if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current); } catch(e){} };
+    window.addEventListener('admin:users-changed', onUsersChanged);
+    return () => { 
+      window.removeEventListener('admin:user-created', onUserCreated); 
+      window.removeEventListener('admin:users-changed', onUsersChanged);
+      try { if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current); } catch(e){} 
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
@@ -922,10 +949,6 @@ export default function AdminUsers({ role = 'student' }) {
               </h2>
               <p style={{ margin: '8px 0 0 0', fontSize: 14, color: '#6b7280' }}>Manage {pageLower} records and enrollment</p>
             </div>
-            <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexShrink: 0 }}>
-              <label style={{ fontSize: 13, color: '#6b7280', fontWeight: 600 }}>Date</label>
-              <input type="date" value={filterDate} onChange={(e) => setFilterDate(e.target.value)} style={{ padding: '8px 12px', borderRadius: 8, border: '1px solid #e5e7eb' }} />
-            </div>
           </div>
         </div>
 
@@ -999,8 +1022,8 @@ export default function AdminUsers({ role = 'student' }) {
           </div>
         </div>
 
-        {/* Table */}
-        <div style={{ overflowX: 'auto' }}>
+        {/* Table with constrained height and scroll */}
+        <div style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: 'calc(100vh - 420px)', minHeight: '400px' }}>
           <table className="modern-table" style={{ width: '100%', borderCollapse: 'collapse', minWidth: role === 'student' ? '1400px' : '1200px' }}>
             <thead>
               <tr style={{ borderBottom: '2px solid #f3f4f6' }}>

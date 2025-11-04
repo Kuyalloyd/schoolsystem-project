@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../sass/Login.scss";
+import Register, { RegisterForm } from "./Register";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
   // No runtime background logic; CSS handles the page background for login.
 
   const handleLogin = async (e) => {
@@ -95,20 +97,11 @@ export default function Login() {
 
   return (
     <div className="login-page fade-in">
-      {/* Hero Section */}
-      <div className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">
-            Be Ambitious. Be Future-Ready.
-          </h1>
-          <h2 className="hero-subtitle">
-            Be Ready To Reach Your Dreams.
-          </h2>
-          <p className="hero-description">
-            Get The Best Programs For You To Achieve Your Goals
-          </p>
-          <button className="hero-btn">LEARN HOW</button>
-        </div>
+      {/* background slideshow (pure CSS driven) - added so login shows multiple pictures */}
+      <div className="bg-slideshow" aria-hidden="true">
+        <div className="slide" style={{ backgroundImage: "url('/images/main-campus.webp')" }} />
+        <div className="slide" style={{ backgroundImage: "url('/images/sjit-cta-group-a-1168x657.webp')" }} />
+        <div className="slide" style={{ backgroundImage: "url('/images/SJIT_Sample_Cover_Photo_2.original.png')" }} />
       </div>
 
       {/* Login Form Section */}
@@ -119,9 +112,11 @@ export default function Login() {
 
           <form onSubmit={handleLogin} autoComplete="off" className="login-form">
             <div className="input-group">
+              <label htmlFor="email">Email Address</label>
               <input
+                id="email"
                 type="email"
-                placeholder="Email Address"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -130,9 +125,11 @@ export default function Login() {
             </div>
 
             <div className="input-group">
+              <label htmlFor="password">Password</label>
               <input
+                id="password"
                 type="password"
-                placeholder="Password"
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -149,12 +146,23 @@ export default function Login() {
 
           <p className="create-account">
             Don't have an account?{" "}
-            <a href="/register" className="link">
+            <button type="button" className="link btn-link" onClick={() => setShowRegister(true)}>
               Create one
-            </a>
+            </button>
           </p>
         </div>
       </div>
+      {/* Register modal (reuses the RegisterForm so visuals match) */}
+      {showRegister && (
+        <div className="modal-overlay" role="dialog" aria-modal="true">
+          <div className="modal-content">
+            <button className="modal-close" onClick={() => setShowRegister(false)} aria-label="Close">
+              ×
+            </button>
+            <RegisterForm onClose={() => setShowRegister(false)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

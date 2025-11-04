@@ -37,11 +37,11 @@ export default function ModalHost() {
         res = await axios.post('/api/admin/users', payload);
       }
       console.log('[ModalHost] Save response:', res && res.data);
-      // Notify others about the created/updated user, but do NOT force a global reload event
-      // to avoid UI flicker — components should rely on optimistic updates where possible.
+      // Notify components to reload their user lists
       try {
         const createdId = (res && res.data && res.data.user && res.data.user.id) ? res.data.user.id : null;
         window.dispatchEvent(new CustomEvent('admin:user-created', { detail: createdId ? { id: createdId } : {} }));
+        window.dispatchEvent(new CustomEvent('admin:users-changed')); // Force reload
       } catch(e){}
       return res.data;
     } catch (err) {

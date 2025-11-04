@@ -1,223 +1,352 @@
+/* SJIT SCHOOL Login - Simple and Elegant */
+
 .login-page {
-  display: flex;
-  align-items: center;
+  position: fixed;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  height: 100vh;
   color: #0f172a;
-  background: #90EE90;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Subtle overlay */
+.login-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(15,23,42,0.2);
+  z-index: 0;
+}
+
+.login-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 1;
+}
+
+/* Simple, elegant, formal modal card */
+.login-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2.5rem 3rem 2rem;
+  box-shadow: 
+    0 10px 40px rgba(0,0,0,0.12),
+    0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  overflow: visible;
+  border: 1px solid rgba(226,232,240,0.8);
+}
+
+.login-card::before {
+  display: none;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(0px); }
+}
+
+.login-card h2 {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.2;
+}
+
+.login-card .subtitle {
+  margin-bottom: 1.8rem;
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: 0.5rem;
+}
+
+/* Clean, aligned input boxes with labels */
+.input-group {
+  position: relative;
+  margin-bottom: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 0;
+  padding: 0 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  display: block;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  border-radius: 10px;
+  border: 2px solid #cbd5e1;
+  background: #ffffff;
+  font-size: 0.95rem;
+  color: #0f172a;
+  box-shadow: 
+    0 2px 8px rgba(30,64,175,0.08),
+    inset 0 1px 2px rgba(255,255,255,0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 400;
+  display: block;
+  margin: 0;
+}
+
+.input-group input::placeholder { 
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 
+    0 0 0 4px rgba(59,130,246,0.15),
+    0 4px 12px rgba(30,64,175,0.2),
+    inset 0 1px 2px rgba(255,255,255,1);
+  transform: translateY(-2px);
+}
+
+/* Filled input effect */
+.input-group input:valid:not(:placeholder-shown),
+.input-group input:not(:placeholder-shown) {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+  box-shadow: 
+    0 2px 8px rgba(59,130,246,0.12),
+    inset 0 1px 2px rgba(255,255,255,0.9);
+}
+
+/* Animated accent line */
+.input-group::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+  border-radius: 0 0 10px 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.input-group:focus-within::after {
+  opacity: 1;
+}
+
+.input-group input:focus::after {
+  display: block;
+}
+
+.login-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 14px rgba(30,64,175,0.35),
+    0 2px 6px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
   position: relative;
   overflow: hidden;
-  padding: 20px;
+}
 
-  /* Background slideshow - slides from right to left */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    animation: slideFromRight 12s ease-in-out infinite;
-    z-index: 0;
-  }
-
-  /* Dark overlay for readability */
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-  }
-
-  .login-card {
-    z-index: 2;
-  background: rgba(0, 133, 66, 0.85);
-  color: #fff;
-  padding: 2.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 20px 60px rgba(0, 133, 66, 0.18), 0 2px 16px rgba(0,0,0,0.10);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* Button shimmer effect */
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
-  max-width: 400px;
-  text-align: center;
-  animation: popInModal 0.7s cubic-bezier(.4,0,.2,1);
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.login-btn:hover::before {
+  left: 100%;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(30,64,175,0.45),
+    0 4px 8px rgba(0,0,0,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+}
+
+.login-btn:active {
+  transform: translateY(0px);
+}
+
+.login-btn::before {
+  display: none;
+}
+
+.login-btn:hover::before {
+  display: none;
+}
+
+/* Input accent line on focus */
+.input-group input:focus + .input-underline,
+.input-group select:focus + .input-underline {
+  display: none;
+}
+
+.create-account { 
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(59,130,246,0.15);
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 400;
+}
+.create-account .link { 
+  color: #1e40af; 
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 0.5rem 1.2rem;
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  display: inline-block;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  box-shadow: 0 2px 8px rgba(59,130,246,0.15);
+}
+.create-account .link:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  border-color: #1e40af;
+  box-shadow: 0 4px 12px rgba(59,130,246,0.35);
+  transform: translateY(-2px);
+}
+
+/* Slideshow keyframes (keeps using the same image set) */
+/* CSS-driven layered slideshow (three slides). Each slide is visible ~3s; total cycle 9s.
+   We use translate+fade for a smooth entrance/exit similar to the Register slideshow. */
+
+.login-page .bg-slideshow { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.login-page .bg-slideshow .slide {
+  position: absolute; inset: 0; background-size: cover; background-position: center center;
+  background-repeat: no-repeat; opacity: 0; transform: translateX(20px) scale(1.02);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.login-page .bg-slideshow .slide:nth-child(1) { animation: loginSlide 9s infinite; animation-delay: 0s; }
+.login-page .bg-slideshow .slide:nth-child(2) { animation: loginSlide 9s infinite; animation-delay: 3s; }
+.login-page .bg-slideshow .slide:nth-child(3) { animation: loginSlide 9s infinite; animation-delay: 6s; }
+
+@keyframes loginSlide {
+  0% { opacity: 0; transform: translateX(20px) scale(1.02); }
+  8% { opacity: 1; transform: translateX(0) scale(1); }
+  33% { opacity: 1; transform: translateX(0) scale(1); }
+  41% { opacity: 0; transform: translateX(-20px) scale(0.99); }
+  100% { opacity: 0; transform: translateX(-20px) scale(0.99); }
+}
+
+/* small screen adjustments */
+@media (max-width: 640px) {
+  .login-card { 
+    margin: 1.5rem; 
+    max-width: 380px; 
+    padding: 2rem 1.8rem; 
+  }
+  
+  .login-card h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Modal overlay for embedded RegisterForm */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50; /* above page content */
+  background: linear-gradient(rgba(2,6,23,0.44), rgba(2,6,23,0.56));
+  backdrop-filter: blur(6px) saturate(120%);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content {
   position: relative;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-@keyframes popInModal {
-  0% { transform: scale(0.92) translateY(40px); opacity: 0; }
-  60% { transform: scale(1.04) translateY(-8px); opacity: 1; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
+  max-width: 850px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: fadeInUp 220ms ease;
+  /* keep the modal shell transparent so the inner register card (white) remains the single visible card */
+  background: transparent;
+  border-radius: 0.75rem;
+  box-shadow: none;
+  padding: 0;
+  border: none;
+  display: block;
+  margin: auto;
 }
 
-    h2 {
-      margin-bottom: 0.5rem;
-      font-size: 1.75rem;
-      font-weight: 700;
-  color: #fff;
-    }
-
-    .subtitle {
-  color: #e6ffe6;
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-    }
-
-    .input-group {
-      position: relative;
-      margin-bottom: 1rem;
-
-      input {
-        width: 100%;
-        padding: 0.85rem 1rem;
-        border: 1px solid #d1d5db;
-        border-radius: 0.5rem;
-        font-size: 0.95rem;
-        transition: 0.2s;
-        background-color: #fff;
-
-        &:focus {
-          outline: none;
-          border-color: #002D72;
-          box-shadow: 0 0 0 3px rgba(0, 45, 114, 0.1);
-        }
-      }
-    }
-
-    .login-btn {
-      width: 100%;
-      padding: 0.85rem;
-      background: #002D72;
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-top: 0.5rem;
-
-      &:hover:not(:disabled) {
-        background: #001845;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 45, 114, 0.3);
-      }
-
-      &:disabled {
-        background: #9ca3af;
-        cursor: not-allowed;
-      }
-    }
-
-    .error-message {
-      color: #b91c1c;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      background: #fee2e2;
-      padding: 0.6rem;
-      border-radius: 6px;
-      animation: shake 0.3s ease-in-out;
-    }
-
-    .create-account {
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-
-      .link {
-        color: #002D72;
-        font-weight: 600;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-          color: #FFD700;
-        }
-      }
-    }
-  }
+.modal-close {
+  display: none;
 }
 
-/* ✨ Animations */
-@keyframes slideFromRight {
-  0% {
-    background-image: url('/images/SJIT_Sample_Cover_Photo_2.original.png');
-    background-position: 100% center;
-  }
-  3% {
-    background-image: url('/images/SJIT_Sample_Cover_Photo_2.original.png');
-    background-position: center;
-  }
-  25% {
-    background-image: url('/images/SJIT_Sample_Cover_Photo_2.original.png');
-    background-position: center;
-  }
-  28% {
-    background-image: url('/images/SJIT_Sample_Cover_Photo_2.original.png');
-    background-position: -100% center;
-  }
-  30% {
-    background-image: url('/images/main-campus.webp');
-    background-position: 100% center;
-  }
-  33% {
-    background-image: url('/images/main-campus.webp');
-    background-position: center;
-  }
-  55% {
-    background-image: url('/images/main-campus.webp');
-    background-position: center;
-  }
-  58% {
-    background-image: url('/images/main-campus.webp');
-    background-position: -100% center;
-  }
-  60% {
-    background-image: url('/images/sjit-cta-group-a-1168x657.webp');
-    background-position: 100% center;
-  }
-  63% {
-    background-image: url('/images/sjit-cta-group-a-1168x657.webp');
-    background-position: center;
-  }
-  85% {
-    background-image: url('/images/sjit-cta-group-a-1168x657.webp');
-    background-position: center;
-  }
-  88% {
-    background-image: url('/images/sjit-cta-group-a-1168x657.webp');
-    background-position: -100% center;
-  }
-  90% {
-    background-image: url('/images/SJIT_Sample_Cover_Photo_2.original.png');
-    background-position: 100% center;
-  }
-  93%, 100% {
-    background-image: url('/images/SJIT_Sample_Cover_Photo_2.original.png');
-    background-position: center;
-  }
-}
+.modal-content .login-card.register-card { position: relative; }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Let the Register card retain its original `.login-card.register-card` styling
+   so we show a single white card inside the modal */
 
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+/* Add a subtle pop-in animation for the modal */
+@keyframes fadeInUpModal {
+  from { opacity: 0; transform: translateY(32px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
-
-@keyframes popInModal {
-  0% { transform: scale(0.92) translateY(40px); opacity: 0; }
-  60% { transform: scale(1.04) translateY(-8px); opacity: 1; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
+.modal-content {
+  animation: fadeInUpModal 0.32s cubic-bezier(.4,1.4,.6,1) both;
 }

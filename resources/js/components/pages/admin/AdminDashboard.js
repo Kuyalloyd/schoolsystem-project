@@ -31,6 +31,7 @@ import { UserFormModal } from "./UserFormModal";
 import CourseFormModal from "./CourseFormModal";
 import UserDetailModal from "./UserDetailModal";
 import AdminUsers from "./AdminUsers";
+import EventFormModal from "./EventFormModal";
 import "../../../../sass/AdminDashboard.scss";
 
 
@@ -448,6 +449,31 @@ export default function AdminDashboard({ initialPage = null }) {
   const [docModal, setDocModal] = useState(null);
   const [selectedYear, setSelectedYear] = useState("2024-2025");
   const [activeTab, setActiveTab] = useState('attendance');
+  const [eventModalOpen, setEventModalOpen] = useState(false);
+  const [events, setEvents] = useState(() => {
+    // Load events from localStorage on initial mount
+    try {
+      const savedEvents = localStorage.getItem('sjit_dashboard_events');
+      return savedEvents ? JSON.parse(savedEvents) : [];
+    } catch (e) {
+      console.error('Failed to load events from localStorage', e);
+      return [];
+    }
+  });
+
+  function handleAddEvent(event) {
+    setEvents(prev => {
+      const newEvents = [...prev, { ...event, id: Date.now() }];
+      // Persist to localStorage whenever events change
+      try {
+        localStorage.setItem('sjit_dashboard_events', JSON.stringify(newEvents));
+      } catch (e) {
+        console.error('Failed to save events to localStorage', e);
+      }
+      return newEvents;
+    });
+  }
+
   const openDocModal = (data) => setDocModal(data);
   const closeDocModal = () => setDocModal(null);
   const pollRef = useRef(null);
@@ -878,23 +904,6 @@ export default function AdminDashboard({ initialPage = null }) {
 
     return (
       <div className="dashboard-page">
-        {/* Header */}
-        <div className="dashboard-header-modern">
-          <div className="header-content">
-            <h1>Dashboard</h1>
-            <p className="subtitle">Welcome back, Admin</p>
-          </div>
-          <div className="header-actions-modern">
-            <div className="date-picker-box">
-              <FiCalendar size={18} />
-              <input type="date" defaultValue={new Date().toISOString().split('T')[0]} />
-            </div>
-            <button className="btn-generate-report">
-              <FiFileText size={18} />
-              <span>Generate Report</span>
-            </button>
-          </div>
-        </div>
 
         {/* Top Stats Cards Grid */}
         <div className="top-stats-grid-modern">
@@ -1112,36 +1121,22 @@ export default function AdminDashboard({ initialPage = null }) {
               <FiCalendar className="calendar-icon" />
               <h3>Upcoming Events</h3>
             </div>
-            <div className="event-item event-yellow">
-              <div className="event-date">
-                <div className="month">Oct</div>
-                <div className="day">25</div>
-              </div>
-              <div className="event-details">
-                <div className="event-title">Parent-Teacher Meeting</div>
-                <div className="event-time">2:00 PM</div>
-              </div>
-            </div>
-            <div className="event-item event-blue">
-              <div className="event-date">
-                <div className="month">Nov</div>
-                <div className="day">5</div>
-              </div>
-              <div className="event-details">
-                <div className="event-title">Semester Exams Begin</div>
-                <div className="event-time">9:00 AM</div>
-              </div>
-            </div>
-            <div className="event-item event-green">
-              <div className="event-date">
-                <div className="month">Nov</div>
-                <div className="day">12</div>
-              </div>
-              <div className="event-details">
-                <div className="event-title">Sports Day</div>
-                <div className="event-time">10:00 AM</div>
-              </div>
-            </div>
+            {events.length === 0 ? (
+              <div style={{ padding: '16px 0', color: '#888', textAlign: 'center' }}>No events yet.</div>
+            ) : (
+              events.map((event, idx) => (
+                <div key={event.id || idx} className={`event-item event-blue`}>
+                  <div className="event-date">
+                    <div className="month">{event.date ? new Date(event.date).toLocaleString('en-US', { month: 'short' }) : '--'}</div>
+                    <div className="day">{event.date ? new Date(event.date).getDate() : '--'}</div>
+                  </div>
+                  <div className="event-details">
+                    <div className="event-title">{event.title}</div>
+                    <div className="event-time">{event.time}</div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
@@ -1266,6 +1261,16 @@ export default function AdminDashboard({ initialPage = null }) {
   const CoursesPage = () => {
     // NOTE: Course modals are scoped inside CoursesPage. Do not render them at AdminDashboard root
     // or you'll get ReferenceError on state variables and flicker due to overlay stacking.
+    
+    // Log when CoursesPage mounts
+    useEffect(() => {
+      console.log('%c📚 [COURSES PAGE] Component mounted!', 'background: #f59e0b; color: white; padding: 8px; font-weight: bold;');
+      console.log('Export buttons should be visible. If not, check browser cache.');
+      return () => {
+        console.log('📚 [COURSES PAGE] Component unmounting');
+      };
+    }, []);
+    
     const [courseSearch, setCourseSearch] = useState('');
   const [filterStatusC, setFilterStatusC] = useState('all');
   const [filterSemesterC, setFilterSemesterC] = useState('all');
@@ -1274,6 +1279,30 @@ export default function AdminDashboard({ initialPage = null }) {
   const [editingCourse, setEditingCourse] = useState(null);
   const [showEnrollModal, setShowEnrollModal] = useState(false);
   const [enrollCourse, setEnrollCourse] = useState(null);
+
+    // Toggle course active/inactive status
+    const handleToggleCourseStatus = async (course) => {
+      const newStatus = (course.status || '').toLowerCase() === 'active' ? 'Inactive' : 'Active';
+      
+      if (!confirm(`Are you sure you want to set "${course.name}" to ${newStatus}?`)) {
+        return;
+      }
+
+      try {
+        // Update in coursesList state
+        setCoursesList(prev => prev.map(c => 
+          c.code === course.code ? { ...c, status: newStatus } : c
+        ));
+        
+        // You can add API call here if you have a backend endpoint
+        // await axios.put(`${API}/courses/${course.id}`, { status: newStatus });
+        
+        alert(`Course "${course.name}" is now ${newStatus}`);
+      } catch (error) {
+        console.error('Failed to toggle course status:', error);
+        alert('Failed to update course status');
+      }
+    };
 
     // programs (departments) provided by the user
     const programs = [
@@ -1329,13 +1358,57 @@ export default function AdminDashboard({ initialPage = null }) {
       return true;
     });
 
-    const handleCourseExport = () => {
-      const rows = filtered.map(r => ({ code: r.code || '', name: r.name || '', department: r.department || '', teacher: r.teacher || '', enrolled: r.enrolled || '', schedule: r.schedule || '', credits: r.credits || '', status: r.status || '' }));
-      if (!rows.length) return alert('No courses to export');
-      const csv = [Object.keys(rows[0]).join(',')].concat(rows.map(r => Object.values(r).map(v => '"'+String(v||'').replace(/"/g,'""')+'"').join(','))).join('\n');
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'courses-export.csv'; a.click(); URL.revokeObjectURL(url);
+    const buildAndDownloadCsv = (rows, filename = 'courses-export.csv') => {
+      console.log('🚀 [EXPORT] buildAndDownloadCsv called with', rows?.length, 'rows, filename:', filename);
+      if (!rows || !rows.length) {
+        console.warn('❌ [EXPORT] No rows to export');
+        alert('No courses to export');
+        return;
+      }
+      try {
+        const csv = [Object.keys(rows[0]).join(',')].concat(rows.map(r => Object.values(r).map(v => '"'+String(v||'').replace(/"/g,'""')+'"').join(','))).join('\n');
+        console.log('✅ [EXPORT] CSV generated, length:', csv.length, 'chars');
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        console.log('✅ [EXPORT] Blob URL created:', url);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        console.log('✅ [EXPORT] Anchor element appended, triggering click...');
+        a.click();
+        console.log('✅ [EXPORT] Click triggered successfully! File should download:', filename);
+        alert(`✅ Export started!\n\nFile: ${filename}\nRows: ${rows.length}\n\nCheck your Downloads folder.`);
+        setTimeout(() => {
+          try { document.body.removeChild(a); } catch(e){ console.warn('Cleanup: anchor remove failed', e); }
+          try { URL.revokeObjectURL(url); } catch(e){ console.warn('Cleanup: URL revoke failed', e); }
+          console.log('🧹 [EXPORT] Cleanup complete');
+        }, 500);
+      } catch (e) {
+        console.error('❌ [EXPORT] Export failed:', e);
+        alert('❌ Export failed!\n\nError: ' + (e?.message || 'Unknown error') + '\n\nCheck console for details.');
+      }
+    };
+
+    const handleCourseExport = (mode = 'all') => {
+      console.log('📊 [EXPORT] handleCourseExport called, mode:', mode);
+      // mode: 'all' => export full courses list; 'filtered' => export only filtered rows
+      const rowsSource = (mode === 'filtered') ? filtered : courses;
+      console.log('📊 [EXPORT] Source rows count:', rowsSource?.length, '| filtered:', filtered?.length, '| all courses:', courses?.length);
+      const rows = (rowsSource || []).map(r => ({ 
+        code: r.code || '', 
+        name: r.name || '', 
+        department: r.department || '', 
+        teacher: r.teacher || '', 
+        enrolled: r.enrolled || '', 
+        schedule: r.schedule || '', 
+        credits: r.credits || '', 
+        status: r.status || '' 
+      }));
+      const filename = `courses-export-${mode === 'filtered' ? 'filtered' : 'all'}-${new Date().toISOString().slice(0,10)}.csv`;
+      console.log('📊 [EXPORT] Mapped rows:', rows.length, '| calling buildAndDownloadCsv...');
+      buildAndDownloadCsv(rows, filename);
     };
 
     const handleCourseImportFile = (file) => {
@@ -1412,6 +1485,87 @@ export default function AdminDashboard({ initialPage = null }) {
                 {credits.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
 
+              <button 
+                id="export-courses-all" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('🔵 [EXPORT BUTTON] Export All clicked!');
+                  handleCourseExport('all');
+                }} 
+                title="Export all courses" 
+                style={{ 
+                  padding: '10px 18px', 
+                  borderRadius: 10, 
+                  border: '2px solid #10b981', 
+                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', 
+                  color: '#fff', 
+                  fontWeight: 700, 
+                  fontSize: 14, 
+                  cursor: 'pointer', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: 8, 
+                  transition: 'all 0.2s',
+                  boxShadow: '0 2px 8px rgba(16,185,129,0.3)',
+                  position: 'relative',
+                  zIndex: 100,
+                  pointerEvents: 'auto'
+                }} 
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(16,185,129,0.4)';
+                }} 
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(16,185,129,0.3)';
+                }}
+              >
+                <FiDownload size={16} /> Export All
+              </button>
+              <button 
+                id="export-courses-filtered" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('🟢 [EXPORT BUTTON] Export Filtered clicked!');
+                  handleCourseExport('filtered');
+                }} 
+                title="Export filtered courses" 
+                style={{ 
+                  padding: '10px 18px', 
+                  borderRadius: 10, 
+                  border: '2px solid #f59e0b', 
+                  background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', 
+                  color: '#fff', 
+                  fontWeight: 700, 
+                  fontSize: 14, 
+                  cursor: 'pointer', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: 8, 
+                  transition: 'all 0.2s',
+                  boxShadow: '0 2px 8px rgba(245,158,11,0.3)',
+                  position: 'relative',
+                  zIndex: 100,
+                  pointerEvents: 'auto'
+                }} 
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #d97706 0%, #b45309 100%)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(245,158,11,0.4)';
+                }} 
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(245,158,11,0.3)';
+                }}
+              >
+                <FiDownload size={16} /> Export Filtered
+              </button>
+
               <button onClick={() => setShowCourseAddModal(true)} style={{ padding: '10px 20px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', color: '#fff', fontWeight: 600, fontSize: 14, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.2s', boxShadow: '0 2px 4px rgba(245,158,11,0.2)' }}>
                 <FiPlus size={18} /> Add Course
               </button>
@@ -1439,7 +1593,7 @@ export default function AdminDashboard({ initialPage = null }) {
                     <tr key={i} style={{ borderBottom: '1px solid #f3f4f6', transition: 'all 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.background = '#fffbeb'} onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
                       <td style={{ padding: '14px 16px' }}>
                         <div style={{ fontWeight: 600, fontSize: 14, color: '#111827', marginBottom: 2 }}>{c.name}</div>
-                        <div style={{ fontSize: 12, color: '#9ca3af' }}>{c.code}</div>
+                        <div style={{ fontSize:  12, color: '#9ca3af' }}>{c.code}</div>
                       </td>
                       <td style={{ padding: '14px 16px', fontSize: 14, color: '#6b7280' }}>{c.department}</td>
                       <td style={{ padding: '14px 16px', fontSize: 14, color: '#6b7280' }}>{c.teacher}</td>
@@ -1447,7 +1601,36 @@ export default function AdminDashboard({ initialPage = null }) {
                       <td style={{ padding: '14px 16px', fontSize: 14, color: '#6b7280' }}>{c.schedule}</td>
                       <td style={{ padding: '14px 16px', fontSize: 14, color: '#6b7280' }}>{c.credits}</td>
                       <td style={{ padding: '14px 16px' }}>
-                        <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 12, fontSize: 12, fontWeight: 600, background: (c.status||'').toLowerCase() === 'active' ? '#d1fae5' : '#f3f4f6', color: (c.status||'').toLowerCase() === 'active' ? '#065f46' : '#6b7280' }}>{c.status}</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <button
+                            onClick={() => handleToggleCourseStatus(c)}
+                            style={{
+                              position: 'relative',
+                              width: 48,
+                              height: 24,
+                              borderRadius: 12,
+                              border: 'none',
+                              cursor: 'pointer',
+                              transition: 'all 0.3s ease',
+                              background: (c.status||'').toLowerCase() === 'active' ? '#10b981' : '#d1d5db',
+                              outline: 'none'
+                            }}
+                            title={`Click to ${(c.status||'').toLowerCase() === 'active' ? 'deactivate' : 'activate'}`}
+                          >
+                            <div style={{
+                              position: 'absolute',
+                              top: 2,
+                              left: (c.status||'').toLowerCase() === 'active' ? 26 : 2,
+                              width: 20,
+                              height: 20,
+                              borderRadius: '50%',
+                              background: '#fff',
+                              transition: 'all 0.3s ease',
+                              boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+                            }}></div>
+                          </button>
+                          <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 12, fontSize: 12, fontWeight: 600, background: (c.status||'').toLowerCase() === 'active' ? '#d1fae5' : '#f3f4f6', color: (c.status||'').toLowerCase() === 'active' ? '#065f46' : '#6b7280' }}>{c.status}</span>
+                        </div>
                       </td>
                       <td style={{ padding: '14px 16px', textAlign: 'center' }}>
                         <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
@@ -1472,6 +1655,32 @@ export default function AdminDashboard({ initialPage = null }) {
             </div>
           </div>
         </div>
+
+        {/* Course Add/Edit Modal */}
+        {showCourseAddModal && (
+          <CourseFormModal
+            initial={editingCourse}
+            onClose={() => {
+              setShowCourseAddModal(false);
+              setEditingCourse(null);
+            }}
+            onSave={(courseData) => {
+              console.log('Course saved:', courseData);
+              // Update the course in the list
+              if (editingCourse) {
+                // Edit existing course
+                setCoursesList(prev => prev.map(c => 
+                  c.code === editingCourse.code ? { ...c, ...courseData, status: (courseData.status || 'Active') } : c
+                ));
+              } else {
+                // Add new course
+                setCoursesList(prev => [...prev, { ...courseData, status: (courseData.status || 'Active') }]);
+              }
+              setShowCourseAddModal(false);
+              setEditingCourse(null);
+            }}
+          />
+        )}
       </div>
     );
   };
@@ -1834,13 +2043,22 @@ export default function AdminDashboard({ initialPage = null }) {
   };
 
   const CalendarPage = () => {
-    // sample counts come from stats where available
-    const totalEvents = Number(stats.total_events) || 0;
-    const thisMonth = Number(stats.events_this_month) || 0;
-    const upcoming = Number(stats.events_upcoming) || 0;
+    // Use actual events from state
+    const totalEvents = events.length;
+    const today = new Date();
+    const thisMonth = events.filter(e => {
+      if (!e.date) return false;
+      const eventDate = new Date(e.date);
+      return eventDate.getMonth() === today.getMonth() && eventDate.getFullYear() === today.getFullYear();
+    }).length;
+    const upcoming = events.filter(e => {
+      if (!e.date) return false;
+      return new Date(e.date) >= today;
+    }).length;
+    // placeholder counts for features not yet implemented
     const highPriority = Number(stats.events_high_priority) || 0;
     const withReminders = Number(stats.events_with_reminders) || 0;
-    const publicEvents = Number(stats.events_public) || 0;
+    const publicEvents = Number(stats.events_public) || totalEvents;
 
     const categories = [
       { title: 'Academic', count: 1 },
@@ -1860,8 +2078,8 @@ export default function AdminDashboard({ initialPage = null }) {
           </div>
           <div className="header-actions">
             <div className="header-buttons">
-              <button className="icon-box export" onClick={() => alert('Export not configured')}><FiDownload /> <span style={{ marginLeft: 8 }}>Export</span></button>
-              <button className="primary" onClick={() => alert('Add event (not implemented)')}><FiPlus /> <span style={{ marginLeft: 8 }}>Add Event</span></button>
+              <button className="icon-box" onClick={() => alert('Export not configured')}><FiDownload /> <span style={{ marginLeft: 8 }}>Export</span></button>
+              <button className="primary" onClick={() => setEventModalOpen(true)}><FiPlus /> <span style={{ marginLeft: 8 }}>Add Event</span></button>
             </div>
           </div>
         </div>
@@ -1910,6 +2128,70 @@ export default function AdminDashboard({ initialPage = null }) {
               </div>
             </div>
           </div>
+
+          {/* Display actual events */}
+          <div className="card" style={{ marginTop: 18, padding: '20px' }}>
+            <h3 style={{ marginBottom: 16 }}>All Events</h3>
+            {events.length === 0 ? (
+              <div style={{ padding: '40px 20px', textAlign: 'center', color: '#9ca3af' }}>
+                <FiCalendar size={48} style={{ marginBottom: 12, opacity: 0.3 }} />
+                <p>No events added yet. Click "Add Event" to create one.</p>
+              </div>
+            ) : (
+              <div style={{ display: 'grid', gap: 12 }}>
+                {events.map((event, idx) => (
+                  <div 
+                    key={event.id || idx} 
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: 16, 
+                      padding: '16px 20px', 
+                      background: 'linear-gradient(90deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.03))',
+                      borderRadius: 10,
+                      border: '1px solid #e5e7eb',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(90deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.05))';
+                      e.currentTarget.style.borderColor = '#6366f1';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(90deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.03))';
+                      e.currentTarget.style.borderColor = '#e5e7eb';
+                    }}
+                  >
+                    <div style={{ 
+                      minWidth: 60, 
+                      height: 60, 
+                      background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+                      borderRadius: 10,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#fff',
+                      fontWeight: 700
+                    }}>
+                      <div style={{ fontSize: 11, textTransform: 'uppercase' }}>
+                        {event.date ? new Date(event.date).toLocaleString('en-US', { month: 'short' }) : 'TBD'}
+                      </div>
+                      <div style={{ fontSize: 20 }}>
+                        {event.date ? new Date(event.date).getDate() : '--'}
+                      </div>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontWeight: 700, fontSize: 16, color: '#111827' }}>{event.title}</div>
+                      <div style={{ fontSize: 14, color: '#6b7280', marginTop: 4 }}>
+                        <FiClock size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+                        {event.time}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -1941,7 +2223,96 @@ export default function AdminDashboard({ initialPage = null }) {
   return (
     <div className="admin-dashboard-layout">
       <Sidebar activePage={activePage} onNavigate={setActivePage} />
-      <main className="admin-main">{renderContent()}</main>
+      <main className="admin-main">
+        {/* Only show header with buttons on dashboard page */}
+        {activePage === "dashboard" && (
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 16 }}>
+              <div>
+                <h1 style={{ margin: 0 }}>Dashboard</h1>
+                <p className="subtitle" style={{ margin: 0 }}>Welcome back, Admin</p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', background: '#fff', border: '1px solid #e5e7eb', borderRadius: 12, padding: '8px 18px', fontWeight: 600, fontSize: 16, color: '#222', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+                  <FiCalendar style={{ marginRight: 8, fontSize: 18, color: '#888' }} />
+                  {new Date().toLocaleDateString('en-GB')}
+                </div>
+                <button 
+                  style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    gap: 8, 
+                    padding: '12px 24px', 
+                    background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)', 
+                    color: '#fff', 
+                    border: 'none', 
+                    borderRadius: 10, 
+                    fontSize: 14, 
+                    fontWeight: 600, 
+                    cursor: 'pointer', 
+                    boxShadow: '0 4px 12px rgba(30,64,175,0.25)',
+                    transition: 'all 0.3s ease',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px'
+                  }} 
+                  onClick={() => setEventModalOpen(true)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(30,64,175,0.35)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(30,64,175,0.25)';
+                  }}
+                >
+                  <FiPlus size={18} /> Add Event
+                </button>
+                <button 
+                  style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    gap: 8, 
+                    padding: '12px 24px', 
+                    background: 'linear-gradient(135deg, #059669 0%, #10b981 100%)', 
+                    color: '#fff', 
+                    border: 'none', 
+                    borderRadius: 10, 
+                    fontSize: 14, 
+                    fontWeight: 600, 
+                    cursor: 'pointer', 
+                    boxShadow: '0 4px 12px rgba(16,185,129,0.25)',
+                    transition: 'all 0.3s ease',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px'
+                  }} 
+                  onClick={() => downloadCSV(events)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(16,185,129,0.35)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(16,185,129,0.25)';
+                  }}
+                >
+                  <FiFileText size={18} /> Generate Report
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {/* Render EventFormModal when open */}
+        {eventModalOpen && (
+          <EventFormModal
+            visible={eventModalOpen}
+            onClose={() => setEventModalOpen(false)}
+            onSave={handleAddEvent}
+          />
+        )}
+        {renderContent()}
+      </main>
 
       {showModal && (
         <UserFormModal
@@ -1950,9 +2321,6 @@ export default function AdminDashboard({ initialPage = null }) {
           onClose={() => setShowModal(false)}
           onSave={saveUserFromModal}
         />
-      )}
-      {showCourseModal && (
-        <CourseFormModal onClose={() => setShowCourseModal(false)} />
       )}
       {selectedUser && (
         <UserDetailModal
@@ -2014,4 +2382,22 @@ export default function AdminDashboard({ initialPage = null }) {
   );
 }
 
-// Department overview removed per user request
+// CSV download helper for events only
+function downloadCSV(events) {
+  if (!events || !events.length) {
+    alert('No events to export.');
+    return;
+  }
+  const header = ['Title', 'Date', 'Time'];
+  const rows = events.map(e => [e.title, e.date, e.time]);
+  const csvContent = [header, ...rows].map(r => r.join(',')).join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'events_report.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

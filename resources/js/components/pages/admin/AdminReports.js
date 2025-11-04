@@ -194,30 +194,6 @@ export default function AdminReports() {
               <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, color: '#111827' }}>Reports</h1>
               <p style={{ margin: '6px 0 0 0', fontSize: 14, color: '#6b7280' }}>Generate and view academic reports</p>
             </div>
-            <select
-              value={selectedYear}
-              onChange={(e) => setSelectedYear(e.target.value)}
-              style={{ 
-                padding: '8px 32px 8px 12px', 
-                borderRadius: 8, 
-                border: '1px solid #e5e7eb', 
-                fontSize: 14, 
-                color: '#374151', 
-                background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', 
-                appearance: 'none', 
-                cursor: 'pointer' 
-              }}
-            >
-              <option value="2024-2025">2024-2025</option>
-              <option value="2025-2026">2025-2026</option>
-              <option value="2026-2027">2026-2027</option>
-              <option value="2027-2028">2027-2028</option>
-              <option value="2028-2029">2028-2029</option>
-              <option value="2023-2024">2023-2024</option>
-              <option value="2022-2023">2022-2023</option>
-              <option value="2021-2022">2021-2022</option>
-              <option value="2020-2021">2020-2021</option>
-            </select>
           </div>
 
           {/* Filters Row */}

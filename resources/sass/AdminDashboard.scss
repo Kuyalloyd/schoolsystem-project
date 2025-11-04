@@ -7,6 +7,22 @@ $bg: #ffffff;
 $panel: #0b1220;
 $card-radius: 12px;
 
+/* Prevent layout shift on page load/refresh - stable box model */
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: scroll; /* force scrollbar to prevent layout shift */
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
 /* Chart color tokens used by JS via CSS variables */
 :root {
 	--chart-students: #2563eb; /* blue */
@@ -36,11 +52,13 @@ $card-radius: 12px;
 		min-height: 100vh;
 		background: linear-gradient(180deg,#f6fbff,#f0f7ff);
 		color: $text;
-	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+		font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+		overflow-x: hidden;
+		position: relative;
 
 	// Sidebar (kept fixed on wide screens)
 	.sidebar {
-		width: 240px;
+		width: 260px;
 		background: $panel;
 		color: $text;
 		padding: 20px;
@@ -52,6 +70,8 @@ $card-radius: 12px;
 		flex-direction: column;
 		gap: 18px;
 		box-shadow: 0 4px 20px rgba(2,6,23,0.06);
+		z-index: 100;
+		flex-shrink: 0;
 
 		.logo { font-size: 1.15rem; font-weight: 700; text-align: center; }
 		.nav { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
@@ -60,19 +80,24 @@ $card-radius: 12px;
 	}
 
 		// Main content area (to the right of the sidebar)
-		// Use sibling selector so the main margin mirrors the sidebar width and respects collapsed state
+		// Use fixed width calculation to prevent layout shift
 		.sidebar + .admin-main,
 		.admin-main {
-			margin-left: 240px; // default match sidebar width
+			margin-left: 260px; // match sidebar width exactly
+			width: calc(100% - 260px); // constrain width explicitly
 			padding: 28px 32px;
 			flex: 1;
 			min-width: 0; // allow flex children to shrink
-			transition: margin-left 0.18s ease;
+			max-width: calc(100% - 260px); // prevent overflow
+			box-sizing: border-box;
+			transition: none; // disable transition to prevent shifting
 		}
 
-		// When the sidebar is collapsed, reduce the left margin so it doesn't overlap
+		// When the sidebar is collapsed, recalculate dimensions
 		.sidebar.collapsed + .admin-main {
 			margin-left: 72px;
+			width: calc(100% - 72px);
+			max-width: calc(100% - 72px);
 		}
 }
 
@@ -2567,6 +2592,9 @@ $card-radius: 12px;
 			
 			thead {
 				background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+				position: sticky;
+				top: 0;
+				z-index: 10;
 				
 				th {
 					padding: 16px;
@@ -2577,6 +2605,7 @@ $card-radius: 12px;
 					text-transform: uppercase;
 					letter-spacing: 0.5px;
 					border-bottom: 2px solid #e5e7eb;
+					background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
 					
 					&.text-right {
 						text-align: right;
@@ -3015,17 +3044,25 @@ $card-radius: 12px;
 }
 
 /* Course form modal styles */
-.course-modal { background: linear-gradient(180deg,#ffffff,#fbfdff); border-radius:12px; padding:0; overflow:hidden; }
-.course-modal .modal-header { padding:18px; border-bottom:1px solid rgba(37,99,235,0.04); background: linear-gradient(90deg,#eef2ff,#f8fbff); }
+.course-modal { background: linear-gradient(180deg,#ffffff,#fbfdff); border-radius:12px; padding:0; overflow:hidden; max-height: 85vh; display: flex; flex-direction: column; }
+.course-modal .modal-header { padding:18px; border-bottom:1px solid rgba(37,99,235,0.04); background: linear-gradient(90deg,#eef2ff,#f8fbff); flex-shrink: 0; }
 .course-modal .modal-header h3 { margin:0; font-size:18px; }
 .course-modal .modal-header .modal-sub { color:#64748b; font-size:13px; margin-top:6px; }
-.course-modal .modal-body { padding:16px; }
+.course-modal .modal-body { padding:16px; overflow-y: auto; max-height: calc(85vh - 140px); }
 .course-modal .form-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
 .course-modal .form-group { display:flex; flex-direction:column; gap:8px; }
 .course-modal label { font-weight:700; color:#334155; }
 .course-modal input, .course-modal select { padding:10px 12px; border-radius:8px; border:1px solid #e6eef8; background:#fff; transition: box-shadow 180ms ease, transform 120ms ease; }
 .course-modal input:focus, .course-modal select:focus { outline:none; box-shadow: 0 8px 30px rgba(37,99,235,0.08); transform: translateY(-2px); }
-.course-modal .modal-footer { padding:12px 18px; display:flex; gap:10px; justify-content:flex-end; border-top:1px solid rgba(15,23,42,0.02); background:transparent; }
+.course-modal .modal-footer { padding:12px 18px; display:flex; gap:10px; justify-content:flex-end; border-top:1px solid rgba(15,23,42,0.02); background:transparent; flex-shrink: 0; }
+
+/* Debug highlight for status field to ensure visibility while troubleshooting */
+.course-modal #course-status {
+	border: 2px dashed rgba(255, 0, 102, 0.95);
+	padding: 8px;
+	border-radius: 10px;
+	background: rgba(255, 0, 102, 0.02);
+}
 
 /* ========================================
    MODERN USER FORM MODAL REDESIGN
@@ -3159,6 +3196,19 @@ $card-radius: 12px;
   &.full {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* Landscape variant for modal forms: wider left column for inputs and compact right column */
+.modal-grid-modern.landscape {
+	grid-template-columns: 1.6fr 1fr;
+	gap: 18px;
+}
+
+@media (max-width: 900px) {
+	.modal-grid-modern.landscape {
+		grid-template-columns: 1fr;
+		gap: 14px;
+	}
 }
 
 .col-modern {
@@ -4366,4 +4416,34 @@ $card-radius: 12px;
 .modal-backdrop { position: fixed; inset: 0; background: rgba(10,12,20,0.35); z-index: 99999; }
 .modal-centered .modal { max-width: 820px; width: 92%; }
 
+/* Students & Teachers table container - constrained height with smooth scrolling */
+.admin-users, .learner-page, .instructor-page {
+  .modern-management-card {
+    /* Table wrapper with proper scrolling */
+    > div[style*="overflowX"] {
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: #f8fafc;
+        border-radius: 5px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        border-radius: 5px;
+        
+        &:hover {
+          background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+      }
+      
+      &::-webkit-scrollbar-corner {
+        background: #f8fafc;
+      }
+    }
+  }
+}
 

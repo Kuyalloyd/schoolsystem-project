@@ -205,8 +205,7 @@ export default function Sidebar({ activePage, onNavigate }) {
           ? React.createElement('img', { src: logo, alt: 'Logo', style: { width: 32, height: 32, borderRadius: 6, objectFit: 'cover' } })
           : React.createElement('div', { className: 'logo-icon' }, React.createElement(FiBookOpen)),
         !collapsed && React.createElement('div', { className: 'logo-text' }, 
-          React.createElement('div', { className: 'site-title' }, schoolName || 'School Admin'), 
-          React.createElement('div', { className: 'site-sub muted' }, 'Management System')
+          React.createElement('div', { className: 'site-title' }, schoolName || 'School Admin')
         )
       ),
       // collapse toggle
@@ -288,9 +287,9 @@ export default function Sidebar({ activePage, onNavigate }) {
         "div",
         { className: "footer-meta" },
         React.createElement('div', { className: 'avatar' }, React.createElement('div', { className: 'avatar-initials' }, 'AD')),
-        !collapsed && React.createElement('div', { className: 'footer-text' }, React.createElement('div', { className: 'name' }, 'Admin User'), React.createElement('div', { className: 'muted' }, 'admin@school.edu')),
-        !collapsed && React.createElement('div', { style: { marginLeft: 'auto' } }, React.createElement('button', { className: 'logout-btn', onClick: handleLogout, title: 'Logout' }, React.createElement(FiLogOut), React.createElement('span', { style: { marginLeft: 8 } }, 'Logout')))
-      )
+        !collapsed && React.createElement('div', { className: 'footer-text' }, React.createElement('div', { className: 'name' }, 'Admin User'), React.createElement('div', { className: 'muted' }, 'admin@sjit.gmail.com'))
+      ),
+      !collapsed && React.createElement('button', { className: 'logout-btn', onClick: handleLogout, title: 'Logout' }, React.createElement(FiLogOut), React.createElement('span', null, 'Logout'))
     )
   );
 }

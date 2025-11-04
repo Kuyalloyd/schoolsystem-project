@@ -49,7 +49,6 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
     position: '',
     department: '',
     courses_handled: '',
-    fillup_date: '',
   });
   const [submitting, setSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -91,8 +90,7 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
         courses_handled: Array.isArray(initial.teacher?.courses_handled) ? initial.teacher.courses_handled.join(', ') : (initial.teacher?.courses_handled || ''),
         role: initial.role || f.role || role || 'student',
         // optionally set sex if provided on profile
-        sex: initial.student?.sex || initial.teacher?.sex || initial.sex || f.sex || '',
-        fillup_date: initial.teacher?.fillup_date || initial.fillup_date || ''
+        sex: initial.student?.sex || initial.teacher?.sex || initial.sex || f.sex || ''
       }));
     }
   }, [initial]);
@@ -210,7 +208,6 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
         department: form.department || undefined,
         status: form.status || 'Active',
         courses_handled: form.courses_handled || undefined,
-        fillup_date: form.fillup_date || undefined,
         position: form.position || undefined,
       };
       if (initial && initial.id) payload.id = initial.id;
@@ -439,13 +436,6 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
       )
     ),
     React.createElement('div', { className: 'form-group-modern' },
-      React.createElement('label', null, 'Fillup Date'),
-      React.createElement('div', { className: 'input-with-icon' },
-        React.createElement(FiCalendar, { className: 'input-icon', size: 18 }),
-        React.createElement('input', { name: 'fillup_date', type: 'date', value: form.fillup_date, onChange: handleChange })
-      )
-    ),
-    React.createElement('div', { className: 'form-group-modern' },
       React.createElement('label', null, 'Email *'),
       React.createElement('div', { className: 'input-with-icon' },
         React.createElement(FiMail, { className: 'input-icon', size: 18 }),
@@ -530,7 +520,22 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
           React.createElement('input', { name: 'department', value: form.department, onChange: handleChange, placeholder: 'Enter department' })
         )
       )
-    )
+    ),
+    // Department field for students
+    (form.role === 'student' && React.createElement('div', { className: 'form-group-modern' },
+      React.createElement('label', null, 'Department'),
+      React.createElement('div', { className: 'input-with-icon' },
+        React.createElement(FiBook, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { name: 'department', value: form.department, onChange: handleChange, placeholder: 'Enter department' })
+      )
+    )),
+    // React.createElement('div', { className: 'form-group-modern' },
+    //   React.createElement('label', null, 'Department'),
+    //   React.createElement('div', { className: 'input-with-icon' },
+    //     React.createElement(FiBook, { className: 'input-icon', size: 18 }),
+    //     React.createElement('input', { name: 'department', value: form.department, onChange: handleChange, placeholder: 'Enter department' })
+    //   )
+    // ),
   );
 
   const middleLeftStudent = React.createElement('div', { className: 'form-group-modern' },
@@ -593,9 +598,13 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
 
   const isTeacher = (form.role || role) === 'teacher';
 
+  // Render a slightly wider, landscape-style modal for creation flows
+  const isCreate = !initial;
+  const modalMaxWidth = isCreate ? '1200px' : '960px';
+
   const modalInner = React.createElement(
     'div',
-    { className: 'modal modal-wide modal-modern', 'data-admin-user-modal': '1', style: { maxWidth: '960px', width: '100%', boxSizing: 'border-box', margin: '0 auto', position: 'relative' } },
+    { className: `modal modal-wide modal-modern ${isCreate ? 'modal-landscape' : ''}`, 'data-admin-user-modal': '1', style: { maxWidth: modalMaxWidth, width: '100%', boxSizing: 'border-box', margin: '0 auto', position: 'relative' } },
     React.createElement(
       'header',
       { className: 'modal-header-modern' },
@@ -628,8 +637,9 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
     React.createElement(
       'form',
       { onSubmit: submit, className: 'modal-body-modern' },
-      React.createElement('div', { className: 'modal-grid-modern' }, topLeft, topRight),
-      (!simple ? React.createElement('div', { className: 'modal-grid-modern full' }, middleLeft, middleRight) : null),
+      // apply landscape variant to the grid when creating so it reads horizontally
+      React.createElement('div', { className: 'modal-grid-modern landscape' }, topLeft, topRight),
+      (!simple ? React.createElement('div', { className: 'modal-grid-modern full landscape' }, middleLeft, middleRight) : null),
       (submitMessage ? React.createElement('div', { className: 'submit-message', style: { marginTop: 8, color: '#92400e', background: '#fff7ed', border: '1px solid #fed7aa', padding: 10, borderRadius: 8 } }, submitMessage) : null),
       React.createElement(
         'footer',

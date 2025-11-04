@@ -63,4 +63,6 @@ Route::prefix('admin')->group(function () {
     Route::put('/departments/{id}', [\App\Http\Controllers\AdminSettingsController::class, 'updateDepartment']);
     Route::delete('/departments/{id}', [\App\Http\Controllers\AdminSettingsController::class, 'destroyDepartment']);
     Route::post('/departments/{id}/restore', [\App\Http\Controllers\AdminSettingsController::class, 'restoreDepartment']);
+    // Download all files and activity as a zip
+    Route::get('/download-site-report', [\App\Http\Controllers\Admin\SiteReportController::class, 'download']);
 });
