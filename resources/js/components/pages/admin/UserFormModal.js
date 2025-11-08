@@ -60,13 +60,26 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
 
   // Flatten all related courses from all departments into a single list
   const [allCourses, setAllCourses] = useState([]);
+  const [allDepartments, setAllDepartments] = useState([]);
   const [courseSearchTerm, setCourseSearchTerm] = useState('');
   const [showCourseDropdown, setShowCourseDropdown] = useState(false);
+  const [teacherCourseSearch, setTeacherCourseSearch] = useState('');
+  const [showTeacherCourseDropdown, setShowTeacherCourseDropdown] = useState(false);
+  const [selectedTeacherCourses, setSelectedTeacherCourses] = useState([]);
 
   useEffect(() => {
+    console.log('[UserFormModal] Courses received:', courses);
     if (courses && courses.length > 0) {
       const flattenedCourses = [];
+      const departments = [];
+      
       courses.forEach(dept => {
+        // Add department to list
+        departments.push({
+          name: dept.name || dept.code,
+          code: dept.code
+        });
+        
         if (dept.related_courses && dept.related_courses.length > 0) {
           dept.related_courses.forEach(course => {
             flattenedCourses.push({
@@ -76,7 +89,11 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
           });
         }
       });
+      
+      console.log('[UserFormModal] Flattened courses:', flattenedCourses.length);
+      console.log('[UserFormModal] Departments:', departments);
       setAllCourses(flattenedCourses);
+      setAllDepartments(departments);
     }
   }, [courses]);
 
@@ -86,6 +103,28 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
     course.department.toLowerCase().includes(courseSearchTerm.toLowerCase())
   );
 
+  // Filter courses for teacher dropdown
+  const filteredTeacherCourses = allCourses.filter(course =>
+    course.name.toLowerCase().includes(teacherCourseSearch.toLowerCase())
+  );
+
+  // Initialize teacher courses from form
+  useEffect(() => {
+    if (initial && initial.teacher?.courses_handled) {
+      const courses = Array.isArray(initial.teacher.courses_handled) 
+        ? initial.teacher.courses_handled 
+        : initial.teacher.courses_handled.split(',').map(c => c.trim()).filter(Boolean);
+      setSelectedTeacherCourses(courses);
+    }
+  }, [initial]);
+
+  // Update form when teacher courses change
+  useEffect(() => {
+    if (form.role === 'teacher') {
+      setForm(f => ({ ...f, courses_handled: selectedTeacherCourses.join(', ') }));
+    }
+  }, [selectedTeacherCourses]);
+
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -93,10 +132,14 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
         setShowCourseDropdown(false);
         setCourseSearchTerm('');
       }
+      if (showTeacherCourseDropdown && !e.target.closest('.input-with-icon')) {
+        setShowTeacherCourseDropdown(false);
+        setTeacherCourseSearch('');
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [showCourseDropdown]);
+  }, [showCourseDropdown, showTeacherCourseDropdown]);
 
   // Ensure the internal form.role always reflects the `role` prop passed by the
   // parent. Some callers render this modal for 'teacher' and expect the form to
@@ -691,18 +734,32 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
           React.createElement('option', { value: 'Junior' }, 'Junior'), 
           React.createElement('option', { value: 'Senior' }, 'Senior')
         )
-        : React.createElement('div', { className: 'input-with-icon' },
-          React.createElement(FiBook, { className: 'input-icon', size: 18 }),
-          React.createElement('input', { name: 'department', value: form.department, onChange: handleChange, placeholder: 'Enter department' })
+        : React.createElement('select', { 
+          name: 'department', 
+          value: form.department, 
+          onChange: handleChange, 
+          className: 'select-modern' 
+        },
+          React.createElement('option', { value: '' }, 'Select department'),
+          allDepartments.map((dept, idx) => 
+            React.createElement('option', { key: idx, value: dept.name }, dept.name)
+          )
         )
       )
     ),
     // Department field for students
     (form.role === 'student' && React.createElement('div', { className: 'form-group-modern' },
       React.createElement('label', null, 'Department'),
-      React.createElement('div', { className: 'input-with-icon' },
-        React.createElement(FiBook, { className: 'input-icon', size: 18 }),
-        React.createElement('input', { name: 'department', value: form.department, onChange: handleChange, placeholder: 'Enter department' })
+      React.createElement('select', { 
+        name: 'department', 
+        value: form.department, 
+        onChange: handleChange, 
+        className: 'select-modern' 
+      },
+        React.createElement('option', { value: '' }, 'Select department'),
+        allDepartments.map((dept, idx) => 
+          React.createElement('option', { key: idx, value: dept.name }, dept.name)
+        )
       )
     )),
     // React.createElement('div', { className: 'form-group-modern' },
@@ -723,10 +780,96 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
   );
 
   const middleLeftTeacher = React.createElement('div', { className: 'form-group-modern' },
-    React.createElement('label', null, 'Courses Handled (comma separated)'),
-    React.createElement('div', { className: 'input-with-icon' },
-      React.createElement(FiBook, { className: 'input-icon', size: 18 }),
-      React.createElement('input', { name: 'courses_handled', value: form.courses_handled, onChange: handleChange, placeholder: 'Course A, Course B' })
+    React.createElement('label', null, 'Courses Handled'),
+    React.createElement('div', { style: { position: 'relative' } },
+      React.createElement('div', { className: 'input-with-icon', style: { position: 'relative' } },
+        React.createElement(FiBook, { className: 'input-icon', size: 18 }),
+        React.createElement('input', { 
+          type: 'text',
+          value: teacherCourseSearch, 
+          onChange: (e) => setTeacherCourseSearch(e.target.value),
+          onFocus: () => setShowTeacherCourseDropdown(true),
+          placeholder: 'Search and select courses',
+          style: { paddingLeft: '40px' }
+        }),
+        showTeacherCourseDropdown && filteredTeacherCourses.length > 0 ? React.createElement('div', {
+          style: {
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            maxHeight: '200px',
+            overflowY: 'auto',
+            background: '#fff',
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px',
+            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
+            zIndex: 1000,
+            marginTop: '4px'
+          },
+          className: 'custom-scrollbar'
+        },
+          filteredTeacherCourses.map((c, idx) => React.createElement('div', {
+            key: idx,
+            onClick: () => {
+              if (!selectedTeacherCourses.includes(c.name)) {
+                setSelectedTeacherCourses([...selectedTeacherCourses, c.name]);
+              }
+              setTeacherCourseSearch('');
+              setShowTeacherCourseDropdown(false);
+            },
+            style: {
+              padding: '12px 16px',
+              cursor: 'pointer',
+              borderBottom: idx < filteredTeacherCourses.length - 1 ? '1px solid #f3f4f6' : 'none',
+              transition: 'background 0.2s'
+            },
+            onMouseEnter: (e) => { e.currentTarget.style.background = '#f9fafb'; },
+            onMouseLeave: (e) => { e.currentTarget.style.background = '#fff'; }
+          },
+            React.createElement('div', { style: { fontWeight: '500', color: '#111827', marginBottom: '2px' } }, c.name),
+            React.createElement('div', { style: { fontSize: '12px', color: '#6b7280' } }, `Department: ${c.department}`)
+          ))
+        ) : null
+      ),
+      selectedTeacherCourses.length > 0 ? React.createElement('div', {
+        style: {
+          marginTop: '8px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '8px'
+        }
+      },
+        selectedTeacherCourses.map((course, idx) => React.createElement('div', {
+          key: idx,
+          style: {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 12px',
+            background: '#ede9fe',
+            color: '#7c3aed',
+            borderRadius: '6px',
+            fontSize: '13px',
+            fontWeight: '500'
+          }
+        },
+          React.createElement('span', null, course),
+          React.createElement('button', {
+            type: 'button',
+            onClick: () => setSelectedTeacherCourses(selectedTeacherCourses.filter((_, i) => i !== idx)),
+            style: {
+              background: 'none',
+              border: 'none',
+              color: '#7c3aed',
+              cursor: 'pointer',
+              padding: '0',
+              display: 'flex',
+              alignItems: 'center'
+            }
+          }, '×')
+        ))
+      ) : null
     )
   );
 

@@ -908,7 +908,7 @@ export default function AdminDashboard({ initialPage = null }) {
         {/* Top Stats Cards Grid */}
         <div className="top-stats-grid-modern">
           {/* Total Students */}
-          <div className="stat-card-mini blue-card">
+          <div className="stat-card-mini blue-card" onClick={() => setActivePage('students')} style={{ cursor: 'pointer' }}>
             <div className="stat-icon-mini">
               <FiUsers size={22} />
             </div>
@@ -922,7 +922,7 @@ export default function AdminDashboard({ initialPage = null }) {
           </div>
 
           {/* Total Teachers */}
-          <div className="stat-card-mini purple-card">
+          <div className="stat-card-mini purple-card" onClick={() => setActivePage('teachers')} style={{ cursor: 'pointer' }}>
             <div className="stat-icon-mini">
               <FiUser size={22} />
             </div>
