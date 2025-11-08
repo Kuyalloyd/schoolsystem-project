@@ -62,3 +62,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## About this project
+
+This repository contains the "SJIT School System" — a small administrative web application built with Laravel (PHP) and a React-based admin UI. It provides features for managing users (students, teachers, admins), departments, courses, enrollments, and documents. An `ABOUT.md` file with more details has been added to the project root.
+
+Key files:
+- `app/Models/` — Eloquent models (User, Student, Teacher, Course, Department, Document, SystemActivity)
+- `database/migrations/` — schema and pivot tables (courses, departments, course_student, etc.)
+- `resources/js/components/pages/` — React admin UI components (AdminDashboard, AdminUsers, AdminCourses, UserFormModal)
+
+To view the ERD that matches the project's data model, open `resources/docs/er_diagram.svg`.

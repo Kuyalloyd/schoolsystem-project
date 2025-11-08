@@ -195,6 +195,10 @@ export default function AdminCourses() {
   };
 
   const viewDepartmentDetails = (course) => {
+    console.log('Department Details:', course);
+    console.log('Prerequisites:', course.prerequisites);
+    console.log('Department Head:', course.department_head);
+    console.log('Semester:', course.semester);
     setSelectedDepartment(course);
     setTempRelatedCourses(course.related_courses || []);
     setIsAddingCourses(false);
@@ -847,6 +851,44 @@ export default function AdminCourses() {
                       onChange={(e) => setCourseForm({ ...courseForm, department: e.target.value })}
                     />
                   </div>
+
+                  <div className="form-group-modern">
+                    <label>Semester</label>
+                    <select
+                      value={courseForm.semester}
+                      onChange={(e) => setCourseForm({ ...courseForm, semester: e.target.value })}
+                    >
+                      <option value="">Select semester</option>
+                      <option value="Fall">Fall</option>
+                      <option value="Spring">Spring</option>
+                      <option value="Summer">Summer</option>
+                      <option value="1st Semester">1st Semester</option>
+                      <option value="2nd Semester">2nd Semester</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-group-modern">
+                  <label>Department Head</label>
+                  <input
+                    type="text"
+                    placeholder="Enter department head name"
+                    value={courseForm.department_head}
+                    onChange={(e) => setCourseForm({ ...courseForm, department_head: e.target.value })}
+                  />
+                </div>
+
+                <div className="form-group-modern">
+                  <label>Prerequisites (Type course names, comma-separated)</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Introduction to Computing, Basic Mathematics"
+                    value={courseForm.prerequisites}
+                    onChange={(e) => setCourseForm({ ...courseForm, prerequisites: e.target.value })}
+                  />
+                  <small style={{ fontSize: 12, color: '#6b7280', marginTop: 4, display: 'block' }}>
+                    Enter prerequisite course names separated by commas
+                  </small>
                 </div>
               </div>
 
@@ -1053,6 +1095,14 @@ export default function AdminCourses() {
                 <h4 style={{ margin: '0 0 12px 0', fontSize: 16, fontWeight: 600, color: '#111827' }}>Department Information</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 16 }}>
                   <div>
+                    <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Department Head</div>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: '#111827' }}>{selectedDepartment.department_head || 'Not assigned'}</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Semester</div>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: '#111827' }}>{selectedDepartment.semester || 'Not specified'}</div>
+                  </div>
+                  <div>
                     <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Credits</div>
                     <div style={{ fontSize: 15, fontWeight: 600, color: '#111827' }}>{selectedDepartment.credits || 3}</div>
                   </div>
@@ -1078,6 +1128,14 @@ export default function AdminCourses() {
                         {selectedDepartment.status || 'active'}
                       </span>
                     </div>
+                  </div>
+                </div>
+                <div style={{ marginBottom: 12 }}>
+                  <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Prerequisites</div>
+                  <div style={{ fontSize: 14, color: '#374151', lineHeight: 1.6 }}>
+                    {selectedDepartment.prerequisites || (
+                      <span style={{ color: '#9ca3af', fontStyle: 'italic' }}>None specified</span>
+                    )}
                   </div>
                 </div>
                 {selectedDepartment.description && (
@@ -1179,20 +1237,44 @@ export default function AdminCourses() {
                 ) : (
                   // View Mode
                   selectedDepartment.related_courses && selectedDepartment.related_courses.length > 0 ? (
-                    <div 
-                      className="custom-scrollbar"
-                      style={{ 
-                        maxHeight: '400px', 
-                        overflowY: 'scroll', 
-                        padding: '4px', 
-                        display: 'flex', 
-                        flexDirection: 'column', 
-                        gap: 8,
-                        border: '1px solid #e5e7eb',
-                        borderRadius: 8,
-                        paddingRight: 8
-                      }}>
-                      {selectedDepartment.related_courses.map((relCourse, idx) => (
+                    <>
+                      <div style={{ marginBottom: 12, display: 'flex', justifyContent: 'flex-end' }}>
+                        <button 
+                          onClick={startAddingCourses}
+                          style={{ 
+                            padding: '6px 12px', 
+                            borderRadius: 6, 
+                            border: 'none', 
+                            background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', 
+                            color: '#fff', 
+                            fontSize: 13, 
+                            fontWeight: 600, 
+                            cursor: 'pointer', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            gap: 4,
+                            transition: 'transform 0.2s'
+                          }}
+                          onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                          onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                        >
+                          <FiPlus size={14} /> Add More Courses
+                        </button>
+                      </div>
+                      <div 
+                        className="custom-scrollbar"
+                        style={{ 
+                          maxHeight: '400px', 
+                          overflowY: 'scroll', 
+                          padding: '4px', 
+                          display: 'flex', 
+                          flexDirection: 'column', 
+                          gap: 8,
+                          border: '1px solid #e5e7eb',
+                          borderRadius: 8,
+                          paddingRight: 8
+                        }}>
+                        {selectedDepartment.related_courses.map((relCourse, idx) => (
                         <div 
                           key={idx} 
                           style={{ 
@@ -1239,7 +1321,8 @@ export default function AdminCourses() {
                           </button>
                         </div>
                       ))}
-                    </div>
+                      </div>
+                    </>
                   ) : (
                     <div style={{ 
                       padding: '32px', 

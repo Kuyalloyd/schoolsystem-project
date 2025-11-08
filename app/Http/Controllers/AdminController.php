@@ -60,7 +60,9 @@ class AdminController extends Controller
                 'description' => $c->description ?? null,
                 'credits' => $c->units ?? null,
                 'department' => $c->department ?? null,
+                'department_head' => $c->department_head ?? null,
                 'semester' => $c->semester ?? null,
+                'prerequisites' => $c->prerequisites ?? null,
                 // legacy teacher column stores a name string in this schema
                 'teacher_name' => $c->teacher ?? null,
                 'teacher_id' => $c->teacher_id ?? null,
@@ -82,9 +84,11 @@ class AdminController extends Controller
                 'name' => 'required|string|max:255',
                 'code' => 'nullable|string|max:64',
                 'description' => 'nullable|string',
+                'semester' => 'nullable|string|max:64',
+                'prerequisites' => 'nullable|string',
                 'credits' => 'nullable|integer|min:0',
                 'department' => 'nullable|string|max:255',
-                'semester' => 'nullable|string|max:64',
+                'department_head' => 'nullable|string|max:255',
                 'teacher_id' => 'nullable|integer',
                 'max_students' => 'nullable|integer|min:0',
                 'status' => 'nullable|string|in:active,inactive,completed',
@@ -107,9 +111,11 @@ class AdminController extends Controller
                 'course_name' => $validated['name'],
                 'course_code' => $validated['code'] ?? null,
                 'description' => $validated['description'] ?? null,
+                'semester' => $validated['semester'] ?? null,
+                'prerequisites' => $validated['prerequisites'] ?? null,
                 'units' => $validated['credits'] ?? 3,
                 'department' => $validated['department'] ?? null,
-                'semester' => $validated['semester'] ?? null,
+                'department_head' => $validated['department_head'] ?? null,
                 'max_students' => $validated['max_students'] ?? 0,
                 'status' => $validated['status'] ?? 'active',
                 'teacher' => $teacherName ?? null,
@@ -121,9 +127,11 @@ class AdminController extends Controller
                 'name' => $course->course_name,
                 'code' => $course->course_code,
                 'description' => $course->description,
+                'semester' => $course->semester,
+                'prerequisites' => $course->prerequisites,
                 'credits' => $course->units,
                 'department' => $course->department,
-                'semester' => $course->semester,
+                'department_head' => $course->department_head,
                 'teacher_name' => $course->teacher,
                 'created_at' => $course->created_at ? $course->created_at->toDateTimeString() : null,
             ]], 201);
@@ -198,9 +206,11 @@ class AdminController extends Controller
                 'name' => 'required|string|max:255',
                 'code' => 'nullable|string|max:64',
                 'description' => 'nullable|string',
+                'semester' => 'nullable|string|max:64',
+                'prerequisites' => 'nullable|string',
                 'credits' => 'nullable|integer|min:0',
                 'department' => 'nullable|string|max:255',
-                'semester' => 'nullable|string|max:64',
+                'department_head' => 'nullable|string|max:255',
                 'teacher_id' => 'nullable|integer',
                 'max_students' => 'nullable|integer|min:0',
                 'status' => 'nullable|string|in:active,inactive,completed',
@@ -217,9 +227,11 @@ class AdminController extends Controller
             $course->course_name = $validated['name'];
             $course->course_code = $validated['code'] ?? $course->course_code;
             $course->description = $validated['description'] ?? $course->description;
+            $course->semester = $validated['semester'] ?? $course->semester;
+            $course->prerequisites = $validated['prerequisites'] ?? $course->prerequisites;
             $course->units = $validated['credits'] ?? $course->units;
             $course->department = $validated['department'] ?? $course->department;
-            $course->semester = $validated['semester'] ?? $course->semester;
+            $course->department_head = $validated['department_head'] ?? $course->department_head;
             $course->max_students = $validated['max_students'] ?? $course->max_students;
             $course->status = $validated['status'] ?? $course->status;
             if ($teacherName !== null) $course->teacher = $teacherName;
@@ -232,9 +244,11 @@ class AdminController extends Controller
                 'name' => $course->course_name,
                 'code' => $course->course_code,
                 'description' => $course->description,
+                'semester' => $course->semester,
+                'prerequisites' => $course->prerequisites,
                 'credits' => $course->units,
                 'department' => $course->department,
-                'semester' => $course->semester,
+                'department_head' => $course->department_head,
                 'teacher_name' => $course->teacher,
                 'max_students' => $course->max_students,
                 'status' => $course->status,

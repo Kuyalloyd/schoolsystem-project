@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API Response</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Course API Test</h1>
+    <button onclick="fetchCourses()">Fetch Courses</button>
+    <div id="output"></div>
+
+    <script>
+        async function fetchCourses() {
+            const response = await fetch('/api/admin/courses');
+            const data = await response.json();
+            
+            const output = document.getElementById('output');
+            output.innerHTML = '<h2>API Response:</h2>';
+            
+            data.courses.forEach(course => {
+                output.innerHTML += `
+                    <div style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                        <h3>${course.name || 'No Name'}</h3>
+                        <p><strong>Code:</strong> ${course.code || 'No Code'}</p>
+                        <p><strong>Department:</strong> ${course.department || 'None'}</p>
+                        <p><strong>Department Head:</strong> ${course.department_head || 'None'}</p>
+                        <p><strong>Semester:</strong> ${course.semester || 'None'}</p>
+                        <p><strong>Prerequisites:</strong> ${course.prerequisites || 'None'}</p>
+                        <p><strong>Description:</strong> ${course.description || 'None'}</p>
+                    </div>
+                `;
+            });
+            
+            output.innerHTML += '<h2>Raw JSON:</h2><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        }
+    </script>
+</body>
+</html>

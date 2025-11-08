@@ -16,7 +16,7 @@ class Course extends Model
      */
     protected $fillable = [
         // Columns that exist in the courses table (including newly added ones)
-        'course_name', 'course_code', 'units', 'teacher', 'description', 'department', 'semester', 'max_students', 'status', 'related_courses'
+        'course_name', 'course_code', 'units', 'teacher', 'description', 'semester', 'prerequisites', 'department', 'department_head', 'max_students', 'status', 'related_courses'
     ];
 
     /**
