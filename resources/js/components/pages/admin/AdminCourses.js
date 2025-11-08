@@ -16,6 +16,7 @@ export default function AdminCourses() {
   const [creditsFilter, setCreditsFilter] = useState('all');
   const [departmentFilter, setDepartmentFilter] = useState('all');
   const [departments, setDepartments] = useState([]);
+  const [viewMode, setViewMode] = useState('departments'); // 'departments' or 'all-courses'
   
   // Course Modal State
   const [showCourseModal, setShowCourseModal] = useState(false);
@@ -27,8 +28,15 @@ export default function AdminCourses() {
     credits: '',
     department: '',
     semester: '',
-    max_students: ''
+    max_students: '',
+    related_courses: []
   });
+
+  // Department View Modal State
+  const [showDepartmentView, setShowDepartmentView] = useState(false);
+  const [selectedDepartment, setSelectedDepartment] = useState(null);
+  const [isAddingCourses, setIsAddingCourses] = useState(false);
+  const [tempRelatedCourses, setTempRelatedCourses] = useState([]);
 
   // Enrollment Modal State
   const [showEnrollModal, setShowEnrollModal] = useState(false);
@@ -52,7 +60,7 @@ export default function AdminCourses() {
       setCourses(fetched);
       // derive departments from fetched courses so the filter options include newly added departments
       try {
-        const deps = Array.from(new Set((fetched || []).map(c => (c.department || '').toString().trim()).filter(Boolean))).sort();
+        const deps = Array.from(new Set((fetched || []).map(c => (c.name || c.code || c.department || '').toString().trim()).filter(Boolean))).sort();
         setDepartments(deps);
       } catch (e) {
         setDepartments([]);
@@ -117,7 +125,8 @@ export default function AdminCourses() {
       credits: '',
       department: '',
       semester: '',
-      max_students: ''
+      max_students: '',
+      related_courses: []
     });
     setShowCourseModal(true);
   };
@@ -131,9 +140,29 @@ export default function AdminCourses() {
       credits: course.credits || '',
       department: course.department || '',
       semester: course.semester || '',
-      max_students: course.max_students || ''
+      max_students: course.max_students || '',
+      related_courses: course.related_courses || []
     });
     setShowCourseModal(true);
+  };
+
+  const addRelatedCourse = () => {
+    setCourseForm({
+      ...courseForm,
+      related_courses: [...(courseForm.related_courses || []), { name: '', code: '' }]
+    });
+  };
+
+  const updateRelatedCourse = (index, field, value) => {
+    const updated = [...(courseForm.related_courses || [])];
+    updated[index] = { ...updated[index], [field]: value };
+    setCourseForm({ ...courseForm, related_courses: updated });
+  };
+
+  const removeRelatedCourse = (index) => {
+    const updated = [...(courseForm.related_courses || [])];
+    updated.splice(index, 1);
+    setCourseForm({ ...courseForm, related_courses: updated });
   };
 
   const handleSaveCourse = async (e) => {
@@ -162,6 +191,80 @@ export default function AdminCourses() {
     } catch (err) {
       console.error('Failed to delete course', err);
       alert('Failed to delete course');
+    }
+  };
+
+  const viewDepartmentDetails = (course) => {
+    setSelectedDepartment(course);
+    setTempRelatedCourses(course.related_courses || []);
+    setIsAddingCourses(false);
+    setShowDepartmentView(true);
+  };
+
+  const startAddingCourses = () => {
+    setIsAddingCourses(true);
+  };
+
+  const addCourseToTemp = () => {
+    setTempRelatedCourses([...tempRelatedCourses, { name: '', code: '' }]);
+  };
+
+  const updateTempCourse = (index, field, value) => {
+    const updated = [...tempRelatedCourses];
+    updated[index] = { ...updated[index], [field]: value };
+    setTempRelatedCourses(updated);
+  };
+
+  const removeTempCourse = (index) => {
+    const updated = [...tempRelatedCourses];
+    updated.splice(index, 1);
+    setTempRelatedCourses(updated);
+  };
+
+  const saveRelatedCourses = async () => {
+    try {
+      await axios.put(`/api/admin/courses/${selectedDepartment.id}`, {
+        ...selectedDepartment,
+        related_courses: tempRelatedCourses
+      });
+      await loadCourses();
+      setIsAddingCourses(false);
+      setShowDepartmentView(false);
+      alert('Related courses saved successfully!');
+    } catch (err) {
+      console.error('Failed to save related courses', err);
+      alert('Failed to save related courses');
+    }
+  };
+
+  const cancelAddingCourses = () => {
+    setTempRelatedCourses(selectedDepartment.related_courses || []);
+    setIsAddingCourses(false);
+  };
+
+  const deleteCourseFromDepartment = async (index) => {
+    if (!confirm('Are you sure you want to remove this course?')) return;
+    
+    try {
+      const updatedCourses = [...(selectedDepartment.related_courses || [])];
+      updatedCourses.splice(index, 1);
+      
+      await axios.put(`/api/admin/courses/${selectedDepartment.id}`, {
+        ...selectedDepartment,
+        related_courses: updatedCourses
+      });
+      
+      // Update local state
+      setSelectedDepartment({
+        ...selectedDepartment,
+        related_courses: updatedCourses
+      });
+      
+      await loadCourses();
+      alert('Course removed successfully!');
+    } catch (err) {
+      console.error('Failed to remove course', err);
+      alert('Failed to remove course');
     }
   };
 
@@ -230,24 +333,57 @@ export default function AdminCourses() {
   const handleExportCourses = () => {
     console.log('🚀 [EXPORT] Starting course export...');
     
-    if (!filteredCourses || filteredCourses.length === 0) {
-      alert('No courses to export');
-      return;
-    }
-    
     try {
-      // Prepare CSV data
-      const rows = filteredCourses.map(course => ({
-        Code: course.code || '',
-        Name: course.name || '',
-        Department: course.department || '',
-        Credits: course.credits || '',
-        Semester: course.semester || '',
-        Teacher: course.teacher_name || '',
-        'Max Students': course.max_students || '',
-        Enrolled: course.enrollment_count || 0,
-        Status: course.status || 'active'
-      }));
+      let rows = [];
+      let filename = '';
+      
+      // If filtering by a specific department, export all courses in that department
+      if (departmentFilter !== 'all') {
+        console.log('📋 [EXPORT] Exporting courses for department:', departmentFilter);
+        
+        // Find the department
+        const dept = filteredCourses.find(c => 
+          (c.name || c.code) === departmentFilter
+        );
+        
+        if (!dept || !dept.related_courses || dept.related_courses.length === 0) {
+          alert('No courses found in this department to export');
+          return;
+        }
+        
+        // Export all courses in this department
+        rows = dept.related_courses.map((course, index) => ({
+          'No.': index + 1,
+          'Course Name': course.name || '',
+          'Department': dept.name || dept.code || ''
+        }));
+        
+        filename = `${departmentFilter}-courses-${new Date().toISOString().slice(0, 10)}.csv`;
+        
+      } else {
+        // Export all departments with their basic info
+        console.log('📋 [EXPORT] Exporting all departments...');
+        
+        if (!filteredCourses || filteredCourses.length === 0) {
+          alert('No courses to export');
+          return;
+        }
+        
+        rows = filteredCourses.map(course => ({
+          Code: course.code || '',
+          Name: course.name || '',
+          Department: course.department || '',
+          Credits: course.credits || '',
+          Semester: course.semester || '',
+          Teacher: course.teacher_name || '',
+          'Max Students': course.max_students || '',
+          Enrolled: course.enrollment_count || 0,
+          'Number of Courses': (course.related_courses || []).length,
+          Status: course.status || 'active'
+        }));
+        
+        filename = `departments-export-${new Date().toISOString().slice(0, 10)}.csv`;
+      }
       
       // Build CSV
       const headers = Object.keys(rows[0]);
@@ -264,7 +400,7 @@ export default function AdminCourses() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `courses-export-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.download = filename;
       a.style.display = 'none';
       document.body.appendChild(a);
       
@@ -277,13 +413,35 @@ export default function AdminCourses() {
         console.log('✅ [EXPORT] Complete!');
       }, 500);
       
-      alert(`✅ Export successful!\n\nFile: courses-export-${new Date().toISOString().slice(0, 10)}.csv\nRows: ${rows.length}\n\nCheck your Downloads folder.`);
+      alert(`✅ Export successful!\n\nFile: ${filename}\nRows: ${rows.length}\n\nCheck your Downloads folder.`);
       
     } catch (error) {
       console.error('❌ [EXPORT] Failed:', error);
       alert('Export failed: ' + error.message);
     }
   };
+
+  // Flatten all courses from all departments
+  const allIndividualCourses = [];
+  courses.forEach(dept => {
+    if (dept.related_courses && dept.related_courses.length > 0) {
+      dept.related_courses.forEach(course => {
+        const deptName = dept.name || dept.code || '';
+        allIndividualCourses.push({
+          ...course,
+          departmentName: deptName,
+          departmentId: dept.id
+        });
+      });
+    }
+  });
+
+  // Debug: Log to help troubleshoot
+  if (allIndividualCourses.length > 0 && departmentFilter !== 'all') {
+    console.log('Department Filter:', departmentFilter);
+    console.log('Sample Course:', allIndividualCourses[0]);
+    console.log('All department names:', allIndividualCourses.map(c => c.departmentName));
+  }
 
   const filteredCourses = courses.filter(course => {
     const searchLower = searchTerm.toLowerCase();
@@ -296,9 +454,29 @@ export default function AdminCourses() {
     
     const matchesStatus = statusFilter === 'all' || (course.status || 'active').toLowerCase() === statusFilter.toLowerCase();
     const matchesSemester = semesterFilter === 'all' || course.semester === semesterFilter;
-    const matchesDepartment = departmentFilter === 'all' || ((course.department || '').toString().toLowerCase() === (departmentFilter || '').toString().toLowerCase());
+    const courseDeptName = (course.name || course.code || course.department || '').toString().toLowerCase().trim();
+    const matchesDepartment = departmentFilter === 'all' || courseDeptName === (departmentFilter || '').toString().toLowerCase().trim();
     const matchesCredits = creditsFilter === 'all' || course.credits === creditsFilter;
     return matchesSearch && matchesStatus && matchesSemester && matchesCredits && matchesDepartment;
+  });
+
+  const filteredIndividualCourses = allIndividualCourses.filter(course => {
+    const searchLower = searchTerm.toLowerCase();
+    const matchesSearch = (
+      (course.name || '').toLowerCase().includes(searchLower) ||
+      (course.departmentName || '').toLowerCase().includes(searchLower)
+    );
+    
+    if (departmentFilter === 'all') {
+      return matchesSearch;
+    }
+    
+    // Direct string comparison - both should be from the same source
+    const courseDepName = (course.departmentName || '').toString().trim();
+    const filterValue = (departmentFilter || '').toString().trim();
+    const matchesDepartment = courseDepName === filterValue;
+    
+    return matchesSearch && matchesDepartment;
   });
 
   const totalEnrollments = courses.reduce((sum, c) => sum + (c.enrollment_count || 0), 0);
@@ -317,7 +495,7 @@ export default function AdminCourses() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
           <div>
             <h1 style={{ margin: 0, fontSize: 24, fontWeight: 700, color: '#f59e0b', display: 'flex', alignItems: 'center', gap: 8 }}>
-              Course Management
+              Department Management
               <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: '#fef3c7', color: '#f59e0b', fontSize: 14, fontWeight: 600, padding: '4px 12px', borderRadius: 12 }}>
                 {courses.length} courses
               </span>
@@ -325,6 +503,48 @@ export default function AdminCourses() {
             <p style={{ margin: '4px 0 0 0', fontSize: 14, color: '#9ca3af' }}>Manage courses and curriculum</p>
           </div>
         </div>
+      </div>
+
+      {/* View Mode Toggle */}
+      <div style={{ marginBottom: 16, display: 'flex', gap: 8 }}>
+        <button
+          onClick={() => setViewMode('departments')}
+          style={{
+            padding: '8px 16px',
+            borderRadius: 8,
+            border: viewMode === 'departments' ? '2px solid #f59e0b' : '1px solid #e5e7eb',
+            background: viewMode === 'departments' ? '#fef3c7' : '#fff',
+            color: viewMode === 'departments' ? '#f59e0b' : '#6b7280',
+            fontSize: 14,
+            fontWeight: 600,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            transition: 'all 0.2s'
+          }}
+        >
+          <FiBook size={16} /> View by Departments
+        </button>
+        <button
+          onClick={() => setViewMode('all-courses')}
+          style={{
+            padding: '8px 16px',
+            borderRadius: 8,
+            border: viewMode === 'all-courses' ? '2px solid #f59e0b' : '1px solid #e5e7eb',
+            background: viewMode === 'all-courses' ? '#fef3c7' : '#fff',
+            color: viewMode === 'all-courses' ? '#f59e0b' : '#6b7280',
+            fontSize: 14,
+            fontWeight: 600,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            transition: 'all 0.2s'
+          }}
+        >
+          <FiBook size={16} /> View All Courses
+        </button>
       </div>
 
       {/* Filters */}
@@ -384,7 +604,7 @@ export default function AdminCourses() {
               onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
             >
-              <FiPlus size={18} /> Add Course
+              <FiPlus size={18} /> Add Department
             </button>
           </div>
         </div>
@@ -393,14 +613,39 @@ export default function AdminCourses() {
       {/* Courses Grid */}
       {loading ? (
         <div style={{ textAlign: 'center', padding: '60px 0', color: '#6b7280' }}>Loading courses...</div>
-      ) : filteredCourses.length === 0 ? (
+      ) : viewMode === 'all-courses' && filteredIndividualCourses.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: '60px 0' }}>
+          <FiBook size={48} color="#d1d5db" />
+          <h3 style={{ margin: '16px 0 8px', color: '#374151' }}>No courses found</h3>
+          <p style={{ color: '#6b7280', marginBottom: 24 }}>Try adjusting your filters</p>
+        </div>
+      ) : viewMode === 'departments' && filteredCourses.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '60px 0' }}>
           <FiBook size={48} color="#d1d5db" />
           <h3 style={{ margin: '16px 0 8px', color: '#374151' }}>No courses found</h3>
           <p style={{ color: '#6b7280', marginBottom: 24 }}>Try adjusting your filters or add a new course</p>
           <button onClick={openAddCourse} style={{ padding: '10px 20px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)', color: '#fff', fontSize: 14, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            <FiPlus size={16} /> Add Course
+            <FiPlus size={16} /> Add Department
           </button>
+        </div>
+      ) : viewMode === 'all-courses' ? (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: 16 }}>
+          {filteredIndividualCourses.map((course, idx) => (
+            <div key={idx} style={{ background: '#fff', borderRadius: 12, padding: 20, boxShadow: '0 1px 3px rgba(0,0,0,0.08)', transition: 'transform 0.2s, box-shadow 0.2s', border: '1px solid #f3f4f6' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)'; }}>
+              <div style={{ display: 'flex', alignItems: 'start', gap: 12, marginBottom: 12 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 8, background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <FiBook size={20} color="#fff" />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <h4 style={{ margin: 0, fontSize: 16, fontWeight: 600, color: '#111827', marginBottom: 4 }}>{course.name}</h4>
+                  <div style={{ fontSize: 13, color: '#6b7280', display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <FiBook size={12} />
+                    <span>{course.departmentName}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: 24 }}>
@@ -411,7 +656,7 @@ export default function AdminCourses() {
                                   'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)';
             
             return (
-              <div key={course.id} style={{ background: '#fff', borderRadius: 16, overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.08)', transition: 'transform 0.2s, box-shadow 0.2s' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)'; }}>
+              <div key={course.id} style={{ background: '#fff', borderRadius: 16, overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.08)', transition: 'transform 0.2s, box-shadow 0.2s', cursor: 'pointer' }} onClick={() => viewDepartmentDetails(course)} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)'; }}>
                 {/* Top gradient border */}
                 <div style={{ height: 4, background: gradientColor }}></div>
                 
@@ -445,6 +690,23 @@ export default function AdminCourses() {
                     {/* Schedule removed from course card */}
                   </div>
                   
+                  {/* Courses */}
+                  {course.related_courses && course.related_courses.length > 0 && (
+                    <div style={{ marginTop: 16, padding: 12, background: '#f0f9ff', borderRadius: 8, border: '1px solid #bae6fd' }}>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#0369a1', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <FiBook size={14} /> Courses:
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                        {course.related_courses.map((relCourse, idx) => (
+                          <div key={idx} style={{ fontSize: 12, color: '#0c4a6e', display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#0369a1' }}></span>
+                            {relCourse.name}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
                   {/* Footer */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #f3f4f6' }}>
                     <div>
@@ -461,17 +723,8 @@ export default function AdminCourses() {
                       </span>
                     </div>
                     <div style={{ display: 'flex', gap: 4 }}>
-                      <button
-                        onClick={() => openEnrollModal(course)}
-                        title="Enroll Student"
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg,#6d28d9,#7c3aed)', color: '#fff', cursor: 'pointer' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.opacity = 0.95; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.opacity = 1; }}
-                      >
-                        <FiUserPlus size={14} /> Enroll Student
-                      </button>
                       <button 
-                        onClick={() => openEditCourse(course)}
+                        onClick={(e) => { e.stopPropagation(); openEditCourse(course); }}
                         title="Edit" 
                         style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} 
                         onMouseEnter={(e) => { e.currentTarget.style.background = '#fef3c7'; e.currentTarget.style.color = '#f59e0b'; }} 
@@ -480,7 +733,7 @@ export default function AdminCourses() {
                         <FiEdit2 size={14} />
                       </button>
                       <button 
-                        onClick={() => handleDeleteCourse(course.id)}
+                        onClick={(e) => { e.stopPropagation(); handleDeleteCourse(course.id); }}
                         title="Delete" 
                         style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} 
                         onMouseEnter={(e) => { e.currentTarget.style.background = '#fee2e2'; e.currentTarget.style.color = '#991b1b'; }} 
@@ -507,9 +760,9 @@ export default function AdminCourses() {
                   <FiBook size={24} />
                 </div>
                 <div>
-                  <h3>{editingCourse ? 'Edit Course' : 'Add New Course'}</h3>
+                  <h3>{editingCourse ? 'Edit Department' : 'Add New Department'}</h3>
                   <p className="modal-subtitle">
-                    {editingCourse ? 'Update course information' : 'Create a new course'}
+                    {editingCourse ? 'Update department information' : 'Create a new department'}
                   </p>
                 </div>
               </div>
@@ -604,7 +857,7 @@ export default function AdminCourses() {
                   Cancel
                 </button>
                 <button type="submit" className="btn-save-modern">
-                  {editingCourse ? 'Update Course' : 'Create Course'}
+                  {editingCourse ? 'Update Department' : 'Create Department'}
                 </button>
               </div>
             </form>
@@ -770,6 +1023,283 @@ export default function AdminCourses() {
               <button className="btn-cancel-modern" onClick={() => setShowEnrollModal(false)}>
                 Close
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Department View Modal */}
+      {showDepartmentView && selectedDepartment && (
+        <div className="modal-overlay" onClick={() => setShowDepartmentView(false)}>
+          <div className="modal modal-modern modal-course" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header-modern">
+              <div className="modal-header-content">
+                <div className="modal-icon">
+                  <FiBook size={24} />
+                </div>
+                <div>
+                  <h3>{selectedDepartment.name}</h3>
+                  <p className="modal-subtitle">{selectedDepartment.code} - {selectedDepartment.department}</p>
+                </div>
+              </div>
+              <button className="modal-close-btn" onClick={() => setShowDepartmentView(false)}>
+                <FiX size={20} />
+              </button>
+            </div>
+            
+            <div className="modal-body-modern" style={{ padding: '24px' }}>
+              {/* Department Info */}
+              <div style={{ marginBottom: 24 }}>
+                <h4 style={{ margin: '0 0 12px 0', fontSize: 16, fontWeight: 600, color: '#111827' }}>Department Information</h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 16 }}>
+                  <div>
+                    <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Credits</div>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: '#111827' }}>{selectedDepartment.credits || 3}</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Max Students</div>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: '#111827' }}>{selectedDepartment.max_students || 50}</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Enrolled</div>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: '#111827' }}>{selectedDepartment.enrollment_count || 0} students</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Status</div>
+                    <div>
+                      <span style={{ 
+                        padding: '4px 10px', 
+                        borderRadius: 6, 
+                        fontSize: 12, 
+                        fontWeight: 500,
+                        background: selectedDepartment.status === 'active' ? '#d1fae5' : '#f3f4f6',
+                        color: selectedDepartment.status === 'active' ? '#065f46' : '#6b7280'
+                      }}>
+                        {selectedDepartment.status || 'active'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                {selectedDepartment.description && (
+                  <div>
+                    <div style={{ fontSize: 13, color: '#6b7280', marginBottom: 4 }}>Description</div>
+                    <div style={{ fontSize: 14, color: '#374151', lineHeight: 1.6 }}>{selectedDepartment.description}</div>
+                  </div>
+                )}
+              </div>
+
+              {/* Courses */}
+              <div>
+                <h4 style={{ margin: '0 0 12px 0', fontSize: 16, fontWeight: 600, color: '#111827', display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <FiBook size={18} /> Courses
+                  <span style={{ 
+                    fontSize: 12, 
+                    fontWeight: 600, 
+                    padding: '2px 8px', 
+                    borderRadius: 12, 
+                    background: '#f0f9ff', 
+                    color: '#0369a1' 
+                  }}>
+                    {(isAddingCourses ? tempRelatedCourses : selectedDepartment.related_courses)?.length || 0}
+                  </span>
+                </h4>
+                
+                {isAddingCourses ? (
+                  // Course Adding Interface
+                  <div>
+                    <div style={{ marginBottom: 12, display: 'flex', justifyContent: 'flex-end' }}>
+                      <button 
+                        onClick={addCourseToTemp}
+                        style={{ 
+                          padding: '6px 12px', 
+                          borderRadius: 6, 
+                          border: 'none', 
+                          background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', 
+                          color: '#fff', 
+                          fontSize: 13, 
+                          fontWeight: 600, 
+                          cursor: 'pointer', 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: 4 
+                        }}
+                      >
+                        <FiPlus size={14} /> Add Course
+                      </button>
+                    </div>
+                    
+                    {tempRelatedCourses && tempRelatedCourses.length > 0 ? (
+                      <div 
+                        className="custom-scrollbar"
+                        style={{ 
+                          maxHeight: '400px', 
+                          overflowY: 'scroll', 
+                          padding: '4px', 
+                          display: 'flex', 
+                          flexDirection: 'column', 
+                          gap: 12,
+                          border: '1px solid #e5e7eb',
+                          borderRadius: 8,
+                          paddingRight: 8
+                        }}>
+                        {tempRelatedCourses.map((relCourse, index) => (
+                          <div key={index} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                            <div style={{ flex: 1 }}>
+                              <input
+                                type="text"
+                                placeholder="Enter course name (e.g., Macro Perspective of Tourism & Hospitality)"
+                                value={relCourse.name || ''}
+                                onChange={(e) => updateTempCourse(index, 'name', e.target.value)}
+                                style={{ width: '100%', padding: '8px 12px', borderRadius: 6, border: '1px solid #e5e7eb', fontSize: 14 }}
+                              />
+                            </div>
+                            <button
+                              onClick={() => removeTempCourse(index)}
+                              style={{ 
+                                padding: '8px', 
+                                borderRadius: 6, 
+                                border: 'none', 
+                                background: '#fee2e2', 
+                                color: '#dc2626', 
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                              }}
+                            >
+                              <FiTrash2 size={16} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p style={{ color: '#9ca3af', fontSize: 14, margin: 0 }}>No courses added yet. Click "Add Course" to add courses.</p>
+                    )}
+                  </div>
+                ) : (
+                  // View Mode
+                  selectedDepartment.related_courses && selectedDepartment.related_courses.length > 0 ? (
+                    <div 
+                      className="custom-scrollbar"
+                      style={{ 
+                        maxHeight: '400px', 
+                        overflowY: 'scroll', 
+                        padding: '4px', 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        gap: 8,
+                        border: '1px solid #e5e7eb',
+                        borderRadius: 8,
+                        paddingRight: 8
+                      }}>
+                      {selectedDepartment.related_courses.map((relCourse, idx) => (
+                        <div 
+                          key={idx} 
+                          style={{ 
+                            padding: '12px 16px', 
+                            background: '#f9fafb', 
+                            borderRadius: 8, 
+                            border: '1px solid #e5e7eb',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 12
+                          }}
+                        >
+                          <div style={{ 
+                            width: 8, 
+                            height: 8, 
+                            borderRadius: '50%', 
+                            background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                            flexShrink: 0
+                          }}></div>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontSize: 14, fontWeight: 600, color: '#111827' }}>
+                              {relCourse.name}
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => deleteCourseFromDepartment(idx)}
+                            style={{ 
+                              padding: '6px', 
+                              borderRadius: 6, 
+                              border: 'none', 
+                              background: '#fee2e2', 
+                              color: '#dc2626', 
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              transition: 'all 0.2s'
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.background = '#fecaca'}
+                            onMouseLeave={(e) => e.currentTarget.style.background = '#fee2e2'}
+                            title="Remove course"
+                          >
+                            <FiTrash2 size={14} />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div style={{ 
+                      padding: '32px', 
+                      textAlign: 'center', 
+                      background: '#f9fafb', 
+                      borderRadius: 8,
+                      border: '1px dashed #e5e7eb'
+                    }}>
+                      <FiBook size={32} color="#d1d5db" style={{ marginBottom: 12 }} />
+                      <p style={{ margin: '0 0 16px 0', fontSize: 14, color: '#6b7280' }}>No courses added to this department yet.</p>
+                      <button 
+                        onClick={startAddingCourses}
+                        style={{ 
+                          padding: '8px 16px', 
+                          borderRadius: 6, 
+                          border: 'none', 
+                          background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', 
+                          color: '#fff', 
+                          fontSize: 13, 
+                          fontWeight: 600, 
+                          cursor: 'pointer', 
+                          display: 'inline-flex', 
+                          alignItems: 'center', 
+                          gap: 6,
+                          transition: 'transform 0.2s'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                        onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                      >
+                        <FiPlus size={14} /> Add Courses
+                      </button>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+
+            <div className="modal-footer-modern">
+              {isAddingCourses ? (
+                <>
+                  <button className="btn-cancel-modern" onClick={cancelAddingCourses}>
+                    Cancel
+                  </button>
+                  <button className="btn-save-modern" onClick={saveRelatedCourses}>
+                    Save Courses
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button className="btn-cancel-modern" onClick={() => setShowDepartmentView(false)}>
+                    Close
+                  </button>
+                  <button 
+                    className="btn-save-modern" 
+                    onClick={(e) => { e.stopPropagation(); setShowDepartmentView(false); openEditCourse(selectedDepartment); }}
+                  >
+                    Edit Department
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

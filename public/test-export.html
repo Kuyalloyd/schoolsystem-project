@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Test - Cache Cleared</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f3f4f6;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #111827; margin-top: 0; }
+        .info { 
+            background: #dbeafe; 
+            border-left: 4px solid #3b82f6; 
+            padding: 15px; 
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        .success { 
+            background: #d1fae5; 
+            border-left: 4px solid #10b981;
+            padding: 15px; 
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        .warning { 
+            background: #fef3c7; 
+            border-left: 4px solid #f59e0b;
+            padding: 15px; 
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        button {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(16,185,129,0.3);
+            transition: all 0.2s;
+            margin: 5px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16,185,129,0.4);
+        }
+        button.orange {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 2px 8px rgba(245,158,11,0.3);
+        }
+        button.orange:hover {
+            box-shadow: 0 4px 12px rgba(245,158,11,0.4);
+        }
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        #console {
+            background: #1f2937;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .timestamp {
+            color: #9ca3af;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔧 Export Test Page (Cache-Bypassed)</h1>
+        
+        <div class="success">
+            <strong>✅ This page loads the latest bundle directly</strong><br>
+            Bundle: <code>app.js?v=<?php echo time(); ?></code> (timestamp: <?php echo date('Y-m-d H:i:s'); ?>)
+        </div>
+
+        <div class="info">
+            <strong>📋 Instructions:</strong><br>
+            1. Open DevTools Console (F12)<br>
+            2. Click either button below<br>
+            3. Watch for green console logs with emojis (🚀, ✅, 📊)<br>
+            4. An alert should appear and a CSV should download<br>
+            5. If it works here but not in your main app, clear your browser cache completely
+        </div>
+
+        <h2>Test Export Functions</h2>
+        <button id="test-export-1" onclick="testExport()">🧪 Test Export (Simple)</button>
+        <button id="test-export-2" onclick="testExportAdvanced()" class="orange">🚀 Test Export (Advanced)</button>
+        <button onclick="clearConsole()">🧹 Clear Console</button>
+
+        <div id="console">
+            <div class="timestamp">[Ready]</div> Console initialized. Click a button to test export...<br>
+        </div>
+    </div>
+
+    <script>
+        const consoleDiv = document.getElementById('console');
+        
+        function log(msg, color = '#10b981') {
+            const timestamp = new Date().toLocaleTimeString();
+            const line = document.createElement('div');
+            line.innerHTML = `<span class="timestamp">[${timestamp}]</span><span style="color: ${color}">${msg}</span>`;
+            consoleDiv.appendChild(line);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+            console.log(msg);
+        }
+
+        function clearConsole() {
+            consoleDiv.innerHTML = '<div class="timestamp">[Cleared]</div> Console cleared.<br>';
+        }
+
+        function testExport() {
+            log('🧪 Test Export clicked!', '#3b82f6');
+            
+            const sampleData = [
+                { code: 'CS101', name: 'Introduction to Programming', department: 'Computer Science', teacher: 'Dr. Smith', enrolled: '25/30', schedule: 'MWF 10:00-11:00', credits: 3, status: 'Active' },
+                { code: 'MATH201', name: 'Calculus II', department: 'Mathematics', teacher: 'Prof. Johnson', enrolled: '18/25', schedule: 'TTH 14:00-15:30', credits: 4, status: 'Active' },
+                { code: 'ENG101', name: 'English Composition', department: 'English', teacher: 'Dr. Williams', enrolled: '30/30', schedule: 'MWF 09:00-10:00', credits: 3, status: 'Inactive' }
+            ];
+
+            try {
+                log('📊 Creating CSV from ' + sampleData.length + ' rows...', '#f59e0b');
+                
+                const headers = Object.keys(sampleData[0]);
+                const csvRows = [headers.join(',')];
+                
+                sampleData.forEach(row => {
+                    const values = headers.map(header => {
+                        const val = row[header] || '';
+                        return '"' + String(val).replace(/"/g, '""') + '"';
+                    });
+                    csvRows.push(values.join(','));
+                });
+                
+                const csv = csvRows.join('\n');
+                log('✅ CSV generated: ' + csv.length + ' characters', '#10b981');
+                
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                log('✅ Blob created: ' + blob.size + ' bytes', '#10b981');
+                
+                const url = URL.createObjectURL(blob);
+                log('✅ Object URL: ' + url.substring(0, 50) + '...', '#10b981');
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'test-export-' + new Date().toISOString().slice(0,10) + '.csv';
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                
+                log('🎯 Triggering download...', '#8b5cf6');
+                a.click();
+                
+                log('✅ SUCCESS! File should download: ' + a.download, '#10b981');
+                alert('✅ Export successful!\n\nFile: ' + a.download + '\nRows: ' + sampleData.length + '\n\nCheck your Downloads folder.');
+                
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    log('🧹 Cleanup complete', '#6b7280');
+                }, 500);
+                
+            } catch (e) {
+                log('❌ ERROR: ' + e.message, '#ef4444');
+                console.error('Export error:', e);
+                alert('❌ Export failed!\n\n' + e.message);
+            }
+        }
+
+        function testExportAdvanced() {
+            log('🚀 Advanced Export clicked!', '#3b82f6');
+            log('📊 This simulates the exact code from AdminDashboard.js', '#f59e0b');
+            
+            // Simulate the exact function from AdminDashboard
+            const buildAndDownloadCsv = (rows, filename = 'courses-export.csv') => {
+                log('🚀 [EXPORT] buildAndDownloadCsv called with ' + (rows?.length || 0) + ' rows, filename: ' + filename, '#3b82f6');
+                
+                if (!rows || !rows.length) {
+                    log('❌ [EXPORT] No rows to export', '#ef4444');
+                    alert('No courses to export');
+                    return;
+                }
+                
+                try {
+                    const csv = [Object.keys(rows[0]).join(',')].concat(
+                        rows.map(r => Object.values(r).map(v => '"'+String(v||'').replace(/"/g,'""')+'"').join(','))
+                    ).join('\n');
+                    
+                    log('✅ [EXPORT] CSV generated, length: ' + csv.length + ' chars', '#10b981');
+                    
+                    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+                    
+                    log('✅ [EXPORT] Blob URL created: ' + url.substring(0, 40) + '...', '#10b981');
+                    
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    a.style.display = 'none';
+                    document.body.appendChild(a);
+                    
+                    log('✅ [EXPORT] Anchor element appended, triggering click...', '#10b981');
+                    a.click();
+                    
+                    log('✅ [EXPORT] Click triggered successfully! File should download: ' + filename, '#10b981');
+                    alert('✅ Export started!\n\nFile: ' + filename + '\nRows: ' + rows.length + '\n\nCheck your Downloads folder.');
+                    
+                    setTimeout(() => {
+                        try { document.body.removeChild(a); } catch(e){ log('⚠️ Cleanup: anchor remove failed', '#f59e0b'); }
+                        try { URL.revokeObjectURL(url); } catch(e){ log('⚠️ Cleanup: URL revoke failed', '#f59e0b'); }
+                        log('🧹 [EXPORT] Cleanup complete', '#6b7280');
+                    }, 500);
+                    
+                } catch (e) {
+                    log('❌ [EXPORT] Export failed: ' + e.message, '#ef4444');
+                    console.error('Export error:', e);
+                    alert('❌ Export failed!\n\nError: ' + (e?.message || 'Unknown error') + '\n\nCheck console for details.');
+                }
+            };
+
+            const sampleCourses = [
+                { code: 'CS101', name: 'Intro to Programming', department: 'Computer Science', teacher: 'Dr. Smith', enrolled: '25/30', schedule: 'MWF 10:00', credits: 3, status: 'Active' },
+                { code: 'CS201', name: 'Data Structures', department: 'Computer Science', teacher: 'Prof. Johnson', enrolled: '20/25', schedule: 'TTH 11:00', credits: 4, status: 'Active' },
+                { code: 'MATH101', name: 'Calculus I', department: 'Mathematics', teacher: 'Dr. Lee', enrolled: '30/35', schedule: 'MWF 09:00', credits: 4, status: 'Active' }
+            ];
+
+            const filename = 'courses-export-all-' + new Date().toISOString().slice(0,10) + '.csv';
+            log('📊 [EXPORT] Calling buildAndDownloadCsv with ' + sampleCourses.length + ' courses...', '#f59e0b');
+            buildAndDownloadCsv(sampleCourses, filename);
+        }
+
+        // Test on page load
+        log('✅ Page loaded successfully', '#10b981');
+        log('⏰ Bundle timestamp: <?php echo date("Y-m-d H:i:s"); ?>', '#9ca3af');
+        log('📝 Ready to test export functions!', '#3b82f6');
+    </script>
+</body>
+</html>

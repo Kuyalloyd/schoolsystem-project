@@ -7,18 +7,21 @@ export default function ModalHost() {
   const [visible, setVisible] = useState(false);
   const [initial, setInitial] = useState(null);
   const [role, setRole] = useState('student');
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const open = (e) => {
       const d = (e && e.detail) || {};
       setInitial(d.initial || null);
       setRole(d.role || 'student');
+      setCourses(d.courses || []);
       setVisible(true);
     };
     const close = () => {
       setVisible(false);
       setInitial(null);
       setRole('student');
+      setCourses([]);
     };
     window.addEventListener('open-user-modal', open);
     window.addEventListener('close-user-modal', close);
@@ -69,7 +72,7 @@ export default function ModalHost() {
   }
 
   return createPortal(
-    React.createElement(UserFormModal, { visible, initial, role, onClose: handleClose, onSave: handleSave }),
+    React.createElement(UserFormModal, { visible, initial, role, courses, onClose: handleClose, onSave: handleSave }),
     root
   );
 }

@@ -11,6 +11,7 @@ export default function AdminUsers({ role = 'student' }) {
   // missing shared state/refs used across the component
   const [users, setUsers] = useState([]);
   const [archivedUsers, setArchivedUsers] = useState([]);
+  const [courses, setCourses] = useState([]);
   const mountedRef = useRef(false);
   const modalShouldStayOpenRef = useRef(false);
   const highlightTimerRef = useRef(null);
@@ -104,6 +105,20 @@ export default function AdminUsers({ role = 'student' }) {
       console.error('Failed to load archived users', err);
       if (!mountedRef.current) return;
       setArchivedUsers([]);
+    }
+  };
+
+  // load courses for the dropdown
+  const loadCourses = async () => {
+    try {
+      const res = await axios.get('/api/admin/courses');
+      const c = res.data?.courses || res.data || [];
+      if (!mountedRef.current) return;
+      setCourses(c);
+    } catch (err) {
+      console.error('Failed to load courses', err);
+      if (!mountedRef.current) return;
+      setCourses([]);
     }
   };
 
@@ -306,6 +321,7 @@ export default function AdminUsers({ role = 'student' }) {
     console.log('[AdminUsers] 🔄 Component mounted/updated - loading users for role:', role);
     loadUsers();
     loadArchivedUsers().catch(() => {});
+    loadCourses(); // Load courses for the dropdown
 
     // listen for global events
     // If a modal is currently open and marked as "should stay open" we ignore
@@ -408,7 +424,7 @@ export default function AdminUsers({ role = 'student' }) {
     
     // Open modal via global ModalHost so the modal stays mounted independently
     console.log('[AdminUsers] Dispatching open-user-modal event');
-    try { window.dispatchEvent(new CustomEvent('open-user-modal', { detail: { role: actualRole, initial: null } })); } catch(e) { console.error('failed to dispatch open-user-modal', e); }
+    try { window.dispatchEvent(new CustomEvent('open-user-modal', { detail: { role: actualRole, initial: null, courses: courses } })); } catch(e) { console.error('failed to dispatch open-user-modal', e); }
     console.log('[AdminUsers] ========== OPEN ADD END ==========');
   };
 
@@ -843,7 +859,7 @@ export default function AdminUsers({ role = 'student' }) {
     } catch(e) { /* ignore */ }
     
   console.log('[AdminUsers] Dispatching open-user-modal event for edit');
-  try { window.dispatchEvent(new CustomEvent('open-user-modal', { detail: { role: modalRole || role, initial: user } })); } catch(e) { console.error('failed to dispatch open-user-modal', e); }
+  try { window.dispatchEvent(new CustomEvent('open-user-modal', { detail: { role: modalRole || role, initial: user, courses: courses } })); } catch(e) { console.error('failed to dispatch open-user-modal', e); }
     console.log('[AdminUsers] ========== OPEN EDIT END ==========');
   };
 

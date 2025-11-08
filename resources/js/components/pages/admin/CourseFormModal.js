@@ -51,7 +51,7 @@ export default function CourseFormModal({ initial = null, onClose, onSave }) {
     <div className="modal-overlay">
       <div className="modal modal-wide course-modal">
         <div className="modal-header">
-          <h3>{initial ? 'Edit Course' : 'Add Course'}</h3>
+          <h3>{initial ? 'Edit Department' : 'Add Department'}</h3>
           <div className="modal-sub">Manage course details, schedule and status</div>
         </div>
 
@@ -202,7 +202,7 @@ export default function CourseFormModal({ initial = null, onClose, onSave }) {
         </div>
 
         <div className="modal-footer">
-          <button className="primary" onClick={submit}>{initial ? 'Update Course' : 'Add Course'}</button>
+          <button className="primary" onClick={submit}>{initial ? 'Update Department' : 'Add Department'}</button>
           <button className="btn btn-ghost" onClick={onClose}>Cancel</button>
         </div>
       </div>

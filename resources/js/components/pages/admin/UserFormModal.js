@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from 'react-dom';
 import { FiX, FiUser, FiMail, FiPhone, FiMapPin, FiCalendar, FiBook, FiAward } from 'react-icons/fi';
 
-export function UserFormModal({ visible = true, initial, onClose, onSave, role = 'student', bare = false, simple = false }) {
+export function UserFormModal({ visible = true, initial, onClose, onSave, role = 'student', bare = false, simple = false, courses = [] }) {
   const componentMountedRef = useRef(true);
   const allowCloseRef = useRef(false);
   
@@ -57,6 +57,46 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
   const watchdogRef = React.useRef(null);
   const mountTimeRef = React.useRef(Date.now());
   const shouldStayMountedRef = React.useRef(true);
+
+  // Flatten all related courses from all departments into a single list
+  const [allCourses, setAllCourses] = useState([]);
+  const [courseSearchTerm, setCourseSearchTerm] = useState('');
+  const [showCourseDropdown, setShowCourseDropdown] = useState(false);
+
+  useEffect(() => {
+    if (courses && courses.length > 0) {
+      const flattenedCourses = [];
+      courses.forEach(dept => {
+        if (dept.related_courses && dept.related_courses.length > 0) {
+          dept.related_courses.forEach(course => {
+            flattenedCourses.push({
+              name: course.name,
+              department: dept.name || dept.code
+            });
+          });
+        }
+      });
+      setAllCourses(flattenedCourses);
+    }
+  }, [courses]);
+
+  // Filter courses based on search term
+  const filteredCourses = allCourses.filter(course => 
+    course.name.toLowerCase().includes(courseSearchTerm.toLowerCase()) ||
+    course.department.toLowerCase().includes(courseSearchTerm.toLowerCase())
+  );
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (showCourseDropdown && !e.target.closest('.input-with-icon')) {
+        setShowCourseDropdown(false);
+        setCourseSearchTerm('');
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showCourseDropdown]);
 
   // Ensure the internal form.role always reflects the `role` prop passed by the
   // parent. Some callers render this modal for 'teacher' and expect the form to
@@ -354,11 +394,79 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
     ),
     React.createElement('div', { className: 'form-group-modern' },
       React.createElement('label', null, 'Course *'),
-      React.createElement('div', { className: 'input-with-icon' },
+      React.createElement('div', { className: 'input-with-icon', style: { position: 'relative' } },
         React.createElement(FiBook, { className: 'input-icon', size: 18 }),
-        React.createElement('input', { name: 'major', value: form.major, onChange: handleChange, placeholder: 'Select course' })
+        React.createElement('input', { 
+          type: 'text',
+          value: courseSearchTerm || form.major, 
+          onChange: (e) => {
+            setCourseSearchTerm(e.target.value);
+            setShowCourseDropdown(true);
+          },
+          onFocus: () => setShowCourseDropdown(true),
+          placeholder: 'Search and select a course',
+          style: { paddingLeft: '40px' }
+        }),
+        showCourseDropdown && filteredCourses.length > 0 ? React.createElement('div', {
+          style: {
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            maxHeight: '300px',
+            overflowY: 'auto',
+            background: '#fff',
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px',
+            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
+            zIndex: 1000,
+            marginTop: '4px'
+          },
+          className: 'custom-scrollbar'
+        },
+          filteredCourses.map((c, idx) => React.createElement('div', {
+            key: idx,
+            onClick: () => {
+              setForm(f => ({ ...f, major: c.name }));
+              setCourseSearchTerm('');
+              setShowCourseDropdown(false);
+            },
+            style: {
+              padding: '12px 16px',
+              cursor: 'pointer',
+              borderBottom: idx < filteredCourses.length - 1 ? '1px solid #f3f4f6' : 'none',
+              transition: 'background 0.2s'
+            },
+            onMouseEnter: (e) => { e.currentTarget.style.background = '#f9fafb'; },
+            onMouseLeave: (e) => { e.currentTarget.style.background = '#fff'; }
+          },
+            React.createElement('div', { style: { fontWeight: '500', color: '#111827', marginBottom: '2px' } }, c.name),
+            React.createElement('div', { style: { fontSize: '12px', color: '#6b7280' } }, `Department: ${c.department}`)
+          ))
+        ) : null
       ),
-      errors.major ? React.createElement('div', { className: 'input-error' }, errors.major) : null
+      errors.major ? React.createElement('div', { className: 'input-error' }, errors.major) : null,
+      // Show course details when a course is selected
+      form.major && allCourses && allCourses.length > 0 ? (() => {
+        const selectedCourse = allCourses.find(c => c.name === form.major);
+        if (selectedCourse) {
+          return React.createElement('div', { 
+            style: { 
+              marginTop: '8px', 
+              padding: '12px', 
+              background: '#f0f9ff', 
+              border: '1px solid #bae6fd', 
+              borderRadius: '8px',
+              fontSize: '13px',
+              color: '#0369a1'
+            }
+          },
+            React.createElement('div', { style: { fontWeight: '600', marginBottom: '4px' } }, '📚 Course Details:'),
+            selectedCourse.department ? React.createElement('div', null, `Department: ${selectedCourse.department}`) : null
+          );
+        }
+        return null;
+      })() : null
     )
   ) : React.createElement(React.Fragment, null,
     // explicit first/last name for students
@@ -395,12 +503,80 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
       errors.email ? React.createElement('div', { className: 'input-error' }, errors.email) : null
     ),
     React.createElement('div', { className: 'form-group-modern' },
-      React.createElement('label', null, 'Major *'),
-      React.createElement('div', { className: 'input-with-icon' },
+      React.createElement('label', null, 'Course *'),
+      React.createElement('div', { className: 'input-with-icon', style: { position: 'relative' } },
         React.createElement(FiBook, { className: 'input-icon', size: 18 }),
-        React.createElement('input', { name: 'major', value: form.major, onChange: handleChange, placeholder: 'Select major' })
+        React.createElement('input', { 
+          type: 'text',
+          value: courseSearchTerm || form.major, 
+          onChange: (e) => {
+            setCourseSearchTerm(e.target.value);
+            setShowCourseDropdown(true);
+          },
+          onFocus: () => setShowCourseDropdown(true),
+          placeholder: 'Search and select a course',
+          style: { paddingLeft: '40px' }
+        }),
+        showCourseDropdown && filteredCourses.length > 0 ? React.createElement('div', {
+          style: {
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            maxHeight: '300px',
+            overflowY: 'auto',
+            background: '#fff',
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px',
+            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
+            zIndex: 1000,
+            marginTop: '4px'
+          },
+          className: 'custom-scrollbar'
+        },
+          filteredCourses.map((c, idx) => React.createElement('div', {
+            key: idx,
+            onClick: () => {
+              setForm(f => ({ ...f, major: c.name }));
+              setCourseSearchTerm('');
+              setShowCourseDropdown(false);
+            },
+            style: {
+              padding: '12px 16px',
+              cursor: 'pointer',
+              borderBottom: idx < filteredCourses.length - 1 ? '1px solid #f3f4f6' : 'none',
+              transition: 'background 0.2s'
+            },
+            onMouseEnter: (e) => { e.currentTarget.style.background = '#f9fafb'; },
+            onMouseLeave: (e) => { e.currentTarget.style.background = '#fff'; }
+          },
+            React.createElement('div', { style: { fontWeight: '500', color: '#111827', marginBottom: '2px' } }, c.name),
+            React.createElement('div', { style: { fontSize: '12px', color: '#6b7280' } }, `Department: ${c.department}`)
+          ))
+        ) : null
       ),
-      errors.major ? React.createElement('div', { className: 'input-error' }, errors.major) : null
+      errors.major ? React.createElement('div', { className: 'input-error' }, errors.major) : null,
+      // Show course details when a course is selected
+      form.major && allCourses && allCourses.length > 0 ? (() => {
+        const selectedCourse = allCourses.find(c => c.name === form.major);
+        if (selectedCourse) {
+          return React.createElement('div', { 
+            style: { 
+              marginTop: '8px', 
+              padding: '12px', 
+              background: '#f0f9ff', 
+              border: '1px solid #bae6fd', 
+              borderRadius: '8px',
+              fontSize: '13px',
+              color: '#0369a1'
+            }
+          },
+            React.createElement('div', { style: { fontWeight: '600', marginBottom: '4px' } }, '📚 Course Details:'),
+            selectedCourse.department ? React.createElement('div', null, `Department: ${selectedCourse.department}`) : null
+          );
+        }
+        return null;
+      })() : null
     ),
     React.createElement('div', { className: 'form-group-modern' },
       React.createElement('label', null, 'Phone *'),

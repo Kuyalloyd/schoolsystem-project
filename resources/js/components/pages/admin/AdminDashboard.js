@@ -1441,7 +1441,7 @@ export default function AdminDashboard({ initialPage = null }) {
                 <FiBook size={24} />
               </div>
               <div>
-                <h2 style={{ margin: 0, fontSize: 24, fontWeight: 700 }}>Course Management</h2>
+                <h2 style={{ margin: 0, fontSize: 24, fontWeight: 700 }}>Department Management</h2>
                 <p style={{ margin: 0, fontSize: 14, opacity: 0.9 }}>Manage courses, schedules, and enrollment across all departments</p>
               </div>
             </div>
@@ -1567,7 +1567,7 @@ export default function AdminDashboard({ initialPage = null }) {
               </button>
 
               <button onClick={() => setShowCourseAddModal(true)} style={{ padding: '10px 20px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', color: '#fff', fontWeight: 600, fontSize: 14, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.2s', boxShadow: '0 2px 4px rgba(245,158,11,0.2)' }}>
-                <FiPlus size={18} /> Add Course
+                <FiPlus size={18} /> Add Department
               </button>
             </div>
           </div>

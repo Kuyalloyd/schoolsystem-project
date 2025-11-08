@@ -67,6 +67,7 @@ class AdminController extends Controller
                 'max_students' => $c->max_students ?? null,
                 'status' => $c->status ?? null,
                 'enrollment_count' => $enrolled,
+                'related_courses' => $c->related_courses ?? null,
                 'created_at' => $c->created_at ? $c->created_at->toDateTimeString() : null,
             ];
         });
@@ -87,6 +88,7 @@ class AdminController extends Controller
                 'teacher_id' => 'nullable|integer',
                 'max_students' => 'nullable|integer|min:0',
                 'status' => 'nullable|string|in:active,inactive,completed',
+                'related_courses' => 'nullable|array',
             ]);
         } catch (ValidationException $ve) {
             return response()->json(['message' => 'The given data was invalid.', 'errors' => $ve->errors()], 422);
@@ -111,6 +113,7 @@ class AdminController extends Controller
                 'max_students' => $validated['max_students'] ?? 0,
                 'status' => $validated['status'] ?? 'active',
                 'teacher' => $teacherName ?? null,
+                'related_courses' => $validated['related_courses'] ?? null,
             ]);
 
             return response()->json(['message' => 'Course created', 'course' => [
@@ -201,6 +204,7 @@ class AdminController extends Controller
                 'teacher_id' => 'nullable|integer',
                 'max_students' => 'nullable|integer|min:0',
                 'status' => 'nullable|string|in:active,inactive,completed',
+                'related_courses' => 'nullable|array',
             ]);
 
             if (!empty($validated['teacher_id'])) {
@@ -219,6 +223,7 @@ class AdminController extends Controller
             $course->max_students = $validated['max_students'] ?? $course->max_students;
             $course->status = $validated['status'] ?? $course->status;
             if ($teacherName !== null) $course->teacher = $teacherName;
+            if (isset($validated['related_courses'])) $course->related_courses = $validated['related_courses'];
 
             $course->save();
 

@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // ✅ Auth Pages
 import Login from "./Login";
-import Register from "./Register";
 
 // ✅ Only Admin Dashboard (inside the admin folder)
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -21,9 +20,8 @@ export default function Router() {
         {/* Redirect root to login */}
         <Route path="/" element={<Navigate to="/login" />} />
 
-        {/* Login & Register */}
+        {/* Login */}
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
 
     {/* ✅ Admin Dashboard route - keep a single dashboard shell for all admin pages */}
     <Route path="/admin/dashboard" element={<AdminDashboard />} />

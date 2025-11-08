@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../sass/Login.scss";
-import Register, { RegisterForm } from "./Register";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
   // No runtime background logic; CSS handles the page background for login.
 
   const handleLogin = async (e) => {
@@ -143,26 +141,8 @@ export default function Login() {
 
             {error && <p className="error-message">{error}</p>}
           </form>
-
-          <p className="create-account">
-            Don't have an account?{" "}
-            <button type="button" className="link btn-link" onClick={() => setShowRegister(true)}>
-              Create one
-            </button>
-          </p>
         </div>
       </div>
-      {/* Register modal (reuses the RegisterForm so visuals match) */}
-      {showRegister && (
-        <div className="modal-overlay" role="dialog" aria-modal="true">
-          <div className="modal-content">
-            <button className="modal-close" onClick={() => setShowRegister(false)} aria-label="Close">
-              ×
-            </button>
-            <RegisterForm onClose={() => setShowRegister(false)} />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -28,7 +28,7 @@ export default function Sidebar({ activePage, onNavigate }) {
     { id: "dashboard", label: "Dashboard", icon: React.createElement(FiHome) },
   { id: "students", label: roleLabels.student.plural, icon: React.createElement(FiUsers) },
   { id: "teachers", label: roleLabels.teacher.plural, icon: React.createElement(FiUsers) },
-    { id: "courses", label: "Course Management", icon: React.createElement(FiBookOpen) },
+    { id: "courses", label: "Department Management", icon: React.createElement(FiBookOpen) },
     { id: "reports", label: "Reports", icon: React.createElement(FiBarChart2) },
     { id: "documents", label: "Documents", icon: React.createElement(FiFileText) },
     { id: "settings", label: "System Settings", icon: React.createElement(FiSettings) },
