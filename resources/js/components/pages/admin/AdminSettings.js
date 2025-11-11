@@ -12,7 +12,7 @@ export default function AdminSettings() {
   const [loading, setLoading] = useState(false);
 
   const [settingsForm, setSettingsForm] = useState({
-    schoolName: 'Saint Joseph Institute of Technology',
+    schoolName: 'Father Saturnino Urios University',
     schoolCode: 'RHS-2025',
     academicYear: '2024-2025',
     timezone: 'Eastern Time (ET)',
@@ -150,7 +150,7 @@ export default function AdminSettings() {
   const handleReset = () => {
     if (confirm('Reset all settings to defaults?')) {
       setSettingsForm({
-        schoolName: 'Saint Joseph Institute of Technology',
+        schoolName: 'Father Saturnino Urios University',
         schoolCode: 'RHS-2025',
         academicYear: '2024-2025',
         timezone: 'Eastern Time (ET)',
@@ -233,7 +233,7 @@ export default function AdminSettings() {
 
   return (
     <div className="admin-dashboard-layout">
-      <Sidebar activePage={activePage} />
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
       <main className="admin-main">
         <div style={{ padding: '32px 44px', background: '#fafbfc', minHeight: '100vh' }}>
           

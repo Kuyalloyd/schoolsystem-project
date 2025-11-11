@@ -351,7 +351,7 @@ export default function AdminDocuments() {
 
   return (
     <div className="admin-dashboard-layout">
-      <Sidebar activePage={activePage} />
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
       <main className="admin-main">
         <div style={{ display: 'flex', height: '100vh', background: '#f8f9fa' }}>
           {/* Left Sidebar */}

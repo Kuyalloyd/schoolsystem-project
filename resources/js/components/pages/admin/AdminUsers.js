@@ -38,6 +38,7 @@ export default function AdminUsers({ role = 'student' }) {
   const [departments, setDepartments] = useState([]);
   const [filterMajor, setFilterMajor] = useState('');
   const [filterDepartment, setFilterDepartment] = useState('');
+  const [filterCourse, setFilterCourse] = useState('');
   const [filterYear, setFilterYear] = useState('');
   const [filterDate, setFilterDate] = useState('');
   const [detailUser, setDetailUser] = useState(null);
@@ -118,6 +119,45 @@ export default function AdminUsers({ role = 'student' }) {
     } catch (err) {
       console.error('Failed to load courses', err);
       if (!mountedRef.current) return;
+      setCourses([]);
+    }
+  };
+
+  // load departments for the filter dropdown
+  const loadDepartments = async () => {
+    try {
+      // Load from courses since that's where your departments are stored
+      const res = await axios.get('/api/admin/courses');
+      const coursesData = res.data?.courses || res.data || [];
+      if (!mountedRef.current) return;
+      console.log('[AdminUsers] 📚 Loaded courses/departments:', coursesData);
+      // Extract unique course names (which are your departments)
+      const uniqueDepts = [...new Set(coursesData.map(c => c.course_name || c.name).filter(Boolean))];
+      console.log('[AdminUsers] 📋 Unique department names:', uniqueDepts);
+      setDepartments(uniqueDepts);
+      
+      // Also extract all related courses from each department
+      const allRelatedCourses = [];
+      coursesData.forEach(dept => {
+        if (dept.related_courses && Array.isArray(dept.related_courses)) {
+          dept.related_courses.forEach(rc => {
+            if (rc.name) {
+              allRelatedCourses.push({
+                name: rc.name,
+                code: rc.code,
+                department: dept.course_name
+              });
+            }
+          });
+        }
+      });
+      console.log('[AdminUsers] 📖 All related courses:', allRelatedCourses);
+      // Update courses state with the actual courses (not departments)
+      setCourses(allRelatedCourses);
+    } catch (err) {
+      console.error('[AdminUsers] ❌ Failed to load departments', err);
+      if (!mountedRef.current) return;
+      setDepartments([]);
       setCourses([]);
     }
   };
@@ -322,6 +362,7 @@ export default function AdminUsers({ role = 'student' }) {
     loadUsers();
     loadArchivedUsers().catch(() => {});
     loadCourses(); // Load courses for the dropdown
+    loadDepartments(); // Load departments for the filter dropdown
 
     // listen for global events
     // If a modal is currently open and marked as "should stay open" we ignore
@@ -887,22 +928,30 @@ export default function AdminUsers({ role = 'student' }) {
   const filteredList = visibleList.filter(u => {
     const q = (search || '').toLowerCase().trim();
     if (q) {
-      return (u.name || '').toLowerCase().includes(q) || (u.email || '').toLowerCase().includes(q) || ((u.student && (u.student.student_id || '') ) || '').toLowerCase().includes(q);
+      const matchesSearch = (u.name || '').toLowerCase().includes(q) || 
+                           (u.email || '').toLowerCase().includes(q) || 
+                           ((u.student && (u.student.student_id || '')) || '').toLowerCase().includes(q);
+      if (!matchesSearch) return false;
     }
     if (filterStatus !== 'all') {
-      if (filterStatus === 'active') return !u.deleted_at && !u.is_locked && (u.student?.status || '').toLowerCase() !== 'suspended';
-      if (filterStatus === 'archived') return !!u.deleted_at;
-      if (filterStatus === 'locked') return !!u.is_locked;
+      if (filterStatus === 'active' && (u.deleted_at || u.is_locked || (u.student?.status || '').toLowerCase() === 'suspended')) return false;
+      if (filterStatus === 'archived' && !u.deleted_at) return false;
+      if (filterStatus === 'locked' && !u.is_locked) return false;
     }
     // filter by major/course
     if (filterMajor) {
-      const course = (u.student?.course || u.course || '').toString().toLowerCase();
+      const course = (u.student?.course || u.teacher?.course || u.course || '').toString().toLowerCase();
       if (!course.includes(filterMajor.toLowerCase())) return false;
     }
-    // filter by department
+    // filter by department - check multiple possible locations
     if (filterDepartment) {
-      const dept = (u.student?.department || u.department || '').toString().toLowerCase();
-      if (!dept.includes(filterDepartment.toLowerCase())) return false;
+      const dept = (u.student?.department || u.teacher?.department || u.department || '').toString().toLowerCase();
+      if (!dept || !dept.includes(filterDepartment.toLowerCase())) return false;
+    }
+    // filter by course (specific course filter)
+    if (filterCourse) {
+      const course = (u.student?.course || u.teacher?.course || u.course || '').toString().toLowerCase();
+      if (!course || !course.includes(filterCourse.toLowerCase())) return false;
     }
     // filter by year
     if (filterYear) {
@@ -992,10 +1041,19 @@ export default function AdminUsers({ role = 'student' }) {
             <select
               value={filterDepartment}
               onChange={(e) => setFilterDepartment(e.target.value)}
-              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none', minWidth: '160px' }}
+              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none', width: '200px', minWidth: '200px', maxWidth: '200px' }}
             >
               <option value="">All Departments</option>
               {departments.map(d => <option key={d} value={d}>{d}</option>)}
+            </select>
+            <select
+              value={filterCourse}
+              onChange={(e) => setFilterCourse(e.target.value)}
+              className="course-filter-select"
+              style={{ padding: '8px 32px 8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 14, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 8px center/16px', appearance: 'none', cursor: 'pointer', outline: 'none', width: '200px', minWidth: '200px', maxWidth: '200px' }}
+            >
+              <option value="">All Courses</option>
+              {courses.map((c, idx) => <option key={idx} value={c.name}>{c.name}</option>)}
             </select>
           </div>
 

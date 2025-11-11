@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { roleLabels } from './labels';
 import axios from 'axios';
 import Sidebar from "./Sidebar";
+import AdminProfile from "./AdminProfile";
 import {
   FiUser,
   FiBook,
@@ -960,20 +961,6 @@ export default function AdminDashboard({ initialPage = null }) {
             </div>
             <div className="stat-trend negative">
               <span>-2%</span>
-            </div>
-          </div>
-
-          {/* Revenue (MTD) */}
-          <div className="stat-card-mini teal-card">
-            <div className="stat-icon-mini">
-              <FiActivity size={22} />
-            </div>
-            <div className="stat-details">
-              <div className="stat-label">Revenue (MTD)</div>
-              <div className="stat-value">$67.5k</div>
-            </div>
-            <div className="stat-trend positive">
-              <span>+12%</span>
             </div>
           </div>
 
@@ -2215,6 +2202,8 @@ export default function AdminDashboard({ initialPage = null }) {
         return <CoursesPage />;
     case "reports":
       return <ReportsPage />;
+    case "profile":
+      return <AdminProfile />;
       default:
         return <div>Under development</div>;
     }

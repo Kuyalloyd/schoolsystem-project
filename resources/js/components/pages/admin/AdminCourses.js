@@ -491,7 +491,7 @@ export default function AdminCourses() {
 
   return (
     <div className="admin-dashboard-layout">
-      <Sidebar activePage={activePage} />
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
       <main className="admin-main">
         <div className="admin-courses-page" style={{ padding: '24px 32px', background: '#f8f9fa', minHeight: '100vh' }}>
           {/* Header */}
@@ -569,15 +569,6 @@ export default function AdminCourses() {
             ))}
           </select>
           {/* Calendar filters removed */}
-          <select 
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            style={{ padding: '6px 28px 6px 10px', borderRadius: 8, border: '1px solid #d1d5db', fontSize: 13, color: '#374151', background: '#fff url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'#6b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e") no-repeat right 6px center/14px', appearance: 'none', cursor: 'pointer', outline: 'none' }}
-          >
-            <option value="all">All Status</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
         </div>
 
         <div style={{ display: 'flex', gap: 12, alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
@@ -652,101 +643,164 @@ export default function AdminCourses() {
           ))}
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
           {filteredCourses.map(course => {
             const enrollmentPercent = course.max_students > 0 ? ((course.enrollment_count || 0) / course.max_students * 100) : 0;
-            const gradientColor = course.department === 'Computer Science' ? 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)' : 
-                                  course.department === 'Engineering' ? 'linear-gradient(135deg, #10b981 0%, #14b8a6 100%)' :
-                                  'linear-gradient(135deg, #f59e0b 0%, #f97316 100%)';
+            const courseCount = (course.related_courses || []).length;
             
             return (
-              <div key={course.id} style={{ background: '#fff', borderRadius: 16, overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.08)', transition: 'transform 0.2s, box-shadow 0.2s', cursor: 'pointer' }} onClick={() => viewDepartmentDetails(course)} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)'; }}>
-                {/* Top gradient border */}
-                <div style={{ height: 4, background: gradientColor }}></div>
+              <div 
+                key={course.id} 
+                style={{ 
+                  background: '#fff',
+                  borderRadius: 12,
+                  padding: '20px',
+                  border: '2px solid #e5e7eb',
+                  transition: 'all 0.3s',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  minHeight: '180px',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }} 
+                onClick={() => viewDepartmentDetails(course)} 
+                onMouseEnter={(e) => { 
+                  e.currentTarget.style.transform = 'translateY(-4px)'; 
+                  e.currentTarget.style.boxShadow = '0 8px 20px rgba(245,158,11,0.2)'; 
+                  e.currentTarget.style.borderColor = '#f59e0b'; 
+                }} 
+                onMouseLeave={(e) => { 
+                  e.currentTarget.style.transform = 'translateY(0)'; 
+                  e.currentTarget.style.boxShadow = 'none'; 
+                  e.currentTarget.style.borderColor = '#e5e7eb'; 
+                }}
+              >
+                {/* Folder Tab */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-2px',
+                  left: '20px',
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                  borderRadius: '8px 8px 0 0',
+                  padding: '6px 16px',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: '#fff',
+                  boxShadow: '0 -2px 8px rgba(245,158,11,0.2)'
+                }}>
+                  📁 Department
+                </div>
                 
-                <div style={{ padding: 24 }}>
-                  {/* Course Title */}
-                  <h3 style={{ margin: '0 0 4px 0', fontSize: 18, fontWeight: 600, color: '#111827' }}>{course.name}</h3>
-                  <p style={{ margin: '0 0 16px 0', fontSize: 14, color: '#6b7280' }}>{course.code}</p>
-                  
-                  <p style={{ margin: '0 0 20px 0', fontSize: 14, color: '#6b7280', lineHeight: 1.5 }}>{course.description || 'No description available'}</p>
-                  
-                  {/* Course Info */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 20 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <FiBook size={16} color="#6b7280" />
-                      <span style={{ fontSize: 13, color: '#374151' }}>{course.department || 'General'}</span>
-                      <span style={{ padding: '2px 8px', borderRadius: 6, fontSize: 12, fontWeight: 500, background: '#dbeafe', color: '#1d4ed8', marginLeft: 'auto' }}>
-                        {course.credits || 3} Credits
-                      </span>
-                    </div>
-                    
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <FiUsers size={16} color="#6b7280" />
-                      <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: 13, color: '#374151', marginBottom: 4 }}>{course.enrollment_count || 0} / {course.max_students || 50} Students</div>
-                        <div style={{ height: 6, background: '#e5e7eb', borderRadius: 3, overflow: 'hidden' }}>
-                          <div style={{ height: '100%', background: gradientColor, width: `${Math.min(enrollmentPercent, 100)}%`, transition: 'width 0.3s' }}></div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Schedule removed from course card */}
+                {/* Folder Icon */}
+                <div style={{
+                  textAlign: 'center',
+                  marginTop: '30px',
+                  marginBottom: '16px'
+                }}>
+                  <div style={{
+                    fontSize: 56,
+                    marginBottom: 8,
+                    filter: 'drop-shadow(0 4px 8px rgba(245,158,11,0.2))'
+                  }}>
+                    📂
                   </div>
+                </div>
+
+                {/* Department Name */}
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ 
+                    margin: '0 0 8px 0', 
+                    fontSize: 16, 
+                    fontWeight: 700, 
+                    color: '#111827',
+                    textAlign: 'center',
+                    lineHeight: 1.3
+                  }}>
+                    {course.name}
+                  </h3>
                   
-                  {/* Courses */}
-                  {course.related_courses && course.related_courses.length > 0 && (
-                    <div style={{ marginTop: 16, padding: 12, background: '#f0f9ff', borderRadius: 8, border: '1px solid #bae6fd' }}>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: '#0369a1', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 4 }}>
-                        <FiBook size={14} /> Courses:
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                        {course.related_courses.map((relCourse, idx) => (
-                          <div key={idx} style={{ fontSize: 12, color: '#0c4a6e', display: 'flex', alignItems: 'center', gap: 6 }}>
-                            <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#0369a1' }}></span>
-                            {relCourse.name}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                  {course.code && (
+                    <p style={{ 
+                      margin: '0 0 12px 0', 
+                      fontSize: 13, 
+                      color: '#f59e0b',
+                      textAlign: 'center',
+                      fontWeight: 600
+                    }}>
+                      {course.code}
+                    </p>
                   )}
-                  
-                  {/* Footer */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid #f3f4f6' }}>
-                    <div>
-                      <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 2 }}>{course.teacher_name || ''}</div>
-                      <span style={{ 
-                        padding: '4px 10px', 
-                        borderRadius: 6, 
-                        fontSize: 12, 
-                        fontWeight: 500,
-                        background: course.status === 'active' ? '#d1fae5' : '#f3f4f6',
-                        color: course.status === 'active' ? '#065f46' : '#6b7280'
-                      }}>
-                        {course.status || 'active'}
-                      </span>
-                    </div>
-                    <div style={{ display: 'flex', gap: 4 }}>
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); openEditCourse(course); }}
-                        title="Edit" 
-                        style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} 
-                        onMouseEnter={(e) => { e.currentTarget.style.background = '#fef3c7'; e.currentTarget.style.color = '#f59e0b'; }} 
-                        onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}
-                      >
-                        <FiEdit2 size={14} />
-                      </button>
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); handleDeleteCourse(course.id); }}
-                        title="Delete" 
-                        style={{ width: 32, height: 32, borderRadius: 6, border: 'none', background: '#f3f4f6', color: '#6b7280', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s' }} 
-                        onMouseEnter={(e) => { e.currentTarget.style.background = '#fee2e2'; e.currentTarget.style.color = '#991b1b'; }} 
-                        onMouseLeave={(e) => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#6b7280'; }}
-                      >
-                        <FiTrash2 size={14} />
-                      </button>
-                    </div>
+
+                  {/* Course Count */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    padding: '8px 12px',
+                    background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+                    borderRadius: 8,
+                    margin: '12px 0'
+                  }}>
+                    <FiBook size={14} color="#f59e0b" />
+                    <span style={{ fontSize: 13, fontWeight: 600, color: '#f59e0b' }}>
+                      {courseCount} Course{courseCount !== 1 ? 's' : ''}
+                    </span>
                   </div>
+                </div>
+                
+                {/* Action Buttons */}
+                <div style={{ 
+                  display: 'flex', 
+                  gap: 6, 
+                  marginTop: 'auto',
+                  paddingTop: 12,
+                  borderTop: '1px solid #f3f4f6'
+                }}>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); openEditCourse(course); }}
+                    title="Edit Department" 
+                    style={{ 
+                      flex: 1,
+                      padding: '8px',
+                      borderRadius: 6, 
+                      border: 'none', 
+                      background: '#fef3c7', 
+                      color: '#f59e0b', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      gap: 4,
+                      cursor: 'pointer', 
+                      fontSize: 13,
+                      fontWeight: 600,
+                      transition: 'all 0.2s' 
+                    }} 
+                    onMouseEnter={(e) => { e.currentTarget.style.background = '#fde68a'; }} 
+                    onMouseLeave={(e) => { e.currentTarget.style.background = '#fef3c7'; }}
+                  >
+                    <FiEdit2 size={14} /> Edit
+                  </button>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); handleDeleteCourse(course.id); }}
+                    title="Delete Department" 
+                    style={{ 
+                      padding: '8px 12px',
+                      borderRadius: 6, 
+                      border: 'none', 
+                      background: '#fee2e2', 
+                      color: '#dc2626', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      cursor: 'pointer', 
+                      transition: 'all 0.2s' 
+                    }} 
+                    onMouseEnter={(e) => { e.currentTarget.style.background = '#fecaca'; }} 
+                    onMouseLeave={(e) => { e.currentTarget.style.background = '#fee2e2'; }}
+                  >
+                    <FiTrash2 size={14} />
+                  </button>
                 </div>
               </div>
             );
@@ -757,149 +811,394 @@ export default function AdminCourses() {
       {/* Course Modal */}
       {showCourseModal && (
         <div className="modal-overlay" onClick={() => setShowCourseModal(false)}>
-          <div className="modal modal-modern modal-course" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header-modern">
-              <div className="modal-header-content">
-                <div className="modal-icon">
-                  <FiBook size={24} />
+          <div className="modal" style={{ maxWidth: '700px', borderRadius: 20, overflow: 'hidden', background: '#fff' }} onClick={(e) => e.stopPropagation()}>
+            {/* Header with Folder Design */}
+            <div style={{
+              background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+              padding: '32px 32px 24px',
+              position: 'relative',
+              boxShadow: '0 4px 12px rgba(245,158,11,0.2)'
+            }}>
+              <button 
+                onClick={() => setShowCourseModal(false)}
+                style={{
+                  position: 'absolute',
+                  top: 16,
+                  right: 16,
+                  width: 36,
+                  height: 36,
+                  borderRadius: '50%',
+                  border: 'none',
+                  background: 'rgba(255,255,255,0.2)',
+                  color: '#fff',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.3)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+              >
+                <FiX size={20} />
+              </button>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                <div style={{
+                  width: 60,
+                  height: 60,
+                  borderRadius: 16,
+                  background: 'rgba(255,255,255,0.2)',
+                  backdropFilter: 'blur(10px)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 32
+                }}>
+                  📂
                 </div>
                 <div>
-                  <h3>{editingCourse ? 'Edit Department' : 'Add New Department'}</h3>
-                  <p className="modal-subtitle">
-                    {editingCourse ? 'Update department information' : 'Create a new department'}
+                  <h3 style={{ margin: 0, fontSize: 24, fontWeight: 700, color: '#fff' }}>
+                    {editingCourse ? 'Edit Department' : 'Create New Department'}
+                  </h3>
+                  <p style={{ margin: '4px 0 0 0', fontSize: 14, color: 'rgba(255,255,255,0.9)' }}>
+                    {editingCourse ? 'Update department information and courses' : 'Set up a new department folder'}
                   </p>
                 </div>
               </div>
-              <button className="modal-close-btn" onClick={() => setShowCourseModal(false)}>
-                <FiX size={20} />
-              </button>
             </div>
             
-            <form onSubmit={handleSaveCourse} className="modal-body-modern course-form-box">
-              <div className="form-section-box">
-                <div className="form-section-head">
-                  <strong>Basic Information</strong>
+            <form onSubmit={handleSaveCourse} style={{ padding: 0 }}>
+              {/* Form Content */}
+              <div style={{ padding: '32px', maxHeight: '500px', overflowY: 'auto' }}>
+                {/* Basic Information Card */}
+                <div style={{
+                  background: '#fff',
+                  border: '2px solid #fef3c7',
+                  borderRadius: 12,
+                  padding: 20,
+                  marginBottom: 20
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+                    <div style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 8,
+                      background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#fff',
+                      fontSize: 16
+                    }}>
+                      📋
+                    </div>
+                    <h4 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#111827' }}>Basic Information</h4>
+                  </div>
+                  
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                        Department Name *
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g., Computer Studies Program"
+                        value={courseForm.name}
+                        onChange={(e) => setCourseForm({ ...courseForm, name: e.target.value })}
+                        required
+                        style={{
+                          width: '100%',
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '2px solid #e5e7eb',
+                          fontSize: 14,
+                          outline: 'none',
+                          transition: 'border 0.2s'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = '#f59e0b'}
+                        onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                        Department Code *
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g., CSP-001"
+                        value={courseForm.code}
+                        onChange={(e) => setCourseForm({ ...courseForm, code: e.target.value })}
+                        required
+                        style={{
+                          width: '100%',
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '2px solid #e5e7eb',
+                          fontSize: 14,
+                          outline: 'none',
+                          transition: 'border 0.2s'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = '#f59e0b'}
+                        onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                      Description
+                    </label>
+                    <textarea
+                      placeholder="Brief description of the department..."
+                      value={courseForm.description}
+                      onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
+                      rows="3"
+                      style={{
+                        width: '100%',
+                        padding: '10px 12px',
+                        borderRadius: 8,
+                        border: '2px solid #e5e7eb',
+                        fontSize: 14,
+                        outline: 'none',
+                        resize: 'vertical',
+                        fontFamily: 'inherit',
+                        transition: 'border 0.2s'
+                      }}
+                      onFocus={(e) => e.target.style.borderColor = '#f59e0b'}
+                      onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                    />
+                  </div>
                 </div>
-                <div className="modal-grid-modern">
-                  <div className="form-group-modern">
-                    <label>Course Name *</label>
+
+                {/* Department Details Card */}
+                <div style={{
+                  background: '#fff',
+                  border: '2px solid #dbeafe',
+                  borderRadius: 12,
+                  padding: 20,
+                  marginBottom: 20
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+                    <div style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 8,
+                      background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#fff',
+                      fontSize: 16
+                    }}>
+                      ⚙️
+                    </div>
+                    <h4 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#111827' }}>Department Details</h4>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                        Credits
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="3"
+                        value={courseForm.credits}
+                        onChange={(e) => setCourseForm({ ...courseForm, credits: e.target.value })}
+                        style={{
+                          width: '100%',
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '2px solid #e5e7eb',
+                          fontSize: 14,
+                          outline: 'none',
+                          transition: 'border 0.2s'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
+                        onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                        Max Students
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="30"
+                        value={courseForm.max_students}
+                        onChange={(e) => setCourseForm({ ...courseForm, max_students: e.target.value })}
+                        style={{
+                          width: '100%',
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '2px solid #e5e7eb',
+                          fontSize: 14,
+                          outline: 'none',
+                          transition: 'border 0.2s'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
+                        onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                      />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                        Department Category
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g., Computer Science"
+                        value={courseForm.department}
+                        onChange={(e) => setCourseForm({ ...courseForm, department: e.target.value })}
+                        style={{
+                          width: '100%',
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '2px solid #e5e7eb',
+                          fontSize: 14,
+                          outline: 'none',
+                          transition: 'border 0.2s'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
+                        onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                        Semester
+                      </label>
+                      <select
+                        value={courseForm.semester}
+                        onChange={(e) => setCourseForm({ ...courseForm, semester: e.target.value })}
+                        style={{
+                          width: '100%',
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '2px solid #e5e7eb',
+                          fontSize: 14,
+                          outline: 'none',
+                          background: '#fff',
+                          cursor: 'pointer',
+                          transition: 'border 0.2s'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
+                        onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                      >
+                        <option value="">Select semester</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="1st Semester">1st Semester</option>
+                        <option value="2nd Semester">2nd Semester</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div style={{ marginBottom: 16 }}>
+                    <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                      Department Head
+                    </label>
                     <input
                       type="text"
-                      placeholder="Introduction to Computer Science"
-                      value={courseForm.name}
-                      onChange={(e) => setCourseForm({ ...courseForm, name: e.target.value })}
-                      required
+                      placeholder="Enter department head name"
+                      value={courseForm.department_head}
+                      onChange={(e) => setCourseForm({ ...courseForm, department_head: e.target.value })}
+                      style={{
+                        width: '100%',
+                        padding: '10px 12px',
+                        borderRadius: 8,
+                        border: '2px solid #e5e7eb',
+                        fontSize: 14,
+                        outline: 'none',
+                        transition: 'border 0.2s'
+                      }}
+                      onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
+                      onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
                     />
                   </div>
 
-                  <div className="form-group-modern">
-                    <label>Course Code *</label>
+                  <div>
+                    <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+                      Prerequisites
+                    </label>
                     <input
                       type="text"
-                      placeholder="CS101"
-                      value={courseForm.code}
-                      onChange={(e) => setCourseForm({ ...courseForm, code: e.target.value })}
-                      required
+                      placeholder="e.g. Introduction to Computing, Basic Mathematics"
+                      value={courseForm.prerequisites}
+                      onChange={(e) => setCourseForm({ ...courseForm, prerequisites: e.target.value })}
+                      style={{
+                        width: '100%',
+                        padding: '10px 12px',
+                        borderRadius: 8,
+                        border: '2px solid #e5e7eb',
+                        fontSize: 14,
+                        outline: 'none',
+                        transition: 'border 0.2s'
+                      }}
+                      onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
+                      onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
                     />
+                    <small style={{ fontSize: 12, color: '#6b7280', marginTop: 4, display: 'block' }}>
+                      Separate multiple prerequisites with commas
+                    </small>
                   </div>
-                </div>
-
-                <div className="form-group-modern">
-                  <label>Description</label>
-                  <textarea
-                    placeholder="Brief description of the course..."
-                    value={courseForm.description}
-                    onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
-                    rows="3"
-                  />
                 </div>
               </div>
 
-              <div className="form-section-box">
-                <div className="form-section-head">
-                  <strong>Capacity & Schedule</strong>
-                </div>
-                <div className="modal-grid-modern">
-                  <div className="form-group-modern">
-                    <label>Credits</label>
-                    <input
-                      type="number"
-                      placeholder="3"
-                      value={courseForm.credits}
-                      onChange={(e) => setCourseForm({ ...courseForm, credits: e.target.value })}
-                    />
-                  </div>
-
-                  <div className="form-group-modern">
-                    <label>Max Students</label>
-                    <input
-                      type="number"
-                      placeholder="30"
-                      value={courseForm.max_students}
-                      onChange={(e) => setCourseForm({ ...courseForm, max_students: e.target.value })}
-                    />
-                  </div>
-                </div>
-
-                <div className="modal-grid-modern">
-                  <div className="form-group-modern">
-                    <label>Department</label>
-                    <input
-                      type="text"
-                      placeholder="Computer Science"
-                      value={courseForm.department}
-                      onChange={(e) => setCourseForm({ ...courseForm, department: e.target.value })}
-                    />
-                  </div>
-
-                  <div className="form-group-modern">
-                    <label>Semester</label>
-                    <select
-                      value={courseForm.semester}
-                      onChange={(e) => setCourseForm({ ...courseForm, semester: e.target.value })}
-                    >
-                      <option value="">Select semester</option>
-                      <option value="Fall">Fall</option>
-                      <option value="Spring">Spring</option>
-                      <option value="Summer">Summer</option>
-                      <option value="1st Semester">1st Semester</option>
-                      <option value="2nd Semester">2nd Semester</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-group-modern">
-                  <label>Department Head</label>
-                  <input
-                    type="text"
-                    placeholder="Enter department head name"
-                    value={courseForm.department_head}
-                    onChange={(e) => setCourseForm({ ...courseForm, department_head: e.target.value })}
-                  />
-                </div>
-
-                <div className="form-group-modern">
-                  <label>Prerequisites (Type course names, comma-separated)</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Introduction to Computing, Basic Mathematics"
-                    value={courseForm.prerequisites}
-                    onChange={(e) => setCourseForm({ ...courseForm, prerequisites: e.target.value })}
-                  />
-                  <small style={{ fontSize: 12, color: '#6b7280', marginTop: 4, display: 'block' }}>
-                    Enter prerequisite course names separated by commas
-                  </small>
-                </div>
-              </div>
-
-              {/* Status & Instructor section removed per user request */}
-
-              <div className="modal-footer-modern">
-                <button type="button" className="btn-cancel-modern" onClick={() => setShowCourseModal(false)}>
+              {/* Footer */}
+              <div style={{
+                padding: '20px 32px',
+                borderTop: '2px solid #f3f4f6',
+                display: 'flex',
+                gap: 12,
+                justifyContent: 'flex-end'
+              }}>
+                <button 
+                  type="button" 
+                  onClick={() => setShowCourseModal(false)}
+                  style={{
+                    padding: '10px 24px',
+                    borderRadius: 10,
+                    border: '2px solid #e5e7eb',
+                    background: '#fff',
+                    color: '#6b7280',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; e.currentTarget.style.borderColor = '#d1d5db'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.borderColor = '#e5e7eb'; }}
+                >
                   Cancel
                 </button>
-                <button type="submit" className="btn-save-modern">
-                  {editingCourse ? 'Update Department' : 'Create Department'}
+                <button 
+                  type="submit"
+                  style={{
+                    padding: '10px 32px',
+                    borderRadius: 10,
+                    border: 'none',
+                    background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+                    color: '#fff',
+                    fontSize: 14,
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 12px rgba(245,158,11,0.3)',
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                >
+                  {editingCourse ? '✓ Update Department' : '+ Create Department'}
                 </button>
               </div>
             </form>

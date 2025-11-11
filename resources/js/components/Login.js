@@ -97,15 +97,18 @@ export default function Login() {
     <div className="login-page fade-in">
       {/* background slideshow (pure CSS driven) - added so login shows multiple pictures */}
       <div className="bg-slideshow" aria-hidden="true">
-        <div className="slide" style={{ backgroundImage: "url('/images/main-campus.webp')" }} />
-        <div className="slide" style={{ backgroundImage: "url('/images/sjit-cta-group-a-1168x657.webp')" }} />
-        <div className="slide" style={{ backgroundImage: "url('/images/SJIT_Sample_Cover_Photo_2.original.png')" }} />
+        <div className="slide" style={{ backgroundImage: "url('/images/FSUU_Main_Building_-973940755.jpg')" }} />
+        <div className="slide" style={{ backgroundImage: "url('/images/FSUU_PUBLIC_OVERPASS_(FEBRUARY_22,_2019).jpg')" }} />
+        <div className="slide" style={{ backgroundImage: "url('/images/FSUU-3.png')" }} />
       </div>
 
       {/* Login Form Section */}
       <div className="login-section">
         <div className="login-card">
-          <h2>Saint Joseph Institute of Technology</h2>
+          <div className="login-logo" style={{ textAlign: 'center', marginBottom: '20px' }}>
+            <img src="/images/fsuu-logo-11550709747p8zmk5qyqc.png" alt="FSUU Logo" style={{ width: '120px', height: 'auto', marginBottom: '10px' }} />
+          </div>
+          <h2>Father Saturnino Urios University</h2>
           <p className="subtitle">Sign in to access your account</p>
 
           <form onSubmit={handleLogin} autoComplete="off" className="login-form">

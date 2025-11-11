@@ -887,13 +887,6 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
   // no live preview — removed per request
 
   const middleRight = React.createElement('div', { className: 'col-modern' },
-    (form.role === 'student' ? React.createElement('div', { className: 'form-group-modern' },
-      React.createElement('label', null, 'Emergency Phone'),
-      React.createElement('div', { className: 'input-with-icon' },
-        React.createElement(FiPhone, { className: 'input-icon', size: 18 }),
-        React.createElement('input', { name: 'emergency_phone', value: form.emergency_phone, onChange: handleChange, placeholder: '(555) 000-0000' })
-      )
-    ) : null),
     React.createElement('div', { className: 'form-group-modern' },
       React.createElement('label', null, 'Status *'),
       (form.role === 'student'

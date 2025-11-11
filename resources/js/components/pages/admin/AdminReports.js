@@ -184,7 +184,7 @@ export default function AdminReports() {
 
   return (
     <div className="admin-dashboard-layout">
-      <Sidebar activePage={activePage} />
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
       <main className="admin-main">
         <div style={{ padding: '28px 40px', background: '#f8f9fa', minHeight: '100vh' }}>
           
@@ -261,95 +261,6 @@ export default function AdminReports() {
                 <option key={dep} value={dep}>{dep}</option>
               ))}
             </select>
-          </div>
-
-          {/* Report Cards Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(450px, 1fr))', gap: 20, marginBottom: 32 }}>
-            
-            {/* Student Enrollment Report */}
-            <div style={{ background: '#fff', borderRadius: 12, padding: '20px 24px', border: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-                <div style={{ width: 44, height: 44, borderRadius: 10, background: '#dbeafe', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <FiFileText size={20} color="#3b82f6" />
-                </div>
-                <div>
-                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: '#111827' }}>Student Enrollment Report</h3>
-                  <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280' }}>Complete list of enrolled students</p>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleExport('Student Enrollment')}
-                style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap', transition: 'all 0.2s' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
-              >
-                <FiDownload size={15} /> Export
-              </button>
-            </div>
-
-            {/* Academic Performance */}
-            <div style={{ background: '#fff', borderRadius: 12, padding: '20px 24px', border: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-                <div style={{ width: 44, height: 44, borderRadius: 10, background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <FiBarChart size={20} color="#10b981" />
-                </div>
-                <div>
-                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: '#111827' }}>Academic Performance</h3>
-                  <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280' }}>Department-wise performance metrics</p>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleExport('Academic Performance')}
-                style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap', transition: 'all 0.2s' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
-              >
-                <FiDownload size={15} /> Export
-              </button>
-            </div>
-
-            {/* Course Distribution */}
-            <div style={{ background: '#fff', borderRadius: 12, padding: '20px 24px', border: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-                <div style={{ width: 44, height: 44, borderRadius: 10, background: '#fef3c7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <FiPieChart size={20} color="#f59e0b" />
-                </div>
-                <div>
-                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: '#111827' }}>Course Distribution</h3>
-                  <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280' }}>Enrollment by course and department</p>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleExport('Course Distribution')}
-                style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap', transition: 'all 0.2s' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
-              >
-                <FiDownload size={15} /> Export
-              </button>
-            </div>
-
-            {/* Attendance Report */}
-            <div style={{ background: '#fff', borderRadius: 12, padding: '20px 24px', border: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-                <div style={{ width: 44, height: 44, borderRadius: 10, background: '#f3e8ff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <FiTrendingUp size={20} color="#8b5cf6" />
-                </div>
-                <div>
-                  <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: '#111827' }}>Attendance Report</h3>
-                  <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#6b7280' }}>Student attendance statistics</p>
-                </div>
-              </div>
-              <button 
-                onClick={() => handleExport('Attendance')}
-                style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fff', color: '#374151', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap', transition: 'all 0.2s' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#f9fafb'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = '#fff'; }}
-              >
-                <FiDownload size={15} /> Export
-              </button>
-            </div>
-
           </div>
 
           {/* Charts Grid */}

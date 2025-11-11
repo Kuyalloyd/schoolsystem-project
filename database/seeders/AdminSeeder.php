@@ -13,7 +13,7 @@ class AdminSeeder extends Seeder
     {
         // ✅ Create or update the built-in admin user
         $user = User::updateOrCreate(
-            ['email' => 'admin@sjit.gmail.com'], // admin email
+            ['email' => 'admin@fsuu.com'], // admin email
             [
                 'name' => 'System Admin',
                 'password' => Hash::make('admin123'), // admin password

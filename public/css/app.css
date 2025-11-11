@@ -81,7 +81,7 @@ body {
 .admin-dashboard-layout {
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(180deg, #f6fbff, #f0f7ff);
+  background: #f9fafb;
   color: #0f172a;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   overflow-x: hidden;
@@ -2947,7 +2947,7 @@ body {
 /* New Compact Stats Grid (6 cards) */
 .top-stats-grid-modern {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -7427,6 +7427,45 @@ body {
 }
 .admin-users .modern-management-card > div[style*=overflowX]::-webkit-scrollbar-corner, .learner-page .modern-management-card > div[style*=overflowX]::-webkit-scrollbar-corner, .instructor-page .modern-management-card > div[style*=overflowX]::-webkit-scrollbar-corner {
   background: #f8fafc;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+select option {
+  padding: 4px 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.course-filter-select {
+  max-height: 38px;
+}
+.course-filter-select option {
+  padding: 4px 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.course-filter-select:focus, .course-filter-select[size]:not([size="1"]) {
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .sidebar {

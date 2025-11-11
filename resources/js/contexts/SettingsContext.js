@@ -13,7 +13,7 @@ export const useSettings = () => {
 
 export const SettingsProvider = ({ children }) => {
   const [settings, setSettings] = useState({
-    schoolName: 'SJIT',
+    schoolName: 'FSUU',
     schoolCode: 'SMS-2025',
     academicYear: '2024-2025',
     timezone: 'Eastern Time (ET)',

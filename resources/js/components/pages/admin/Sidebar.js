@@ -13,6 +13,7 @@ import {
   FiSettings,
   FiMenu,
   FiLogOut,
+  FiUser,
 } from "react-icons/fi";
 
 import "./../../../../sass/Sidebar.scss";
@@ -285,11 +286,48 @@ export default function Sidebar({ activePage, onNavigate }) {
       { className: "sidebar-footer" },
       React.createElement(
         "div",
-        { className: "footer-meta" },
+        { 
+          className: "footer-meta",
+          onClick: () => {
+            console.log('Footer clicked, onNavigate:', onNavigate);
+            if (onNavigate) {
+              onNavigate('profile');
+            }
+          },
+          style: { cursor: 'pointer' }
+        },
         React.createElement('div', { className: 'avatar' }, React.createElement('div', { className: 'avatar-initials' }, 'AD')),
-        !collapsed && React.createElement('div', { className: 'footer-text' }, React.createElement('div', { className: 'name' }, 'Admin User'), React.createElement('div', { className: 'muted' }, 'admin@sjit.gmail.com'))
+        !collapsed && React.createElement('div', { className: 'footer-text' }, React.createElement('div', { className: 'name' }, 'Admin User'), React.createElement('div', { className: 'muted' }, 'admin@fsuu.com'))
       ),
-      !collapsed && React.createElement('button', { className: 'logout-btn', onClick: handleLogout, title: 'Logout' }, React.createElement(FiLogOut), React.createElement('span', null, 'Logout'))
+      !collapsed && React.createElement('button', { 
+        className: 'profile-btn', 
+        onClick: (e) => { 
+          e.stopPropagation(); 
+          console.log('Profile button clicked, onNavigate:', onNavigate);
+          if (onNavigate) {
+            onNavigate('profile');
+          }
+        }, 
+        title: 'My Profile',
+        style: { 
+          padding: '10px 16px', 
+          borderRadius: '8px', 
+          border: 'none', 
+          background: '#3b82f6', 
+          color: '#fff', 
+          fontSize: '14px', 
+          fontWeight: '600', 
+          cursor: 'pointer', 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '8px',
+          transition: 'all 0.2s',
+          justifyContent: 'center',
+          width: '100%'
+        },
+        onMouseEnter: (e) => e.currentTarget.style.background = '#2563eb',
+        onMouseLeave: (e) => e.currentTarget.style.background = '#3b82f6'
+      }, React.createElement(FiUser), React.createElement('span', null, 'My Profile'))
     )
   );
 }

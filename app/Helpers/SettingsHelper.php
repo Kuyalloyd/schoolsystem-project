@@ -77,7 +77,7 @@ class SettingsHelper
     protected static function defaults()
     {
         return [
-            'schoolName' => 'Saint Joseph Institute of Technology',
+            'schoolName' => 'Father Saturnino Urios University',
             'schoolCode' => 'RHS-2025',
             'academicYear' => '2024-2025',
             'timezone' => 'Eastern Time (ET)',

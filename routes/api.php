@@ -51,6 +51,10 @@ Route::prefix('admin')->group(function () {
     // Admin profile (get/update)
     Route::get('/profile', [\App\Http\Controllers\AdminSettingsController::class, 'getProfile']);
     Route::put('/profile', [\App\Http\Controllers\AdminSettingsController::class, 'updateProfile']);
+    Route::post('/profile/update', [\App\Http\Controllers\AdminSettingsController::class, 'updateProfile']);
+    Route::post('/change-password', [\App\Http\Controllers\AdminSettingsController::class, 'changePassword']);
+    Route::post('/generate-2fa', [\App\Http\Controllers\AdminSettingsController::class, 'generate2FA']);
+    Route::post('/verify-2fa', [\App\Http\Controllers\AdminSettingsController::class, 'verify2FA']);
     
     // System settings
     Route::get('/settings', [\App\Http\Controllers\AdminSettingsController::class, 'getSettings']);
