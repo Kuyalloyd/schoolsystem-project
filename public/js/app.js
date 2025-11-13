@@ -22427,7 +22427,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  width: 260px;\n  height: 100vh;\n  background: linear-gradient(180deg, rgba(26, 31, 46, 0.95) 0%, rgba(15, 20, 25, 0.98) 100%), url(\"/images/SJIT_Final_Logo.original.png\") center/cover no-repeat;\n  color: #f9fafb;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  border-right: 1px solid rgba(255, 255, 255, 0.08);\n  font-family: \"Inter\", sans-serif;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 100;\n  transition: width 0.2s ease;\n  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);\n}\n\n/* === TOP SECTION (Logo only, clean) === */\n.sidebar-top {\n  padding: 1.5rem 1.2rem 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 12px;\n}\n\n.logo {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.logo-icon {\n  width: 42px;\n  height: 42px;\n  border-radius: 10px;\n  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #1a472a;\n  font-size: 1.2rem;\n  font-weight: 700;\n  box-shadow: 0 2px 8px rgba(254, 220, 0, 0.4);\n}\n\n.logo-text .site-title {\n  font-weight: 700;\n  font-size: 1rem;\n  color: #f9fafb;\n}\n\n.logo-text .site-sub {\n  font-size: 0.82rem;\n  color: #9ca3af;\n}\n\n/* Remove unused view & collapse elements */\n.sidebar-view,\n.collapse-btn,\n.sidebar-user {\n  display: none !important;\n}\n\n/* === NAVIGATION === */\n.sidebar-nav {\n  flex: 1;\n  padding: 1rem 1rem 0.5rem;\n  overflow-y: auto;\n}\n\n.sidebar-nav .nav-section-label {\n  font-size: 0.75rem;\n  color: #9ca3af;\n  text-transform: uppercase;\n  margin-bottom: 0.75rem;\n  letter-spacing: 0.05em;\n}\n\n.sidebar-nav ul {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n.sidebar-nav li {\n  margin-bottom: 0.25rem;\n}\n\n.sidebar-nav button {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.65rem 1rem;\n  border: none;\n  background: transparent;\n  color: #e5e7eb;\n  border-radius: 0.6rem;\n  cursor: pointer;\n  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;\n  font-size: 0.95rem;\n  text-align: left;\n  justify-content: flex-start;\n}\n\n.sidebar-nav button:hover {\n  background: rgba(255, 255, 255, 0.08);\n  transform: translateX(2px);\n}\n\n.sidebar-nav li.active button {\n  background: linear-gradient(90deg, rgba(254, 220, 0, 0.2) 0%, rgba(254, 220, 0, 0.08) 100%);\n  color: #FEDC00;\n  border-left: 4px solid #FEDC00;\n  padding-left: calc(1rem - 4px);\n  font-weight: 600;\n}\n\n.sidebar-nav .icon {\n  font-size: 1.1rem;\n  flex-shrink: 0;\n  width: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.sidebar-nav .badge {\n  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);\n  color: #1a472a;\n  padding: 2px 8px;\n  border-radius: 999px;\n  font-size: 0.75rem;\n  margin-left: auto;\n  font-weight: 600;\n}\n\n/* === FOOTER (Admin user + logout) === */\n.sidebar-footer {\n  border-top: 1px solid rgba(254, 220, 0, 0.15);\n  padding: 1.2rem 1rem 1.5rem;\n  background: linear-gradient(180deg, rgba(26, 31, 46, 0.6) 0%, rgba(15, 20, 25, 0.8) 100%);\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  gap: 1rem;\n  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);\n}\n\n.footer-meta {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  gap: 0.85rem;\n  flex-wrap: nowrap;\n}\n\n.footer-meta .avatar {\n  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);\n  width: 42px;\n  height: 42px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: 700;\n  font-size: 0.95rem;\n  color: #1a472a;\n  box-shadow: 0 4px 12px rgba(254, 220, 0, 0.5), 0 0 20px rgba(254, 220, 0, 0.2);\n  flex-shrink: 0;\n  position: relative;\n}\n.footer-meta .avatar::after {\n  content: \"\";\n  position: absolute;\n  inset: -2px;\n  border-radius: 50%;\n  background: linear-gradient(135deg, #FEDC00, #F5C400);\n  z-index: -1;\n  opacity: 0.3;\n  filter: blur(8px);\n}\n\n.footer-text {\n  display: flex;\n  flex-direction: column;\n  gap: 0.15rem;\n  overflow: hidden;\n  flex: 1;\n  min-width: 0;\n}\n\n.footer-text .name {\n  font-weight: 600;\n  font-size: 0.92rem;\n  color: #f9fafb;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.footer-text .muted {\n  font-size: 0.78rem;\n  color: #9ca3af;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n/* === LOGOUT BUTTON === */\n.logout-btn {\n  width: 100%;\n  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);\n  border: 1px solid rgba(239, 68, 68, 0.4);\n  border-radius: 0.6rem;\n  color: #ffffff;\n  padding: 0.7rem 1rem;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.6rem;\n  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n  font-size: 0.9rem;\n  font-weight: 700;\n  flex-shrink: 0;\n  position: relative;\n  overflow: hidden;\n  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);\n  text-transform: uppercase;\n  letter-spacing: 0.5px;\n}\n.logout-btn::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: -100%;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);\n  transition: left 0.5s;\n}\n\n.logout-btn:hover {\n  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);\n  border-color: rgba(220, 38, 38, 0.6);\n  color: #ffffff;\n  transform: translateY(-2px);\n  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);\n}\n.logout-btn:hover::before {\n  left: 100%;\n}\n\n.logout-btn:active {\n  transform: translateY(0);\n  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4), 0 1px 4px rgba(0, 0, 0, 0.2);\n}\n\n/* === COLLAPSED FOOTER === */\n.sidebar.collapsed .footer-meta {\n  justify-content: center;\n}\n\n.sidebar.collapsed .footer-text {\n  display: none;\n}\n\n.sidebar.collapsed .logout-btn {\n  width: 40px;\n  height: 40px;\n  padding: 0;\n  justify-content: center;\n}\n\n.sidebar.collapsed .logout-btn span {\n  display: none;\n}\n\n/* === MOBILE === */\n@media (max-width: 900px) {\n  .sidebar {\n    transform: translateX(-100%);\n    position: fixed;\n    transition: transform 0.25s ease;\n  }\n  .sidebar.mobile-open {\n    transform: translateX(0);\n  }\n  .sidebar-overlay {\n    position: fixed;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.45);\n    z-index: 90;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  width: 260px;\n  height: 100vh;\n  background: linear-gradient(180deg, rgba(26, 31, 46, 0.95) 0%, rgba(15, 20, 25, 0.98) 100%), url(\"/images/SJIT_Final_Logo.original.png\") center/cover no-repeat;\n  color: #f9fafb;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  border-right: 1px solid rgba(255, 255, 255, 0.08);\n  font-family: \"Inter\", sans-serif;\n  position: fixed;\n  top: 0;\n  left: 0;\n  /* Raise z-index to ensure the sidebar (and its footer) are clickable above page content */\n  z-index: 1000;\n  transition: width 0.2s ease;\n  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);\n}\n\n/* === TOP SECTION (Logo only, clean) === */\n.sidebar-top {\n  padding: 1.5rem 1.2rem 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 12px;\n}\n\n.logo {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.logo-icon {\n  width: 42px;\n  height: 42px;\n  border-radius: 10px;\n  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #1a472a;\n  font-size: 1.2rem;\n  font-weight: 700;\n  box-shadow: 0 2px 8px rgba(254, 220, 0, 0.4);\n}\n\n.logo-text .site-title {\n  font-weight: 700;\n  font-size: 1rem;\n  color: #f9fafb;\n}\n\n.logo-text .site-sub {\n  font-size: 0.82rem;\n  color: #9ca3af;\n}\n\n/* Remove unused view & collapse elements */\n.sidebar-view,\n.collapse-btn,\n.sidebar-user {\n  display: none !important;\n}\n\n/* === NAVIGATION === */\n.sidebar-nav {\n  flex: 1;\n  padding: 1rem 1rem 0.5rem;\n  overflow-y: auto;\n}\n\n.sidebar-nav .nav-section-label {\n  font-size: 0.75rem;\n  color: #9ca3af;\n  text-transform: uppercase;\n  margin-bottom: 0.75rem;\n  letter-spacing: 0.05em;\n}\n\n.sidebar-nav ul {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n.sidebar-nav li {\n  margin-bottom: 0.25rem;\n}\n\n.sidebar-nav button {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.65rem 1rem;\n  border: none;\n  background: transparent;\n  color: #e5e7eb;\n  border-radius: 0.6rem;\n  cursor: pointer;\n  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;\n  font-size: 0.95rem;\n  text-align: left;\n  justify-content: flex-start;\n}\n\n.sidebar-nav button:hover {\n  background: rgba(255, 255, 255, 0.08);\n  transform: translateX(2px);\n}\n\n.sidebar-nav li.active button {\n  background: linear-gradient(90deg, rgba(254, 220, 0, 0.2) 0%, rgba(254, 220, 0, 0.08) 100%);\n  color: #FEDC00;\n  border-left: 4px solid #FEDC00;\n  padding-left: calc(1rem - 4px);\n  font-weight: 600;\n}\n\n.sidebar-nav .icon {\n  font-size: 1.1rem;\n  flex-shrink: 0;\n  width: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.sidebar-nav .badge {\n  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);\n  color: #1a472a;\n  padding: 2px 8px;\n  border-radius: 999px;\n  font-size: 0.75rem;\n  margin-left: auto;\n  font-weight: 600;\n}\n\n/* === FOOTER (Admin user + logout) === */\n.sidebar-footer {\n  border-top: 1px solid rgba(254, 220, 0, 0.15);\n  padding: 1.2rem 1rem 1.5rem;\n  background: linear-gradient(180deg, rgba(26, 31, 46, 0.6) 0%, rgba(15, 20, 25, 0.8) 100%);\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  gap: 1rem;\n  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);\n  z-index: 1001; /* ensure footer sits above content */\n}\n\n.footer-meta {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  gap: 0.85rem;\n  flex-wrap: nowrap;\n}\n\n.footer-meta .avatar {\n  background: linear-gradient(135deg, #FEDC00 0%, #F5C400 100%);\n  width: 42px;\n  height: 42px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: 700;\n  font-size: 0.95rem;\n  color: #1a472a;\n  box-shadow: 0 4px 12px rgba(254, 220, 0, 0.5), 0 0 20px rgba(254, 220, 0, 0.2);\n  flex-shrink: 0;\n  position: relative;\n}\n.footer-meta .avatar::after {\n  content: \"\";\n  position: absolute;\n  inset: -2px;\n  border-radius: 50%;\n  background: linear-gradient(135deg, #FEDC00, #F5C400);\n  z-index: -1;\n  opacity: 0.3;\n  filter: blur(8px);\n}\n\n.footer-text {\n  display: flex;\n  flex-direction: column;\n  gap: 0.15rem;\n  overflow: hidden;\n  flex: 1;\n  min-width: 0;\n}\n\n.footer-text .name {\n  font-weight: 600;\n  font-size: 0.92rem;\n  color: #f9fafb;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.footer-text .muted {\n  font-size: 0.78rem;\n  color: #9ca3af;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n/* === LOGOUT BUTTON === */\n.logout-btn {\n  width: 100%;\n  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);\n  border: 1px solid rgba(239, 68, 68, 0.4);\n  border-radius: 0.6rem;\n  color: #ffffff;\n  padding: 0.7rem 1rem;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.6rem;\n  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n  font-size: 0.9rem;\n  font-weight: 700;\n  flex-shrink: 0;\n  position: relative;\n  overflow: hidden;\n  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);\n  text-transform: uppercase;\n  letter-spacing: 0.5px;\n}\n.logout-btn::before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: -100%;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);\n  transition: left 0.5s;\n}\n\n.logout-btn:hover {\n  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);\n  border-color: rgba(220, 38, 38, 0.6);\n  color: #ffffff;\n  transform: translateY(-2px);\n  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);\n}\n.logout-btn:hover::before {\n  left: 100%;\n}\n\n.logout-btn:active {\n  transform: translateY(0);\n  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4), 0 1px 4px rgba(0, 0, 0, 0.2);\n}\n\n/* === COLLAPSED FOOTER === */\n.sidebar.collapsed .footer-meta {\n  justify-content: center;\n}\n\n.sidebar.collapsed .footer-text {\n  display: none;\n}\n\n.sidebar.collapsed .logout-btn {\n  width: 40px;\n  height: 40px;\n  padding: 0;\n  justify-content: center;\n}\n\n.sidebar.collapsed .logout-btn span {\n  display: none;\n}\n\n/* === MOBILE === */\n@media (max-width: 900px) {\n  .sidebar {\n    transform: translateX(-100%);\n    position: fixed;\n    transition: transform 0.25s ease;\n  }\n  .sidebar.mobile-open {\n    transform: translateX(0);\n  }\n  .sidebar-overlay {\n    position: fixed;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.45);\n    z-index: 90;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -74371,7 +74371,7 @@ function AdminUsers(_ref) {
     };
   }();
 
-  // load courses for the dropdown
+  // load courses for the dropdown and modal
   var loadCourses = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
       var _res$data, res, c, _t3;
@@ -74390,6 +74390,7 @@ function AdminUsers(_ref) {
             }
             return _context3.a(2);
           case 2:
+            console.log('[AdminUsers] 📚 loadCourses received:', c.length, 'items');
             setCourses(c);
             _context3.n = 5;
             break;
@@ -74417,7 +74418,7 @@ function AdminUsers(_ref) {
   // load departments for the filter dropdown
   var loadDepartments = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
-      var _res$data2, res, coursesData, uniqueDepts, allRelatedCourses, _t4;
+      var _res$data2, res, coursesData, uniqueDepts, _t4;
       return _regenerator().w(function (_context4) {
         while (1) switch (_context4.p = _context4.n) {
           case 0:
@@ -74434,31 +74435,18 @@ function AdminUsers(_ref) {
             return _context4.a(2);
           case 2:
             console.log('[AdminUsers] 📚 Loaded courses/departments:', coursesData);
-            // Extract unique course names (which are your departments)
+
+            // Extract unique department names for filter dropdown
             uniqueDepts = _toConsumableArray(new Set(coursesData.map(function (c) {
-              return c.course_name || c.name;
+              return c.department || c.course_name || c.name;
             }).filter(Boolean)));
             console.log('[AdminUsers] 📋 Unique department names:', uniqueDepts);
             setDepartments(uniqueDepts);
 
-            // Also extract all related courses from each department
-            allRelatedCourses = [];
-            coursesData.forEach(function (dept) {
-              if (dept.related_courses && Array.isArray(dept.related_courses)) {
-                dept.related_courses.forEach(function (rc) {
-                  if (rc.name) {
-                    allRelatedCourses.push({
-                      name: rc.name,
-                      code: rc.code,
-                      department: dept.course_name
-                    });
-                  }
-                });
-              }
-            });
-            console.log('[AdminUsers] 📖 All related courses:', allRelatedCourses);
-            // Update courses state with the actual courses (not departments)
-            setCourses(allRelatedCourses);
+            // Keep the full course data structure for the modal (includes related_courses)
+            // This ensures UserFormModal can properly extract both departments and courses
+            setCourses(coursesData);
+            console.log('[AdminUsers] 📖 Courses set for modal:', coursesData.length, 'items');
             _context4.n = 5;
             break;
           case 3:
@@ -78285,6 +78273,16 @@ function Sidebar(_ref) {
     };
   }, []);
   var handleClick = function handleClick(item) {
+    // If profile requested, use direct navigation to ensure the page loads
+    if (item.id === 'profile') {
+      try {
+        navigate('/admin/profile');
+      } catch (e) {
+        // fallback to full page load
+        window.location.href = '/admin/profile';
+      }
+      return;
+    }
     // Always use route navigation for standalone pages (courses, reports, documents, settings)
     var standalonePages = ['courses', 'reports', 'documents', 'settings'];
     if (standalonePages.includes(item.id)) {
@@ -78493,16 +78491,28 @@ function Sidebar(_ref) {
   // Footer (avatar + user)
   react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "sidebar-footer"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "footer-meta",
+    type: 'button',
     onClick: function onClick() {
-      console.log('Footer clicked, onNavigate:', onNavigate);
-      if (onNavigate) {
+      console.log('Footer button clicked, onNavigate:', onNavigate);
+      // Prefer SPA onNavigate when available, otherwise fallback to route
+      if (typeof onNavigate === 'function') {
         onNavigate('profile');
+      } else {
+        try {
+          navigate('/admin/profile');
+        } catch (e) {
+          console.error(e);
+        }
       }
     },
     style: {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      background: 'transparent',
+      border: 'none',
+      padding: 0,
+      textAlign: 'left'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
     className: 'avatar'
@@ -78519,8 +78529,14 @@ function Sidebar(_ref) {
     onClick: function onClick(e) {
       e.stopPropagation();
       console.log('Profile button clicked, onNavigate:', onNavigate);
-      if (onNavigate) {
+      if (typeof onNavigate === 'function') {
         onNavigate('profile');
+      } else {
+        try {
+          navigate('/admin/profile');
+        } catch (e) {
+          console.error(e);
+        }
       }
     },
     title: 'My Profile',
@@ -78921,29 +78937,56 @@ function UserFormModal(_ref) {
     selectedTeacherCourses = _useState22[0],
     setSelectedTeacherCourses = _useState22[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log('[UserFormModal] Courses received:', courses);
+    console.log('[UserFormModal] 📦 Courses received:', courses);
+    console.log('[UserFormModal] 📊 Courses structure:', JSON.stringify(courses, null, 2));
     if (courses && courses.length > 0) {
       var flattenedCourses = [];
       var departments = [];
       courses.forEach(function (dept) {
-        // Add department to list
-        departments.push({
-          name: dept.name || dept.code,
-          code: dept.code
-        });
-        if (dept.related_courses && dept.related_courses.length > 0) {
-          dept.related_courses.forEach(function (course) {
-            flattenedCourses.push({
-              name: course.name,
-              department: dept.name || dept.code
-            });
+        // Extract department name from various possible fields
+        var deptName = dept.department || dept.course_name || dept.name || dept.code;
+        if (deptName && !departments.find(function (d) {
+          return d.name === deptName;
+        })) {
+          departments.push({
+            name: deptName,
+            code: dept.code || dept.course_code
           });
+          console.log('[UserFormModal] ➕ Added department:', deptName);
+        }
+
+        // Extract related courses if available
+        if (dept.related_courses && Array.isArray(dept.related_courses) && dept.related_courses.length > 0) {
+          dept.related_courses.forEach(function (course) {
+            if (course.name) {
+              flattenedCourses.push({
+                name: course.name,
+                code: course.code,
+                department: deptName
+              });
+              console.log('[UserFormModal] ➕ Added course:', course.name, 'under', deptName);
+            }
+          });
+        } else {
+          // If no related_courses, treat the item itself as a course
+          if (dept.name || dept.course_name) {
+            flattenedCourses.push({
+              name: dept.name || dept.course_name,
+              code: dept.code || dept.course_code,
+              department: deptName
+            });
+          }
         }
       });
-      console.log('[UserFormModal] Flattened courses:', flattenedCourses.length);
-      console.log('[UserFormModal] Departments:', departments);
+      console.log('[UserFormModal] ✅ Flattened courses:', flattenedCourses.length, 'items');
+      console.log('[UserFormModal] ✅ Departments:', departments.length, 'items');
+      console.log('[UserFormModal] 📋 Department list:', departments.map(function (d) {
+        return d.name;
+      }).join(', '));
       setAllCourses(flattenedCourses);
       setAllDepartments(departments);
+    } else {
+      console.warn('[UserFormModal] ⚠️ No courses data received or empty array');
     }
   }, [courses]);
 

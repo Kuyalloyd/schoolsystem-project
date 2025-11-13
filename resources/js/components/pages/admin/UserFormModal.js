@@ -68,32 +68,57 @@ export function UserFormModal({ visible = true, initial, onClose, onSave, role =
   const [selectedTeacherCourses, setSelectedTeacherCourses] = useState([]);
 
   useEffect(() => {
-    console.log('[UserFormModal] Courses received:', courses);
+    console.log('[UserFormModal] 📦 Courses received:', courses);
+    console.log('[UserFormModal] 📊 Courses structure:', JSON.stringify(courses, null, 2));
+    
     if (courses && courses.length > 0) {
       const flattenedCourses = [];
       const departments = [];
       
       courses.forEach(dept => {
-        // Add department to list
-        departments.push({
-          name: dept.name || dept.code,
-          code: dept.code
-        });
+        // Extract department name from various possible fields
+        const deptName = dept.department || dept.course_name || dept.name || dept.code;
         
-        if (dept.related_courses && dept.related_courses.length > 0) {
-          dept.related_courses.forEach(course => {
-            flattenedCourses.push({
-              name: course.name,
-              department: dept.name || dept.code
-            });
+        if (deptName && !departments.find(d => d.name === deptName)) {
+          departments.push({
+            name: deptName,
+            code: dept.code || dept.course_code
           });
+          console.log('[UserFormModal] ➕ Added department:', deptName);
+        }
+        
+        // Extract related courses if available
+        if (dept.related_courses && Array.isArray(dept.related_courses) && dept.related_courses.length > 0) {
+          dept.related_courses.forEach(course => {
+            if (course.name) {
+              flattenedCourses.push({
+                name: course.name,
+                code: course.code,
+                department: deptName
+              });
+              console.log('[UserFormModal] ➕ Added course:', course.name, 'under', deptName);
+            }
+          });
+        } else {
+          // If no related_courses, treat the item itself as a course
+          if (dept.name || dept.course_name) {
+            flattenedCourses.push({
+              name: dept.name || dept.course_name,
+              code: dept.code || dept.course_code,
+              department: deptName
+            });
+          }
         }
       });
       
-      console.log('[UserFormModal] Flattened courses:', flattenedCourses.length);
-      console.log('[UserFormModal] Departments:', departments);
+      console.log('[UserFormModal] ✅ Flattened courses:', flattenedCourses.length, 'items');
+      console.log('[UserFormModal] ✅ Departments:', departments.length, 'items');
+      console.log('[UserFormModal] 📋 Department list:', departments.map(d => d.name).join(', '));
+      
       setAllCourses(flattenedCourses);
       setAllDepartments(departments);
+    } else {
+      console.warn('[UserFormModal] ⚠️ No courses data received or empty array');
     }
   }, [courses]);
 

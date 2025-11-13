@@ -109,12 +109,13 @@ export default function AdminUsers({ role = 'student' }) {
     }
   };
 
-  // load courses for the dropdown
+  // load courses for the dropdown and modal
   const loadCourses = async () => {
     try {
       const res = await axios.get('/api/admin/courses');
       const c = res.data?.courses || res.data || [];
       if (!mountedRef.current) return;
+      console.log('[AdminUsers] 📚 loadCourses received:', c.length, 'items');
       setCourses(c);
     } catch (err) {
       console.error('Failed to load courses', err);
@@ -131,29 +132,16 @@ export default function AdminUsers({ role = 'student' }) {
       const coursesData = res.data?.courses || res.data || [];
       if (!mountedRef.current) return;
       console.log('[AdminUsers] 📚 Loaded courses/departments:', coursesData);
-      // Extract unique course names (which are your departments)
-      const uniqueDepts = [...new Set(coursesData.map(c => c.course_name || c.name).filter(Boolean))];
+      
+      // Extract unique department names for filter dropdown
+      const uniqueDepts = [...new Set(coursesData.map(c => c.department || c.course_name || c.name).filter(Boolean))];
       console.log('[AdminUsers] 📋 Unique department names:', uniqueDepts);
       setDepartments(uniqueDepts);
       
-      // Also extract all related courses from each department
-      const allRelatedCourses = [];
-      coursesData.forEach(dept => {
-        if (dept.related_courses && Array.isArray(dept.related_courses)) {
-          dept.related_courses.forEach(rc => {
-            if (rc.name) {
-              allRelatedCourses.push({
-                name: rc.name,
-                code: rc.code,
-                department: dept.course_name
-              });
-            }
-          });
-        }
-      });
-      console.log('[AdminUsers] 📖 All related courses:', allRelatedCourses);
-      // Update courses state with the actual courses (not departments)
-      setCourses(allRelatedCourses);
+      // Keep the full course data structure for the modal (includes related_courses)
+      // This ensures UserFormModal can properly extract both departments and courses
+      setCourses(coursesData);
+      console.log('[AdminUsers] 📖 Courses set for modal:', coursesData.length, 'items');
     } catch (err) {
       console.error('[AdminUsers] ❌ Failed to load departments', err);
       if (!mountedRef.current) return;

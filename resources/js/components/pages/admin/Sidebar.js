@@ -126,6 +126,16 @@ export default function Sidebar({ activePage, onNavigate }) {
   }, []);
 
   const handleClick = (item) => {
+    // If profile requested, use direct navigation to ensure the page loads
+    if (item.id === 'profile') {
+      try {
+        navigate('/admin/profile');
+      } catch (e) {
+        // fallback to full page load
+        window.location.href = '/admin/profile';
+      }
+      return;
+    }
     // Always use route navigation for standalone pages (courses, reports, documents, settings)
     const standalonePages = ['courses', 'reports', 'documents', 'settings'];
     if (standalonePages.includes(item.id)) {
@@ -281,53 +291,59 @@ export default function Sidebar({ activePage, onNavigate }) {
     ),
 
     // Footer (avatar + user)
-    React.createElement(
-      "div",
-      { className: "sidebar-footer" },
       React.createElement(
         "div",
-        { 
-          className: "footer-meta",
-          onClick: () => {
-            console.log('Footer clicked, onNavigate:', onNavigate);
-            if (onNavigate) {
-              onNavigate('profile');
-            }
+        { className: "sidebar-footer" },
+        React.createElement(
+          "button",
+          { 
+            className: "footer-meta",
+            type: 'button',
+            onClick: () => {
+              console.log('Footer button clicked, onNavigate:', onNavigate);
+              // Prefer SPA onNavigate when available, otherwise fallback to route
+              if (typeof onNavigate === 'function') {
+                onNavigate('profile');
+              } else {
+                try { navigate('/admin/profile'); } catch(e) { console.error(e); }
+              }
+            },
+            style: { cursor: 'pointer', background: 'transparent', border: 'none', padding: 0, textAlign: 'left' }
           },
-          style: { cursor: 'pointer' }
-        },
-        React.createElement('div', { className: 'avatar' }, React.createElement('div', { className: 'avatar-initials' }, 'AD')),
-        !collapsed && React.createElement('div', { className: 'footer-text' }, React.createElement('div', { className: 'name' }, 'Admin User'), React.createElement('div', { className: 'muted' }, 'admin@fsuu.com'))
-      ),
-      !collapsed && React.createElement('button', { 
-        className: 'profile-btn', 
-        onClick: (e) => { 
-          e.stopPropagation(); 
-          console.log('Profile button clicked, onNavigate:', onNavigate);
-          if (onNavigate) {
-            onNavigate('profile');
-          }
-        }, 
-        title: 'My Profile',
-        style: { 
-          padding: '10px 16px', 
-          borderRadius: '8px', 
-          border: 'none', 
-          background: '#3b82f6', 
-          color: '#fff', 
-          fontSize: '14px', 
-          fontWeight: '600', 
-          cursor: 'pointer', 
-          display: 'flex', 
-          alignItems: 'center', 
-          gap: '8px',
-          transition: 'all 0.2s',
-          justifyContent: 'center',
-          width: '100%'
-        },
-        onMouseEnter: (e) => e.currentTarget.style.background = '#2563eb',
-        onMouseLeave: (e) => e.currentTarget.style.background = '#3b82f6'
-      }, React.createElement(FiUser), React.createElement('span', null, 'My Profile'))
+          React.createElement('div', { className: 'avatar' }, React.createElement('div', { className: 'avatar-initials' }, 'AD')),
+          !collapsed && React.createElement('div', { className: 'footer-text' }, React.createElement('div', { className: 'name' }, 'Admin User'), React.createElement('div', { className: 'muted' }, 'admin@fsuu.com'))
+        ),
+        !collapsed && React.createElement('button', { 
+          className: 'profile-btn', 
+          onClick: (e) => { 
+            e.stopPropagation(); 
+            console.log('Profile button clicked, onNavigate:', onNavigate);
+            if (typeof onNavigate === 'function') {
+              onNavigate('profile');
+            } else {
+              try { navigate('/admin/profile'); } catch(e) { console.error(e); }
+            }
+          }, 
+          title: 'My Profile',
+          style: { 
+            padding: '10px 16px', 
+            borderRadius: '8px', 
+            border: 'none', 
+            background: '#3b82f6', 
+            color: '#fff', 
+            fontSize: '14px', 
+            fontWeight: '600', 
+            cursor: 'pointer', 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '8px',
+            transition: 'all 0.2s',
+            justifyContent: 'center',
+            width: '100%'
+          },
+          onMouseEnter: (e) => e.currentTarget.style.background = '#2563eb',
+          onMouseLeave: (e) => e.currentTarget.style.background = '#3b82f6'
+        }, React.createElement(FiUser), React.createElement('span', null, 'My Profile'))
     )
   );
 }

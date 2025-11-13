@@ -15,7 +15,11 @@ Route::post('/_reset-admin', [LoginController::class, 'resetAdmin']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::prefix('admin')->group(function () {
+// Admin routes use a higher rate limit to avoid accidental 429s during
+// interactive admin operations (bulk imports, rapid saves, etc.). The
+// global 'api' middleware group applies 'throttle:api' (60/min) by default
+// so we increase it here to 120 requests per minute for admin endpoints.
+Route::prefix('admin')->middleware('throttle:120,1')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
     Route::get('/users', [AdminController::class, 'index']);
     Route::post('/users', [AdminController::class, 'store']);
